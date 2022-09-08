@@ -1579,6 +1579,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -2138,6 +2139,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -2639,6 +2641,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -3124,6 +3127,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -3774,6 +3778,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -4778,6 +4783,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -5485,6 +5491,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -6411,6 +6418,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -7533,6 +7541,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -8182,6 +8191,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -8762,6 +8772,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -9246,6 +9257,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -9895,6 +9907,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -11425,6 +11438,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -12619,6 +12633,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -13269,6 +13284,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -13855,6 +13871,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -14412,6 +14429,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -15152,6 +15170,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -16310,6 +16329,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -17127,6 +17147,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -18192,6 +18213,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -18603,6 +18625,9 @@ definitions:
         $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
       Age:
         format: int64
+        allOf:
+          - format: int64
+            type: integer
       Emails:
         type: array
         items:
@@ -18703,6 +18728,9 @@ definitions:
         type: string
       Budget:
         format: float
+        allOf:
+          - format: float
+            type: number
       Description:
         type: string
       Tags:
@@ -18784,6 +18812,9 @@ definitions:
         properties:
           Cost:
             format: int64
+            allOf:
+              - format: int64
+                type: integer
           Peers:
             type: array
             items:
@@ -18796,6 +18827,9 @@ definitions:
         properties:
           Budget:
             format: int64
+            allOf:
+              - format: int64
+                type: integer
           BossOffice:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
           DirectReports:
@@ -18849,6 +18883,8 @@ definitions:
     $ref: '#/definitions/Edm.GeometryCollection'
   Edm.Geometry:
     type: object
+    allOf:
+      - $ref: '#/definitions/Edm.GeometryPoint'
   Edm.GeometryPoint:
     required:
       - type
@@ -19117,6 +19153,11 @@ definitions:
         type: string
     additionalProperties:
       type: object
+  ReferenceNumeric:
+    enum:
+      - '-INF'
+      - INF
+      - NaN
 parameters:
   top:
     in: query

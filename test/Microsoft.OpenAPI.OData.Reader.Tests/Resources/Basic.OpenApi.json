@@ -146,6 +146,7 @@
             "in": "path",
             "description": "key: Name of City",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -215,6 +216,7 @@
             "in": "path",
             "description": "key: Name of City",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -254,6 +256,7 @@
             "in": "path",
             "description": "key: Name of City",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -263,6 +266,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -429,6 +433,7 @@
             "in": "path",
             "description": "key: Name of CountryOrRegion",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -498,6 +503,7 @@
             "in": "path",
             "description": "key: Name of CountryOrRegion",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -537,6 +543,7 @@
             "in": "path",
             "description": "key: Name of CountryOrRegion",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -546,6 +553,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -814,6 +822,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -886,6 +895,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -925,6 +935,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -934,6 +945,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -1218,6 +1230,13 @@
         "additionalProperties": {
           "type": "object"
         }
+      },
+      "ReferenceNumeric": {
+        "enum": [
+          "-INF",
+          "INF",
+          "NaN"
+        ]
       }
     },
     "responses": {

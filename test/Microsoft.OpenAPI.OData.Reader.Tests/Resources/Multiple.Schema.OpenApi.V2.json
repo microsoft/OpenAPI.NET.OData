@@ -789,7 +789,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -1626,7 +1627,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -3517,7 +3519,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -5827,6 +5830,13 @@
       "additionalProperties": {
         "type": "object"
       }
+    },
+    "ReferenceNumeric": {
+      "enum": [
+        "-INF",
+        "INF",
+        "NaN"
+      ]
     }
   },
   "parameters": {

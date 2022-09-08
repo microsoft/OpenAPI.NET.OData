@@ -192,6 +192,7 @@ schema:
   ""in"": ""path"",
   ""description"": ""key: Customer-Id of Customer"",
   ""required"": true,
+  ""style"": ""simple"",
   ""schema"": {
     ""type"": ""string"",
     ""nullable"": true
@@ -206,6 +207,7 @@ schema:
   ""in"": ""path"",
   ""description"": ""key: Id of Customer"",
   ""required"": true,
+  ""style"": ""simple"",
   ""schema"": {
     ""type"": ""string"",
     ""nullable"": true
@@ -250,6 +252,7 @@ schema:
   ""in"": ""path"",
   ""description"": ""key: firstName of Customer"",
   ""required"": true,
+  ""style"": ""simple"",
   ""schema"": {
     ""type"": ""string"",
     ""nullable"": true
@@ -266,6 +269,7 @@ schema:
   ""in"": ""path"",
   ""description"": ""key: lastName of Customer"",
   ""required"": true,
+  ""style"": ""simple"",
   ""schema"": {
     ""type"": ""string"",
     ""nullable"": true
@@ -496,6 +500,7 @@ schema:
   ""in"": ""path"",
   ""description"": ""The URL-encoded JSON object"",
   ""required"": true,
+  ""style"": ""simple"",
   ""content"": {{
     ""application/json"": {{
       ""schema"": {{
@@ -513,6 +518,7 @@ schema:
   ""name"": ""resource"",
   ""in"": ""path"",
   ""required"": true,
+  ""style"": ""simple"",
   ""schema"": {{
     ""type"": ""string"",
     ""nullable"": true
@@ -523,6 +529,7 @@ schema:
             string expectedPayload3 = $@"{{
   ""name"": ""directoryScopeId"",
   ""in"": ""query"",
+  ""style"": ""form"",
   ""schema"": {{
     ""type"": ""string"",
     ""nullable"": true

@@ -192,6 +192,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       ""name"": ""odata-debug"",
       ""in"": ""header"",
       ""description"": ""Debug support for OData services"",
+      ""style"": ""simple"",
       ""schema"": {
         ""type"": ""string""
       },

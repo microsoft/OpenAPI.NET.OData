@@ -129,6 +129,11 @@ namespace Microsoft.OpenApi.OData.Common
         /// Name used for reference request PUT body.
         /// </summary>
         public static string ReferencePutRequestBodyName = "refPutBody";
+
+        /// <summary>
+        /// Name used to reference INF, -INF and NaN
+        /// </summary>
+        public static string ReferenceNumericName = "ReferenceNumeric";
         
         /// <summary>
         /// The odata type name.
@@ -149,5 +154,25 @@ namespace Microsoft.OpenApi.OData.Common
         /// string type
         /// </summary>
         public static string StringType = "string";
+
+        /// <summary>
+        /// integer type
+        /// </summary>
+        public static string IntegerType = "integer";
+
+        /// <summary>
+        /// number type
+        /// </summary>
+        public static string NumberType = "number";
+
+        /// <summary>
+        /// int64 format
+        /// </summary>
+        public static string Int64Format = "int64";
+
+        /// <summary>
+        /// decimal format
+        /// </summary>
+        public static string DecimalFormat = "decimal";
     }
 }

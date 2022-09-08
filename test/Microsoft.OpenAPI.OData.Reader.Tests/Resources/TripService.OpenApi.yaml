@@ -98,6 +98,7 @@ paths:
           in: path
           description: 'key: AirlineCode of Airline'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airline
@@ -146,6 +147,7 @@ paths:
           in: path
           description: 'key: AirlineCode of Airline'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airline
@@ -172,12 +174,14 @@ paths:
           in: path
           description: 'key: AirlineCode of Airline'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airline
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -294,6 +298,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -344,6 +349,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -370,12 +376,14 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -393,6 +401,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -441,6 +450,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -469,6 +479,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -535,6 +546,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -558,6 +570,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -579,12 +592,14 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -602,6 +617,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -663,6 +679,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -688,12 +705,14 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -720,6 +739,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -740,6 +760,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -758,6 +779,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -775,6 +797,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -820,6 +843,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -847,6 +871,7 @@ paths:
           in: path
           description: 'key: IcaoCode of Airport'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Airport
@@ -876,27 +901,23 @@ paths:
         - name: lat
           in: path
           required: true
+          style: simple
           schema:
-            anyOf:
+            oneOf:
               - type: number
+                format: double
               - type: string
-              - enum:
-                  - '-INF'
-                  - INF
-                  - NaN
-            format: double
+              - $ref: '#/components/schemas/ReferenceNumeric'
         - name: lon
           in: path
           required: true
+          style: simple
           schema:
-            anyOf:
+            oneOf:
               - type: number
+                format: double
               - type: string
-              - enum:
-                  - '-INF'
-                  - INF
-                  - NaN
-            format: double
+              - $ref: '#/components/schemas/ReferenceNumeric'
       responses:
         '200':
           description: Success
@@ -1110,6 +1131,7 @@ paths:
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -1300,6 +1322,7 @@ paths:
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -1405,6 +1428,7 @@ paths:
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -1737,17 +1761,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -1771,6 +1798,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -1838,6 +1866,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -1869,12 +1898,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -1907,6 +1938,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -1933,6 +1965,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -1957,6 +1990,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -1980,6 +2014,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2031,6 +2066,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2064,6 +2100,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2347,17 +2384,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -2381,6 +2421,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2448,6 +2489,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2479,12 +2521,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -2517,6 +2561,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2543,6 +2588,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2567,6 +2613,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2590,6 +2637,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2641,6 +2689,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2674,6 +2723,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2891,17 +2941,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -2925,6 +2978,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -2992,6 +3046,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3023,12 +3078,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -3061,6 +3118,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3087,6 +3145,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3111,6 +3170,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3134,6 +3194,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3185,6 +3246,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3218,6 +3280,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3244,6 +3307,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3314,6 +3378,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3422,6 +3487,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3429,17 +3495,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -3463,6 +3532,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3470,6 +3540,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3537,6 +3608,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3544,6 +3616,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3575,6 +3648,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3582,12 +3656,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -3620,6 +3696,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3627,6 +3704,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3653,6 +3731,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3660,6 +3739,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3684,6 +3764,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3691,6 +3772,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3714,6 +3796,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3721,6 +3804,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3772,6 +3856,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3779,6 +3864,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3812,6 +3898,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3819,6 +3906,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3843,6 +3931,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3869,6 +3958,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3932,6 +4022,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -3961,6 +4052,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4031,6 +4123,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4139,6 +4232,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4146,17 +4240,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -4180,6 +4277,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4187,6 +4285,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4254,6 +4353,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4261,6 +4361,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4292,6 +4393,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4299,12 +4401,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -4337,6 +4441,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4344,6 +4449,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4370,6 +4476,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4377,6 +4484,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4401,6 +4509,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4408,6 +4517,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4431,6 +4541,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4438,6 +4549,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4489,6 +4601,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4496,6 +4609,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4529,6 +4643,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4536,6 +4651,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4560,6 +4676,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4586,6 +4703,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -4649,6 +4767,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -5245,17 +5364,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -5279,6 +5401,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -5346,6 +5469,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -5377,12 +5501,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -5415,6 +5541,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -5441,6 +5568,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -5465,6 +5593,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -5488,6 +5617,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -5539,6 +5669,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -5572,6 +5703,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -5717,6 +5849,7 @@ paths:
           in: path
           description: 'Usage: userName=''{userName}'''
           required: true
+          style: simple
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -6019,17 +6152,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -6053,6 +6189,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -6120,6 +6257,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -6151,12 +6289,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -6189,6 +6329,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -6215,6 +6356,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -6239,6 +6381,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -6262,6 +6405,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -6313,6 +6457,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -6346,6 +6491,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -6533,6 +6679,7 @@ paths:
           in: path
           description: 'Usage: lastName=''{lastName}'''
           required: true
+          style: simple
           schema:
             type: string
       responses:
@@ -6683,6 +6830,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -6749,6 +6897,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -6785,6 +6934,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -6794,6 +6944,7 @@ paths:
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -6820,6 +6971,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -6926,6 +7078,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -7010,6 +7163,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -7020,6 +7174,7 @@ paths:
           in: path
           description: 'key: PlanItemId of PlanItem'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -7029,11 +7184,13 @@ paths:
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -7058,6 +7215,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -7087,6 +7245,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -7141,6 +7300,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -7302,6 +7462,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7365,6 +7526,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7391,12 +7553,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -7414,6 +7578,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7475,6 +7640,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7500,12 +7666,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -7532,6 +7700,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7552,6 +7721,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7570,6 +7740,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7591,6 +7762,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7663,6 +7835,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7693,6 +7866,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7720,12 +7894,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -7749,6 +7925,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7816,6 +7993,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7847,12 +8025,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -7885,6 +8065,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7911,6 +8092,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7935,6 +8117,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -7958,6 +8141,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8009,6 +8193,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8042,6 +8227,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8068,6 +8254,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8138,6 +8325,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8245,6 +8433,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8252,17 +8441,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -8286,6 +8478,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8293,6 +8486,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8360,6 +8554,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8367,6 +8562,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8398,6 +8594,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8405,12 +8602,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -8443,6 +8642,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8450,6 +8650,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8476,6 +8677,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8483,6 +8685,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8507,6 +8710,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8514,6 +8718,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8537,6 +8742,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8544,6 +8750,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8595,6 +8802,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8602,6 +8810,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8635,6 +8844,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8642,6 +8852,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8666,6 +8877,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8692,6 +8904,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8755,6 +8968,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8784,6 +8998,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8854,6 +9069,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8961,6 +9177,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -8968,17 +9185,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -9002,6 +9222,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9009,6 +9230,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9076,6 +9298,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9083,6 +9306,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9114,6 +9338,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9121,12 +9346,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -9159,6 +9386,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9166,6 +9394,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9192,6 +9421,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9199,6 +9429,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9223,6 +9454,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9230,6 +9462,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9253,6 +9486,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9260,6 +9494,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9311,6 +9546,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9318,6 +9554,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9351,6 +9588,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9358,6 +9596,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9382,6 +9621,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9408,6 +9648,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9471,6 +9712,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9500,6 +9742,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9599,6 +9842,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9606,17 +9850,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -9634,6 +9881,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9641,6 +9889,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9702,6 +9951,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9709,6 +9959,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9734,6 +9985,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9741,12 +9993,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -9773,6 +10027,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9780,6 +10035,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9800,6 +10056,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9807,6 +10064,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9825,6 +10083,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9832,6 +10091,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9849,6 +10109,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9856,6 +10117,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9901,6 +10163,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9908,6 +10171,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9935,6 +10199,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9942,6 +10207,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9962,6 +10228,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -9969,6 +10236,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10033,6 +10301,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10040,6 +10309,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10141,6 +10411,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10148,6 +10419,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10155,17 +10427,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -10183,6 +10458,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10190,6 +10466,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10197,6 +10474,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10258,6 +10536,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10265,6 +10544,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10272,6 +10552,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10297,6 +10578,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10304,6 +10586,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10311,12 +10594,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -10343,6 +10628,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10350,6 +10636,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10357,6 +10644,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10377,6 +10665,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10384,6 +10673,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10391,6 +10681,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10409,6 +10700,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10416,6 +10708,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10423,6 +10716,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10440,6 +10734,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10447,6 +10742,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10454,6 +10750,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10499,6 +10796,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10506,6 +10804,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10513,6 +10812,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10540,6 +10840,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10547,6 +10848,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10554,6 +10856,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10572,6 +10875,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10579,6 +10883,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10599,6 +10904,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10606,6 +10912,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10663,6 +10970,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10670,6 +10978,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10693,6 +11002,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10700,6 +11010,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10764,6 +11075,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10771,6 +11083,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10872,6 +11185,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10879,6 +11193,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10886,17 +11201,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -10914,6 +11232,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10921,6 +11240,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10928,6 +11248,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10989,6 +11310,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -10996,6 +11318,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11003,6 +11326,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11028,6 +11352,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11035,6 +11360,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11042,12 +11368,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -11074,6 +11402,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11081,6 +11410,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11088,6 +11418,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11108,6 +11439,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11115,6 +11447,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11122,6 +11455,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11140,6 +11474,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11147,6 +11482,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11154,6 +11490,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11171,6 +11508,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11178,6 +11516,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11185,6 +11524,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11230,6 +11570,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11237,6 +11578,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11244,6 +11586,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11271,6 +11614,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11278,6 +11622,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11285,6 +11630,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11303,6 +11649,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11310,6 +11657,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11330,6 +11678,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11337,6 +11686,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11394,6 +11744,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11401,6 +11752,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11422,6 +11774,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11442,6 +11795,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11499,6 +11853,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11522,6 +11877,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11618,6 +11974,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11638,6 +11995,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11734,6 +12092,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11751,6 +12110,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11796,6 +12156,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11823,6 +12184,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11843,6 +12205,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11871,6 +12234,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -11878,6 +12242,7 @@ paths:
           in: path
           description: 'Usage: userName=''{userName}'''
           required: true
+          style: simple
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -11969,6 +12334,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12019,6 +12385,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12054,6 +12421,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12090,6 +12458,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12097,6 +12466,7 @@ paths:
           in: path
           description: 'Usage: lastName=''{lastName}'''
           required: true
+          style: simple
           schema:
             type: string
       responses:
@@ -12126,6 +12496,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12211,6 +12582,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12244,6 +12616,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12251,6 +12624,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12311,6 +12685,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12318,6 +12693,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12348,6 +12724,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12355,6 +12732,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12364,6 +12742,7 @@ paths:
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -12384,6 +12763,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12391,6 +12771,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12491,6 +12872,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12498,6 +12880,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12576,6 +12959,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12583,6 +12967,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12593,6 +12978,7 @@ paths:
           in: path
           description: 'key: PlanItemId of PlanItem'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12602,11 +12988,13 @@ paths:
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -12625,6 +13013,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12632,6 +13021,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12655,6 +13045,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12662,6 +13053,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12710,6 +13102,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12717,6 +13110,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -12741,6 +13135,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12896,6 +13291,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12965,6 +13361,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -12997,12 +13394,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -13026,6 +13425,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13093,6 +13493,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13124,12 +13525,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -13162,6 +13565,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13188,6 +13592,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13212,6 +13617,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13239,6 +13645,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13311,6 +13718,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13341,6 +13749,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13368,12 +13777,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -13397,6 +13808,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13464,6 +13876,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13495,12 +13908,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -13533,6 +13948,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13559,6 +13975,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13583,6 +14000,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13606,6 +14024,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13657,6 +14076,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13690,6 +14110,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13716,6 +14137,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13786,6 +14208,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13894,6 +14317,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13901,17 +14325,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -13935,6 +14362,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -13942,6 +14370,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14009,6 +14438,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14016,6 +14446,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14047,6 +14478,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14054,12 +14486,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -14092,6 +14526,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14099,6 +14534,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14125,6 +14561,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14132,6 +14569,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14156,6 +14594,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14163,6 +14602,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14186,6 +14626,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14193,6 +14634,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14244,6 +14686,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14251,6 +14694,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14284,6 +14728,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14291,6 +14736,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14315,6 +14761,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14341,6 +14788,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14404,6 +14852,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14433,6 +14882,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14503,6 +14953,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14611,6 +15062,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14618,17 +15070,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -14652,6 +15107,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14659,6 +15115,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14726,6 +15183,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14733,6 +15191,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14764,6 +15223,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14771,12 +15231,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -14809,6 +15271,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14816,6 +15279,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14842,6 +15306,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14849,6 +15314,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14873,6 +15339,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14880,6 +15347,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14903,6 +15371,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14910,6 +15379,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14961,6 +15431,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -14968,6 +15439,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15001,6 +15473,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15008,6 +15481,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15032,6 +15506,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15058,6 +15533,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15121,6 +15597,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15150,6 +15627,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15255,6 +15733,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15262,17 +15741,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -15296,6 +15778,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15303,6 +15786,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15370,6 +15854,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15377,6 +15862,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15408,6 +15894,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15415,12 +15902,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -15453,6 +15942,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15460,6 +15950,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15486,6 +15977,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15493,6 +15985,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15517,6 +16010,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15524,6 +16018,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15547,6 +16042,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15554,6 +16050,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15605,6 +16102,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15612,6 +16110,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15645,6 +16144,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15652,6 +16152,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15678,6 +16179,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15685,6 +16187,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15755,6 +16258,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15762,6 +16266,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15870,6 +16375,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15877,6 +16383,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15884,17 +16391,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -15918,6 +16428,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15925,6 +16436,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15932,6 +16444,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -15999,6 +16512,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16006,6 +16520,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16013,6 +16528,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16044,6 +16560,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16051,6 +16568,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16058,12 +16576,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -16096,6 +16616,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16103,6 +16624,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16110,6 +16632,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16136,6 +16659,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16143,6 +16667,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16150,6 +16675,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16174,6 +16700,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16181,6 +16708,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16188,6 +16716,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16211,6 +16740,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16218,6 +16748,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16225,6 +16756,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16276,6 +16808,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16283,6 +16816,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16290,6 +16824,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16323,6 +16858,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16330,6 +16866,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16337,6 +16874,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16361,6 +16899,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16368,6 +16907,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16394,6 +16934,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16401,6 +16942,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16464,6 +17006,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16471,6 +17014,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16500,6 +17044,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16507,6 +17052,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16577,6 +17123,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16584,6 +17131,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16692,6 +17240,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16699,6 +17248,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16706,17 +17256,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -16740,6 +17293,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16747,6 +17301,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16754,6 +17309,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16821,6 +17377,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16828,6 +17385,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16835,6 +17393,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16866,6 +17425,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16873,6 +17433,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16880,12 +17441,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -16918,6 +17481,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16925,6 +17489,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16932,6 +17497,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16958,6 +17524,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16965,6 +17532,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16972,6 +17540,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -16996,6 +17565,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17003,6 +17573,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17010,6 +17581,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17033,6 +17605,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17040,6 +17613,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17047,6 +17621,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17098,6 +17673,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17105,6 +17681,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17112,6 +17689,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17145,6 +17723,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17152,6 +17731,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17159,6 +17739,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17183,6 +17764,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17190,6 +17772,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17216,6 +17799,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17223,6 +17807,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17286,6 +17871,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17293,6 +17879,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17320,6 +17907,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17346,6 +17934,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17409,6 +17998,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17438,6 +18028,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17540,6 +18131,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17566,6 +18158,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17668,6 +18261,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17691,6 +18285,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17742,6 +18337,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17775,6 +18371,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17801,6 +18398,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17871,6 +18469,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17979,6 +18578,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -17986,17 +18586,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -18020,6 +18623,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18027,6 +18631,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18094,6 +18699,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18101,6 +18707,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18132,6 +18739,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18139,12 +18747,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -18177,6 +18787,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18184,6 +18795,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18210,6 +18822,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18217,6 +18830,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18241,6 +18855,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18248,6 +18863,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18271,6 +18887,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18278,6 +18895,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18329,6 +18947,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18336,6 +18955,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18369,6 +18989,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18376,6 +18997,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18400,6 +19022,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18426,6 +19049,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18489,6 +19113,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18518,6 +19143,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18552,6 +19178,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18559,6 +19186,7 @@ paths:
           in: path
           description: 'Usage: userName=''{userName}'''
           required: true
+          style: simple
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -18650,6 +19278,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18705,6 +19334,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18775,6 +19405,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18883,6 +19514,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18890,17 +19522,20 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -18924,6 +19559,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18931,6 +19567,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -18998,6 +19635,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19005,6 +19643,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19036,6 +19675,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19043,12 +19683,14 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       requestBody:
@@ -19081,6 +19723,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19088,6 +19731,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19114,6 +19758,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19121,6 +19766,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19145,6 +19791,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19152,6 +19799,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19175,6 +19823,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19182,6 +19831,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19233,6 +19883,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19240,6 +19891,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19273,6 +19925,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19280,6 +19933,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19304,6 +19958,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19330,6 +19985,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19393,6 +20049,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19423,6 +20080,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19464,6 +20122,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19506,6 +20165,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19513,6 +20173,7 @@ paths:
           in: path
           description: 'Usage: lastName=''{lastName}'''
           required: true
+          style: simple
           schema:
             type: string
       responses:
@@ -19548,6 +20209,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19639,6 +20301,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19678,6 +20341,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19685,6 +20349,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -19751,6 +20416,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19758,6 +20424,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -19794,6 +20461,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19801,6 +20469,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -19810,6 +20479,7 @@ paths:
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
       responses:
@@ -19836,6 +20506,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19843,6 +20514,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -19949,6 +20621,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -19956,6 +20629,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -20040,6 +20714,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -20047,6 +20722,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -20057,6 +20733,7 @@ paths:
           in: path
           description: 'key: PlanItemId of PlanItem'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -20066,11 +20743,13 @@ paths:
         - name: If-Match
           in: header
           description: ETag
+          style: simple
           schema:
             type: string
         - name: '@id'
           in: query
           description: Delete Uri
+          style: form
           schema:
             type: string
       responses:
@@ -20095,6 +20774,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -20102,6 +20782,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -20131,6 +20812,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -20138,6 +20820,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -20192,6 +20875,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -20199,6 +20883,7 @@ paths:
           in: path
           description: 'key: TripId of Trip'
           required: true
+          style: simple
           schema:
             maximum: 2147483647
             minimum: -2147483648
@@ -20229,6 +20914,7 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
+          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -20518,10 +21204,10 @@ components:
         Gender:
           $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
         Age:
-          anyOf:
+          oneOf:
             - type: integer
+              format: int64
             - type: string
-          format: int64
           nullable: true
         Emails:
           type: array
@@ -20652,14 +21338,11 @@ components:
           type: string
           nullable: true
         Budget:
-          anyOf:
+          oneOf:
             - type: number
+              format: float
             - type: string
-            - enum:
-                - '-INF'
-                - INF
-                - NaN
-          format: float
+            - $ref: '#/components/schemas/ReferenceNumeric'
         Description:
           type: string
           nullable: true
@@ -20758,10 +21441,10 @@ components:
           type: object
           properties:
             Cost:
-              anyOf:
+              oneOf:
                 - type: integer
+                  format: int64
                 - type: string
-              format: int64
             Peers:
               type: array
               items:
@@ -20773,10 +21456,10 @@ components:
           type: object
           properties:
             Budget:
-              anyOf:
+              oneOf:
                 - type: integer
+                  format: int64
                 - type: string
-              format: int64
             BossOffice:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
@@ -20833,7 +21516,7 @@ components:
       $ref: '#/components/schemas/Edm.GeometryCollection'
     Edm.Geometry:
       type: object
-      anyOf:
+      oneOf:
         - $ref: '#/components/schemas/Edm.GeometryPoint'
         - $ref: '#/components/schemas/Edm.GeometryLineString'
         - $ref: '#/components/schemas/Edm.GeometryPolygon'
@@ -21114,6 +21797,11 @@ components:
           type: string
       additionalProperties:
         type: object
+    ReferenceNumeric:
+      enum:
+        - '-INF'
+        - INF
+        - NaN
   responses:
     error:
       description: error

@@ -118,6 +118,16 @@ namespace Microsoft.OpenApi.OData.Generator
                 AdditionalProperties = new OpenApiSchema { Type = Constants.ObjectType }
             };
 
+            schemas[Constants.ReferenceNumericName] = new()
+            {
+                Enum = new List<IOpenApiAny>
+                {
+                    new OpenApiString("-INF"),
+                    new OpenApiString("INF"),
+                    new OpenApiString("NaN")
+                }
+            };
+
             // @odata.nextLink + @odata.count
             if (context.Settings.EnablePagination || context.Settings.EnableCount)
             {
@@ -611,7 +621,11 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                         else
                         {
-                            return new OpenApiString(schema.Type ?? schema.Format);
+                            return new OpenApiString(schema.Type ??
+                                (schema.AnyOf ?? Enumerable.Empty<OpenApiSchema>())
+                                .Union(schema.AllOf ?? Enumerable.Empty<OpenApiSchema>())
+                                .Union(schema.OneOf ?? Enumerable.Empty<OpenApiSchema>())
+                                .FirstOrDefault(static x => !string.IsNullOrEmpty(x.Format))?.Format ?? schema.Format);
                         }
                     }
 

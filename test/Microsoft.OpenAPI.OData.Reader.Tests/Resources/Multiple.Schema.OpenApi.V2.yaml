@@ -568,6 +568,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -1167,6 +1168,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -2536,6 +2538,7 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
+          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -4267,6 +4270,11 @@ definitions:
         type: string
     additionalProperties:
       type: object
+  ReferenceNumeric:
+    enum:
+      - '-INF'
+      - INF
+      - NaN
 parameters:
   top:
     in: query

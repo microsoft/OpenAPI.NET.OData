@@ -2281,7 +2281,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -3068,7 +3069,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -3778,7 +3780,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -4460,7 +4463,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -5369,7 +5373,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -6769,7 +6774,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -7766,7 +7772,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -9068,7 +9075,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -10654,7 +10662,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -11562,7 +11571,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -12379,7 +12389,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -13072,7 +13083,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -13995,7 +14007,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -16173,7 +16186,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -17851,7 +17865,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -18760,7 +18775,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -19584,7 +19600,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -20362,7 +20379,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -21391,7 +21409,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -22999,7 +23018,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -24144,7 +24164,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -25632,7 +25653,8 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string"
+            "type": "string",
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
@@ -26200,7 +26222,13 @@
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
         },
         "Age": {
-          "format": "int64"
+          "format": "int64",
+          "allOf": [
+            {
+              "format": "int64",
+              "type": "integer"
+            }
+          ]
         },
         "Emails": {
           "type": "array",
@@ -26355,7 +26383,13 @@
           "type": "string"
         },
         "Budget": {
-          "format": "float"
+          "format": "float",
+          "allOf": [
+            {
+              "format": "float",
+              "type": "number"
+            }
+          ]
         },
         "Description": {
           "type": "string"
@@ -26484,7 +26518,13 @@
           "type": "object",
           "properties": {
             "Cost": {
-              "format": "int64"
+              "format": "int64",
+              "allOf": [
+                {
+                  "format": "int64",
+                  "type": "integer"
+                }
+              ]
             },
             "Peers": {
               "type": "array",
@@ -26506,7 +26546,13 @@
           "type": "object",
           "properties": {
             "Budget": {
-              "format": "int64"
+              "format": "int64",
+              "allOf": [
+                {
+                  "format": "int64",
+                  "type": "integer"
+                }
+              ]
             },
             "BossOffice": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
@@ -26587,7 +26633,12 @@
       "$ref": "#/definitions/Edm.GeometryCollection"
     },
     "Edm.Geometry": {
-      "type": "object"
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Edm.GeometryPoint"
+        }
+      ]
     },
     "Edm.GeometryPoint": {
       "required": [
@@ -26990,6 +27041,13 @@
       "additionalProperties": {
         "type": "object"
       }
+    },
+    "ReferenceNumeric": {
+      "enum": [
+        "-INF",
+        "INF",
+        "NaN"
+      ]
     }
   },
   "parameters": {
