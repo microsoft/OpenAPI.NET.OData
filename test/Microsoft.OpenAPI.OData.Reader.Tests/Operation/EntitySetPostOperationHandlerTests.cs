@@ -10,7 +10,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
-using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Xml.Linq;
 using Xunit;
 
@@ -28,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         public void CreateEntitySetPostOperationReturnsCorrectOperation(bool enableOperationId, bool hasStream, bool useHTTPStatusCodeClass2XX)
         {
             // Arrange
-            string qualifiedName = CapabilitiesConstants.AcceptableMediaTypes;
+            string qualifiedName = CoreConstants.AcceptableMediaTypes;
             string annotation = $@"
             <Annotation Term=""{qualifiedName}"" >
               <Collection>

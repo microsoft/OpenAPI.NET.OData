@@ -21,6 +21,16 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         public const string Revisions = "Org.OData.Core.V1.Revisions";
 
         /// <summary>
+        /// Org.OData.Core.V1.AcceptableMediaTypes
+        /// </summary>
+        public const string AcceptableMediaTypes = "Org.OData.Core.V1.AcceptableMediaTypes";
+
+        /// <summary>
+        /// Org.OData.Core.V1.Computed
+        /// </summary>
+        public const string Computed = "Org.OData.Core.V1.Computed";
+
+        /// <summary>
         /// External docs description.
         /// </summary>
         public const string ExternalDocsDescription = "Find more info here";

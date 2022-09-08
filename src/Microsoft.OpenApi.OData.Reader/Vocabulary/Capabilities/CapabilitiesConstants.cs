@@ -94,10 +94,5 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Org.OData.Capabilities.V1.KeyAsSegmentSupported
         /// </summary>
         public const string KeyAsSegmentSupported = "Org.OData.Capabilities.V1.KeyAsSegmentSupported";
-
-        /// <summary>
-        /// Org.OData.Core.V1.AcceptableMediaTypes
-        /// </summary>
-        public const string AcceptableMediaTypes = "Org.OData.Core.V1.AcceptableMediaTypes";
     }
 }
