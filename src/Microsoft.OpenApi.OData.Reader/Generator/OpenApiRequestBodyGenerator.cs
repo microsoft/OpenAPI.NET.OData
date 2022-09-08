@@ -95,17 +95,28 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
-            return new Dictionary<string, OpenApiRequestBody>
+            Dictionary<string, OpenApiRequestBody> requestBodies = new()
             {
                 {
                     Constants.ReferencePostRequestBodyName,
-                    CreateRefPostRequestBody() 
+                    CreateRefPostRequestBody()
                 },
                 {
                     Constants.ReferencePutRequestBodyName,
                     CreateRefPutRequestBody()
                 }
             };
+
+            // add request bodies for actions targeting multiple related paths
+            foreach (IEdmAction action in context.Model.SchemaElements.OfType<IEdmAction>()
+                .Where(action => context.Model.OperationTargetsMultiplePaths(action)))
+            {
+                OpenApiRequestBody requestBody = context.CreateRequestBody(action);
+                if (requestBody != null)
+                    requestBodies.Add($"{action.Name}RequestBody", requestBody);
+            }
+      
+            return requestBodies;
         }
 
         /// <summary>

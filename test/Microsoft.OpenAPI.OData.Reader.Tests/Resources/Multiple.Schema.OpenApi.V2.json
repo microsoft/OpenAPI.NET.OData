@@ -584,9 +584,6 @@
         ],
         "summary": "Invoke action Upload",
         "operationId": "Documents.DocumentDto.Upload",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -602,10 +599,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDto"
-            }
+            "$ref": "#/responses/UploadResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -3314,9 +3308,6 @@
         ],
         "summary": "Invoke action Upload",
         "operationId": "Tasks.DocumentDto.Upload",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -3332,10 +3323,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDto"
-            }
+            "$ref": "#/responses/UploadResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -5956,6 +5944,12 @@
       "description": "Retrieved collection",
       "schema": {
         "$ref": "#/definitions/StringCollectionResponse"
+      }
+    },
+    "UploadResponse": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDto"
       }
     }
   },
