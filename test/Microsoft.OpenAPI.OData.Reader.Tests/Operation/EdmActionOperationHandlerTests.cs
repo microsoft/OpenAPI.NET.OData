@@ -47,7 +47,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(new string[] { "UserName" }, operation.Parameters.Select(p => p.Name));
 
             Assert.NotNull(operation.RequestBody);
-            Assert.Equal("Action parameters", operation.RequestBody.Description);
+            if (operation.RequestBody.Reference != null)
+                Assert.Equal("ShareTripRequestBody", operation.RequestBody.Reference.Id);
+            else
+                Assert.Equal("Action parameters", operation.RequestBody.Description);
 
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
