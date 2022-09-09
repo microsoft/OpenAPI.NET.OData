@@ -95,7 +95,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
 
             base.SetExtensions(item);
-            item.Extensions.AddCustomAtributesToExtensions(Context, EdmOperation);            
+            item.Extensions.AddCustomAttributesToExtensions(Context, EdmOperation);            
         }
 
         /// <inheritdoc/>

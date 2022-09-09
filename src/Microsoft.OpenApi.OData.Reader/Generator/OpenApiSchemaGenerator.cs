@@ -389,7 +389,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 OpenApiSchema propertySchema = context.CreatePropertySchema(property);
                 propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
-                propertySchema.Extensions.AddCustomAtributesToExtensions(context, property);
+                propertySchema.Extensions.AddCustomAttributesToExtensions(context, property);
                 properties.Add(property.Name, propertySchema);
             }
 
@@ -398,7 +398,8 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 OpenApiSchema propertySchema = context.CreateEdmTypeSchema(property.Type);
                 propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
-                propertySchema.Extensions.AddCustomAtributesToExtensions(context, property);
+                propertySchema.Extensions.AddCustomAttributesToExtensions(context, property);
+                propertySchema.Extensions.Add(Constants.xMsNavigationProperty, new OpenApiBoolean(true));
                 properties.Add(property.Name, propertySchema);
             }
 

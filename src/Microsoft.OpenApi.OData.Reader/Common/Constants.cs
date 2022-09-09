@@ -96,6 +96,11 @@ namespace Microsoft.OpenApi.OData.Common
         public static string xMsDiscriminatorValue = "x-ms-discriminator-value";
 
         /// <summary>
+        /// extension for navigation property
+        /// </summary>
+        public static string xMsNavigationProperty = "x-ms-navigationProperty";
+
+        /// <summary>
         /// Name used for the OpenAPI referenced schema for OData Count operations responses.
         /// </summary>
         public static string DollarCountSchemaName = "ODataCountResponse";

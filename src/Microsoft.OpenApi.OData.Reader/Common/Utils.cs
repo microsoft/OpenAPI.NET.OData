@@ -166,7 +166,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// values will be added to.</param>
         /// <param name="context">The OData context.</param>
         /// <param name="element">The target element.</param>
-        internal static void AddCustomAtributesToExtensions(this IDictionary<string, IOpenApiExtension> extensions, ODataContext context, IEdmElement element)
+        internal static void AddCustomAttributesToExtensions(this IDictionary<string, IOpenApiExtension> extensions, ODataContext context, IEdmElement element)
         {
             if (extensions  == null ||
                 context == null ||
@@ -175,7 +175,7 @@ namespace Microsoft.OpenApi.OData.Common
                 return;
             }
 
-            Dictionary<string, string> atrributesValueMap = GetCustomXMLAtrributesValueMapping(context.Model, element, context.Settings.CustomXMLAttributesMapping);
+            Dictionary<string, string> atrributesValueMap = GetCustomXMLAttributesValueMapping(context.Model, element, context.Settings.CustomXMLAttributesMapping);
 
             if (atrributesValueMap?.Any() ?? false)
             {
@@ -194,7 +194,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// <param name="element">The target element.</param>
         /// <param name="customXMLAttributesMapping">The dictionary mapping of attribute names and extension names.</param>
         /// <returns>A dictionary of extension names mapped to the custom attribute values.</returns>
-        private static Dictionary<string, string> GetCustomXMLAtrributesValueMapping(IEdmModel model, IEdmElement element, Dictionary<string, string> customXMLAttributesMapping)
+        private static Dictionary<string, string> GetCustomXMLAttributesValueMapping(IEdmModel model, IEdmElement element, Dictionary<string, string> customXMLAttributesMapping)
         {
             Dictionary<string, string> atrributesValueMap = new();
 

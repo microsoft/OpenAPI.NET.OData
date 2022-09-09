@@ -45,6 +45,6 @@ internal class ODataTypeCastPathItemHandler : PathItemHandler
     protected override void SetExtensions(OpenApiPathItem pathItem)
     {
         base.SetExtensions(pathItem);
-        pathItem.Extensions.AddCustomAtributesToExtensions(Context, StructuredType);
+        pathItem.Extensions.AddCustomAttributesToExtensions(Context, StructuredType);
     }
 }
