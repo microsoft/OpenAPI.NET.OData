@@ -31,6 +31,7 @@
 - Appends OData query parameters to functions #251 #252
 - Replaces instances of anyOf to oneOf #245
 - Retrieves RestrictedProperties annotations annotated directly on navigations properties #249
+- Add x-ms-navigationProperty extension to navigation properties #278
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
