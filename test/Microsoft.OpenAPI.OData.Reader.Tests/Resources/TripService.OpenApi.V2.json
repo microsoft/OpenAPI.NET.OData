@@ -26012,7 +26012,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-          }
+          },
+          "x-ms-navigationProperty": true
         },
         "BestFriend": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
@@ -26022,7 +26023,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-          }
+          },
+          "x-ms-navigationProperty": true
         }
       }
     },
@@ -26168,7 +26170,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
-          }
+          },
+          "x-ms-navigationProperty": true
         }
       }
     },
@@ -26284,7 +26287,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-              }
+              },
+              "x-ms-navigationProperty": true
             }
           }
         }
@@ -26315,7 +26319,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-              }
+              },
+              "x-ms-navigationProperty": true
             }
           }
         }

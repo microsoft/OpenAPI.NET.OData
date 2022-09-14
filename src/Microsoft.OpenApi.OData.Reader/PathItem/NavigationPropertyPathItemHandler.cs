@@ -266,7 +266,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
 
             base.SetExtensions(item);
-            item.Extensions.AddCustomAtributesToExtensions(Context, NavigationProperty);
+            item.Extensions.AddCustomAttributesToExtensions(Context, NavigationProperty);
         }
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)

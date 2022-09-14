@@ -18480,6 +18480,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        x-ms-navigationProperty: true
       BestFriend:
         $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
       Trips:
@@ -18487,6 +18488,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        x-ms-navigationProperty: true
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline:
     title: Airline
     type: object
@@ -18581,6 +18583,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+        x-ms-navigationProperty: true
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem:
     title: PlanItem
     type: object
@@ -18651,6 +18654,7 @@ definitions:
             type: array
             items:
               $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            x-ms-navigationProperty: true
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
     allOf:
       - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
@@ -18668,6 +18672,7 @@ definitions:
             type: array
             items:
               $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            x-ms-navigationProperty: true
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender:
     title: PersonGender
     description: Gender of the person.

@@ -21035,17 +21035,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          x-ms-navigationProperty: true
         BestFriend:
           anyOf:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
             - type: object
               nullable: true
           description: The best friend.
+          x-ms-navigationProperty: true
         Trips:
           type: array
           items:
             $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
           description: Collection of trips.
+          x-ms-navigationProperty: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline:
       title: Airline
       type: object
@@ -21111,6 +21114,7 @@ components:
                 - type: object
                   nullable: true
               description: The person to contact in case of a crisis at this location.
+              x-ms-navigationProperty: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
@@ -21162,6 +21166,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+          x-ms-navigationProperty: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem:
       title: PlanItem
       type: object
@@ -21223,16 +21228,19 @@ components:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
                 - type: object
                   nullable: true
+              x-ms-navigationProperty: true
             From:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
                 - type: object
                   nullable: true
+              x-ms-navigationProperty: true
             To:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
                 - type: object
                   nullable: true
+              x-ms-navigationProperty: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
@@ -21248,6 +21256,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+              x-ms-navigationProperty: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
@@ -21268,6 +21277,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+              x-ms-navigationProperty: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender:
       title: PersonGender
       enum:

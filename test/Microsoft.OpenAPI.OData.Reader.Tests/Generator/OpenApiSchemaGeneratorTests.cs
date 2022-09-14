@@ -305,7 +305,8 @@ namespace Microsoft.OpenApi.OData.Tests
               ""nullable"": true
             }
           ],
-          ""x-ms-isHidden"": ""true""
+          ""x-ms-isHidden"": ""true"",
+          ""x-ms-navigationProperty"": true
         },
         ""regionalAndLanguageSettings"": {
           ""anyOf"": [
@@ -316,7 +317,8 @@ namespace Microsoft.OpenApi.OData.Tests
               ""type"": ""object"",
               ""nullable"": true
             }
-          ]
+          ],
+          ""x-ms-navigationProperty"": true
         },
         ""shiftPreferences"": {
           ""anyOf"": [
@@ -327,7 +329,8 @@ namespace Microsoft.OpenApi.OData.Tests
               ""type"": ""object"",
               ""nullable"": true
             }
-          ]
+          ],
+          ""x-ms-navigationProperty"": true
         }
       }
     }
@@ -524,7 +527,8 @@ namespace Microsoft.OpenApi.OData.Tests
       ""type"": ""array"",
       ""items"": {
         ""$ref"": ""#/components/schemas/NS.Creature""
-      }
+      },
+      ""x-ms-navigationProperty"": true
     }
   },
   ""description"": ""Entity type 'Zoo' description."",

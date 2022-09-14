@@ -2833,6 +2833,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
+        x-ms-navigationProperty: true
     example:
       Id: integer (identifier)
       Name: string
@@ -2913,6 +2914,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
+        x-ms-navigationProperty: true
     example:
       Id: integer (identifier)
       Name: string
@@ -3256,10 +3258,12 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+        x-ms-navigationProperty: true
       Revisions:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
+        x-ms-navigationProperty: true
     example:
       Id: integer (identifier)
       Name: string
@@ -3599,14 +3603,17 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+        x-ms-navigationProperty: true
       LibraryChildren:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+        x-ms-navigationProperty: true
       SourceLibraryChildren:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+        x-ms-navigationProperty: true
     example:
       Id: integer (identifier)
       DomainId: integer
@@ -3725,10 +3732,12 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+        x-ms-navigationProperty: true
       ChildrenLibraryTypes:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+        x-ms-navigationProperty: true
     example:
       Id: integer (identifier)
       Name: string
@@ -3828,6 +3837,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+        x-ms-navigationProperty: true
     example:
       Id: integer (identifier)
       Name: string
@@ -3924,6 +3934,7 @@ definitions:
             type: array
             items:
               $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+            x-ms-navigationProperty: true
     example:
       Id: integer (identifier)
       DomainId: integer
@@ -3945,6 +3956,7 @@ definitions:
             type: array
             items:
               $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+            x-ms-navigationProperty: true
     example:
       Id: integer (identifier)
       DomainId: integer

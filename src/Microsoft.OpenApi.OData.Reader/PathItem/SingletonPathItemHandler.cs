@@ -62,7 +62,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetExtensions(OpenApiPathItem pathItem)
         {
             base.SetExtensions(pathItem);
-            pathItem.Extensions.AddCustomAtributesToExtensions(Context, Singleton);            
+            pathItem.Extensions.AddCustomAttributesToExtensions(Context, Singleton);            
         }
     }
 }

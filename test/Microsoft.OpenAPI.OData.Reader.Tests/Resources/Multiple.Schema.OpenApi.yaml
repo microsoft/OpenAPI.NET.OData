@@ -3249,6 +3249,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+          x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         Name: string
@@ -3335,6 +3336,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+          x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         Name: string
@@ -3437,6 +3439,7 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         Number: integer
@@ -3725,24 +3728,29 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
         LastRevisionFile:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
         SourceDocument:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
         SourceDocumentChildren:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+          x-ms-navigationProperty: true
         Revisions:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
+          x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         Name: string
@@ -3846,6 +3854,7 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
       example:
         ClassInstance: integer
         ClassId: integer
@@ -3899,11 +3908,13 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
         Tag:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
       example:
         DocumentId: integer
         TagId: integer
@@ -4105,28 +4116,34 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
         Type:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
         SourceFolder:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
         Documents:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+          x-ms-navigationProperty: true
         LibraryChildren:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+          x-ms-navigationProperty: true
         SourceLibraryChildren:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+          x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         DomainId: integer
@@ -4249,19 +4266,23 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
         ParentLibraryTypes:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
         MasterLibraryTypeChildren:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+          x-ms-navigationProperty: true
         ChildrenLibraryTypes:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+          x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         Name: string
@@ -4370,6 +4391,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+          x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         Name: string
@@ -4471,6 +4493,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+              x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         DomainId: integer
@@ -4492,6 +4515,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+              x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         DomainId: integer
@@ -4642,6 +4666,7 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - type: object
               nullable: true
+          x-ms-navigationProperty: true
       example:
         Id: integer (identifier)
         Number: integer

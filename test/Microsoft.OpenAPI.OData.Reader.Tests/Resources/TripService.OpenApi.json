@@ -29680,7 +29680,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
+            },
+            "x-ms-navigationProperty": true
           },
           "BestFriend": {
             "anyOf": [
@@ -29692,14 +29693,16 @@
                 "nullable": true
               }
             ],
-            "description": "The best friend."
+            "description": "The best friend.",
+            "x-ms-navigationProperty": true
           },
           "Trips": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
             },
-            "description": "Collection of trips."
+            "description": "Collection of trips.",
+            "x-ms-navigationProperty": true
           }
         }
       },
@@ -29805,7 +29808,8 @@
                     "nullable": true
                   }
                 ],
-                "description": "The person to contact in case of a crisis at this location."
+                "description": "The person to contact in case of a crisis at this location.",
+                "x-ms-navigationProperty": true
               }
             }
           }
@@ -29886,7 +29890,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
-            }
+            },
+            "x-ms-navigationProperty": true
           }
         }
       },
@@ -29988,7 +29993,8 @@
                     "type": "object",
                     "nullable": true
                   }
-                ]
+                ],
+                "x-ms-navigationProperty": true
               },
               "From": {
                 "anyOf": [
@@ -29999,7 +30005,8 @@
                     "type": "object",
                     "nullable": true
                   }
-                ]
+                ],
+                "x-ms-navigationProperty": true
               },
               "To": {
                 "anyOf": [
@@ -30010,7 +30017,8 @@
                     "type": "object",
                     "nullable": true
                   }
-                ]
+                ],
+                "x-ms-navigationProperty": true
               }
             }
           }
@@ -30040,7 +30048,8 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
+                },
+                "x-ms-navigationProperty": true
               }
             }
           }
@@ -30081,7 +30090,8 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
+                },
+                "x-ms-navigationProperty": true
               }
             }
           }

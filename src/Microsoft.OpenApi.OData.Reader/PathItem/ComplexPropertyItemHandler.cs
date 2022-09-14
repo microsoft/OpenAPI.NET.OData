@@ -70,6 +70,6 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 	/// <inheritdoc/>
 	protected override void SetExtensions(OpenApiPathItem item)
 	{
-		item.Extensions.AddCustomAtributesToExtensions(Context, ComplexProperty);
+		item.Extensions.AddCustomAttributesToExtensions(Context, ComplexProperty);
 	}
 }

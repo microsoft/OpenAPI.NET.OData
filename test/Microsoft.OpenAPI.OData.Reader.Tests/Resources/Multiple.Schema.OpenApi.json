@@ -4536,7 +4536,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.App.DTO.RevisionDto"
-            }
+            },
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
@@ -4648,7 +4649,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentDto"
-            }
+            },
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
@@ -4779,7 +4781,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
@@ -5148,7 +5151,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           },
           "LastRevisionFile": {
             "anyOf": [
@@ -5159,7 +5163,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           },
           "SourceDocument": {
             "anyOf": [
@@ -5170,19 +5175,22 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           },
           "SourceDocumentChildren": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
-            }
+            },
+            "x-ms-navigationProperty": true
           },
           "Revisions": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.Revision"
-            }
+            },
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
@@ -5317,7 +5325,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
@@ -5387,7 +5396,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           },
           "Tag": {
             "anyOf": [
@@ -5398,7 +5408,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
@@ -5647,7 +5658,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           },
           "Type": {
             "anyOf": [
@@ -5658,7 +5670,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           },
           "SourceFolder": {
             "anyOf": [
@@ -5669,25 +5682,29 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           },
           "Documents": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
-            }
+            },
+            "x-ms-navigationProperty": true
           },
           "LibraryChildren": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
-            }
+            },
+            "x-ms-navigationProperty": true
           },
           "SourceLibraryChildren": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
-            }
+            },
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
@@ -5844,7 +5861,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           },
           "ParentLibraryTypes": {
             "anyOf": [
@@ -5855,19 +5873,22 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           },
           "MasterLibraryTypeChildren": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
-            }
+            },
+            "x-ms-navigationProperty": true
           },
           "ChildrenLibraryTypes": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
-            }
+            },
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
@@ -6005,7 +6026,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
-            }
+            },
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
@@ -6146,7 +6168,8 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
-                }
+                },
+                "x-ms-navigationProperty": true
               }
             }
           }
@@ -6180,7 +6203,8 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
-                }
+                },
+                "x-ms-navigationProperty": true
               }
             }
           }
@@ -6376,7 +6400,8 @@
                 "type": "object",
                 "nullable": true
               }
-            ]
+            ],
+            "x-ms-navigationProperty": true
           }
         },
         "example": {
