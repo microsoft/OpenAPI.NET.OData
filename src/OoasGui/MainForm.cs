@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -32,10 +32,13 @@ namespace OoasGui
 
         private IEdmModel EdmModel { get; set; }
 
+        private OpenApiDocument _document;
+
         public MainForm()
         {
             InitializeComponent();
 
+            saveBtn.Enabled = false;
             jsonRadioBtn.Checked = true;
             v3RadioButton.Checked = true;
             fromFileRadioBtn.Checked = true;
@@ -179,6 +182,8 @@ namespace OoasGui
 
         private async Task Convert()
         {
+            saveBtn.Enabled = false;
+
             if (EdmModel == null)
             {
                 return;
@@ -187,15 +192,16 @@ namespace OoasGui
             string openApi = null;
             await Task.Run(() =>
             {
-                OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
+                _document = EdmModel.ConvertToOpenApi(Settings);
                 MemoryStream stream = new MemoryStream();
-                document.Serialize(stream, Version, Format);
+                _document.Serialize(stream, Version, Format);
                 stream.Flush();
                 stream.Position = 0;
                 openApi = new StreamReader(stream).ReadToEnd();
             });
 
             oasRichTextBox.Text = openApi;
+            saveBtn.Enabled = true;
         }
 
         private string FormatXml(string xml)
@@ -227,7 +233,6 @@ namespace OoasGui
                 saveFileDialog.Filter = "YAML files (*.yaml)|*.yaml|All files (*.*)|*.*";
             }
 
-            saveFileDialog.FilterIndex = 2;
             saveFileDialog.RestoreDirectory = true;
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -237,14 +242,13 @@ namespace OoasGui
                 {
                     await Task.Run(() =>
                     {
-                        OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
-                        document.Serialize(fs, Version, Format);
+                        _document?.Serialize(fs, Version, Format);
                         fs.Flush();
                     });
                 }
-            }
 
-            MessageBox.Show("Saved successful!");
+                MessageBox.Show("Saved successfully!");
+            }
         }
 
         private async void operationIdcheckBox_CheckedChanged(object sender, EventArgs e)
