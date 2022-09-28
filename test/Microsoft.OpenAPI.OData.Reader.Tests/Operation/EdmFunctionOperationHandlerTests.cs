@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -228,7 +229,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataKeySegment(customer),
                 new ODataTypeCastSegment(vipCustomer),
                 new ODataOperationSegment(function));
-
+          
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
 
@@ -444,6 +445,39 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.False(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
             }
+        }
+
+        [Fact]
+        public void CreateOperationForFunctionWithDateTimeParametersReturnsCorrectPathItemName()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new()
+            {
+                AddSingleQuotesForStringParameters = true,
+            };
+            ODataContext context = new(model, settings);
+
+            IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>()
+                .FirstOrDefault(x => x.Name == "getPrinterUsageSummary");
+            Assert.NotNull(function); // guard
+
+            IEdmEntityContainer container = model.SchemaElements.OfType<IEdmEntityContainer>().First();
+            IEdmSingleton reports = container.FindSingleton("reports");
+
+            ODataPath path = new(new ODataNavigationSourceSegment(reports),
+                new ODataOperationSegment(function));
+
+            // Act
+            OpenApiOperation operation = _operationHandler.CreateOperation(context, path);
+            string pathItemName = path.GetPathItemName();
+            
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("/reports/microsoft.graph.getPrinterUsageSummary(printerId={printerId},periodStart={periodStart},periodEnd={periodEnd})", pathItemName);
+            Assert.Equal("Usage: periodStart={periodStart}", operation.Parameters.First(x => x.Name == "periodStart").Description);
+            Assert.Equal("Usage: periodEnd={periodEnd}", operation.Parameters.First(x => x.Name == "periodEnd").Description);
+
         }
     }
 }

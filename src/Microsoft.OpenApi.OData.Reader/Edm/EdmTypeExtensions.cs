@@ -28,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Edm
             return edmType.TypeKind switch
             {
                 EdmTypeKind.Enum => true,
-                EdmTypeKind.Primitive when edmType.IsString() || edmType.IsTemporal() => true,
+                EdmTypeKind.Primitive when edmType.IsString() => true,
                 _ => false,
             };
         }
