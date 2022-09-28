@@ -38,6 +38,7 @@ namespace OoasGui
         {
             InitializeComponent();
 
+            saveBtn.Enabled = false;
             jsonRadioBtn.Checked = true;
             v3RadioButton.Checked = true;
             fromFileRadioBtn.Checked = true;
@@ -181,6 +182,8 @@ namespace OoasGui
 
         private async Task Convert()
         {
+            saveBtn.Enabled = false;
+
             if (EdmModel == null)
             {
                 return;
@@ -198,6 +201,7 @@ namespace OoasGui
             });
 
             oasRichTextBox.Text = openApi;
+            saveBtn.Enabled = true;
         }
 
         private string FormatXml(string xml)
@@ -238,7 +242,7 @@ namespace OoasGui
                 {
                     await Task.Run(() =>
                     {
-                        _document.Serialize(fs, Version, Format);
+                        _document?.Serialize(fs, Version, Format);
                         fs.Flush();
                     });
                 }
