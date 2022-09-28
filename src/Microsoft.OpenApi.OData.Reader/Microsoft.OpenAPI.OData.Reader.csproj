@@ -15,23 +15,13 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.1.0</Version>
+    <Version>1.2.0-preview1</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
-- Fixes response schemas of actions and functions that return a collection to contain the nextLink property #231
-- Uses Computed annotation in the CSDL to declare property as ReadOnly #254
-- Fixes duplicated actions/functions request body/response schemas #241
-- Adds documentation links from Links annotations in CSDL to OpenAPI Operations #230
-- Sets explode property to false and the style property to form for OData query options #274
-- Aliases optional parameters of OData functions #259
-- Adds @odata.count parameter to collection responses #196
-- Appends OData query parameters to functions #251 #252
-- Replaces instances of anyOf to oneOf #245
-- Retrieves RestrictedProperties annotations annotated directly on navigations properties #249
-- Add x-ms-navigationProperty extension to navigation properties #278
+- Use convert setting to toggle between referencing @odata.count and @odata.nextLink #282
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
