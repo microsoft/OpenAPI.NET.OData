@@ -106,6 +106,11 @@ namespace Microsoft.OpenApi.OData
         public bool EnableCount { get; set; }
 
         /// <summary>
+        /// Gets/sets a value indicating whether or not to reference @odata.nextLink and @odata.count in responses
+        /// </summary>
+        public bool RefBaseCollectionPaginationCountResponse { get; set; } = true;
+
+        /// <summary>
         /// Gets/sets a value that specifies the name of the operation for retrieving the next page in a collection of entities.
         /// </summary>
         public string PageableOperationName { get; set; } = "listMore";
@@ -329,7 +334,8 @@ namespace Microsoft.OpenApi.OData
                 CustomHttpMethodLinkRelMapping = this.CustomHttpMethodLinkRelMapping,
                 AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments,
                 UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange,
-                EnableCount = this.EnableCount
+                EnableCount = this.EnableCount,
+                RefBaseCollectionPaginationCountResponse = this.RefBaseCollectionPaginationCountResponse
             };
 
             return newSettings;
