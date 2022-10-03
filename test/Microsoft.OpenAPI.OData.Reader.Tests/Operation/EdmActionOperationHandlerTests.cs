@@ -338,5 +338,44 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.False(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
             }
         }
+
+        [Theory]
+        [InlineData("assign", true)]
+        [InlineData("assign", false)]
+        public void CreateOperationForEdmActionWithCollectionReturnTypeHasResponseWithNextLinkProperty(string operationName, bool enablePagination)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new()
+            {
+                EnableOperationId = true,
+                EnablePagination = enablePagination
+            };
+            ODataContext context = new(model, settings);
+            IEdmAction action = model.SchemaElements.OfType<IEdmAction>()
+                .First(x => x.Name == operationName &&
+                    x.FindParameter("bindingParameter").Type.Definition.ToString() == "microsoft.graph.deviceCompliancePolicy");
+            IEdmEntityContainer container = model.SchemaElements.OfType<IEdmEntityContainer>().First();
+            IEdmSingleton deviceManagement = container.FindSingleton("deviceManagement");
+            IEdmEntityType deviceCompliancePolicy = model.SchemaElements.OfType<IEdmEntityType>().First(x => x.Name == "deviceCompliancePolicy");
+
+            ODataPath path = new(new ODataNavigationSourceSegment(deviceManagement),
+                new ODataKeySegment(deviceCompliancePolicy),
+                new ODataOperationSegment(action));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+            var responseProperties = operation.Responses.First().Value.Content.First().Value.Schema.Properties;
+
+            // Assert
+            if (enablePagination)
+            {
+                Assert.True(responseProperties.ContainsKey("@odata.nextLink"));
+            }
+            else
+            {
+                Assert.False(responseProperties.ContainsKey("@odata.nextLink"));
+            }
+        }
     }
 }

@@ -191,11 +191,9 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiSchema schema;
             if (operation.ReturnType.IsCollection())
             {
-                schema = new OpenApiSchema
+                OpenApiSchema baseSchema = new()
                 {
-                    Title = operation.ReturnType.Definition.AsElementType() is not IEdmEntityType entityType 
-                        ? null : $"Collection of {entityType.Name}",
-                    Type = "object",
+                    Type = Constants.ObjectType,
                     Properties = new Dictionary<string, OpenApiSchema>
                     {
                         {
@@ -203,6 +201,48 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 };
+
+                if (operation.IsDeltaFunction())
+                {
+                    if (context.Settings.EnableODataAnnotationReferencesForResponses)
+                    {                       
+                        schema = new OpenApiSchema
+                        {
+                            AllOf = new List<OpenApiSchema>
+                            {
+                                new OpenApiSchema
+                                {
+                                    UnresolvedReference = true,
+                                    Reference = new OpenApiReference
+                                    {
+                                        Type = ReferenceType.Schema,
+                                        Id = Constants.BaseDeltaFunctionResponse  // @odata.nextLink + @odata.deltaLink
+                                    }
+                                },
+                                baseSchema
+                            }
+                        };
+                    }
+                    else
+                    {
+                        baseSchema.Properties.Add(ODataConstants.OdataNextLink);
+                        baseSchema.Properties.Add(ODataConstants.OdataDeltaLink);
+                        schema = baseSchema;
+                    }
+                }
+                else if (context.Settings.EnablePagination)
+                {
+                    baseSchema.Properties.Add(ODataConstants.OdataNextLink);
+                    schema = baseSchema;
+                }
+                else
+                {
+                    schema = baseSchema;
+                }
+
+                schema.Title = operation.ReturnType.Definition.AsElementType() is not IEdmEntityType entityType
+                        ? null : $"Collection of {entityType.Name}";
+                schema.Type = "object";             
             }
             else if (operation.ReturnType.IsPrimitive())
             {

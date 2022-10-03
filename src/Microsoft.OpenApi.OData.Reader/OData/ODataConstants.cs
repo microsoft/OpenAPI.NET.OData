@@ -30,6 +30,10 @@ namespace Microsoft.OpenApi.OData
         /// @odata.count KeyValue pair
         /// </summary>
         public static KeyValuePair<string, OpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = "integer", Format = "int64", Nullable = true });
-        
+
+        /// <summary>
+        /// @odata.deltaLink KeyValue pair
+        /// </summary>
+        public static KeyValuePair<string, OpenApiSchema> OdataDeltaLink = new("@odata.deltaLink", new OpenApiSchema { Type = Constants.StringType, Nullable = true });
     }
 }

@@ -106,6 +106,46 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("object", refRequestBody.AdditionalProperties.Type);
         }
 
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreatesRefOdataAnnotationResponseSchemas(bool enableOdataAnnotationRef)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new()
+            {
+                EnableOperationId = true,
+                EnablePagination = true,
+                EnableCount = true,
+                EnableODataAnnotationReferencesForResponses = enableOdataAnnotationRef
+            };
+            ODataContext context = new(model, settings);
+
+            // Act
+            var schemas = context.CreateSchemas();
+
+            // Assert
+            Assert.NotNull(schemas);
+            Assert.NotEmpty(schemas);
+            schemas.TryGetValue(Constants.BaseCollectionPaginationCountResponse, out OpenApiSchema refPaginationCount);
+            schemas.TryGetValue(Constants.BaseDeltaFunctionResponse, out OpenApiSchema refDeltaFunc);
+            if (enableOdataAnnotationRef)
+            {
+                Assert.NotNull(refPaginationCount);
+                Assert.NotNull(refDeltaFunc);
+                Assert.True(refPaginationCount.Properties.ContainsKey("@odata.nextLink"));
+                Assert.True(refPaginationCount.Properties.ContainsKey("@odata.count"));
+                Assert.True(refDeltaFunc.Properties.ContainsKey("@odata.nextLink"));
+                Assert.True(refDeltaFunc.Properties.ContainsKey("@odata.deltaLink"));
+            }
+            else
+            {
+                Assert.Null(refPaginationCount);
+                Assert.Null(refDeltaFunc);
+            }
+        }
+
         #region StructuredTypeSchema
         [Fact]
         public void CreateStructuredTypeSchemaThrowArgumentNullContext()

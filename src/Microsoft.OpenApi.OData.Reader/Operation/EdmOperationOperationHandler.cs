@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -165,7 +164,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        protected override void SetResponses(OpenApiOperation operation)
+        protected override void SetResponses(OpenApiOperation operation) 
         {
             operation.Responses = Context.CreateResponses(EdmOperation);
             base.SetResponses(operation);
