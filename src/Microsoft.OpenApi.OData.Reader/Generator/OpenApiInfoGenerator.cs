@@ -3,9 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -32,7 +36,8 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 Title = context.GetTitle(),
                 Version = context.GetVersion(),
-                Description = context.GetDescription()
+                Description = context.GetDescription(),
+                Extensions = context.GetExtensions()
             };
         }
 
@@ -92,6 +97,23 @@ namespace Microsoft.OpenApi.OData.Generator
 
             // so a default description should be provided if no Core.LongDescription annotation is present.
             return "This OData service is located at " + context.Settings.ServiceRoot.OriginalString;
+        }
+
+        private static Dictionary<string, IOpenApiExtension> GetExtensions(this ODataContext context)
+        {
+            Debug.Assert(context != null);
+
+            return new Dictionary<string, IOpenApiExtension>()
+            {
+                {
+                    "x-generatedBy",
+                    new OpenApiObject
+                    {
+                        { "toolName", new OpenApiString("OpenAPI.NET.CSDL") },
+                        { "toolVersion", new OpenApiString(Assembly.GetExecutingAssembly().GetName().Version.ToString()) }
+                    }
+                }
+            };
         }
     }
 }
