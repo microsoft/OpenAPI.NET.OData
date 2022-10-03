@@ -40,6 +40,7 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.EmptyModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
             openApiConvertSettings.OpenApiSpecVersion = specVersion;
+            openApiConvertSettings.IncludeAssemblyInfo = false;
 
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
@@ -64,7 +65,8 @@ namespace Microsoft.OpenApi.OData.Tests
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = specVersion;
+            openApiConvertSettings.OpenApiSpecVersion = specVersion; 
+            openApiConvertSettings.IncludeAssemblyInfo = false;
 
             // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);
@@ -91,7 +93,8 @@ namespace Microsoft.OpenApi.OData.Tests
             var openApiConvertSettings = new OpenApiConvertSettings
             {
                 OpenApiSpecVersion = specVersion,
-                ShowSchemaExamples = true // test for schema examples
+                ShowSchemaExamples = true, // test for schema examples
+                IncludeAssemblyInfo = false
             };
 
             // Act
@@ -119,7 +122,8 @@ namespace Microsoft.OpenApi.OData.Tests
             var openApiConvertSettings = new OpenApiConvertSettings
             {
                 OpenApiSpecVersion = specVersion,
-                ShowSchemaExamples = true
+                ShowSchemaExamples = true,
+                IncludeAssemblyInfo = false
             };
 
             // Act
@@ -148,7 +152,8 @@ namespace Microsoft.OpenApi.OData.Tests
             {
                 OpenApiSpecVersion = specVersion,
                 ShowLinks = true, // test Links
-                ShowSchemaExamples = true
+                ShowSchemaExamples = true,
+                IncludeAssemblyInfo = false
             };
 
             // Act
@@ -177,7 +182,8 @@ namespace Microsoft.OpenApi.OData.Tests
             {
                 OpenApiSpecVersion = specVersion,
                 ShowLinks = true, // test Links
-                ShowSchemaExamples = true
+                ShowSchemaExamples = true,
+                IncludeAssemblyInfo = false
             };
 
             // Act
@@ -211,7 +217,8 @@ namespace Microsoft.OpenApi.OData.Tests
                 OpenApiSpecVersion = specVersion,
                 AddSingleQuotesForStringParameters = true,
                 AddEnumDescriptionExtension = true,
-                AppendBoundOperationsOnDerivedTypeCastSegments = true
+                AppendBoundOperationsOnDerivedTypeCastSegments = true,
+                IncludeAssemblyInfo = false
             };
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, settings);
@@ -245,7 +252,8 @@ namespace Microsoft.OpenApi.OData.Tests
                 OpenApiSpecVersion = specVersion,
                 AddSingleQuotesForStringParameters = true,
                 AddEnumDescriptionExtension = true,
-                AppendBoundOperationsOnDerivedTypeCastSegments = true
+                AppendBoundOperationsOnDerivedTypeCastSegments = true,
+                IncludeAssemblyInfo = false
             };
 
             // Act

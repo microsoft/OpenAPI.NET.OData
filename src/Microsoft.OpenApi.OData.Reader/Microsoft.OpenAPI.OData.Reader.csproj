@@ -23,7 +23,8 @@
     <PackageReleaseNotes>
 - Use convert setting to toggle between referencing @odata.count and @odata.nextLink #282
 - Fixes URL Path parameters of type datetime generated as strings with quotes #262
-- Add support for alternate keys #120
+- Set assembly version used for conversion in OpenApiInfo object #208
+- Add support for alternate keys parameters #120
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>

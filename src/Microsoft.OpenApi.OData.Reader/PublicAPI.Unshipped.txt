@@ -15,6 +15,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationPrope
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get -> System.Collections.Generic.Dictionary<string, string>
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
