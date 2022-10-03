@@ -73,31 +73,33 @@ namespace Microsoft.OpenApi.OData.PathItem
                 return;
             }
 
-            // containment: Get / (Post - Collection | Patch - Single)
-            // non-containment: Get
             AddGetOperation(item, restriction);
 
+            UpdateRestrictionsType navPropUpdateRestriction = restriction?.UpdateRestrictions ??
+                Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty);
+            InsertRestrictionsType navPropInsertRestriction = restriction?.InsertRestrictions ??
+                Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty);
+            UpdateRestrictionsType entityUpdateRestriction = Context.Model.GetRecord<UpdateRestrictionsType>(_navPropEntityType);
+
+            // containment: (Post - Collection | Patch/Put - Single)           
             if (NavigationProperty.ContainsTarget)
             {
+                UpdateRestrictionsType updateRestrictionType = navPropUpdateRestriction ?? entityUpdateRestriction;
                 if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
                     if (LastSegmentIsKeySegment)
                     {
-                        UpdateRestrictionsType entityUpdateRestriction = Context.Model.GetRecord<UpdateRestrictionsType>(_navPropEntityType);
-                        UpdateRestrictionsType navPropUpdateRestriction = Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty);
+
                         if ((entityUpdateRestriction?.IsUpdatable ?? true) &&
                             (navPropUpdateRestriction?.IsUpdatable ?? true))
                         {
-                            UpdateRestrictionsType updateRestrictionType = navPropUpdateRestriction ?? entityUpdateRestriction;
-                            AddUpdateOperation(item, restriction, updateRestrictionType);
+
+                            AddUpdateOperation(item, updateRestrictionType);
                         }
                     }
                     else
                     {
-                        InsertRestrictionsType navPropInsertRestriction = restriction?.InsertRestrictions ??
-                            Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty);
                         InsertRestrictionsType entityInsertRestriction = Context.Model.GetRecord<InsertRestrictionsType>(_navPropEntityType);
-
                         bool isInsertableDefault = navPropInsertRestriction == null && entityInsertRestriction == null;
 
                         if (isInsertableDefault ||
@@ -110,7 +112,36 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
                 else
                 {
-                    AddUpdateOperation(item, restriction);
+                    AddUpdateOperation(item, updateRestrictionType);
+                }
+            }
+            else
+            {
+                // non-containment: (Post - Collection | Patch/Put - Single) --> only if annotations are explicitly set to true
+                // Note: Use Updatable and not IsUpdatable | Insertable and not IsInsertable
+                if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    if (LastSegmentIsKeySegment)
+                    {
+                        if (navPropUpdateRestriction?.Updatable ?? false)
+                        {
+                            AddUpdateOperation(item, navPropUpdateRestriction);
+                        }
+                    }
+                    else
+                    {
+                        if (navPropInsertRestriction?.Insertable ?? false)
+                        {
+                            AddOperation(item, OperationType.Post);
+                        }
+                    }
+                }
+                else
+                {
+                    if (navPropUpdateRestriction?.Updatable ?? false)
+                    {
+                        AddUpdateOperation(item, navPropUpdateRestriction);
+                    }             
                 }
             }
 
@@ -165,34 +196,42 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             Debug.Assert(!LastSegmentIsRefSegment);
 
-            if (!NavigationProperty.ContainsTarget)
-            {
-                return;
-            }
-
             DeleteRestrictionsType navPropDeleteRestriction = restriction?.DeleteRestrictions ??
-                Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty);
-            DeleteRestrictionsType entityDeleteRestriction = Context.Model.GetRecord<DeleteRestrictionsType>(_navPropEntityType);
-            bool isDeletableDefault = navPropDeleteRestriction == null && entityDeleteRestriction == null;
+               Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty);
 
-            if (isDeletableDefault ||
-               ((entityDeleteRestriction?.IsDeletable ?? true) &&
-               (navPropDeleteRestriction?.IsDeletable ?? true)))
+            if (NavigationProperty.ContainsTarget)
             {
-                if (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment)
+                DeleteRestrictionsType entityDeleteRestriction = Context.Model.GetRecord<DeleteRestrictionsType>(_navPropEntityType);
+                bool isDeletableDefault = navPropDeleteRestriction == null && entityDeleteRestriction == null;
+
+                if (isDeletableDefault ||
+                ((entityDeleteRestriction?.IsDeletable ?? true) &&
+                (navPropDeleteRestriction?.IsDeletable ?? true)))
+                {
+                    if (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment)
+                    {
+                        AddOperation(item, OperationType.Delete);
+                    }
+                }
+            }
+            else
+            {
+                if ((navPropDeleteRestriction?.IsDeletable ?? false) &&
+                    (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many ||
+                    LastSegmentIsKeySegment))
                 {
                     AddOperation(item, OperationType.Delete);
                 }
-                return;
             }
+
+            return;
         }
 
-        private void AddUpdateOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction, UpdateRestrictionsType updateRestrictionsType = null)
+        private void AddUpdateOperation(OpenApiPathItem item, UpdateRestrictionsType updateRestrictionsType)
         {
-            UpdateRestrictionsType update = restriction?.UpdateRestrictions ?? updateRestrictionsType;
-            if (update == null || update.IsUpdatable)
+            if (updateRestrictionsType == null || updateRestrictionsType.IsUpdatable)
             {
-                if (update != null && update.IsUpdateMethodPut)
+                if (updateRestrictionsType != null && updateRestrictionsType.IsUpdateMethodPut)
                 {
                     AddOperation(item, OperationType.Put);
                 }

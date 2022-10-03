@@ -208,7 +208,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 {
                     foreach (var enableAnnotation in new[] { true, false })
                     {
-                        yield return new object[] { enableAnnotation, path };
+                        foreach (var capabilitySupported in new[] { true, false })
+                        {
+                            yield return new object[] { enableAnnotation, path, capabilitySupported };
+                        }
                     }
                 }
             }
@@ -235,7 +238,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 {
                     foreach (var enableAnnotation in new[] { true, false })
                     {
-                        yield return new object[] { enableAnnotation, path };
+                        foreach (var capabilitySupported in new[] { true, false })
+                        {
+                            yield return new object[] { enableAnnotation, path, capabilitySupported };
+                        }
                     }
                 }
             }
@@ -244,7 +250,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         [Theory]
         [MemberData(nameof(CollectionNavigationPropertyData))]
         [MemberData(nameof(SingleNavigationPropertyData))]
-        public void CreatePathItemForNavigationPropertyAndReadRestrictions(bool hasRestrictions, string navigationPropertyPath)
+        public void CreatePathItemForNavigationPropertyAndReadRestrictions(bool hasRestrictions, string navigationPropertyPath, bool readable)
         {
             // Arrange
             string annotation = String.Format(@"
@@ -256,14 +262,14 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
           <PropertyValue Property=""NavigationProperty"" NavigationPropertyPath=""{0}"" />
           <PropertyValue Property=""ReadRestrictions"" >
             <Record>
-              <PropertyValue Property=""Readable"" Bool=""false"" />
+              <PropertyValue Property=""Readable"" Bool=""{1}"" />
             </Record>
           </PropertyValue>
         </Record>
       </Collection>
     </PropertyValue>
   </Record>
-</Annotation>", navigationPropertyPath);
+</Annotation>", navigationPropertyPath, readable);
 
             IEdmModel model = GetEdmModel(hasRestrictions ? annotation : "");
             ODataContext context = new ODataContext(model);
@@ -281,7 +287,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             if (hasRestrictions)
             {
-                Assert.DoesNotContain(pathItem.Operations, o => o.Key == OperationType.Get);
+                if (readable)
+                    Assert.Contains(pathItem.Operations, o => o.Key == OperationType.Get);
+                else
+                    Assert.DoesNotContain(pathItem.Operations, o => o.Key == OperationType.Get);
             }
             else
             {
@@ -291,7 +300,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
         [Theory]
         [MemberData(nameof(CollectionNavigationPropertyData))]
-        public void CreatePathItemForNavigationPropertyAndInsertRestrictions(bool hasRestrictions, string navigationPropertyPath)
+        public void CreatePathItemForNavigationPropertyAndInsertRestrictions(bool hasRestrictions, string navigationPropertyPath, bool insertable)
         {
             // Arrange
             string annotation = String.Format(@"
@@ -303,14 +312,14 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
           <PropertyValue Property=""NavigationProperty"" NavigationPropertyPath=""{0}"" />
           <PropertyValue Property=""InsertRestrictions"" >
             <Record>
-              <PropertyValue Property=""Insertable"" Bool=""false"" />
+              <PropertyValue Property=""Insertable"" Bool=""{1}"" />
             </Record>
           </PropertyValue>
         </Record>
       </Collection>
     </PropertyValue>
   </Record>
-</Annotation>", navigationPropertyPath);
+</Annotation>", navigationPropertyPath, insertable);
 
             IEdmModel model = GetEdmModel(hasRestrictions ? annotation : "");
             ODataContext context = new ODataContext(model);
@@ -331,13 +340,17 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             bool isContainment = path.Segments.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty.ContainsTarget;
 
             OperationType[] expected;
-            if (!isContainment || hasRestrictions)
+            if (hasRestrictions)
             {
-                expected = new[] { OperationType.Get };
+                expected = insertable
+                    ? (new[] { OperationType.Get, OperationType.Post })
+                    : (new[] { OperationType.Get });
             }
             else
             {
-                expected = new[] { OperationType.Get, OperationType.Post };
+                expected = isContainment
+                    ? (new[] { OperationType.Get, OperationType.Post })
+                    : (new[] { OperationType.Get });
             }
 
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
@@ -346,7 +359,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         [Theory]
         [MemberData(nameof(CollectionNavigationPropertyData))]
         [MemberData(nameof(SingleNavigationPropertyData))]
-        public void CreatePathItemForNavigationPropertyAndUpdateRestrictions(bool hasRestrictions, string navigationPropertyPath)
+        public void CreatePathItemForNavigationPropertyAndUpdateRestrictions(bool hasRestrictions, string navigationPropertyPath, bool updatable)
         {
             // Arrange
             string annotation = String.Format(@"
@@ -358,14 +371,14 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
           <PropertyValue Property=""NavigationProperty"" NavigationPropertyPath=""{0}"" />
           <PropertyValue Property=""UpdateRestrictions"" >
             <Record>
-              <PropertyValue Property=""Updatable"" Bool=""false"" />
+              <PropertyValue Property=""Updatable"" Bool=""{1}"" />
             </Record>
           </PropertyValue>
         </Record>
       </Collection>
     </PropertyValue>
   </Record>
-</Annotation>", navigationPropertyPath);
+</Annotation>", navigationPropertyPath, updatable);
 
             IEdmModel model = GetEdmModel(hasRestrictions ? annotation : "");
             ODataContext context = new ODataContext(model);
@@ -388,20 +401,26 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             bool isCollection = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
 
             OperationType[] expected;
-            if (isContainment)
+            if (hasRestrictions)
             {
-                if (hasRestrictions)
+                if (isContainment)
                 {
-                    expected = new[] { OperationType.Get, OperationType.Delete };
+                    expected = updatable
+                        ? (new[] { OperationType.Get, OperationType.Patch, OperationType.Delete })
+                        : (new[] { OperationType.Get, OperationType.Delete });
                 }
                 else
                 {
-                    expected = new[] { OperationType.Get, OperationType.Patch, OperationType.Delete };
-                }
+                    expected = updatable
+                        ? (new[] { OperationType.Get, OperationType.Patch })
+                        : (new[] { OperationType.Get });
+                }                               
             }
             else
             {
-                expected = new[] { OperationType.Get };
+                expected = isContainment
+                    ? (new[] { OperationType.Get, OperationType.Patch, OperationType.Delete })
+                    : (new[] { OperationType.Get });
             }
 
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
@@ -410,7 +429,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         [Theory]
         [MemberData(nameof(CollectionNavigationPropertyData))]
         [MemberData(nameof(SingleNavigationPropertyData))]
-        public void CreatePathItemForNavigationPropertyAndUpdateMethodUpdateRestrictions(bool updateMethod, string navigationPropertyPath)
+        public void CreatePathItemForNavigationPropertyAndUpdateMethodUpdateRestrictions(bool updateMethod, string navigationPropertyPath, bool updatable)
         {
             // Arrange
             string annotation = String.Format(@"
@@ -425,13 +444,14 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
               <PropertyValue Property=""UpdateMethod"">
                 <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
               </PropertyValue>
+              <PropertyValue Property=""Updatable"" Bool=""{1}"" />
             </Record>
           </PropertyValue>
         </Record>
       </Collection>
     </PropertyValue>
   </Record>
-</Annotation>", navigationPropertyPath);
+</Annotation>", navigationPropertyPath, updatable);
 
             IEdmModel model = GetEdmModel(updateMethod ? annotation : "");
             ODataContext context = new ODataContext(model);
@@ -453,20 +473,27 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             bool isCollection = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
 
             OperationType[] expected;
-            if (isContainment)
+            if (updateMethod)
             {
-                if (updateMethod)
+                if (isContainment)
                 {
-                    expected = new[] { OperationType.Get, OperationType.Put, OperationType.Delete };
+                    expected = updatable
+                        ? (new[] { OperationType.Get, OperationType.Put, OperationType.Delete })
+                        : (new[] { OperationType.Get, OperationType.Delete });
                 }
                 else
                 {
-                    expected = new[] { OperationType.Get, OperationType.Patch, OperationType.Delete };
+                    expected = updatable
+                        ? (new[] { OperationType.Get, OperationType.Put })
+                        : (new[] { OperationType.Get });
                 }
             }
             else
             {
-                expected = new[] { OperationType.Get };
+                expected = isContainment
+                    ? (new[] { OperationType.Get, OperationType.Patch, OperationType.Delete })
+                    : (new[] { OperationType.Get });
+
             }
 
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
