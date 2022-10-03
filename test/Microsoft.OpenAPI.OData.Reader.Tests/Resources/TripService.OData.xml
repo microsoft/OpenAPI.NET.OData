@@ -106,7 +106,8 @@
                   <PropertyValue Property="UpdateRestrictions">
                     <Record>
                       <PropertyValue Property="LongDescription" String="Update an instance of a best friend." />
-                      <PropertyValue Property="Description" String="Update the best friend." />                      
+                      <PropertyValue Property="Description" String="Update the best friend." />
+					  <PropertyValue Property="Updatable" Bool="true" />
                     </Record>
                   </PropertyValue>
                 </Record>
