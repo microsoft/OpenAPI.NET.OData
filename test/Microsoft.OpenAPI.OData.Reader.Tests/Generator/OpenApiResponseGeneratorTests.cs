@@ -201,7 +201,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(response.Content);
             OpenApiMediaType mediaType = response.Content["application/json"];
 
-            // openApi version 2 should have not use nullable
+            // openApi version 2 should not use AnyOf
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.NotNull(mediaType.Schema);
@@ -385,7 +385,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""default"": {
     ""$ref"": ""#/components/responses/error""
   }
-}", json);
+}".ChangeLineBreaks(), json);
             }
             else
             {
@@ -428,7 +428,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""default"": {
     ""$ref"": ""#/components/responses/error""
   }
-}", json);
+}".ChangeLineBreaks(), json);
             }
         }
     }
