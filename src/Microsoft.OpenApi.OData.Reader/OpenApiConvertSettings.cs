@@ -279,7 +279,7 @@ namespace Microsoft.OpenApi.OData
         /// Gets/Sets a value indicating whether to show the version of the assembly used for generating 
         /// Open API document
         /// </summary>
-        public bool ShowAssemblyInfo { get; set; } = true;
+        public bool IncludeAssemblyInfo { get; set; } = true;
 
         /// <summary>
         /// Get/Sets a dictionary containing a mapping of HTTP methods to custom link relation types 
@@ -341,7 +341,7 @@ namespace Microsoft.OpenApi.OData
                 AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments,
                 UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange,
                 EnableCount = this.EnableCount,
-                ShowAssemblyInfo = this.ShowAssemblyInfo,
+                IncludeAssemblyInfo = this.IncludeAssemblyInfo,
                 RefBaseCollectionPaginationCountResponse = this.RefBaseCollectionPaginationCountResponse
             };
 

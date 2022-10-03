@@ -103,15 +103,15 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             Debug.Assert(context != null);
 
-            if (context.Settings.ShowAssemblyInfo)
+            if (context.Settings.IncludeAssemblyInfo)
             {
                 return new Dictionary<string, IOpenApiExtension>()
                 {
                     {
-                        "x-generatedBy",
+                        "x-ms-generated-by",
                         new OpenApiObject
                         {
-                            { "toolName", new OpenApiString("OpenAPI.NET.CSDL") },
+                            { "toolName", new OpenApiString("Microsoft.OpenApi.OData") },
                             { "toolVersion", new OpenApiString(Assembly.GetExecutingAssembly().GetName().Version.ToString()) }
                         }
                     }
