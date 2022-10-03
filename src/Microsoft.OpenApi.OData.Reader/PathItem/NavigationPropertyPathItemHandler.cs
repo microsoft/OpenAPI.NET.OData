@@ -81,7 +81,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty);
             UpdateRestrictionsType entityUpdateRestriction = Context.Model.GetRecord<UpdateRestrictionsType>(_navPropEntityType);
 
-            // containment: Get / (Post - Collection | Patch - Single)           
+            // containment: (Post - Collection | Patch/Put - Single)           
             if (NavigationProperty.ContainsTarget)
             {
                 UpdateRestrictionsType updateRestrictionType = navPropUpdateRestriction ?? entityUpdateRestriction;
@@ -117,19 +117,20 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
             else
             {
-                // non-containment: Get / (Post - Collection | Patch - Single) --> only if annotations are explicitly set
+                // non-containment: (Post - Collection | Patch/Put - Single) --> only if annotations are explicitly set to true
+                // Note: Use Updatable and not IsUpdatable | Insertable and not IsInsertable
                 if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
                     if (LastSegmentIsKeySegment)
                     {
-                        if (navPropUpdateRestriction?.IsUpdatable ?? false)
+                        if (navPropUpdateRestriction?.Updatable ?? false)
                         {
                             AddUpdateOperation(item, navPropUpdateRestriction);
                         }
                     }
                     else
                     {
-                        if (navPropInsertRestriction?.IsInsertable ?? false)
+                        if (navPropInsertRestriction?.Insertable ?? false)
                         {
                             AddOperation(item, OperationType.Post);
                         }
@@ -137,7 +138,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
                 else
                 {
-                    if (navPropUpdateRestriction?.IsUpdatable ?? false)
+                    if (navPropUpdateRestriction?.Updatable ?? false)
                     {
                         AddUpdateOperation(item, navPropUpdateRestriction);
                     }             
