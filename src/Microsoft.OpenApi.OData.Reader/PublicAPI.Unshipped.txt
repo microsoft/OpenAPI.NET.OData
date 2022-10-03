@@ -19,6 +19,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountR
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowAssemblyInfo.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowAssemblyInfo.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.get -> bool
