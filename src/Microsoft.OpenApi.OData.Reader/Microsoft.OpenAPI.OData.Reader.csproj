@@ -26,6 +26,7 @@
 - Set assembly version used for conversion in OpenApiInfo object #208
 - Add support for alternate keys parameters #120
 - Adds create and update operations to non-containment navigation properties when restrictions annotations are explicitly set to true #265
+- Generate odata.nextLink and odata.deltaLink properties on delta functions response schemas #285
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
