@@ -19,6 +19,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get ->
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.get -> bool

@@ -17,6 +17,8 @@ namespace Microsoft.OpenApi.OData
     /// </summary>
     public class OpenApiConvertSettings
     {
+        private bool _enableODataAnnotationReferencesForResponses = true;
+
         /// <summary>
         /// Gets/sets the service root.
         /// </summary>
@@ -106,9 +108,20 @@ namespace Microsoft.OpenApi.OData
         public bool EnableCount { get; set; }
 
         /// <summary>
+        /// Gets/sets a value indicating whether or not to reference @odata.nextLink and @odata.count in responses
+        /// </summary>
+        [Obsolete("Deprecated in favor of EnableODataAnnotationReferencesForResponses. " +
+            "When both are provided, EnableODataAnnotationReferencesForResponses takes precedence.")]
+        public bool RefBaseCollectionPaginationCountResponse { get; set; } = true;
+
+        /// <summary>
         /// Gets/sets a value indicating whether or not to reference @odata.nextLink, @odata.deltaLink and @odata.count in responses
         /// </summary>
-        public bool EnableODataAnnotationReferencesForResponses { get; set; } = true;
+        public bool EnableODataAnnotationReferencesForResponses 
+        {
+            get => _enableODataAnnotationReferencesForResponses;
+            set => _enableODataAnnotationReferencesForResponses = value && this.RefBaseCollectionPaginationCountResponse;
+        }
 
         /// <summary>
         /// Gets/sets a value that specifies the name of the operation for retrieving the next page in a collection of entities.
@@ -342,7 +355,8 @@ namespace Microsoft.OpenApi.OData
                 UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange,
                 EnableCount = this.EnableCount,
                 IncludeAssemblyInfo = this.IncludeAssemblyInfo,
-                EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses
+                EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
+                RefBaseCollectionPaginationCountResponse = this.RefBaseCollectionPaginationCountResponse
             };
 
             return newSettings;
