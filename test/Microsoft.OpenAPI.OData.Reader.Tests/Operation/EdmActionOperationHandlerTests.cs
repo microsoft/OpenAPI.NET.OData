@@ -340,16 +340,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         }
 
         [Theory]
-        [InlineData("assign", true)]
-        [InlineData("assign", false)]
-        public void CreateOperationForEdmActionWithCollectionReturnTypeHasResponseWithNextLinkProperty(string operationName, bool enablePagination)
+        [InlineData("assign", true, true)]
+        [InlineData("assign", true, false)]
+        [InlineData("assign", false, false)]
+        public void CreateOperationForEdmActionWithCollectionReturnTypeHasResponseWithNextLinkProperty(string operationName, bool enablePagination, bool enableOdataAnnotationRef)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             OpenApiConvertSettings settings = new()
             {
                 EnableOperationId = true,
-                EnablePagination = enablePagination
+                EnablePagination = enablePagination,
+                EnableODataAnnotationReferencesForResponses = enableOdataAnnotationRef
             };
             ODataContext context = new(model, settings);
             IEdmAction action = model.SchemaElements.OfType<IEdmAction>()
@@ -368,9 +370,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             var responseProperties = operation.Responses.First().Value.Content.First().Value.Schema.Properties;
 
             // Assert
-            if (enablePagination)
+            if (enablePagination && enableOdataAnnotationRef)
             {
-                Assert.True(responseProperties.ContainsKey("@odata.nextLink"));
+                var reference = operation.Responses.First().Value.Content.First().Value.Schema.AllOf.First().Reference.Id;
+                Assert.Equal(Common.Constants.BaseCollectionPaginationCountResponse, reference);
+
+            }
+            else if (enablePagination)
+            { 
+                Assert.True(responseProperties.ContainsKey("@odata.nextLink"));               
             }
             else
             {

@@ -202,41 +202,43 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 };
 
-                if (operation.IsDeltaFunction())
+                if (context.Settings.EnableODataAnnotationReferencesForResponses && 
+                    (operation.IsDeltaFunction() || context.Settings.EnablePagination || context.Settings.EnableCount))
                 {
-                    if (context.Settings.EnableODataAnnotationReferencesForResponses)
-                    {                       
-                        schema = new OpenApiSchema
-                        {
-                            AllOf = new List<OpenApiSchema>
-                            {
-                                new OpenApiSchema
-                                {
-                                    UnresolvedReference = true,
-                                    Reference = new OpenApiReference
-                                    {
-                                        Type = ReferenceType.Schema,
-                                        Id = Constants.BaseDeltaFunctionResponse  // @odata.nextLink + @odata.deltaLink
-                                    }
-                                },
-                                baseSchema
-                            }
-                        };
-                    }
-                    else
+                    schema = new OpenApiSchema
                     {
-                        baseSchema.Properties.Add(ODataConstants.OdataNextLink);
-                        baseSchema.Properties.Add(ODataConstants.OdataDeltaLink);
-                        schema = baseSchema;
-                    }
+                        AllOf = new List<OpenApiSchema>
+                        {
+                            new OpenApiSchema
+                            {
+                                UnresolvedReference = true,
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.Schema,
+                                    Id = operation.IsDeltaFunction() ? Constants.BaseDeltaFunctionResponse  // @odata.nextLink + @odata.deltaLink
+                                        : Constants.BaseCollectionPaginationCountResponse // @odata.nextLink + @odata.count
+                                }
+                            },
+                            baseSchema
+                        }
+                    };
                 }
-                else if (context.Settings.EnablePagination)
+                else if (operation.IsDeltaFunction())
                 {
                     baseSchema.Properties.Add(ODataConstants.OdataNextLink);
+                    baseSchema.Properties.Add(ODataConstants.OdataDeltaLink);
                     schema = baseSchema;
                 }
                 else
                 {
+                    if (context.Settings.EnablePagination)
+                    {
+                        baseSchema.Properties.Add(ODataConstants.OdataNextLink);
+                    }
+                    if (context.Settings.EnableCount)
+                    {
+                        baseSchema.Properties.Add(ODataConstants.OdataCount);
+                    }
                     schema = baseSchema;
                 }
 
