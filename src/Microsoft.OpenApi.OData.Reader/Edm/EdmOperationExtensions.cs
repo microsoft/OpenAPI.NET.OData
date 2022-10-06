@@ -1,4 +1,5 @@
-﻿using Microsoft.OData.Edm;
+using System;
+using Microsoft.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
