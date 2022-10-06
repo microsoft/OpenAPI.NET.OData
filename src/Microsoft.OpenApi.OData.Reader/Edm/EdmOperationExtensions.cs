@@ -14,7 +14,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns></returns>
         public static bool IsDeltaFunction(this IEdmOperation operation)
         {
-            if (operation.IsFunction() && operation.Name == "delta")
+            if (operation.IsFunction() && "delta".Equals(operation.Name, StringComparison.OrdinalIgnoreCase))
                 return true;
             return false;
         }

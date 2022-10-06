@@ -147,7 +147,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
 
                 // @odata.nextLink + @odata.deltaLink
-                if (context.Model.SchemaElements.OfType<IEdmFunction>().Any(x => x.IsDeltaFunction()))
+                if (context.Model.SchemaElements.OfType<IEdmFunction>().Any(static x => x.IsDeltaFunction()))
                 {
                     schemas[Constants.BaseDeltaFunctionResponse] = new()
                     {
