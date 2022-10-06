@@ -129,20 +129,34 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
 
-            // @odata.nextLink + @odata.count
-            if ((context.Settings.EnablePagination || context.Settings.EnableCount) &&
-                context.Settings.RefBaseCollectionPaginationCountResponse)
+            if (context.Settings.EnableODataAnnotationReferencesForResponses)
             {
-                schemas[Constants.BaseCollectionPaginationCountResponse] = new()
+                // @odata.nextLink + @odata.count
+                if (context.Settings.EnablePagination || context.Settings.EnableCount)
                 {
-                    Title = "Base collection pagination and count responses",
-                    Type = Constants.ObjectType,                   
-                };
+                    schemas[Constants.BaseCollectionPaginationCountResponse] = new()
+                    {
+                        Title = "Base collection pagination and count responses",
+                        Type = Constants.ObjectType,
+                    };
 
-                if (context.Settings.EnableCount)
-                    schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataCount);
-                if (context.Settings.EnablePagination)
-                    schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataNextLink);
+                    if (context.Settings.EnableCount)
+                        schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataCount);
+                    if (context.Settings.EnablePagination)
+                        schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataNextLink);
+                }
+
+                // @odata.nextLink + @odata.deltaLink
+                if (context.Model.SchemaElements.OfType<IEdmFunction>().Any(static x => x.IsDeltaFunction()))
+                {
+                    schemas[Constants.BaseDeltaFunctionResponse] = new()
+                    {
+                        Title = "Base delta function response",
+                        Type = Constants.ObjectType
+                    };
+                    schemas[Constants.BaseDeltaFunctionResponse].Properties.Add(ODataConstants.OdataNextLink);
+                    schemas[Constants.BaseDeltaFunctionResponse].Properties.Add(ODataConstants.OdataDeltaLink);
+                }
             }
 
             return schemas;
@@ -232,10 +246,10 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = properties
             };
 
-            OpenApiSchema colSchema;
+            OpenApiSchema collectionSchema;
             if (context.Settings.EnablePagination || context.Settings.EnableCount)
             {
-                if (context.Settings.RefBaseCollectionPaginationCountResponse)
+                if (context.Settings.EnableODataAnnotationReferencesForResponses)
                 {
                     // @odata.nextLink + @odata.count
                     OpenApiSchema paginationCountSchema = new()
@@ -248,7 +262,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     };
 
-                    colSchema = new OpenApiSchema
+                    collectionSchema = new OpenApiSchema
                     {
                         AllOf = new List<OpenApiSchema>
                         {
@@ -265,17 +279,17 @@ namespace Microsoft.OpenApi.OData.Generator
                     if (context.Settings.EnableCount)
                         baseSchema.Properties.Add(ODataConstants.OdataCount);
 
-                    colSchema = baseSchema;
+                    collectionSchema = baseSchema;
                 }               
             }
             else
             {
-                colSchema = baseSchema;
+                collectionSchema = baseSchema;
             }
 
-            colSchema.Title = $"Collection of {typeName}";
-            colSchema.Type = Constants.ObjectType;
-            return colSchema;
+            collectionSchema.Title = $"Collection of {typeName}";
+            collectionSchema.Type = Constants.ObjectType;
+            return collectionSchema;
         }
 
         /// <summary>

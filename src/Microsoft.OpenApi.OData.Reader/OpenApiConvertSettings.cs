@@ -108,7 +108,13 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/sets a value indicating whether or not to reference @odata.nextLink and @odata.count in responses
         /// </summary>
-        public bool RefBaseCollectionPaginationCountResponse { get; set; } = true;
+        [Obsolete("Deprecated in favor of EnableODataAnnotationReferencesForResponses.")]
+        public bool RefBaseCollectionPaginationCountResponse { get { return EnableODataAnnotationReferencesForResponses; } }
+
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to reference @odata.nextLink, @odata.deltaLink and @odata.count in responses
+        /// </summary>
+        public bool EnableODataAnnotationReferencesForResponses { get; set; } = true;
 
         /// <summary>
         /// Gets/sets a value that specifies the name of the operation for retrieving the next page in a collection of entities.
@@ -342,7 +348,7 @@ namespace Microsoft.OpenApi.OData
                 UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange,
                 EnableCount = this.EnableCount,
                 IncludeAssemblyInfo = this.IncludeAssemblyInfo,
-                RefBaseCollectionPaginationCountResponse = this.RefBaseCollectionPaginationCountResponse
+                EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
             };
 
             return newSettings;

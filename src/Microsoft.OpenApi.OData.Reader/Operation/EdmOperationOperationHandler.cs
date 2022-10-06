@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -165,7 +164,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        protected override void SetResponses(OpenApiOperation operation)
+        protected override void SetResponses(OpenApiOperation operation) 
         {
             operation.Responses = Context.CreateResponses(EdmOperation);
             base.SetResponses(operation);
@@ -276,6 +275,22 @@ namespace Microsoft.OpenApi.OData.Operation
                     Url = externalDocs.Href
                 };
             }
+        }
+
+        // <inheritdoc/>
+        protected override void SetExtensions(OpenApiOperation operation)
+        {
+            if (Context.Settings.EnablePagination && EdmOperation.ReturnType?.TypeKind() == EdmTypeKind.Collection)
+            {
+                OpenApiObject extension = new OpenApiObject
+                {
+                    { "nextLinkName", new OpenApiString("@odata.nextLink")},
+                    { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+                };
+
+                operation.Extensions.Add(Constants.xMsPageable, extension);
+            }
+            base.SetExtensions(operation);
         }
     }
 }

@@ -116,6 +116,11 @@ namespace Microsoft.OpenApi.OData.Common
         public static string BaseCollectionPaginationCountResponse = "BaseCollectionPaginationCountResponse";
 
         /// <summary>
+        /// Suffix used for the base delta function response schemas.
+        /// </summary>
+        public static string BaseDeltaFunctionResponse = "BaseDeltaFunctionResponse";
+
+        /// <summary>
         /// Name used for reference update.
         /// </summary>
         public static string ReferenceUpdateSchemaName = "ReferenceUpdate";

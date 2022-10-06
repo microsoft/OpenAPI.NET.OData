@@ -201,7 +201,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(response.Content);
             OpenApiMediaType mediaType = response.Content["application/json"];
 
-            // openApi version 2 should have not use nullable
+            // openApi version 2 should not use AnyOf
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.NotNull(mediaType.Schema);
@@ -318,6 +318,117 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             else
             {
                 Assert.Equal(new string[] { responseCode, "4XX", "5XX" }, responses.Select(r => r.Key));
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateResponseForDeltaEdmFunctionReturnCorrectResponses(bool enableOdataAnnotationRef)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new()
+            {
+                EnableODataAnnotationReferencesForResponses = enableOdataAnnotationRef
+            };
+            ODataContext context = new(model, settings);
+
+            // Act
+            IEdmFunction operation = model.SchemaElements.OfType<IEdmFunction>().First(o => o.Name == "delta" &&
+                   o.Parameters.First().Type.FullName() == "Collection(microsoft.graph.application)");
+            Assert.NotNull(operation); // guard
+            OpenApiResponses responses = context.CreateResponses(operation);
+            string json = responses.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            // Assert
+            Assert.NotNull(responses);
+            Assert.NotEmpty(responses);
+            if (enableOdataAnnotationRef)
+            {
+                Assert.Equal(@"{
+  ""200"": {
+    ""description"": ""Success"",
+    ""content"": {
+      ""application/json"": {
+        ""schema"": {
+          ""title"": ""Collection of application"",
+          ""type"": ""object"",
+          ""allOf"": [
+            {
+              ""$ref"": ""#/components/schemas/BaseDeltaFunctionResponse""
+            },
+            {
+              ""type"": ""object"",
+              ""properties"": {
+                ""value"": {
+                  ""type"": ""array"",
+                  ""items"": {
+                    ""anyOf"": [
+                      {
+                        ""$ref"": ""#/components/schemas/microsoft.graph.application""
+                      },
+                      {
+                        ""type"": ""object"",
+                        ""nullable"": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  ""default"": {
+    ""$ref"": ""#/components/responses/error""
+  }
+}".ChangeLineBreaks(), json);
+            }
+            else
+            {
+                Assert.Equal(@"{
+  ""200"": {
+    ""description"": ""Success"",
+    ""content"": {
+      ""application/json"": {
+        ""schema"": {
+          ""title"": ""Collection of application"",
+          ""type"": ""object"",
+          ""properties"": {
+            ""value"": {
+              ""type"": ""array"",
+              ""items"": {
+                ""anyOf"": [
+                  {
+                    ""$ref"": ""#/components/schemas/microsoft.graph.application""
+                  },
+                  {
+                    ""type"": ""object"",
+                    ""nullable"": true
+                  }
+                ]
+              }
+            },
+            ""@odata.nextLink"": {
+              ""type"": ""string"",
+              ""nullable"": true
+            },
+            ""@odata.deltaLink"": {
+              ""type"": ""string"",
+              ""nullable"": true
+            }
+          }
+        }
+      }
+    }
+  },
+  ""default"": {
+    ""$ref"": ""#/components/responses/error""
+  }
+}".ChangeLineBreaks(), json);
             }
         }
     }
