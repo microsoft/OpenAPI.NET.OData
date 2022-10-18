@@ -1,15 +1,17 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OData.Edm.Vocabularies.Community.V1;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
@@ -152,6 +154,56 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Contains("/Customers/$count", pathItems.Keys);
             Assert.Contains("/Customers({ID})", pathItems.Keys);
             Assert.Contains(expected, pathItems.Keys);
+        }
+
+        [Fact]
+        public void CreatePathItemsDoesNotAddPathItemEntryForPathItemsWithNoOperations()
+        {
+            // Arrange
+            EdmModel model = new();
+            EdmEntityType customer = new("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+            EdmEntityContainer container = new("NS", "Default");
+            EdmEntitySet customers = new(container, "Customers", customer);
+            container.AddElement(customers);
+            model.AddElement(container);
+
+            IList<IEdmPropertyConstructor> readableProperty = new List<IEdmPropertyConstructor>
+            {
+                new EdmPropertyConstructor("ReadByKeyRestrictions", new EdmRecordExpression(new List<IEdmPropertyConstructor>
+                {
+                    new EdmPropertyConstructor("Readable", new EdmBooleanConstant(false))
+                }))
+            };
+            model.SetVocabularyAnnotation(
+                new EdmVocabularyAnnotation(customers, model.FindTerm(CapabilitiesConstants.ReadRestrictions),
+                new EdmRecordExpression(readableProperty)));
+
+            IList<IEdmPropertyConstructor> updatableProperty = new List<IEdmPropertyConstructor>
+            {
+                 new EdmPropertyConstructor("Updatable", new EdmBooleanConstant(false))
+            };
+            model.SetVocabularyAnnotation(
+                new EdmVocabularyAnnotation(customers, model.FindTerm(CapabilitiesConstants.UpdateRestrictions),
+                new EdmRecordExpression(updatableProperty)));
+
+            IList<IEdmPropertyConstructor> deletableProperty = new List<IEdmPropertyConstructor>
+            {
+                 new EdmPropertyConstructor("Deletable", new EdmBooleanConstant(false))
+            };
+            model.SetVocabularyAnnotation(
+                new EdmVocabularyAnnotation(customers, model.FindTerm(CapabilitiesConstants.DeleteRestrictions),
+                new EdmRecordExpression(deletableProperty)));
+
+            ODataContext context = new(model);
+
+            // Act
+            var pathItems = context.CreatePathItems();
+
+            // Assert
+            Assert.NotNull(pathItems);
+            Assert.DoesNotContain("/Customers({ID})", pathItems.Keys);
         }
     }
 }
