@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -42,13 +43,19 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
+                OpenApiPathItem pathItem = handler.CreatePathItem(context, path);
+                if (!pathItem.Operations.Any() && path.Kind != ODataPathKind.MediaEntity)
+                {
+                    continue;
+                }
+
                 if (path.PathTemplate != null)
                 {
-                    pathItems.Add(path.PathTemplate, handler.CreatePathItem(context, path));
+                    pathItems.Add(path.PathTemplate, pathItem);
                 }
                 else
                 {
-                    pathItems.Add(path.GetPathItemName(settings), handler.CreatePathItem(context, path));
+                    pathItems.Add(path.GetPathItemName(settings), pathItem);
                 }
             }
 
