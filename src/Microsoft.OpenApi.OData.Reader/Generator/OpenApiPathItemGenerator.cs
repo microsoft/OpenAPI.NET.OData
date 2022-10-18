@@ -44,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
 
                 OpenApiPathItem pathItem = handler.CreatePathItem(context, path);
-                if (!pathItem.Operations.Any() && path.Kind != ODataPathKind.MediaEntity)
+                if (!pathItem.Operations.Any())
                 {
                     continue;
                 }
