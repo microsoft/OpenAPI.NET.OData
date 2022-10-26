@@ -40,18 +40,15 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
-            var settings = new OpenApiConvertSettings()
-            {
-                ExpandDerivedTypesNavigationProperties = false
-            };
             ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
 
             // Act
             var paths = provider.GetPaths(model, settings);
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(13836, paths.Count());
+            Assert.Equal(18391, paths.Count());
         }
 
         [Fact]
@@ -63,7 +60,6 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var settings = new OpenApiConvertSettings
             {
                 RequireDerivedTypesConstraintForBoundOperations = true,
-                ExpandDerivedTypesNavigationProperties = false,
                 AppendBoundOperationsOnDerivedTypeCastSegments = true
             };
 
@@ -72,7 +68,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(15293, paths.Count());
+            Assert.Equal(19848, paths.Count());
         }
 
         [Fact]
