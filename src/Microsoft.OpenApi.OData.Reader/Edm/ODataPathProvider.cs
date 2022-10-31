@@ -563,7 +563,7 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 var targetTypeSegment = new ODataTypeCastSegment(targetType);
 
-                if (currentPath.Segments.Contains(targetTypeSegment))
+                if (currentPath.Segments.Any(x => x.Identifier.Equals(targetTypeSegment.Identifier)))
                 {
                     // In case we have expanded a derived type's navigation property
                     // and we are in a cyclic loop where the expanded navigation property
