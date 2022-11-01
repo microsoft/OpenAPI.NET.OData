@@ -559,14 +559,22 @@ namespace Microsoft.OpenApi.OData.Edm
                                 .OfType<IEdmStructuredType>()
                                 .ToArray();
 
-            foreach(var targetType in targetTypes)
+            foreach (var targetType in targetTypes)
             {
-                var castPath = currentPath.Clone();
                 var targetTypeSegment = new ODataTypeCastSegment(targetType);
 
+                if (currentPath.Segments.Any(x => x.Identifier.Equals(targetTypeSegment.Identifier)))
+                {
+                    // In case we have expanded a derived type's navigation property
+                    // and we are in a cyclic loop where the expanded navigation property
+                    // has a derived type that has already been added to the path.
+                    continue;
+                }
+
+                var castPath = currentPath.Clone();
                 castPath.Push(targetTypeSegment);
                 AppendPath(castPath);
-                if(targetsMany) 
+                if (targetsMany)
                 {
                     CreateCountPath(castPath, convertSettings);
                 }
@@ -574,6 +582,11 @@ namespace Microsoft.OpenApi.OData.Edm
                 {
                     if (convertSettings.ExpandDerivedTypesNavigationProperties)
                     {
+                        if (annotable is IEdmNavigationProperty navigationProperty && !navigationProperty.ContainsTarget)
+                        {
+                            continue;
+                        }
+
                         foreach (var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
                         {
                             RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
