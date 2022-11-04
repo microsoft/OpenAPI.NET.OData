@@ -621,7 +621,17 @@ namespace Microsoft.OpenApi.OData.Edm
                             .Where(filter).Select(x => x.EntityType())) //Search all singletons
                     .Distinct()
                     .ToList();
-                
+
+                if (edmOperation.Name.Equals("add"))
+                {
+
+                }
+                var requiresExplicitBinding = _model.GetBoolean(edmOperation, CapabilitiesConstants.RequiresExplicitBinding);
+                if (requiresExplicitBinding ?? false)
+                {
+
+                }
+
                 foreach (var bindingEntityType in allEntitiesForOperation)
                 {
                     // 1. Search for corresponding navigation source path
@@ -689,6 +699,20 @@ namespace Microsoft.OpenApi.OData.Edm
                 foreach (var path in value.Where(x => !_pathKindToSkipForNavigationProperties.Contains(x.Kind)))
                 {
                     ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
+
+                    if (npSegment.NavigationProperty.Name.Equals("followedSites"))
+                    {
+
+                    }
+
+                    var derived = _model.GetCollection(npSegment.NavigationProperty, "Org.OData.Validation.V1.DerivedTypeConstraint");
+                    var explicitBindings = _model.GetCollection(npSegment.NavigationProperty, "Org.OData.Capabilities.V1.ExplicitOperationBindings");
+                    var test = _model.VocabularyAnnotations;
+                    var test2 = _model.FindVocabularyAnnotations(npSegment.NavigationProperty);
+                    if (explicitBindings != null)
+                    {
+
+                    }
 
                     if (!npSegment.NavigationProperty.ContainsTarget)
                     {
@@ -807,7 +831,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         if (npSegment == null)
                         {
                             continue;
-                        }
+                        }                                            
 
                         if (!npSegment.NavigationProperty.ContainsTarget)
                         {
