@@ -101,8 +101,8 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public const string ExplicitOperationBindings = "Org.OData.Capabilities.V1.ExplicitOperationBindings";
 
         /// <summary>
-        /// Org.OData.Capabilities.V1.RequiresExplicitBindings
+        /// Org.OData.Capabilities.V1.RequiresExplicitBinding
         /// </summary>
-        public const string RequiresExplicitBindings = "Org.OData.Capabilities.V1.RequiresExplicitBindings";
+        public const string RequiresExplicitBinding = "Org.OData.Capabilities.V1.RequiresExplicitBinding";
     }
 }
