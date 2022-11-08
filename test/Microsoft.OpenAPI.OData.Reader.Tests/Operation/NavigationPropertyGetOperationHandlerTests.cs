@@ -51,7 +51,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("People.Trip", tag.Name);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(9, operation.Parameters.Count);
+            Assert.Equal(10, operation.Parameters.Count);
 
             Assert.Null(operation.RequestBody);
 
