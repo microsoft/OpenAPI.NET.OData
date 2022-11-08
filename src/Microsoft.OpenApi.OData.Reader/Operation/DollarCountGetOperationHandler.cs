@@ -1,13 +1,15 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
 using System.Linq;
+using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -71,6 +73,42 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
+        }
+
+        protected override void AppendCustomParameters(OpenApiOperation operation)
+        {
+            IEdmVocabularyAnnotatable annotatable = null;            
+            if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
+            {
+                annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
+                annotatable ??= sourceSegment.NavigationSource as IEdmSingleton;
+            }
+            else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
+            {
+                annotatable = navigationPropertySegment.NavigationProperty;
+            }
+
+            if (annotatable == null)
+            {
+                return;
+            }
+
+            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
+
+            if (readRestrictions == null)
+            {
+                return;
+            }
+
+            if (readRestrictions.CustomHeaders != null)
+            {
+                AppendCustomParameters(operation, readRestrictions.CustomHeaders, ParameterLocation.Header);
+            }
+
+            if (readRestrictions.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation, readRestrictions.CustomQueryOptions, ParameterLocation.Query);
+            }
         }
     }
 }

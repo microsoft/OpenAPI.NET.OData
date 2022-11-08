@@ -5966,6 +5966,21 @@
         "operationId": "Me.ListTrips",
         "parameters": [
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -6821,6 +6836,23 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Trips-7b69",
+        "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -10220,6 +10252,21 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -11121,6 +11168,21 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           }
         ],
         "responses": {
@@ -11157,6 +11219,21 @@
         "summary": "Get entities from People",
         "operationId": "People.Person.ListPerson",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -11338,6 +11415,21 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "name": "$select",
@@ -14444,6 +14536,21 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -15686,6 +15793,21 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -16883,6 +17005,21 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -17861,6 +17998,21 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           }
         ],
         "responses": {
@@ -17885,6 +18037,23 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.People-dd8d",
+        "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -17911,6 +18080,21 @@
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
         "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -18063,6 +18247,21 @@
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
         "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },

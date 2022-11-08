@@ -166,7 +166,7 @@ public class ODataTypeCastGetOperationHandlerTests
         Assert.Single(tag.Extensions);
 
         Assert.NotNull(operation.Parameters);
-        Assert.Equal(8, operation.Parameters.Count);
+        Assert.Equal(9, operation.Parameters.Count);
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
@@ -221,7 +221,7 @@ public class ODataTypeCastGetOperationHandlerTests
         Assert.Empty(tag.Extensions);
 
         Assert.NotNull(operation.Parameters);
-        Assert.Equal(3, operation.Parameters.Count); //select, expand, id
+        Assert.Equal(4, operation.Parameters.Count); //select, expand, id
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
