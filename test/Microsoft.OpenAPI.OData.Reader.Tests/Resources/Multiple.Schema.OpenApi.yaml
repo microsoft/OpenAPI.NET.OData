@@ -3599,7 +3599,6 @@ components:
           format: date-time
           nullable: true
         FileSized:
-          multipleOf: 1
           type: number
           format: decimal
         FileClientPath:
@@ -3617,17 +3616,14 @@ components:
           type: integer
           format: int32
         IsNa:
-          multipleOf: 1
           type: number
           format: decimal
           nullable: true
         IsRejected:
-          multipleOf: 1
           type: number
           format: decimal
           nullable: true
         IsReviewed:
-          multipleOf: 1
           type: number
           format: decimal
           nullable: true
@@ -3685,7 +3681,6 @@ components:
           format: int32
           nullable: true
         IsApproved:
-          multipleOf: 1
           type: number
           format: decimal
           nullable: true
@@ -3964,7 +3959,6 @@ components:
           type: integer
           format: int32
         TotalSize:
-          multipleOf: 1
           type: number
           format: decimal
         FilesCounter:
@@ -4340,7 +4334,6 @@ components:
           type: string
           format: date-time
         Sized:
-          multipleOf: 1
           type: number
           format: decimal
         ActualName:
@@ -4378,12 +4371,10 @@ components:
           format: int32
           nullable: true
         Latitude:
-          multipleOf: 1
           type: number
           format: decimal
           nullable: true
         Longitude:
-          multipleOf: 1
           type: number
           format: decimal
           nullable: true

@@ -4980,7 +4980,6 @@
             "nullable": true
           },
           "FileSized": {
-            "multipleOf": 1,
             "type": "number",
             "format": "decimal"
           },
@@ -5002,19 +5001,16 @@
             "format": "int32"
           },
           "IsNa": {
-            "multipleOf": 1,
             "type": "number",
             "format": "decimal",
             "nullable": true
           },
           "IsRejected": {
-            "multipleOf": 1,
             "type": "number",
             "format": "decimal",
             "nullable": true
           },
           "IsReviewed": {
-            "multipleOf": 1,
             "type": "number",
             "format": "decimal",
             "nullable": true
@@ -5085,7 +5081,6 @@
             "nullable": true
           },
           "IsApproved": {
-            "multipleOf": 1,
             "type": "number",
             "format": "decimal",
             "nullable": true
@@ -5472,7 +5467,6 @@
             "format": "int32"
           },
           "TotalSize": {
-            "multipleOf": 1,
             "type": "number",
             "format": "decimal"
           },
@@ -5965,7 +5959,6 @@
             "format": "date-time"
           },
           "Sized": {
-            "multipleOf": 1,
             "type": "number",
             "format": "decimal"
           },
@@ -6011,13 +6004,11 @@
             "nullable": true
           },
           "Latitude": {
-            "multipleOf": 1,
             "type": "number",
             "format": "decimal",
             "nullable": true
           },
           "Longitude": {
-            "multipleOf": 1,
             "type": "number",
             "format": "decimal",
             "nullable": true

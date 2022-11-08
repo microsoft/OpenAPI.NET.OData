@@ -493,7 +493,6 @@ namespace Microsoft.OpenApi.OData.Tests
       ""type"": ""object"",
       ""properties"": {
         ""Price"": {
-          ""multipleOf"": 1,
           ""oneOf"": [
             {
               ""type"": ""number"",
