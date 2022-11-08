@@ -369,4 +369,34 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 		base.SetExtensions(operation);
 	}
+
+    protected override void AppendCustomParameters(OpenApiOperation operation)
+    {
+		IEdmVocabularyAnnotatable annotatable;
+		if (entitySet != null)
+			annotatable = entitySet;
+		else if (singleton != null)
+			annotatable = singleton;
+		else if (navigationProperty != null)
+			annotatable = navigationProperty;
+		else
+			return;
+        
+        ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
+
+        if (readRestrictions == null)
+        {
+            return;
+        }
+
+        if (readRestrictions.CustomHeaders != null)
+        {
+            AppendCustomParameters(operation, readRestrictions.CustomHeaders, ParameterLocation.Header);
+        }
+
+        if (readRestrictions.CustomQueryOptions != null)
+        {
+            AppendCustomParameters(operation, readRestrictions.CustomQueryOptions, ParameterLocation.Query);
+        }
+    }
 }
