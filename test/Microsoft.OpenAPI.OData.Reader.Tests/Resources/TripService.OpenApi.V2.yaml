@@ -3771,6 +3771,10 @@ paths:
       description: Retrieve a list of trips.
       operationId: Me.ListTrips
       parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -4319,6 +4323,11 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Trips-7b69
+      parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6412,6 +6421,10 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -6961,6 +6974,10 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6984,6 +7001,10 @@ paths:
       summary: Get entities from People
       operationId: People.Person.ListPerson
       parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -7107,6 +7128,10 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -9062,6 +9087,10 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -9841,6 +9870,10 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -10588,6 +10621,10 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -11203,6 +11240,10 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11219,6 +11260,11 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.People-dd8d
+      parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11238,6 +11284,10 @@ paths:
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
       operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a
       parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -11339,6 +11389,10 @@ paths:
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
       operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14
       parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'

@@ -337,6 +337,28 @@
               </Record>
             </Collection>
           </Annotation>
+		  <Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+				<Record>
+					<PropertyValue Property="CustomHeaders">
+						<Collection>
+							<Record>
+								<PropertyValue Property="Name" String="ConsistencyLevel" />
+								<PropertyValue Property="Description" String="Indicates the requested consistency level." />
+								<PropertyValue Property="DocumentationURL" String="https://docs.tripservice.com/advanced-queries" />
+								<PropertyValue Property="Required" Bool="false" />
+								<PropertyValue Property="ExampleValues">
+									<Collection>
+										<Record>
+											<PropertyValue Property="Value" String="eventual" />
+											<PropertyValue Property="Description" String="$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'." />
+										</Record>
+									</Collection>
+								</PropertyValue>
+							</Record>
+						</Collection>
+					</PropertyValue>
+				</Record>
+			</Annotation>
         </EntitySet>
         <EntitySet Name="Airlines" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline">
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
@@ -388,6 +410,24 @@
       <Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person/Trips">
 		<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
 		  <Record>
+			<PropertyValue Property="CustomHeaders">
+				  <Collection>
+					  <Record>
+						  <PropertyValue Property="Name" String="ConsistencyLevel" />
+						  <PropertyValue Property="Description" String="Indicates the requested consistency level." />
+						  <PropertyValue Property="DocumentationURL" String="https://docs.tripservice.com/advanced-queries" />
+						  <PropertyValue Property="Required" Bool="false" />
+						  <PropertyValue Property="ExampleValues">
+							  <Collection>
+								  <Record>
+									  <PropertyValue Property="Value" String="eventual" />
+									  <PropertyValue Property="Description" String="$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'." />
+								  </Record>
+							  </Collection>
+						  </PropertyValue>
+					  </Record>
+				  </Collection>
+			  </PropertyValue>
 			<PropertyValue Property="LongDescription" String="Retrieve a list of trips." />
 			<PropertyValue Property="Description" String="List trips." />
 			<PropertyValue Property="ReadByKeyRestrictions">
