@@ -244,7 +244,7 @@ namespace Microsoft.OpenApi.OData.Common
             if (!string.IsNullOrEmpty(baseTypeName) && !isBaseTypeEntity)
             {
                 structuredTypes ??= model.GetAllElements()
-                        .Where(x => x.SchemaElementKind == EdmSchemaElementKind.TypeDefinition)
+                        .Where(static x => x.SchemaElementKind == EdmSchemaElementKind.TypeDefinition)
                         .Where(y => !y.Name.Equals(Entity, StringComparison.OrdinalIgnoreCase))
                         .OfType<IEdmStructuredType>();
 
