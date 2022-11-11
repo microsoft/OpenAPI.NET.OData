@@ -259,7 +259,7 @@ namespace Microsoft.OpenApi.OData.Common
                 if (isReferencedInStructuredType) return true;
 
                 // Is base type referenced as a type in any parameter in an action
-                bool isReferencedInAction = actions.Any(x => x.Parameters.Any(x => x.Type.FullName().Equals(baseTypeName)));
+                bool isReferencedInAction = actions.Any(x => x.Parameters.Any(x => x.Type.FullName().Equals(baseTypeName, StringComparison.OrdinalIgnoreCase)));
                 if (isReferencedInAction) return true;
 
                 // Recursively check the base type
