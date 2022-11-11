@@ -244,22 +244,22 @@ namespace Microsoft.OpenApi.OData.Common
             if (!string.IsNullOrEmpty(baseTypeName) && !isBaseTypeEntity)
             {
                 structuredTypes ??= model.GetAllElements()
-                        .Where(x => x.SchemaElementKind == EdmSchemaElementKind.TypeDefinition)
-                        .Where(y => !y.Name.Equals(Entity, StringComparison.OrdinalIgnoreCase))
+                        .Where(static x => x.SchemaElementKind == EdmSchemaElementKind.TypeDefinition)
+                        .Where(static y => !y.Name.Equals(Entity, StringComparison.OrdinalIgnoreCase))
                         .OfType<IEdmStructuredType>();
 
                 actions ??= model.GetAllElements()
-                        .Where(x => x.SchemaElementKind == EdmSchemaElementKind.Action)
+                        .Where(static x => x.SchemaElementKind == EdmSchemaElementKind.Action)
                         .OfType<IEdmAction>();
 
                 // Is base type referenced as a type in any property within a structured type
                 bool isReferencedInStructuredType = structuredTypes
                     .Any(x => x.DeclaredProperties.Where(x => x.Type.TypeKind() == EdmTypeKind.Entity)
-                    .Any(x => x.Type.FullName().Equals(baseTypeName)));
+                    .Any(x => x.Type.FullName().Equals(baseTypeName, StringComparison.OrdinalIgnoreCase)));
                 if (isReferencedInStructuredType) return true;
 
                 // Is base type referenced as a type in any parameter in an action
-                bool isReferencedInAction = actions.Any(x => x.Parameters.Any(x => x.Type.FullName().Equals(baseTypeName)));
+                bool isReferencedInAction = actions.Any(x => x.Parameters.Any(x => x.Type.FullName().Equals(baseTypeName, StringComparison.OrdinalIgnoreCase)));
                 if (isReferencedInAction) return true;
 
                 // Recursively check the base type
