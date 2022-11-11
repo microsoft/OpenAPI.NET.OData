@@ -567,12 +567,13 @@ namespace Microsoft.OpenApi.OData.Generator
                 if (context.Settings.EnableDiscriminatorValue)
                 {
                     OpenApiString defaultValue = null;
-                    bool isBaseTypeEntity = "entity".Equals(structuredType.BaseType?.FullTypeName().Split('.').Last(), StringComparison.OrdinalIgnoreCase);
+                    bool isBaseTypeEntity = Constants.EntityName.Equals(structuredType.BaseType?.FullTypeName().Split('.').Last(), StringComparison.OrdinalIgnoreCase);
                     bool isBaseTypeAbstractNonEntity = (structuredType.BaseType?.IsAbstract ?? false) && !isBaseTypeEntity;
 
                     if (context.Settings.EnableDefaultValueForOdataTypeProperty ||
-                        isBaseTypeAbstractNonEntity ||
-                        context.Model.IsBaseTypeReferencedAsTypeInModel(structuredType.BaseType))
+                        (!context.Settings.EnableDefaultValueForOdataTypeProperty &&
+                        (isBaseTypeAbstractNonEntity ||
+                        context.Model.IsBaseTypeReferencedAsTypeInModel(structuredType.BaseType))))
                     {
                         defaultValue = new("#" + structuredType.FullTypeName());
                     }
