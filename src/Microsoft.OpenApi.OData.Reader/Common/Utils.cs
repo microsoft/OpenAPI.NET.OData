@@ -249,7 +249,7 @@ namespace Microsoft.OpenApi.OData.Common
                         .OfType<IEdmStructuredType>();
 
                 actions ??= model.GetAllElements()
-                        .Where(x => x.SchemaElementKind == EdmSchemaElementKind.Action)
+                        .Where(static x => x.SchemaElementKind == EdmSchemaElementKind.Action)
                         .OfType<IEdmAction>();
 
                 // Is base type referenced as a type in any property within a structured type
