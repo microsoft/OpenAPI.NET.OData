@@ -245,7 +245,7 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 structuredTypes ??= model.GetAllElements()
                         .Where(static x => x.SchemaElementKind == EdmSchemaElementKind.TypeDefinition)
-                        .Where(y => !y.Name.Equals(Entity, StringComparison.OrdinalIgnoreCase))
+                        .Where(static y => !y.Name.Equals(Entity, StringComparison.OrdinalIgnoreCase))
                         .OfType<IEdmStructuredType>();
 
                 actions ??= model.GetAllElements()
