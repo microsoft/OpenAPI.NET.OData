@@ -566,10 +566,21 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (context.Settings.EnableDiscriminatorValue)
                 {
+                    OpenApiString defaultValue = null;
+                    bool isBaseTypeEntity = "entity".Equals(structuredType.BaseType?.FullTypeName().Split('.').Last(), StringComparison.OrdinalIgnoreCase);
+                    bool isBaseTypeAbstractNonEntity = (structuredType.BaseType?.IsAbstract ?? false) && !isBaseTypeEntity;
+
+                    if (context.Settings.EnableDefaultValueForOdataTypeProperty ||
+                        isBaseTypeAbstractNonEntity ||
+                        context.Model.IsBaseTypeReferencedAsTypeInModel(structuredType.BaseType))
+                    {
+                        defaultValue = new("#" + structuredType.FullTypeName());
+                    }
+
                     if (!schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
                     {
                         Type = Constants.StringType,
-                        Default = new OpenApiString("#" + structuredType.FullTypeName()),
+                        Default = defaultValue,
                     }))
                     {
                         throw new InvalidOperationException(

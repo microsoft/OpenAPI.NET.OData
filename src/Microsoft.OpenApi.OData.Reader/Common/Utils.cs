@@ -222,5 +222,51 @@ namespace Microsoft.OpenApi.OData.Common
 
             return atrributesValueMap;
         }
+
+        /// <summary>
+        /// Checks whether the base type of an <see cref="IEdmStructuredType"/> is referenced as a type within the Edm model.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="baseType">The base type of the target <see cref="IEdmStructuredType"/>.</param>
+        /// <param name="structuredTypes">Optional: The IEnumerable of <see cref="IEdmStructuredType"/> to check against.</param>
+        /// <param name="actions">Optional: The IEnumerable of <see cref="IEdmAction"/> to check against.</param>
+        /// <returns>True if reference is found, otherwise False.</returns>
+        internal static bool IsBaseTypeReferencedAsTypeInModel(
+            this IEdmModel model,
+            IEdmStructuredType baseType,
+            IEnumerable<IEdmStructuredType> structuredTypes = null,
+            IEnumerable<IEdmAction> actions = null)
+        {
+            const string Entity = "entity";
+            string baseTypeName = baseType?.FullTypeName();
+            bool isBaseTypeEntity = Entity.Equals(baseTypeName?.Split('.').Last(), StringComparison.OrdinalIgnoreCase);
+
+            if (!string.IsNullOrEmpty(baseTypeName) && !isBaseTypeEntity)
+            {
+                structuredTypes ??= model.GetAllElements()
+                        .Where(x => x.SchemaElementKind == EdmSchemaElementKind.TypeDefinition)
+                        .Where(y => !y.Name.Equals(Entity, StringComparison.OrdinalIgnoreCase))
+                        .OfType<IEdmStructuredType>();
+
+                actions ??= model.GetAllElements()
+                        .Where(x => x.SchemaElementKind == EdmSchemaElementKind.Action)
+                        .OfType<IEdmAction>();
+
+                // Is base type referenced as a type in any property within a structured type
+                bool isReferencedInStructuredType = structuredTypes
+                    .Any(x => x.DeclaredProperties.Where(x => x.Type.TypeKind() == EdmTypeKind.Entity)
+                    .Any(x => x.Type.FullName().Equals(baseTypeName)));
+                if (isReferencedInStructuredType) return true;
+
+                // Is base type referenced as a type in any parameter in an action
+                bool isReferencedInAction = actions.Any(x => x.Parameters.Any(x => x.Type.FullName().Equals(baseTypeName)));
+                if (isReferencedInAction) return true;
+
+                // Recursively check the base type
+                return model.IsBaseTypeReferencedAsTypeInModel(baseType.BaseType, structuredTypes, actions);
+            }
+
+            return false;
+        }
     }
 }
