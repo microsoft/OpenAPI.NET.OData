@@ -237,15 +237,14 @@ namespace Microsoft.OpenApi.OData.Common
             IEnumerable<IEdmStructuredType> structuredTypes = null,
             IEnumerable<IEdmAction> actions = null)
         {
-            const string Entity = "entity";
             string baseTypeName = baseType?.FullTypeName();
-            bool isBaseTypeEntity = Entity.Equals(baseTypeName?.Split('.').Last(), StringComparison.OrdinalIgnoreCase);
+            bool isBaseTypeEntity = Constants.EntityName.Equals(baseTypeName?.Split('.').Last(), StringComparison.OrdinalIgnoreCase);
 
             if (!string.IsNullOrEmpty(baseTypeName) && !isBaseTypeEntity)
             {
                 structuredTypes ??= model.GetAllElements()
                         .Where(static x => x.SchemaElementKind == EdmSchemaElementKind.TypeDefinition)
-                        .Where(static y => !y.Name.Equals(Entity, StringComparison.OrdinalIgnoreCase))
+                        .Where(static y => !y.Name.Equals(Constants.EntityName, StringComparison.OrdinalIgnoreCase))
                         .OfType<IEdmStructuredType>();
 
                 actions ??= model.GetAllElements()

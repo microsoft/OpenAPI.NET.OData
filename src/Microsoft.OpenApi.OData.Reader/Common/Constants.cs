@@ -184,5 +184,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// decimal format
         /// </summary>
         public static string DecimalFormat = "decimal";
+
+        /// <summary>
+        /// entity name
+        /// </summary>
+        public static string EntityName = "entity";
     }
 }
