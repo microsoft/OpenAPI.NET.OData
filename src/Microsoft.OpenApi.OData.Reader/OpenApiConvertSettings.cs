@@ -301,6 +301,13 @@ namespace Microsoft.OpenApi.OData
             { LinkRelKey.Function, "https://graph.microsoft.com/rels/docs/function" }
         };
 
+        /// <summary>
+        /// Gets/sets a value indicating whether to set the default value for the derived type's @odata.type property.
+        /// If false, the value will be set conditionally based on whether the derived type's base type is abstract (and not entity)
+        /// and is referenced in the properties of a structural property or an action.
+        /// </summary>
+        public bool EnableDefaultValueForOdataTypeProperty { get; set; } = true;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -349,6 +356,7 @@ namespace Microsoft.OpenApi.OData
                 EnableCount = this.EnableCount,
                 IncludeAssemblyInfo = this.IncludeAssemblyInfo,
                 EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
+                EnableDefaultValueForOdataTypeProperty = this.EnableDefaultValueForOdataTypeProperty
             };
 
             return newSettings;

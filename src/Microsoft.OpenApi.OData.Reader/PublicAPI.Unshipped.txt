@@ -11,6 +11,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.ge
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDefaultValueForOdataTypeProperty.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDefaultValueForOdataTypeProperty.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataAnnotationReferencesForResponses.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataAnnotationReferencesForResponses.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.get -> bool
@@ -20,7 +22,6 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.set ->
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.get -> bool
-Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.get -> bool
