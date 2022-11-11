@@ -255,7 +255,7 @@ namespace Microsoft.OpenApi.OData.Common
                 // Is base type referenced as a type in any property within a structured type
                 bool isReferencedInStructuredType = structuredTypes
                     .Any(x => x.DeclaredProperties.Where(x => x.Type.TypeKind() == EdmTypeKind.Entity)
-                    .Any(x => x.Type.FullName().Equals(baseTypeName)));
+                    .Any(x => x.Type.FullName().Equals(baseTypeName, StringComparison.OrdinalIgnoreCase)));
                 if (isReferencedInStructuredType) return true;
 
                 // Is base type referenced as a type in any parameter in an action
