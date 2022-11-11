@@ -253,14 +253,17 @@ namespace Microsoft.OpenApi.OData.Tests
 }".ChangeLineBreaks(), json);
         }
 
-        [Fact]
-        public void CreateStructuredTypeSchemaForComplexTypeWithDiscriminatorValueEnabledReturnsCorrectSchema()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateStructuredTypeSchemaForComplexTypeWithDiscriminatorValueEnabledReturnsCorrectSchema(bool enableDefaultValueForOdataTypeProperty)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             ODataContext context = new(model, new OpenApiConvertSettings
             {
                 EnableDiscriminatorValue = true,
+                EnableDefaultValueForOdataTypeProperty = enableDefaultValueForOdataTypeProperty
             });
 
             IEdmComplexType complex = model.SchemaElements.OfType<IEdmComplexType>().First(t => t.Name == "userSet");
@@ -272,7 +275,8 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(json);
-            Assert.Equal(@"{
+            string expected = enableDefaultValueForOdataTypeProperty ?
+                @"{
   ""title"": ""userSet"",
   ""required"": [
     ""@odata.type""
@@ -299,7 +303,37 @@ namespace Microsoft.OpenApi.OData.Tests
       ""#microsoft.graph.singleUser"": ""#/components/schemas/microsoft.graph.singleUser""
     }
   }
-}".ChangeLineBreaks(), json);
+}".ChangeLineBreaks()
+:
+                @"{
+  ""title"": ""userSet"",
+  ""required"": [
+    ""@odata.type""
+  ],
+  ""type"": ""object"",
+  ""properties"": {
+    ""isBackup"": {
+      ""type"": ""boolean"",
+      ""nullable"": true
+    },
+    ""@odata.type"": {
+      ""type"": ""string""
+    }
+  },
+  ""discriminator"": {
+    ""propertyName"": ""@odata.type"",
+    ""mapping"": {
+      ""#microsoft.graph.connectedOrganizationMembers"": ""#/components/schemas/microsoft.graph.connectedOrganizationMembers"",
+      ""#microsoft.graph.externalSponsors"": ""#/components/schemas/microsoft.graph.externalSponsors"",
+      ""#microsoft.graph.groupMembers"": ""#/components/schemas/microsoft.graph.groupMembers"",
+      ""#microsoft.graph.internalSponsors"": ""#/components/schemas/microsoft.graph.internalSponsors"",
+      ""#microsoft.graph.requestorManager"": ""#/components/schemas/microsoft.graph.requestorManager"",
+      ""#microsoft.graph.singleUser"": ""#/components/schemas/microsoft.graph.singleUser""
+    }
+  }
+}".ChangeLineBreaks();
+
+            Assert.Equal(expected, json);
         }
 
         [Fact]
@@ -704,6 +738,32 @@ namespace Microsoft.OpenApi.OData.Tests
 
             Assert.Equal("Customer", declaredSchema.Title);
         }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateStructuredTypeSchemaForEntityTypeWithDefaultValueForOdataTypePropertyEnabledOrDisabledReturnsCorrectSchema(bool enableDefaultValueForOdataTypeProperty)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model, new OpenApiConvertSettings
+            {
+                EnableDiscriminatorValue = true,
+                EnableDefaultValueForOdataTypeProperty = enableDefaultValueForOdataTypeProperty
+            });
+
+            IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "event");
+            Assert.NotNull(entityType); // Guard
+
+            // Act
+            var schema = context.CreateStructuredTypeSchema(entityType);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            // Assert
+            Assert.NotNull(json);
+            Assert.Contains("\"default\": \"#microsoft.graph.event\"", json);
+        }
+
         #endregion
 
         #region EnumTypeSchema
