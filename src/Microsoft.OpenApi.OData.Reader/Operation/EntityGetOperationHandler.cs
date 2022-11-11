@@ -37,17 +37,19 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             IEdmEntityType entityType = EntitySet.EntityType();
-
+            ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
+            
             // Description
-            string placeHolder = "Get entity from " + EntitySet.Name + " by key";
+            string placeHolder = $"Get entity from {EntitySet.Name} by key ({keySegment.Identifier})";
             operation.Summary = _readRestrictions?.ReadByKeyRestrictions?.Description ?? placeHolder;
             operation.Description = _readRestrictions?.ReadByKeyRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(entityType);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
-            {
+            { 
                 string typeName = entityType.Name;
-                operation.OperationId = EntitySet.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);
+                string keyName = string.Join("", keySegment.Identifier.Split(',').Select(x => Utils.UpperFirstChar(x)));
+                operation.OperationId = $"{EntitySet.Name}.{typeName}.Get{Utils.UpperFirstChar(typeName)}By{keyName}";
             }
         }
 

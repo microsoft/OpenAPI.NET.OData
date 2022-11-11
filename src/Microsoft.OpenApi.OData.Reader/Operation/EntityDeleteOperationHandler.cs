@@ -36,9 +36,10 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             IEdmEntityType entityType = EntitySet.EntityType();
+            ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
 
             // Description
-            string placeHolder = "Delete entity from " + EntitySet.Name;
+            string placeHolder = $"Delete entity from {EntitySet.Name} by key ({keySegment.Identifier})";
             operation.Summary = _deleteRestrictions?.Description ?? placeHolder;
             operation.Description = _deleteRestrictions?.LongDescription;
 
@@ -46,7 +47,8 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             {
                 string typeName = entityType.Name;
-                operation.OperationId = EntitySet.Name + "." + typeName + ".Delete" + Utils.UpperFirstChar(typeName);
+                string keyName = string.Join("", keySegment.Identifier.Split(',').Select(x => Utils.UpperFirstChar(x)));
+                operation.OperationId = $"{EntitySet.Name}.{typeName}.Delete{Utils.UpperFirstChar(typeName)}By{keyName}";
             }
         }
 

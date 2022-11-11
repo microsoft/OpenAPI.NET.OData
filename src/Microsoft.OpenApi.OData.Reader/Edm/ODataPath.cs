@@ -117,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>The count.</returns>
         public int GetCount(bool keySegmentAsDepth)
         {
-            return Segments.Count(c => keySegmentAsDepth ? true : !(c is ODataKeySegment));
+            return Segments.Count(c => keySegmentAsDepth || c is not ODataKeySegment);
         }
 
         /// <summary>
@@ -159,8 +159,8 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 string pathItemName = segment.GetPathItemName(settings, parameters);
 
-                if (segment.Kind == ODataSegmentKind.Key &&
-                    (settings.EnableKeyAsSegment == null || !settings.EnableKeyAsSegment.Value))
+                if (segment is ODataKeySegment keySegment &&
+                    (settings.EnableKeyAsSegment == null || !settings.EnableKeyAsSegment.Value || keySegment.IsAlternateKey))
                 {
                     sb.Append("(");
                     sb.Append(pathItemName);

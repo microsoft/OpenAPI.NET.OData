@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Common
                 return input;
             }
 
-            char first = Char.ToUpper(input[0]);
+            char first = char.ToUpper(input[0]);
             return first + input.Substring(1);
         }
 

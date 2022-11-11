@@ -45,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="settings">The conversion settings.</param>
         /// <returns>The collection of built <see cref="ODataPath"/>.</returns>
         public virtual IEnumerable<ODataPath> GetPaths(IEdmModel model, OpenApiConvertSettings settings)
-       {
+        {
            if (model == null || model.EntityContainer == null)
            {
                return Enumerable.Empty<ODataPath>();
@@ -92,7 +92,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="model">The Edm model.</param>
         protected virtual void Initialize(IEdmModel model)
         {
-            Debug.Assert(model != null);
+            Utils.CheckArgumentNull(model, nameof(model));
 
             _model = model;
             _allNavigationSources = model.LoadAllNavigationSources();
@@ -123,7 +123,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private void AppendPath(ODataPath path)
         {
-            Debug.Assert(path != null);
+            Utils.CheckArgumentNull(path, nameof(path));
 
             ODataPathKind kind = path.Kind;
             switch(kind)
@@ -176,7 +176,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="convertSettings">The settings for the current conversion.</param>
         private void RetrieveNavigationSourcePaths(IEdmNavigationSource navigationSource, OpenApiConvertSettings convertSettings)
         {
-            Debug.Assert(navigationSource != null);
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
 
             // navigation source itself
             ODataPath path = new(new ODataNavigationSourceSegment(navigationSource));
@@ -195,7 +196,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 CreateTypeCastPaths(path, convertSettings, entityType, entitySet, true); // ~/entitySet/subType
 
-                path.Push(new ODataKeySegment(entityType));
+                CreateAlternateKeyPath(path, entityType); //~/entitySet/{alternateKeyId}
+
+                path.Push(new ODataKeySegment(entityType)); // ~/entitySet/{id}
                 AppendPath(path.Clone());
 
                 CreateTypeCastPaths(path, convertSettings, entityType, entitySet, false); // ~/entitySet/{id}/subType
@@ -237,9 +240,9 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="convertSettings">The settings for the current conversion.</param>
         private void RetrieveComplexPropertyPaths(IEdmEntityType entityType, ODataPath currentPath, OpenApiConvertSettings convertSettings)
         {
-            Debug.Assert(entityType != null);
-            Debug.Assert(currentPath != null);
-            Debug.Assert(convertSettings != null);
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
+            Utils.CheckArgumentNull(currentPath, nameof(currentPath));
+            Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
 
             if (!convertSettings.EnableNavigationPropertyPath) return;
 
@@ -290,8 +293,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>true or false.</returns>
         private bool ShouldCreateComplexPropertyPaths(IEdmStructuralProperty complexProperty, OpenApiConvertSettings convertSettings)
         {
-            Debug.Assert(complexProperty != null);
-            Debug.Assert(convertSettings != null);
+            Utils.CheckArgumentNull(complexProperty, nameof(complexProperty)); 
+            Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
 
             if (!convertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
                 return true;
@@ -310,8 +313,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="currentPath">The current OData path.</param>
         private void RetrieveMediaEntityStreamPaths(IEdmEntityType entityType, ODataPath currentPath)
         {
-            Debug.Assert(entityType != null);
-            Debug.Assert(currentPath != null);
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
+            Utils.CheckArgumentNull(currentPath, nameof(currentPath));
 
             bool createValuePath = true;
             foreach (IEdmStructuralProperty sp in entityType.StructuralProperties())
@@ -355,8 +358,10 @@ namespace Microsoft.OpenApi.OData.Edm
             OpenApiConvertSettings convertSettings,
             Stack<string> visitedNavigationProperties = null)
         {
-            Debug.Assert(navigationProperty != null);
-            Debug.Assert(currentPath != null);
+            Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
+            Utils.CheckArgumentNull(currentPath, nameof(currentPath));
+            Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
+
 
             if (visitedNavigationProperties == null)
             {
@@ -504,6 +509,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="currentPath">The current OData path.</param>
         private void CreateRefPath(ODataPath currentPath)
         {
+            Utils.CheckArgumentNull(currentPath, nameof(currentPath));
+
             ODataPath newPath = currentPath.Clone();
             newPath.Push(ODataRefSegment.Instance); // $ref
             AppendPath(newPath);
@@ -516,12 +523,42 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="convertSettings">The settings for the current conversion.</param>
         private void CreateCountPath(ODataPath currentPath, OpenApiConvertSettings convertSettings)
         {
-            if(currentPath == null) throw new ArgumentNullException(nameof(currentPath));
-            if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
-            if(!convertSettings.EnableDollarCountPath) return;
+            Utils.CheckArgumentNull(currentPath, nameof(currentPath));
+            Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
+
+            if(!convertSettings.EnableDollarCountPath) 
+                return;
+
             var countPath = currentPath.Clone();
             countPath.Push(ODataDollarCountSegment.Instance);
             AppendPath(countPath);
+        }
+
+        /// <summary>
+        /// Create path with alternate key
+        /// </summary>
+        /// <param name="currentPath">The current OData path.</param>
+        /// <param name="entityType">The entityType with alternate keys</param>
+        private void CreateAlternateKeyPath(ODataPath currentPath, IEdmEntityType entityType)
+        {
+            Utils.CheckArgumentNull(currentPath, nameof(currentPath));
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
+
+            IEnumerable<IDictionary<string, IEdmProperty>> alternateKeys = _model.GetAlternateKeysAnnotation(entityType);
+            if (alternateKeys.Count() > 0)
+            {
+                foreach (var keyDict in alternateKeys)
+                {
+                    ODataPath keyPath = currentPath.Clone();
+                    IDictionary<string, string> keyMappings = keyDict.ToDictionary(static k => k.Key, static v => v.Value.Name);
+                    ODataKeySegment keySegment = new(entityType, keyMappings)
+                    {
+                        IsAlternateKey = true
+                    };
+                    keyPath.Push(keySegment);
+                    AppendPath(keyPath);
+                }
+            }
         }
 
         /// <summary>
@@ -534,15 +571,18 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="targetsMany">Whether the annotable navigation source targets many entities.</param>
         private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotable, bool targetsMany)
         {
-            if(currentPath == null) throw Error.ArgumentNull(nameof(currentPath));
-            if(convertSettings == null) throw Error.ArgumentNull(nameof(convertSettings));
-            if(structuredType == null) throw Error.ArgumentNull(nameof(structuredType));
-            if(annotable == null) throw Error.ArgumentNull(nameof(annotable));
-            if(!convertSettings.EnableODataTypeCast) return;
+            Utils.CheckArgumentNull(currentPath, nameof(currentPath));
+            Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
+            Utils.CheckArgumentNull(structuredType, nameof(structuredType));
+            Utils.CheckArgumentNull(annotable, nameof(annotable));
+
+            if(!convertSettings.EnableODataTypeCast)
+                return;
 
             var annotedTypeNames = GetDerivedTypeConstaintTypeNames(annotable);
             
-            if(!annotedTypeNames.Any() && convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments) return; // we don't want to generate any downcast path item if there is no type cast annotation.
+            if(!annotedTypeNames.Any() && convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments) 
+                return; // we don't want to generate any downcast path item if there is no type cast annotation.
 
             var annotedTypeNamesSet = new HashSet<string>(annotedTypeNames, StringComparer.OrdinalIgnoreCase);
 
