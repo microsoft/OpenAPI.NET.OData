@@ -230,14 +230,12 @@ namespace Microsoft.OpenApi.OData.Common
         /// <param name="model">The Edm model.</param>
         /// <param name="baseType">The base type of the target <see cref="IEdmStructuredType"/>.</param>
         /// <param name="structuredTypes">Optional: The IEnumerable of <see cref="IEdmStructuredType"/> to check against.</param>
-        /// <param name="complexTypes">Optional: The IEnumerable of <see cref="IEdmComplexType"/> to check against.</param>
         /// <param name="actions">Optional: The IEnumerable of <see cref="IEdmAction"/> to check against.</param>
         /// <returns>True if reference is found, otherwise False.</returns>
         internal static bool IsBaseTypeReferencedAsTypeInModel(
             this IEdmModel model,
             IEdmStructuredType baseType,
             IEnumerable<IEdmStructuredType> structuredTypes = null,
-            IEnumerable<IEdmComplexType> complexTypes = null,
             IEnumerable<IEdmAction> actions = null)
         {
             string baseTypeName = baseType?.FullTypeName();
@@ -249,10 +247,6 @@ namespace Microsoft.OpenApi.OData.Common
                         .Where(static x => x.SchemaElementKind == EdmSchemaElementKind.TypeDefinition)
                         .Where(static y => !y.Name.Equals(Constants.EntityName, StringComparison.OrdinalIgnoreCase))
                         .OfType<IEdmStructuredType>();
-
-                complexTypes ??= model.GetAllElements()
-                    .Where(static x => x.SchemaElementKind == EdmSchemaElementKind.TypeDefinition)
-                    .OfType<IEdmComplexType>();          
 
                 actions ??= model.GetAllElements()
                         .Where(static x => x.SchemaElementKind == EdmSchemaElementKind.Action)
@@ -266,20 +260,12 @@ namespace Microsoft.OpenApi.OData.Common
                     .Any(z => z.Type.FullName().Equals(baseTypeName, StringComparison.OrdinalIgnoreCase)));
                 if (isReferencedInStructuredType) return true;
 
-                // Is base type referenced as a type within a complex type
-                bool isReferencedInComplexType = complexTypes
-                    .Any(x => x.DeclaredProperties.Where(y => y.Type.TypeKind() == EdmTypeKind.Entity ||
-                                                            y.Type.TypeKind() == EdmTypeKind.Collection ||
-                                                            y.Type.TypeKind() == EdmTypeKind.Complex)
-                    .Any(z => z.Type.FullName().Equals(baseTypeName, StringComparison.OrdinalIgnoreCase)));
-                if (isReferencedInComplexType) return true;
-
                 // Is base type referenced as a type in any parameter in an action
                 bool isReferencedInAction = actions.Any(x => x.Parameters.Any(x => x.Type.FullName().Equals(baseTypeName, StringComparison.OrdinalIgnoreCase)));
                 if (isReferencedInAction) return true;
 
                 // Recursively check the base type
-                return model.IsBaseTypeReferencedAsTypeInModel(baseType.BaseType, structuredTypes, complexTypes, actions);
+                return model.IsBaseTypeReferencedAsTypeInModel(baseType.BaseType, structuredTypes, actions);
             }
 
             return false;
