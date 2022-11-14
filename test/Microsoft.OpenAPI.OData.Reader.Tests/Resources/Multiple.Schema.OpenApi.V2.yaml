@@ -3152,7 +3152,6 @@ definitions:
         type: string
       FileSized:
         format: decimal
-        multipleOf: 1
         type: number
       FileClientPath:
         type: string
@@ -3168,15 +3167,12 @@ definitions:
         type: integer
       IsNa:
         format: decimal
-        multipleOf: 1
         type: number
       IsRejected:
         format: decimal
-        multipleOf: 1
         type: number
       IsReviewed:
         format: decimal
-        multipleOf: 1
         type: number
       NaDescription:
         type: string
@@ -3221,7 +3217,6 @@ definitions:
         type: integer
       IsApproved:
         format: decimal
-        multipleOf: 1
         type: number
       CategoryId:
         format: int32
@@ -3463,7 +3458,6 @@ definitions:
         type: integer
       TotalSize:
         format: decimal
-        multipleOf: 1
         type: number
       FilesCounter:
         format: int32
@@ -3794,7 +3788,6 @@ definitions:
         type: string
       Sized:
         format: decimal
-        multipleOf: 1
         type: number
       ActualName:
         type: string
@@ -3827,11 +3820,9 @@ definitions:
         type: integer
       Latitude:
         format: decimal
-        multipleOf: 1
         type: number
       Longitude:
         format: decimal
-        multipleOf: 1
         type: number
       Documents:
         type: array

@@ -4348,7 +4348,6 @@
         },
         "FileSized": {
           "format": "decimal",
-          "multipleOf": 1,
           "type": "number"
         },
         "FileClientPath": {
@@ -4368,17 +4367,14 @@
         },
         "IsNa": {
           "format": "decimal",
-          "multipleOf": 1,
           "type": "number"
         },
         "IsRejected": {
           "format": "decimal",
-          "multipleOf": 1,
           "type": "number"
         },
         "IsReviewed": {
           "format": "decimal",
-          "multipleOf": 1,
           "type": "number"
         },
         "NaDescription": {
@@ -4436,7 +4432,6 @@
         },
         "IsApproved": {
           "format": "decimal",
-          "multipleOf": 1,
           "type": "number"
         },
         "CategoryId": {
@@ -4746,7 +4741,6 @@
         },
         "TotalSize": {
           "format": "decimal",
-          "multipleOf": 1,
           "type": "number"
         },
         "FilesCounter": {
@@ -5169,7 +5163,6 @@
         },
         "Sized": {
           "format": "decimal",
-          "multipleOf": 1,
           "type": "number"
         },
         "ActualName": {
@@ -5210,12 +5203,10 @@
         },
         "Latitude": {
           "format": "decimal",
-          "multipleOf": 1,
           "type": "number"
         },
         "Longitude": {
           "format": "decimal",
-          "multipleOf": 1,
           "type": "number"
         },
         "Documents": {
