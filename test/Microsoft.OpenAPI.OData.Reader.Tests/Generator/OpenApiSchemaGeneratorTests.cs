@@ -263,7 +263,7 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = new(model, new OpenApiConvertSettings
             {
                 EnableDiscriminatorValue = true,
-                EnableTypeDisambiguationForOdataTypePropertyDefaultValue = enableTypeDisambiguationForOdataTypePropertyDefaultValue
+                EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = enableTypeDisambiguationForOdataTypePropertyDefaultValue
             });
 
             IEdmComplexType complex = model.SchemaElements.OfType<IEdmComplexType>().First(t => t.Name == "userSet");
@@ -749,7 +749,7 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = new(model, new OpenApiConvertSettings
             {
                 EnableDiscriminatorValue = true,
-                EnableTypeDisambiguationForOdataTypePropertyDefaultValue = enableTypeDisambiguationForOdataTypePropertyDefaultValue
+                EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = enableTypeDisambiguationForOdataTypePropertyDefaultValue
             });
 
             IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "event");

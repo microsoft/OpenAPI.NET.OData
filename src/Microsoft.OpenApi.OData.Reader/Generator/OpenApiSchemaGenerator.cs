@@ -570,7 +570,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     bool isBaseTypeEntity = Constants.EntityName.Equals(structuredType.BaseType?.FullTypeName().Split('.').Last(), StringComparison.OrdinalIgnoreCase);
                     bool isBaseTypeAbstractNonEntity = (structuredType.BaseType?.IsAbstract ?? false) && !isBaseTypeEntity;
 
-                    if (!context.Settings.EnableTypeDisambiguationForOdataTypePropertyDefaultValue ||
+                    if (!context.Settings.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty ||
                         isBaseTypeAbstractNonEntity ||
                         context.Model.IsBaseTypeReferencedAsTypeInModel(structuredType.BaseType))
                     {

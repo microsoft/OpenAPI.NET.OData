@@ -306,7 +306,7 @@ namespace Microsoft.OpenApi.OData
         /// If false, the value will be set conditionally based on whether the type's base type is abstract (and not entity)
         /// and is referenced in the properties of a structural property or an action.
         /// </summary>
-        public bool EnableTypeDisambiguationForOdataTypePropertyDefaultValue { get; set; } = false;
+        public bool EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty { get; set; } = false;
 
         internal OpenApiConvertSettings Clone()
         {
@@ -356,7 +356,7 @@ namespace Microsoft.OpenApi.OData
                 EnableCount = this.EnableCount,
                 IncludeAssemblyInfo = this.IncludeAssemblyInfo,
                 EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
-                EnableTypeDisambiguationForOdataTypePropertyDefaultValue = this.EnableTypeDisambiguationForOdataTypePropertyDefaultValue
+                EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = this.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty
             };
 
             return newSettings;
