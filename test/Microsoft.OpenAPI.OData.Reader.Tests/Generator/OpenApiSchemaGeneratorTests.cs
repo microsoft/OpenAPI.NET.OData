@@ -256,14 +256,14 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateStructuredTypeSchemaForComplexTypeWithDiscriminatorValueEnabledReturnsCorrectSchema(bool enableDefaultValueForOdataTypeProperty)
+        public void CreateStructuredTypeSchemaForComplexTypeWithDiscriminatorValueEnabledReturnsCorrectSchema(bool enableTypeDisambiguationForOdataTypePropertyDefaultValue)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             ODataContext context = new(model, new OpenApiConvertSettings
             {
                 EnableDiscriminatorValue = true,
-                EnableDefaultValueForOdataTypeProperty = enableDefaultValueForOdataTypeProperty
+                EnableTypeDisambiguationForOdataTypePropertyDefaultValue = enableTypeDisambiguationForOdataTypePropertyDefaultValue
             });
 
             IEdmComplexType complex = model.SchemaElements.OfType<IEdmComplexType>().First(t => t.Name == "userSet");
@@ -275,7 +275,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(json);
-            string expected = enableDefaultValueForOdataTypeProperty ?
+            string expected = enableTypeDisambiguationForOdataTypePropertyDefaultValue ?
                 @"{
   ""title"": ""userSet"",
   ""required"": [
@@ -288,8 +288,7 @@ namespace Microsoft.OpenApi.OData.Tests
       ""nullable"": true
     },
     ""@odata.type"": {
-      ""type"": ""string"",
-      ""default"": ""#microsoft.graph.userSet""
+      ""type"": ""string""
     }
   },
   ""discriminator"": {
@@ -317,7 +316,8 @@ namespace Microsoft.OpenApi.OData.Tests
       ""nullable"": true
     },
     ""@odata.type"": {
-      ""type"": ""string""
+      ""type"": ""string"",
+      ""default"": ""#microsoft.graph.userSet""
     }
   },
   ""discriminator"": {
@@ -742,14 +742,14 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateStructuredTypeSchemaForEntityTypeWithDefaultValueForOdataTypePropertyEnabledOrDisabledReturnsCorrectSchema(bool enableDefaultValueForOdataTypeProperty)
+        public void CreateStructuredTypeSchemaForEntityTypeWithDefaultValueForOdataTypePropertyEnabledOrDisabledReturnsCorrectSchema(bool enableTypeDisambiguationForOdataTypePropertyDefaultValue)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             ODataContext context = new(model, new OpenApiConvertSettings
             {
                 EnableDiscriminatorValue = true,
-                EnableDefaultValueForOdataTypeProperty = enableDefaultValueForOdataTypeProperty
+                EnableTypeDisambiguationForOdataTypePropertyDefaultValue = enableTypeDisambiguationForOdataTypePropertyDefaultValue
             });
 
             IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "event");

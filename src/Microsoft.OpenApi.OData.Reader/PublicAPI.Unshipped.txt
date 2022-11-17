@@ -11,10 +11,10 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.ge
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.set -> void
-Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDefaultValueForOdataTypeProperty.get -> bool
-Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDefaultValueForOdataTypeProperty.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataAnnotationReferencesForResponses.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataAnnotationReferencesForResponses.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableTypeDisambiguationForOdataTypePropertyDefaultValue.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableTypeDisambiguationForOdataTypePropertyDefaultValue.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get -> System.Collections.Generic.Dictionary<string, string>
