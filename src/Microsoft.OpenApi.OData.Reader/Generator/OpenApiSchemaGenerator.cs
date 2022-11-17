@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -566,17 +566,28 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (context.Settings.EnableDiscriminatorValue)
                 {
+                    OpenApiString defaultValue = null;
+                    bool isBaseTypeEntity = Constants.EntityName.Equals(structuredType.BaseType?.FullTypeName().Split('.').Last(), StringComparison.OrdinalIgnoreCase);
+                    bool isBaseTypeAbstractNonEntity = (structuredType.BaseType?.IsAbstract ?? false) && !isBaseTypeEntity;
+
+                    if (!context.Settings.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty ||
+                        isBaseTypeAbstractNonEntity ||
+                        context.Model.IsBaseTypeReferencedAsTypeInModel(structuredType.BaseType))
+                    {
+                        defaultValue = new("#" + structuredType.FullTypeName());
+                    }
+
                     if (!schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
                     {
                         Type = Constants.StringType,
-                        Default = new OpenApiString("#" + structuredType.FullTypeName()),
+                        Default = defaultValue,
                     }))
                     {
                         throw new InvalidOperationException(
                             $"Property {Constants.OdataType} is already present in schema {structuredType.FullTypeName()}; verify CSDL.");
                     }
                     schema.Required.Add(Constants.OdataType);
-                }                
+                }
 
                 // It optionally can contain the field description,
                 // whose value is the value of the unqualified annotation Core.Description of the structured type.
