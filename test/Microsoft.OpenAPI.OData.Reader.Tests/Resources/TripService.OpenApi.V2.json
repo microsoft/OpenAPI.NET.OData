@@ -724,7 +724,6 @@
         ],
         "summary": "Update the ref of navigation property EmergencyAuthority in Airports",
         "operationId": "Airports.UpdateRefEmergencyAuthority",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -735,9 +734,7 @@
             "x-ms-docs-key-type": "Airport"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPutBody"
           }
         ],
         "responses": {
@@ -1705,12 +1702,9 @@
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
         "operationId": "Me.UpdateRefBestFriend",
-        "consumes": [ ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPutBody"
           }
         ],
         "responses": {
@@ -3092,12 +3086,9 @@
         ],
         "summary": "Create new navigation property ref to Friends for Me",
         "operationId": "Me.CreateRefFriends",
-        "consumes": [ ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -4262,12 +4253,9 @@
         ],
         "summary": "Create new navigation property ref to Peers for Me",
         "operationId": "Me.CreateRefPeers",
-        "consumes": [ ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -4419,12 +4407,9 @@
         ],
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "Me.GetPeersForTrip",
-        "consumes": [ ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/GetPeersForTripRequestBody"
           }
         ],
         "responses": {
@@ -5203,12 +5188,9 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for Me",
         "operationId": "Me.CreateRefDirectReports",
-        "consumes": [ ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -5284,12 +5266,9 @@
         "summary": "Invoke action ShareTrip",
         "description": "Details of the shared trip.",
         "operationId": "Me.ShareTrip",
-        "consumes": [ ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/ShareTripRequestBody"
           }
         ],
         "responses": {
@@ -6078,7 +6057,6 @@
         ],
         "summary": "Create new navigation property ref to PlanItems for Me",
         "operationId": "Me.Trips.CreateRefPlanItems",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -6092,9 +6070,7 @@
             "x-ms-docs-key-type": "Trip"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -6849,7 +6825,6 @@
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
         "operationId": "NewComePeople.UpdateRefBestFriend",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -6860,9 +6835,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPutBody"
           }
         ],
         "responses": {
@@ -8365,7 +8338,6 @@
         ],
         "summary": "Create new navigation property ref to Friends for NewComePeople",
         "operationId": "NewComePeople.CreateRefFriends",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -8376,9 +8348,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -8933,7 +8903,6 @@
         ],
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "NewComePeople.Person.GetPeersForTrip",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -8944,9 +8913,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/GetPeersForTripRequestBody"
           }
         ],
         "responses": {
@@ -9016,7 +8983,6 @@
         "summary": "Invoke action ShareTrip",
         "description": "Details of the shared trip.",
         "operationId": "NewComePeople.Person.ShareTrip",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -9027,9 +8993,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/ShareTripRequestBody"
           }
         ],
         "responses": {
@@ -9822,7 +9786,6 @@
         ],
         "summary": "Create new navigation property ref to PlanItems for NewComePeople",
         "operationId": "NewComePeople.Trips.CreateRefPlanItems",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -9844,9 +9807,7 @@
             "x-ms-docs-key-type": "Trip"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -10699,7 +10660,6 @@
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
         "operationId": "People.UpdateRefBestFriend",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -10710,9 +10670,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPutBody"
           }
         ],
         "responses": {
@@ -12320,7 +12278,6 @@
         ],
         "summary": "Create new navigation property ref to Friends for People",
         "operationId": "People.CreateRefFriends",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -12331,9 +12288,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -13680,7 +13635,6 @@
         ],
         "summary": "Create new navigation property ref to Peers for People",
         "operationId": "People.CreateRefPeers",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -13691,9 +13645,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -13863,7 +13815,6 @@
         ],
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "People.Person.GetPeersForTrip",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -13874,9 +13825,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/GetPeersForTripRequestBody"
           }
         ],
         "responses": {
@@ -14775,7 +14724,6 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for People",
         "operationId": "People.CreateRefDirectReports",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -14786,9 +14734,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -14872,7 +14818,6 @@
         "summary": "Invoke action ShareTrip",
         "description": "Details of the shared trip.",
         "operationId": "People.Person.ShareTrip",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -14883,9 +14828,7 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/ShareTripRequestBody"
           }
         ],
         "responses": {
@@ -15762,7 +15705,6 @@
         ],
         "summary": "Create new navigation property ref to PlanItems for People",
         "operationId": "People.Trips.CreateRefPlanItems",
-        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -15784,9 +15726,7 @@
             "x-ms-docs-key-type": "Trip"
           },
           {
-            "in": "body",
-            "name": "body",
-            "schema": { }
+            "$ref": "#/parameters/refPostBody"
           }
         ],
         "responses": {
@@ -17069,6 +17009,64 @@
       "name": "$search",
       "description": "Search items by search phrases",
       "type": "string"
+    },
+    "refPostBody": {
+      "in": "body",
+      "name": "body",
+      "description": "New navigation property ref value",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/ReferenceCreate"
+      }
+    },
+    "refPutBody": {
+      "in": "body",
+      "name": "body",
+      "description": "New navigation property ref values",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/ReferenceUpdate"
+      }
+    },
+    "ShareTripRequestBody": {
+      "in": "body",
+      "name": "body",
+      "description": "Action parameters",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string"
+          },
+          "tripId": {
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "GetPeersForTripRequestBody": {
+      "in": "body",
+      "name": "body",
+      "description": "Action parameters",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string"
+          },
+          "tripId": {
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "type": "integer"
+          }
+        }
+      }
     }
   },
   "responses": {
