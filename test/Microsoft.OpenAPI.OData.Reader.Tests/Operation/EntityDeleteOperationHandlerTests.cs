@@ -53,7 +53,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.Customer.DeleteCustomer", delete.OperationId);
+                Assert.Equal("Customers.Customer.DeleteCustomerByID", delete.OperationId);
             }
             else
             {

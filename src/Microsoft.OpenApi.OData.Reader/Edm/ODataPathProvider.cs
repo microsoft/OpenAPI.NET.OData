@@ -723,6 +723,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             (!isCollection && !_oDataPathKindsToSkipForOperationsWhenSingle.Contains(subPath.Kind))))
                     {
                         if (lastPathSegment is ODataTypeCastSegment && !convertSettings.AppendBoundOperationsOnDerivedTypeCastSegments) continue;
+                        if (lastPathSegment is ODataKeySegment segment && segment.IsAlternateKey) continue;
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));
                         AppendPath(newPath);

@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18316, paths.Count());
+            Assert.Equal(18317, paths.Count());
         }
 
         [Fact]
@@ -66,9 +66,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Act
             var paths = provider.GetPaths(model, settings);
 
+
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(19773, paths.Count());
+            Assert.Equal(19774, paths.Count());
         }
 
         [Fact]
@@ -615,6 +616,89 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                 Assert.DoesNotContain(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                 Assert.DoesNotContain(TodosValuePath, paths.Select(p => p.GetPathItemName()));
             }
+        }
+
+        [Fact]
+        public void GetPathsWithAlternateKeyParametersWorks()
+        {
+            string alternateKeyProperty =
+@"<Property Name=""SSN"" Type=""Edm.String""/>
+    <Annotation Term=""OData.Community.Keys.V1.AlternateKeys"">
+        <Collection>
+            <Record Type=""OData.Community.Keys.V1.AlternateKey"">
+                <PropertyValue Property=""Key"">
+                <Collection>
+                    <Record Type=""OData.Community.Keys.V1.PropertyRef"">
+                        <PropertyValue Property=""Alias"" String=""SSN""/>
+                        <PropertyValue Property=""Name"" PropertyPath=""SSN""/>
+                    </Record>
+                </Collection>
+                </PropertyValue>
+            </Record>
+        </Collection>
+    </Annotation>";
+
+            IEdmModel model = GetEdmModel(null, null, alternateKeyProperty);
+            ODataPathProvider provider = new();
+            OpenApiConvertSettings settings = new()
+            {
+                EnableKeyAsSegment = true
+            };
+
+            // Act
+            IEnumerable<ODataPath> paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(4, paths.Count());
+
+            List<string> pathItems = paths.Select(p => p.GetPathItemName(settings)).ToList();
+            Assert.Contains("/Customers/{ID}", pathItems);
+            Assert.Contains("/Customers(SSN='{SSN}')", pathItems);
+        }
+
+        [Fact]
+        public void GetPathsWithCompositeAlternateKeyParametersWorks()
+        {
+            string alternateKeyProperty =
+@"<Property Name=""UserName"" Type=""Edm.String"" Nullable=""false"" />
+    <Property Name=""AppID"" Type=""Edm.String"" Nullable=""false"" />
+    <Annotation Term=""OData.Community.Keys.V1.AlternateKeys"">
+        <Collection>
+            <Record Type=""OData.Community.Keys.V1.AlternateKey"">
+                <PropertyValue Property=""Key"">
+                <Collection>
+                    <Record Type=""OData.Community.Keys.V1.PropertyRef"">
+                        <PropertyValue Property=""Alias"" String=""username""/>
+                        <PropertyValue Property=""Name"" PropertyPath=""UserName""/>
+                    </Record>
+                    <Record Type=""OData.Community.Keys.V1.PropertyRef"">
+                        <PropertyValue Property=""Alias"" String=""appId""/>
+                        <PropertyValue Property=""Name"" PropertyPath=""AppID""/>
+                    </Record>
+                </Collection>
+                </PropertyValue>
+            </Record>
+        </Collection>
+    </Annotation>";
+
+            IEdmModel model = GetEdmModel(null, null, alternateKeyProperty);
+            ODataPathProvider provider = new();
+            OpenApiConvertSettings settings = new()
+            {
+                EnableKeyAsSegment = true
+            };
+
+            // Act
+            IEnumerable<ODataPath> paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(4, paths.Count());
+
+            List<string> pathItems = paths.Select(p => p.GetPathItemName(settings)).ToList();
+            Assert.Contains("/Customers/{ID}", pathItems);
+            Assert.Contains("/Customers(username='{UserName}',appId='{AppID}')", pathItems);
         }
 
         private static IEdmModel GetEdmModel(string schemaElement, string containerElement, string propertySchema = null)
