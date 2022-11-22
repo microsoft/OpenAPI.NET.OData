@@ -623,12 +623,12 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         {
             string alternateKeyProperty =
 @"<Property Name=""SSN"" Type=""Edm.String""/>
-    <Annotation Term=""OData.Community.Keys.V1.AlternateKeys"">
+    <Annotation Term=""Org.OData.Core.V1.AlternateKeys"">
         <Collection>
-            <Record Type=""OData.Community.Keys.V1.AlternateKey"">
+            <Record Type=""Org.OData.Core.V1.AlternateKey"">
                 <PropertyValue Property=""Key"">
                 <Collection>
-                    <Record Type=""OData.Community.Keys.V1.PropertyRef"">
+                    <Record Type=""Org.OData.Core.V1.PropertyRef"">
                         <PropertyValue Property=""Alias"" String=""SSN""/>
                         <PropertyValue Property=""Name"" PropertyPath=""SSN""/>
                     </Record>
@@ -660,19 +660,19 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         [Fact]
         public void GetPathsWithCompositeAlternateKeyParametersWorks()
         {
-            string alternateKeyProperty =
+            string alternateKeyProperties =
 @"<Property Name=""UserName"" Type=""Edm.String"" Nullable=""false"" />
     <Property Name=""AppID"" Type=""Edm.String"" Nullable=""false"" />
-    <Annotation Term=""OData.Community.Keys.V1.AlternateKeys"">
+    <Annotation Term=""Org.OData.Core.V1.AlternateKeys"">
         <Collection>
-            <Record Type=""OData.Community.Keys.V1.AlternateKey"">
+            <Record Type=""Org.OData.Core.V1.AlternateKey"">
                 <PropertyValue Property=""Key"">
                 <Collection>
-                    <Record Type=""OData.Community.Keys.V1.PropertyRef"">
+                    <Record Type=""Org.OData.Core.V1.PropertyRef"">
                         <PropertyValue Property=""Alias"" String=""username""/>
                         <PropertyValue Property=""Name"" PropertyPath=""UserName""/>
                     </Record>
-                    <Record Type=""OData.Community.Keys.V1.PropertyRef"">
+                    <Record Type=""Org.OData.Core.V1.PropertyRef"">
                         <PropertyValue Property=""Alias"" String=""appId""/>
                         <PropertyValue Property=""Name"" PropertyPath=""AppID""/>
                     </Record>
@@ -682,7 +682,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         </Collection>
     </Annotation>";
 
-            IEdmModel model = GetEdmModel(null, null, alternateKeyProperty);
+            IEdmModel model = GetEdmModel(null, null, alternateKeyProperties);
             ODataPathProvider provider = new();
             OpenApiConvertSettings settings = new()
             {

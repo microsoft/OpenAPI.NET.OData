@@ -545,19 +545,16 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
             IEnumerable<IDictionary<string, IEdmProperty>> alternateKeys = _model.GetAlternateKeysAnnotation(entityType);
-            if (alternateKeys.Count() > 0)
+            foreach (var keyDict in alternateKeys)
             {
-                foreach (var keyDict in alternateKeys)
+                ODataPath keyPath = currentPath.Clone();
+                IDictionary<string, string> keyMappings = keyDict.ToDictionary(static k => k.Key, static v => v.Value.Name);
+                ODataKeySegment keySegment = new(entityType, keyMappings)
                 {
-                    ODataPath keyPath = currentPath.Clone();
-                    IDictionary<string, string> keyMappings = keyDict.ToDictionary(static k => k.Key, static v => v.Value.Name);
-                    ODataKeySegment keySegment = new(entityType, keyMappings)
-                    {
-                        IsAlternateKey = true
-                    };
-                    keyPath.Push(keySegment);
-                    AppendPath(keyPath);
-                }
+                    IsAlternateKey = true
+                };
+                keyPath.Push(keySegment);
+                AppendPath(keyPath);
             }
         }
 
