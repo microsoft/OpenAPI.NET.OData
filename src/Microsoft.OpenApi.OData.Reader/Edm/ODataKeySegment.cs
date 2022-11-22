@@ -60,7 +60,7 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 IList<string> keys = IsAlternateKey ? 
                     KeyMappings.Values.ToList() : 
-                    EntityType.Key().Select(x => x.Name).ToList();
+                    EntityType.Key().Select(static x => x.Name).ToList();
 
                 return string.Join(",", keys);
             }

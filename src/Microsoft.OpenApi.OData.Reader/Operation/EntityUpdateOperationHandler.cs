@@ -43,7 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             {
                 string typeName = entityType.Name;
-                string keyName = string.Join("", keySegment.Identifier.Split(',').Select(x => Utils.UpperFirstChar(x)));
+                string keyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
                 operation.OperationId = $"{EntitySet.Name}.{typeName}.Update{Utils.UpperFirstChar(typeName)}By{keyName}";
             }
         }
