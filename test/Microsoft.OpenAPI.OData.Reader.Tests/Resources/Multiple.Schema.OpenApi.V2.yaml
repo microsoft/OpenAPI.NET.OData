@@ -665,7 +665,6 @@ paths:
         - Documents.RevisionDto
       summary: Create new navigation property ref to Revisions for Documents
       operationId: Documents.CreateRefRevisions
-      consumes: [ ]
       parameters:
         - in: path
           name: Id
@@ -676,9 +675,7 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: DocumentDto
-        - in: body
-          name: body
-          schema: { }
+        - $ref: '#/parameters/refPostBody'
       responses:
         '204':
           description: Success
@@ -1416,7 +1413,6 @@ paths:
         - Libraries.DocumentDto
       summary: Create new navigation property ref to Documents for Libraries
       operationId: Libraries.CreateRefDocuments
-      consumes: [ ]
       parameters:
         - in: path
           name: Id
@@ -1427,9 +1423,7 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: LibraryDto
-        - in: body
-          name: body
-          schema: { }
+        - $ref: '#/parameters/refPostBody'
       responses:
         '204':
           description: Success
@@ -1808,7 +1802,6 @@ paths:
         - Revisions.Document
       summary: Update the ref of navigation property Document in Revisions
       operationId: Revisions.UpdateRefDocument
-      consumes: [ ]
       parameters:
         - in: path
           name: Id
@@ -1819,9 +1812,7 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: RevisionDto
-        - in: body
-          name: body
-          schema: { }
+        - $ref: '#/parameters/refPutBody'
       responses:
         '204':
           description: Success
@@ -2631,7 +2622,6 @@ paths:
         - Tasks.RevisionDto
       summary: Create new navigation property ref to Revisions for Tasks
       operationId: Tasks.CreateRefRevisions
-      consumes: [ ]
       parameters:
         - in: path
           name: Id
@@ -2642,9 +2632,7 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: DocumentDto
-        - in: body
-          name: body
-          schema: { }
+        - $ref: '#/parameters/refPostBody'
       responses:
         '204':
           description: Success
@@ -4298,6 +4286,20 @@ parameters:
     name: $search
     description: Search items by search phrases
     type: string
+  refPostBody:
+    in: body
+    name: body
+    description: New navigation property ref value
+    required: true
+    schema:
+      $ref: '#/definitions/ReferenceCreate'
+  refPutBody:
+    in: body
+    name: body
+    description: New navigation property ref values
+    required: true
+    schema:
+      $ref: '#/definitions/ReferenceUpdate'
 responses:
   error:
     description: error
