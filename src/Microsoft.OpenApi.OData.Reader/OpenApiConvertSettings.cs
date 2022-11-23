@@ -137,6 +137,11 @@ namespace Microsoft.OpenApi.OData
         public bool EnableDerivedTypesReferencesForRequestBody { get; set; } = false;
 
         /// <summary>
+        /// Gets/sets a value indicating whether or not to generate paths with alternate key parameters
+        /// </summary>
+        public bool AddAlternateKeyPaths { get; set; } = false;
+
+        /// <summary>
         /// Gets/sets a value that specifies a prefix to be prepended to all generated paths.
         /// </summary>
         public string PathPrefix
@@ -356,7 +361,8 @@ namespace Microsoft.OpenApi.OData
                 EnableCount = this.EnableCount,
                 IncludeAssemblyInfo = this.IncludeAssemblyInfo,
                 EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
-                EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = this.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty
+                EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = this.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty,
+                AddAlternateKeyPaths = this.AddAlternateKeyPaths
             };
 
             return newSettings;

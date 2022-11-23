@@ -103,8 +103,8 @@ paths:
     get:
       tags:
         - Categories.CategoryDto
-      summary: Get entity from Categories by key
-      operationId: Categories.CategoryDto.GetCategoryDto
+      summary: Get entity from Categories by key (Id)
+      operationId: Categories.CategoryDto.GetCategoryDtoById
       parameters:
         - name: Id
           in: path
@@ -159,8 +159,8 @@ paths:
     patch:
       tags:
         - Categories.CategoryDto
-      summary: Update entity in Categories
-      operationId: Categories.CategoryDto.UpdateCategoryDto
+      summary: Update entity in Categories by key (Id)
+      operationId: Categories.CategoryDto.UpdateCategoryDtoById
       parameters:
         - name: Id
           in: path
@@ -189,8 +189,8 @@ paths:
     delete:
       tags:
         - Categories.CategoryDto
-      summary: Delete entity from Categories
-      operationId: Categories.CategoryDto.DeleteCategoryDto
+      summary: Delete entity from Categories by key (Id)
+      operationId: Categories.CategoryDto.DeleteCategoryDtoById
       parameters:
         - name: Id
           in: path
@@ -336,8 +336,8 @@ paths:
     get:
       tags:
         - Documents.DocumentDto
-      summary: Get entity from Documents by key
-      operationId: Documents.DocumentDto.GetDocumentDto
+      summary: Get entity from Documents by key (Id)
+      operationId: Documents.DocumentDto.GetDocumentDtoById
       parameters:
         - name: Id
           in: path
@@ -405,8 +405,8 @@ paths:
     patch:
       tags:
         - Documents.DocumentDto
-      summary: Update entity in Documents
-      operationId: Documents.DocumentDto.UpdateDocumentDto
+      summary: Update entity in Documents by key (Id)
+      operationId: Documents.DocumentDto.UpdateDocumentDtoById
       parameters:
         - name: Id
           in: path
@@ -435,8 +435,8 @@ paths:
     delete:
       tags:
         - Documents.DocumentDto
-      summary: Delete entity from Documents
-      operationId: Documents.DocumentDto.DeleteDocumentDto
+      summary: Delete entity from Documents by key (Id)
+      operationId: Documents.DocumentDto.DeleteDocumentDtoById
       parameters:
         - name: Id
           in: path
@@ -1058,8 +1058,8 @@ paths:
     get:
       tags:
         - Libraries.LibraryDto
-      summary: Get entity from Libraries by key
-      operationId: Libraries.LibraryDto.GetLibraryDto
+      summary: Get entity from Libraries by key (Id)
+      operationId: Libraries.LibraryDto.GetLibraryDtoById
       parameters:
         - name: Id
           in: path
@@ -1130,8 +1130,8 @@ paths:
     patch:
       tags:
         - Libraries.LibraryDto
-      summary: Update entity in Libraries
-      operationId: Libraries.LibraryDto.UpdateLibraryDto
+      summary: Update entity in Libraries by key (Id)
+      operationId: Libraries.LibraryDto.UpdateLibraryDtoById
       parameters:
         - name: Id
           in: path
@@ -1160,8 +1160,8 @@ paths:
     delete:
       tags:
         - Libraries.LibraryDto
-      summary: Delete entity from Libraries
-      operationId: Libraries.LibraryDto.DeleteLibraryDto
+      summary: Delete entity from Libraries by key (Id)
+      operationId: Libraries.LibraryDto.DeleteLibraryDtoById
       parameters:
         - name: Id
           in: path
@@ -1773,8 +1773,8 @@ paths:
     get:
       tags:
         - Revisions.RevisionDto
-      summary: Get entity from Revisions by key
-      operationId: Revisions.RevisionDto.GetRevisionDto
+      summary: Get entity from Revisions by key (Id)
+      operationId: Revisions.RevisionDto.GetRevisionDtoById
       parameters:
         - name: Id
           in: path
@@ -1847,8 +1847,8 @@ paths:
     patch:
       tags:
         - Revisions.RevisionDto
-      summary: Update entity in Revisions
-      operationId: Revisions.RevisionDto.UpdateRevisionDto
+      summary: Update entity in Revisions by key (Id)
+      operationId: Revisions.RevisionDto.UpdateRevisionDtoById
       parameters:
         - name: Id
           in: path
@@ -1877,8 +1877,8 @@ paths:
     delete:
       tags:
         - Revisions.RevisionDto
-      summary: Delete entity from Revisions
-      operationId: Revisions.RevisionDto.DeleteRevisionDto
+      summary: Delete entity from Revisions by key (Id)
+      operationId: Revisions.RevisionDto.DeleteRevisionDtoById
       parameters:
         - name: Id
           in: path
@@ -2600,8 +2600,8 @@ paths:
     get:
       tags:
         - Tasks.DocumentDto
-      summary: Get entity from Tasks by key
-      operationId: Tasks.DocumentDto.GetDocumentDto
+      summary: Get entity from Tasks by key (Id)
+      operationId: Tasks.DocumentDto.GetDocumentDtoById
       parameters:
         - name: Id
           in: path
@@ -2669,8 +2669,8 @@ paths:
     patch:
       tags:
         - Tasks.DocumentDto
-      summary: Update entity in Tasks
-      operationId: Tasks.DocumentDto.UpdateDocumentDto
+      summary: Update entity in Tasks by key (Id)
+      operationId: Tasks.DocumentDto.UpdateDocumentDtoById
       parameters:
         - name: Id
           in: path
@@ -2699,8 +2699,8 @@ paths:
     delete:
       tags:
         - Tasks.DocumentDto
-      summary: Delete entity from Tasks
-      operationId: Tasks.DocumentDto.DeleteDocumentDto
+      summary: Delete entity from Tasks by key (Id)
+      operationId: Tasks.DocumentDto.DeleteDocumentDtoById
       parameters:
         - name: Id
           in: path

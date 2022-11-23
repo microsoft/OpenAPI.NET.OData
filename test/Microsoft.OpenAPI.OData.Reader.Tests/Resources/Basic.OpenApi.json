@@ -138,8 +138,8 @@
         "tags": [
           "City.City"
         ],
-        "summary": "Get entity from City by key",
-        "operationId": "City.City.GetCity",
+        "summary": "Get entity from City by key (Name)",
+        "operationId": "City.City.GetCityByName",
         "parameters": [
           {
             "name": "Name",
@@ -208,8 +208,8 @@
         "tags": [
           "City.City"
         ],
-        "summary": "Update entity in City",
-        "operationId": "City.City.UpdateCity",
+        "summary": "Update entity in City by key (Name)",
+        "operationId": "City.City.UpdateCityByName",
         "parameters": [
           {
             "name": "Name",
@@ -248,8 +248,8 @@
         "tags": [
           "City.City"
         ],
-        "summary": "Delete entity from City",
-        "operationId": "City.City.DeleteCity",
+        "summary": "Delete entity from City by key (Name)",
+        "operationId": "City.City.DeleteCityByName",
         "parameters": [
           {
             "name": "Name",
@@ -425,8 +425,8 @@
         "tags": [
           "CountryOrRegion.CountryOrRegion"
         ],
-        "summary": "Get entity from CountryOrRegion by key",
-        "operationId": "CountryOrRegion.CountryOrRegion.GetCountryOrRegion",
+        "summary": "Get entity from CountryOrRegion by key (Name)",
+        "operationId": "CountryOrRegion.CountryOrRegion.GetCountryOrRegionByName",
         "parameters": [
           {
             "name": "Name",
@@ -495,8 +495,8 @@
         "tags": [
           "CountryOrRegion.CountryOrRegion"
         ],
-        "summary": "Update entity in CountryOrRegion",
-        "operationId": "CountryOrRegion.CountryOrRegion.UpdateCountryOrRegion",
+        "summary": "Update entity in CountryOrRegion by key (Name)",
+        "operationId": "CountryOrRegion.CountryOrRegion.UpdateCountryOrRegionByName",
         "parameters": [
           {
             "name": "Name",
@@ -535,8 +535,8 @@
         "tags": [
           "CountryOrRegion.CountryOrRegion"
         ],
-        "summary": "Delete entity from CountryOrRegion",
-        "operationId": "CountryOrRegion.CountryOrRegion.DeleteCountryOrRegion",
+        "summary": "Delete entity from CountryOrRegion by key (Name)",
+        "operationId": "CountryOrRegion.CountryOrRegion.DeleteCountryOrRegionByName",
         "parameters": [
           {
             "name": "Name",
@@ -814,8 +814,8 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Get entity from People by key",
-        "operationId": "People.Person.GetPerson",
+        "summary": "Get entity from People by key (UserName)",
+        "operationId": "People.Person.GetPersonByUserName",
         "parameters": [
           {
             "name": "UserName",
@@ -887,8 +887,8 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Update entity in People",
-        "operationId": "People.Person.UpdatePerson",
+        "summary": "Update entity in People by key (UserName)",
+        "operationId": "People.Person.UpdatePersonByUserName",
         "parameters": [
           {
             "name": "UserName",
@@ -927,8 +927,8 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Delete entity from People",
-        "operationId": "People.Person.DeletePerson",
+        "summary": "Delete entity from People by key (UserName)",
+        "operationId": "People.Person.DeletePersonByUserName",
         "parameters": [
           {
             "name": "UserName",

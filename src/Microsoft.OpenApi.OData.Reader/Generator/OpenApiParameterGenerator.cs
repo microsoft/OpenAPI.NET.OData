@@ -158,9 +158,11 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(keySegment, nameof(keySegment));
 
-            List<OpenApiParameter> parameters = new();
             IEdmEntityType entityType = keySegment.EntityType;
-          
+            if (keySegment.IsAlternateKey)
+                return CreateAlternateKeyParameters(context, entityType);
+
+            List<OpenApiParameter> parameters = new();
             IList<IEdmStructuralProperty> keys = entityType.Key().ToList();
             if (keys.Count() == 1)
             {
@@ -211,7 +213,45 @@ namespace Microsoft.OpenApi.OData.Generator
                     parameters.Add(parameter);
                 }
             }
+            return parameters;
+        }
 
+        private static IList<OpenApiParameter> CreateAlternateKeyParameters(ODataContext context, IEdmEntityType entityType)
+        {
+            IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
+            IEnumerable<IDictionary<string, IEdmProperty>> alternateKeys = context.Model.GetAlternateKeysAnnotation(entityType);
+            foreach (var alternateKey in alternateKeys)
+            {
+                if (alternateKey.Count() == 1)
+                {
+                    parameters.Add(
+                        new OpenApiParameter
+                        {
+                            Name = alternateKey.First().Key,
+                            In = ParameterLocation.Path,
+                            Description = $"Alternate key: {alternateKey.First().Value.Name} of {entityType.Name}",
+                            Schema = context.CreateEdmTypeSchema(alternateKey.First().Value.Type),
+                            Required = true
+                        }
+                     );
+                }
+                else
+                {
+                    foreach (var compositekey in alternateKey)
+                    {
+                        parameters.Add(
+                            new OpenApiParameter
+                            {
+                                Name = compositekey.Key,
+                                In = ParameterLocation.Path,
+                                Description = $"Composite alternate key: {compositekey.Value.Name} of {entityType.Name}",
+                                Schema = context.CreateEdmTypeSchema(compositekey.Value.Type),
+                                Required = true
+                            }
+                        );
+                    }
+                }
+            }
             return parameters;
         }
 

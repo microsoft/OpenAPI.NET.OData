@@ -38,6 +38,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public static IEdmModel CompositeKeyModel { get; }
 
         public static IEdmModel TripServiceModel { get; }
+
         public static IEdmModel ContractServiceModel { get; }
 
         public static IEdmModel GraphBetaModel { get; }
@@ -302,7 +303,7 @@ namespace Microsoft.OpenApi.OData.Tests
             model.AddElement(customer);
 
             var container = new EdmEntityContainer("NS", "Container");
-            var customers = container.AddEntitySet("Customers", customer);
+            container.AddEntitySet("Customers", customer);
             model.AddElement(container);
             return model;
         }

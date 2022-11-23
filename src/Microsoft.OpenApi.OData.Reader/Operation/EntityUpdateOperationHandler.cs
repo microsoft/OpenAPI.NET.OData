@@ -32,9 +32,10 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             IEdmEntityType entityType = EntitySet.EntityType();
+            ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
 
             // Summary and Description
-            string placeHolder = "Update entity in " + EntitySet.Name;
+            string placeHolder = $"Update entity in {EntitySet.Name} by key ({keySegment.Identifier})";
             operation.Summary = _updateRestrictions?.Description ?? placeHolder;
             operation.Description = _updateRestrictions?.LongDescription;
 
@@ -42,7 +43,8 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             {
                 string typeName = entityType.Name;
-                operation.OperationId = EntitySet.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
+                string keyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
+                operation.OperationId = $"{EntitySet.Name}.{typeName}.Update{Utils.UpperFirstChar(typeName)}By{keyName}";
             }
         }
 

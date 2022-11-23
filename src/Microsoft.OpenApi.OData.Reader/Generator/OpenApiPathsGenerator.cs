@@ -30,7 +30,7 @@ namespace Microsoft.OpenApi.OData.Generator
             // Due to the power and flexibility of OData a full representation of all service capabilities
             // in the Paths Object is typically not feasible, so this mapping only describes the minimum
             // information desired in the Paths Object.
-            OpenApiPaths paths = new OpenApiPaths();
+            OpenApiPaths paths = new();
             foreach (var item in context.CreatePathItems())
             {
                 paths.Add(item.Key, item.Value);

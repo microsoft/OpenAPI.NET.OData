@@ -38,6 +38,11 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Is true if key segment is alternate key
+        /// </summary>
+        public bool IsAlternateKey { get; set; } = false;
+
+        /// <summary>
         /// Gets the key/template mappings.
         /// </summary>
         public IDictionary<string, string> KeyMappings { get; }
@@ -53,13 +58,11 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             get
             {
-                IList<string> keys = new List<string>();
-                foreach (var key in EntityType.Key())
-                {
-                    keys.Add(key.Name);
-                }
+                IList<string> keys = IsAlternateKey ? 
+                    KeyMappings.Values.ToList() : 
+                    EntityType.Key().Select(static x => x.Name).ToList();
 
-                return String.Join(",", keys);
+                return string.Join(",", keys);
             }
         }
 
@@ -77,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Edm
             // Use the output key/template mapping
             if (KeyMappings != null)
             {
-                if (KeyMappings.Count == 1)
+                if (KeyMappings.Count == 1 && !IsAlternateKey)
                 {
                     var key = KeyMappings.First();
                     return $"{{{key.Value}}}";
@@ -114,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     keyStrings.Add($"{keyProperty.Name}={quote}{{{name}}}{quote}");
                 }
 
-                return String.Join(",", keyStrings);
+                return string.Join(",", keyStrings);
             }
         }
 
