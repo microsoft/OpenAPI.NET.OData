@@ -40,8 +40,11 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
-            ODataPathProvider provider = new ODataPathProvider();
-            var settings = new OpenApiConvertSettings();
+            ODataPathProvider provider = new();
+            OpenApiConvertSettings settings = new()
+            {
+                AddAlternateKeyPaths = true
+            };
 
             // Act
             var paths = provider.GetPaths(model, settings);
@@ -69,7 +72,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(19774, paths.Count());
+            Assert.Equal(19773, paths.Count());
         }
 
         [Fact]
@@ -642,7 +645,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             ODataPathProvider provider = new();
             OpenApiConvertSettings settings = new()
             {
-                EnableKeyAsSegment = true
+                EnableKeyAsSegment = true,
+                AddAlternateKeyPaths= true
             };
 
             // Act
@@ -686,7 +690,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             ODataPathProvider provider = new();
             OpenApiConvertSettings settings = new()
             {
-                EnableKeyAsSegment = true
+                EnableKeyAsSegment = true,
+                AddAlternateKeyPaths = true
             };
 
             // Act

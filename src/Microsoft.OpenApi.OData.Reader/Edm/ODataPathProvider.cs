@@ -196,7 +196,8 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 CreateTypeCastPaths(path, convertSettings, entityType, entitySet, true); // ~/entitySet/subType
 
-                CreateAlternateKeyPath(path, entityType); //~/entitySet/{alternateKeyId}
+                if (convertSettings.AddAlternateKeyPaths)
+                    CreateAlternateKeyPath(path, entityType); //~/entitySet/{alternateKeyId}
 
                 path.Push(new ODataKeySegment(entityType)); // ~/entitySet/{id}
                 AppendPath(path.Clone());
