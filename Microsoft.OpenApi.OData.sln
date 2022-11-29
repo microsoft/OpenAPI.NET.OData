@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi.OData.Reader", "src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj", "{FF3ACD93-19E0-486C-9C0F-FA1C2E7FC8C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi.OData.Reader", "src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj", "{FF3ACD93-19E0-486C-9C0F-FA1C2E7FC8C2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi.OData.Reader.Tests", "test\Microsoft.OpenApi.OData.Reader.Tests\Microsoft.OpenApi.OData.Reader.Tests.csproj", "{90A98718-75EB-4E2B-A51E-66ACF66F15B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi.OData.Reader.Tests", "test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj", "{90A98718-75EB-4E2B-A51E-66ACF66F15B4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OoasUtil", "src\OoasUtil\OoasUtil.csproj", "{2D06C660-B550-432C-8062-D4070F7C371F}"
 EndProject
