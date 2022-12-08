@@ -95,7 +95,6 @@ paths:
           in: path
           description: 'key: Name of City'
           required: true
-          style: simple
           schema:
             type: string
           x-ms-docs-key-type: City
@@ -143,7 +142,6 @@ paths:
           in: path
           description: 'key: Name of City'
           required: true
-          style: simple
           schema:
             type: string
           x-ms-docs-key-type: City
@@ -170,14 +168,12 @@ paths:
           in: path
           description: 'key: Name of City'
           required: true
-          style: simple
           schema:
             type: string
           x-ms-docs-key-type: City
         - name: If-Match
           in: header
           description: ETag
-          style: simple
           schema:
             type: string
       responses:
@@ -285,7 +281,6 @@ paths:
           in: path
           description: 'key: Name of CountryOrRegion'
           required: true
-          style: simple
           schema:
             type: string
           x-ms-docs-key-type: CountryOrRegion
@@ -333,7 +328,6 @@ paths:
           in: path
           description: 'key: Name of CountryOrRegion'
           required: true
-          style: simple
           schema:
             type: string
           x-ms-docs-key-type: CountryOrRegion
@@ -360,14 +354,12 @@ paths:
           in: path
           description: 'key: Name of CountryOrRegion'
           required: true
-          style: simple
           schema:
             type: string
           x-ms-docs-key-type: CountryOrRegion
         - name: If-Match
           in: header
           description: ETag
-          style: simple
           schema:
             type: string
       responses:
@@ -548,7 +540,6 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
-          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -599,7 +590,6 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
-          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
@@ -626,14 +616,12 @@ paths:
           in: path
           description: 'key: UserName of Person'
           required: true
-          style: simple
           schema:
             type: string
           x-ms-docs-key-type: Person
         - name: If-Match
           in: header
           description: ETag
-          style: simple
           schema:
             type: string
       responses:
