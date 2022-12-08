@@ -2382,8 +2382,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -3711,8 +3710,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -4646,8 +4644,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -5920,8 +5917,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -7626,8 +7622,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -9654,8 +9649,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -11468,8 +11462,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -13003,8 +12996,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -14092,8 +14084,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -15552,8 +15543,7 @@
             "in": "query",
             "name": "@id",
             "description": "Delete Uri",
-            "type": "string",
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {

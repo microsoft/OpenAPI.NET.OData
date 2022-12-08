@@ -564,7 +564,6 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
-          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -1161,7 +1160,6 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
-          collectionFormat: multi
       responses:
         '204':
           description: Success
@@ -2521,7 +2519,6 @@ paths:
           name: '@id'
           description: Delete Uri
           type: string
-          collectionFormat: multi
       responses:
         '204':
           description: Success
