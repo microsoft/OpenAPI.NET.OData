@@ -9,6 +9,7 @@ using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation
@@ -27,6 +28,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         internal ODataSegment LastSecondSegment { get; set; }
         private const int SecondLastSegmentIndex = 2;
+        private IEdmVocabularyAnnotatable annotatable;
+
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
@@ -36,6 +39,16 @@ namespace Microsoft.OpenApi.OData.Operation
             int count = path.Segments.Count;
             if(count >= SecondLastSegmentIndex)
                 LastSecondSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex);
+
+            if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
+            {
+                annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
+                annotatable ??= sourceSegment.NavigationSource as IEdmSingleton;
+            }
+            else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
+            {
+                annotatable = navigationPropertySegment.NavigationProperty;
+            }
         }
 
         /// <inheritdoc/>
@@ -75,19 +88,86 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetResponses(operation);
         }
 
+        /// <inheritdoc/>
+        protected override void SetParameters(OpenApiOperation operation)
+        {
+            base.SetParameters(operation);
+
+            IEdmEntityType entity = (annotatable as IEdmEntitySet)?.EntityType()
+                                    ?? (annotatable as IEdmNavigationProperty)?.ToEntityType();
+
+            if (annotatable is IEdmSingleton singleton)
+            {
+                // $select
+                OpenApiParameter parameter = Context.CreateSelect(singleton);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                // $expand
+                parameter = Context.CreateExpand(singleton);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+            }
+            else
+            {
+                // EntityEet or Collection-Valued Navigation Property
+
+                OpenApiParameter parameter = Context.CreateTop(annotatable);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = Context.CreateSkip(annotatable);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = Context.CreateSearch(annotatable);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = Context.CreateFilter(annotatable);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = Context.CreateCount(annotatable);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = Context.CreateOrderBy(annotatable, entity);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = Context.CreateSelect(annotatable, entity);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = Context.CreateExpand(annotatable, entity);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+            }
+        }
+
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            IEdmVocabularyAnnotatable annotatable = null;            
-            if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
-            {
-                annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
-                annotatable ??= sourceSegment.NavigationSource as IEdmSingleton;
-            }
-            else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
-            {
-                annotatable = navigationPropertySegment.NavigationProperty;
-            }
-
             if (annotatable == null)
             {
                 return;
