@@ -195,6 +195,52 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Categories-2f72
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Name
+              - Name desc
+              - Description
+              - Description desc
+              - CreationDate
+              - CreationDate desc
+              - ModificationDate
+              - ModificationDate desc
+              - DomainId
+              - DomainId desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Name
+              - Description
+              - CreationDate
+              - ModificationDate
+              - DomainId
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -585,6 +631,86 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Number
+              - Number desc
+              - DocumentId
+              - DocumentId desc
+              - DocumentName
+              - DocumentName desc
+              - DocumentDescription
+              - DocumentDescription desc
+              - CreationDate
+              - CreationDate desc
+              - CreatedBy
+              - CreatedBy desc
+              - IsReviewed
+              - IsReviewed desc
+              - ReviewedBy
+              - ReviewedBy desc
+              - ReviewedDate
+              - ReviewedDate desc
+              - IsApproved
+              - IsApproved desc
+              - ApprovedBy
+              - ApprovedBy desc
+              - ApprovedDate
+              - ApprovedDate desc
+              - IsRejected
+              - IsRejected desc
+              - RejectedBy
+              - RejectedBy desc
+              - RejectedDate
+              - RejectedDate desc
+              - DomainId
+              - DomainId desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Number
+              - DocumentId
+              - DocumentName
+              - DocumentDescription
+              - CreationDate
+              - CreatedBy
+              - IsReviewed
+              - ReviewedBy
+              - ReviewedDate
+              - IsApproved
+              - ApprovedBy
+              - ApprovedDate
+              - IsRejected
+              - RejectedBy
+              - RejectedDate
+              - DomainId
+              - Document
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Document
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -805,6 +931,86 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Number
+              - Number desc
+              - DocumentId
+              - DocumentId desc
+              - DocumentName
+              - DocumentName desc
+              - DocumentDescription
+              - DocumentDescription desc
+              - CreationDate
+              - CreationDate desc
+              - CreatedBy
+              - CreatedBy desc
+              - IsReviewed
+              - IsReviewed desc
+              - ReviewedBy
+              - ReviewedBy desc
+              - ReviewedDate
+              - ReviewedDate desc
+              - IsApproved
+              - IsApproved desc
+              - ApprovedBy
+              - ApprovedBy desc
+              - ApprovedDate
+              - ApprovedDate desc
+              - IsRejected
+              - IsRejected desc
+              - RejectedBy
+              - RejectedBy desc
+              - RejectedDate
+              - RejectedDate desc
+              - DomainId
+              - DomainId desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Number
+              - DocumentId
+              - DocumentName
+              - DocumentDescription
+              - CreationDate
+              - CreatedBy
+              - IsReviewed
+              - ReviewedBy
+              - ReviewedDate
+              - IsApproved
+              - ApprovedBy
+              - ApprovedDate
+              - IsRejected
+              - RejectedBy
+              - RejectedDate
+              - DomainId
+              - Document
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Document
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -815,6 +1021,66 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Documents-f555
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Name
+              - Name desc
+              - Description
+              - Description desc
+              - Filename
+              - Filename desc
+              - NumberOfRevisions
+              - NumberOfRevisions desc
+              - Suffix
+              - Suffix desc
+              - DomainId
+              - DomainId desc
+              - ModificationDate
+              - ModificationDate desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - Tags
+              - Tags desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Name
+              - Description
+              - Filename
+              - NumberOfRevisions
+              - Suffix
+              - DomainId
+              - ModificationDate
+              - ModifiedBy
+              - Tags
+              - Revisions
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Revisions
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1326,6 +1592,65 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Name
+              - Name desc
+              - Description
+              - Description desc
+              - Filename
+              - Filename desc
+              - NumberOfRevisions
+              - NumberOfRevisions desc
+              - Suffix
+              - Suffix desc
+              - DomainId
+              - DomainId desc
+              - ModificationDate
+              - ModificationDate desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - Tags
+              - Tags desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Name
+              - Description
+              - Filename
+              - NumberOfRevisions
+              - Suffix
+              - DomainId
+              - ModificationDate
+              - ModifiedBy
+              - Tags
+              - Revisions
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Revisions
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1346,6 +1671,65 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: LibraryDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Name
+              - Name desc
+              - Description
+              - Description desc
+              - Filename
+              - Filename desc
+              - NumberOfRevisions
+              - NumberOfRevisions desc
+              - Suffix
+              - Suffix desc
+              - DomainId
+              - DomainId desc
+              - ModificationDate
+              - ModificationDate desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - Tags
+              - Tags desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Name
+              - Description
+              - Filename
+              - NumberOfRevisions
+              - Suffix
+              - DomainId
+              - ModificationDate
+              - ModifiedBy
+              - Tags
+              - Revisions
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Revisions
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1433,6 +1817,81 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Libraries-e13e
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Name
+              - Name desc
+              - Number
+              - Number desc
+              - Description
+              - Description desc
+              - LibraryTemplateId
+              - LibraryTemplateId desc
+              - ParentTypeId
+              - ParentTypeId desc
+              - ParentId
+              - ParentId desc
+              - AllowMultiple
+              - AllowMultiple desc
+              - AutoCreate
+              - AutoCreate desc
+              - TypeId
+              - TypeId desc
+              - DomainId
+              - DomainId desc
+              - CreatedBy
+              - CreatedBy desc
+              - CreationDate
+              - CreationDate desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - ModificationDate
+              - ModificationDate desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Name
+              - Number
+              - Description
+              - LibraryTemplateId
+              - ParentTypeId
+              - ParentId
+              - AllowMultiple
+              - AutoCreate
+              - TypeId
+              - DomainId
+              - CreatedBy
+              - CreationDate
+              - ModifiedBy
+              - ModificationDate
+              - Documents
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Documents
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1989,6 +2448,80 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: RevisionDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Name
+              - Name desc
+              - Number
+              - Number desc
+              - Description
+              - Description desc
+              - LibraryTemplateId
+              - LibraryTemplateId desc
+              - ParentTypeId
+              - ParentTypeId desc
+              - ParentId
+              - ParentId desc
+              - AllowMultiple
+              - AllowMultiple desc
+              - AutoCreate
+              - AutoCreate desc
+              - TypeId
+              - TypeId desc
+              - DomainId
+              - DomainId desc
+              - CreatedBy
+              - CreatedBy desc
+              - CreationDate
+              - CreationDate desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - ModificationDate
+              - ModificationDate desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Name
+              - Number
+              - Description
+              - LibraryTemplateId
+              - ParentTypeId
+              - ParentId
+              - AllowMultiple
+              - AutoCreate
+              - TypeId
+              - DomainId
+              - CreatedBy
+              - CreationDate
+              - ModifiedBy
+              - ModificationDate
+              - Documents
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Documents
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2140,6 +2673,80 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: RevisionDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Name
+              - Name desc
+              - Number
+              - Number desc
+              - Description
+              - Description desc
+              - LibraryTemplateId
+              - LibraryTemplateId desc
+              - ParentTypeId
+              - ParentTypeId desc
+              - ParentId
+              - ParentId desc
+              - AllowMultiple
+              - AllowMultiple desc
+              - AutoCreate
+              - AutoCreate desc
+              - TypeId
+              - TypeId desc
+              - DomainId
+              - DomainId desc
+              - CreatedBy
+              - CreatedBy desc
+              - CreationDate
+              - CreationDate desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - ModificationDate
+              - ModificationDate desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Name
+              - Number
+              - Description
+              - LibraryTemplateId
+              - ParentTypeId
+              - ParentId
+              - AllowMultiple
+              - AutoCreate
+              - TypeId
+              - DomainId
+              - CreatedBy
+              - CreationDate
+              - ModifiedBy
+              - ModificationDate
+              - Documents
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Documents
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2150,6 +2757,87 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Revisions-c6a5
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Number
+              - Number desc
+              - DocumentId
+              - DocumentId desc
+              - DocumentName
+              - DocumentName desc
+              - DocumentDescription
+              - DocumentDescription desc
+              - CreationDate
+              - CreationDate desc
+              - CreatedBy
+              - CreatedBy desc
+              - IsReviewed
+              - IsReviewed desc
+              - ReviewedBy
+              - ReviewedBy desc
+              - ReviewedDate
+              - ReviewedDate desc
+              - IsApproved
+              - IsApproved desc
+              - ApprovedBy
+              - ApprovedBy desc
+              - ApprovedDate
+              - ApprovedDate desc
+              - IsRejected
+              - IsRejected desc
+              - RejectedBy
+              - RejectedBy desc
+              - RejectedDate
+              - RejectedDate desc
+              - DomainId
+              - DomainId desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Number
+              - DocumentId
+              - DocumentName
+              - DocumentDescription
+              - CreationDate
+              - CreatedBy
+              - IsReviewed
+              - ReviewedBy
+              - ReviewedDate
+              - IsApproved
+              - ApprovedBy
+              - ApprovedDate
+              - IsRejected
+              - RejectedBy
+              - RejectedDate
+              - DomainId
+              - Document
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Document
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2540,6 +3228,86 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Number
+              - Number desc
+              - DocumentId
+              - DocumentId desc
+              - DocumentName
+              - DocumentName desc
+              - DocumentDescription
+              - DocumentDescription desc
+              - CreationDate
+              - CreationDate desc
+              - CreatedBy
+              - CreatedBy desc
+              - IsReviewed
+              - IsReviewed desc
+              - ReviewedBy
+              - ReviewedBy desc
+              - ReviewedDate
+              - ReviewedDate desc
+              - IsApproved
+              - IsApproved desc
+              - ApprovedBy
+              - ApprovedBy desc
+              - ApprovedDate
+              - ApprovedDate desc
+              - IsRejected
+              - IsRejected desc
+              - RejectedBy
+              - RejectedBy desc
+              - RejectedDate
+              - RejectedDate desc
+              - DomainId
+              - DomainId desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Number
+              - DocumentId
+              - DocumentName
+              - DocumentDescription
+              - CreationDate
+              - CreatedBy
+              - IsReviewed
+              - ReviewedBy
+              - ReviewedDate
+              - IsApproved
+              - ApprovedBy
+              - ApprovedDate
+              - IsRejected
+              - RejectedBy
+              - RejectedDate
+              - DomainId
+              - Document
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Document
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2760,6 +3528,86 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Number
+              - Number desc
+              - DocumentId
+              - DocumentId desc
+              - DocumentName
+              - DocumentName desc
+              - DocumentDescription
+              - DocumentDescription desc
+              - CreationDate
+              - CreationDate desc
+              - CreatedBy
+              - CreatedBy desc
+              - IsReviewed
+              - IsReviewed desc
+              - ReviewedBy
+              - ReviewedBy desc
+              - ReviewedDate
+              - ReviewedDate desc
+              - IsApproved
+              - IsApproved desc
+              - ApprovedBy
+              - ApprovedBy desc
+              - ApprovedDate
+              - ApprovedDate desc
+              - IsRejected
+              - IsRejected desc
+              - RejectedBy
+              - RejectedBy desc
+              - RejectedDate
+              - RejectedDate desc
+              - DomainId
+              - DomainId desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Number
+              - DocumentId
+              - DocumentName
+              - DocumentDescription
+              - CreationDate
+              - CreatedBy
+              - IsReviewed
+              - ReviewedBy
+              - ReviewedDate
+              - IsApproved
+              - ApprovedBy
+              - ApprovedDate
+              - IsRejected
+              - RejectedBy
+              - RejectedDate
+              - DomainId
+              - Document
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Document
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2770,6 +3618,66 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Tasks-2961
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Name
+              - Name desc
+              - Description
+              - Description desc
+              - Filename
+              - Filename desc
+              - NumberOfRevisions
+              - NumberOfRevisions desc
+              - Suffix
+              - Suffix desc
+              - DomainId
+              - DomainId desc
+              - ModificationDate
+              - ModificationDate desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - Tags
+              - Tags desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - Name
+              - Description
+              - Filename
+              - NumberOfRevisions
+              - Suffix
+              - DomainId
+              - ModificationDate
+              - ModifiedBy
+              - Tags
+              - Revisions
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Revisions
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'

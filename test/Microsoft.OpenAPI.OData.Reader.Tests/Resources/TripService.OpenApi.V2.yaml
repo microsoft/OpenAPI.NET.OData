@@ -171,6 +171,40 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Airlines-27a7
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - AirlineCode
+              - AirlineCode desc
+              - Name
+              - Name desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - AirlineCode
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -644,6 +678,39 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Airport
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - AirlineCode
+              - AirlineCode desc
+              - Name
+              - Name desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - AirlineCode
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -680,6 +747,39 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Airport
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - AirlineCode
+              - AirlineCode desc
+              - Name
+              - Name desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - AirlineCode
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -769,6 +869,46 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Airports-60cc
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+              - IcaoCode
+              - IcaoCode desc
+              - IataCode
+              - IataCode desc
+              - Location
+              - Location desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+              - IcaoCode
+              - IataCode
+              - Location
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1008,6 +1148,46 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.AddressInfo-38f2
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+              - IcaoCode
+              - IcaoCode desc
+              - IataCode
+              - IataCode desc
+              - Location
+              - Location desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+              - IcaoCode
+              - IataCode
+              - Location
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1042,6 +1222,46 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5575
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+              - IcaoCode
+              - IcaoCode desc
+              - IataCode
+              - IataCode desc
+              - Location
+              - Location desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+              - IcaoCode
+              - IataCode
+              - Location
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1311,6 +1531,46 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.AddressInfo-b695
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+              - IcaoCode
+              - IcaoCode desc
+              - IataCode
+              - IataCode desc
+              - Location
+              - Location desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+              - IcaoCode
+              - IataCode
+              - Location
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1345,6 +1605,46 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-0105
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+              - IcaoCode
+              - IcaoCode desc
+              - IataCode
+              - IataCode desc
+              - Location
+              - Location desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+              - IcaoCode
+              - IataCode
+              - Location
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1797,6 +2097,45 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+              - IcaoCode
+              - IcaoCode desc
+              - IataCode
+              - IataCode desc
+              - Location
+              - Location desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+              - IcaoCode
+              - IataCode
+              - Location
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1845,6 +2184,45 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+              - IcaoCode
+              - IcaoCode desc
+              - IataCode
+              - IataCode desc
+              - Location
+              - Location desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+              - IcaoCode
+              - IataCode
+              - Location
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2080,6 +2458,73 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Friends-182b
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2254,6 +2699,73 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2355,6 +2867,73 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2752,6 +3331,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2800,6 +3445,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2913,6 +3624,73 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-9fc2
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -3414,6 +4192,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -3462,6 +4306,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -3575,6 +4485,73 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-8b92
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4200,6 +5177,48 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - PlanItemId desc
+              - ConfirmationCode
+              - ConfirmationCode desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+              - Duration
+              - Duration desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - ConfirmationCode
+              - StartsAt
+              - EndsAt
+              - Duration
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4300,6 +5319,59 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4633,6 +5705,63 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4669,6 +5798,63 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4988,6 +6174,63 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5036,6 +6279,63 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5525,6 +6825,63 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5573,6 +6930,63 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5809,6 +7223,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5984,6 +7464,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6086,6 +7632,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6833,6 +8445,48 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - PlanItemId desc
+              - ConfirmationCode
+              - ConfirmationCode desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+              - Duration
+              - Duration desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - ConfirmationCode
+              - StartsAt
+              - EndsAt
+              - Duration
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6933,6 +8587,59 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6943,6 +8650,73 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.NewComePeople-55d5
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -7326,6 +9100,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -7374,6 +9214,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -7699,6 +9605,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -7747,6 +9719,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8266,6 +10304,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8326,6 +10430,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8598,6 +10768,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8797,6 +11033,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8911,6 +11213,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -9373,6 +11741,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -9433,6 +11867,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -9571,6 +12071,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -10149,6 +12715,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -10209,6 +12841,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -10347,6 +13045,72 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11056,6 +13820,48 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - PlanItemId desc
+              - ConfirmationCode
+              - ConfirmationCode desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+              - Duration
+              - Duration desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - ConfirmationCode
+              - StartsAt
+              - EndsAt
+              - Duration
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11174,6 +13980,59 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11195,6 +14054,72 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11300,6 +14225,77 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29
+      parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11405,6 +14401,77 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48
+      parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
