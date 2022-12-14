@@ -92,10 +92,6 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetParameters(OpenApiOperation operation)
         {
             base.SetParameters(operation);
-
-            IEdmEntityType entity = (annotatable as IEdmEntitySet)?.EntityType()
-                                    ?? (annotatable as IEdmNavigationProperty)?.ToEntityType();
-
             if (annotatable is IEdmSingleton singleton)
             {
                 // $select
@@ -114,7 +110,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else
             {
-                // EntityEet or Collection-Valued Navigation Property
+                // EntitySet or Collection-Valued Navigation Property
 
                 OpenApiParameter parameter = Context.CreateTop(annotatable);
                 if (parameter != null)
@@ -145,6 +141,9 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     operation.Parameters.Add(parameter);
                 }
+
+                IEdmEntityType entity = (annotatable as IEdmEntitySet)?.EntityType()
+                                        ?? (annotatable as IEdmNavigationProperty)?.ToEntityType();
 
                 parameter = Context.CreateOrderBy(annotatable, entity);
                 if (parameter != null)
