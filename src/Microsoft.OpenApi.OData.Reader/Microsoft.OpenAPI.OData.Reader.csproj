@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.2.0-preview8</Version>
+    <Version>1.2.0-preview9</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -30,6 +30,7 @@
 - Expands navigation properties of derived types only if declaring navigation property is a containment #269
 - Adds custom parameters to $count and ODataTypeCast paths' Get operations #207
 - Adds support for configuring the default value of derived types' @odata.type property #304
+- Adds OData query parameters to $count endpoints #313
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>

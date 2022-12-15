@@ -49,19 +49,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Get the number of the resource", operation.Summary);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(2, operation.Parameters.Count);
-            Assert.Collection(operation.Parameters,
-                item =>
-                {
-                    Assert.Equal("UserName", item.Name);
-                    Assert.Equal(ParameterLocation.Path, item.In);
-                },
-                item =>
-                {
-                    Assert.Equal("ConsistencyLevel", item.Name);
-                    Assert.Equal(ParameterLocation.Header, item.In);
-                });
-
+            Assert.Equal(4, operation.Parameters.Count);
+            Assert.Equal(new[] { "UserName", "ConsistencyLevel", "search", "filter"},
+                operation.Parameters.Select(x => x.Name ?? x.Reference.Id).ToList());
+            
             Assert.Null(operation.RequestBody);
 
             Assert.Equal(2, operation.Responses.Count);
@@ -105,18 +96,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal("Get the number of the resource", operation.Summary);
-
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(1, operation.Parameters.Count);
-            Assert.Collection(operation.Parameters,
-                item =>
-                {
-                    Assert.Equal("ConsistencyLevel", item.Name);
-                    Assert.Equal(ParameterLocation.Header, item.In);
-                });
+            Assert.Equal(3, operation.Parameters.Count);
+            Assert.Equal(new[] { "ConsistencyLevel", "search", "filter" },
+                operation.Parameters.Select(x => x.Name ?? x.Reference.Id).ToList());
 
             Assert.Null(operation.RequestBody);
-
             Assert.Equal(2, operation.Responses.Count);
             var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "200";
             Assert.Equal(new string[] { statusCode, "default" }, operation.Responses.Select(e => e.Key));

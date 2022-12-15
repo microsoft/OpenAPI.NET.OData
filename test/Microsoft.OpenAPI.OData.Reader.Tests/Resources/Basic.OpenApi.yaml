@@ -187,6 +187,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.City-8728
+      parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
       responses:
         '200':
           $ref: '#/components/responses/ODataCountResponse'
@@ -373,6 +376,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.CountryOrRegion-daf5
+      parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
       responses:
         '200':
           $ref: '#/components/responses/ODataCountResponse'
@@ -635,6 +641,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.People-dd8d
+      parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
       responses:
         '200':
           $ref: '#/components/responses/ODataCountResponse'

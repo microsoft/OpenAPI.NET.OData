@@ -9,6 +9,7 @@ using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation
@@ -27,6 +28,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         internal ODataSegment LastSecondSegment { get; set; }
         private const int SecondLastSegmentIndex = 2;
+        private IEdmVocabularyAnnotatable annotatable;
+
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
@@ -36,6 +39,15 @@ namespace Microsoft.OpenApi.OData.Operation
             int count = path.Segments.Count;
             if(count >= SecondLastSegmentIndex)
                 LastSecondSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex);
+
+            if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
+            {
+                annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
+            }
+            else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
+            {
+                annotatable = navigationPropertySegment.NavigationProperty;
+            }
         }
 
         /// <inheritdoc/>
@@ -75,19 +87,33 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetResponses(operation);
         }
 
-        protected override void AppendCustomParameters(OpenApiOperation operation)
+        /// <inheritdoc/>
+        protected override void SetParameters(OpenApiOperation operation)
         {
-            IEdmVocabularyAnnotatable annotatable = null;            
-            if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
+            base.SetParameters(operation);
+
+            if (annotatable == null)
             {
-                annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
-                annotatable ??= sourceSegment.NavigationSource as IEdmSingleton;
-            }
-            else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
-            {
-                annotatable = navigationPropertySegment.NavigationProperty;
+                return;
             }
 
+            OpenApiParameter parameter;
+
+            parameter = Context.CreateSearch(annotatable);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
+
+            parameter = Context.CreateFilter(annotatable);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
+        }
+
+        protected override void AppendCustomParameters(OpenApiOperation operation)
+        {
             if (annotatable == null)
             {
                 return;

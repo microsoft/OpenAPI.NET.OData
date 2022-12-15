@@ -171,6 +171,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Airlines-27a7
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -644,6 +647,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Airport
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -680,6 +685,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Airport
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -769,6 +776,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Airports-60cc
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1008,6 +1018,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.AddressInfo-38f2
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1042,6 +1055,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5575
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1311,6 +1327,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.AddressInfo-b695
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1345,6 +1364,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-0105
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1797,6 +1819,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -1845,6 +1869,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2080,6 +2106,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Friends-182b
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2254,6 +2283,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2355,6 +2387,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2752,6 +2787,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2800,6 +2837,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -2913,6 +2952,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-9fc2
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -3414,6 +3456,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -3462,6 +3506,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -3575,6 +3621,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-8b92
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4200,6 +4249,8 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4300,6 +4351,8 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4633,6 +4686,12 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4669,6 +4728,12 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -4988,6 +5053,12 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5036,6 +5107,12 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5525,6 +5602,12 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5573,6 +5656,12 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5809,6 +5898,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -5984,6 +6075,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6086,6 +6179,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6833,6 +6928,8 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6933,6 +7030,8 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -6943,6 +7042,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.NewComePeople-55d5
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -7326,6 +7428,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -7374,6 +7478,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -7699,6 +7805,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -7747,6 +7855,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8266,6 +8376,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8326,6 +8438,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8598,6 +8712,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8797,6 +8913,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -8911,6 +9029,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -9373,6 +9493,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -9433,6 +9555,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -9571,6 +9695,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -10149,6 +10275,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -10209,6 +10337,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -10347,6 +10477,8 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11056,6 +11188,8 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11174,6 +11308,8 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11195,6 +11331,8 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11300,6 +11438,13 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29
+      parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'
@@ -11405,6 +11550,13 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48
+      parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
       responses:
         '200':
           $ref: '#/responses/ODataCountResponse'

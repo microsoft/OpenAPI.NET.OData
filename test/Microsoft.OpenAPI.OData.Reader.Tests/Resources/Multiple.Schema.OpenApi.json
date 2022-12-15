@@ -313,6 +313,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Categories-2f72",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -917,6 +925,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -1266,6 +1280,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -1283,6 +1303,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Documents-f555",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -2087,6 +2115,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -2117,6 +2151,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -2253,6 +2293,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Libraries-e13e",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -3151,6 +3199,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -3389,6 +3443,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -3406,6 +3466,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Revisions-c6a5",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -4010,6 +4078,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -4359,6 +4433,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -4376,6 +4456,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Tasks-2961",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"

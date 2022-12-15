@@ -288,6 +288,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Airlines-27a7",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -1074,6 +1082,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Airport"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -1131,6 +1145,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Airport"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -1281,6 +1301,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Airports-60cc",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -1693,6 +1721,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.AddressInfo-38f2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -1740,6 +1776,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5575",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -2146,6 +2190,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.AddressInfo-b695",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -2193,6 +2245,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-0105",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -2899,6 +2959,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -2970,6 +3036,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -3336,6 +3408,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Friends-182b",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -3595,6 +3675,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -3747,6 +3835,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -4369,6 +4465,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -4440,6 +4542,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -4618,6 +4726,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Peers-9fc2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -5391,6 +5507,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -5462,6 +5584,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -5640,6 +5768,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.DirectReports-8b92",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -6602,6 +6738,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -6763,6 +6905,12 @@
                 "value": "eventual"
               }
             }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -7297,6 +7445,26 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -7354,6 +7522,26 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -7853,6 +8041,26 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -7924,6 +8132,26 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -8711,6 +8939,26 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -8788,6 +9036,26 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -9172,6 +9440,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -9447,6 +9721,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -9607,6 +9887,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -10823,6 +11109,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -10993,6 +11285,12 @@
                 "value": "eventual"
               }
             }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -11010,6 +11308,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.NewComePeople-55d5",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -11619,6 +11925,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -11690,6 +12002,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -12196,6 +12514,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -12267,6 +12591,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -13089,6 +13419,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -13180,6 +13516,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -13606,6 +13948,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -13909,6 +14257,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -14083,6 +14437,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -14825,6 +15185,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -14916,6 +15282,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -15134,6 +15506,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -16049,6 +16427,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -16140,6 +16524,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -16358,6 +16748,12 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -17470,6 +17866,12 @@
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -17661,6 +18063,12 @@
                 "value": "eventual"
               }
             }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -17699,6 +18107,12 @@
                 "value": "eventual"
               }
             }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
           }
         ],
         "responses": {
@@ -17867,6 +18281,28 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29",
+        "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"
@@ -18033,6 +18469,28 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48",
+        "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ODataCountResponse"

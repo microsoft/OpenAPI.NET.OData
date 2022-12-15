@@ -280,6 +280,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Categories-2f72",
+        "parameters": [
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/responses/ODataCountResponse"
@@ -813,6 +821,12 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
           }
         ],
         "responses": {
@@ -1130,6 +1144,12 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
           }
         ],
         "responses": {
@@ -1147,6 +1167,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Documents-f555",
+        "parameters": [
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/responses/ODataCountResponse"
@@ -1856,6 +1884,12 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
           }
         ],
         "responses": {
@@ -1884,6 +1918,12 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
           }
         ],
         "responses": {
@@ -2011,6 +2051,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Libraries-e13e",
+        "parameters": [
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/responses/ODataCountResponse"
@@ -2761,6 +2809,12 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
           }
         ],
         "responses": {
@@ -2976,6 +3030,12 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
           }
         ],
         "responses": {
@@ -2993,6 +3053,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Revisions-c6a5",
+        "parameters": [
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/responses/ODataCountResponse"
@@ -3526,6 +3594,12 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
           }
         ],
         "responses": {
@@ -3843,6 +3917,12 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
           }
         ],
         "responses": {
@@ -3860,6 +3940,14 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Tasks-2961",
+        "parameters": [
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/responses/ODataCountResponse"
