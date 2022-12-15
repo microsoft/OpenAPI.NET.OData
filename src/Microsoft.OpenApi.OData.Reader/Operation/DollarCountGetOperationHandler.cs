@@ -43,7 +43,6 @@ namespace Microsoft.OpenApi.OData.Operation
             if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
             {
                 annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
-                annotatable ??= sourceSegment.NavigationSource as IEdmSingleton;
             }
             else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
             {
@@ -92,22 +91,24 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetParameters(OpenApiOperation operation)
         {
             base.SetParameters(operation);
-            if (annotatable is not IEdmSingleton)
+
+            if (annotatable == null)
             {
-                // EntitySet or Collection-Valued Navigation Property
+                return;
+            }
 
-                OpenApiParameter parameter;
-                parameter = Context.CreateSearch(annotatable);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
+            OpenApiParameter parameter;
 
-                parameter = Context.CreateFilter(annotatable);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
+            parameter = Context.CreateSearch(annotatable);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
+
+            parameter = Context.CreateFilter(annotatable);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
             }
         }
 
