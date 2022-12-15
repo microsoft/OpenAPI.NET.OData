@@ -290,74 +290,10 @@
         "operationId": "Get.Count.Airlines-27a7",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "AirlineCode",
-                  "AirlineCode desc",
-                  "Name",
-                  "Name desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "AirlineCode",
-                  "Name"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -1148,74 +1084,10 @@
             "x-ms-docs-key-type": "Airport"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "AirlineCode",
-                  "AirlineCode desc",
-                  "Name",
-                  "Name desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "AirlineCode",
-                  "Name"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -1275,74 +1147,10 @@
             "x-ms-docs-key-type": "Airport"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "AirlineCode",
-                  "AirlineCode desc",
-                  "Name",
-                  "Name desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "AirlineCode",
-                  "Name"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -1495,80 +1303,10 @@
         "operationId": "Get.Count.Airports-60cc",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "Name desc",
-                  "IcaoCode",
-                  "IcaoCode desc",
-                  "IataCode",
-                  "IataCode desc",
-                  "Location",
-                  "Location desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "IcaoCode",
-                  "IataCode",
-                  "Location"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -1985,80 +1723,10 @@
         "operationId": "Get.Count.AddressInfo-38f2",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "Name desc",
-                  "IcaoCode",
-                  "IcaoCode desc",
-                  "IataCode",
-                  "IataCode desc",
-                  "Location",
-                  "Location desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "IcaoCode",
-                  "IataCode",
-                  "Location"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -2110,80 +1778,10 @@
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5575",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "Name desc",
-                  "IcaoCode",
-                  "IcaoCode desc",
-                  "IataCode",
-                  "IataCode desc",
-                  "Location",
-                  "Location desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "IcaoCode",
-                  "IataCode",
-                  "Location"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -2594,80 +2192,10 @@
         "operationId": "Get.Count.AddressInfo-b695",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "Name desc",
-                  "IcaoCode",
-                  "IcaoCode desc",
-                  "IataCode",
-                  "IataCode desc",
-                  "Location",
-                  "Location desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "IcaoCode",
-                  "IataCode",
-                  "Location"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -2719,80 +2247,10 @@
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-0105",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "Name desc",
-                  "IcaoCode",
-                  "IcaoCode desc",
-                  "IataCode",
-                  "IataCode desc",
-                  "Location",
-                  "Location desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "IcaoCode",
-                  "IataCode",
-                  "Location"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -3503,80 +2961,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "Name desc",
-                  "IcaoCode",
-                  "IcaoCode desc",
-                  "IataCode",
-                  "IataCode desc",
-                  "Location",
-                  "Location desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "IcaoCode",
-                  "IataCode",
-                  "Location"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -3650,80 +3038,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "Name desc",
-                  "IcaoCode",
-                  "IcaoCode desc",
-                  "IataCode",
-                  "IataCode desc",
-                  "Location",
-                  "Location desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "Name",
-                  "IcaoCode",
-                  "IataCode",
-                  "Location"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -4092,107 +3410,10 @@
         "operationId": "Get.Count.Friends-182b",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -4456,107 +3677,10 @@
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -4713,107 +3837,10 @@
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -5440,107 +4467,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -5614,107 +4544,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -5895,107 +4728,10 @@
         "operationId": "Get.Count.Peers-9fc2",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -6773,107 +5509,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -6947,107 +5586,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -7228,107 +5770,10 @@
         "operationId": "Get.Count.DirectReports-8b92",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -8295,83 +6740,10 @@
             "x-ms-docs-key-type": "Trip"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "PlanItemId",
-                  "PlanItemId desc",
-                  "ConfirmationCode",
-                  "ConfirmationCode desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc",
-                  "Duration",
-                  "Duration desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "PlanItemId",
-                  "ConfirmationCode",
-                  "StartsAt",
-                  "EndsAt",
-                  "Duration"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -8535,94 +6907,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "ShareId",
-                  "Name",
-                  "Budget",
-                  "Description",
-                  "Tags",
-                  "StartsAt",
-                  "EndsAt",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -9173,94 +7461,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "ShareId",
-                  "Name",
-                  "Budget",
-                  "Description",
-                  "Tags",
-                  "StartsAt",
-                  "EndsAt",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -9334,94 +7538,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "ShareId",
-                  "Name",
-                  "Budget",
-                  "Description",
-                  "Tags",
-                  "StartsAt",
-                  "EndsAt",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -9937,94 +8057,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "ShareId",
-                  "Name",
-                  "Budget",
-                  "Description",
-                  "Tags",
-                  "StartsAt",
-                  "EndsAt",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -10112,94 +8148,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "ShareId",
-                  "Name",
-                  "Budget",
-                  "Description",
-                  "Tags",
-                  "StartsAt",
-                  "EndsAt",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -11003,94 +8955,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "ShareId",
-                  "Name",
-                  "Budget",
-                  "Description",
-                  "Tags",
-                  "StartsAt",
-                  "EndsAt",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -11184,94 +9052,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "ShareId",
-                  "Name",
-                  "Budget",
-                  "Description",
-                  "Tags",
-                  "StartsAt",
-                  "EndsAt",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -11658,107 +9442,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -12036,107 +9723,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -12299,107 +9889,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -13618,83 +11111,10 @@
             "x-ms-docs-key-type": "Trip"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "PlanItemId",
-                  "PlanItemId desc",
-                  "ConfirmationCode",
-                  "ConfirmationCode desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc",
-                  "Duration",
-                  "Duration desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "PlanItemId",
-                  "ConfirmationCode",
-                  "StartsAt",
-                  "EndsAt",
-                  "Duration"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -13867,94 +11287,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "ShareId",
-                  "Name",
-                  "Budget",
-                  "Description",
-                  "Tags",
-                  "StartsAt",
-                  "EndsAt",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -13974,107 +11310,10 @@
         "operationId": "Get.Count.NewComePeople-55d5",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -14688,107 +11927,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -14862,107 +12004,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -15471,107 +12516,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -15645,107 +12593,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -16570,107 +13421,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -16764,107 +13518,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -17293,107 +13950,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -17699,107 +14259,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -17976,107 +14439,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -18821,107 +15187,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -19015,107 +15284,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -19336,107 +15508,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -20354,107 +16429,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -20548,107 +16526,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -20869,107 +16750,10 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -22084,83 +17868,10 @@
             "x-ms-docs-key-type": "Trip"
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "PlanItemId",
-                  "PlanItemId desc",
-                  "ConfirmationCode",
-                  "ConfirmationCode desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc",
-                  "Duration",
-                  "Duration desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "PlanItemId",
-                  "ConfirmationCode",
-                  "StartsAt",
-                  "EndsAt",
-                  "Duration"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -22354,94 +18065,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
-                  "StartsAt",
-                  "StartsAt desc",
-                  "EndsAt",
-                  "EndsAt desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "TripId",
-                  "ShareId",
-                  "Name",
-                  "Budget",
-                  "Description",
-                  "Tags",
-                  "StartsAt",
-                  "EndsAt",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "PlanItems"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -22482,107 +18109,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -22767,107 +18297,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -23052,107 +18485,10 @@
             }
           },
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
             "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "FirstName",
-                  "FirstName desc",
-                  "LastName",
-                  "LastName desc",
-                  "MiddleName",
-                  "MiddleName desc",
-                  "Gender",
-                  "Gender desc",
-                  "Age",
-                  "Age desc",
-                  "Emails",
-                  "Emails desc",
-                  "AddressInfo",
-                  "AddressInfo desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "FavoriteFeature",
-                  "FavoriteFeature desc",
-                  "Features",
-                  "Features desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {

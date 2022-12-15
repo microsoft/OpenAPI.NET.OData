@@ -49,8 +49,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Get the number of the resource", operation.Summary);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(10, operation.Parameters.Count);
-            Assert.Equal(new[] { "UserName", "ConsistencyLevel", "top", "skip", "search", "filter", "count", "$orderby", "$select", "$expand" },
+            Assert.Equal(4, operation.Parameters.Count);
+            Assert.Equal(new[] { "UserName", "ConsistencyLevel", "search", "filter"},
                 operation.Parameters.Select(x => x.Name ?? x.Reference.Id).ToList());
             
             Assert.Null(operation.RequestBody);
@@ -97,8 +97,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(operation);
             Assert.Equal("Get the number of the resource", operation.Summary);
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(9, operation.Parameters.Count);
-            Assert.Equal(new[] { "ConsistencyLevel", "top", "skip", "search", "filter", "count", "$orderby", "$select", "$expand" },
+            Assert.Equal(3, operation.Parameters.Count);
+            Assert.Equal(new[] { "ConsistencyLevel", "search", "filter" },
                 operation.Parameters.Select(x => x.Name ?? x.Reference.Id).ToList());
 
             Assert.Null(operation.RequestBody);
