@@ -92,38 +92,11 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetParameters(OpenApiOperation operation)
         {
             base.SetParameters(operation);
-            if (annotatable is IEdmSingleton singleton)
-            {
-                // $select
-                OpenApiParameter parameter = Context.CreateSelect(singleton);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                // $expand
-                parameter = Context.CreateExpand(singleton);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-            }
-            else
+            if (annotatable is not IEdmSingleton)
             {
                 // EntitySet or Collection-Valued Navigation Property
 
-                OpenApiParameter parameter = Context.CreateTop(annotatable);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateSkip(annotatable);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
+                OpenApiParameter parameter;
                 parameter = Context.CreateSearch(annotatable);
                 if (parameter != null)
                 {
@@ -131,33 +104,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
 
                 parameter = Context.CreateFilter(annotatable);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateCount(annotatable);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                IEdmEntityType entity = (annotatable as IEdmEntitySet)?.EntityType()
-                                        ?? (annotatable as IEdmNavigationProperty)?.ToEntityType();
-
-                parameter = Context.CreateOrderBy(annotatable, entity);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateSelect(annotatable, entity);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateExpand(annotatable, entity);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
