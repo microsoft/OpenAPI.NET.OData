@@ -960,7 +960,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Act
             schema = Common.EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, edmModel);
-            int derivedTypesCount = edmModel.FindDirectlyDerivedTypes(entityType).OfType<IEdmEntityType>().Count() + 1; // + 1 the base type
+            int derivedTypesCount = edmModel.FindAllDerivedTypes(entityType).OfType<IEdmEntityType>().Count() + 1; // + 1 the base type
 
             // Assert
             Assert.NotNull(schema.OneOf);
