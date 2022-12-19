@@ -24,7 +24,7 @@ namespace Microsoft.OpenApi.OData.Common
             Utils.CheckArgumentNull(edmModel, nameof(edmModel));
             if(structuredType is not IEdmSchemaElement schemaElement) throw new ArgumentException("The type is not a schema element.", nameof(structuredType));
 
-            IEnumerable<IEdmSchemaElement> derivedTypes = edmModel.FindDirectlyDerivedTypes(structuredType).OfType<IEdmSchemaElement>();
+            IEnumerable<IEdmSchemaElement> derivedTypes = edmModel.FindAllDerivedTypes(structuredType).OfType<IEdmSchemaElement>();
 
             if (!derivedTypes.Any())
             {
