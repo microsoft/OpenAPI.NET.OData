@@ -24,7 +24,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: windows-2019
+    runs-on: windows-latest
     permissions:
       actions: read
       contents: read
@@ -58,8 +58,11 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    # - name: Autobuild
+    #  uses: github/codeql-action/autobuild@v2
+    
+    - name: build
+      run: dotnet build src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj -c Release
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
