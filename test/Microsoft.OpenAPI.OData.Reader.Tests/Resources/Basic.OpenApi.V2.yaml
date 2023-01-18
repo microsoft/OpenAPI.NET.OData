@@ -78,8 +78,8 @@ paths:
     get:
       tags:
         - City.City
-      summary: Get entity from City by key (Name)
-      operationId: City.City.GetCityByName
+      summary: Get entity from City by key
+      operationId: City.City.GetCity
       produces:
         - application/json
       parameters:
@@ -116,8 +116,8 @@ paths:
     patch:
       tags:
         - City.City
-      summary: Update entity in City by key (Name)
-      operationId: City.City.UpdateCityByName
+      summary: Update entity in City
+      operationId: City.City.UpdateCity
       consumes:
         - application/json
       parameters:
@@ -142,8 +142,8 @@ paths:
     delete:
       tags:
         - City.City
-      summary: Delete entity from City by key (Name)
-      operationId: City.City.DeleteCityByName
+      summary: Delete entity from City
+      operationId: City.City.DeleteCity
       parameters:
         - in: path
           name: Name
@@ -246,8 +246,8 @@ paths:
     get:
       tags:
         - CountryOrRegion.CountryOrRegion
-      summary: Get entity from CountryOrRegion by key (Name)
-      operationId: CountryOrRegion.CountryOrRegion.GetCountryOrRegionByName
+      summary: Get entity from CountryOrRegion by key
+      operationId: CountryOrRegion.CountryOrRegion.GetCountryOrRegion
       produces:
         - application/json
       parameters:
@@ -284,8 +284,8 @@ paths:
     patch:
       tags:
         - CountryOrRegion.CountryOrRegion
-      summary: Update entity in CountryOrRegion by key (Name)
-      operationId: CountryOrRegion.CountryOrRegion.UpdateCountryOrRegionByName
+      summary: Update entity in CountryOrRegion
+      operationId: CountryOrRegion.CountryOrRegion.UpdateCountryOrRegion
       consumes:
         - application/json
       parameters:
@@ -310,8 +310,8 @@ paths:
     delete:
       tags:
         - CountryOrRegion.CountryOrRegion
-      summary: Delete entity from CountryOrRegion by key (Name)
-      operationId: CountryOrRegion.CountryOrRegion.DeleteCountryOrRegionByName
+      summary: Delete entity from CountryOrRegion
+      operationId: CountryOrRegion.CountryOrRegion.DeleteCountryOrRegion
       parameters:
         - in: path
           name: Name
@@ -481,8 +481,8 @@ paths:
     get:
       tags:
         - People.Person
-      summary: Get entity from People by key (UserName)
-      operationId: People.Person.GetPersonByUserName
+      summary: Get entity from People by key
+      operationId: People.Person.GetPerson
       produces:
         - application/json
       parameters:
@@ -522,8 +522,8 @@ paths:
     patch:
       tags:
         - People.Person
-      summary: Update entity in People by key (UserName)
-      operationId: People.Person.UpdatePersonByUserName
+      summary: Update entity in People
+      operationId: People.Person.UpdatePerson
       consumes:
         - application/json
       parameters:
@@ -548,8 +548,8 @@ paths:
     delete:
       tags:
         - People.Person
-      summary: Delete entity from People by key (UserName)
-      operationId: People.Person.DeletePersonByUserName
+      summary: Delete entity from People
+      operationId: People.Person.DeletePerson
       parameters:
         - in: path
           name: UserName

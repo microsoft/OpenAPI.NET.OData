@@ -91,8 +91,8 @@ paths:
     get:
       tags:
         - Airlines.Airline
-      summary: Get entity from Airlines by key (AirlineCode)
-      operationId: Airlines.Airline.GetAirlineByAirlineCode
+      summary: Get entity from Airlines by key
+      operationId: Airlines.Airline.GetAirline
       parameters:
         - name: AirlineCode
           in: path
@@ -139,8 +139,8 @@ paths:
     put:
       tags:
         - Airlines.Airline
-      summary: Update entity in Airlines by key (AirlineCode)
-      operationId: Airlines.Airline.UpdateAirlineByAirlineCode
+      summary: Update entity in Airlines
+      operationId: Airlines.Airline.UpdateAirline
       parameters:
         - name: AirlineCode
           in: path
@@ -165,8 +165,8 @@ paths:
     delete:
       tags:
         - Airlines.Airline
-      summary: Delete entity from Airlines by key (AirlineCode)
-      operationId: Airlines.Airline.DeleteAirlineByAirlineCode
+      summary: Delete entity from Airlines
+      operationId: Airlines.Airline.DeleteAirline
       parameters:
         - name: AirlineCode
           in: path
@@ -290,8 +290,8 @@ paths:
     get:
       tags:
         - Airports.Airport
-      summary: Get entity from Airports by key (IcaoCode)
-      operationId: Airports.Airport.GetAirportByIcaoCode
+      summary: Get entity from Airports by key
+      operationId: Airports.Airport.GetAirport
       parameters:
         - name: IcaoCode
           in: path
@@ -340,8 +340,8 @@ paths:
     patch:
       tags:
         - Airports.Airport
-      summary: Update entity in Airports by key (IcaoCode)
-      operationId: Airports.Airport.UpdateAirportByIcaoCode
+      summary: Update entity in Airports
+      operationId: Airports.Airport.UpdateAirport
       parameters:
         - name: IcaoCode
           in: path
@@ -366,8 +366,8 @@ paths:
     delete:
       tags:
         - Airports.Airport
-      summary: Delete entity from Airports by key (IcaoCode)
-      operationId: Airports.Airport.DeleteAirportByIcaoCode
+      summary: Delete entity from Airports
+      operationId: Airports.Airport.DeleteAirport
       parameters:
         - name: IcaoCode
           in: path
@@ -4925,8 +4925,8 @@ paths:
     get:
       tags:
         - NewComePeople.Person
-      summary: Get entity from NewComePeople by key (UserName)
-      operationId: NewComePeople.Person.GetPersonByUserName
+      summary: Get entity from NewComePeople by key
+      operationId: NewComePeople.Person.GetPerson
       parameters:
         - name: UserName
           in: path
@@ -4988,8 +4988,8 @@ paths:
     patch:
       tags:
         - NewComePeople.Person
-      summary: Update entity in NewComePeople by key (UserName)
-      operationId: NewComePeople.Person.UpdatePersonByUserName
+      summary: Update entity in NewComePeople
+      operationId: NewComePeople.Person.UpdatePerson
       parameters:
         - name: UserName
           in: path
@@ -5014,8 +5014,8 @@ paths:
     delete:
       tags:
         - NewComePeople.Person
-      summary: Delete entity from NewComePeople by key (UserName)
-      operationId: NewComePeople.Person.DeletePersonByUserName
+      summary: Delete entity from NewComePeople
+      operationId: NewComePeople.Person.DeletePerson
       parameters:
         - name: UserName
           in: path
@@ -7979,8 +7979,8 @@ paths:
     get:
       tags:
         - People.Person
-      summary: Get entity from People by key (UserName)
-      operationId: People.Person.GetPersonByUserName
+      summary: Get entity from People by key
+      operationId: People.Person.GetPerson
       parameters:
         - name: UserName
           in: path
@@ -8057,8 +8057,8 @@ paths:
     patch:
       tags:
         - People.Person
-      summary: Update entity in People by key (UserName)
-      operationId: People.Person.UpdatePersonByUserName
+      summary: Update entity in People
+      operationId: People.Person.UpdatePerson
       parameters:
         - name: UserName
           in: path
@@ -8089,8 +8089,8 @@ paths:
     delete:
       tags:
         - People.Person
-      summary: Delete entity from People by key (UserName)
-      operationId: People.Person.DeletePersonByUserName
+      summary: Delete entity from People
+      operationId: People.Person.DeletePerson
       parameters:
         - name: UserName
           in: path

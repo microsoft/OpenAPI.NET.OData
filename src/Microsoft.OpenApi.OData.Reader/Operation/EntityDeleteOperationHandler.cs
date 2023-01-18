@@ -39,7 +39,11 @@ namespace Microsoft.OpenApi.OData.Operation
             ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
 
             // Description
-            string placeHolder = $"Delete entity from {EntitySet.Name} by key ({keySegment.Identifier})";
+            string placeHolder = $"Delete entity from {EntitySet.Name}";
+            if (keySegment.IsAlternateKey)
+            {
+                placeHolder = $"{placeHolder} by {keySegment.Identifier}";
+            }
             operation.Summary = _deleteRestrictions?.Description ?? placeHolder;
             operation.Description = _deleteRestrictions?.LongDescription;
 
@@ -47,8 +51,13 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             {
                 string typeName = entityType.Name;
-                string keyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
-                operation.OperationId = $"{EntitySet.Name}.{typeName}.Delete{Utils.UpperFirstChar(typeName)}By{keyName}";
+                string operationName =$"Delete{Utils.UpperFirstChar(typeName)}";
+                if (keySegment.IsAlternateKey)
+                {
+                    string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
+                    operationName = $"{operationName}By{alternateKeyName}";
+                }
+                operation.OperationId =  $"{EntitySet.Name}.{typeName}.{operationName}";          
             }
         }
 
