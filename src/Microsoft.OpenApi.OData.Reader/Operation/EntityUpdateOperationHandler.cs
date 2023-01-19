@@ -35,7 +35,11 @@ namespace Microsoft.OpenApi.OData.Operation
             ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
 
             // Summary and Description
-            string placeHolder = $"Update entity in {EntitySet.Name} by key ({keySegment.Identifier})";
+            string placeHolder = "Update entity in " + EntitySet.Name;
+            if (keySegment.IsAlternateKey)
+            {
+                placeHolder = $"{placeHolder} by {keySegment.Identifier}";
+            }
             operation.Summary = _updateRestrictions?.Description ?? placeHolder;
             operation.Description = _updateRestrictions?.LongDescription;
 
@@ -43,8 +47,13 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             {
                 string typeName = entityType.Name;
-                string keyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
-                operation.OperationId = $"{EntitySet.Name}.{typeName}.Update{Utils.UpperFirstChar(typeName)}By{keyName}";
+                string operationName = $"Update{ Utils.UpperFirstChar(typeName)}";
+                if (keySegment.IsAlternateKey)
+                {
+                    string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
+                    operationName = $"{operationName}By{alternateKeyName}";
+                }
+                operation.OperationId = $"{EntitySet.Name}.{typeName}.{operationName}";
             }
         }
 

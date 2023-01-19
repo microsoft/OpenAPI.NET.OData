@@ -38,9 +38,13 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             IEdmEntityType entityType = EntitySet.EntityType();
             ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
-            
+
             // Description
-            string placeHolder = $"Get entity from {EntitySet.Name} by key ({keySegment.Identifier})";
+            string placeHolder = "Get entity from " + EntitySet.Name + " by key";
+            if (keySegment.IsAlternateKey) 
+            {
+                placeHolder = $"{placeHolder} ({keySegment.Identifier})";
+            }
             operation.Summary = _readRestrictions?.ReadByKeyRestrictions?.Description ?? placeHolder;
             operation.Description = _readRestrictions?.ReadByKeyRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(entityType);
 
@@ -48,8 +52,13 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             { 
                 string typeName = entityType.Name;
-                string keyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
-                operation.OperationId = $"{EntitySet.Name}.{typeName}.Get{Utils.UpperFirstChar(typeName)}By{keyName}";
+                string operationName = $"Get{Utils.UpperFirstChar(typeName)}";
+                if (keySegment.IsAlternateKey)
+                {
+                    string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
+                    operationName = $"{operationName}By{alternateKeyName}";
+                }              
+                operation.OperationId = $"{EntitySet.Name}.{typeName}.{operationName}";
             }
         }
 
