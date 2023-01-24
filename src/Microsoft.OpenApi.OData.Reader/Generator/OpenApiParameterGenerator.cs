@@ -180,7 +180,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Name = parameterNameMapping == null ? keyName: parameterNameMapping[keyName],
                     In = ParameterLocation.Path,
                     Required = true,
-                    Description = "key: " + keyName + " of " + entityType.Name,
+                    Description = $"The unique identifier of {entityType.Name}",
                     Schema = context.CreateEdmTypeSchema(keys.First().Type)
                 };
 
@@ -199,7 +199,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             parameterNameMapping[keyProperty.Name],// By design: not prefix with type name if enable type name prefix
                         In = ParameterLocation.Path,
                         Required = true,
-                        Description = "key: " + keyProperty.Name + " of " + entityType.Name,
+                        Description = $"A property contained in the multi-part unique identifier of {entityType.Name}",
                         Schema = context.CreateEdmTypeSchema(keyProperty.Type)
                     };
 
@@ -229,7 +229,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         {
                             Name = alternateKey.First().Key,
                             In = ParameterLocation.Path,
-                            Description = $"Alternate key: {alternateKey.First().Value.Name} of {entityType.Name}",
+                            Description = $"An alternate key of {entityType.Name}",
                             Schema = context.CreateEdmTypeSchema(alternateKey.First().Value.Type),
                             Required = true
                         }
@@ -244,7 +244,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             {
                                 Name = compositekey.Key,
                                 In = ParameterLocation.Path,
-                                Description = $"Composite alternate key: {compositekey.Value.Name} of {entityType.Name}",
+                                Description = $"A property contained in the multi-part alternate key of {entityType.Name}",
                                 Schema = context.CreateEdmTypeSchema(compositekey.Value.Type),
                                 Required = true
                             }
