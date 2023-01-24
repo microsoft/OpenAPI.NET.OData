@@ -132,7 +132,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name of City",
+            "description": "The unique identifier of City",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "City"
@@ -188,7 +188,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name of City",
+            "description": "The unique identifier of City",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "City"
@@ -223,7 +223,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name of City",
+            "description": "The unique identifier of City",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "City"
@@ -392,7 +392,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name of CountryOrRegion",
+            "description": "The unique identifier of CountryOrRegion",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "CountryOrRegion"
@@ -448,7 +448,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name of CountryOrRegion",
+            "description": "The unique identifier of CountryOrRegion",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "CountryOrRegion"
@@ -483,7 +483,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name of CountryOrRegion",
+            "description": "The unique identifier of CountryOrRegion",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "CountryOrRegion"
@@ -746,7 +746,7 @@
           {
             "in": "path",
             "name": "UserName",
-            "description": "key: UserName of Person",
+            "description": "The unique identifier of Person",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
@@ -805,7 +805,7 @@
           {
             "in": "path",
             "name": "UserName",
-            "description": "key: UserName of Person",
+            "description": "The unique identifier of Person",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
@@ -840,7 +840,7 @@
           {
             "in": "path",
             "name": "UserName",
-            "description": "key: UserName of Person",
+            "description": "The unique identifier of Person",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
@@ -1177,24 +1177,6 @@
       "name": "$search",
       "description": "Search items by search phrases",
       "type": "string"
-    },
-    "refPostBody": {
-      "in": "body",
-      "name": "body",
-      "description": "New navigation property ref value",
-      "required": true,
-      "schema": {
-        "$ref": "#/definitions/ReferenceCreate"
-      }
-    },
-    "refPutBody": {
-      "in": "body",
-      "name": "body",
-      "description": "New navigation property ref values",
-      "required": true,
-      "schema": {
-        "$ref": "#/definitions/ReferenceUpdate"
-      }
     }
   },
   "responses": {

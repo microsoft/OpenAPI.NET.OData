@@ -199,7 +199,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             parameterNameMapping[keyProperty.Name],// By design: not prefix with type name if enable type name prefix
                         In = ParameterLocation.Path,
                         Required = true,
-                        Description = $"A property contained in the multi-part unique identifier of {entityType.Name}",
+                        Description = $"Property in multi-part unique identifier of {entityType.Name}",
                         Schema = context.CreateEdmTypeSchema(keyProperty.Type)
                     };
 
@@ -229,7 +229,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         {
                             Name = alternateKey.First().Key,
                             In = ParameterLocation.Path,
-                            Description = $"An alternate key of {entityType.Name}",
+                            Description = $"Alternate key of {entityType.Name}",
                             Schema = context.CreateEdmTypeSchema(alternateKey.First().Value.Type),
                             Required = true
                         }
@@ -244,7 +244,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             {
                                 Name = compositekey.Key,
                                 In = ParameterLocation.Path,
-                                Description = $"A property contained in the multi-part alternate key of {entityType.Name}",
+                                Description = $"Property in multi-part alternate key of {entityType.Name}",
                                 Schema = context.CreateEdmTypeSchema(compositekey.Value.Type),
                                 Required = true
                             }
