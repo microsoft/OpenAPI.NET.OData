@@ -190,7 +190,7 @@ schema:
                 expected = @"{
   ""name"": ""Customer-Id"",
   ""in"": ""path"",
-  ""description"": ""key: Customer-Id of Customer"",
+  ""description"": ""The unique identifier of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
@@ -204,7 +204,7 @@ schema:
                 expected = @"{
   ""name"": ""Id"",
   ""in"": ""path"",
-  ""description"": ""key: Id of Customer"",
+  ""description"": ""The unique identifier of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
@@ -248,7 +248,7 @@ schema:
             string expected = @"{
   ""name"": ""firstName"",
   ""in"": ""path"",
-  ""description"": ""key: firstName of Customer"",
+  ""description"": ""Property in multi-part unique identifier of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
@@ -264,7 +264,7 @@ schema:
             expected = @"{
   ""name"": ""lastName"",
   ""in"": ""path"",
-  ""description"": ""key: lastName of Customer"",
+  ""description"": ""Property in multi-part unique identifier of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
@@ -304,7 +304,7 @@ schema:
             Assert.Equal(@"{
   ""name"": ""AltId"",
   ""in"": ""path"",
-  ""description"": ""Alternate key: AlternateId of Customer"",
+  ""description"": ""Alternate key of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
@@ -349,7 +349,7 @@ schema:
             Assert.Equal(@"{
   ""name"": ""AltId1"",
   ""in"": ""path"",
-  ""description"": ""Composite alternate key: AlternateId1 of Customer"",
+  ""description"": ""Property in multi-part alternate key of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
@@ -361,7 +361,7 @@ schema:
             Assert.Equal(@"{
   ""name"": ""AltId2"",
   ""in"": ""path"",
-  ""description"": ""Composite alternate key: AlternateId2 of Customer"",
+  ""description"": ""Property in multi-part alternate key of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",

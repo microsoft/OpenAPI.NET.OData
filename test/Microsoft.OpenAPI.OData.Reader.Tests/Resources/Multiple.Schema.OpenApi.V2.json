@@ -147,7 +147,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of CategoryDto",
+            "description": "The unique identifier of CategoryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -211,7 +211,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of CategoryDto",
+            "description": "The unique identifier of CategoryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -249,7 +249,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of CategoryDto",
+            "description": "The unique identifier of CategoryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -450,7 +450,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -520,7 +520,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -558,7 +558,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -596,7 +596,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -628,7 +628,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -762,7 +762,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -773,7 +773,7 @@
           {
             "in": "path",
             "name": "Id1",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -814,7 +814,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -851,7 +851,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -940,7 +940,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -972,7 +972,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1052,7 +1052,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1092,7 +1092,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1137,7 +1137,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1352,7 +1352,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1427,7 +1427,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1465,7 +1465,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1503,7 +1503,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1616,7 +1616,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1627,7 +1627,7 @@
           {
             "in": "path",
             "name": "Id1",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1668,7 +1668,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1679,7 +1679,7 @@
           {
             "in": "path",
             "name": "Id1",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1759,7 +1759,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1770,7 +1770,7 @@
           {
             "in": "path",
             "name": "Id1",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1810,7 +1810,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1821,7 +1821,7 @@
           {
             "in": "path",
             "name": "Id1",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1866,7 +1866,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1877,7 +1877,7 @@
           {
             "in": "path",
             "name": "Id1",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1911,7 +1911,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -1948,7 +1948,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2023,7 +2023,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of LibraryDto",
+            "description": "The unique identifier of LibraryDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2242,7 +2242,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2319,7 +2319,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2357,7 +2357,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2398,7 +2398,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2515,7 +2515,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2547,7 +2547,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2579,7 +2579,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2614,7 +2614,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2717,7 +2717,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2757,7 +2757,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2802,7 +2802,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2836,7 +2836,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2938,7 +2938,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -2978,7 +2978,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3023,7 +3023,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3223,7 +3223,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3293,7 +3293,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3331,7 +3331,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3369,7 +3369,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3401,7 +3401,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3535,7 +3535,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3546,7 +3546,7 @@
           {
             "in": "path",
             "name": "Id1",
-            "description": "key: Id of RevisionDto",
+            "description": "The unique identifier of RevisionDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3587,7 +3587,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3624,7 +3624,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3713,7 +3713,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3745,7 +3745,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3825,7 +3825,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3865,7 +3865,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
@@ -3910,7 +3910,7 @@
           {
             "in": "path",
             "name": "Id",
-            "description": "key: Id of DocumentDto",
+            "description": "The unique identifier of DocumentDto",
             "required": true,
             "type": "integer",
             "format": "int32",
