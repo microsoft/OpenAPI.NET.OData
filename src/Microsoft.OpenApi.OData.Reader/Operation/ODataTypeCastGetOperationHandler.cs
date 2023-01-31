@@ -43,6 +43,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	private NavigationPropertyRestriction restriction;
 	private IEdmSingleton singleton;
 	private IEdmEntitySet entitySet;
+	private IEdmEntityType entityTypeName;
 	private IEdmNavigationProperty navigationProperty;
 	private IEdmStructuredType parentStructuredType;
 	private IEdmSchemaElement ParentSchemaElement => parentStructuredType as IEdmSchemaElement;
@@ -92,12 +93,15 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				SetEntitySetAndRestrictionFromSourceSegment(sourceSegment1);
 			}
 		}
-		if(path.Last() is ODataTypeCastSegment oDataTypeCastSegment)
+		if (path.Last() is ODataTypeCastSegment oDataTypeCastSegment)
 		{
 			targetStructuredType = oDataTypeCastSegment.StructuredType;
 		}
-		else throw new NotImplementedException($"type cast type {path.Last().GetType().FullName} not implemented");
-	}
+		else 
+		{
+            throw new NotImplementedException($"type cast type {path.Last().GetType().FullName} not implemented");
+        }
+    }
 
 	private void SetNavigationPropertyAndRestrictionFromNavigationSegment(ODataNavigationPropertySegment navigationPropertySegment, ODataPath path)
 	{
@@ -127,7 +131,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		{
 			entitySet = eSet;
 			SetRestrictionFromAnnotable(eSet);
-		}
+			entityTypeName = entitySet.EntityType();
+
+        }
 	}
 	
 	private void SetSingletonAndRestrictionFromSourceSegment(ODataNavigationSourceSegment sourceSegment)
@@ -136,6 +142,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		{
 			singleton = sTon;
 			SetRestrictionFromAnnotable(sTon);
+			entityTypeName = singleton.EntityType();
 		}
 
 	}
@@ -161,7 +168,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// OperationId
 		if (Context.Settings.EnableOperationId)
 		{
-			var operationItem = IsSingleElement ? ".Item" : ".Items";
+			var operationItem = IsSingleElement ? $"Get{Utils.UpperFirstChar(typeName)}" : ".List" + Utils.UpperFirstChar(typeName);
 			operation.OperationId = $"Get.{ParentSchemaElement.ShortQualifiedName()}{operationItem}.As.{TargetSchemaElement.ShortQualifiedName()}-{Path.GetPathHash(Context.Settings)}";
 		}
 
@@ -243,16 +250,20 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// <inheritdoc/>
 	protected override void SetTags(OpenApiOperation operation)
 	{
-		IList<string> items = new List<string>
-		{
-			ParentSchemaElement.Name,
-			TargetSchemaElement.Name,
-		};
+		//IList<string> items = new List<string>
+		//{
+		//	ParentSchemaElement.Name,
+		//	TargetSchemaElement.Name,
+		//};
 
-		string name = string.Join(".", items);
-		OpenApiTag tag = new()
+		string tagName = entitySet != null
+			? entitySet.Name + entityTypeName.Name
+			: singleton.Name + entityTypeName.Name;
+
+        // string name = string.Join(".", items);
+        OpenApiTag tag = new()
 		{
-			Name = name
+			Name = tagName
 		};
 		if(!IsSingleElement)
 			tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
