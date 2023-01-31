@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
@@ -43,7 +44,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	private NavigationPropertyRestriction restriction;
 	private IEdmSingleton singleton;
 	private IEdmEntitySet entitySet;
-	private IEdmEntityType entityTypeName;
+	private string entityTypeName;
 	private IEdmNavigationProperty navigationProperty;
 	private IEdmStructuredType parentStructuredType;
 	private IEdmSchemaElement ParentSchemaElement => parentStructuredType as IEdmSchemaElement;
@@ -131,7 +132,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		{
 			entitySet = eSet;
 			SetRestrictionFromAnnotable(eSet);
-			entityTypeName = entitySet.EntityType();
+			entityTypeName = entitySet.EntityType().Name;
 
         }
 	}
@@ -142,7 +143,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		{
 			singleton = sTon;
 			SetRestrictionFromAnnotable(sTon);
-			entityTypeName = singleton.EntityType();
+			entityTypeName = singleton.EntityType().Name;
 		}
 
 	}
@@ -168,7 +169,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// OperationId
 		if (Context.Settings.EnableOperationId)
 		{
-			var operationItem = IsSingleElement ? $"Get{Utils.UpperFirstChar(typeName)}" : ".List" + Utils.UpperFirstChar(typeName);
+			var operationItem = IsSingleElement ? $".Get{Utils.UpperFirstChar(entityTypeName)}" : ".List" + Utils.UpperFirstChar(entityTypeName);
 			operation.OperationId = $"Get.{ParentSchemaElement.ShortQualifiedName()}{operationItem}.As.{TargetSchemaElement.ShortQualifiedName()}-{Path.GetPathHash(Context.Settings)}";
 		}
 
@@ -250,21 +251,21 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// <inheritdoc/>
 	protected override void SetTags(OpenApiOperation operation)
 	{
-		//IList<string> items = new List<string>
-		//{
-		//	ParentSchemaElement.Name,
-		//	TargetSchemaElement.Name,
-		//};
+        //IList<string> items = new List<string>
+        //{
+        //	ParentSchemaElement.Name,
+        //	TargetSchemaElement.Name,
+        //};
 
-		string tagName = entitySet != null
-			? entitySet.Name + entityTypeName.Name
-			: singleton.Name + entityTypeName.Name;
 
         // string name = string.Join(".", items);
         OpenApiTag tag = new()
 		{
-			Name = tagName
-		};
+			Name = entitySet != null
+            ? entitySet.Name + entityTypeName
+            : singleton.Name + entityTypeName
+        };
+
 		if(!IsSingleElement)
 			tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
 		operation.Tags.Add(tag);
@@ -409,5 +410,45 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
         {
             AppendCustomParameters(operation, readRestrictions.CustomQueryOptions, ParameterLocation.Query);
         }
+    }
+
+	private string CreateOperationId(ODataPath path)
+	{
+		string operationId = null;
+
+		if (LastSecondSegment is ODataComplexPropertySegment)
+		{
+            ODataComplexPropertySegment complexPropertySegment = parentStructuredType as ODataComplexPropertySegment;
+            string typeName = complexPropertySegment.ComplexType.Name;
+            string listOrGet = complexPropertySegment.Property.Type.IsCollection() ? ".List" : ".Get";
+            operationId = complexPropertySegment.Property.Name + "." + typeName + listOrGet + Utils.UpperFirstChar(typeName);
+        }
+		else if (LastSecondSegment is ODataNavigationPropertySegment)
+		{
+            string prefix = "Get";
+            if (path.LastSegment is not ODataKeySegment && navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+			{
+                prefix = "List";
+            }
+
+            NavigationPropertyGetOperationHandler handler = new();
+			operationId = handler.GetOperationId(prefix, path);			
+		}
+		else if (LastSecondSegment is ODataKeySegment)
+		{
+
+		}
+		else if (LastSecondSegment is ODataNavigationSourceSegment)
+		{
+
+		}
+
+		if (operationId != null)
+		{
+			operationId = $"{operationId}As{targetStructuredType}";
+        }
+
+		return operationId;
+
     }
 }
