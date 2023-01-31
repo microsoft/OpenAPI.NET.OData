@@ -125,15 +125,21 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetExtensions(operation);
         }
 
-        protected string GetOperationId(string prefix = null)
+        internal string GetOperationId(string prefix = null, ODataPath path = null)
         {
+            ODataPath odataPath = Path ?? path;
+            if (odataPath == null)
+            {
+                return null;
+            }
+
             IList<string> items = new List<string>
             {
                 NavigationSource.Name
             };
 
-            var lastpath = Path.Segments.Last(c => c is ODataNavigationPropertySegment);
-            foreach (var segment in Path.Segments.Skip(1).OfType<ODataNavigationPropertySegment>())
+            var lastpath = odataPath.Segments.Last(c => c is ODataNavigationPropertySegment);
+            foreach (var segment in odataPath.Segments.Skip(1).OfType<ODataNavigationPropertySegment>())
             {
                 if (segment == lastpath)
                 {
