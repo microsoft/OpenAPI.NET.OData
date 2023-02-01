@@ -78,33 +78,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            IList<string> items = new List<string>
-            {
-                NavigationSource.Name
-            };
-
-            foreach (var segment in Path.Segments.Skip(1).OfType<ODataNavigationPropertySegment>())
-            {
-                if (segment.NavigationProperty == NavigationProperty)
-                {
-                    items.Add(NavigationProperty.ToEntityType().Name);
-                    break;
-                }
-                else
-                {
-                    if (items.Count >= Context.Settings.TagDepth - 1)
-                    {
-                        items.Add(segment.NavigationProperty.ToEntityType().Name);
-                        break;
-                    }
-                    else
-                    {
-                        items.Add(segment.NavigationProperty.Name);
-                    }
-                }
-            }
-
-            string name = string.Join(".", items);
+            string name = EdmModelHelper.GenerateNavigationPropertyPathTag(Path, NavigationSource, NavigationProperty, Context);
             OpenApiTag tag = new()
             {
                 Name = name
@@ -125,43 +99,10 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetExtensions(operation);
         }
 
-        internal string GetOperationId(string prefix = null, ODataPath path = null)
-        {
-            ODataPath odataPath = Path ?? path;
-            if (odataPath == null)
-            {
-                return null;
-            }
-
-            IList<string> items = new List<string>
-            {
-                NavigationSource.Name
-            };
-
-            var lastpath = odataPath.Segments.Last(c => c is ODataNavigationPropertySegment);
-            foreach (var segment in odataPath.Segments.Skip(1).OfType<ODataNavigationPropertySegment>())
-            {
-                if (segment == lastpath)
-                {
-                    if (prefix != null)
-                    {
-                        items.Add(prefix + Utils.UpperFirstChar(segment.NavigationProperty.Name));
-                    }
-                    else
-                    {
-                        items.Add(Utils.UpperFirstChar(segment.NavigationProperty.Name));
-                    }
-
-                    break;
-                }
-                else
-                {
-                    items.Add(segment.NavigationProperty.Name);
-                }
-            }
-
-            return string.Join(".", items);
-        }
+        internal string GetOperationId(string prefix = null)
+        {            
+            return EdmModelHelper.GenerateNavigationPropertyPathOperationId(Path, NavigationSource, prefix);
+        }               
 
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
