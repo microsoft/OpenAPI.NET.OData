@@ -22,7 +22,7 @@
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
 - Update key path parameter descriptions #309
-- Checks whether path exists before adding it to the dictionary #343
+- Checks whether path exists before adding it to the paths dictionary #343
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
