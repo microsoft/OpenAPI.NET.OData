@@ -5,12 +5,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Numerics;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 
@@ -269,6 +270,132 @@ namespace Microsoft.OpenApi.OData.Common
             }
 
             return false;
+        }
+
+
+        /// <summary>
+        /// Gets the entity type of the target <paramref name="segment"/>.
+        /// </summary>
+        /// <param name="segment">The target <see cref="ODataSegment"/></param>
+        /// <returns>The entity type of the target <paramref name="segment"/></returns>
+        internal static IEdmEntityType EntityTypeFromPathSegment(this ODataSegment segment)
+        {
+            CheckArgumentNull(segment, nameof(segment));
+
+            if (segment is ODataNavigationPropertySegment navPropSegment)
+            {
+                return navPropSegment.EntityType;
+            }
+            else if (segment is ODataNavigationSourceSegment navSourceSegment)
+            {
+                if (navSourceSegment.NavigationSource is IEdmEntitySet entitySet)
+                {
+                    return entitySet.EntityType();
+                }                    
+                else if (navSourceSegment.NavigationSource is IEdmSingleton singleton)
+                {
+                    return singleton.EntityType();
+                }                    
+            }
+            else if (segment is ODataKeySegment keySegment)
+            {
+                return keySegment.EntityType;
+            }
+            else if (segment is ODataOperationSegment)
+            {
+                return segment.EntityTypeFromOperationSegment();
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the entity type of the <paramref name="segment"/>.
+        /// </summary>
+        /// <param name="segment">The target <see cref="ODataOperationSegment"/></param>
+        /// <returns>The entity type of the target <paramref name="segment"/>.</returns>
+        private static IEdmEntityType EntityTypeFromOperationSegment(this ODataSegment segment)
+        {
+            CheckArgumentNull(segment, nameof(segment));
+
+            if (segment is ODataOperationSegment operationSegment)
+            {
+                IEdmOperationParameter bindingParameter = operationSegment.Operation.Parameters.First();
+                IEdmTypeReference bindingType = bindingParameter.Type;
+
+                if (bindingType.IsCollection())
+                {
+                    bindingType = bindingType.AsCollection().ElementType();
+                }
+
+                return bindingType.AsEntity().EntityDefinition();
+            }
+
+            return null;
+        }
+        
+        /// <summary>
+        /// Attempts to add the specified <paramref name="path"/> and <paramref name="pathItem"/> to the <paramref name="pathItems"/> dictionary. 
+        /// </summary>
+        /// <param name="pathItems">The target dictionary.</param>
+        /// <param name="context">The OData context</param>
+        /// <param name="path">The key to be added.</param>
+        /// <param name="pathItem">The value to be added.</param>
+        /// <returns></returns>
+        internal static bool TryAddPath(this IDictionary<string, OpenApiPathItem> pathItems,
+            ODataContext context,
+            ODataPath path,
+            OpenApiPathItem pathItem)
+        {
+            CheckArgumentNull(pathItems, nameof(pathItems));
+            CheckArgumentNull(context, nameof(context));
+            CheckArgumentNull(path, nameof(path));
+            CheckArgumentNull(pathItem, nameof(pathItem));
+
+            OpenApiConvertSettings settings = context.Settings.Clone();
+            settings.EnableKeyAsSegment = context.KeyAsSegment;
+
+            string pathName = path.PathTemplate ?? path.GetPathItemName(settings);
+
+            if (!pathItems.TryAdd(pathName, pathItem))
+            {
+                if (path.LastSegment is not ODataOperationSegment lastSegment)
+                {
+                    Debug.WriteLine("Duplicate path: " + pathName);
+                    return false;
+                }
+
+                int secondLastSegmentIndex = 2;
+                if (path.Count < secondLastSegmentIndex)
+                {
+                    Debug.WriteLine("Invalid path. Operation not bound to any entity. Path: " + pathName);
+                    return false;
+                }
+
+                ODataSegment lastSecondSegment = path.Segments.ElementAt(path.Count - secondLastSegmentIndex);
+                IEdmEntityType boundEntityType = lastSecondSegment.EntityTypeFromPathSegment();
+
+                IEdmEntityType operationEntityType = lastSegment.EntityTypeFromOperationSegment();
+                IEnumerable<IEdmStructuredType> derivedTypes = context.Model.FindAllDerivedTypes(operationEntityType);
+
+                if (derivedTypes.Any())
+                {
+                    if (!derivedTypes.Contains(boundEntityType))
+                    {
+                        Debug.WriteLine("Duplicate paths present but entity type of binding parameter " +
+                            "is not the base type of the bound entity type. Path: " + pathName);
+                    }
+                    return false;
+                }
+                else
+                {
+                    // Function bound to a derived type; what was added before was a function bound to a base type,
+                    // update the existing dictionary entry.
+                    pathItems[pathName] = pathItem;
+                }
+            }
+            
+            return true;
         }
     }
 }
