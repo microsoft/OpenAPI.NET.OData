@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
@@ -49,14 +50,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                if (path.PathTemplate != null)
-                {
-                    pathItems.Add(path.PathTemplate, pathItem);
-                }
-                else
-                {
-                    pathItems.Add(path.GetPathItemName(settings), pathItem);
-                }
+                pathItems.TryAddPath(context, path, pathItem);
             }
 
             if (settings.ShowRootPath)
