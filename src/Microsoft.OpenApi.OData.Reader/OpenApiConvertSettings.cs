@@ -313,6 +313,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty { get; set; } = false;
 
+        /// <summary>
+        /// The base namespace identifier.
+        /// </summary>
+        public string BaseNamespace{ get; set; }
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -362,7 +367,8 @@ namespace Microsoft.OpenApi.OData
                 IncludeAssemblyInfo = this.IncludeAssemblyInfo,
                 EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
                 EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = this.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty,
-                AddAlternateKeyPaths = this.AddAlternateKeyPaths
+                AddAlternateKeyPaths = this.AddAlternateKeyPaths,
+                BaseNamespace = this.BaseNamespace
             };
 
             return newSettings;
