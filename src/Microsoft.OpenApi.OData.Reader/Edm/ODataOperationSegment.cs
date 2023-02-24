@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
@@ -130,14 +131,17 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
-            StringBuilder functionName = new StringBuilder();
+            StringBuilder functionName = new();
+            string selectedName = function.FullName();
+
             if (settings.EnableUnqualifiedCall)
             {
-                functionName.Append(function.Name);
+                selectedName = settings.BaseNamespace != null ? selectedName.RemoveBaseNamespace(settings) : function.Name;
+                functionName.Append(selectedName);
             }
             else
             {
-                functionName.Append(function.FullName());
+                functionName.Append(selectedName);
             }
             functionName.Append("(");
             
@@ -158,13 +162,15 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private string ActionName(IEdmAction action, OpenApiConvertSettings settings)
         {
+            var actionName = action.FullName();
+
             if (settings.EnableUnqualifiedCall)
             {
-                return action.Name;
+                return settings.BaseNamespace != null ? actionName.RemoveBaseNamespace(settings) : action.Name;
             }
             else
             {
-                return action.FullName();
+                return actionName;
             }
         }
 
