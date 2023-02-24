@@ -282,28 +282,20 @@ namespace Microsoft.OpenApi.OData.Common
         {
             CheckArgumentNull(segment, nameof(segment));
 
-            if (segment is ODataNavigationPropertySegment navPropSegment)
+            switch (segment)
             {
-                return navPropSegment.EntityType;
-            }
-            else if (segment is ODataNavigationSourceSegment navSourceSegment)
-            {
-                if (navSourceSegment.NavigationSource is IEdmEntitySet entitySet)
-                {
+                case ODataNavigationPropertySegment navPropSegment:
+                    return navPropSegment.EntityType;
+                case ODataNavigationSourceSegment navSourceSegment when navSourceSegment.NavigationSource is IEdmEntitySet entitySet:
                     return entitySet.EntityType();
-                }                    
-                else if (navSourceSegment.NavigationSource is IEdmSingleton singleton)
-                {
+                case ODataNavigationSourceSegment navSourceSegment when navSourceSegment.NavigationSource is IEdmSingleton singleton:
                     return singleton.EntityType();
-                }                    
-            }
-            else if (segment is ODataKeySegment keySegment)
-            {
-                return keySegment.EntityType;
-            }
-            else if (segment is ODataOperationSegment)
-            {
-                return segment.EntityTypeFromOperationSegment();
+                case ODataKeySegment keySegment:
+                    return keySegment.EntityType;
+                case ODataOperationSegment:
+                    return segment.EntityTypeFromOperationSegment();
+                default:
+                    return null;
             }
 
             return null;
