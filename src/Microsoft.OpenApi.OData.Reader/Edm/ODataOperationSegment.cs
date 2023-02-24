@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             if (settings.EnableUnqualifiedCall)
             {
-                selectedName = settings.BaseNamespace != null ? selectedName.RemoveBaseNamespace(settings) : function.Name;
+                selectedName = settings.DefaultNamespace != null ? selectedName.RemoveBaseNamespace(settings) : function.Name;
                 functionName.Append(selectedName);
             }
             else
@@ -166,7 +166,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             if (settings.EnableUnqualifiedCall)
             {
-                return settings.BaseNamespace != null ? actionName.RemoveBaseNamespace(settings) : action.Name;
+                return settings.DefaultNamespace != null ? actionName.RemoveBaseNamespace(settings) : action.Name;
             }
             else
             {

@@ -314,9 +314,9 @@ namespace Microsoft.OpenApi.OData
         public bool EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty { get; set; } = false;
 
         /// <summary>
-        /// The base namespace.
+        /// The default namespace.
         /// </summary>
-        public string BaseNamespace{ get; set; }
+        public string DefaultNamespace{ get; set; }
 
         internal OpenApiConvertSettings Clone()
         {
@@ -368,7 +368,7 @@ namespace Microsoft.OpenApi.OData
                 EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
                 EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = this.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty,
                 AddAlternateKeyPaths = this.AddAlternateKeyPaths,
-                BaseNamespace = this.BaseNamespace
+                DefaultNamespace = this.DefaultNamespace
             };
 
             return newSettings;

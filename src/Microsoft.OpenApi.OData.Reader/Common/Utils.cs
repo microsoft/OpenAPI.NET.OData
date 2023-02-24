@@ -283,14 +283,14 @@ namespace Microsoft.OpenApi.OData.Common
             CheckArgumentNullOrEmpty(value, nameof(value));
             CheckArgumentNull(settings, nameof(settings));
 
-            if (string.IsNullOrEmpty(settings.BaseNamespace))
+            if (string.IsNullOrEmpty(settings.DefaultNamespace))
             {
                 return value;
             }
 
-            string baseNamespace = settings.BaseNamespace.EndsWith(".")
-                ? settings.BaseNamespace
-                : settings.BaseNamespace + ".";
+            string baseNamespace = settings.DefaultNamespace.EndsWith(".")
+                ? settings.DefaultNamespace
+                : settings.DefaultNamespace + ".";
 
             string escapedPattern = Regex.Escape(baseNamespace);
             return Regex.Replace(value, escapedPattern, "", RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2));
