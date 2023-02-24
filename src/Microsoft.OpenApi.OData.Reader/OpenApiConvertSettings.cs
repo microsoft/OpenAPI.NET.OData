@@ -314,7 +314,7 @@ namespace Microsoft.OpenApi.OData
         public bool EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty { get; set; } = false;
 
         /// <summary>
-        /// The base namespace identifier.
+        /// The base namespace.
         /// </summary>
         public string BaseNamespace{ get; set; }
 

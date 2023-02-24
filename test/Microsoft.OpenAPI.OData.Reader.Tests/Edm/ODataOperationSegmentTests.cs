@@ -82,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Arrange & Act
             IEdmEntityTypeReference entityTypeReference = new EdmEntityTypeReference(new EdmEntityType("NS.XY", "Entity"), false);
             IEdmTypeReference parameterType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.Boolean, isNullable: false);
-            EdmFunction boundFunction = BoundFunction("MyFunction", isBound, entityTypeReference,namespaceIdentifier: "NS.XY");
+            EdmFunction boundFunction = BoundFunction("MyFunction", isBound, entityTypeReference,baseNamespace: "NS.XY");
             boundFunction.AddParameter("param", parameterType);
             boundFunction.AddOptionalParameter("param2", parameterType);
 
@@ -152,10 +152,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             bool isBound,
             IEdmTypeReference firstParameterType,
             bool isComposable = false,
-            string namespaceIdentifier = "NS")
+            string baseNamespace = "NS")
         {
             IEdmTypeReference returnType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.Boolean, isNullable: false);
-            EdmFunction boundFunction = new EdmFunction(namespaceIdentifier, funcName, returnType,
+            EdmFunction boundFunction = new EdmFunction(baseNamespace, funcName, returnType,
                 isBound: isBound, entitySetPathExpression: null, isComposable: isComposable);
             boundFunction.AddParameter("entity", firstParameterType);
             return boundFunction;
