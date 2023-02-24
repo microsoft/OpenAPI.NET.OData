@@ -85,7 +85,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 return FunctionName(Operation as IEdmFunction, settings, parameters);
             }
 
-            return ActionName(Operation as IEdmAction, settings);
+            return OperationName(Operation, settings);
         }
 
         internal IDictionary<string, string> GetNameMapping(OpenApiConvertSettings settings, HashSet<string> parameters)
@@ -113,6 +113,14 @@ namespace Microsoft.OpenApi.OData.Edm
             return parameterNamesMapping;
         }
 
+        private string OperationName(IEdmOperation operation, OpenApiConvertSettings settings)
+        {
+            string selectedName = operation.FullName();
+            return settings.EnableUnqualifiedCall
+                ? settings.DefaultNamespace != null ? selectedName.RemoveDefaultNamespace(settings) : operation.Name
+                : selectedName;
+        }
+
         private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             if (settings.EnableUriEscapeFunctionCall && IsEscapedFunction)
@@ -132,17 +140,7 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             StringBuilder functionName = new();
-            string selectedName = function.FullName();
-
-            if (settings.EnableUnqualifiedCall)
-            {
-                selectedName = settings.DefaultNamespace != null ? selectedName.RemoveBaseNamespace(settings) : function.Name;
-                functionName.Append(selectedName);
-            }
-            else
-            {
-                functionName.Append(selectedName);
-            }
+            functionName.Append(OperationName(function, settings));
             functionName.Append("(");
             
             int skip = function.IsBound ? 1 : 0;
@@ -158,20 +156,6 @@ namespace Microsoft.OpenApi.OData.Edm
             functionName.Append(")");
 
             return functionName.ToString();
-        }
-
-        private string ActionName(IEdmAction action, OpenApiConvertSettings settings)
-        {
-            var actionName = action.FullName();
-
-            if (settings.EnableUnqualifiedCall)
-            {
-                return settings.DefaultNamespace != null ? actionName.RemoveBaseNamespace(settings) : action.Name;
-            }
-            else
-            {
-                return actionName;
-            }
         }
 
         /// <inheritdoc />

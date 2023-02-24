@@ -52,6 +52,15 @@ namespace OoasGui
 
             csdlRichTextBox.WordWrap = false;
             oasRichTextBox.WordWrap = false;
+
+            Settings.EnableKeyAsSegment = true;
+            Settings.PrefixEntityTypeNameBeforeKey = true;
+            Settings.ShowLinks = true;
+            verifyEdmModelcheckBox.Checked = false;
+            yamlRadioBtn.Checked = true;
+            Settings.ShowLinks = true;
+            Settings.EnableDiscriminatorValue = true;
+            Settings.ExpandDerivedTypesNavigationProperties = false;
         }
 
         private async void jsonRadioBtn_CheckedChanged(object sender, EventArgs e)

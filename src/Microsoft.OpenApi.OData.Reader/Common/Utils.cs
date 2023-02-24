@@ -273,12 +273,12 @@ namespace Microsoft.OpenApi.OData.Common
         }
 
         /// <summary>
-        /// Removes the base namespace from a string value.
+        /// Removes the default namespace from a string value.
         /// </summary>
         /// <param name="value">The target string value.</param>
         /// <param name="settings">Convert settings.</param>
         /// <returns>The string value with the namespace removed.</returns>
-        internal static string RemoveBaseNamespace(this string value, OpenApiConvertSettings settings)
+        internal static string RemoveDefaultNamespace(this string value, OpenApiConvertSettings settings)
         {
             CheckArgumentNullOrEmpty(value, nameof(value));
             CheckArgumentNull(settings, nameof(settings));
@@ -288,12 +288,11 @@ namespace Microsoft.OpenApi.OData.Common
                 return value;
             }
 
-            string baseNamespace = settings.DefaultNamespace.EndsWith(".")
+            string defaultNamespace = settings.DefaultNamespace.EndsWith(".")
                 ? settings.DefaultNamespace
                 : settings.DefaultNamespace + ".";
 
-            string escapedPattern = Regex.Escape(baseNamespace);
-            return Regex.Replace(value, escapedPattern, "", RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2));
+            return value.Replace(defaultNamespace, "");
         }
     }
 }
