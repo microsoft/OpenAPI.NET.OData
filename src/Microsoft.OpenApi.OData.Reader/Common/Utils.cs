@@ -272,7 +272,6 @@ namespace Microsoft.OpenApi.OData.Common
             return false;
         }
 
-
         /// <summary>
         /// Gets the entity type of the target <paramref name="segment"/>.
         /// </summary>
@@ -297,8 +296,6 @@ namespace Microsoft.OpenApi.OData.Common
                 default:
                     return null;
             }
-
-            return null;
         }
 
         /// <summary>
@@ -366,14 +363,16 @@ namespace Microsoft.OpenApi.OData.Common
                 }
 
                 ODataSegment lastSecondSegment = path.Segments.ElementAt(path.Count - secondLastSegmentIndex);
-                IEdmEntityType boundEntityType = lastSecondSegment.EntityTypeFromPathSegment();
+                IEdmEntityType boundEntityType = lastSecondSegment?.EntityTypeFromPathSegment();
 
                 IEdmEntityType operationEntityType = lastSegment.EntityTypeFromOperationSegment();
-                IEnumerable<IEdmStructuredType> derivedTypes = context.Model.FindAllDerivedTypes(operationEntityType);
+                IEnumerable<IEdmStructuredType> derivedTypes = (operationEntityType != null)
+                    ? context.Model.FindAllDerivedTypes(operationEntityType)
+                    : null;
 
-                if (derivedTypes.Any())
+                if (derivedTypes?.Any() ?? false)
                 {
-                    if (!derivedTypes.Contains(boundEntityType))
+                    if (boundEntityType != null && !derivedTypes.Contains(boundEntityType))
                     {
                         Debug.WriteLine($"Duplicate paths present but entity type of binding parameter '{operationEntityType}' " +
                                         $"is not the base type of the bound entity type '{boundEntityType}'. Path: {pathName}");
