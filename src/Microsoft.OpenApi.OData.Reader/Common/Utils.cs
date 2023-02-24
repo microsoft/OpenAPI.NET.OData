@@ -276,8 +276,8 @@ namespace Microsoft.OpenApi.OData.Common
         /// <summary>
         /// Gets the entity type of the target <paramref name="segment"/>.
         /// </summary>
-        /// <param name="segment">The target <see cref="ODataSegment"/></param>
-        /// <returns>The entity type of the target <paramref name="segment"/></returns>
+        /// <param name="segment">The target <see cref="ODataSegment"/>.</param>
+        /// <returns>The entity type of the target <paramref name="segment"/>.</returns>
         internal static IEdmEntityType EntityTypeFromPathSegment(this ODataSegment segment)
         {
             CheckArgumentNull(segment, nameof(segment));
@@ -312,7 +312,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// <summary>
         /// Gets the entity type of the <paramref name="segment"/>.
         /// </summary>
-        /// <param name="segment">The target <see cref="ODataOperationSegment"/></param>
+        /// <param name="segment">The target <see cref="ODataOperationSegment"/>.</param>
         /// <returns>The entity type of the target <paramref name="segment"/>.</returns>
         private static IEdmEntityType EntityTypeFromOperationSegment(this ODataSegment segment)
         {
@@ -333,7 +333,7 @@ namespace Microsoft.OpenApi.OData.Common
 
             return null;
         }
-        
+
         /// <summary>
         /// Attempts to add the specified <paramref name="path"/> and <paramref name="pathItem"/> to the <paramref name="pathItems"/> dictionary. 
         /// </summary>
@@ -341,7 +341,8 @@ namespace Microsoft.OpenApi.OData.Common
         /// <param name="context">The OData context</param>
         /// <param name="path">The key to be added.</param>
         /// <param name="pathItem">The value to be added.</param>
-        /// <returns></returns>
+        /// <returns>true when the key and/or value are successfully added/updated to the dictionary; 
+        /// false when the dictionary already contains the specified key, and nothing gets added.</returns>
         internal static bool TryAddPath(this IDictionary<string, OpenApiPathItem> pathItems,
             ODataContext context,
             ODataPath path,
@@ -368,7 +369,7 @@ namespace Microsoft.OpenApi.OData.Common
                 int secondLastSegmentIndex = 2;
                 if (path.Count < secondLastSegmentIndex)
                 {
-                    Debug.WriteLine("Invalid path. Operation not bound to any entity. Path: " + pathName);
+                    Debug.WriteLine($"Invalid path. Operation not bound to any entity. Path: {pathName}");
                     return false;
                 }
 
@@ -382,8 +383,8 @@ namespace Microsoft.OpenApi.OData.Common
                 {
                     if (!derivedTypes.Contains(boundEntityType))
                     {
-                        Debug.WriteLine("Duplicate paths present but entity type of binding parameter " +
-                            "is not the base type of the bound entity type. Path: " + pathName);
+                        Debug.WriteLine($"Duplicate paths present but entity type of binding parameter '{operationEntityType}' " +
+                                        $"is not the base type of the bound entity type '{boundEntityType}'. Path: {pathName}");
                     }
                     return false;
                 }
