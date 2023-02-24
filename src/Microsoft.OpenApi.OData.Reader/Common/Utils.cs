@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Text.RegularExpressions;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
@@ -269,6 +270,30 @@ namespace Microsoft.OpenApi.OData.Common
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Removes the base namespace from a string value.
+        /// </summary>
+        /// <param name="value">The target string value.</param>
+        /// <param name="settings">Convert settings.</param>
+        /// <returns>The string value with the namespace removed.</returns>
+        internal static string RemoveBaseNamespace(this string value, OpenApiConvertSettings settings)
+        {
+            CheckArgumentNullOrEmpty(value, nameof(value));
+            CheckArgumentNull(settings, nameof(settings));
+
+            if (string.IsNullOrEmpty(settings.BaseNamespace))
+            {
+                return value;
+            }
+
+            string baseNamespace = settings.BaseNamespace.EndsWith(".")
+                ? settings.BaseNamespace
+                : settings.BaseNamespace + ".";
+
+            string escapedPattern = Regex.Escape(baseNamespace);
+            return Regex.Replace(value, escapedPattern, "", RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2));
         }
     }
 }
