@@ -288,7 +288,7 @@ namespace Microsoft.OpenApi.OData.Common
                 return value;
             }
 
-            string defaultNamespace = settings.DefaultNamespace.EndsWith(".")
+            string defaultNamespace = settings.DefaultNamespace.EndsWith(".", StringComparison.OrdinalIgnoreCase)
                 ? settings.DefaultNamespace
                 : settings.DefaultNamespace + ".";
 
