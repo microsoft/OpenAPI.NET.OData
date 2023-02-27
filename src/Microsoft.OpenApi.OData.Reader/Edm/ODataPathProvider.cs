@@ -31,6 +31,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private IEdmModel _model;
 
+        private readonly IDictionary<IEdmEntityType, IList<ODataPath>> _dollarCountPaths =
+           new Dictionary<IEdmEntityType, IList<ODataPath>>();
+
         /// <summary>
         /// Can filter the <see cref="IEdmElement"/> or not.
         /// </summary>
@@ -99,6 +102,7 @@ namespace Microsoft.OpenApi.OData.Edm
             _allNavigationSourcePaths.Clear();
             _allNavigationPropertyPaths.Clear();
             _allOperationPaths.Clear();
+            _dollarCountPaths.Clear();
         }
 
        private IEnumerable<ODataPath> MergePaths()
@@ -142,6 +146,25 @@ namespace Microsoft.OpenApi.OData.Edm
                             nsList = new List<ODataPath>();
                             _allNavigationSourcePaths[navigationSourceSegment.EntityType] = nsList;
                         }
+                        
+                        if (kind == ODataPathKind.DollarCount)
+                        {                          
+                            if (_allOperationPaths.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path)) is not null)
+                            {
+                                // Don't add a path for $count if a similar count() function path already exists.                                
+                                return;
+                            }
+                            else
+                            {
+                                if (!_dollarCountPaths.TryGetValue(navigationSourceSegment.EntityType, out IList<ODataPath> dollarPathList))
+                                {
+                                    dollarPathList = new List<ODataPath>();
+                                    _dollarCountPaths[navigationSourceSegment.EntityType] = dollarPathList;
+                                }
+                                dollarPathList.Add(path);
+                            }
+                        }
+                        
                         nsList.Add(path);
                     }
                     break;
@@ -161,11 +184,46 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 case ODataPathKind.Operation:
                 case ODataPathKind.OperationImport:
+                    if (kind == ODataPathKind.Operation)
+                    {
+                        foreach (var kvp in _dollarCountPaths)
+                        {
+                            if (kvp.Value.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path)) is ODataPath dollarCountPath &&
+                                _allNavigationSourcePaths.TryGetValue(kvp.Key, out IList<ODataPath> dollarPathList))
+                            {
+                                dollarPathList.Remove(dollarCountPath);
+                                break;
+                            }
+                        }
+                    }
+
                     _allOperationPaths.Add(path);
                     break;
 
                 default:
                     return;
+            }
+
+            bool DollarCountAndOperationPathsSimilar(ODataPath path1, ODataPath path2)
+            {
+                if ((path1.Kind == ODataPathKind.DollarCount && 
+                    path2.Kind == ODataPathKind.Operation && path2.LastSegment.Identifier.Equals(Constants.CountSegmentIdentifier, StringComparison.OrdinalIgnoreCase)) ||
+                    (path2.Kind == ODataPathKind.DollarCount &&
+                    path1.Kind == ODataPathKind.Operation && path1.LastSegment.Identifier.Equals(Constants.CountSegmentIdentifier, StringComparison.OrdinalIgnoreCase)))
+                {
+                    return GetModifiedPathItemName(path1)?.Equals(GetModifiedPathItemName(path2), StringComparison.OrdinalIgnoreCase) ?? false;
+                }
+
+                return false;                
+            }
+
+            string GetModifiedPathItemName(ODataPath path)
+            {
+                if (!path.Any()) return null;
+
+                IEnumerable<ODataSegment> modifiedSegments = path.Take(path.Count - 1);
+                ODataPath modifiedPath = new(modifiedSegments);
+                return modifiedPath.GetPathItemName();
             }
         }
 
