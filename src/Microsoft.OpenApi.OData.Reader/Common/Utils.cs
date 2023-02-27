@@ -286,7 +286,7 @@ namespace Microsoft.OpenApi.OData.Common
             // Trim trailing '.' for uniformity
             prefix = prefix.TrimEnd('.');
 
-            return value.StartsWith(prefix)
+            return value.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)
                 ? value.Substring(prefix.Length).TrimStart('.')
                 : value;
         }
