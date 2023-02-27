@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text.RegularExpressions;
@@ -12,6 +13,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 
@@ -270,6 +272,124 @@ namespace Microsoft.OpenApi.OData.Common
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Gets the entity type of the target <paramref name="segment"/>.
+        /// </summary>
+        /// <param name="segment">The target <see cref="ODataSegment"/>.</param>
+        /// <returns>The entity type of the target <paramref name="segment"/>.</returns>
+        internal static IEdmEntityType EntityTypeFromPathSegment(this ODataSegment segment)
+        {
+            CheckArgumentNull(segment, nameof(segment));
+
+            switch (segment)
+            {
+                case ODataNavigationPropertySegment navPropSegment:
+                    return navPropSegment.EntityType;
+                case ODataNavigationSourceSegment navSourceSegment when navSourceSegment.NavigationSource is IEdmEntitySet entitySet:
+                    return entitySet.EntityType();
+                case ODataNavigationSourceSegment navSourceSegment when navSourceSegment.NavigationSource is IEdmSingleton singleton:
+                    return singleton.EntityType();
+                case ODataKeySegment keySegment:
+                    return keySegment.EntityType;
+                case ODataOperationSegment:
+                    return segment.EntityTypeFromOperationSegment();
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Gets the entity type of the <paramref name="segment"/>.
+        /// </summary>
+        /// <param name="segment">The target <see cref="ODataOperationSegment"/>.</param>
+        /// <returns>The entity type of the target <paramref name="segment"/>.</returns>
+        private static IEdmEntityType EntityTypeFromOperationSegment(this ODataSegment segment)
+        {
+            CheckArgumentNull(segment, nameof(segment));
+
+            if (segment is ODataOperationSegment operationSegment &&
+            operationSegment.Operation.Parameters.FirstOrDefault() is IEdmOperationParameter bindingParameter)
+            {
+                IEdmTypeReference bindingType = bindingParameter.Type;
+
+                if (bindingType.IsCollection())
+                {
+                    bindingType = bindingType.AsCollection().ElementType();
+                }
+
+                return bindingType.AsEntity().EntityDefinition();
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Attempts to add the specified <paramref name="path"/> and <paramref name="pathItem"/> to the <paramref name="pathItems"/> dictionary. 
+        /// </summary>
+        /// <param name="pathItems">The target dictionary.</param>
+        /// <param name="context">The OData context</param>
+        /// <param name="path">The key to be added.</param>
+        /// <param name="pathItem">The value to be added.</param>
+        /// <returns>true when the key and/or value are successfully added/updated to the dictionary; 
+        /// false when the dictionary already contains the specified key, and nothing gets added.</returns>
+        internal static bool TryAddPath(this IDictionary<string, OpenApiPathItem> pathItems,
+            ODataContext context,
+            ODataPath path,
+            OpenApiPathItem pathItem)
+        {
+            CheckArgumentNull(pathItems, nameof(pathItems));
+            CheckArgumentNull(context, nameof(context));
+            CheckArgumentNull(path, nameof(path));
+            CheckArgumentNull(pathItem, nameof(pathItem));
+
+            OpenApiConvertSettings settings = context.Settings.Clone();
+            settings.EnableKeyAsSegment = context.KeyAsSegment;
+
+            string pathName = path.PathTemplate ?? path.GetPathItemName(settings);
+
+            if (!pathItems.TryAdd(pathName, pathItem))
+            {
+                if (path.LastSegment is not ODataOperationSegment lastSegment)
+                {
+                    Debug.WriteLine("Duplicate path: " + pathName);
+                    return false;
+                }
+
+                int secondLastSegmentIndex = 2;
+                if (path.Count < secondLastSegmentIndex)
+                {
+                    Debug.WriteLine($"Invalid path. Operation not bound to any entity. Path: {pathName}");
+                    return false;
+                }
+
+                ODataSegment lastSecondSegment = path.Segments.ElementAt(path.Count - secondLastSegmentIndex);
+                IEdmEntityType boundEntityType = lastSecondSegment?.EntityTypeFromPathSegment();
+
+                IEdmEntityType operationEntityType = lastSegment.EntityTypeFromOperationSegment();
+                IEnumerable<IEdmStructuredType> derivedTypes = (operationEntityType != null)
+                    ? context.Model.FindAllDerivedTypes(operationEntityType)
+                    : null;
+
+                if (derivedTypes?.Any() ?? false)
+                {
+                    if (boundEntityType != null && !derivedTypes.Contains(boundEntityType))
+                    {
+                        Debug.WriteLine($"Duplicate paths present but entity type of binding parameter '{operationEntityType}' " +
+                                        $"is not the base type of the bound entity type '{boundEntityType}'. Path: {pathName}");
+                    }
+                    return false;
+                }
+                else
+                {
+                    // Function bound to a derived type; what was added before was a function bound to a base type,
+                    // update the existing dictionary entry.
+                    pathItems[pathName] = pathItem;
+                }
+            }
+            
+            return true;
         }
         
         /// <summary>
