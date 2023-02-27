@@ -158,12 +158,27 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             Assert.NotNull(links);
-            Assert.Equal(2, links.Count);
+            Assert.Equal(5, links.Count);
             Assert.Collection(links,
+                item =>
+                {
+                    Assert.Equal("edge", item.Key);
+                    Assert.Equal("admin.GetEdge", item.Value.OperationId);
+                },
+                item =>
+                {
+                Assert.Equal("sharepoint", item.Key);
+                Assert.Equal("admin.GetSharepoint", item.Value.OperationId);
+                },
                 item =>
                 {
                     Assert.Equal("serviceAnnouncement", item.Key);
                     Assert.Equal("admin.GetServiceAnnouncement", item.Value.OperationId);
+                },
+                item =>
+                {
+                Assert.Equal("reportSettings", item.Key);
+                Assert.Equal("admin.GetReportSettings", item.Value.OperationId);
                 },
                 item =>
                 {
