@@ -11,8 +11,6 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.AddAlternateKeyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddAlternateKeyPaths.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.set -> void
-Microsoft.OpenApi.OData.OpenApiConvertSettings.BaseNamespace.get -> string
-Microsoft.OpenApi.OData.OpenApiConvertSettings.BaseNamespace.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.get -> System.Collections.Generic.Dictionary<Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey, string>
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.get -> bool
@@ -27,6 +25,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get ->
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.NamespacePrefixToStripForInMethodPaths.get -> string
+Microsoft.OpenApi.OData.OpenApiConvertSettings.NamespacePrefixToStripForInMethodPaths.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void

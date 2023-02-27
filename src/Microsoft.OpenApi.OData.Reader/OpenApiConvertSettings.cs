@@ -314,9 +314,9 @@ namespace Microsoft.OpenApi.OData
         public bool EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty { get; set; } = false;
 
         /// <summary>
-        /// The default namespace.
+        /// The namespace prefix to be stripped from the in method paths.
         /// </summary>
-        public string DefaultNamespace{ get; set; }
+        public string NamespacePrefixToStripForInMethodPaths { get; set; }
 
         internal OpenApiConvertSettings Clone()
         {
@@ -368,7 +368,7 @@ namespace Microsoft.OpenApi.OData
                 EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
                 EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = this.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty,
                 AddAlternateKeyPaths = this.AddAlternateKeyPaths,
-                DefaultNamespace = this.DefaultNamespace
+                NamespacePrefixToStripForInMethodPaths = this.NamespacePrefixToStripForInMethodPaths
             };
 
             return newSettings;
