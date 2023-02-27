@@ -206,12 +206,10 @@ namespace Microsoft.OpenApi.OData.Edm
 
             bool DollarCountAndOperationPathsSimilar(ODataPath path1, ODataPath path2)
             {
-                string countIdentifier = "count";
-
                 if ((path1.Kind == ODataPathKind.DollarCount && 
-                    path2.Kind == ODataPathKind.Operation && path2.LastSegment.Identifier.Equals(countIdentifier, StringComparison.OrdinalIgnoreCase)) ||
+                    path2.Kind == ODataPathKind.Operation && path2.LastSegment.Identifier.Equals(Constants.CountSegmentIdentifier, StringComparison.OrdinalIgnoreCase)) ||
                     (path2.Kind == ODataPathKind.DollarCount &&
-                    path1.Kind == ODataPathKind.Operation && path1.LastSegment.Identifier.Equals(countIdentifier, StringComparison.OrdinalIgnoreCase)))
+                    path1.Kind == ODataPathKind.Operation && path1.LastSegment.Identifier.Equals(Constants.CountSegmentIdentifier, StringComparison.OrdinalIgnoreCase)))
                 {
                     return GetModifiedPathItemName(path1).Equals(GetModifiedPathItemName(path2), StringComparison.OrdinalIgnoreCase);
                 }
