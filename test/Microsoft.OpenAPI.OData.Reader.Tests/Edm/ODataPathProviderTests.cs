@@ -43,7 +43,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             ODataPathProvider provider = new();
             OpenApiConvertSettings settings = new()
             {
-                AddAlternateKeyPaths = true
+                AddAlternateKeyPaths = true,
+                PrefixEntityTypeNameBeforeKey = true
             };
 
             // Act
@@ -51,7 +52,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18317, paths.Count());
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/drives({id})/items({id1})/workbook/tables/$count")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/drives({id})/items({id1})/workbook/tables/microsoft.graph.count()")));
+            Assert.Equal(18024, paths.Count());
         }
 
         [Fact]
@@ -72,7 +75,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(19773, paths.Count());
+            Assert.Equal(18675, paths.Count());
         }
 
         [Fact]
