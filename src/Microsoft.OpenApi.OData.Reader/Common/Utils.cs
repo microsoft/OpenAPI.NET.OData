@@ -270,6 +270,25 @@ namespace Microsoft.OpenApi.OData.Common
             }
 
             return false;
-        }                
+        }
+        
+        /// <summary>
+        /// Strips off a prefix value from a string.
+        /// </summary>
+        /// <param name="value">The target string value.</param>
+        /// <param name="prefix">The prefix value to strip off.</param>
+        /// <returns>The value with the prefix stripped off.</returns>
+        internal static string StripNamespacePrefix(this string value, string prefix)
+        {
+            CheckArgumentNullOrEmpty(value, nameof(value));
+            CheckArgumentNullOrEmpty(prefix, nameof(prefix));
+
+            // Trim trailing '.' for uniformity
+            prefix = prefix.TrimEnd('.');
+
+            return value.StartsWith(prefix)
+                ? value.Substring(prefix.Length).TrimStart('.')
+                : value;
+        }
     }
 }
