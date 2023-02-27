@@ -211,7 +211,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     (path2.Kind == ODataPathKind.DollarCount &&
                     path1.Kind == ODataPathKind.Operation && path1.LastSegment.Identifier.Equals(Constants.CountSegmentIdentifier, StringComparison.OrdinalIgnoreCase)))
                 {
-                    return GetModifiedPathItemName(path1).Equals(GetModifiedPathItemName(path2), StringComparison.OrdinalIgnoreCase);
+                    return GetModifiedPathItemName(path1)?.Equals(GetModifiedPathItemName(path2), StringComparison.OrdinalIgnoreCase) ?? false;
                 }
 
                 return false;                
@@ -219,6 +219,8 @@ namespace Microsoft.OpenApi.OData.Edm
 
             string GetModifiedPathItemName(ODataPath path)
             {
+                if (!path.Any()) return null;
+
                 IEnumerable<ODataSegment> modifiedSegments = path.Take(path.Count - 1);
                 ODataPath modifiedPath = new(modifiedSegments);
                 return modifiedPath.GetPathItemName();
