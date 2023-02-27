@@ -189,5 +189,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// entity name
         /// </summary>
         public static string EntityName = "entity";
+
+        /// <summary>
+        /// count segment identifier
+        /// </summary>
+        public const string CountSegmentIdentifier = "count";
     }
 }

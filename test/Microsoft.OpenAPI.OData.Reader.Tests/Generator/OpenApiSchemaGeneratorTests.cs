@@ -206,6 +206,7 @@ namespace Microsoft.OpenApi.OData.Tests
         ""deletedDateTime"": {
           ""pattern"": ""^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"",
           ""type"": ""string"",
+          ""description"": ""Date and time when this object was deleted. Always null when the object hasn't been deleted."",
           ""format"": ""date-time"",
           ""nullable"": true
         },
@@ -218,10 +219,11 @@ namespace Microsoft.OpenApi.OData.Tests
         ""propertyName"": ""@odata.type"",
         ""mapping"": {
           ""#microsoft.graph.user"": ""#/components/schemas/microsoft.graph.user"",
+          ""#microsoft.graph.servicePrincipal"": ""#/components/schemas/microsoft.graph.servicePrincipal"",
           ""#microsoft.graph.group"": ""#/components/schemas/microsoft.graph.group"",
           ""#microsoft.graph.device"": ""#/components/schemas/microsoft.graph.device"",
+          ""#microsoft.graph.administrativeUnit"": ""#/components/schemas/microsoft.graph.administrativeUnit"",
           ""#microsoft.graph.application"": ""#/components/schemas/microsoft.graph.application"",
-          ""#microsoft.graph.servicePrincipal"": ""#/components/schemas/microsoft.graph.servicePrincipal"",
           ""#microsoft.graph.policyBase"": ""#/components/schemas/microsoft.graph.policyBase"",
           ""#microsoft.graph.appManagementPolicy"": ""#/components/schemas/microsoft.graph.appManagementPolicy"",
           ""#microsoft.graph.stsPolicy"": ""#/components/schemas/microsoft.graph.stsPolicy"",
@@ -231,14 +233,16 @@ namespace Microsoft.OpenApi.OData.Tests
           ""#microsoft.graph.claimsMappingPolicy"": ""#/components/schemas/microsoft.graph.claimsMappingPolicy"",
           ""#microsoft.graph.activityBasedTimeoutPolicy"": ""#/components/schemas/microsoft.graph.activityBasedTimeoutPolicy"",
           ""#microsoft.graph.authorizationPolicy"": ""#/components/schemas/microsoft.graph.authorizationPolicy"",
+          ""#microsoft.graph.tenantRelationshipAccessPolicyBase"": ""#/components/schemas/microsoft.graph.tenantRelationshipAccessPolicyBase"",
+          ""#microsoft.graph.crossTenantAccessPolicy"": ""#/components/schemas/microsoft.graph.crossTenantAccessPolicy"",
           ""#microsoft.graph.tenantAppManagementPolicy"": ""#/components/schemas/microsoft.graph.tenantAppManagementPolicy"",
+          ""#microsoft.graph.externalIdentitiesPolicy"": ""#/components/schemas/microsoft.graph.externalIdentitiesPolicy"",
           ""#microsoft.graph.permissionGrantPolicy"": ""#/components/schemas/microsoft.graph.permissionGrantPolicy"",
           ""#microsoft.graph.servicePrincipalCreationPolicy"": ""#/components/schemas/microsoft.graph.servicePrincipalCreationPolicy"",
           ""#microsoft.graph.identitySecurityDefaultsEnforcementPolicy"": ""#/components/schemas/microsoft.graph.identitySecurityDefaultsEnforcementPolicy"",
           ""#microsoft.graph.extensionProperty"": ""#/components/schemas/microsoft.graph.extensionProperty"",
           ""#microsoft.graph.endpoint"": ""#/components/schemas/microsoft.graph.endpoint"",
           ""#microsoft.graph.resourceSpecificPermissionGrant"": ""#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant"",
-          ""#microsoft.graph.administrativeUnit"": ""#/components/schemas/microsoft.graph.administrativeUnit"",
           ""#microsoft.graph.contract"": ""#/components/schemas/microsoft.graph.contract"",
           ""#microsoft.graph.directoryObjectPartnerReference"": ""#/components/schemas/microsoft.graph.directoryObjectPartnerReference"",
           ""#microsoft.graph.directoryRole"": ""#/components/schemas/microsoft.graph.directoryRole"",
@@ -285,6 +289,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ""properties"": {
     ""isBackup"": {
       ""type"": ""boolean"",
+      ""description"": ""For a user in an approval stage, this property indicates whether the user is a backup fallback approver."",
       ""nullable"": true
     },
     ""@odata.type"": {
@@ -313,6 +318,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ""properties"": {
     ""isBackup"": {
       ""type"": ""boolean"",
+      ""description"": ""For a user in an approval stage, this property indicates whether the user is a backup fallback approver."",
       ""nullable"": true
     },
     ""@odata.type"": {
@@ -363,11 +369,11 @@ namespace Microsoft.OpenApi.OData.Tests
       ""properties"": {
         ""contributionToContentDiscoveryAsOrganizationDisabled"": {
           ""type"": ""boolean"",
-          ""x-ms-isHidden"": ""true""
+          ""description"": ""Reflects the Office Delve organization level setting. When set to true, the organization doesn't have access to Office Delve. This setting is read-only and can only be changed by administrators in the SharePoint admin center.""
         },
         ""contributionToContentDiscoveryDisabled"": {
           ""type"": ""boolean"",
-          ""x-ms-isHidden"": ""true""
+          ""description"": ""When set to true, documents in the user's Office Delve are disabled. Users can control this setting in Office Delve.""
         },
         ""itemInsights"": {
           ""anyOf"": [
@@ -379,7 +385,20 @@ namespace Microsoft.OpenApi.OData.Tests
               ""nullable"": true
             }
           ],
-          ""x-ms-isHidden"": ""true"",
+          ""description"": ""The user's settings for the visibility of meeting hour insights, and insights derived between a user and other items in Microsoft 365, such as documents or sites. Get userInsightsSettings through this navigation property."",
+          ""x-ms-navigationProperty"": true
+        },
+        ""contactMergeSuggestions"": {
+          ""anyOf"": [
+            {
+              ""$ref"": ""#/components/schemas/microsoft.graph.contactMergeSuggestions""
+            },
+            {
+              ""type"": ""object"",
+              ""nullable"": true
+            }
+          ],
+          ""description"": ""The user's settings for the visibility of merge suggestion for the duplicate contacts in the user's contact list."",
           ""x-ms-navigationProperty"": true
         },
         ""regionalAndLanguageSettings"": {
@@ -392,6 +411,7 @@ namespace Microsoft.OpenApi.OData.Tests
               ""nullable"": true
             }
           ],
+          ""description"": ""The user's preferences for languages, regional locale and date/time formatting."",
           ""x-ms-navigationProperty"": true
         },
         ""shiftPreferences"": {
@@ -404,6 +424,7 @@ namespace Microsoft.OpenApi.OData.Tests
               ""nullable"": true
             }
           ],
+          ""description"": ""The shift preferences for the user."",
           ""x-ms-navigationProperty"": true
         }
       }
@@ -931,6 +952,7 @@ namespace Microsoft.OpenApi.OData.Tests
             {
                 Assert.Equal(@"{
   ""format"": ""duration"",
+  ""description"": ""The length of the appointment, denoted in ISO8601 format."",
   ""pattern"": ""^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$"",
   ""type"": ""string"",
   ""readOnly"": true
@@ -941,6 +963,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Equal(@"{
   ""pattern"": ""^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$"",
   ""type"": ""string"",
+  ""description"": ""The length of the appointment, denoted in ISO8601 format."",
   ""format"": ""duration"",
   ""readOnly"": true
 }".ChangeLineBreaks(), json);
