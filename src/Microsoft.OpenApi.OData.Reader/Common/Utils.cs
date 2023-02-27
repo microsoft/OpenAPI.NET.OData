@@ -307,9 +307,9 @@ namespace Microsoft.OpenApi.OData.Common
         {
             CheckArgumentNull(segment, nameof(segment));
 
-            if (segment is ODataOperationSegment operationSegment)
+            if (segment is ODataOperationSegment operationSegment &&
+            operationSegment.Operation.Parameters.FirstOrDefault() is IEdmOperationParameter bindingParameter)
             {
-                IEdmOperationParameter bindingParameter = operationSegment.Operation.Parameters.First();
                 IEdmTypeReference bindingType = bindingParameter.Type;
 
                 if (bindingType.IsCollection())
