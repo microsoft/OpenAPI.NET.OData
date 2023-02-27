@@ -23,6 +23,7 @@
     <PackageReleaseNotes>
 - Update key path parameter descriptions #309
 - Skips adding a $count path if a similar count() function path exists #347
+- Checks whether path exists before adding it to the paths dictionary #343
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
