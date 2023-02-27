@@ -272,27 +272,27 @@ namespace Microsoft.OpenApi.OData.Common
             return false;
         }
 
-        /// <summary>
-        /// Removes the default namespace from a string value.
-        /// </summary>
-        /// <param name="value">The target string value.</param>
-        /// <param name="settings">Convert settings.</param>
-        /// <returns>The string value with the namespace removed.</returns>
-        internal static string RemoveDefaultNamespace(this string value, OpenApiConvertSettings settings)
-        {
-            CheckArgumentNullOrEmpty(value, nameof(value));
-            CheckArgumentNull(settings, nameof(settings));
+        ///// <summary>
+        ///// Removes the default namespace from a string value.
+        ///// </summary>
+        ///// <param name="value">The target string value.</param>
+        ///// <param name="settings">Convert settings.</param>
+        ///// <returns>The string value with the namespace removed.</returns>
+        //internal static string RemoveDefaultNamespace(this string value, OpenApiConvertSettings settings)
+        //{
+        //    CheckArgumentNullOrEmpty(value, nameof(value));
+        //    CheckArgumentNull(settings, nameof(settings));
 
-            if (string.IsNullOrEmpty(settings.DefaultNamespace))
-            {
-                return value;
-            }
+        //    if (string.IsNullOrEmpty(settings.DefaultNamespace))
+        //    {
+        //        return value;
+        //    }
 
-            string defaultNamespace = settings.DefaultNamespace.EndsWith(".", StringComparison.OrdinalIgnoreCase)
-                ? settings.DefaultNamespace
-                : settings.DefaultNamespace + ".";
+        //    string defaultNamespace = settings.DefaultNamespace.EndsWith(".", StringComparison.OrdinalIgnoreCase)
+        //        ? settings.DefaultNamespace
+        //        : settings.DefaultNamespace + ".";
 
-            return value.Replace(defaultNamespace, "");
-        }
+        //    return value.Replace(defaultNamespace, "");
+        //}
     }
 }
