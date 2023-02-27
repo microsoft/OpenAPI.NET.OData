@@ -3,12 +3,9 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
@@ -115,10 +112,21 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private string OperationName(IEdmOperation operation, OpenApiConvertSettings settings)
         {
-            string selectedName = operation.FullName();
-            return settings.EnableUnqualifiedCall
-                ? settings.DefaultNamespace != null ? selectedName.RemoveDefaultNamespace(settings) : operation.Name
-                : selectedName;
+            if (settings.EnableUnqualifiedCall)
+            {
+                return operation.Name;
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(settings.NamespacePrefixToStripForInMethodPaths))
+                {
+                    return operation.Namespace.Replace(settings.NamespacePrefixToStripForInMethodPaths, "").TrimStart('.') + "." + operation.Name;
+                }
+                else
+                {
+                    return operation.FullName();
+                }
+            }
         }
 
         private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings, HashSet<string> parameters)

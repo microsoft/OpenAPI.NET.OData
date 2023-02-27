@@ -73,16 +73,16 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Theory]
-        [InlineData(true, true, "XY.MyFunction(param={param},param2=@param2)")]
-        [InlineData(true, false, "XY.MyFunction(entity={entity},param={param},param2=@param2)")]
-        [InlineData(false, true, "NS.XY.MyFunction(param={param},param2=@param2)")]
-        [InlineData(false, false, "NS.XY.MyFunction(entity={entity},param={param},param2=@param2)")]
-        public void GetPathItemNameReturnsCorrectFunctionLiteral(bool unqualifiedCall, bool isBound, string expected)
+        [InlineData(true, true, "MyFunction(param={param},param2=@param2)", null)]
+        [InlineData(true, false, "MyFunction(entity={entity},param={param},param2=@param2)", null)]
+        [InlineData(false, true, "XY.MyFunction(param={param},param2=@param2)", "NS")]
+        [InlineData(false, false, "XY.MyFunction(entity={entity},param={param},param2=@param2)", "NS")]
+        public void GetPathItemNameReturnsCorrectFunctionLiteral(bool unqualifiedCall, bool isBound, string expected, string namespacePrefixToStrip)
         {
             // Arrange & Act
             IEdmEntityTypeReference entityTypeReference = new EdmEntityTypeReference(new EdmEntityType("NS.XY", "Entity"), false);
             IEdmTypeReference parameterType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.Boolean, isNullable: false);
-            EdmFunction boundFunction = BoundFunction("MyFunction", isBound, entityTypeReference,baseNamespace: "NS.XY");
+            EdmFunction boundFunction = BoundFunction("MyFunction", isBound, entityTypeReference, namespaceIdentifier: "NS.XY");
             boundFunction.AddParameter("param", parameterType);
             boundFunction.AddOptionalParameter("param2", parameterType);
 
@@ -90,7 +90,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableUnqualifiedCall = unqualifiedCall,
-                BaseNamespace = "NS",
+                NamespacePrefixToStripForInMethodPaths = namespacePrefixToStrip,
             };
 
             // Assert
@@ -152,10 +152,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             bool isBound,
             IEdmTypeReference firstParameterType,
             bool isComposable = false,
-            string baseNamespace = "NS")
+            string namespaceIdentifier = "NS")
         {
             IEdmTypeReference returnType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.Boolean, isNullable: false);
-            EdmFunction boundFunction = new EdmFunction(baseNamespace, funcName, returnType,
+            EdmFunction boundFunction = new EdmFunction(namespaceIdentifier, funcName, returnType,
                 isBound: isBound, entitySetPathExpression: null, isComposable: isComposable);
             boundFunction.AddParameter("entity", firstParameterType);
             return boundFunction;
