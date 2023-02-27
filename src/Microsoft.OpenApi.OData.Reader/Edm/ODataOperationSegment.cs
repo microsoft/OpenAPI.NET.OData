@@ -118,14 +118,10 @@ namespace Microsoft.OpenApi.OData.Edm
             }
             else
             {
-                if (!string.IsNullOrEmpty(settings.NamespacePrefixToStripForInMethodPaths))
-                {
-                    return operation.Namespace.Replace(settings.NamespacePrefixToStripForInMethodPaths, "").TrimStart('.') + "." + operation.Name;
-                }
-                else
-                {
-                    return operation.FullName();
-                }
+                string selectedName = operation.FullName();
+                return !string.IsNullOrEmpty(settings.NamespacePrefixToStripForInMethodPaths)
+                    ? selectedName.StripNamespacePrefix(settings.NamespacePrefixToStripForInMethodPaths)
+                    : selectedName;
             }
         }
 
