@@ -149,9 +149,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         
                         if (kind == ODataPathKind.DollarCount)
                         {                          
-                            ODataPath operationPath = _allOperationPaths.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path));
-                            
-                            if (operationPath != null)
+                            if (_allOperationPaths.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path)) is ODataPath operationPath)
                             {
                                 // Don't add a path for $count if a similar count() function path already exists.                                
                                 return;
@@ -190,8 +188,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     {
                         foreach (var kvp in _dollarCountPaths)
                         {
-                            ODataPath dollarCountPath = kvp.Value.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path));
-                            if (dollarCountPath != null &&
+                            if (kvp.Value.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path)) is ODataPath dollarCountPath &&
                                 _allNavigationSourcePaths.TryGetValue(kvp.Key, out IList<ODataPath> dollarPathList))
                             {
                                 dollarPathList.Remove(dollarCountPath);
