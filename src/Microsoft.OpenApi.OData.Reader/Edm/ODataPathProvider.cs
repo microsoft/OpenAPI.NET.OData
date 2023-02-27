@@ -149,7 +149,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         
                         if (kind == ODataPathKind.DollarCount)
                         {                          
-                            if (_allOperationPaths.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path)) is ODataPath operationPath != null)
+                            if (_allOperationPaths.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path)) is ODataPath operationPath)
                             {
                                 // Don't add a path for $count if a similar count() function path already exists.                                
                                 return;
