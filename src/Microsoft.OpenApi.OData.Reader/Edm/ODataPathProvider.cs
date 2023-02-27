@@ -188,8 +188,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     {
                         foreach (var kvp in _dollarCountPaths)
                         {
-                            ODataPath dollarCountPath = kvp.Value.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path));
-                            if (dollarCountPath != null &&
+                            if (kvp.Value.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path)) is ODataPath dollarCountPath &&
                                 _allNavigationSourcePaths.TryGetValue(kvp.Key, out IList<ODataPath> dollarPathList))
                             {
                                 dollarPathList.Remove(dollarCountPath);
