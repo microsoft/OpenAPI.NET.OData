@@ -318,6 +318,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public string NamespacePrefixToStripForInMethodPaths { get; set; }
 
+        /// <summary>
+        /// Enables the use of Aliases for the type cast segments to shorten the url path.
+        /// </summary>
+        public bool EnableAliasForTypeCastSegments { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -368,7 +373,8 @@ namespace Microsoft.OpenApi.OData
                 EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
                 EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = this.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty,
                 AddAlternateKeyPaths = this.AddAlternateKeyPaths,
-                NamespacePrefixToStripForInMethodPaths = this.NamespacePrefixToStripForInMethodPaths
+                NamespacePrefixToStripForInMethodPaths = this.NamespacePrefixToStripForInMethodPaths,
+                EnableAliasForTypeCastSegments = this.EnableAliasForTypeCastSegments
             };
 
             return newSettings;

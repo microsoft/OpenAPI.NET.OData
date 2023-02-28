@@ -7,6 +7,7 @@ Microsoft.OpenApi.OData.Edm.EdmModelExtensions
 Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
 Microsoft.OpenApi.OData.Edm.ODataKeySegment.IsAlternateKey.get -> bool
 Microsoft.OpenApi.OData.Edm.ODataKeySegment.IsAlternateKey.set -> void
+Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.ODataTypeCastSegment(Microsoft.OData.Edm.IEdmStructuredType structuredType, Microsoft.OData.Edm.IEdmModel model) -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddAlternateKeyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddAlternateKeyPaths.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.get -> bool
@@ -130,7 +131,6 @@ Microsoft.OpenApi.OData.Edm.ODataStreamContentSegment.ODataStreamContentSegment(
 Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment
 Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.ODataStreamPropertySegment(string streamPropertyName) -> void
 Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment
-Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.ODataTypeCastSegment(Microsoft.OData.Edm.IEdmStructuredType structuredType) -> void
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.ODataComplexPropertySegment(Microsoft.OData.Edm.IEdmStructuralProperty property) -> void
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.Property.get -> Microsoft.OData.Edm.IEdmStructuralProperty

@@ -3,8 +3,12 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
@@ -18,11 +22,14 @@ public class ODataTypeCastSegment : ODataSegment
     /// Initializes a new instance of <see cref="ODataTypeCastSegment"/> class.
     /// </summary>
     /// <param name="structuredType">The target type cast type.</param>
-    public ODataTypeCastSegment(IEdmStructuredType structuredType)
+    /// <param name="model">The model the type is a part of.</param>
+    public ODataTypeCastSegment(IEdmStructuredType structuredType, IEdmModel model)
     {
         StructuredType = structuredType ?? throw Error.ArgumentNull(nameof(structuredType));
+        _model = model ?? throw Error.ArgumentNull(nameof(model));
     }
 
+    private readonly IEdmModel _model;
     /// <inheritdoc />
     public override IEdmEntityType EntityType => null;
 
@@ -44,5 +51,22 @@ public class ODataTypeCastSegment : ODataSegment
     }
 
     /// <inheritdoc />
-    public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => StructuredType.FullTypeName();
+    public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
+    {
+        Utils.CheckArgumentNull(settings, nameof(settings));
+        string namespaceName = string.Empty;
+        string namespaceAlias = string.Empty;
+
+        if (StructuredType is IEdmSchemaElement entityType)
+            namespaceName = entityType.Namespace;
+
+        if (!string.IsNullOrEmpty(namespaceName))
+            namespaceAlias = _model.GetNamespaceAlias(namespaceName);
+
+        if(settings.EnableAliasForTypeCastSegments && !string.IsNullOrEmpty(namespaceAlias)) 
+            return namespaceAlias.TrimEnd('.') + "." + StructuredType.FullTypeName().Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).Last();
+
+        return StructuredType.FullTypeName();
+    }
+
 }
