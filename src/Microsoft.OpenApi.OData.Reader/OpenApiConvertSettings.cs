@@ -313,6 +313,16 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty { get; set; } = false;
 
+        /// <summary>
+        /// The namespace prefix to be stripped from the in method paths.
+        /// </summary>
+        public string NamespacePrefixToStripForInMethodPaths { get; set; }
+
+        /// <summary>
+        /// Enables the use of aliases for the type cast segments to shorten the url path.
+        /// </summary>
+        public bool EnableAliasForTypeCastSegments { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -362,7 +372,9 @@ namespace Microsoft.OpenApi.OData
                 IncludeAssemblyInfo = this.IncludeAssemblyInfo,
                 EnableODataAnnotationReferencesForResponses = this.EnableODataAnnotationReferencesForResponses,
                 EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = this.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty,
-                AddAlternateKeyPaths = this.AddAlternateKeyPaths
+                AddAlternateKeyPaths = this.AddAlternateKeyPaths,
+                NamespacePrefixToStripForInMethodPaths = this.NamespacePrefixToStripForInMethodPaths,
+                EnableAliasForTypeCastSegments = this.EnableAliasForTypeCastSegments
             };
 
             return newSettings;

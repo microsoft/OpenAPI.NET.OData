@@ -7,12 +7,15 @@ Microsoft.OpenApi.OData.Edm.EdmModelExtensions
 Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
 Microsoft.OpenApi.OData.Edm.ODataKeySegment.IsAlternateKey.get -> bool
 Microsoft.OpenApi.OData.Edm.ODataKeySegment.IsAlternateKey.set -> void
+Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.ODataTypeCastSegment(Microsoft.OData.Edm.IEdmStructuredType structuredType, Microsoft.OData.Edm.IEdmModel model) -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddAlternateKeyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddAlternateKeyPaths.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.get -> System.Collections.Generic.Dictionary<Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey, string>
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableAliasForTypeCastSegments.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableAliasForTypeCastSegments.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataAnnotationReferencesForResponses.get -> bool
@@ -25,6 +28,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get ->
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.NamespacePrefixToStripForInMethodPaths.get -> string
+Microsoft.OpenApi.OData.OpenApiConvertSettings.NamespacePrefixToStripForInMethodPaths.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
@@ -128,7 +133,6 @@ Microsoft.OpenApi.OData.Edm.ODataStreamContentSegment.ODataStreamContentSegment(
 Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment
 Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.ODataStreamPropertySegment(string streamPropertyName) -> void
 Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment
-Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.ODataTypeCastSegment(Microsoft.OData.Edm.IEdmStructuredType structuredType) -> void
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.ODataComplexPropertySegment(Microsoft.OData.Edm.IEdmStructuralProperty property) -> void
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.Property.get -> Microsoft.OData.Edm.IEdmStructuralProperty

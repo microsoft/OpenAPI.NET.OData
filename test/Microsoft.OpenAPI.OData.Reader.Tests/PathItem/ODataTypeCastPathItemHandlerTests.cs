@@ -44,7 +44,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataPath path = new(new ODataNavigationSourceSegment(people),
                                                                     new ODataKeySegment(people.EntityType()),
                                                                     new ODataNavigationPropertySegment(navProperty),
-                                                                    new ODataTypeCastSegment(employee));
+                                                                    new ODataTypeCastSegment(employee, model));
 
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);
