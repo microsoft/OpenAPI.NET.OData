@@ -40,7 +40,7 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataPath path = new(new ODataNavigationSourceSegment(people),
                                                                     new ODataKeySegment(people.EntityType()),
                                                                     new ODataNavigationPropertySegment(navProperty),
-                                                                    new ODataTypeCastSegment(employee));
+                                                                    new ODataTypeCastSegment(employee, model));
 
         // Act
         var operation = _operationHandler.CreateOperation(context, path);
@@ -99,7 +99,7 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataKeySegment(people.EntityType()),
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataKeySegment(people.EntityType()),
-                                                                    new ODataTypeCastSegment(employee));
+                                                                    new ODataTypeCastSegment(employee,model));
 
         // Act
         var operation = _operationHandler.CreateOperation(context, path);
@@ -152,7 +152,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         IEdmEntityType employee = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Employee");
         ODataPath path = new(new ODataNavigationSourceSegment(people),
-                                                                    new ODataTypeCastSegment(employee));
+                                                                    new ODataTypeCastSegment(employee,model));
 
         // Act
         var operation = _operationHandler.CreateOperation(context, path);
@@ -207,7 +207,7 @@ public class ODataTypeCastGetOperationHandlerTests
         IEdmEntityType employee = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Employee");
         ODataPath path = new(new ODataNavigationSourceSegment(people),
                                                                     new ODataKeySegment(people.EntityType()),
-                                                                    new ODataTypeCastSegment(employee));
+                                                                    new ODataTypeCastSegment(employee,model));
 
         // Act
         var operation = _operationHandler.CreateOperation(context, path);
@@ -264,7 +264,7 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataPath path = new(new ODataNavigationSourceSegment(people),
                                                                     new ODataKeySegment(people.EntityType()),
                                                                     new ODataNavigationPropertySegment(navProperty),
-                                                                    new ODataTypeCastSegment(employee));
+                                                                    new ODataTypeCastSegment(employee, model));
 
         // Act
         var operation = _operationHandler.CreateOperation(context, path);
@@ -317,7 +317,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         IEdmEntityType employee = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Employee");
         ODataPath path = new(new ODataNavigationSourceSegment(me),
-                                                                    new ODataTypeCastSegment(employee));
+                                                                    new ODataTypeCastSegment(employee, model));
 
         // Act
         var operation = _operationHandler.CreateOperation(context, path);

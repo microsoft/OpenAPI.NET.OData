@@ -3,9 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
@@ -84,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 return FunctionName(Operation as IEdmFunction, settings, parameters);
             }
 
-            return ActionName(Operation as IEdmAction, settings);
+            return OperationName(Operation, settings);
         }
 
         internal IDictionary<string, string> GetNameMapping(OpenApiConvertSettings settings, HashSet<string> parameters)
@@ -112,6 +110,21 @@ namespace Microsoft.OpenApi.OData.Edm
             return parameterNamesMapping;
         }
 
+        private string OperationName(IEdmOperation operation, OpenApiConvertSettings settings)
+        {
+            if (settings.EnableUnqualifiedCall)
+            {
+                return operation.Name;
+            }
+            else
+            {
+                string selectedName = operation.FullName();
+                return !string.IsNullOrEmpty(settings.NamespacePrefixToStripForInMethodPaths)
+                    ? selectedName.StripNamespacePrefix(settings.NamespacePrefixToStripForInMethodPaths)
+                    : selectedName;
+            }
+        }
+
         private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             if (settings.EnableUriEscapeFunctionCall && IsEscapedFunction)
@@ -130,15 +143,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
-            StringBuilder functionName = new StringBuilder();
-            if (settings.EnableUnqualifiedCall)
-            {
-                functionName.Append(function.Name);
-            }
-            else
-            {
-                functionName.Append(function.FullName());
-            }
+            StringBuilder functionName = new();
+            functionName.Append(OperationName(function, settings));
             functionName.Append("(");
             
             int skip = function.IsBound ? 1 : 0;
@@ -154,18 +160,6 @@ namespace Microsoft.OpenApi.OData.Edm
             functionName.Append(")");
 
             return functionName.ToString();
-        }
-
-        private string ActionName(IEdmAction action, OpenApiConvertSettings settings)
-        {
-            if (settings.EnableUnqualifiedCall)
-            {
-                return action.Name;
-            }
-            else
-            {
-                return action.FullName();
-            }
         }
 
         /// <inheritdoc />
