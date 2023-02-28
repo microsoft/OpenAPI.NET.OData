@@ -321,7 +321,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Enables the use of Aliases for the type cast segments to shorten the url path.
         /// </summary>
-        public bool EnableAliasForTypeCastSegments { get; set; } = true;
+        public bool EnableAliasForTypeCastSegments { get; set; } = false;
 
         internal OpenApiConvertSettings Clone()
         {
