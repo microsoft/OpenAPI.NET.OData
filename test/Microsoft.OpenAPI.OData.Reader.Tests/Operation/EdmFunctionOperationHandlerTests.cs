@@ -227,7 +227,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(customers),
                 new ODataKeySegment(customer),
-                new ODataTypeCastSegment(vipCustomer),
+                new ODataTypeCastSegment(vipCustomer, model),
                 new ODataOperationSegment(function));
           
             // Act

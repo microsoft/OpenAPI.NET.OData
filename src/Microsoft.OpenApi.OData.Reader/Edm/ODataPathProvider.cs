@@ -657,7 +657,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             foreach (var targetType in targetTypes)
             {
-                var targetTypeSegment = new ODataTypeCastSegment(targetType);
+                var targetTypeSegment = new ODataTypeCastSegment(targetType, _model);
 
                 if (currentPath.Segments.Any(x => x.Identifier.Equals(targetTypeSegment.Identifier)))
                 {
@@ -860,7 +860,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         {
                             if (ns is IEdmEntitySet)
                             {
-                                ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataTypeCastSegment(bindingEntityType),
+                                ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataTypeCastSegment(bindingEntityType, _model),
                                     new ODataOperationSegment(edmOperation, isEscapedFunction));
                                 AppendPath(newPath);
                             }
@@ -869,14 +869,14 @@ namespace Microsoft.OpenApi.OData.Edm
                         {
                             if (ns is IEdmSingleton)
                             {
-                                ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataTypeCastSegment(bindingEntityType),
+                                ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataTypeCastSegment(bindingEntityType, _model),
                                     new ODataOperationSegment(edmOperation, isEscapedFunction));
                                 AppendPath(newPath);
                             }
                             else
                             {
                                 ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataKeySegment(ns.EntityType()),
-                                    new ODataTypeCastSegment(bindingEntityType),
+                                    new ODataTypeCastSegment(bindingEntityType , _model),
                                     new ODataOperationSegment(edmOperation, isEscapedFunction));
                                 AppendPath(newPath);
                             }
@@ -956,7 +956,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         }
 
                         ODataPath newPath = path.Clone();
-                        newPath.Push(new ODataTypeCastSegment(bindingEntityType));
+                        newPath.Push(new ODataTypeCastSegment(bindingEntityType, _model));
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));
                         AppendPath(newPath);
                     }
