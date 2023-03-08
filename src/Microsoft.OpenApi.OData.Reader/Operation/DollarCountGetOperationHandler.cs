@@ -3,9 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.IO;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -27,6 +29,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// this segment could be "entity set", "Collection property", "Composable function whose return is collection",etc.
         /// </summary>
         internal ODataSegment LastSecondSegment { get; set; }
+        private ODataSegment firstSegment;
+        
         private const int SecondLastSegmentIndex = 2;
         private IEdmVocabularyAnnotatable annotatable;
 
@@ -34,6 +38,9 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
+
+            // Get the first segment
+            firstSegment = path.Segments.First();
 
             // get the last second segment
             int count = path.Segments.Count;
@@ -46,8 +53,38 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
             {
+                ODataNavigationSourceSegment navigationSourceSegment = firstSegment as ODataNavigationSourceSegment;
                 annotatable = navigationPropertySegment.NavigationProperty;
             }
+        }
+
+        /// <inheritdoc/>
+        protected override void SetTags(OpenApiOperation operation)
+        {
+            string tagName = null;
+            if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
+            {
+                tagName = $"{sourceSegment.NavigationSource.Name}.{sourceSegment.NavigationSource.EntityType().Name}";
+            }
+            else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
+            {
+                ODataNavigationSourceSegment navigationSourceSegment = firstSegment as ODataNavigationSourceSegment;
+                tagName = EdmModelHelper.GenerateNavigationPropertyPathTag(Path, navigationSourceSegment.NavigationSource, navigationPropertySegment.NavigationProperty, Context);
+            }
+
+            OpenApiTag tag = new()
+            {
+                Name = tagName
+            };
+
+            // Use an extension for TOC (Table of Content)
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+
+            operation.Tags.Add(tag);
+
+            Context.AppendTag(tag);
+
+            base.SetTags(operation);
         }
 
         /// <inheritdoc/>
@@ -59,7 +96,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                operation.OperationId = $"Get.Count.{LastSecondSegment.Identifier}-{Path.GetPathHash(Context.Settings)}";
+                operation.OperationId = $"{firstSegment.Identifier}.{LastSecondSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}"; // $"Get.Count.{LastSecondSegment.Identifier}-{Path.GetPathHash(Context.Settings)}";
             }
 
             base.SetBasicInfo(operation);
