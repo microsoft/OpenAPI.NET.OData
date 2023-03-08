@@ -3,6 +3,8 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using Microsoft.OData.Edm;
@@ -96,7 +98,14 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                operation.OperationId = $"{firstSegment.Identifier}.{LastSecondSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}"; // $"Get.Count.{LastSecondSegment.Identifier}-{Path.GetPathHash(Context.Settings)}";
+                string postfix = null;
+                if (LastSecondSegment is ODataTypeCastSegment odataTypeCastSegment)
+                {
+                    var odataType = odataTypeCastSegment.StructuredType as IEdmNamedElement;
+                    postfix = $".As{Utils.UpperFirstChar(odataType.Name)}";
+                }
+
+                operation.OperationId = $"{firstSegment.Identifier}.{LastSecondSegment.Identifier}.GetCount{postfix}-{Path.GetPathHash(Context.Settings)}";
             }
 
             base.SetBasicInfo(operation);
