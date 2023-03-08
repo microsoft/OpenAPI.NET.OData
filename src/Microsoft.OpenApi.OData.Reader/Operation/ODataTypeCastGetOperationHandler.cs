@@ -105,9 +105,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
             }
 		}
 
-		if (path.Last() is ODataTypeCastSegment oDataTypeCastSegment)
+		if (path.Last() is ODataTypeCastSegment odataTypeCastSegment)
 		{
-			targetStructuredType = oDataTypeCastSegment.StructuredType;
+			targetStructuredType = odataTypeCastSegment.StructuredType;
 		}
 		else 
 		{
