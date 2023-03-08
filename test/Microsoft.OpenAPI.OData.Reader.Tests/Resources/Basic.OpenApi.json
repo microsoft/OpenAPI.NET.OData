@@ -144,7 +144,7 @@
           {
             "name": "Name",
             "in": "path",
-            "description": "key: Name of City",
+            "description": "The unique identifier of City",
             "required": true,
             "schema": {
               "type": "string"
@@ -213,7 +213,7 @@
           {
             "name": "Name",
             "in": "path",
-            "description": "key: Name of City",
+            "description": "The unique identifier of City",
             "required": true,
             "schema": {
               "type": "string"
@@ -252,7 +252,7 @@
           {
             "name": "Name",
             "in": "path",
-            "description": "key: Name of City",
+            "description": "The unique identifier of City",
             "required": true,
             "schema": {
               "type": "string"
@@ -435,7 +435,7 @@
           {
             "name": "Name",
             "in": "path",
-            "description": "key: Name of CountryOrRegion",
+            "description": "The unique identifier of CountryOrRegion",
             "required": true,
             "schema": {
               "type": "string"
@@ -504,7 +504,7 @@
           {
             "name": "Name",
             "in": "path",
-            "description": "key: Name of CountryOrRegion",
+            "description": "The unique identifier of CountryOrRegion",
             "required": true,
             "schema": {
               "type": "string"
@@ -543,7 +543,7 @@
           {
             "name": "Name",
             "in": "path",
-            "description": "key: Name of CountryOrRegion",
+            "description": "The unique identifier of CountryOrRegion",
             "required": true,
             "schema": {
               "type": "string"
@@ -828,7 +828,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName of Person",
+            "description": "The unique identifier of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -900,7 +900,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName of Person",
+            "description": "The unique identifier of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -939,7 +939,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName of Person",
+            "description": "The unique identifier of Person",
             "required": true,
             "schema": {
               "type": "string"

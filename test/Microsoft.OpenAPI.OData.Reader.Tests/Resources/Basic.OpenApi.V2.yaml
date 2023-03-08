@@ -85,7 +85,7 @@ paths:
       parameters:
         - in: path
           name: Name
-          description: 'key: Name of City'
+          description: The unique identifier of City
           required: true
           type: string
           x-ms-docs-key-type: City
@@ -123,7 +123,7 @@ paths:
       parameters:
         - in: path
           name: Name
-          description: 'key: Name of City'
+          description: The unique identifier of City
           required: true
           type: string
           x-ms-docs-key-type: City
@@ -147,7 +147,7 @@ paths:
       parameters:
         - in: path
           name: Name
-          description: 'key: Name of City'
+          description: The unique identifier of City
           required: true
           type: string
           x-ms-docs-key-type: City
@@ -253,7 +253,7 @@ paths:
       parameters:
         - in: path
           name: Name
-          description: 'key: Name of CountryOrRegion'
+          description: The unique identifier of CountryOrRegion
           required: true
           type: string
           x-ms-docs-key-type: CountryOrRegion
@@ -291,7 +291,7 @@ paths:
       parameters:
         - in: path
           name: Name
-          description: 'key: Name of CountryOrRegion'
+          description: The unique identifier of CountryOrRegion
           required: true
           type: string
           x-ms-docs-key-type: CountryOrRegion
@@ -315,7 +315,7 @@ paths:
       parameters:
         - in: path
           name: Name
-          description: 'key: Name of CountryOrRegion'
+          description: The unique identifier of CountryOrRegion
           required: true
           type: string
           x-ms-docs-key-type: CountryOrRegion
@@ -488,7 +488,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName of Person'
+          description: The unique identifier of Person
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -529,7 +529,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName of Person'
+          description: The unique identifier of Person
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -553,7 +553,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName of Person'
+          description: The unique identifier of Person
           required: true
           type: string
           x-ms-docs-key-type: Person

@@ -34,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var operations = provider.FindOperations(entitySet.EntityType(), false);
 
             // Assert
-            Assert.Equal(29, operations.Count());
+            Assert.Equal(30, operations.Count());
 
             // Act
             entitySet = model.EntityContainer.FindEntitySet("directoryObjects");
@@ -42,7 +42,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             operations = provider.FindOperations(entitySet.EntityType(), false);
 
             // Assert
-            Assert.Equal(57, operations.Count());
+            Assert.Equal(58, operations.Count());
         }
     }
 }
