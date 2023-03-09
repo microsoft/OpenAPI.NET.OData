@@ -122,7 +122,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 if (LastSecondSegment is ODataTypeCastSegment odataTypeCastSegment)
                 {
                     IEdmNamedElement targetStructuredType = odataTypeCastSegment.StructuredType as IEdmNamedElement;
-                    operation.OperationId = EdmModelHelper.GeneratePrefixForTypeCastPathOperations(Path, 3) + $".GetCount.As{Utils.UpperFirstChar(targetStructuredType.Name)}-{Path.GetPathHash(Context.Settings)}";
+                    operation.OperationId = EdmModelHelper.GeneratePrefixForODataTypeCastPathOperations(Path, 3) + $".GetCount.As{Utils.UpperFirstChar(targetStructuredType.Name)}-{Path.GetPathHash(Context.Settings)}";
                 }
 
                 operation.OperationId = $"{firstSegment.Identifier}.{LastSecondSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}";

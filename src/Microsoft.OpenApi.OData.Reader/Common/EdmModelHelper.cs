@@ -170,5 +170,80 @@ namespace Microsoft.OpenApi.OData.Common
 
             return string.Join(".", items);
         }
+
+        /// <summary>
+        /// Generates the prefix for OData type cast path operations.
+        /// </summary>
+        /// <param name="path">The OData path.</param>
+        /// <param name="preTypeCastSegmentPos">The position of the segment before the OData type cast segment starting from the last segment.</param>
+        /// <returns>The prefixed operation id for OData type casts.</returns>
+        internal static string GeneratePrefixForODataTypeCastPathOperations(ODataPath path, int preTypeCastSegmentPos = 2)
+        {
+            string operationId = null;
+            ODataSegment preTypeCastSegment;            
+            int pathCount = path.Segments.Count;
+            if (pathCount >= preTypeCastSegmentPos)
+            {
+                preTypeCastSegment = path.Segments.ElementAt(pathCount - preTypeCastSegmentPos);
+            }
+            else
+            {
+                return null;
+            }
+            
+            bool isIndexedCollValuedNavProp = false;
+            if (preTypeCastSegment is ODataKeySegment)
+            {
+                ODataSegment thirdLastSegment = path.Segments.ElementAt(pathCount - preTypeCastSegmentPos - 1);
+                if (thirdLastSegment is ODataNavigationPropertySegment)
+                {
+                    isIndexedCollValuedNavProp = true;
+                }
+            }
+
+            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
+            IEdmSingleton singleton = navigationSourceSegment?.NavigationSource as IEdmSingleton;
+            IEdmEntitySet entitySet = navigationSourceSegment?.NavigationSource as IEdmEntitySet;
+            
+            if (preTypeCastSegment is ODataComplexPropertySegment)
+            {
+                IEdmStructuredType parentStructuredType = preTypeCastSegment is ODataComplexPropertySegment complexSegment ? complexSegment.ComplexType : preTypeCastSegment.EntityType;
+                ODataComplexPropertySegment complexPropertySegment = parentStructuredType as ODataComplexPropertySegment;
+                string typeName = complexPropertySegment.ComplexType.Name;
+                string listOrGet = complexPropertySegment.Property.Type.IsCollection() ? ".List" : ".Get";
+                operationId = complexPropertySegment.Property.Name + "." + typeName + listOrGet + Utils.UpperFirstChar(typeName);
+            }
+            else if (preTypeCastSegment as ODataNavigationPropertySegment is not null || isIndexedCollValuedNavProp)
+            {
+                string prefix = "Get";
+                if (!isIndexedCollValuedNavProp &&
+                    (preTypeCastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    prefix = "List";
+                }
+
+                IEdmNavigationSource navigationSource = (entitySet != null) ? entitySet : singleton;
+                operationId = GenerateNavigationPropertyPathOperationId(path, navigationSource, prefix);
+            }
+            else if (preTypeCastSegment is ODataKeySegment keySegment && !isIndexedCollValuedNavProp)
+            {
+                string entityTypeName = keySegment.EntityType.Name;
+                string operationName = $"Get{Utils.UpperFirstChar(entityTypeName)}";
+                if (keySegment.IsAlternateKey)
+                {
+                    string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
+                    operationName = $"{operationName}By{alternateKeyName}";
+                }
+                operationId = $"{entitySet.Name}.{entityTypeName}.{operationName}";
+            }
+            else if (preTypeCastSegment is ODataNavigationSourceSegment)
+            {
+                operationId = (entitySet != null)
+                    ? entitySet.Name + "." + entitySet.EntityType().Name + ".List" + Utils.UpperFirstChar(entitySet.EntityType().Name)
+                    : singleton.Name + "." + singleton.EntityType().Name + ".Get" + Utils.UpperFirstChar(singleton.EntityType().Name);
+            }
+
+            return operationId;
+        }
     }
 }

@@ -176,7 +176,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 		// OperationId
 		if (Context.Settings.EnableOperationId)
-			operation.OperationId = EdmModelHelper.GeneratePrefixForTypeCastPathOperations(Path) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}";
+			operation.OperationId = EdmModelHelper.GeneratePrefixForODataTypeCastPathOperations(Path) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}";
 
         base.SetBasicInfo(operation);
 	}
