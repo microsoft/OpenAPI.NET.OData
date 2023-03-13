@@ -103,8 +103,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             string TagNameFromNavigationPropertySegment(ODataNavigationPropertySegment navigationPropertySegment)
             {
-                ODataNavigationSourceSegment navigationSourceSegment = firstSegment as ODataNavigationSourceSegment;
-                return EdmModelHelper.GenerateNavigationPropertyPathTag(Path, navigationSourceSegment.NavigationSource, navigationPropertySegment.NavigationProperty, Context);
+                return EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, navigationPropertySegment.NavigationProperty, Context);
             }
 
             base.SetTags(operation);
@@ -124,8 +123,15 @@ namespace Microsoft.OpenApi.OData.Operation
                     IEdmNamedElement targetStructuredType = odataTypeCastSegment.StructuredType as IEdmNamedElement;
                     operation.OperationId = EdmModelHelper.GeneratePrefixForODataTypeCastPathOperations(Path, 3) + $".GetCount.As{Utils.UpperFirstChar(targetStructuredType.Name)}-{Path.GetPathHash(Context.Settings)}";
                 }
-
-                operation.OperationId = $"{firstSegment.Identifier}.{LastSecondSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}";
+                else if (Path.Segments.Count == 2)
+                { 
+                    // Entityset $count
+                    operation.OperationId = $"{firstSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}";
+                }
+                else
+                {
+                    operation.OperationId = $"{firstSegment.Identifier}.{LastSecondSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}";
+                }              
             }
 
             base.SetBasicInfo(operation);
