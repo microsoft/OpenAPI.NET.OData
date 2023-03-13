@@ -91,14 +91,15 @@ namespace Microsoft.OpenApi.OData.Common
         /// Generates the operation id for a navigation property path.
         /// </summary>
         /// <param name="path">The target <see cref="ODataPath"/>.</param>
-        /// <param name="navigationSource">The <see cref="IEdmNavigationSource"/> of the target path.</param>
-        /// <param name="prefix">Identifier indicating whether it is a collection-valued non-indexed navigation property.</param>
+        /// <param name="prefix">Optional: Identifier indicating whether it is a collection-valued non-indexed navigation property.</param>
         /// <returns>The operation id name.</returns>
-        internal static string GenerateNavigationPropertyPathOperationId(ODataPath path, IEdmNavigationSource navigationSource, string prefix = null)
+        internal static string GenerateNavigationPropertyPathOperationId(ODataPath path, string prefix = null)
         {
-            if (path == null || navigationSource == null)
+            if (path == null)
                 return null;
 
+            IEdmNavigationSource navigationSource = (path.FirstSegment as ODataNavigationSourceSegment)?.NavigationSource;
+            
             IList<string> items = new List<string>
             {
                 navigationSource.Name
@@ -130,18 +131,19 @@ namespace Microsoft.OpenApi.OData.Common
         }
 
         /// <summary>
-        /// Generates the tag for a navigation property path.
+        /// Generates the tag name for a navigation property path.
         /// </summary>
         /// <param name="path">The target <see cref="ODataPath"/>.</param>
-        /// <param name="navigationSource">The <see cref="IEdmNavigationSource"/> of the target path.</param>
         /// <param name="navigationProperty">The target <see cref="IEdmNavigationProperty"/>.</param>
         /// <param name="context">The <see cref="ODataContext"/>.</param>
         /// <returns>The tag name.</returns>
-        internal static string GenerateNavigationPropertyPathTag(ODataPath path, IEdmNavigationSource navigationSource, IEdmNavigationProperty navigationProperty, ODataContext context)
+        internal static string GenerateNavigationPropertyPathTagName(ODataPath path, IEdmNavigationProperty navigationProperty, ODataContext context)
         {
-            if (path == null || navigationSource == null || navigationProperty == null)
+            if (path == null || navigationProperty == null)
                 return null;
 
+            IEdmNavigationSource navigationSource = (path.FirstSegment as ODataNavigationSourceSegment)?.NavigationSource;
+            
             IList<string> items = new List<string>
             {
                 navigationSource.Name
@@ -164,6 +166,49 @@ namespace Microsoft.OpenApi.OData.Common
                     else
                     {
                         items.Add(segment.NavigationProperty.Name);
+                    }
+                }
+            }
+
+            return string.Join(".", items);
+        }
+
+        /// <summary>
+        /// Generates the tag name for a navigation property path.
+        /// </summary>
+        /// <param name="path">The target <see cref="ODataPath"/>.</param>
+        /// <param name="complexType">The target <see cref="IEdmComplexType"/>.</param>
+        /// <param name="context">The <see cref="ODataContext"/>.</param>
+        /// <returns>The tag name.</returns>
+        internal static string GenerateComplexPropertyPathTagName(ODataPath path, IEdmComplexType complexType, ODataContext context)
+        {
+            if (path == null || complexType == null)
+                return null;
+
+            IEdmNavigationSource navigationSource = (path.FirstSegment as ODataNavigationSourceSegment)?.NavigationSource;
+            
+            IList<string> items = new List<string>
+            {
+                navigationSource.Name
+            };
+            
+            foreach (var segment in path.Segments.Skip(1).OfType<ODataComplexPropertySegment>())
+            {
+                if (segment.ComplexType == complexType)
+                {
+                    items.Add(complexType.Name);
+                    break;
+                }
+                else
+                {
+                    if (items.Count >= context.Settings.TagDepth - 1)
+                    {
+                        items.Add(segment.ComplexType.Name);
+                        break;
+                    }
+                    else
+                    {
+                        items.Add(segment.ComplexType.Name);
                     }
                 }
             }
@@ -205,13 +250,11 @@ namespace Microsoft.OpenApi.OData.Common
             IEdmSingleton singleton = navigationSourceSegment?.NavigationSource as IEdmSingleton;
             IEdmEntitySet entitySet = navigationSourceSegment?.NavigationSource as IEdmEntitySet;
             
-            if (preTypeCastSegment is ODataComplexPropertySegment)
+            if (preTypeCastSegment is ODataComplexPropertySegment complexSegment)
             {
-                IEdmStructuredType parentStructuredType = preTypeCastSegment is ODataComplexPropertySegment complexSegment ? complexSegment.ComplexType : preTypeCastSegment.EntityType;
-                ODataComplexPropertySegment complexPropertySegment = parentStructuredType as ODataComplexPropertySegment;
-                string typeName = complexPropertySegment.ComplexType.Name;
-                string listOrGet = complexPropertySegment.Property.Type.IsCollection() ? ".List" : ".Get";
-                operationId = complexPropertySegment.Property.Name + "." + typeName + listOrGet + Utils.UpperFirstChar(typeName);
+                string typeName = complexSegment.ComplexType.Name;
+                string listOrGet = complexSegment.Property.Type.IsCollection() ? ".List" : ".Get";
+                operationId = complexSegment.Property.Name + "." + typeName + listOrGet + Utils.UpperFirstChar(typeName);
             }
             else if (preTypeCastSegment as ODataNavigationPropertySegment is not null || isIndexedCollValuedNavProp)
             {
@@ -222,8 +265,7 @@ namespace Microsoft.OpenApi.OData.Common
                     prefix = "List";
                 }
 
-                IEdmNavigationSource navigationSource = (entitySet != null) ? entitySet : singleton;
-                operationId = GenerateNavigationPropertyPathOperationId(path, navigationSource, prefix);
+                operationId = GenerateNavigationPropertyPathOperationId(path, prefix);
             }
             else if (preTypeCastSegment is ODataKeySegment keySegment && !isIndexedCollValuedNavProp)
             {
