@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
@@ -78,7 +77,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            string name = EdmModelHelper.GenerateNavigationPropertyPathTag(Path, NavigationSource, NavigationProperty, Context);
+            string name = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, NavigationProperty, Context);
             OpenApiTag tag = new()
             {
                 Name = name
@@ -101,7 +100,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         internal string GetOperationId(string prefix = null)
         {            
-            return EdmModelHelper.GenerateNavigationPropertyPathOperationId(Path, NavigationSource, prefix);
+            return EdmModelHelper.GenerateNavigationPropertyPathOperationId(Path, prefix);
         }               
 
         /// <inheritdoc/>
