@@ -282,8 +282,11 @@
     "/City/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "City.City"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.City-8728",
+        "operationId": "City.GetCount-8728",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -573,8 +576,11 @@
     "/CountryOrRegion/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "CountryOrRegion.CountryOrRegion"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.CountryOrRegion-daf5",
+        "operationId": "CountryOrRegion.GetCount-daf5",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -969,8 +975,11 @@
     "/People/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.People-dd8d",
+        "operationId": "People.GetCount-dd8d",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"

@@ -189,8 +189,10 @@ paths:
   /Airlines/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - Airlines.Airline
       summary: Get the number of the resource
-      operationId: Get.Count.Airlines-27a7
+      operationId: Airlines.GetCount-27a7
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -389,6 +391,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/Airports/{IcaoCode}/Location':
     get:
+      tags:
+        - Airports.AirportLocation
       summary: Get Location property value
       operationId: Location.AirportLocation.GetAirportLocation
       parameters:
@@ -437,6 +441,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     put:
+      tags:
+        - Airports.AirportLocation
       summary: Update property Location value.
       operationId: Location.AirportLocation.UpdateAirportLocation
       parameters:
@@ -598,6 +604,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/Airports/{IcaoCode}/Location/EmergencyAuthority/AddressInfo':
     get:
+      tags:
+        - Airports.AirportLocation.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -659,6 +667,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     patch:
+      tags:
+        - Airports.AirportLocation.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -684,6 +694,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     post:
+      tags:
+        - Airports.AirportLocation.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -717,7 +729,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-2ffe
+      operationId: Airports.AddressInfo.GetCount-2ffe
       parameters:
         - name: IcaoCode
           in: path
@@ -737,9 +749,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Airports.AirportLocation.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-fbf9
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: IcaoCode
           in: path
@@ -757,7 +769,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-e708
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-e708
       parameters:
         - name: IcaoCode
           in: path
@@ -775,6 +787,8 @@ paths:
           $ref: '#/components/responses/error'
   '/Airports/{IcaoCode}/Location/EmergencyAuthority/HomeAddress':
     get:
+      tags:
+        - Airports.AirportLocation.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -820,6 +834,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     patch:
+      tags:
+        - Airports.AirportLocation.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -846,9 +862,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Airports.AirportLocation.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-0bb9
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: IcaoCode
           in: path
@@ -865,8 +881,10 @@ paths:
   /Airports/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - Airports.Airport
       summary: Get the number of the resource
-      operationId: Get.Count.Airports-60cc
+      operationId: Airports.GetCount-60cc
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -1025,6 +1043,8 @@ paths:
       x-ms-docs-operation-type: operation
   /Me/AddressInfo:
     get:
+      tags:
+        - Me.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -1085,6 +1105,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       requestBody:
@@ -1108,6 +1130,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
+      tags:
+        - Me.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -1140,7 +1164,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-38f2
+      operationId: Me.AddressInfo.GetCount-38f2
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -1159,9 +1183,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-b1a4
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       responses:
         '200':
           $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
@@ -1177,7 +1201,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5575
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-5575
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -1351,6 +1375,8 @@ paths:
       x-ms-docs-operation-type: operation
   /Me/BestFriend/AddressInfo:
     get:
+      tags:
+        - Me.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -1411,6 +1437,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       requestBody:
@@ -1434,6 +1462,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
+      tags:
+        - Me.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -1466,7 +1496,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-b695
+      operationId: Me.AddressInfo.GetCount-b695
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -1485,9 +1515,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-2154
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       responses:
         '200':
           $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
@@ -1503,7 +1533,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-0105
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-0105
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -1520,6 +1550,8 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/BestFriend/HomeAddress:
     get:
+      tags:
+        - Me.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -1564,6 +1596,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       requestBody:
@@ -1588,9 +1622,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-a28d
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       responses:
         '200':
           $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
@@ -1606,9 +1640,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - Me.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-dcf6
+      operationId: Me.GetBestFriend.AsEmployee
       parameters:
         - name: $select
           in: query
@@ -1669,9 +1703,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - Me.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-09a9
+      operationId: Me.GetBestFriend.AsManager
       parameters:
         - name: $select
           in: query
@@ -1865,6 +1899,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}/AddressInfo':
     get:
+      tags:
+        - Me.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -1932,6 +1968,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -1963,6 +2001,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
+      tags:
+        - Me.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -2002,7 +2042,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-246e
+      operationId: Me.AddressInfo.GetCount-246e
       parameters:
         - name: UserName
           in: path
@@ -2028,9 +2068,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-f440
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -2054,7 +2094,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-42c7
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-42c7
       parameters:
         - name: UserName
           in: path
@@ -2078,6 +2118,8 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   '/Me/Friends/{UserName}/HomeAddress':
     get:
+      tags:
+        - Me.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -2129,6 +2171,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -2161,9 +2205,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-15cc
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -2187,9 +2231,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - Me.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-3dc7
+      operationId: Me.GetFriends.AsEmployee
       parameters:
         - name: UserName
           in: path
@@ -2257,9 +2301,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - Me.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-ddec
+      operationId: Me.GetFriends.AsManager
       parameters:
         - name: UserName
           in: path
@@ -2326,8 +2370,10 @@ paths:
   /Me/Friends/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - Me.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Friends-182b
+      operationId: Me.Friends.GetCount-182b
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -2423,9 +2469,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - Me.Person
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-f4a5
+      operationId: Me.ListFriends.AsEmployee
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -2519,8 +2565,10 @@ paths:
   /Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - Me.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b
+      operationId: Me.ListFriends.GetCount.AsEmployee-884b
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -2539,9 +2587,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - Me.Person
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-98ae
+      operationId: Me.ListFriends.AsManager
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -2635,8 +2683,10 @@ paths:
   /Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - Me.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376
+      operationId: Me.ListFriends.GetCount.AsManager-9376
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -2653,6 +2703,8 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/HomeAddress:
     get:
+      tags:
+        - Me.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -2697,6 +2749,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       requestBody:
@@ -2721,9 +2775,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-ba49
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       responses:
         '200':
           $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
@@ -2739,9 +2793,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - Me.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-bd18
+      operationId: Me.Person.GetPerson.AsEmployee
       parameters:
         - name: $select
           in: query
@@ -2935,6 +2989,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/AddressInfo':
     get:
+      tags:
+        - Me.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -3002,6 +3058,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -3033,6 +3091,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
+      tags:
+        - Me.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -3072,7 +3132,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-3e91
+      operationId: Me.AddressInfo.GetCount-3e91
       parameters:
         - name: UserName
           in: path
@@ -3098,9 +3158,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-1e59
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -3124,7 +3184,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-be1d
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-be1d
       parameters:
         - name: UserName
           in: path
@@ -3148,6 +3208,8 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/HomeAddress':
     get:
+      tags:
+        - Me.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -3199,6 +3261,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -3231,9 +3295,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-dc11
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -3256,8 +3320,10 @@ paths:
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - Me.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Peers-9fc2
+      operationId: Me.Peers.GetCount-9fc2
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -3471,9 +3537,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - Me.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-16dc
+      operationId: Me.Person.GetPerson.AsManager
       parameters:
         - name: $select
           in: query
@@ -3667,6 +3733,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/AddressInfo':
     get:
+      tags:
+        - Me.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -3734,6 +3802,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -3765,6 +3835,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
+      tags:
+        - Me.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -3804,7 +3876,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-f650
+      operationId: Me.AddressInfo.GetCount-f650
       parameters:
         - name: UserName
           in: path
@@ -3830,9 +3902,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-660b
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -3856,7 +3928,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-a070
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-a070
       parameters:
         - name: UserName
           in: path
@@ -3880,6 +3952,8 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/HomeAddress':
     get:
+      tags:
+        - Me.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -3931,6 +4005,8 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
+      tags:
+        - Me.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -3963,9 +4039,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - Me.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5e6e
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -3988,8 +4064,10 @@ paths:
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - Me.Person
       summary: Get the number of the resource
-      operationId: Get.Count.DirectReports-8b92
+      operationId: Me.DirectReports.GetCount-8b92
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -4667,8 +4745,10 @@ paths:
   '/Me/Trips/{TripId}/PlanItems/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - Me.Trips.PlanItem
       summary: Get the number of the resource
-      operationId: Get.Count.PlanItems-c250
+      operationId: Me.PlanItems.GetCount-c250
       parameters:
         - name: TripId
           in: path
@@ -4782,8 +4862,10 @@ paths:
   /Me/Trips/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - Me.Trip
       summary: Get the number of the resource
-      operationId: Get.Count.Trips-7b69
+      operationId: Me.Trips.GetCount-7b69
       parameters:
         - name: ConsistencyLevel
           in: header
@@ -5037,6 +5119,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/AddressInfo':
     get:
+      tags:
+        - NewComePeople.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -5098,6 +5182,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     patch:
+      tags:
+        - NewComePeople.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -5123,6 +5209,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     post:
+      tags:
+        - NewComePeople.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -5156,7 +5244,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-29d6
+      operationId: NewComePeople.AddressInfo.GetCount-29d6
       parameters:
         - name: UserName
           in: path
@@ -5185,9 +5273,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - NewComePeople.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-d026
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -5205,7 +5293,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-29d3
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-29d3
       parameters:
         - name: UserName
           in: path
@@ -5427,6 +5515,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/BestFriend/AddressInfo':
     get:
+      tags:
+        - NewComePeople.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -5494,6 +5584,8 @@ paths:
         version: 2021-05/bestfriend
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     patch:
+      tags:
+        - NewComePeople.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -5525,6 +5617,8 @@ paths:
         version: 2021-05/bestfriend
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
+      tags:
+        - NewComePeople.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -5564,7 +5658,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-513c
+      operationId: NewComePeople.AddressInfo.GetCount-513c
       parameters:
         - name: UserName
           in: path
@@ -5599,9 +5693,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - NewComePeople.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-73fa
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -5625,7 +5719,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-ba36
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-ba36
       parameters:
         - name: UserName
           in: path
@@ -5658,6 +5752,8 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
   '/NewComePeople/{UserName}/BestFriend/HomeAddress':
     get:
+      tags:
+        - NewComePeople.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -5709,6 +5805,8 @@ paths:
         version: 2021-05/bestfriend
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     patch:
+      tags:
+        - NewComePeople.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -5741,9 +5839,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - NewComePeople.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-8ebe
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -5767,9 +5865,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - NewComePeople.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-7b75
+      operationId: NewComePeople.GetBestFriend.AsEmployee
       parameters:
         - name: UserName
           in: path
@@ -5837,9 +5935,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - NewComePeople.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-61ce
+      operationId: NewComePeople.GetBestFriend.AsManager
       parameters:
         - name: UserName
           in: path
@@ -6042,6 +6140,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends/{UserName1}/AddressInfo':
     get:
+      tags:
+        - NewComePeople.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -6110,6 +6210,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     patch:
+      tags:
+        - NewComePeople.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -6142,6 +6244,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     post:
+      tags:
+        - NewComePeople.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -6182,7 +6286,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-9334
+      operationId: NewComePeople.AddressInfo.GetCount-9334
       parameters:
         - name: UserName
           in: path
@@ -6218,9 +6322,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - NewComePeople.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-eeb4
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -6245,7 +6349,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-be92
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-be92
       parameters:
         - name: UserName
           in: path
@@ -6279,6 +6383,8 @@ paths:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/{UserName1}/HomeAddress':
     get:
+      tags:
+        - NewComePeople.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -6331,6 +6437,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     patch:
+      tags:
+        - NewComePeople.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -6364,9 +6472,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - NewComePeople.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-f4d9
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -6391,9 +6499,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - NewComePeople.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969
+      operationId: NewComePeople.GetFriends.AsEmployee
       parameters:
         - name: UserName
           in: path
@@ -6462,9 +6570,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - NewComePeople.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f
+      operationId: NewComePeople.GetFriends.AsManager
       parameters:
         - name: UserName
           in: path
@@ -6532,8 +6640,10 @@ paths:
   '/NewComePeople/{UserName}/Friends/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - NewComePeople.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Friends-2ec1
+      operationId: NewComePeople.Friends.GetCount-2ec1
       parameters:
         - name: UserName
           in: path
@@ -6633,9 +6743,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - NewComePeople.Person
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969
+      operationId: NewComePeople.ListFriends.AsEmployee
       parameters:
         - name: UserName
           in: path
@@ -6730,8 +6840,10 @@ paths:
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - NewComePeople.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-4069
+      operationId: NewComePeople.ListFriends.GetCount.AsEmployee-4069
       parameters:
         - name: UserName
           in: path
@@ -6751,9 +6863,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - NewComePeople.Person
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f
+      operationId: NewComePeople.ListFriends.AsManager
       parameters:
         - name: UserName
           in: path
@@ -6848,8 +6960,10 @@ paths:
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - NewComePeople.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-d1d3
+      operationId: NewComePeople.ListFriends.GetCount.AsManager-d1d3
       parameters:
         - name: UserName
           in: path
@@ -6867,6 +6981,8 @@ paths:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/HomeAddress':
     get:
+      tags:
+        - NewComePeople.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -6912,6 +7028,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     patch:
+      tags:
+        - NewComePeople.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -6938,9 +7056,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - NewComePeople.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-3fd9
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -7683,8 +7801,10 @@ paths:
   '/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - NewComePeople.Trips.PlanItem
       summary: Get the number of the resource
-      operationId: Get.Count.PlanItems-841f
+      operationId: NewComePeople.PlanItems.GetCount-841f
       parameters:
         - name: UserName
           in: path
@@ -7801,8 +7921,10 @@ paths:
   '/NewComePeople/{UserName}/Trips/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - NewComePeople.Trip
       summary: Get the number of the resource
-      operationId: Get.Count.Trips-d155
+      operationId: NewComePeople.Trips.GetCount-d155
       parameters:
         - name: UserName
           in: path
@@ -7830,8 +7952,10 @@ paths:
   /NewComePeople/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - NewComePeople.Person
       summary: Get the number of the resource
-      operationId: Get.Count.NewComePeople-55d5
+      operationId: NewComePeople.GetCount-55d5
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -8118,6 +8242,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/People/{UserName}/AddressInfo':
     get:
+      tags:
+        - People.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -8185,6 +8311,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -8216,6 +8344,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
+      tags:
+        - People.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -8255,7 +8385,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-ed5a
+      operationId: People.AddressInfo.GetCount-ed5a
       parameters:
         - name: UserName
           in: path
@@ -8281,9 +8411,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-e5b8
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -8307,7 +8437,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-4abd
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-4abd
       parameters:
         - name: UserName
           in: path
@@ -8526,6 +8656,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/People/{UserName}/BestFriend/AddressInfo':
     get:
+      tags:
+        - People.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -8593,6 +8725,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -8624,6 +8758,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
+      tags:
+        - People.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -8663,7 +8799,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-16df
+      operationId: People.AddressInfo.GetCount-16df
       parameters:
         - name: UserName
           in: path
@@ -8689,9 +8825,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-c332
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -8715,7 +8851,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-fe88
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-fe88
       parameters:
         - name: UserName
           in: path
@@ -8739,6 +8875,8 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/BestFriend/HomeAddress':
     get:
+      tags:
+        - People.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -8790,6 +8928,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -8822,9 +8962,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-53c4
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -8848,9 +8988,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - People.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-7188
+      operationId: People.GetBestFriend.AsEmployee
       parameters:
         - name: UserName
           in: path
@@ -8918,9 +9058,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - People.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-5f08
+      operationId: People.GetBestFriend.AsManager
       parameters:
         - name: UserName
           in: path
@@ -9135,6 +9275,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}/AddressInfo':
     get:
+      tags:
+        - People.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -9209,6 +9351,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -9247,6 +9391,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
+      tags:
+        - People.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -9293,7 +9439,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-bdaf
+      operationId: People.AddressInfo.GetCount-bdaf
       parameters:
         - name: UserName
           in: path
@@ -9326,9 +9472,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-a5f6
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -9359,7 +9505,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-2795
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-2795
       parameters:
         - name: UserName
           in: path
@@ -9390,6 +9536,8 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Friends/{UserName1}/HomeAddress':
     get:
+      tags:
+        - People.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -9448,6 +9596,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -9487,9 +9637,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-da5e
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -9520,9 +9670,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - People.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf
+      operationId: People.GetFriends.AsEmployee
       parameters:
         - name: UserName
           in: path
@@ -9597,9 +9747,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - People.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb
+      operationId: People.GetFriends.AsManager
       parameters:
         - name: UserName
           in: path
@@ -9673,8 +9823,10 @@ paths:
   '/People/{UserName}/Friends/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Friends-92b9
+      operationId: People.Friends.GetCount-92b9
       parameters:
         - name: UserName
           in: path
@@ -9792,9 +9944,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - People.Person
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf
+      operationId: People.ListFriends.AsEmployee
       parameters:
         - name: UserName
           in: path
@@ -9895,8 +10047,10 @@ paths:
   '/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-a96c
+      operationId: People.ListFriends.GetCount.AsEmployee-a96c
       parameters:
         - name: UserName
           in: path
@@ -9922,9 +10076,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - People.Person
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb
+      operationId: People.ListFriends.AsManager
       parameters:
         - name: UserName
           in: path
@@ -10025,8 +10179,10 @@ paths:
   '/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-26b3
+      operationId: People.ListFriends.GetCount.AsManager-26b3
       parameters:
         - name: UserName
           in: path
@@ -10050,6 +10206,8 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/HomeAddress':
     get:
+      tags:
+        - People.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -10101,6 +10259,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -10133,9 +10293,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-d0cf
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -10159,9 +10319,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - People.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-317b
+      operationId: People.Person.GetPerson.AsEmployee
       parameters:
         - name: UserName
           in: path
@@ -10385,6 +10545,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo':
     get:
+      tags:
+        - People.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -10459,6 +10621,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -10497,6 +10661,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
+      tags:
+        - People.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -10543,7 +10709,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-755d
+      operationId: People.AddressInfo.GetCount-755d
       parameters:
         - name: UserName
           in: path
@@ -10576,9 +10742,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-b918
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -10609,7 +10775,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-ef5e
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-ef5e
       parameters:
         - name: UserName
           in: path
@@ -10640,6 +10806,8 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress':
     get:
+      tags:
+        - People.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -10698,6 +10866,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -10737,9 +10907,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-311b
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -10769,8 +10939,10 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Peers-44d2
+      operationId: People.Peers.GetCount-44d2
       parameters:
         - name: UserName
           in: path
@@ -11029,9 +11201,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - People.Person
       summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-d051
+      operationId: People.Person.GetPerson.AsManager
       parameters:
         - name: UserName
           in: path
@@ -11255,6 +11427,8 @@ paths:
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo':
     get:
+      tags:
+        - People.Location
       summary: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
@@ -11329,6 +11503,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       parameters:
@@ -11367,6 +11543,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
+      tags:
+        - People.Location
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
@@ -11413,7 +11591,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.AddressInfo-f46e
+      operationId: People.AddressInfo.GetCount-f46e
       parameters:
         - name: UserName
           in: path
@@ -11446,9 +11624,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-1252
+      operationId: AddressInfo.Location.ListLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -11479,7 +11657,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5d49
+      operationId: AddressInfo.Location.ListLocation.GetCount.AsEventLocation-5d49
       parameters:
         - name: UserName
           in: path
@@ -11510,6 +11688,8 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress':
     get:
+      tags:
+        - People.Location
       summary: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       parameters:
@@ -11568,6 +11748,8 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
+      tags:
+        - People.Location
       summary: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       parameters:
@@ -11607,9 +11789,9 @@ paths:
     description: Casts the previous resource to EventLocation.
     get:
       tags:
-        - Location.EventLocation
+        - People.Location
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-cf8d
+      operationId: HomeAddress.Location.GetLocation.AsEventLocation
       parameters:
         - name: UserName
           in: path
@@ -11639,8 +11821,10 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Person
       summary: Get the number of the resource
-      operationId: Get.Count.DirectReports-0ec4
+      operationId: People.DirectReports.GetCount-0ec4
       parameters:
         - name: UserName
           in: path
@@ -12420,8 +12604,10 @@ paths:
   '/People/{UserName}/Trips/{TripId}/PlanItems/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Trips.PlanItem
       summary: Get the number of the resource
-      operationId: Get.Count.PlanItems-9a27
+      operationId: People.PlanItems.GetCount-9a27
       parameters:
         - name: UserName
           in: path
@@ -12556,8 +12742,10 @@ paths:
   '/People/{UserName}/Trips/$count':
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Trip
       summary: Get the number of the resource
-      operationId: Get.Count.Trips-e877
+      operationId: People.Trips.GetCount-e877
       parameters:
         - name: UserName
           in: path
@@ -12591,8 +12779,10 @@ paths:
   /People/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Person
       summary: Get the number of the resource
-      operationId: Get.Count.People-dd8d
+      operationId: People.GetCount-dd8d
       parameters:
         - name: ConsistencyLevel
           in: header
@@ -12620,9 +12810,9 @@ paths:
     description: Casts the previous resource to Employee.
     get:
       tags:
-        - Person.Employee
+        - People.Person
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a
+      operationId: People.Person.ListPerson.AsEmployee
       parameters:
         - name: ConsistencyLevel
           in: header
@@ -12725,8 +12915,10 @@ paths:
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29
+      operationId: People.Person.ListPerson.GetCount.AsEmployee-ef29
       parameters:
         - name: ConsistencyLevel
           in: header
@@ -12754,9 +12946,9 @@ paths:
     description: Casts the previous resource to Manager.
     get:
       tags:
-        - Person.Manager
+        - People.Person
       summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14
+      operationId: People.Person.ListPerson.AsManager
       parameters:
         - name: ConsistencyLevel
           in: header
@@ -12859,8 +13051,10 @@ paths:
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count:
     description: Provides operations to count the resources in the collection.
     get:
+      tags:
+        - People.Person
       summary: Get the number of the resource
-      operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48
+      operationId: People.Person.ListPerson.GetCount.AsManager-2d48
       parameters:
         - name: ConsistencyLevel
           in: header
@@ -13861,9 +14055,11 @@ tags:
     x-ms-docs-toc-type: page
   - name: Airports.Airport
     x-ms-docs-toc-type: page
+  - name: Airports.AirportLocation
+    x-ms-docs-toc-type: page
   - name: Airports.Person
     x-ms-docs-toc-type: page
-  - name: Location.EventLocation
+  - name: Airports.AirportLocation.Location
     x-ms-docs-toc-type: page
   - name: Airports
     x-ms-docs-toc-type: container
@@ -13871,8 +14067,8 @@ tags:
     x-ms-docs-toc-type: container
   - name: Me.Person
     x-ms-docs-toc-type: page
-  - name: Person.Employee
-  - name: Person.Manager
+  - name: Me.Location
+    x-ms-docs-toc-type: page
   - name: Me.Functions
     x-ms-docs-toc-type: container
   - name: Me.Actions
@@ -13883,6 +14079,8 @@ tags:
     x-ms-docs-toc-type: page
   - name: NewComePeople.Person
     x-ms-docs-toc-type: page
+  - name: NewComePeople.Location
+    x-ms-docs-toc-type: page
   - name: NewComePeople.Functions
     x-ms-docs-toc-type: container
   - name: NewComePeople.Actions
@@ -13892,6 +14090,8 @@ tags:
   - name: NewComePeople.Trips.PlanItem
     x-ms-docs-toc-type: page
   - name: People.Person
+    x-ms-docs-toc-type: page
+  - name: People.Location
     x-ms-docs-toc-type: page
   - name: People.Functions
     x-ms-docs-toc-type: container

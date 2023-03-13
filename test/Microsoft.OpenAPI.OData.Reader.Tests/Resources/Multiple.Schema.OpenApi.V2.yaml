@@ -193,8 +193,10 @@ paths:
     x-description: Provides operations to manage the collection of CategoryDto entities.
   /Categories/$count:
     get:
+      tags:
+        - Categories.CategoryDto
       summary: Get the number of the resource
-      operationId: Get.Count.Categories-2f72
+      operationId: Categories.GetCount-2f72
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -576,8 +578,10 @@ paths:
     x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Documents({Id})/Revisions/$count':
     get:
+      tags:
+        - Documents.RevisionDto
       summary: Get the number of the resource
-      operationId: Get.Count.Revisions-f834
+      operationId: Documents.Revisions.GetCount-f834
       parameters:
         - in: path
           name: Id
@@ -689,6 +693,8 @@ paths:
     x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Documents({Id})/Tags':
     get:
+      tags:
+        - Documents.DocumentTagRelDto
       summary: Get Tags property value
       operationId: Tags.DocumentTagRelDto.ListDocumentTagRelDto
       parameters:
@@ -737,6 +743,8 @@ paths:
         default:
           $ref: '#/responses/error'
     patch:
+      tags:
+        - Documents.DocumentTagRelDto
       summary: Update property Tags value.
       operationId: Tags.DocumentTagRelDto.UpdateDocumentTagRelDto
       consumes:
@@ -765,6 +773,8 @@ paths:
         default:
           $ref: '#/responses/error'
     post:
+      tags:
+        - Documents.DocumentTagRelDto
       summary: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
       consumes:
@@ -799,7 +809,7 @@ paths:
   '/Documents({Id})/Tags/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Tags-ed53
+      operationId: Documents.Tags.GetCount-ed53
       parameters:
         - in: path
           name: Id
@@ -820,8 +830,10 @@ paths:
     x-description: Provides operations to count the resources in the collection.
   /Documents/$count:
     get:
+      tags:
+        - Documents.DocumentDto
       summary: Get the number of the resource
-      operationId: Get.Count.Documents-f555
+      operationId: Documents.GetCount-f555
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -1179,6 +1191,8 @@ paths:
     x-description: Provides operations to manage the collection of LibraryDto entities.
   '/Libraries({Id})/Documents({Id1})/Tags':
     get:
+      tags:
+        - Libraries.DocumentTagRelDto
       summary: Get Tags property value
       operationId: Tags.DocumentTagRelDto.ListDocumentTagRelDto
       parameters:
@@ -1236,6 +1250,8 @@ paths:
         default:
           $ref: '#/responses/error'
     patch:
+      tags:
+        - Libraries.DocumentTagRelDto
       summary: Update property Tags value.
       operationId: Tags.DocumentTagRelDto.UpdateDocumentTagRelDto
       consumes:
@@ -1273,6 +1289,8 @@ paths:
         default:
           $ref: '#/responses/error'
     post:
+      tags:
+        - Libraries.DocumentTagRelDto
       summary: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
       consumes:
@@ -1316,7 +1334,7 @@ paths:
   '/Libraries({Id})/Documents({Id1})/Tags/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Tags-2853
+      operationId: Libraries.Tags.GetCount-2853
       parameters:
         - in: path
           name: Id
@@ -1346,8 +1364,10 @@ paths:
     x-description: Provides operations to count the resources in the collection.
   '/Libraries({Id})/Documents/$count':
     get:
+      tags:
+        - Libraries.DocumentDto
       summary: Get the number of the resource
-      operationId: Get.Count.Documents-34c7
+      operationId: Libraries.Documents.GetCount-34c7
       parameters:
         - in: path
           name: Id
@@ -1445,8 +1465,10 @@ paths:
     x-description: Provides operations to manage the collection of LibraryDto entities.
   /Libraries/$count:
     get:
+      tags:
+        - Libraries.LibraryDto
       summary: Get the number of the resource
-      operationId: Get.Count.Libraries-e13e
+      operationId: Libraries.GetCount-e13e
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -1862,6 +1884,8 @@ paths:
     x-description: Provides operations to manage the collection of RevisionDto entities.
   '/Revisions({Id})/Document/DocumentClasses':
     get:
+      tags:
+        - Revisions.DocumentClass
       summary: Get DocumentClasses property value
       operationId: DocumentClasses.DocumentClass.ListDocumentClass
       parameters:
@@ -1933,6 +1957,8 @@ paths:
         default:
           $ref: '#/responses/error'
     patch:
+      tags:
+        - Revisions.DocumentClass
       summary: Update property DocumentClasses value.
       operationId: DocumentClasses.DocumentClass.UpdateDocumentClass
       consumes:
@@ -1961,6 +1987,8 @@ paths:
         default:
           $ref: '#/responses/error'
     post:
+      tags:
+        - Revisions.DocumentClass
       summary: Sets a new value for the collection of DocumentClass.
       operationId: DocumentClasses.DocumentClass.SetDocumentClass
       consumes:
@@ -1995,7 +2023,7 @@ paths:
   '/Revisions({Id})/Document/DocumentClasses/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.DocumentClasses-6342
+      operationId: Revisions.DocumentClasses.GetCount-6342
       parameters:
         - in: path
           name: Id
@@ -2016,6 +2044,8 @@ paths:
     x-description: Provides operations to count the resources in the collection.
   '/Revisions({Id})/Document/Tags':
     get:
+      tags:
+        - Revisions.DocumentTagRel
       summary: Get Tags property value
       operationId: Tags.DocumentTagRel.ListDocumentTagRel
       parameters:
@@ -2086,6 +2116,8 @@ paths:
         default:
           $ref: '#/responses/error'
     patch:
+      tags:
+        - Revisions.DocumentTagRel
       summary: Update property Tags value.
       operationId: Tags.DocumentTagRel.UpdateDocumentTagRel
       consumes:
@@ -2114,6 +2146,8 @@ paths:
         default:
           $ref: '#/responses/error'
     post:
+      tags:
+        - Revisions.DocumentTagRel
       summary: Sets a new value for the collection of DocumentTagRel.
       operationId: Tags.DocumentTagRel.SetDocumentTagRel
       consumes:
@@ -2148,7 +2182,7 @@ paths:
   '/Revisions({Id})/Document/Tags/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Tags-161f
+      operationId: Revisions.Tags.GetCount-161f
       parameters:
         - in: path
           name: Id
@@ -2169,8 +2203,10 @@ paths:
     x-description: Provides operations to count the resources in the collection.
   /Revisions/$count:
     get:
+      tags:
+        - Revisions.RevisionDto
       summary: Get the number of the resource
-      operationId: Get.Count.Revisions-c6a5
+      operationId: Revisions.GetCount-c6a5
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -2552,8 +2588,10 @@ paths:
     x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Tasks({Id})/Revisions/$count':
     get:
+      tags:
+        - Tasks.RevisionDto
       summary: Get the number of the resource
-      operationId: Get.Count.Revisions-9297
+      operationId: Tasks.Revisions.GetCount-9297
       parameters:
         - in: path
           name: Id
@@ -2665,6 +2703,8 @@ paths:
     x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Tasks({Id})/Tags':
     get:
+      tags:
+        - Tasks.DocumentTagRelDto
       summary: Get Tags property value
       operationId: Tags.DocumentTagRelDto.ListDocumentTagRelDto
       parameters:
@@ -2713,6 +2753,8 @@ paths:
         default:
           $ref: '#/responses/error'
     patch:
+      tags:
+        - Tasks.DocumentTagRelDto
       summary: Update property Tags value.
       operationId: Tags.DocumentTagRelDto.UpdateDocumentTagRelDto
       consumes:
@@ -2741,6 +2783,8 @@ paths:
         default:
           $ref: '#/responses/error'
     post:
+      tags:
+        - Tasks.DocumentTagRelDto
       summary: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
       consumes:
@@ -2775,7 +2819,7 @@ paths:
   '/Tasks({Id})/Tags/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Tags-3a1b
+      operationId: Tasks.Tags.GetCount-3a1b
       parameters:
         - in: path
           name: Id
@@ -2796,8 +2840,10 @@ paths:
     x-description: Provides operations to count the resources in the collection.
   /Tasks/$count:
     get:
+      tags:
+        - Tasks.DocumentDto
       summary: Get the number of the resource
-      operationId: Get.Count.Tasks-2961
+      operationId: Tasks.GetCount-2961
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -4398,17 +4444,27 @@ tags:
     x-ms-docs-toc-type: container
   - name: Documents.RevisionDto
     x-ms-docs-toc-type: page
+  - name: Documents.DocumentTagRelDto
+    x-ms-docs-toc-type: page
   - name: Libraries.LibraryDto
     x-ms-docs-toc-type: page
   - name: Libraries.DocumentDto
     x-ms-docs-toc-type: page
+  - name: Libraries.DocumentTagRelDto
+    x-ms-docs-toc-type: page
   - name: Revisions.RevisionDto
     x-ms-docs-toc-type: page
   - name: Revisions.Document
+    x-ms-docs-toc-type: page
+  - name: Revisions.DocumentClass
+    x-ms-docs-toc-type: page
+  - name: Revisions.DocumentTagRel
     x-ms-docs-toc-type: page
   - name: Tasks.DocumentDto
     x-ms-docs-toc-type: page
   - name: Tasks.Actions
     x-ms-docs-toc-type: container
   - name: Tasks.RevisionDto
+    x-ms-docs-toc-type: page
+  - name: Tasks.DocumentTagRelDto
     x-ms-docs-toc-type: page

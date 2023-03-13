@@ -164,8 +164,10 @@ paths:
     x-description: Provides operations to manage the collection of City entities.
   /City/$count:
     get:
+      tags:
+        - City.City
       summary: Get the number of the resource
-      operationId: Get.Count.City-8728
+      operationId: City.GetCount-8728
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -332,8 +334,10 @@ paths:
     x-description: Provides operations to manage the collection of CountryOrRegion entities.
   /CountryOrRegion/$count:
     get:
+      tags:
+        - CountryOrRegion.CountryOrRegion
       summary: Get the number of the resource
-      operationId: Get.Count.CountryOrRegion-daf5
+      operationId: CountryOrRegion.GetCount-daf5
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -570,8 +574,10 @@ paths:
     x-description: Provides operations to manage the collection of Person entities.
   /People/$count:
     get:
+      tags:
+        - People.Person
       summary: Get the number of the resource
-      operationId: Get.Count.People-dd8d
+      operationId: People.GetCount-dd8d
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'

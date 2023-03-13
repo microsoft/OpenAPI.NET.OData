@@ -61,7 +61,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Get.Count.Trips-e877", operation.OperationId);
+                Assert.Equal("People.Trips.GetCount-e877", operation.OperationId);
             }
             else
             {
@@ -108,7 +108,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Get.Count.People-dd8d", operation.OperationId);
+                Assert.Equal("People.GetCount-dd8d", operation.OperationId);
             }
             else
             {
