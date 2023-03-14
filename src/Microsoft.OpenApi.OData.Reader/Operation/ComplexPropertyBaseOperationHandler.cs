@@ -23,7 +23,7 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
     /// <inheritdoc/>
     protected override void SetTags(OpenApiOperation operation)
     {
-        string tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, ComplexPropertySegment.ComplexType, Context);
+        string tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, Context);
 
         if (!string.IsNullOrEmpty(tagName))
         {

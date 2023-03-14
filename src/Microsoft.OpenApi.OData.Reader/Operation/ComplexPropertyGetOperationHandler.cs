@@ -35,9 +35,8 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         // OperationId
         if (Context.Settings.EnableOperationId)
         {
-            string typeName = ComplexPropertySegment.ComplexType.Name;
-            string listOrGet = ComplexPropertySegment.Property.Type.IsCollection() ? ".List" : ".Get";
-            operation.OperationId = ComplexPropertySegment.Property.Name + "." + typeName + listOrGet + Utils.UpperFirstChar(typeName);
+            string prefix = ComplexPropertySegment.Property.Type.IsCollection() ? "List" : "Get";
+            operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, prefix);
         }
 
         // Summary and Description

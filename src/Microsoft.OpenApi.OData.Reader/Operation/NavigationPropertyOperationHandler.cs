@@ -77,7 +77,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            string name = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, NavigationProperty, Context);
+            string name = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
             OpenApiTag tag = new()
             {
                 Name = name
