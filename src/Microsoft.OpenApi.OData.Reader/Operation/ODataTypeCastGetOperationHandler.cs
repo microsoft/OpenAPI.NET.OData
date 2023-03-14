@@ -29,11 +29,11 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// Gets/sets the segment before cast.
 	/// this segment could be "entity set", "Collection property", etc.
 	/// </summary>
-	internal ODataSegment LastSecondSegment { get; set; }
+	internal ODataSegment SecondLastSegment { get; set; }
 
     private bool isKeySegment;
 
-	private bool isSingleElement 
+	private bool IsSingleElement 
 	{
 		get => isKeySegment ||
 				singleton != null ||
@@ -73,28 +73,28 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// get the last second segment
 		int count = path.Segments.Count;
 		if(count >= SecondLastSegmentIndex)
-			LastSecondSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex);
+			SecondLastSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex);
 
-		parentStructuredType = LastSecondSegment is ODataComplexPropertySegment complexSegment ? complexSegment.ComplexType : LastSecondSegment.EntityType;
+		parentStructuredType = SecondLastSegment is ODataComplexPropertySegment complexSegment ? complexSegment.ComplexType : SecondLastSegment.EntityType;
         ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
         navigationSource = navigationSourceSegment.NavigationSource;
 
-		if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
+		if (SecondLastSegment is ODataNavigationPropertySegment navigationPropertySegment)
 		{
 			SetNavigationPropertyAndRestrictionFromNavigationSegment(navigationPropertySegment, path);
 		}
-		else if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
+		else if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
 		{
 			SetAnnotatableRestrictionFromNavigationSourceSegment(sourceSegment);
         }
-		else if (LastSecondSegment is ODataKeySegment)
+		else if (SecondLastSegment is ODataKeySegment)
 		{
 			isKeySegment = true;
 			var thirdLastSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex - 1);
 			if (thirdLastSegment is ODataNavigationPropertySegment navigationPropertySegment1)
 			{
                 isIndexedCollValuedNavProp = true;
-                SetNavigationPropertyAndRestrictionFromNavigationSegment(navigationPropertySegment1, path);				
+				SetNavigationPropertyAndRestrictionFromNavigationSegment(navigationPropertySegment1, path);
 			}
 			else if (thirdLastSegment is ODataNavigationSourceSegment sourceSegment1)
 			{
@@ -169,14 +169,14 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	protected override void SetBasicInfo(OpenApiOperation operation)
 	{
 		// Summary
-		if (isSingleElement)
+		if (IsSingleElement)
 			operation.Summary = $"Get the item of type {ParentSchemaElement.ShortQualifiedName()} as {TargetSchemaElement.ShortQualifiedName()}";
 		else
 			operation.Summary = $"Get the items of type {TargetSchemaElement.ShortQualifiedName()} in the {ParentSchemaElement.ShortQualifiedName()} collection";
 
 		// OperationId
 		if (Context.Settings.EnableOperationId)
-			operation.OperationId = EdmModelHelper.GeneratePrefixForODataTypeCastPathOperations(Path) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}";
+			operation.OperationId = EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}";
 
         base.SetBasicInfo(operation);
 	}
@@ -184,7 +184,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// <inheritdoc/>
 	protected override void SetResponses(OpenApiOperation operation)
 	{
-		if (isSingleElement)
+		if (IsSingleElement)
 			SetSingleResponse(operation);
 		else
 			SetCollectionResponse(operation);
@@ -261,12 +261,12 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	{
         string tagName = null;
 
-        if (LastSecondSegment is ODataNavigationPropertySegment || isIndexedCollValuedNavProp)
+        if (SecondLastSegment is ODataNavigationPropertySegment || isIndexedCollValuedNavProp)
 		{
-			tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, navigationProperty, Context);
+			tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
 		}
-		else if ((LastSecondSegment is ODataKeySegment && !isIndexedCollValuedNavProp)
-				|| (LastSecondSegment is ODataNavigationSourceSegment))
+		else if ((SecondLastSegment is ODataKeySegment && !isIndexedCollValuedNavProp)
+				|| (SecondLastSegment is ODataNavigationSourceSegment))
 		{
             var entitySet = navigationSource as IEdmEntitySet;
             var singleton = navigationSource as IEdmSingleton;
@@ -275,9 +275,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
                 ? entitySet.Name + "." + entitySet.EntityType().Name
                 : singleton.Name + "." + singleton.EntityType().Name;
         }
-		else if (LastSecondSegment is ODataComplexPropertySegment complexSegment)
+		else if (SecondLastSegment is ODataComplexPropertySegment)
 		{
-            tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, complexSegment.ComplexType, Context);			
+            tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, Context);			
         }
 
 		if (tagName != null)
@@ -287,7 +287,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				Name = tagName
 			};
 
-			if (!isSingleElement)
+			if (!IsSingleElement)
 				tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
 
 			operation.Tags.Add(tag);
@@ -303,7 +303,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		base.SetParameters(operation);
 
 		if(navigationProperty != null) {
-			if (isSingleElement)
+			if (IsSingleElement)
 			{
 				new OpenApiParameter[] {
 						Context.CreateSelect(navigationProperty),
@@ -329,7 +329,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		}
 		else if(entitySet != null)
 		{
-			if(isSingleElement)
+			if(IsSingleElement)
 			{
 				new OpenApiParameter[] {
 						Context.CreateSelect(entitySet),
@@ -391,7 +391,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 	protected override void SetExtensions(OpenApiOperation operation)
 	{
-		if (Context.Settings.EnablePagination && !isSingleElement)
+		if (Context.Settings.EnablePagination && !IsSingleElement)
 		{
 			OpenApiObject extension = new()
 			{

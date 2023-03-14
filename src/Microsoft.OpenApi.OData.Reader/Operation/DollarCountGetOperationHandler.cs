@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets/sets the segment before $count.
         /// this segment could be "entity set", "Collection property", "Composable function whose return is collection",etc.
         /// </summary>
-        internal ODataSegment LastSecondSegment { get; set; }
+        internal ODataSegment SecondLastSegment { get; set; }
         private ODataSegment firstSegment;
         private int pathCount;        
         private const int SecondLastSegmentIndex = 2;
@@ -44,13 +44,13 @@ namespace Microsoft.OpenApi.OData.Operation
             // get the last second segment
             pathCount = path.Segments.Count;
             if(pathCount >= SecondLastSegmentIndex)
-                LastSecondSegment = path.Segments.ElementAt(pathCount - SecondLastSegmentIndex);
+                SecondLastSegment = path.Segments.ElementAt(pathCount - SecondLastSegmentIndex);
 
-            if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
+            if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
             {
                 annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
             }
-            else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
+            else if (SecondLastSegment is ODataNavigationPropertySegment navigationPropertySegment)
             {
                 annotatable = navigationPropertySegment.NavigationProperty;
             }
@@ -60,25 +60,29 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetTags(OpenApiOperation operation)
         {
             string tagName = null;
-            if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
+            if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
             {
                 tagName = TagNameFromNavigationSourceSegment(sourceSegment);
             }
-            else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
+            else if (SecondLastSegment is ODataNavigationPropertySegment)
             {
-                tagName = TagNameFromNavigationPropertySegment(navigationPropertySegment);
+                tagName = TagNameFromNavigationPropertySegment();
             }
-            else if (LastSecondSegment is ODataTypeCastSegment)
+            else if (SecondLastSegment is ODataTypeCastSegment)
             {
                 ODataSegment lastThirdSegment = Path.Segments.ElementAt(pathCount - 3);
                 if (lastThirdSegment is ODataNavigationSourceSegment sourceSegment2)
                 {
                     tagName = TagNameFromNavigationSourceSegment(sourceSegment2);
                 }
-                else if (lastThirdSegment is ODataNavigationPropertySegment navigationPropertySegment2)
+                else if (lastThirdSegment is ODataNavigationPropertySegment)
                 {
-                    tagName = TagNameFromNavigationPropertySegment(navigationPropertySegment2);
+                    tagName = TagNameFromNavigationPropertySegment();
                 }
+            }
+            else if (SecondLastSegment is ODataComplexPropertySegment)
+            {
+                tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, Context);
             }
 
             if (tagName != null)
@@ -101,9 +105,9 @@ namespace Microsoft.OpenApi.OData.Operation
                 return $"{sourceSegment.NavigationSource.Name}.{sourceSegment.NavigationSource.EntityType().Name}";
             }
 
-            string TagNameFromNavigationPropertySegment(ODataNavigationPropertySegment navigationPropertySegment)
+            string TagNameFromNavigationPropertySegment()
             {
-                return EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, navigationPropertySegment.NavigationProperty, Context);
+                return EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
             }
 
             base.SetTags(operation);
@@ -118,20 +122,24 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                if (LastSecondSegment is ODataTypeCastSegment odataTypeCastSegment)
+                if (SecondLastSegment is ODataNavigationSourceSegment)
                 {
-                    IEdmNamedElement targetStructuredType = odataTypeCastSegment.StructuredType as IEdmNamedElement;
-                    operation.OperationId = EdmModelHelper.GeneratePrefixForODataTypeCastPathOperations(Path, 3) + $".GetCount.As{Utils.UpperFirstChar(targetStructuredType.Name)}-{Path.GetPathHash(Context.Settings)}";
-                }
-                else if (Path.Segments.Count == 2)
-                { 
-                    // Entityset $count
                     operation.OperationId = $"{firstSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}";
                 }
-                else
+                else if (SecondLastSegment is ODataNavigationPropertySegment)
                 {
-                    operation.OperationId = $"{firstSegment.Identifier}.{LastSecondSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}";
-                }              
+                    var navPropOpId = string.Join(".", EdmModelHelper.RetrieveNavigationPropertyPathsOperationIdSegments(Path));
+                    operation.OperationId = $"{navPropOpId}.GetCount-{Path.GetPathHash(Context.Settings)}";
+                }
+                else if (SecondLastSegment is ODataTypeCastSegment odataTypeCastSegment)
+                {
+                    IEdmNamedElement targetStructuredType = odataTypeCastSegment.StructuredType as IEdmNamedElement;
+                    operation.OperationId = $"{EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path)}.GetCount.As{Utils.UpperFirstChar(targetStructuredType.Name)}-{Path.GetPathHash(Context.Settings)}";
+                }
+                else if (SecondLastSegment is ODataComplexPropertySegment)
+                {
+                    operation.OperationId = $"{EdmModelHelper.GenerateComplexPropertyPathOperationId(Path)}.GetCount-{Path.GetPathHash(Context.Settings)}";
+                }
             }
 
             base.SetBasicInfo(operation);
