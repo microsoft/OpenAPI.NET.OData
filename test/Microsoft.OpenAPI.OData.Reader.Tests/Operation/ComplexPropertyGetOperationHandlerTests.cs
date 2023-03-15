@@ -48,7 +48,7 @@ public class ComplexPropertyGetOperationHandlerTests
 
 		if (enableOperationId)
 		{
-			Assert.Equal("BillingAddress.Address.GetAddress", get.OperationId);
+			Assert.Equal("Customers.GetBillingAddress", get.OperationId);
 		}
 		else
 		{
@@ -93,7 +93,7 @@ public class ComplexPropertyGetOperationHandlerTests
 
 		if (enableOperationId)
 		{
-			Assert.Equal("AlternativeAddresses.Address.ListAddress", get.OperationId);
+			Assert.Equal("Customers.ListAlternativeAddresses", get.OperationId);
 		}
 		else
 		{

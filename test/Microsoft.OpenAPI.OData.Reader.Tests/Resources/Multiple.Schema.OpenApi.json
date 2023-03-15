@@ -1085,7 +1085,7 @@
           "Documents.DocumentTagRelDto"
         ],
         "summary": "Get Tags property value",
-        "operationId": "Tags.DocumentTagRelDto.ListDocumentTagRelDto",
+        "operationId": "Documents.ListTags",
         "parameters": [
           {
             "name": "Id",
@@ -1182,7 +1182,7 @@
           "Documents.DocumentTagRelDto"
         ],
         "summary": "Update property Tags value.",
-        "operationId": "Tags.DocumentTagRelDto.UpdateDocumentTagRelDto",
+        "operationId": "Documents.UpdateTags",
         "parameters": [
           {
             "name": "Id",
@@ -1226,7 +1226,7 @@
           "Documents.DocumentTagRelDto"
         ],
         "summary": "Sets a new value for the collection of DocumentTagRelDto.",
-        "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
+        "operationId": "Documents.SetTags",
         "parameters": [
           {
             "name": "Id",
@@ -1277,6 +1277,9 @@
     "/Documents({Id})/Tags/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Documents.DocumentTagRelDto"
+        ],
         "summary": "Get the number of the resource",
         "operationId": "Documents.Tags.GetCount-ed53",
         "parameters": [
@@ -1874,10 +1877,10 @@
     "/Libraries({Id})/Documents({Id1})/Tags": {
       "get": {
         "tags": [
-          "Libraries.DocumentTagRelDto"
+          "Libraries.DocumentDto.DocumentTagRelDto"
         ],
         "summary": "Get Tags property value",
-        "operationId": "Tags.DocumentTagRelDto.ListDocumentTagRelDto",
+        "operationId": "Libraries.Documents.ListTags",
         "parameters": [
           {
             "name": "Id",
@@ -1984,10 +1987,10 @@
       },
       "patch": {
         "tags": [
-          "Libraries.DocumentTagRelDto"
+          "Libraries.DocumentDto.DocumentTagRelDto"
         ],
         "summary": "Update property Tags value.",
-        "operationId": "Tags.DocumentTagRelDto.UpdateDocumentTagRelDto",
+        "operationId": "Libraries.Documents.UpdateTags",
         "parameters": [
           {
             "name": "Id",
@@ -2041,10 +2044,10 @@
       },
       "post": {
         "tags": [
-          "Libraries.DocumentTagRelDto"
+          "Libraries.DocumentDto.DocumentTagRelDto"
         ],
         "summary": "Sets a new value for the collection of DocumentTagRelDto.",
-        "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
+        "operationId": "Libraries.Documents.SetTags",
         "parameters": [
           {
             "name": "Id",
@@ -2108,8 +2111,11 @@
     "/Libraries({Id})/Documents({Id1})/Tags/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Libraries.DocumentDto.DocumentTagRelDto"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Libraries.Tags.GetCount-2853",
+        "operationId": "Libraries.Documents.Tags.GetCount-2853",
         "parameters": [
           {
             "name": "Id",
@@ -2969,10 +2975,10 @@
     "/Revisions({Id})/Document/DocumentClasses": {
       "get": {
         "tags": [
-          "Revisions.DocumentClass"
+          "Revisions.Document.DocumentClass"
         ],
         "summary": "Get DocumentClasses property value",
-        "operationId": "DocumentClasses.DocumentClass.ListDocumentClass",
+        "operationId": "Revisions.Document.ListDocumentClasses",
         "parameters": [
           {
             "name": "Id",
@@ -3089,10 +3095,10 @@
       },
       "patch": {
         "tags": [
-          "Revisions.DocumentClass"
+          "Revisions.Document.DocumentClass"
         ],
         "summary": "Update property DocumentClasses value.",
-        "operationId": "DocumentClasses.DocumentClass.UpdateDocumentClass",
+        "operationId": "Revisions.Document.UpdateDocumentClasses",
         "parameters": [
           {
             "name": "Id",
@@ -3133,10 +3139,10 @@
       },
       "post": {
         "tags": [
-          "Revisions.DocumentClass"
+          "Revisions.Document.DocumentClass"
         ],
         "summary": "Sets a new value for the collection of DocumentClass.",
-        "operationId": "DocumentClasses.DocumentClass.SetDocumentClass",
+        "operationId": "Revisions.Document.SetDocumentClasses",
         "parameters": [
           {
             "name": "Id",
@@ -3187,8 +3193,11 @@
     "/Revisions({Id})/Document/DocumentClasses/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Revisions.Document.DocumentClass"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Revisions.DocumentClasses.GetCount-6342",
+        "operationId": "Revisions.Document.DocumentClasses.GetCount-6342",
         "parameters": [
           {
             "name": "Id",
@@ -3223,10 +3232,10 @@
     "/Revisions({Id})/Document/Tags": {
       "get": {
         "tags": [
-          "Revisions.DocumentTagRel"
+          "Revisions.Document.DocumentTagRel"
         ],
         "summary": "Get Tags property value",
-        "operationId": "Tags.DocumentTagRel.ListDocumentTagRel",
+        "operationId": "Revisions.Document.ListTags",
         "parameters": [
           {
             "name": "Id",
@@ -3342,10 +3351,10 @@
       },
       "patch": {
         "tags": [
-          "Revisions.DocumentTagRel"
+          "Revisions.Document.DocumentTagRel"
         ],
         "summary": "Update property Tags value.",
-        "operationId": "Tags.DocumentTagRel.UpdateDocumentTagRel",
+        "operationId": "Revisions.Document.UpdateTags",
         "parameters": [
           {
             "name": "Id",
@@ -3386,10 +3395,10 @@
       },
       "post": {
         "tags": [
-          "Revisions.DocumentTagRel"
+          "Revisions.Document.DocumentTagRel"
         ],
         "summary": "Sets a new value for the collection of DocumentTagRel.",
-        "operationId": "Tags.DocumentTagRel.SetDocumentTagRel",
+        "operationId": "Revisions.Document.SetTags",
         "parameters": [
           {
             "name": "Id",
@@ -3440,8 +3449,11 @@
     "/Revisions({Id})/Document/Tags/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Revisions.Document.DocumentTagRel"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Revisions.Tags.GetCount-161f",
+        "operationId": "Revisions.Document.Tags.GetCount-161f",
         "parameters": [
           {
             "name": "Id",
@@ -4250,7 +4262,7 @@
           "Tasks.DocumentTagRelDto"
         ],
         "summary": "Get Tags property value",
-        "operationId": "Tags.DocumentTagRelDto.ListDocumentTagRelDto",
+        "operationId": "Tasks.ListTags",
         "parameters": [
           {
             "name": "Id",
@@ -4347,7 +4359,7 @@
           "Tasks.DocumentTagRelDto"
         ],
         "summary": "Update property Tags value.",
-        "operationId": "Tags.DocumentTagRelDto.UpdateDocumentTagRelDto",
+        "operationId": "Tasks.UpdateTags",
         "parameters": [
           {
             "name": "Id",
@@ -4391,7 +4403,7 @@
           "Tasks.DocumentTagRelDto"
         ],
         "summary": "Sets a new value for the collection of DocumentTagRelDto.",
-        "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
+        "operationId": "Tasks.SetTags",
         "parameters": [
           {
             "name": "Id",
@@ -4442,6 +4454,9 @@
     "/Tasks({Id})/Tags/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Tasks.DocumentTagRelDto"
+        ],
         "summary": "Get the number of the resource",
         "operationId": "Tasks.Tags.GetCount-3a1b",
         "parameters": [
@@ -7371,7 +7386,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Libraries.DocumentTagRelDto",
+      "name": "Libraries.DocumentDto.DocumentTagRelDto",
       "x-ms-docs-toc-type": "page"
     },
     {
@@ -7383,11 +7398,11 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Revisions.DocumentClass",
+      "name": "Revisions.Document.DocumentClass",
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Revisions.DocumentTagRel",
+      "name": "Revisions.Document.DocumentTagRel",
       "x-ms-docs-toc-type": "page"
     },
     {
