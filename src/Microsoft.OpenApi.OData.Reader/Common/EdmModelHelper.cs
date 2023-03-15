@@ -132,11 +132,11 @@ namespace Microsoft.OpenApi.OData.Common
 
             if (!string.IsNullOrEmpty(prefix))
             {
-                items.Add(prefix + Utils.UpperFirstChar(lastSegment?.ComplexType.Name));
+                items.Add(prefix + Utils.UpperFirstChar(lastSegment?.Identifier));
             }
             else
             {
-                items.Add(Utils.UpperFirstChar(lastSegment?.ComplexType.Name));
+                items.Add(Utils.UpperFirstChar(lastSegment?.Identifier));
             }
 
             return string.Join(".", items);
@@ -284,12 +284,15 @@ namespace Microsoft.OpenApi.OData.Common
             Utils.CheckArgumentNull(typeCastSegment, nameof(typeCastSegment));
 
             int typeCastSegmentIndex = path.Segments.IndexOf(typeCastSegment);
-            ODataSegment preTypeCastSegment = path.Segments.ElementAt(typeCastSegmentIndex - 1);
+            
+            // The segment 1 place before the last OData type cast segment
+            ODataSegment secondLastSegment = path.Segments.ElementAt(typeCastSegmentIndex - 1);
 
             bool isIndexedCollValuedNavProp = false;
-            if (preTypeCastSegment is ODataKeySegment)
+            if (secondLastSegment is ODataKeySegment)
             {
-                ODataSegment thirdLastSegment = path.Segments.ElementAt(path.Segments.Count - typeCastSegmentIndex - 1);
+                // The segment 2 places before the last OData type cast segment
+                ODataSegment thirdLastSegment = path.Segments.ElementAt(typeCastSegmentIndex - 2);
                 if (thirdLastSegment is ODataNavigationPropertySegment)
                 {
                     isIndexedCollValuedNavProp = true;
@@ -301,24 +304,23 @@ namespace Microsoft.OpenApi.OData.Common
             IEdmEntitySet entitySet = navigationSourceSegment?.NavigationSource as IEdmEntitySet;
 
             string operationId = null;
-            if (preTypeCastSegment is ODataComplexPropertySegment complexSegment)
+            if (secondLastSegment is ODataComplexPropertySegment complexSegment)
             {
-                string typeName = complexSegment.ComplexType.Name;
-                string listOrGet = complexSegment.Property.Type.IsCollection() ? ".List" : ".Get";
-                operationId = complexSegment.Property.Name + "." + typeName + listOrGet + Utils.UpperFirstChar(typeName);
+                string listOrGet = complexSegment.Property.Type.IsCollection() ? "List" : "Get";
+                operationId = GenerateComplexPropertyPathOperationId(path, listOrGet);
             }
-            else if (preTypeCastSegment as ODataNavigationPropertySegment is not null || isIndexedCollValuedNavProp)
+            else if (secondLastSegment as ODataNavigationPropertySegment is not null || isIndexedCollValuedNavProp)
             {
                 string prefix = "Get";
                 if (!isIndexedCollValuedNavProp &&
-                    (preTypeCastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                    (secondLastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
                     prefix = "List";
                 }
 
                 operationId = GenerateNavigationPropertyPathOperationId(path, prefix);
             }
-            else if (preTypeCastSegment is ODataKeySegment keySegment && !isIndexedCollValuedNavProp)
+            else if (secondLastSegment is ODataKeySegment keySegment && !isIndexedCollValuedNavProp)
             {
                 string entityTypeName = keySegment.EntityType.Name;
                 string operationName = $"Get{Utils.UpperFirstChar(entityTypeName)}";
@@ -330,7 +332,7 @@ namespace Microsoft.OpenApi.OData.Common
                 operationId = (entitySet != null) ? entitySet.Name : singleton.Name;
                 operationId += $".{entityTypeName}.{operationName}";
             }
-            else if (preTypeCastSegment is ODataNavigationSourceSegment)
+            else if (secondLastSegment is ODataNavigationSourceSegment)
             {
                 operationId = (entitySet != null)
                     ? entitySet.Name + "." + entitySet.EntityType().Name + ".List" + Utils.UpperFirstChar(entitySet.EntityType().Name)
