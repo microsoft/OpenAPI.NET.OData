@@ -34,23 +34,23 @@ namespace Microsoft.OpenApi.OData.Operation
             // Description
             if (LastSegmentIsStreamPropertySegment)
             {
-                IEdmVocabularyAnnotatable annotatable = GetAnnotatableElement();
+                (_, var property) = GetStreamElements();
                 string description;
 
-                if (annotatable is IEdmNavigationProperty)
+                if (property is IEdmNavigationProperty)
                 {
-                    ReadRestrictionsType readRestriction = Context.Model.GetRecord<NavigationRestrictionsType>(annotatable, CapabilitiesConstants.NavigationRestrictions)?
+                    ReadRestrictionsType readRestriction = Context.Model.GetRecord<NavigationRestrictionsType>(property, CapabilitiesConstants.NavigationRestrictions)?
                         .RestrictedProperties?.FirstOrDefault()?.ReadRestrictions;
 
                     description = LastSegmentIsKeySegment
                         ? readRestriction?.ReadByKeyRestrictions?.Description
                         : readRestriction?.Description
-                        ?? Context.Model.GetDescriptionAnnotation(annotatable);
+                        ?? Context.Model.GetDescriptionAnnotation(property);
                 }
                 else
                 {
                     // Structural property
-                    description = Context.Model.GetDescriptionAnnotation(annotatable);
+                    description = Context.Model.GetDescriptionAnnotation(property);
                 }
 
                 operation.Description = description;
