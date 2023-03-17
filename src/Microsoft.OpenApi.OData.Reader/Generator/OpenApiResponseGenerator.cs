@@ -33,6 +33,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 },
 
                 { Constants.StatusCode204, new OpenApiResponse { Description = "Success"} },
+                { Constants.StatusCode201, new OpenApiResponse { Description = "Created"} },
+                { Constants.StatusCodeClass2XX, new OpenApiResponse { Description = "Success"} },
                 { Constants.StatusCodeClass4XX, new OpenApiResponse
                     {
                         UnresolvedReference = true,
