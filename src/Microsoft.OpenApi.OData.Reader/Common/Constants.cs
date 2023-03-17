@@ -194,5 +194,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// count segment identifier
         /// </summary>
         public const string CountSegmentIdentifier = "count";
+
+        /// <summary>
+        /// content string identifier
+        /// </summary>
+        public const string Content = "content";
     }
 }
