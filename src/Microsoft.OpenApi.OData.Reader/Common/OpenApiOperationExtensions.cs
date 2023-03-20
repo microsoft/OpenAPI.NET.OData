@@ -41,6 +41,7 @@ public static class OpenApiOperationExtensions
                 {
                     response = new()
                     {
+                        Description = Constants.Success,
                         Content = new Dictionary<string, OpenApiMediaType>
                         {
                             {
