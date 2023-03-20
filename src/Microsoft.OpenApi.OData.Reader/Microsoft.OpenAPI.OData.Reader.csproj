@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.3.0-preview2</Version>
+    <Version>1.3.0-preview3</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -25,6 +25,7 @@
 - Skips adding a $count path if a similar count() function path exists #347
 - Checks whether path exists before adding it to the paths dictionary #343
 - Strips namespace prefix from operation segments and aliases type cast segments #348
+- Adds $value segment to paths with entity types with base types with HasStream=true #314
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
