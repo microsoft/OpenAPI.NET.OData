@@ -24,8 +24,9 @@ namespace Microsoft.OpenApi.OData
         public Uri ServiceRoot { get; set; } = new Uri("http://localhost");
 
         /// <summary>
-        /// [Obsolete] Use <see cref="SemVerVersion"/> to Get/set the metadata version.
+        /// Get/set the metadata version.
         /// </summary>
+        [Obsolete("Use SemVerVersion to Get or Set the metadata version.")]
         public Version Version 
         { 
             get => _version; 
