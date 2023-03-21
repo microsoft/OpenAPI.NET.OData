@@ -26,6 +26,7 @@
 - Checks whether path exists before adding it to the paths dictionary #343
 - Strips namespace prefix from operation segments and aliases type cast segments #348
 - Return response status code 2XX for PUT operations of stream properties when UseSuccessStatusCodeRange is enabled #310
+- Adds $value segment to paths with entity types with base types with HasStream=true #314
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
