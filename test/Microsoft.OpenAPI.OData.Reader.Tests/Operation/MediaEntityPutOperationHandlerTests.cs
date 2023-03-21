@@ -17,9 +17,11 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         private readonly MediaEntityPutOperationHandler _operationalHandler = new MediaEntityPutOperationHandler();
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateMediaEntityPutOperationReturnsCorrectOperation(bool enableOperationId)
+        [InlineData(true, false)]
+        [InlineData(true, true)]
+        [InlineData(false, false)]
+        [InlineData(false, true)]
+        public void CreateMediaEntityPutOperationReturnsCorrectOperation(bool enableOperationId, bool useSuccessStatusCodeRange)
         {
             // Arrange
             string qualifiedName = CoreConstants.AcceptableMediaTypes;
@@ -33,17 +35,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             <Annotation Term=""Org.OData.Core.V1.Description"" String=""The logo image."" />";
 
             // Assert
-            VerifyMediaEntityPutOperation("", enableOperationId);
-            VerifyMediaEntityPutOperation(annotation, enableOperationId);
+            VerifyMediaEntityPutOperation("", enableOperationId, useSuccessStatusCodeRange);
+            VerifyMediaEntityPutOperation(annotation, enableOperationId, useSuccessStatusCodeRange);
         }
 
-        private void VerifyMediaEntityPutOperation(string annotation, bool enableOperationId)
+        private void VerifyMediaEntityPutOperation(string annotation, bool enableOperationId, bool useSuccessStatusCodeRange)
         {
             // Arrange
             IEdmModel model = MediaEntityGetOperationHandlerTests.GetEdmModel(annotation);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId
+                EnableOperationId = enableOperationId,
+                UseSuccessStatusCodeRange = useSuccessStatusCodeRange
             };
 
             ODataContext context = new ODataContext(model, settings);
@@ -63,13 +66,20 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataNavigationPropertySegment(navProperty),
                 new ODataStreamContentSegment());
 
+            IEdmStructuralProperty sp2 = todo.StructuralProperties().First(c => c.Name == "Content");
+            ODataPath path3 = new(new ODataNavigationSourceSegment(todos),
+                new ODataKeySegment(todos.EntityType()),
+                new ODataStreamPropertySegment(sp2.Name));
+
             // Act
             var putOperation = _operationalHandler.CreateOperation(context, path);
             var putOperation2 = _operationalHandler.CreateOperation(context, path2);
+            var putOperation3 = _operationalHandler.CreateOperation(context, path3);
 
             // Assert
             Assert.NotNull(putOperation);
             Assert.NotNull(putOperation2);
+            Assert.NotNull(putOperation3);
             Assert.Equal("Update Logo for Todo in Todos", putOperation.Summary);
             Assert.Equal("Update media content for the navigation property photo in me", putOperation2.Summary);
             Assert.NotNull(putOperation.Tags);
@@ -82,10 +92,28 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.NotNull(putOperation.Responses);
             Assert.NotNull(putOperation2.Responses);
+            Assert.NotNull(putOperation3.Responses);
+            
             Assert.Equal(2, putOperation.Responses.Count);
             Assert.Equal(2, putOperation2.Responses.Count);
-            Assert.Equal(new[] { "204", "default" }, putOperation.Responses.Select(r => r.Key));
-            Assert.Equal(new[] { "204", "default" }, putOperation2.Responses.Select(r => r.Key));
+            Assert.Equal(2, putOperation3.Responses.Count);
+            
+            var statusCode = (useSuccessStatusCodeRange) ? Constants.StatusCodeClass2XX : Constants.StatusCode204;            
+            Assert.Equal(new[] { statusCode, "default" }, putOperation.Responses.Select(r => r.Key));
+            Assert.Equal(new[] { statusCode, "default" }, putOperation2.Responses.Select(r => r.Key));
+            Assert.Equal(new[] { statusCode, "default" }, putOperation3.Responses.Select(r => r.Key));
+
+            // Test only for stream properties of identifier 'content' 
+            if (useSuccessStatusCodeRange)
+            {
+                var referenceId = putOperation3.Responses[statusCode]?.Content[Constants.ApplicationJsonMediaType]?.Schema?.Reference.Id;
+                Assert.NotNull(referenceId);
+                Assert.Equal("microsoft.graph.Todo", referenceId);
+            }
+            else
+            {
+                Assert.Empty(putOperation3.Responses[statusCode].Content);
+            }
 
             if (!string.IsNullOrEmpty(annotation))
             {

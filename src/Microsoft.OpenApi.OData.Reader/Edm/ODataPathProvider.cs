@@ -385,7 +385,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     currentPath.Pop();
                 }
 
-                if (sp.Name.Equals("content", StringComparison.OrdinalIgnoreCase))
+                if (sp.Name.Equals(Constants.Content, StringComparison.OrdinalIgnoreCase))
                 {
                     createValuePath = false;
                 }

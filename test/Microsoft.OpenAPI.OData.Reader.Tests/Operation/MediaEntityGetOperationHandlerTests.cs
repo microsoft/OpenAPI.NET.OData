@@ -135,6 +135,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         </Key>
         <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""Logo"" Type=""Edm.Stream""/>
+        <Property Name=""Content"" Type=""Edm.Stream""/>
         <Property Name = ""Description"" Type = ""Edm.String"" />
       </EntityType>
       <EntityType Name=""user"" OpenType=""true"">

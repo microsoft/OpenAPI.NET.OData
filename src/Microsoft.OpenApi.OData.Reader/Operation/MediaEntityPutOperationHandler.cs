@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
@@ -34,20 +35,20 @@ namespace Microsoft.OpenApi.OData.Operation
             // Description
             if (LastSegmentIsStreamPropertySegment)
             {
-                IEdmVocabularyAnnotatable annotatable = GetAnnotatableElement();
+                (_, var property) = GetStreamElements();
                 string description;
 
-                if (annotatable is IEdmNavigationProperty)
+                if (property is IEdmNavigationProperty)
                 {
-                    UpdateRestrictionsType updateRestriction = Context.Model.GetRecord<NavigationRestrictionsType>(annotatable, CapabilitiesConstants.NavigationRestrictions)?
+                    UpdateRestrictionsType updateRestriction = Context.Model.GetRecord<NavigationRestrictionsType>(property, CapabilitiesConstants.NavigationRestrictions)?
                         .RestrictedProperties?.FirstOrDefault()?.UpdateRestrictions;
 
-                    description = updateRestriction?.Description ?? Context.Model.GetDescriptionAnnotation(annotatable);
+                    description = updateRestriction?.Description ?? Context.Model.GetDescriptionAnnotation(property);
                 }
                 else
                 {
                     // Structural property
-                    description = Context.Model.GetDescriptionAnnotation(annotatable);
+                    description = Context.Model.GetDescriptionAnnotation(property);
                 }
 
                 operation.Description = description;
@@ -77,7 +78,28 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, true);
+            if (LastSegmentIsStreamPropertySegment && Path.LastSegment.Identifier.Equals(Constants.Content, StringComparison.OrdinalIgnoreCase))
+            {
+                // Get the entity type declaring this stream property.
+                (var entityType, _) = GetStreamElements();
+
+                OpenApiSchema schema = new()
+                {
+                    UnresolvedReference = true,
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = entityType.FullName()
+                    }
+                };
+
+                operation.AddErrorResponses(Context.Settings, addNoContent: true, schema: schema);
+            }
+            else
+            {
+                operation.AddErrorResponses(Context.Settings, true);
+            }
+            
             base.SetResponses(operation);
         }
 
