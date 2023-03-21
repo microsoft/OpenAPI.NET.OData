@@ -17,15 +17,29 @@ namespace Microsoft.OpenApi.OData
     /// </summary>
     public class OpenApiConvertSettings
     {
+        private Version _version = new(1, 0, 1);
         /// <summary>
         /// Gets/sets the service root.
         /// </summary>
         public Uri ServiceRoot { get; set; } = new Uri("http://localhost");
 
         /// <summary>
-        /// Gets/sets the metadata version.
+        /// [Obsolete] Use <see cref="SemVerVersion"/> to Get/set the metadata version.
         /// </summary>
-        public Version Version { get; set; } = new Version(1, 0, 1);
+        public Version Version 
+        { 
+            get => _version; 
+            set 
+            {
+                _version = value;
+                SemVerVersion = _version.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Get/set the metadata version.
+        /// </summary>
+        public string SemVerVersion { get; set; } = "1.0.0";
 
         /// <summary>
         /// Gets/set a value indicating whether to output key as segment path.
@@ -374,7 +388,8 @@ namespace Microsoft.OpenApi.OData
                 EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty = this.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty,
                 AddAlternateKeyPaths = this.AddAlternateKeyPaths,
                 NamespacePrefixToStripForInMethodPaths = this.NamespacePrefixToStripForInMethodPaths,
-                EnableAliasForTypeCastSegments = this.EnableAliasForTypeCastSegments
+                EnableAliasForTypeCastSegments = this.EnableAliasForTypeCastSegments,
+                SemVerVersion = this.SemVerVersion
             };
 
             return newSettings;
