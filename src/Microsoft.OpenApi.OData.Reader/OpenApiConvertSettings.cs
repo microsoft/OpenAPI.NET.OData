@@ -341,7 +341,6 @@ namespace Microsoft.OpenApi.OData
             var newSettings = new OpenApiConvertSettings
             {
                 ServiceRoot = this.ServiceRoot,
-                Version = this.Version,
                 EnableKeyAsSegment = this.EnableKeyAsSegment,
                 EnableUnqualifiedCall = this.EnableUnqualifiedCall,
                 EnableOperationPath = this.EnableOperationPath,
