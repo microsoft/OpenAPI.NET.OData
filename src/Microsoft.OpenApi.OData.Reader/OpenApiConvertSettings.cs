@@ -31,9 +31,9 @@ namespace Microsoft.OpenApi.OData
             get => Version.TryParse(SemVerVersion, out var version) ? version : null; 
             set 
             {
-                SemVerVersion = value?.ToString() ?? string.Empty;
+                SemVerVersion = value?.ToString() ?? "1.0.1";
             }
-        } = new(1, 0, 1);
+        }
 
         /// <summary>
         /// Get/set the metadata version.
