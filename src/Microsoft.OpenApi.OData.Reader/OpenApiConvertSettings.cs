@@ -32,8 +32,7 @@ namespace Microsoft.OpenApi.OData
             get => _version; 
             set 
             {
-                _version = value;
-                SemVerVersion = _version.ToString();
+                SemVerVersion = value?.ToString() ?? string.Empty;
             }
         } = new(1, 0, 1);
 
