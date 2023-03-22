@@ -35,7 +35,7 @@ namespace Microsoft.OpenApi.OData
                 _version = value;
                 SemVerVersion = _version.ToString();
             }
-        }
+        } = new(1, 0, 1);
 
         /// <summary>
         /// Get/set the metadata version.
