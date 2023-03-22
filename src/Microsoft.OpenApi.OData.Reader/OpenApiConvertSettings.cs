@@ -17,7 +17,6 @@ namespace Microsoft.OpenApi.OData
     /// </summary>
     public class OpenApiConvertSettings
     {
-        private Version _version = new(1, 0, 1);
         /// <summary>
         /// Gets/sets the service root.
         /// </summary>
