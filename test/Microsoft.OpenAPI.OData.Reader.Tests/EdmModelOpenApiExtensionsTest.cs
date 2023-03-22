@@ -211,7 +211,7 @@ namespace Microsoft.OpenApi.OData.Tests
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = true,
-                Version = new Version(1, 0, 1),
+                SemVerVersion = "1.0.1",
                 ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
                 IEEE754Compatible = true,
                 OpenApiSpecVersion = specVersion,
@@ -246,7 +246,7 @@ namespace Microsoft.OpenApi.OData.Tests
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = true,
-                Version = new Version(1, 0, 1),
+                Version = new Version(1, 2, 3), // test that the obsolete property still works
                 ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
                 IEEE754Compatible = true,
                 OpenApiSpecVersion = specVersion,

@@ -3,7 +3,7 @@
   "info": {
     "title": "OData Service for namespace Default",
     "description": "This OData service is located at http://localhost",
-    "version": "1.0.1"
+    "version": "1.0.0"
   },
   "servers": [
     {
