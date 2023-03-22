@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData
         [Obsolete("Use SemVerVersion to Get or Set the metadata version.")]
         public Version Version 
         { 
-            get => _version; 
+            get => Version.TryParse(SemVerVersion, out var version) ? version : null; 
             set 
             {
                 SemVerVersion = value?.ToString() ?? string.Empty;
