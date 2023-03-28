@@ -145,11 +145,11 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             // Fetch the respective AcceptableMediaTypes
-            IEdmVocabularyAnnotatable annotatableElement = GetAnnotatableElement();
+            (_, var property) = GetStreamElements();
             IEnumerable<string> mediaTypes = null;
-            if (annotatableElement != null)
+            if (property != null)
             {
-                mediaTypes = Context.Model.GetCollection(annotatableElement,
+                mediaTypes = Context.Model.GetCollection(property,
                     CoreConstants.AcceptableMediaTypes);
             }
 
@@ -173,13 +173,13 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <summary>
-        /// Gets the annotatable stream property from the path segments.
+        /// Gets the stream property and entity type declaring the stream property.
         /// </summary>
-        /// <returns>The annotatable stream property.</returns>
-        protected IEdmVocabularyAnnotatable GetAnnotatableElement()
+        /// <returns>The stream property and entity type declaring the stream property.</returns>
+        protected (IEdmEntityType entityType, IEdmProperty property) GetStreamElements()
         {
             // Only ODataStreamPropertySegment is annotatable
-            if (!LastSegmentIsStreamPropertySegment) return null;
+            if (!LastSegmentIsStreamPropertySegment) return (null, null);
 
             // Retrieve the entity type of the segment before the stream property segment
             var entityType = Path.Segments.ElementAtOrDefault(Path.Segments.Count - 2).EntityType;
@@ -192,7 +192,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 property = GetNavigationProperty(entityType, lastSegmentProp.Identifier);
             }
 
-            return property;
+            return (entityType, property);
         }
 
         private IEdmStructuralProperty GetStructuralProperty(IEdmEntityType entityType, string identifier)

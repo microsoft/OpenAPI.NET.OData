@@ -75,7 +75,7 @@ namespace Microsoft.OpenApi.OData.Generator
             // If no Core.SchemaVersion is present, a default version has to be provided as this is a required OpenAPI field.
             // TODO: https://github.com/Microsoft/OpenAPI.NET.OData/issues/2
 
-            return context.Settings.Version.ToString();
+            return context.Settings.SemVerVersion;
         }
 
         private static string GetDescription(this ODataContext context)

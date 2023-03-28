@@ -27,19 +27,21 @@ namespace Microsoft.OpenApi.OData.Generator
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Response,
-                            Id = "error"
+                            Id = Constants.Error
                         }
                     }
                 },
 
-                { Constants.StatusCode204, new OpenApiResponse { Description = "Success"} },
+                { Constants.StatusCode204, new OpenApiResponse { Description = Constants.Success} },
+                { Constants.StatusCode201, new OpenApiResponse { Description = Constants.Created} },
+                { Constants.StatusCodeClass2XX, new OpenApiResponse { Description = Constants.Success} },
                 { Constants.StatusCodeClass4XX, new OpenApiResponse
                     {
                         UnresolvedReference = true,
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Response,
-                            Id = "error"
+                            Id = Constants.Error
                         }
                     }
                 },
@@ -49,7 +51,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Response,
-                            Id = "error"
+                            Id = Constants.Error
                         }
                     }
                 }

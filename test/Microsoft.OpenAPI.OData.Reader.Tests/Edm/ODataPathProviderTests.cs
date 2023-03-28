@@ -52,9 +52,18 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
+            Assert.Equal(18054, paths.Count());
+            AssertGraphBetaModelPaths(paths);
+        }
+
+        private void AssertGraphBetaModelPaths(IEnumerable<ODataPath> paths)
+        {
+            // Test that $count and microsoft.graph.count() segments are not both created for the same path.
             Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/drives({id})/items({id1})/workbook/tables/$count")));
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/drives({id})/items({id1})/workbook/tables/microsoft.graph.count()")));
-            Assert.Equal(18024, paths.Count());
+
+            // Test that $value segments are created for entity types with base types with HasStream="true"
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/me/chats({id})/messages({id1})/hostedContents({id2})/$value")));
         }
 
         [Fact]
@@ -75,7 +84,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18675, paths.Count());
+            Assert.Equal(18705, paths.Count());
         }
 
         [Fact]

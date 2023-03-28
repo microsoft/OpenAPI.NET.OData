@@ -385,16 +385,16 @@ namespace Microsoft.OpenApi.OData.Edm
                     currentPath.Pop();
                 }
 
-                if (sp.Name.Equals("content", StringComparison.OrdinalIgnoreCase))
+                if (sp.Name.Equals(Constants.Content, StringComparison.OrdinalIgnoreCase))
                 {
                     createValuePath = false;
                 }
             }
 
-            /* Create a /$value path only if entity has stream and
+            /* Append a $value segment only if entity (or base type) has stream and
              * does not contain a structural property named Content
              */
-            if (createValuePath && entityType.HasStream)
+            if (createValuePath && (entityType.HasStream || ((entityType.BaseType as IEdmEntityType)?.HasStream ?? false)))
             {
                 currentPath.Push(new ODataStreamContentSegment());
                 AppendPath(currentPath.Clone());

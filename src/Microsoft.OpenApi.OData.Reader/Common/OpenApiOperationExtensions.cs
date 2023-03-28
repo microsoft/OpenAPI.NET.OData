@@ -20,48 +20,49 @@ public static class OpenApiOperationExtensions
     /// </summary>
     /// <param name="operation">The operation.</param>
     /// <param name="settings">The settings.</param>
-    /// <param name="addNoContent">Whether to add a 204 no content response.</param>
+    /// <param name="addNoContent">Optional: Whether to add a 204 no content response.</param>
     /// <param name="schema">Optional: The OpenAPI schema of the response.</param>
     public static void AddErrorResponses(this OpenApiOperation operation, OpenApiConvertSettings settings, bool addNoContent = false, OpenApiSchema schema = null)
     {
-        if (operation == null) {
-            throw Error.ArgumentNull(nameof(operation));
-        }
-        if(settings == null) {
-            throw Error.ArgumentNull(nameof(settings));
-        }
-
-		if(operation.Responses == null)
+        Utils.CheckArgumentNull(operation, nameof(operation));
+        Utils.CheckArgumentNull(settings, nameof(settings));
+        
+		if (operation.Responses == null)
 		{
 			operation.Responses = new();
 		}
 
         if (addNoContent)
-		{
-            if (settings.UseSuccessStatusCodeRange && schema != null)
+        {
+            if (settings.UseSuccessStatusCodeRange)
             {
-                OpenApiResponse response = new()
+                OpenApiResponse response = null;
+                if (schema != null)
                 {
-                    Content = new Dictionary<string, OpenApiMediaType>
+                    response = new()
                     {
+                        Description = Constants.Success,
+                        Content = new Dictionary<string, OpenApiMediaType>
                         {
-                            Constants.ApplicationJsonMediaType,
-                            new OpenApiMediaType
                             {
-                                Schema = schema
+                                Constants.ApplicationJsonMediaType,
+                                new OpenApiMediaType
+                                {
+                                    Schema = schema
+                                }
                             }
                         }
-                    }                       
-                };
-                operation.Responses.Add(Constants.StatusCodeClass2XX, response);
+                    };
+                }
+                operation.Responses.Add(Constants.StatusCodeClass2XX, response ?? Constants.StatusCodeClass2XX.GetResponse());
             }
             else
             {
                 operation.Responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
             }
-		}
+        }
 
-        if(settings.ErrorResponsesAsDefault)
+        if (settings.ErrorResponsesAsDefault)
         {
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
         }
