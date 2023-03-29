@@ -5,11 +5,14 @@
 
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 
 namespace Microsoft.OpenApi.OData.Common
 {
     internal static class CryptographyExtensions
     {
+         private static readonly ThreadLocal<SHA256> hasher = new (SHA256.Create);
+
         /// <summary>
         /// Calculates the SHA256 hash for the given string.
         /// </summary>
@@ -17,10 +20,9 @@ namespace Microsoft.OpenApi.OData.Common
         public static string GetHashSHA256(this string input)
         {
             Utils.CheckArgumentNull(input, nameof(input));
-
-            var hasher = new SHA256CryptoServiceProvider();
+  
             var inputBytes = Encoding.UTF8.GetBytes(input);
-            var hashBytes = hasher.ComputeHash(inputBytes);
+            var hashBytes = hasher.Value.ComputeHash(inputBytes);
             var hash = new StringBuilder();
             foreach (var b in hashBytes)
             {
