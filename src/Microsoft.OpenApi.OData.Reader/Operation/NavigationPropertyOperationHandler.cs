@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
@@ -78,33 +77,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            IList<string> items = new List<string>
-            {
-                NavigationSource.Name
-            };
-
-            foreach (var segment in Path.Segments.Skip(1).OfType<ODataNavigationPropertySegment>())
-            {
-                if (segment.NavigationProperty == NavigationProperty)
-                {
-                    items.Add(NavigationProperty.ToEntityType().Name);
-                    break;
-                }
-                else
-                {
-                    if (items.Count >= Context.Settings.TagDepth - 1)
-                    {
-                        items.Add(segment.NavigationProperty.ToEntityType().Name);
-                        break;
-                    }
-                    else
-                    {
-                        items.Add(segment.NavigationProperty.Name);
-                    }
-                }
-            }
-
-            string name = string.Join(".", items);
+            string name = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
             OpenApiTag tag = new()
             {
                 Name = name
@@ -125,37 +98,10 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetExtensions(operation);
         }
 
-        protected string GetOperationId(string prefix = null)
-        {
-            IList<string> items = new List<string>
-            {
-                NavigationSource.Name
-            };
-
-            var lastpath = Path.Segments.Last(c => c is ODataNavigationPropertySegment);
-            foreach (var segment in Path.Segments.Skip(1).OfType<ODataNavigationPropertySegment>())
-            {
-                if (segment == lastpath)
-                {
-                    if (prefix != null)
-                    {
-                        items.Add(prefix + Utils.UpperFirstChar(segment.NavigationProperty.Name));
-                    }
-                    else
-                    {
-                        items.Add(Utils.UpperFirstChar(segment.NavigationProperty.Name));
-                    }
-
-                    break;
-                }
-                else
-                {
-                    items.Add(segment.NavigationProperty.Name);
-                }
-            }
-
-            return string.Join(".", items);
-        }
+        internal string GetOperationId(string prefix = null)
+        {            
+            return EdmModelHelper.GenerateNavigationPropertyPathOperationId(Path, prefix);
+        }               
 
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)

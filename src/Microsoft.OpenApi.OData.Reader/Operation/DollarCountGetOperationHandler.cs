@@ -6,6 +6,7 @@
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -26,7 +27,9 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets/sets the segment before $count.
         /// this segment could be "entity set", "Collection property", "Composable function whose return is collection",etc.
         /// </summary>
-        internal ODataSegment LastSecondSegment { get; set; }
+        internal ODataSegment SecondLastSegment { get; set; }
+        private ODataSegment firstSegment;
+        private int pathCount;        
         private const int SecondLastSegmentIndex = 2;
         private IEdmVocabularyAnnotatable annotatable;
 
@@ -35,19 +38,79 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.Initialize(context, path);
 
-            // get the last second segment
-            int count = path.Segments.Count;
-            if(count >= SecondLastSegmentIndex)
-                LastSecondSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex);
+            // Get the first segment
+            firstSegment = path.Segments.First();
 
-            if (LastSecondSegment is ODataNavigationSourceSegment sourceSegment)
+            // get the last second segment
+            pathCount = path.Segments.Count;
+            if(pathCount >= SecondLastSegmentIndex)
+                SecondLastSegment = path.Segments.ElementAt(pathCount - SecondLastSegmentIndex);
+
+            if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
             {
                 annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
             }
-            else if (LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
+            else if (SecondLastSegment is ODataNavigationPropertySegment navigationPropertySegment)
             {
                 annotatable = navigationPropertySegment.NavigationProperty;
             }
+        }
+
+        /// <inheritdoc/>
+        protected override void SetTags(OpenApiOperation operation)
+        {
+            string tagName = null;
+            if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
+            {
+                tagName = TagNameFromNavigationSourceSegment(sourceSegment);
+            }
+            else if (SecondLastSegment is ODataNavigationPropertySegment)
+            {
+                tagName = TagNameFromNavigationPropertySegment();
+            }
+            else if (SecondLastSegment is ODataTypeCastSegment)
+            {
+                ODataSegment lastThirdSegment = Path.Segments.ElementAt(pathCount - 3);
+                if (lastThirdSegment is ODataNavigationSourceSegment sourceSegment2)
+                {
+                    tagName = TagNameFromNavigationSourceSegment(sourceSegment2);
+                }
+                else if (lastThirdSegment is ODataNavigationPropertySegment)
+                {
+                    tagName = TagNameFromNavigationPropertySegment();
+                }
+            }
+            else if (SecondLastSegment is ODataComplexPropertySegment)
+            {
+                tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, Context);
+            }
+
+            if (tagName != null)
+            {
+                OpenApiTag tag = new()
+                {
+                    Name = tagName
+                };
+
+                // Use an extension for TOC (Table of Content)
+                tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+
+                operation.Tags.Add(tag);
+
+                Context.AppendTag(tag);
+            }
+
+            string TagNameFromNavigationSourceSegment(ODataNavigationSourceSegment sourceSegment)
+            {
+                return $"{sourceSegment.NavigationSource.Name}.{sourceSegment.NavigationSource.EntityType().Name}";
+            }
+
+            string TagNameFromNavigationPropertySegment()
+            {
+                return EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
+            }
+
+            base.SetTags(operation);
         }
 
         /// <inheritdoc/>
@@ -59,7 +122,24 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                operation.OperationId = $"Get.Count.{LastSecondSegment.Identifier}-{Path.GetPathHash(Context.Settings)}";
+                if (SecondLastSegment is ODataNavigationSourceSegment)
+                {
+                    operation.OperationId = $"{firstSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}";
+                }
+                else if (SecondLastSegment is ODataNavigationPropertySegment)
+                {
+                    var navPropOpId = string.Join(".", EdmModelHelper.RetrieveNavigationPropertyPathsOperationIdSegments(Path));
+                    operation.OperationId = $"{navPropOpId}.GetCount-{Path.GetPathHash(Context.Settings)}";
+                }
+                else if (SecondLastSegment is ODataTypeCastSegment odataTypeCastSegment)
+                {
+                    IEdmNamedElement targetStructuredType = odataTypeCastSegment.StructuredType as IEdmNamedElement;
+                    operation.OperationId = $"{EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path)}.GetCount.As{Utils.UpperFirstChar(targetStructuredType.Name)}-{Path.GetPathHash(Context.Settings)}";
+                }
+                else if (SecondLastSegment is ODataComplexPropertySegment)
+                {
+                    operation.OperationId = $"{EdmModelHelper.GenerateComplexPropertyPathOperationId(Path)}.GetCount-{Path.GetPathHash(Context.Settings)}";
+                }
             }
 
             base.SetBasicInfo(operation);

@@ -286,8 +286,11 @@
     "/Airlines/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Airlines.Airline"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Airlines-27a7",
+        "operationId": "Airlines.GetCount-27a7",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -588,8 +591,11 @@
     },
     "/Airports/{IcaoCode}/Location": {
       "get": {
+        "tags": [
+          "Airports.AirportLocation"
+        ],
         "summary": "Get Location property value",
-        "operationId": "Location.AirportLocation.GetAirportLocation",
+        "operationId": "Airports.GetLocation",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -657,8 +663,11 @@
         }
       },
       "put": {
+        "tags": [
+          "Airports.AirportLocation"
+        ],
         "summary": "Update property Location value.",
-        "operationId": "Location.AirportLocation.UpdateAirportLocation",
+        "operationId": "Airports.UpdateLocation",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -889,8 +898,11 @@
     },
     "/Airports/{IcaoCode}/Location/EmergencyAuthority/AddressInfo": {
       "get": {
+        "tags": [
+          "Airports.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "Airports.EmergencyAuthority.ListAddressInfo",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -983,8 +995,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Airports.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "Airports.EmergencyAuthority.UpdateAddressInfo",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -1021,8 +1036,11 @@
         }
       },
       "post": {
+        "tags": [
+          "Airports.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "Airports.EmergencyAuthority.SetAddressInfo",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -1070,8 +1088,11 @@
     "/Airports/{IcaoCode}/Location/EmergencyAuthority/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Airports.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-2ffe",
+        "operationId": "Airports.EmergencyAuthority.AddressInfo.GetCount-2ffe",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -1104,10 +1125,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Airports.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-fbf9",
+        "operationId": "Airports.EmergencyAuthority.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -1134,7 +1155,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-e708",
+        "operationId": "Airports.EmergencyAuthority.ListAddressInfo.GetCount.AsEventLocation-e708",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -1165,8 +1186,11 @@
     },
     "/Airports/{IcaoCode}/Location/EmergencyAuthority/HomeAddress": {
       "get": {
+        "tags": [
+          "Airports.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "Airports.EmergencyAuthority.GetHomeAddress",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -1231,8 +1255,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Airports.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "Airports.EmergencyAuthority.UpdateHomeAddress",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -1270,10 +1297,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Airports.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-0bb9",
+        "operationId": "Airports.EmergencyAuthority.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -1299,8 +1326,11 @@
     "/Airports/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Airports.Airport"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Airports-60cc",
+        "operationId": "Airports.GetCount-60cc",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -1549,8 +1579,11 @@
     },
     "/Me/AddressInfo": {
       "get": {
+        "tags": [
+          "Me.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "Me.ListAddressInfo",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1640,8 +1673,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "Me.UpdateAddressInfo",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -1673,8 +1709,11 @@
         }
       },
       "post": {
+        "tags": [
+          "Me.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "Me.SetAddressInfo",
         "parameters": [
           {
             "name": "If-Match",
@@ -1719,8 +1758,11 @@
     "/Me/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-38f2",
+        "operationId": "Me.AddressInfo.GetCount-38f2",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -1750,10 +1792,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-b1a4",
+        "operationId": "Me.ListAddressInfo.AsEventLocation",
         "responses": {
           "200": {
             "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
@@ -1775,7 +1817,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5575",
+        "operationId": "Me.ListAddressInfo.GetCount.AsEventLocation-5575",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -2018,8 +2060,11 @@
     },
     "/Me/BestFriend/AddressInfo": {
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "Me.BestFriend.ListAddressInfo",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -2109,8 +2154,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "Me.BestFriend.UpdateAddressInfo",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -2142,8 +2190,11 @@
         }
       },
       "post": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "Me.BestFriend.SetAddressInfo",
         "parameters": [
           {
             "name": "If-Match",
@@ -2188,8 +2239,11 @@
     "/Me/BestFriend/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-b695",
+        "operationId": "Me.BestFriend.AddressInfo.GetCount-b695",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -2219,10 +2273,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-2154",
+        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
         "responses": {
           "200": {
             "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
@@ -2244,7 +2298,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-0105",
+        "operationId": "Me.BestFriend.ListAddressInfo.GetCount.AsEventLocation-0105",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -2272,8 +2326,11 @@
     },
     "/Me/BestFriend/HomeAddress": {
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "Me.BestFriend.GetHomeAddress",
         "parameters": [
           {
             "name": "$select",
@@ -2335,8 +2392,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "Me.BestFriend.UpdateHomeAddress",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -2369,10 +2429,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-a28d",
+        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
         "responses": {
           "200": {
             "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
@@ -2394,10 +2454,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-dcf6",
+        "operationId": "Me.GetBestFriend.AsEmployee",
         "parameters": [
           {
             "name": "$select",
@@ -2478,10 +2538,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-09a9",
+        "operationId": "Me.GetBestFriend.AsManager",
         "parameters": [
           {
             "name": "$select",
@@ -2745,8 +2805,11 @@
     },
     "/Me/Friends/{UserName}/AddressInfo": {
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "Me.Friends.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -2846,8 +2909,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "Me.Friends.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -2891,8 +2957,11 @@
         }
       },
       "post": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "Me.Friends.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -2947,8 +3016,11 @@
     "/Me/Friends/{UserName}/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-246e",
+        "operationId": "Me.Friends.AddressInfo.GetCount-246e",
         "parameters": [
           {
             "name": "UserName",
@@ -2988,10 +3060,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-f440",
+        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -3025,7 +3097,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-42c7",
+        "operationId": "Me.Friends.ListAddressInfo.GetCount.AsEventLocation-42c7",
         "parameters": [
           {
             "name": "UserName",
@@ -3063,8 +3135,11 @@
     },
     "/Me/Friends/{UserName}/HomeAddress": {
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "Me.Friends.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -3136,8 +3211,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "Me.Friends.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -3182,10 +3260,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-15cc",
+        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -3219,10 +3297,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-3dc7",
+        "operationId": "Me.GetFriends.AsEmployee",
         "parameters": [
           {
             "name": "UserName",
@@ -3313,10 +3391,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-ddec",
+        "operationId": "Me.GetFriends.AsManager",
         "parameters": [
           {
             "name": "UserName",
@@ -3406,8 +3484,11 @@
     "/Me/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Friends-182b",
+        "operationId": "Me.Friends.GetCount-182b",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -3544,10 +3625,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-f4a5",
+        "operationId": "Me.ListFriends.AsEmployee",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -3673,8 +3754,11 @@
     "/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b",
+        "operationId": "Me.ListFriends.GetCount.AsEmployee-884b",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -3704,10 +3788,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-98ae",
+        "operationId": "Me.ListFriends.AsManager",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -3833,8 +3917,11 @@
     "/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376",
+        "operationId": "Me.ListFriends.GetCount.AsManager-9376",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -3862,8 +3949,11 @@
     },
     "/Me/HomeAddress": {
       "get": {
+        "tags": [
+          "Me.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "Me.GetHomeAddress",
         "parameters": [
           {
             "name": "$select",
@@ -3925,8 +4015,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "Me.UpdateHomeAddress",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -3959,10 +4052,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-ba49",
+        "operationId": "Me.GetHomeAddress.AsEventLocation",
         "responses": {
           "200": {
             "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
@@ -3984,10 +4077,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-bd18",
+        "operationId": "Me.Person.GetPerson.AsEmployee",
         "parameters": [
           {
             "name": "$select",
@@ -4251,8 +4344,11 @@
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/AddressInfo": {
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "Me.Peers.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -4352,8 +4448,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "Me.Peers.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -4397,8 +4496,11 @@
         }
       },
       "post": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "Me.Peers.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -4453,8 +4555,11 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-3e91",
+        "operationId": "Me.Peers.AddressInfo.GetCount-3e91",
         "parameters": [
           {
             "name": "UserName",
@@ -4494,10 +4599,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-1e59",
+        "operationId": "Me.Peers.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -4531,7 +4636,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-be1d",
+        "operationId": "Me.Peers.ListAddressInfo.GetCount.AsEventLocation-be1d",
         "parameters": [
           {
             "name": "UserName",
@@ -4569,8 +4674,11 @@
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/HomeAddress": {
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "Me.Peers.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -4642,8 +4750,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "Me.Peers.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -4688,10 +4799,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-dc11",
+        "operationId": "Me.Peers.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -4724,8 +4835,11 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers-9fc2",
+        "operationId": "Me.Peers.GetCount-9fc2",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -5026,10 +5140,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-16dc",
+        "operationId": "Me.Person.GetPerson.AsManager",
         "parameters": [
           {
             "name": "$select",
@@ -5293,8 +5407,11 @@
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/AddressInfo": {
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "Me.DirectReports.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -5394,8 +5511,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "Me.DirectReports.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -5439,8 +5559,11 @@
         }
       },
       "post": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "Me.DirectReports.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -5495,8 +5618,11 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-f650",
+        "operationId": "Me.DirectReports.AddressInfo.GetCount-f650",
         "parameters": [
           {
             "name": "UserName",
@@ -5536,10 +5662,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-660b",
+        "operationId": "Me.DirectReports.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -5573,7 +5699,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-a070",
+        "operationId": "Me.DirectReports.ListAddressInfo.GetCount.AsEventLocation-a070",
         "parameters": [
           {
             "name": "UserName",
@@ -5611,8 +5737,11 @@
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/HomeAddress": {
       "get": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "Me.DirectReports.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -5684,8 +5813,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "Me.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "Me.DirectReports.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -5730,10 +5862,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "Me.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5e6e",
+        "operationId": "Me.DirectReports.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -5766,8 +5898,11 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports-8b92",
+        "operationId": "Me.DirectReports.GetCount-8b92",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -6723,8 +6858,11 @@
     "/Me/Trips/{TripId}/PlanItems/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Trips.PlanItem"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.PlanItems-c250",
+        "operationId": "Me.Trips.PlanItems.GetCount-c250",
         "parameters": [
           {
             "name": "TripId",
@@ -6889,8 +7027,11 @@
     "/Me/Trips/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "Me.Trip"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Trips-7b69",
+        "operationId": "Me.Trips.GetCount-7b69",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -7252,8 +7393,11 @@
     },
     "/NewComePeople/{UserName}/AddressInfo": {
       "get": {
+        "tags": [
+          "NewComePeople.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "NewComePeople.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -7346,8 +7490,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "NewComePeople.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "NewComePeople.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -7384,8 +7531,11 @@
         }
       },
       "post": {
+        "tags": [
+          "NewComePeople.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "NewComePeople.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -7433,8 +7583,11 @@
     "/NewComePeople/{UserName}/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "NewComePeople.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-29d6",
+        "operationId": "NewComePeople.AddressInfo.GetCount-29d6",
         "parameters": [
           {
             "name": "UserName",
@@ -7481,10 +7634,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "NewComePeople.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-d026",
+        "operationId": "NewComePeople.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -7511,7 +7664,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-29d3",
+        "operationId": "NewComePeople.ListAddressInfo.GetCount.AsEventLocation-29d3",
         "parameters": [
           {
             "name": "UserName",
@@ -7827,8 +7980,11 @@
     },
     "/NewComePeople/{UserName}/BestFriend/AddressInfo": {
       "get": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "NewComePeople.BestFriend.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -7928,8 +8084,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "NewComePeople.BestFriend.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -7973,8 +8132,11 @@
         }
       },
       "post": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "NewComePeople.BestFriend.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -8029,8 +8191,11 @@
     "/NewComePeople/{UserName}/BestFriend/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-513c",
+        "operationId": "NewComePeople.BestFriend.AddressInfo.GetCount-513c",
         "parameters": [
           {
             "name": "UserName",
@@ -8084,10 +8249,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "NewComePeople.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-73fa",
+        "operationId": "NewComePeople.BestFriend.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -8121,7 +8286,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-ba36",
+        "operationId": "NewComePeople.BestFriend.ListAddressInfo.GetCount.AsEventLocation-ba36",
         "parameters": [
           {
             "name": "UserName",
@@ -8173,8 +8338,11 @@
     },
     "/NewComePeople/{UserName}/BestFriend/HomeAddress": {
       "get": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "NewComePeople.BestFriend.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -8246,8 +8414,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "NewComePeople.BestFriend.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -8292,10 +8463,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "NewComePeople.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-8ebe",
+        "operationId": "NewComePeople.BestFriend.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -8329,10 +8500,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-7b75",
+        "operationId": "NewComePeople.GetBestFriend.AsEmployee",
         "parameters": [
           {
             "name": "UserName",
@@ -8423,10 +8594,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-61ce",
+        "operationId": "NewComePeople.GetBestFriend.AsManager",
         "parameters": [
           {
             "name": "UserName",
@@ -8706,8 +8877,11 @@
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/AddressInfo": {
       "get": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "NewComePeople.Friends.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -8810,8 +8984,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "NewComePeople.Friends.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -8858,8 +9035,11 @@
         }
       },
       "post": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "NewComePeople.Friends.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -8917,8 +9097,11 @@
     "/NewComePeople/{UserName}/Friends/{UserName1}/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-9334",
+        "operationId": "NewComePeople.Friends.AddressInfo.GetCount-9334",
         "parameters": [
           {
             "name": "UserName",
@@ -8975,10 +9158,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "NewComePeople.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-eeb4",
+        "operationId": "NewComePeople.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -9015,7 +9198,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-be92",
+        "operationId": "NewComePeople.Friends.ListAddressInfo.GetCount.AsEventLocation-be92",
         "parameters": [
           {
             "name": "UserName",
@@ -9070,8 +9253,11 @@
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/HomeAddress": {
       "get": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "NewComePeople.Friends.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -9146,8 +9332,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "NewComePeople.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "NewComePeople.Friends.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -9195,10 +9384,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "NewComePeople.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-f4d9",
+        "operationId": "NewComePeople.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -9235,10 +9424,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969",
+        "operationId": "NewComePeople.GetFriends.AsEmployee",
         "parameters": [
           {
             "name": "UserName",
@@ -9332,10 +9521,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f",
+        "operationId": "NewComePeople.GetFriends.AsManager",
         "parameters": [
           {
             "name": "UserName",
@@ -9428,8 +9617,11 @@
     "/NewComePeople/{UserName}/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Friends-2ec1",
+        "operationId": "NewComePeople.Friends.GetCount-2ec1",
         "parameters": [
           {
             "name": "UserName",
@@ -9577,10 +9769,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "NewComePeople.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969",
+        "operationId": "NewComePeople.ListFriends.AsEmployee",
         "parameters": [
           {
             "name": "UserName",
@@ -9709,8 +9901,11 @@
     "/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-4069",
+        "operationId": "NewComePeople.ListFriends.GetCount.AsEmployee-4069",
         "parameters": [
           {
             "name": "UserName",
@@ -9743,10 +9938,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "NewComePeople.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f",
+        "operationId": "NewComePeople.ListFriends.AsManager",
         "parameters": [
           {
             "name": "UserName",
@@ -9875,8 +10070,11 @@
     "/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-d1d3",
+        "operationId": "NewComePeople.ListFriends.GetCount.AsManager-d1d3",
         "parameters": [
           {
             "name": "UserName",
@@ -9907,8 +10105,11 @@
     },
     "/NewComePeople/{UserName}/HomeAddress": {
       "get": {
+        "tags": [
+          "NewComePeople.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "NewComePeople.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -9973,8 +10174,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "NewComePeople.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "NewComePeople.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -10012,10 +10216,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "NewComePeople.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-3fd9",
+        "operationId": "NewComePeople.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -11084,8 +11288,11 @@
     "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "NewComePeople.Trips.PlanItem"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.PlanItems-841f",
+        "operationId": "NewComePeople.Trips.PlanItems.GetCount-841f",
         "parameters": [
           {
             "name": "UserName",
@@ -11259,8 +11466,11 @@
     "/NewComePeople/{UserName}/Trips/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "NewComePeople.Trip"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Trips-d155",
+        "operationId": "NewComePeople.Trips.GetCount-d155",
         "parameters": [
           {
             "name": "UserName",
@@ -11306,8 +11516,11 @@
     "/NewComePeople/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.NewComePeople-55d5",
+        "operationId": "NewComePeople.GetCount-55d5",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -11711,8 +11924,11 @@
     },
     "/People/{UserName}/AddressInfo": {
       "get": {
+        "tags": [
+          "People.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "People.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -11812,8 +12028,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "People.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -11857,8 +12076,11 @@
         }
       },
       "post": {
+        "tags": [
+          "People.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "People.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -11913,8 +12135,11 @@
     "/People/{UserName}/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-ed5a",
+        "operationId": "People.AddressInfo.GetCount-ed5a",
         "parameters": [
           {
             "name": "UserName",
@@ -11954,10 +12179,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-e5b8",
+        "operationId": "People.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -11991,7 +12216,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-4abd",
+        "operationId": "People.ListAddressInfo.GetCount.AsEventLocation-4abd",
         "parameters": [
           {
             "name": "UserName",
@@ -12300,8 +12525,11 @@
     },
     "/People/{UserName}/BestFriend/AddressInfo": {
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "People.BestFriend.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -12401,8 +12629,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "People.BestFriend.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -12446,8 +12677,11 @@
         }
       },
       "post": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "People.BestFriend.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -12502,8 +12736,11 @@
     "/People/{UserName}/BestFriend/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-16df",
+        "operationId": "People.BestFriend.AddressInfo.GetCount-16df",
         "parameters": [
           {
             "name": "UserName",
@@ -12543,10 +12780,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-c332",
+        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -12580,7 +12817,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-fe88",
+        "operationId": "People.BestFriend.ListAddressInfo.GetCount.AsEventLocation-fe88",
         "parameters": [
           {
             "name": "UserName",
@@ -12618,8 +12855,11 @@
     },
     "/People/{UserName}/BestFriend/HomeAddress": {
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "People.BestFriend.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -12691,8 +12931,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "People.BestFriend.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -12737,10 +12980,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-53c4",
+        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -12774,10 +13017,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-7188",
+        "operationId": "People.GetBestFriend.AsEmployee",
         "parameters": [
           {
             "name": "UserName",
@@ -12868,10 +13111,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-5f08",
+        "operationId": "People.GetBestFriend.AsManager",
         "parameters": [
           {
             "name": "UserName",
@@ -13165,8 +13408,11 @@
     },
     "/People/{UserName}/Friends/{UserName1}/AddressInfo": {
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "People.Friends.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -13276,8 +13522,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "People.Friends.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -13331,8 +13580,11 @@
         }
       },
       "post": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "People.Friends.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -13397,8 +13649,11 @@
     "/People/{UserName}/Friends/{UserName1}/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-bdaf",
+        "operationId": "People.Friends.AddressInfo.GetCount-bdaf",
         "parameters": [
           {
             "name": "UserName",
@@ -13448,10 +13703,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-a5f6",
+        "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -13495,7 +13750,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-2795",
+        "operationId": "People.Friends.ListAddressInfo.GetCount.AsEventLocation-2795",
         "parameters": [
           {
             "name": "UserName",
@@ -13543,8 +13798,11 @@
     },
     "/People/{UserName}/Friends/{UserName1}/HomeAddress": {
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "People.Friends.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -13626,8 +13884,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "People.Friends.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -13682,10 +13943,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-da5e",
+        "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -13729,10 +13990,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf",
+        "operationId": "People.GetFriends.AsEmployee",
         "parameters": [
           {
             "name": "UserName",
@@ -13833,10 +14094,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb",
+        "operationId": "People.GetFriends.AsManager",
         "parameters": [
           {
             "name": "UserName",
@@ -13936,8 +14197,11 @@
     "/People/{UserName}/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Friends-92b9",
+        "operationId": "People.Friends.GetCount-92b9",
         "parameters": [
           {
             "name": "UserName",
@@ -14106,10 +14370,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf",
+        "operationId": "People.ListFriends.AsEmployee",
         "parameters": [
           {
             "name": "UserName",
@@ -14245,8 +14509,11 @@
     "/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-a96c",
+        "operationId": "People.ListFriends.GetCount.AsEmployee-a96c",
         "parameters": [
           {
             "name": "UserName",
@@ -14286,10 +14553,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb",
+        "operationId": "People.ListFriends.AsManager",
         "parameters": [
           {
             "name": "UserName",
@@ -14425,8 +14692,11 @@
     "/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-26b3",
+        "operationId": "People.ListFriends.GetCount.AsManager-26b3",
         "parameters": [
           {
             "name": "UserName",
@@ -14464,8 +14734,11 @@
     },
     "/People/{UserName}/HomeAddress": {
       "get": {
+        "tags": [
+          "People.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "People.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -14537,8 +14810,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "People.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -14583,10 +14859,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-d0cf",
+        "operationId": "People.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -14620,10 +14896,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-317b",
+        "operationId": "People.Person.GetPerson.AsEmployee",
         "parameters": [
           {
             "name": "UserName",
@@ -14931,8 +15207,11 @@
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo": {
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "People.Peers.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -15042,8 +15321,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "People.Peers.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -15097,8 +15379,11 @@
         }
       },
       "post": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "People.Peers.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -15163,8 +15448,11 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-755d",
+        "operationId": "People.Peers.AddressInfo.GetCount-755d",
         "parameters": [
           {
             "name": "UserName",
@@ -15214,10 +15502,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-b918",
+        "operationId": "People.Peers.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -15261,7 +15549,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-ef5e",
+        "operationId": "People.Peers.ListAddressInfo.GetCount.AsEventLocation-ef5e",
         "parameters": [
           {
             "name": "UserName",
@@ -15309,8 +15597,11 @@
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress": {
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "People.Peers.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -15392,8 +15683,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "People.Peers.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -15448,10 +15742,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-311b",
+        "operationId": "People.Peers.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -15494,8 +15788,11 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers-44d2",
+        "operationId": "People.Peers.GetCount-44d2",
         "parameters": [
           {
             "name": "UserName",
@@ -15862,10 +16159,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-d051",
+        "operationId": "People.Person.GetPerson.AsManager",
         "parameters": [
           {
             "name": "UserName",
@@ -16173,8 +16470,11 @@
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo": {
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get AddressInfo property value",
-        "operationId": "AddressInfo.Location.ListLocation",
+        "operationId": "People.DirectReports.ListAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -16284,8 +16584,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Update property AddressInfo value.",
-        "operationId": "AddressInfo.Location.UpdateLocation",
+        "operationId": "People.DirectReports.UpdateAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -16339,8 +16642,11 @@
         }
       },
       "post": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Sets a new value for the collection of Location.",
-        "operationId": "AddressInfo.Location.SetLocation",
+        "operationId": "People.DirectReports.SetAddressInfo",
         "parameters": [
           {
             "name": "UserName",
@@ -16405,8 +16711,11 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.AddressInfo-f46e",
+        "operationId": "People.DirectReports.AddressInfo.GetCount-f46e",
         "parameters": [
           {
             "name": "UserName",
@@ -16456,10 +16765,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-1252",
+        "operationId": "People.DirectReports.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -16503,7 +16812,7 @@
       "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-5d49",
+        "operationId": "People.DirectReports.ListAddressInfo.GetCount.AsEventLocation-5d49",
         "parameters": [
           {
             "name": "UserName",
@@ -16551,8 +16860,11 @@
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress": {
       "get": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Get HomeAddress property value",
-        "operationId": "HomeAddress.Location.GetLocation",
+        "operationId": "People.DirectReports.GetHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -16634,8 +16946,11 @@
         }
       },
       "patch": {
+        "tags": [
+          "People.Person.Location"
+        ],
         "summary": "Update property HomeAddress value.",
-        "operationId": "HomeAddress.Location.UpdateLocation",
+        "operationId": "People.DirectReports.UpdateHomeAddress",
         "parameters": [
           {
             "name": "UserName",
@@ -16690,10 +17005,10 @@
       "description": "Casts the previous resource to EventLocation.",
       "get": {
         "tags": [
-          "Location.EventLocation"
+          "People.Person.Location"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation-cf8d",
+        "operationId": "People.DirectReports.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -16736,8 +17051,11 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports-0ec4",
+        "operationId": "People.DirectReports.GetCount-0ec4",
         "parameters": [
           {
             "name": "UserName",
@@ -17841,8 +18159,11 @@
     "/People/{UserName}/Trips/{TripId}/PlanItems/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Trips.PlanItem"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.PlanItems-9a27",
+        "operationId": "People.Trips.PlanItems.GetCount-9a27",
         "parameters": [
           {
             "name": "UserName",
@@ -18037,8 +18358,11 @@
     "/People/{UserName}/Trips/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Trip"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Trips-e877",
+        "operationId": "People.Trips.GetCount-e877",
         "parameters": [
           {
             "name": "UserName",
@@ -18091,8 +18415,11 @@
     "/People/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.People-dd8d",
+        "operationId": "People.GetCount-dd8d",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -18136,10 +18463,10 @@
       "description": "Casts the previous resource to Employee.",
       "get": {
         "tags": [
-          "Person.Employee"
+          "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a",
+        "operationId": "People.Person.ListPerson.AsEmployee",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -18279,8 +18606,11 @@
     "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29",
+        "operationId": "People.Person.ListPerson.GetCount.AsEmployee-ef29",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -18324,10 +18654,10 @@
       "description": "Casts the previous resource to Manager.",
       "get": {
         "tags": [
-          "Person.Manager"
+          "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14",
+        "operationId": "People.Person.ListPerson.AsManager",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -18467,8 +18797,11 @@
     "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
+        "tags": [
+          "People.Person"
+        ],
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48",
+        "operationId": "People.Person.ListPerson.GetCount.AsManager-2d48",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -20070,11 +20403,15 @@
       "x-ms-docs-toc-type": "page"
     },
     {
+      "name": "Airports.AirportLocation",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
       "name": "Airports.Person",
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Location.EventLocation",
+      "name": "Airports.Person.Location",
       "x-ms-docs-toc-type": "page"
     },
     {
@@ -20090,10 +20427,12 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Person.Employee"
+      "name": "Me.Location",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Person.Manager"
+      "name": "Me.Person.Location",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "Me.Functions",
@@ -20116,6 +20455,14 @@
       "x-ms-docs-toc-type": "page"
     },
     {
+      "name": "NewComePeople.Location",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "NewComePeople.Person.Location",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
       "name": "NewComePeople.Functions",
       "x-ms-docs-toc-type": "container"
     },
@@ -20133,6 +20480,14 @@
     },
     {
       "name": "People.Person",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "People.Location",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "People.Person.Location",
       "x-ms-docs-toc-type": "page"
     },
     {

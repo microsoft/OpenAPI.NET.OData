@@ -37,8 +37,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         // OperationId
         if (Context.Settings.EnableOperationId)
         {
-            string typeName = ComplexPropertySegment.ComplexType.Name;
-            operation.OperationId = ComplexPropertySegment.Property.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
+            operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, "Update");
         }
     }
 

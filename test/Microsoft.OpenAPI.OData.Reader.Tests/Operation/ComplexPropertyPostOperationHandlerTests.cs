@@ -76,7 +76,7 @@ public class ComplexPropertyPostOperationHandlerTests
 
 		if (enableOperationId)
 		{
-			Assert.Equal("AlternativeAddresses.Address.SetAddress", post.OperationId);
+			Assert.Equal("Customers.SetAlternativeAddresses", post.OperationId);
 		}
 		else
 		{
