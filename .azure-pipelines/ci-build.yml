@@ -107,7 +107,7 @@ stages:
         displayName: 'Run BinSkim - Product Binaries'
         inputs:
           InputType: Basic
-          AnalyzeTarget: '$(ProductBinPath)\**\Microsoft.OpenApi.OData.Reader.dll'
+          AnalyzeTargetGlob: '$(ProductBinPath)\**\Microsoft.OpenApi.OData.Reader.dll'
           AnalyzeSymPath: '$(ProductBinPath)'
           AnalyzeVerbose: true
           AnalyzeHashes: true
