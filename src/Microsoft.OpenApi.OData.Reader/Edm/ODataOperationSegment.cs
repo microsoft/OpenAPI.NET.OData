@@ -1,12 +1,15 @@
-// ------------------------------------------------------------
+// -----
+// private readonly IEdmModel _model;-------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
@@ -47,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Operation = operation ?? throw Error.ArgumentNull(nameof(operation));
             ParameterMappings = parameterMappings ?? throw Error.ArgumentNull(nameof(parameterMappings));
         }
-
+        
         /// <summary>
         /// Gets the parameter mappings.
         /// </summary>
@@ -118,11 +121,9 @@ namespace Microsoft.OpenApi.OData.Edm
             }
             else
             {
-                string selectedName = operation.FullName();
-                return !string.IsNullOrEmpty(settings.NamespacePrefixToStripForInMethodPaths)
-                    ? selectedName.StripNamespacePrefix(settings.NamespacePrefixToStripForInMethodPaths)
-                    : selectedName;
+                // return EdmModelHelper.StripOrAliasNamespacePrefix(operation, _model, settings);
             }
+            return null;
         }
 
         private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings, HashSet<string> parameters)

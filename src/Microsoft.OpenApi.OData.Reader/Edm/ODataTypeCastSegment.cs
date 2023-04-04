@@ -53,20 +53,10 @@ public class ODataTypeCastSegment : ODataSegment
     public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
     {
         Utils.CheckArgumentNull(settings, nameof(settings));
-        string namespaceName = string.Empty;
-        string namespaceAlias = string.Empty;
+        
+        IEdmSchemaElement element = StructuredType as IEdmSchemaElement;        
 
-        if (StructuredType is IEdmSchemaElement element)
-            namespaceName = element.Namespace;
-
-        if (!string.IsNullOrEmpty(namespaceName))
-            namespaceAlias = _model.GetNamespaceAlias(namespaceName);
-
-        if(settings.EnableAliasForTypeCastSegments && !string.IsNullOrEmpty(namespaceAlias))
-        {
-            return namespaceAlias.TrimEnd('.') + "." + StructuredType.FullTypeName().Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).Last();
-        }           
-
-        return StructuredType.FullTypeName();
+        string name = EdmModelHelper.StripOrAliasNamespacePrefix(element, _model, settings);
+        return name;
     }
 }

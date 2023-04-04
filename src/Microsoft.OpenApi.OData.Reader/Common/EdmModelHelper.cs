@@ -6,7 +6,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
@@ -340,6 +342,47 @@ namespace Microsoft.OpenApi.OData.Common
             }
 
             return operationId;
+        }
+
+        internal static string StripOrAliasNamespacePrefix(IEdmSchemaElement element, IEdmModel model, OpenApiConvertSettings settings)
+        {
+            Utils.CheckArgumentNull(element, nameof(element));
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(settings, nameof(settings));
+
+            string namespaceAlias = string.Empty;
+            string namespaceName = element.Namespace;
+            string segmentName = element.FullName();        
+
+            if (!string.IsNullOrEmpty(namespaceName))
+            {
+                namespaceAlias = model.GetNamespaceAlias(namespaceName);
+            }         
+
+            if (element is IEdmStructuredType)
+            {                
+                if (settings.EnableAliasForTypeCastSegments && !string.IsNullOrEmpty(namespaceAlias))
+                {
+                    // Alias type cast segment name
+                    segmentName = namespaceAlias.TrimEnd('.') + "." + element.Name;
+                }
+            }
+            
+            if (element is IEdmOperation)
+            {                
+                if (settings.EnableAliasForOperationSegments && !string.IsNullOrEmpty(namespaceAlias))
+                {
+                    // Strip namespace from operation segment name
+                    segmentName = namespaceAlias.TrimEnd('.') + "." + element.Name;
+                }
+                else if (element.Namespace.Equals(settings.NamespacePrefixToStripForInMethodPaths, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Alias operation segment name                    
+                    segmentName = element.Name;
+                }
+            }
+
+            return segmentName;
         }
     }
 }
