@@ -16,15 +16,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         private NavigationPropertyDeleteOperationHandler _operationHandler = new NavigationPropertyDeleteOperationHandler();
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateNavigationDeleteOperationReturnsCorrectOperation(bool enableOperationId)
+        [InlineData(true, false)]
+        [InlineData(false, false)]
+        [InlineData(true, true)]
+        [InlineData(false, true)]
+        public void CreateNavigationDeleteOperationReturnsCorrectOperation(bool enableOperationId, bool useSuccessStatusCodeRange)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId
+                EnableOperationId = enableOperationId,
+                UseSuccessStatusCodeRange = useSuccessStatusCodeRange
             };
             ODataContext context = new ODataContext(model, settings);
             IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");

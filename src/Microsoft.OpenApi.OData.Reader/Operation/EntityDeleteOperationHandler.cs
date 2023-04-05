@@ -81,7 +81,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, true);
+            // Response for Delete methods should be 204 No Content
+            OpenApiConvertSettings settings = Context.Settings.Clone();
+            settings.UseSuccessStatusCodeRange = false;
+            
+            operation.AddErrorResponses(settings, true);
             base.SetResponses(operation);
         }
 

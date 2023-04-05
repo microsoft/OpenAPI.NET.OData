@@ -15,20 +15,13 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.3.0</Version>
+    <Version>1.4.0-preview1</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
-- Update key path parameter descriptions #309
-- Skips adding a $count path if a similar count() function path exists #347
-- Checks whether path exists before adding it to the paths dictionary #343
-- Strips namespace prefix from operation segments and aliases type cast segments #348
-- Return response status code 2XX for PUT operations of stream properties when UseSuccessStatusCodeRange is enabled #310
-- Adds $value segment to paths with entity types with base types with HasStream=true #314
-- Uses SemVerVersion in place of Version to Get or Set the metadata version in the OpenAPI document #346
-- Resolves operationId and tag names for OData cast paths #324
+- DELETE methods should always return response status code 204
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
