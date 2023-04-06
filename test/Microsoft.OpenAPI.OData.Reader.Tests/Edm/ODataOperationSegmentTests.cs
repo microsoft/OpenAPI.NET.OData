@@ -4,7 +4,9 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Edm.Tests
@@ -73,26 +75,51 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Theory]
-        [InlineData(true, true, "MyFunction(param={param},param2=@param2)", null, "NS.XY")]
-        [InlineData(true, false, "MyFunction(entity={entity},param={param},param2=@param2)", null, "NS.XY")]
-        [InlineData(false, true, "NS.XY.MyFunction(param={param},param2=@param2)", "NS", "NS.XY")]
-        [InlineData(false, true, "MyFunction(param={param},param2=@param2)", "NS.XY", "NS.XY")]
-        [InlineData(false, false, "NS.XY.MyFunction(entity={entity},param={param},param2=@param2)", "NS", "NS.XY")]
-        [InlineData(false, false, "MyFunction(entity={entity},param={param},param2=@param2)", "NS.XY", "NS.XY")]
-        public void GetPathItemNameReturnsCorrectFunctionLiteral(bool unqualifiedCall, bool isBound, string expected, string namespacePrefixToStrip, string namespaceName)
+        [InlineData(true, true, "MyFunction(param={param},param2=@param2)")]
+        [InlineData(true, false, "MyFunction(entity={entity},param={param},param2=@param2)")]
+        [InlineData(false, true, "NS.MyFunction(param={param},param2=@param2)")]
+        [InlineData(false, false, "NS.MyFunction(entity={entity},param={param},param2=@param2)")]
+        public void GetPathItemNameReturnsCorrectFunctionLiteral(bool unqualifiedCall, bool isBound, string expected)
         {
             // Arrange & Act
-            IEdmEntityTypeReference entityTypeReference = new EdmEntityTypeReference(new EdmEntityType("NS.XY", "Entity"), false);
+            IEdmEntityTypeReference entityTypeReference = new EdmEntityTypeReference(new EdmEntityType("NS", "Entity"), false);
             IEdmTypeReference parameterType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.Boolean, isNullable: false);
-            EdmFunction boundFunction = BoundFunction("MyFunction", isBound, entityTypeReference, namespaceIdentifier: namespaceName);
+            EdmFunction boundFunction = BoundFunction("MyFunction", isBound, entityTypeReference, namespaceIdentifier: "NS");
             boundFunction.AddParameter("param", parameterType);
             boundFunction.AddOptionalParameter("param2", parameterType);
 
-            var segment = new ODataOperationSegment(boundFunction, EdmCoreModel.Instance);
+            var segment = new ODataOperationSegment(boundFunction);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableUnqualifiedCall = unqualifiedCall,
+                EnableUnqualifiedCall = unqualifiedCall
+            };
+
+            // Assert
+            Assert.Equal(expected, segment.GetPathItemName(settings));
+        }
+
+        [Theory]
+        [InlineData("NS.XY.MyFunction(param={param},param2=@param2)", "NS", "NS.XY", false)]
+        [InlineData("MyFunction(param={param},param2=@param2)", "NS.XY", "NS.XY", false)]
+        [InlineData("N.MyFunction(param={param},param2=@param2)", "NS", "NS.XY", true)]                
+        [InlineData("N.MyFunction(param={param},param2=@param2)", "NS.XY", "NS.XY", true)]
+        public void GetPathItemNameReturnsCorrectFunctionLiteralWhenSegmentAliasedOrNamespacePrefixStripped(string expected, string namespacePrefixToStrip, string namespaceName, bool enableAlias)
+        {
+            // Arrange & Act
+            IEdmEntityTypeReference entityTypeReference = new EdmEntityTypeReference(new EdmEntityType(namespaceName, "Entity"), false);
+            IEdmTypeReference parameterType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.Boolean, isNullable: false);
+            EdmFunction boundFunction = BoundFunction("MyFunction", true, entityTypeReference, namespaceIdentifier: namespaceName);
+            boundFunction.AddParameter("param", parameterType);
+            boundFunction.AddOptionalParameter("param2", parameterType);
+            EdmModel model = new();
+            model.AddElement(boundFunction);
+            model.SetNamespaceAlias(namespaceName, "N");
+
+            var segment = new ODataOperationSegment(boundFunction, model);
+            OpenApiConvertSettings settings = new()
+            {
                 NamespacePrefixToStripForInMethodPaths = namespacePrefixToStrip,
+                EnableAliasForOperationSegments = enableAlias
             };
 
             // Assert
