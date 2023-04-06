@@ -3,11 +3,8 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
@@ -54,9 +51,10 @@ public class ODataTypeCastSegment : ODataSegment
     {
         Utils.CheckArgumentNull(settings, nameof(settings));
         
-        IEdmSchemaElement element = StructuredType as IEdmSchemaElement;        
+        IEdmSchemaElement element = StructuredType as IEdmSchemaElement;
 
-        string name = EdmModelHelper.StripOrAliasNamespacePrefix(element, _model, settings);
-        return name;
+        return element != null && _model != null
+            ? EdmModelHelper.StripOrAliasNamespacePrefix(element, settings, _model)
+            : (element?.FullName());
     }
 }
