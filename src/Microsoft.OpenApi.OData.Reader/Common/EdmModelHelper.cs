@@ -344,17 +344,23 @@ namespace Microsoft.OpenApi.OData.Common
             return operationId;
         }
 
-        internal static string StripOrAliasNamespacePrefix(IEdmSchemaElement element, IEdmModel model, OpenApiConvertSettings settings)
+        /// <summary>
+        /// Strips or aliases namespace prefixes from an element name.
+        /// </summary>
+        /// <param name="element">The target element.</param>
+        /// <param name="model">Optional: The Edm model. Used for searching for the namespace alias.</param>
+        /// <param name="settings">The OpenAPI convert settings.</param>
+        /// <returns>The element name, alias-prefixed or namespace-stripped if applicable.</returns>
+        internal static string StripOrAliasNamespacePrefix(IEdmSchemaElement element, OpenApiConvertSettings settings, IEdmModel model = null)
         {
             Utils.CheckArgumentNull(element, nameof(element));
-            Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(settings, nameof(settings));
 
             string namespaceAlias = string.Empty;
             string namespaceName = element.Namespace;
             string segmentName = element.FullName();        
 
-            if (!string.IsNullOrEmpty(namespaceName))
+            if (!string.IsNullOrEmpty(namespaceName) && model != null)
             {
                 namespaceAlias = model.GetNamespaceAlias(namespaceName);
             }         
@@ -372,12 +378,12 @@ namespace Microsoft.OpenApi.OData.Common
             {                
                 if (settings.EnableAliasForOperationSegments && !string.IsNullOrEmpty(namespaceAlias))
                 {
-                    // Strip namespace from operation segment name
+                    // Alias operation segment name 
                     segmentName = namespaceAlias.TrimEnd('.') + "." + element.Name;
                 }
                 else if (element.Namespace.Equals(settings.NamespacePrefixToStripForInMethodPaths, StringComparison.OrdinalIgnoreCase))
                 {
-                    // Alias operation segment name                    
+                    // Strip specified namespace from operation segment name                  
                     segmentName = element.Name;
                 }
             }
