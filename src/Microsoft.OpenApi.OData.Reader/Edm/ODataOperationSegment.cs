@@ -4,12 +4,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
@@ -50,6 +48,31 @@ namespace Microsoft.OpenApi.OData.Edm
             Operation = operation ?? throw Error.ArgumentNull(nameof(operation));
             ParameterMappings = parameterMappings ?? throw Error.ArgumentNull(nameof(parameterMappings));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
+        /// </summary>
+        /// <param name="operation">The operation.</param>
+        /// <param name="model">The Edm model.</param>
+        public ODataOperationSegment(IEdmOperation operation, IEdmModel model)
+            : this(operation, false, model)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
+        /// </summary>
+        /// <param name="operation">The operation.</param>
+        /// <param name="isEscapedFunction">A value indicating this operation is an escaped function.</param>
+        /// <param name="model">The Edm model.</param>
+        public ODataOperationSegment(IEdmOperation operation, bool isEscapedFunction, IEdmModel model)
+        {
+            Operation = operation ?? throw Error.ArgumentNull(nameof(operation));
+            IsEscapedFunction = isEscapedFunction;
+            _model = model ?? throw Error.ArgumentNull(nameof(model));
+        }
+        
+        private readonly IEdmModel _model;
         
         /// <summary>
         /// Gets the parameter mappings.
@@ -119,11 +142,14 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 return operation.Name;
             }
+            else if (_model != null)
+            {
+                return EdmModelHelper.StripOrAliasNamespacePrefix(operation, settings, _model);
+            }
             else
             {
-                // return EdmModelHelper.StripOrAliasNamespacePrefix(operation, _model, settings);
+                return operation.FullName();
             }
-            return null;
         }
 
         private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings, HashSet<string> parameters)
@@ -168,5 +194,5 @@ namespace Microsoft.OpenApi.OData.Edm
 		{
 			return new IEdmVocabularyAnnotatable[] { Operation };
 		}
-	}
+    }
 }
