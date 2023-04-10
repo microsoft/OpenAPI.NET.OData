@@ -54,6 +54,6 @@ public class ODataTypeCastSegment : ODataSegment
 
         return StructuredType is IEdmSchemaElement element && _model != null
             ? EdmModelHelper.StripOrAliasNamespacePrefix(element, settings, _model)
-            : (StructuredType.FullName());
+            : StructuredType.FullTypeName();
     }
 }
