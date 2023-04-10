@@ -51,10 +51,9 @@ public class ODataTypeCastSegment : ODataSegment
     {
         Utils.CheckArgumentNull(settings, nameof(settings));
         
-        IEdmSchemaElement element = StructuredType as IEdmSchemaElement;
 
-        return element != null && _model != null
+        return StructuredType is IEdmSchemaElement element && _model != null
             ? EdmModelHelper.StripOrAliasNamespacePrefix(element, settings, _model)
-            : (element?.FullName());
+            : (StructuredType.FullName());
     }
 }

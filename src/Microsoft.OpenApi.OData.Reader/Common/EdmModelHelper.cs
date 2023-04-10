@@ -365,13 +365,10 @@ namespace Microsoft.OpenApi.OData.Common
                 namespaceAlias = model.GetNamespaceAlias(namespaceName);
             }         
 
-            if (element is IEdmStructuredType)
-            {                
-                if (settings.EnableAliasForTypeCastSegments && !string.IsNullOrEmpty(namespaceAlias))
-                {
-                    // Alias type cast segment name
-                    segmentName = namespaceAlias.TrimEnd('.') + "." + element.Name;
-                }
+            if (element is IEdmStructuredType && settings.EnableAliasForTypeCastSegments && !string.IsNullOrEmpty(namespaceAlias))
+            {
+                // Alias type cast segment name
+                segmentName = namespaceAlias.TrimEnd('.') + "." + element.Name;
             }
             
             if (element is IEdmOperation)
