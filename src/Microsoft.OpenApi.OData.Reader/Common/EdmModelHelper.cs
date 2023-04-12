@@ -378,7 +378,9 @@ namespace Microsoft.OpenApi.OData.Common
                     // Alias operation segment name 
                     segmentName = namespaceAlias.TrimEnd('.') + "." + element.Name;
                 }
-                else if (element.Namespace.Equals(settings.NamespacePrefixToStripForInMethodPaths, StringComparison.OrdinalIgnoreCase))
+                
+                if (settings.NamespacePrefixToStripForInMethodPaths != null && 
+                    element.Namespace.Equals(settings.NamespacePrefixToStripForInMethodPaths, StringComparison.OrdinalIgnoreCase))
                 {
                     // Strip specified namespace from operation segment name                  
                     segmentName = element.Name;

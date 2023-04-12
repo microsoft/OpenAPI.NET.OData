@@ -102,8 +102,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         [InlineData("NS.XY.MyFunction(param={param},param2=@param2)", "NS", "NS.XY", false)]
         [InlineData("MyFunction(param={param},param2=@param2)", "NS.XY", "NS.XY", false)]
         [InlineData("N.MyFunction(param={param},param2=@param2)", "NS", "NS.XY", true)]                
-        [InlineData("N.MyFunction(param={param},param2=@param2)", "NS.XY", "NS.XY", true)]
-        public void GetPathItemNameReturnsCorrectFunctionLiteralWhenSegmentAliasedOrNamespacePrefixStripped(string expected, string namespacePrefixToStrip, string namespaceName, bool enableAlias)
+        [InlineData("MyFunction(param={param},param2=@param2)", "NS.XY", "NS.XY", true)]
+        public void GetPathItemNameReturnsCorrectFunctionLiteralWhenSegmentAliasedOrNamespacePrefixStripped(
+            string expected, string namespacePrefixToStrip, string namespaceName, bool enableAlias)
         {
             // Arrange & Act
             IEdmEntityTypeReference entityTypeReference = new EdmEntityTypeReference(new EdmEntityType(namespaceName, "Entity"), false);
