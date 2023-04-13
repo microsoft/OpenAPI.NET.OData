@@ -336,6 +336,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableAliasForTypeCastSegments { get; set; } = false;
 
+        /// <summary>
+        /// Enables the use of aliases for operation segments to shorten the url path.
+        /// </summary>
+        public bool EnableAliasForOperationSegments { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -387,7 +392,8 @@ namespace Microsoft.OpenApi.OData
                 AddAlternateKeyPaths = this.AddAlternateKeyPaths,
                 NamespacePrefixToStripForInMethodPaths = this.NamespacePrefixToStripForInMethodPaths,
                 EnableAliasForTypeCastSegments = this.EnableAliasForTypeCastSegments,
-                SemVerVersion = this.SemVerVersion
+                SemVerVersion = this.SemVerVersion,
+                EnableAliasForOperationSegments = this.EnableAliasForOperationSegments
             };
 
             return newSettings;

@@ -1,4 +1,5 @@
-// ------------------------------------------------------------
+// -----
+// private readonly IEdmModel _model;-------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -48,6 +49,31 @@ namespace Microsoft.OpenApi.OData.Edm
             ParameterMappings = parameterMappings ?? throw Error.ArgumentNull(nameof(parameterMappings));
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
+        /// </summary>
+        /// <param name="operation">The operation.</param>
+        /// <param name="model">The Edm model.</param>
+        public ODataOperationSegment(IEdmOperation operation, IEdmModel model)
+            : this(operation, false, model)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
+        /// </summary>
+        /// <param name="operation">The operation.</param>
+        /// <param name="isEscapedFunction">A value indicating this operation is an escaped function.</param>
+        /// <param name="model">The Edm model.</param>
+        public ODataOperationSegment(IEdmOperation operation, bool isEscapedFunction, IEdmModel model)
+        {
+            Operation = operation ?? throw Error.ArgumentNull(nameof(operation));
+            IsEscapedFunction = isEscapedFunction;
+            _model = model ?? throw Error.ArgumentNull(nameof(model));
+        }
+        
+        private readonly IEdmModel _model;
+        
         /// <summary>
         /// Gets the parameter mappings.
         /// </summary>
@@ -116,12 +142,13 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 return operation.Name;
             }
+            else if (_model != null)
+            {
+                return EdmModelHelper.StripOrAliasNamespacePrefix(operation, settings, _model);
+            }
             else
             {
-                string selectedName = operation.FullName();
-                return !string.IsNullOrEmpty(settings.NamespacePrefixToStripForInMethodPaths)
-                    ? selectedName.StripNamespacePrefix(settings.NamespacePrefixToStripForInMethodPaths)
-                    : selectedName;
+                return operation.FullName();
             }
         }
 
@@ -167,5 +194,5 @@ namespace Microsoft.OpenApi.OData.Edm
 		{
 			return new IEdmVocabularyAnnotatable[] { Operation };
 		}
-	}
+    }
 }

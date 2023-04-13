@@ -6,7 +6,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
@@ -340,6 +342,54 @@ namespace Microsoft.OpenApi.OData.Common
             }
 
             return operationId;
+        }
+
+        /// <summary>
+        /// Strips or aliases namespace prefixes from an element name.
+        /// </summary>
+        /// <param name="element">The target element.</param>
+        /// <param name="model">Optional: The Edm model. Used for searching for the namespace alias.</param>
+        /// <param name="settings">The OpenAPI convert settings.</param>
+        /// <returns>The element name, alias-prefixed or namespace-stripped if applicable.</returns>
+        internal static string StripOrAliasNamespacePrefix(IEdmSchemaElement element, OpenApiConvertSettings settings, IEdmModel model = null)
+        {
+            Utils.CheckArgumentNull(element, nameof(element));
+            Utils.CheckArgumentNull(settings, nameof(settings));
+
+            string namespaceAlias = string.Empty;
+            string namespaceName = element.Namespace;
+            string segmentName = element.FullName();        
+
+            if (!string.IsNullOrEmpty(namespaceName) && model != null)
+            {
+                namespaceAlias = model.GetNamespaceAlias(namespaceName);
+            }         
+
+            if (element is IEdmStructuredType && settings.EnableAliasForTypeCastSegments && !string.IsNullOrEmpty(namespaceAlias))
+            {
+                // Alias type cast segment name
+                segmentName = namespaceAlias.TrimEnd('.') + "." + element.Name;
+            }
+            
+            if (element is IEdmOperation)
+            {                
+                if (settings.EnableAliasForOperationSegments && !string.IsNullOrEmpty(namespaceAlias))
+                {
+                    // Alias operation segment name 
+                    segmentName = namespaceAlias.TrimEnd('.') + "." + element.Name;
+                }
+                
+                if (!string.IsNullOrEmpty(settings.NamespacePrefixToStripForInMethodPaths) && 
+                    element.Namespace.Equals(settings.NamespacePrefixToStripForInMethodPaths, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Strip specified namespace from operation segment name.
+                    // If the namespace prefix to strip matches the namespace name,
+                    // and the alias has been appended, the alias will be stripped.
+                    segmentName = element.Name;
+                }
+            }
+
+            return segmentName;
         }
     }
 }
