@@ -379,10 +379,12 @@ namespace Microsoft.OpenApi.OData.Common
                     segmentName = namespaceAlias.TrimEnd('.') + "." + element.Name;
                 }
                 
-                if (settings.NamespacePrefixToStripForInMethodPaths != null && 
+                if (!string.IsNullOrEmpty(settings.NamespacePrefixToStripForInMethodPaths) && 
                     element.Namespace.Equals(settings.NamespacePrefixToStripForInMethodPaths, StringComparison.OrdinalIgnoreCase))
                 {
-                    // Strip specified namespace from operation segment name                  
+                    // Strip specified namespace from operation segment name.
+                    // If the namespace prefix to strip matches the namespace name,
+                    // and the alias has been appended, the alias will be stripped.
                     segmentName = element.Name;
                 }
             }
