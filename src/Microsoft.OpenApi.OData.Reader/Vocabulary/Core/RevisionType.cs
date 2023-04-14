@@ -9,7 +9,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core;
 /// Complex Type: Org.OData.Core.V1.Revisions
 /// </summary>
 [Term("Org.OData.Core.V1.Revisions")]
-internal class RevisionsType : IRecord
+internal class RevisionType : IRecord
 {
 	/// <summary>
 	/// The version this revision was introduced.
@@ -24,7 +24,7 @@ internal class RevisionsType : IRecord
 	/// </summary>
 	public string Description { get; private set; }
 	/// <summary>
-	/// Init the <see cref="RevisionsType"/>.
+	/// Init the <see cref="RevisionType"/>.
 	/// </summary>
 	/// <param name="record">The input record.</param>
 	public virtual void Initialize(IEdmRecordExpression record)
