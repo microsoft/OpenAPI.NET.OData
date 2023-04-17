@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.4.0-preview2</Version>
+    <Version>1.4.0-preview3</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -23,6 +23,7 @@
     <PackageReleaseNotes>
 - DELETE methods should always return response status code #204
 - Aliases or strips namespace prefixes from segment names when and where applicable #365
+- Adds support for all Org.OData.Core.V1.RevisionKind enum values #372
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
