@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18054, paths.Count());
+            Assert.Equal(18050, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -64,6 +64,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Test that $value segments are created for entity types with base types with HasStream="true"
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/me/chats({id})/messages({id1})/hostedContents({id2})/$value")));
+
+            // Test that count restrictions annotations for navigation properties work
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/me/drives/$count")));
         }
 
         [Fact]
@@ -84,7 +87,50 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18705, paths.Count());
+            Assert.Equal(18701, paths.Count());
+        }
+
+        [Theory]
+        [InlineData(true, true)]
+        [InlineData(true, false)]
+        [InlineData(false, false)]
+        public void UseCountRestrictionsAnnotationsToAppendDollarCountSegmentsToNavigationPropertyPaths(bool useCountRestrictionsAnnotation, bool countable)
+        {
+            // Arrange
+            string countRestrictionAnnotation = @"
+<Annotation Term=""Org.OData.Capabilities.V1.CountRestrictions"">
+    <Record>
+        <PropertyValue Property=""Countable"" Bool=""{0}"" />
+    </Record>
+</Annotation>";
+            countRestrictionAnnotation = string.Format(countRestrictionAnnotation, countable);
+            IEdmModel model = useCountRestrictionsAnnotation ? GetNavPropModel(countRestrictionAnnotation)
+                : GetNavPropModel(string.Empty);
+            ODataPathProvider provider = new();
+            var settings = new OpenApiConvertSettings();
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            var testPath = paths.FirstOrDefault(p => p.GetPathItemName().Equals("/Root/Customers/$count"));
+
+            if (useCountRestrictionsAnnotation)
+            {
+                if (countable)
+                {
+                    Assert.NotNull(testPath);
+                }                    
+                else
+                {
+                    Assert.Null(testPath);
+                }                    
+            }
+            else
+            {
+                Assert.NotNull(testPath);
+            }
         }
 
         [Fact]
