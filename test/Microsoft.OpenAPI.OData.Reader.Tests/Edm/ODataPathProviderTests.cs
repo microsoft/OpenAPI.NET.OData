@@ -90,6 +90,49 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.Equal(18701, paths.Count());
         }
 
+        [Theory]
+        [InlineData(true, true)]
+        [InlineData(true, false)]
+        [InlineData(false, false)]
+        public void UseCountRestrictionsAnnotationsToAppendDollarCountSegmentsToNavigationPropertyPaths(bool useCountRestrictionsAnnotation, bool countable)
+        {
+            // Arrange
+            string countRestrictionAnnotation = @"
+<Annotation Term=""Org.OData.Capabilities.V1.CountRestrictions"">
+    <Record>
+        <PropertyValue Property=""Countable"" Bool=""{0}"" />
+    </Record>
+</Annotation>";
+            countRestrictionAnnotation = string.Format(countRestrictionAnnotation, countable);
+            IEdmModel model = useCountRestrictionsAnnotation ? GetNavPropModel(countRestrictionAnnotation)
+                : GetNavPropModel(string.Empty);
+            ODataPathProvider provider = new();
+            var settings = new OpenApiConvertSettings();
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            var testPath = paths.FirstOrDefault(p => p.GetPathItemName().Equals("/Root/Customers/$count"));
+
+            if (useCountRestrictionsAnnotation)
+            {
+                if (countable)
+                {
+                    Assert.NotNull(testPath);
+                }                    
+                else
+                {
+                    Assert.Null(testPath);
+                }                    
+            }
+            else
+            {
+                Assert.NotNull(testPath);
+            }
+        }
+
         [Fact]
         public void GetPathsDoesntReturnPathsForCountWhenDisabled()
         {
