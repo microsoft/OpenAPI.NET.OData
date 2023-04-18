@@ -484,18 +484,28 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 IEdmEntityType navEntityType = navigationProperty.ToEntityType();
                 var targetsMany = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
-                var propertyPath = navigationProperty.GetPartnerPath()?.Path;
-                var propertyPathIsEmpty = string.IsNullOrEmpty(propertyPath);
-
-                if (targetsMany) 
+                
+                if (targetsMany)
                 {
-                    if(propertyPathIsEmpty ||
-                        (count?.IsNonCountableNavigationProperty(propertyPath) ?? true))
+                    bool? createCountPath = null;
+                    if (count == null)
+                    {
+                        // First, get the directly annotated restriction annotation of the navigation property
+                        count = _model.GetRecord<CountRestrictionsType>(navigationProperty, CapabilitiesConstants.CountRestrictions);
+                        createCountPath = count?.Countable;
+                    }
+
+                    var propertyPath = navigationProperty.GetPartnerPath()?.Path;
+                    createCountPath ??= string.IsNullOrEmpty(propertyPath)
+                        || (count?.IsNonCountableNavigationProperty(propertyPath) ?? true);
+
+                    if (createCountPath.Value)
                     {
                         // ~/entityset/{key}/collection-valued-Nav/$count
                         CreateCountPath(currentPath, convertSettings);
                     }
                 }
+
                 // ~/entityset/{key}/collection-valued-Nav/subtype
                 // ~/entityset/{key}/single-valued-Nav/subtype
                 CreateTypeCastPaths(currentPath, convertSettings, navEntityType, navigationProperty, targetsMany);
