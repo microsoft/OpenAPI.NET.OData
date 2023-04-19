@@ -9,6 +9,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -271,8 +272,13 @@ namespace Microsoft.OpenApi.OData.Generator
             string mediaType = Constants.ApplicationJsonMediaType;
             if (operation.ReturnType.AsPrimitive()?.PrimitiveKind() == EdmPrimitiveTypeKind.Stream)
             {
-                // Responses of types Edm.Stream should be application/octet-stream
-                mediaType = Constants.ApplicationOctetStreamMediaType;
+                mediaType = context.Model.GetString(operation, CoreConstants.MediaType);
+
+                if (string.IsNullOrEmpty(mediaType))
+                {
+                    // Use default if MediaType annotation is not specified
+                    mediaType = Constants.ApplicationOctetStreamMediaType;
+                }
             }
 
             OpenApiResponse response = new()

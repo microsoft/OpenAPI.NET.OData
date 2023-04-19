@@ -26,6 +26,11 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         public const string AcceptableMediaTypes = "Org.OData.Core.V1.AcceptableMediaTypes";
 
         /// <summary>
+        /// Org.OData.Core.V1.MediaType
+        /// </summary>
+        public const string MediaType = "Org.OData.Core.V1.MediaType";
+
+        /// <summary>
         /// Org.OData.Core.V1.Computed
         /// </summary>
         public const string Computed = "Org.OData.Core.V1.Computed";
