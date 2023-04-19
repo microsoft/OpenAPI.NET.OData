@@ -231,26 +231,40 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         public void CreateResponseForEdmFunctionOfStreamReturnTypeReturnsCorrectResponse()
         {
             // Arrange
-            string operationName = "getMailboxUsageStorage";
+            string operationName1 = "getMailboxUsageStorage";
+            string operationName2 = "incidentReport";
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             ODataContext context = new(model);
 
             // Act
-            OpenApiResponses responses;
-            IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == operationName);
-            Assert.NotNull(operation); // guard
-            ODataPath path = new(new ODataOperationSegment(operation));
-            responses = context.CreateResponses(operation);
+            IEdmOperation operation1 = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == operationName1);
+            IEdmOperation operation2 = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == operationName2);
+            Assert.NotNull(operation1);
+            Assert.NotNull(operation2);
+            ODataPath path1 = new(new ODataOperationSegment(operation1));
+            ODataPath path2 = new(new ODataOperationSegment(operation2));
+            OpenApiResponses responses1 = context.CreateResponses(operation1);
+            OpenApiResponses responses2 = context.CreateResponses(operation2);
 
-            // Assert
-            Assert.NotNull(responses);
-            Assert.NotEmpty(responses);
-            Assert.Equal(2, responses.Count);
-            Assert.Equal(new string[] { "200", "default" }, responses.Select(r => r.Key));
+            // Assert for operation1 --> getMailboxUsageStorage
+            Assert.NotNull(responses1);
+            Assert.NotEmpty(responses1);
+            Assert.Equal(2, responses1.Count);
+            Assert.Equal(new string[] { "200", "default" }, responses1.Select(r => r.Key));
 
-            OpenApiResponse response = responses["200"];
+            OpenApiResponse response = responses1["200"];
             Assert.NotNull(response.Content);
-            OpenApiMediaType mediaType = response.Content["application/octet-stream"];
+            Assert.Equal("application/octet-stream", response.Content.First().Key);
+
+            // Assert for operation2 --> incidentReport
+            Assert.NotNull(responses2);
+            Assert.NotEmpty(responses2);
+            Assert.Equal(2, responses2.Count);
+            Assert.Equal(new string[] { "200", "default" }, responses2.Select(r => r.Key));
+
+            response = responses2["200"];
+            Assert.NotNull(response.Content);
+            Assert.Equal("text/html", response.Content.First().Key);
         }
 
         [Theory]
