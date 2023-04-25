@@ -274,7 +274,7 @@ namespace Microsoft.OpenApi.OData.Edm
             RetrieveComplexPropertyPaths(entityType, path, convertSettings);
 
             // navigation property
-            foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
+            foreach (IEdmNavigationProperty np in entityType.NavigationProperties())
             {
                 if (CanFilter(np))
                 {
@@ -553,7 +553,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     if (shouldExpand)
                     {
                         // expand to sub navigation properties
-                        foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
+                        foreach (IEdmNavigationProperty subNavProperty in navEntityType.NavigationProperties())
                         {
                             if (CanFilter(subNavProperty))
                             {
@@ -693,7 +693,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             continue;
                         }
 
-                        foreach (var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
+                        foreach (var declaredNavigationProperty in targetType.NavigationProperties())
                         {
                             RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
                         }
