@@ -67,6 +67,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Test that count restrictions annotations for navigation properties work
             Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/me/drives/$count")));
+
+            // Test that navigation properties on base types are created
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/print/printers({id})/jobs")));
         }
 
         [Fact]
