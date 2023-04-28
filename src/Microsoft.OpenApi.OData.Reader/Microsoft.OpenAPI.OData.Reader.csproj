@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.4.0-preview6</Version>
+    <Version>1.4.0-preview7</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -27,6 +27,7 @@
 - Use directly annotated CountRestriction annotations when creating $count segments for collection-valued navigation properties #328
 - Use MediaType annotation to set the content types of operations with Edm.Stream return types #342
 - Retrieves navigation properties from base types #371
+- Adds support for RequiresExplicitBinding and ExplicitOperationBindings annotations for operations #323 #232
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
