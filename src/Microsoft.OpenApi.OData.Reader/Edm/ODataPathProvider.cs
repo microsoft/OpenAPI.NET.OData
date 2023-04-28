@@ -730,27 +730,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 var firstEntityType = bindingType.AsEntity().EntityDefinition();
-
-                var requiresExplicitBinding = _model.FindVocabularyAnnotations(edmOperation).FirstOrDefault(x => x.Term.Name == CapabilitiesConstants.RequiresExplicitBindingName);
                 
-                if (requiresExplicitBinding != null)
-                {
-                    _explicitOperationBindings.TryGetValue(firstEntityType.Name, out var boundOperations);
-                    if (!(boundOperations?.Any() ?? false))
-                    {
-                        boundOperations = _model.GetCollection(firstEntityType, CapabilitiesConstants.ExplicitOperationBindings)?.ToList();
-                    }
-
-                    if (boundOperations == null || !boundOperations.Contains(edmOperation.FullName()))
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        _explicitOperationBindings[firstEntityType.Name] = boundOperations;
-                    }
-                }
-
                 bool filter(IEdmNavigationSource z) =>
                     z.EntityType() != firstEntityType &&
                     z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
@@ -812,6 +792,15 @@ namespace Microsoft.OpenApi.OData.Edm
                     {
                         if (lastPathSegment is ODataTypeCastSegment && !convertSettings.AppendBoundOperationsOnDerivedTypeCastSegments) continue;
                         if (lastPathSegment is ODataKeySegment segment && segment.IsAlternateKey) continue;
+
+                        var annotatable = (lastPathSegment as ODataNavigationSourceSegment)?.NavigationSource as IEdmVocabularyAnnotatable;
+                        annotatable ??= (lastPathSegment as ODataKeySegment)?.EntityType;
+                        
+                        if (annotatable != null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, annotatable))
+                        {
+                            continue;
+                        }
+
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
                         AppendPath(newPath);
@@ -833,6 +822,11 @@ namespace Microsoft.OpenApi.OData.Edm
                     ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
 
                     if (!npSegment.NavigationProperty.ContainsTarget)
+                    {
+                        continue;
+                    }
+                    
+                    if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty))
                     {
                         continue;
                     }
@@ -884,6 +878,11 @@ namespace Microsoft.OpenApi.OData.Edm
                             ns as IEdmVocabularyAnnotatable,
                             baseType,
                             convertSettings))
+                        {
+                            continue;
+                        }
+
+                        if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, ns as IEdmVocabularyAnnotatable))
                         {
                             continue;
                         }
@@ -956,6 +955,11 @@ namespace Microsoft.OpenApi.OData.Edm
                             continue;
                         }
 
+                        if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty))
+                        {
+                            continue;
+                        }
+
                         bool isLastKeySegment = path.LastSegment is ODataKeySegment;
 
                         if (isCollection)
@@ -980,7 +984,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         }
 
                         if (HasUnsatisfiedDerivedTypeConstraint(
-                                npSegment.NavigationProperty as IEdmVocabularyAnnotatable,
+                                npSegment.NavigationProperty,
                                 baseType,
                                 convertSettings))
                         {

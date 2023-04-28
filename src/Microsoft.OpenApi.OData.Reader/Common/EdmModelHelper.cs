@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
@@ -390,6 +391,30 @@ namespace Microsoft.OpenApi.OData.Common
             }
 
             return segmentName;
+        }
+    
+        /// <summary>
+        /// Checks whether an operation is allowed on a model element.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="edmOperation">The target operation.</param>
+        /// <param name="annotatable">The model element.</param>
+        /// <returns>true if the operation is allowed, otherwise false.</returns>
+        internal static bool IsOperationAllowed(IEdmModel model, IEdmOperation edmOperation, IEdmVocabularyAnnotatable annotatable)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(edmOperation, nameof(edmOperation));
+            Utils.CheckArgumentNull(annotatable, nameof(annotatable));
+
+            var requiresExplicitBinding = model.FindVocabularyAnnotations(edmOperation).FirstOrDefault(x => x.Term.Name == CapabilitiesConstants.RequiresExplicitBindingName);
+
+            if (requiresExplicitBinding == null)
+            {
+                return true;
+            }
+            
+            var boundOperations = model.GetCollection(annotatable, CapabilitiesConstants.ExplicitOperationBindings)?.ToList();
+            return boundOperations != null && boundOperations.Contains(edmOperation.FullName());
         }
     }
 }
