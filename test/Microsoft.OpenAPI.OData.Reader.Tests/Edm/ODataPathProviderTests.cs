@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18050, paths.Count());
+            Assert.Equal(18048, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -67,6 +67,12 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Test that count restrictions annotations for navigation properties work
             Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/me/drives/$count")));
+
+            // Test that RequiresExplicitBinding and ExplicitOperationBindings annotations work
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/accessReviews({id})/microsoft.graph.applyDecisions")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/accessReviews({id})/microsoft.graph.resetDecisions")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/accessReviews({id})/microsoft.graph.sendReminder")));
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/accessReviews({id})/microsoft.graph.stop")));            
         }
 
         [Fact]
@@ -87,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18701, paths.Count());
+            Assert.Equal(18699, paths.Count());
         }
 
         [Theory]
