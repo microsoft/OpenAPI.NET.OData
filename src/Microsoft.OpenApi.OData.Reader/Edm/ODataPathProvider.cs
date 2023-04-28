@@ -34,6 +34,8 @@ namespace Microsoft.OpenApi.OData.Edm
         private readonly IDictionary<IEdmEntityType, IList<ODataPath>> _dollarCountPaths =
            new Dictionary<IEdmEntityType, IList<ODataPath>>();
 
+        private Dictionary<string, IList<string>> _explicitOperationBindings = new();
+
         /// <summary>
         /// Can filter the <see cref="IEdmElement"/> or not.
         /// </summary>
@@ -728,6 +730,26 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 var firstEntityType = bindingType.AsEntity().EntityDefinition();
+
+                var requiresExplicitBinding = _model.FindVocabularyAnnotations(edmOperation).FirstOrDefault(x => x.Term.Name == CapabilitiesConstants.RequiresExplicitBindingName);
+                
+                if (requiresExplicitBinding != null)
+                {
+                    _explicitOperationBindings.TryGetValue(firstEntityType.Name, out var boundOperations);
+                    if (!(boundOperations?.Any() ?? false))
+                    {
+                        boundOperations = _model.GetCollection(firstEntityType, CapabilitiesConstants.ExplicitOperationBindings)?.ToList();
+                    }
+
+                    if (boundOperations == null || !boundOperations.Contains(edmOperation.FullName()))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        _explicitOperationBindings[firstEntityType.Name] = boundOperations;
+                    }
+                }
 
                 bool filter(IEdmNavigationSource z) =>
                     z.EntityType() != firstEntityType &&
