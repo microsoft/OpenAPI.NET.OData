@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18407, paths.Count());
+            Assert.Equal(18313, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -72,10 +72,17 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/print/printers({id})/jobs")));
 
             // Test that RequiresExplicitBinding and ExplicitOperationBindings annotations work
-            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/accessReviews({id})/microsoft.graph.applyDecisions")));
-            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/accessReviews({id})/microsoft.graph.resetDecisions")));
-            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/accessReviews({id})/microsoft.graph.sendReminder")));
-            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/accessReviews({id})/microsoft.graph.stop")));            
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.checkMemberGroups")));
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.checkMemberObjects")));
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.getMemberGroups")));
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.getMemberObjects")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.restore")));
+
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.checkMemberGroups")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.checkMemberObjects")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.getMemberGroups")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.getMemberObjects")));
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.restore")));
         }
 
         [Fact]
@@ -96,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(19058, paths.Count());
+            Assert.Equal(18964, paths.Count());
         }
 
         [Theory]
