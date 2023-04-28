@@ -798,7 +798,12 @@ namespace Microsoft.OpenApi.OData.Edm
                         
                         if (annotatable != null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, annotatable))
                         {
-                            continue;
+                            // Check whether the navigation source is allowed to have an operation on the entity type
+                            annotatable = (secondLastPathSegment as ODataNavigationSourceSegment)?.NavigationSource as IEdmVocabularyAnnotatable;
+                            if (annotatable != null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, annotatable))
+                            {
+                                continue;
+                            }                            
                         }
 
                         ODataPath newPath = subPath.Clone();
