@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18409, paths.Count());
+            Assert.Equal(18264, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -70,6 +70,19 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Test that navigation properties on base types are created
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/print/printers({id})/jobs")));
+
+            // Test that RequiresExplicitBinding and ExplicitOperationBindings annotations work
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.checkMemberGroups")));
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.checkMemberObjects")));
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.getMemberGroups")));
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.getMemberObjects")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directory/deletedItems({id})/microsoft.graph.restore")));
+
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.checkMemberGroups")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.checkMemberObjects")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.getMemberGroups")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.getMemberObjects")));
+            Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.restore")));
         }
 
         [Fact]
@@ -90,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(19060, paths.Count());
+            Assert.Equal(18915, paths.Count());
         }
 
         [Theory]

@@ -34,6 +34,7 @@ namespace Microsoft.OpenApi.OData.Edm
         private readonly IDictionary<IEdmEntityType, IList<ODataPath>> _dollarCountPaths =
            new Dictionary<IEdmEntityType, IList<ODataPath>>();
 
+
         /// <summary>
         /// Can filter the <see cref="IEdmElement"/> or not.
         /// </summary>
@@ -728,7 +729,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 var firstEntityType = bindingType.AsEntity().EntityDefinition();
-
+                
                 bool filter(IEdmNavigationSource z) =>
                     z.EntityType() != firstEntityType &&
                     z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
@@ -790,6 +791,20 @@ namespace Microsoft.OpenApi.OData.Edm
                     {
                         if (lastPathSegment is ODataTypeCastSegment && !convertSettings.AppendBoundOperationsOnDerivedTypeCastSegments) continue;
                         if (lastPathSegment is ODataKeySegment segment && segment.IsAlternateKey) continue;
+
+                        var annotatable = (lastPathSegment as ODataNavigationSourceSegment)?.NavigationSource as IEdmVocabularyAnnotatable;
+                        annotatable ??= (lastPathSegment as ODataKeySegment)?.EntityType;
+                        
+                        if (annotatable != null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, annotatable))
+                        {
+                            // Check whether the navigation source is allowed to have an operation on the entity type
+                            annotatable = (secondLastPathSegment as ODataNavigationSourceSegment)?.NavigationSource as IEdmVocabularyAnnotatable;
+                            if (annotatable != null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, annotatable))
+                            {
+                                continue;
+                            }                            
+                        }
+
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
                         AppendPath(newPath);
@@ -811,6 +826,11 @@ namespace Microsoft.OpenApi.OData.Edm
                     ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
 
                     if (!npSegment.NavigationProperty.ContainsTarget)
+                    {
+                        continue;
+                    }
+                    
+                    if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty))
                     {
                         continue;
                     }
@@ -862,6 +882,11 @@ namespace Microsoft.OpenApi.OData.Edm
                             ns as IEdmVocabularyAnnotatable,
                             baseType,
                             convertSettings))
+                        {
+                            continue;
+                        }
+
+                        if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, ns as IEdmVocabularyAnnotatable))
                         {
                             continue;
                         }
@@ -934,6 +959,11 @@ namespace Microsoft.OpenApi.OData.Edm
                             continue;
                         }
 
+                        if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty))
+                        {
+                            continue;
+                        }
+
                         bool isLastKeySegment = path.LastSegment is ODataKeySegment;
 
                         if (isCollection)
@@ -958,7 +988,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         }
 
                         if (HasUnsatisfiedDerivedTypeConstraint(
-                                npSegment.NavigationProperty as IEdmVocabularyAnnotatable,
+                                npSegment.NavigationProperty,
                                 baseType,
                                 convertSettings))
                         {

@@ -94,5 +94,15 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Org.OData.Capabilities.V1.KeyAsSegmentSupported
         /// </summary>
         public const string KeyAsSegmentSupported = "Org.OData.Capabilities.V1.KeyAsSegmentSupported";
+
+        /// <summary>
+        /// RequiresExplicitBinding
+        /// </summary>
+        public const string RequiresExplicitBindingName = "RequiresExplicitBinding";
+
+        /// <summary>
+        /// Org.OData.Capabilities.V1.ExplicitOperationBindings
+        /// </summary>
+        public const string ExplicitOperationBindings = "Org.OData.Core.V1.ExplicitOperationBindings";
     }
 }
