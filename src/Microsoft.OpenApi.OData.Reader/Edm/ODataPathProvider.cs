@@ -34,7 +34,6 @@ namespace Microsoft.OpenApi.OData.Edm
         private readonly IDictionary<IEdmEntityType, IList<ODataPath>> _dollarCountPaths =
            new Dictionary<IEdmEntityType, IList<ODataPath>>();
 
-        private Dictionary<string, IList<string>> _explicitOperationBindings = new();
 
         /// <summary>
         /// Can filter the <see cref="IEdmElement"/> or not.
