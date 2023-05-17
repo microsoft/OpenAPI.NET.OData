@@ -63,7 +63,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = "Invoke " + (EdmOperation.IsAction() ? "action " : "function ") + EdmOperation.Name;
 
             // Description
-            operation.Description = Context.Model.GetDescriptionAnnotation(EdmOperation);         
+            operation.Description = Context.Model.GetDescriptionAnnotation(EdmOperation);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -72,7 +72,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 // its EntityType name will be used
                 // in the operationId to avoid potential
                 // duplicates in entity vs entityset functions/actions
-                // Also, use path hash for function overloads
 
                 List<string> identifiers = new();
                 foreach (ODataSegment segment in Path.Segments)
@@ -88,13 +87,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
                                 
                 string operationId = string.Join(".", identifiers);
-                if (EdmOperation.IsFunction() && EdmOperation.Parameters.Any(x => x.Name != "bindingParameter"))
-                {
-                    // Add a hash suffix to operation ids of
-                    // functions with parameters to avoid duplicates 
-                    // in cases of overloaded functions.
-                    operationId += $"-{Path.GetPathHash(Context.Settings)}";
-                }
 
                 if (EdmOperation.IsAction())
                 {
