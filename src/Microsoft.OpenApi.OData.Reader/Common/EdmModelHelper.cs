@@ -279,8 +279,9 @@ namespace Microsoft.OpenApi.OData.Common
         /// Generates the operation id prefix from an OData type cast path.
         /// </summary>
         /// <param name="path">The target <see cref="ODataPath"/>.</param>
+        /// <param name="includeListOrGetPrefix"></param>
         /// <returns>The operation id prefix generated from the OData type cast path.</returns>
-        internal static string GenerateODataTypeCastPathOperationIdPrefix(ODataPath path)
+        internal static string GenerateODataTypeCastPathOperationIdPrefix(ODataPath path, bool includeListOrGetPrefix = true)
         {
             // Get the segment before the last OData type cast segment
             ODataTypeCastSegment typeCastSegment = path.Segments.OfType<ODataTypeCastSegment>()?.Last();
@@ -309,24 +310,36 @@ namespace Microsoft.OpenApi.OData.Common
             string operationId = null;
             if (secondLastSegment is ODataComplexPropertySegment complexSegment)
             {
-                string listOrGet = complexSegment.Property.Type.IsCollection() ? "List" : "Get";
+                string listOrGet = includeListOrGetPrefix ? (complexSegment.Property.Type.IsCollection() ? "List" : "Get") : null;
                 operationId = GenerateComplexPropertyPathOperationId(path, listOrGet);
             }
             else if (secondLastSegment as ODataNavigationPropertySegment is not null || isIndexedCollValuedNavProp)
             {
-                string prefix = "Get";
-                if (!isIndexedCollValuedNavProp &&
-                    (secondLastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                string listOrGet = null;
+                if (includeListOrGetPrefix)
                 {
-                    prefix = "List";
+                    if (!isIndexedCollValuedNavProp &&
+                    (secondLastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                    {
+                        listOrGet = "List";
+                    }
+                    else
+                    {
+                        listOrGet = "Get";
+                    }
+                }
+                else
+                {
+                    listOrGet = null;
                 }
 
-                operationId = GenerateNavigationPropertyPathOperationId(path, prefix);
+                operationId = GenerateNavigationPropertyPathOperationId(path, listOrGet);
             }
             else if (secondLastSegment is ODataKeySegment keySegment && !isIndexedCollValuedNavProp)
             {
                 string entityTypeName = keySegment.EntityType.Name;
-                string operationName = $"Get{Utils.UpperFirstChar(entityTypeName)}";
+                string getPrefix = includeListOrGetPrefix ? "Get" : null;
+                string operationName = $"{getPrefix}{Utils.UpperFirstChar(entityTypeName)}";
                 if (keySegment.IsAlternateKey)
                 {
                     string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
@@ -338,8 +351,8 @@ namespace Microsoft.OpenApi.OData.Common
             else if (secondLastSegment is ODataNavigationSourceSegment)
             {
                 operationId = (entitySet != null)
-                    ? entitySet.Name + "." + entitySet.EntityType().Name + ".List" + Utils.UpperFirstChar(entitySet.EntityType().Name)
-                    : singleton.Name + "." + singleton.EntityType().Name + ".Get" + Utils.UpperFirstChar(singleton.EntityType().Name);
+                    ? entitySet.Name + "." + entitySet.EntityType().Name + $".{(includeListOrGetPrefix ? "List" : null)}" + Utils.UpperFirstChar(entitySet.EntityType().Name)
+                    : singleton.Name + "." + singleton.EntityType().Name + $".{(includeListOrGetPrefix ? "Get" : null)}" + Utils.UpperFirstChar(singleton.EntityType().Name);
             }
 
             return operationId;
