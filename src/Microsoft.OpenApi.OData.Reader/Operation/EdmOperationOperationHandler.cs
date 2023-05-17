@@ -85,7 +85,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         identifiers.Add(segment.EntityType.Name);
                     }
                 }
-                                
+
                 string operationId = string.Join(".", identifiers);
 
                 if (EdmOperation.IsAction())
