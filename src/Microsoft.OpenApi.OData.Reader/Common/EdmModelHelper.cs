@@ -279,7 +279,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// Generates the operation id prefix from an OData type cast path.
         /// </summary>
         /// <param name="path">The target <see cref="ODataPath"/>.</param>
-        /// <param name="includeListOrGetPrefix"></param>
+        /// <param name="includeListOrGetPrefix">Optional: Whether to include the List or Get prefix to the generated operation id.</param>
         /// <returns>The operation id prefix generated from the OData type cast path.</returns>
         internal static string GenerateODataTypeCastPathOperationIdPrefix(ODataPath path, bool includeListOrGetPrefix = true)
         {
