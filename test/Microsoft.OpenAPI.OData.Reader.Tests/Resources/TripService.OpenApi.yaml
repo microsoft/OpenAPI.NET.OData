@@ -771,7 +771,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Airports.EmergencyAuthority.ListAddressInfo.GetCount.AsEventLocation-e708
+      operationId: Airports.EmergencyAuthority.AddressInfo.GetCount.AsEventLocation-e708
       parameters:
         - name: IcaoCode
           in: path
@@ -1205,7 +1205,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Me.ListAddressInfo.GetCount.AsEventLocation-5575
+      operationId: Me.AddressInfo.GetCount.AsEventLocation-5575
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -1542,7 +1542,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Me.BestFriend.ListAddressInfo.GetCount.AsEventLocation-0105
+      operationId: Me.BestFriend.AddressInfo.GetCount.AsEventLocation-0105
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -2108,7 +2108,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Me.Friends.ListAddressInfo.GetCount.AsEventLocation-42c7
+      operationId: Me.Friends.AddressInfo.GetCount.AsEventLocation-42c7
       parameters:
         - name: UserName
           in: path
@@ -2582,7 +2582,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.ListFriends.GetCount.AsEmployee-884b
+      operationId: Me.Friends.GetCount.AsEmployee-884b
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -2700,7 +2700,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.ListFriends.GetCount.AsManager-9376
+      operationId: Me.Friends.GetCount.AsManager-9376
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -3188,7 +3188,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Me.BestFriend.ListAddressInfo.GetCount.AsEventLocation-842c
+      operationId: Me.BestFriend.AddressInfo.GetCount.AsEventLocation-842c
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -3691,7 +3691,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Me.Friends.ListAddressInfo.GetCount.AsEventLocation-feb8
+      operationId: Me.Friends.AddressInfo.GetCount.AsEventLocation-feb8
       parameters:
         - name: UserName
           in: path
@@ -4095,7 +4095,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.ListFriends.GetCount.AsManager-85ff
+      operationId: Me.Friends.GetCount.AsManager-85ff
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -4444,7 +4444,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Me.Peers.ListAddressInfo.GetCount.AsEventLocation-be1d
+      operationId: Me.Peers.AddressInfo.GetCount.AsEventLocation-be1d
       parameters:
         - name: UserName
           in: path
@@ -5848,7 +5848,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Me.BestFriend.ListAddressInfo.GetCount.AsEventLocation-692e
+      operationId: Me.BestFriend.AddressInfo.GetCount.AsEventLocation-692e
       parameters:
         - name: ConsistencyLevel
           in: header
@@ -6366,7 +6366,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Me.DirectReports.ListAddressInfo.GetCount.AsEventLocation-a070
+      operationId: Me.DirectReports.AddressInfo.GetCount.AsEventLocation-a070
       parameters:
         - name: UserName
           in: path
@@ -6943,7 +6943,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: Me.Friends.ListAddressInfo.GetCount.AsEventLocation-4d69
+      operationId: Me.Friends.AddressInfo.GetCount.AsEventLocation-4d69
       parameters:
         - name: UserName
           in: path
@@ -7347,7 +7347,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.ListFriends.GetCount.AsEmployee-6a35
+      operationId: Me.Friends.GetCount.AsEmployee-6a35
       parameters:
         - $ref: '#/components/parameters/search'
         - $ref: '#/components/parameters/filter'
@@ -9171,7 +9171,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: NewComePeople.ListAddressInfo.GetCount.AsEventLocation-29d3
+      operationId: NewComePeople.AddressInfo.GetCount.AsEventLocation-29d3
       parameters:
         - name: UserName
           in: path
@@ -9599,7 +9599,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: NewComePeople.BestFriend.ListAddressInfo.GetCount.AsEventLocation-ba36
+      operationId: NewComePeople.BestFriend.AddressInfo.GetCount.AsEventLocation-ba36
       parameters:
         - name: UserName
           in: path
@@ -10231,7 +10231,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: NewComePeople.Friends.ListAddressInfo.GetCount.AsEventLocation-be92
+      operationId: NewComePeople.Friends.AddressInfo.GetCount.AsEventLocation-be92
       parameters:
         - name: UserName
           in: path
@@ -10725,7 +10725,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Get the number of the resource
-      operationId: NewComePeople.ListFriends.GetCount.AsEmployee-4069
+      operationId: NewComePeople.Friends.GetCount.AsEmployee-4069
       parameters:
         - name: UserName
           in: path
@@ -10845,7 +10845,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Get the number of the resource
-      operationId: NewComePeople.ListFriends.GetCount.AsManager-d1d3
+      operationId: NewComePeople.Friends.GetCount.AsManager-d1d3
       parameters:
         - name: UserName
           in: path
@@ -12321,7 +12321,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: People.ListAddressInfo.GetCount.AsEventLocation-4abd
+      operationId: People.AddressInfo.GetCount.AsEventLocation-4abd
       parameters:
         - name: UserName
           in: path
@@ -12740,7 +12740,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: People.BestFriend.ListAddressInfo.GetCount.AsEventLocation-fe88
+      operationId: People.BestFriend.AddressInfo.GetCount.AsEventLocation-fe88
       parameters:
         - name: UserName
           in: path
@@ -13399,7 +13399,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: People.Friends.ListAddressInfo.GetCount.AsEventLocation-2795
+      operationId: People.Friends.AddressInfo.GetCount.AsEventLocation-2795
       parameters:
         - name: UserName
           in: path
@@ -13944,7 +13944,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.ListFriends.GetCount.AsEmployee-a96c
+      operationId: People.Friends.GetCount.AsEmployee-a96c
       parameters:
         - name: UserName
           in: path
@@ -14076,7 +14076,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.ListFriends.GetCount.AsManager-26b3
+      operationId: People.Friends.GetCount.AsManager-26b3
       parameters:
         - name: UserName
           in: path
@@ -14685,7 +14685,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: People.BestFriend.ListAddressInfo.GetCount.AsEventLocation-0343
+      operationId: People.BestFriend.AddressInfo.GetCount.AsEventLocation-0343
       parameters:
         - name: UserName
           in: path
@@ -15274,7 +15274,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: People.Friends.ListAddressInfo.GetCount.AsEventLocation-1f2b
+      operationId: People.Friends.AddressInfo.GetCount.AsEventLocation-1f2b
       parameters:
         - name: UserName
           in: path
@@ -15742,7 +15742,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.ListFriends.GetCount.AsManager-b145
+      operationId: People.Friends.GetCount.AsManager-b145
       parameters:
         - name: UserName
           in: path
@@ -16147,7 +16147,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: People.Peers.ListAddressInfo.GetCount.AsEventLocation-ef5e
+      operationId: People.Peers.AddressInfo.GetCount.AsEventLocation-ef5e
       parameters:
         - name: UserName
           in: path
@@ -17800,7 +17800,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: People.BestFriend.ListAddressInfo.GetCount.AsEventLocation-5af3
+      operationId: People.BestFriend.AddressInfo.GetCount.AsEventLocation-5af3
       parameters:
         - name: UserName
           in: path
@@ -18404,7 +18404,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: People.DirectReports.ListAddressInfo.GetCount.AsEventLocation-5d49
+      operationId: People.DirectReports.AddressInfo.GetCount.AsEventLocation-5d49
       parameters:
         - name: UserName
           in: path
@@ -19080,7 +19080,7 @@ paths:
     description: Provides operations to count the resources in the collection.
     get:
       summary: Get the number of the resource
-      operationId: People.Friends.ListAddressInfo.GetCount.AsEventLocation-4480
+      operationId: People.Friends.AddressInfo.GetCount.AsEventLocation-4480
       parameters:
         - name: UserName
           in: path
@@ -19548,7 +19548,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.ListFriends.GetCount.AsEmployee-f325
+      operationId: People.Friends.GetCount.AsEmployee-f325
       parameters:
         - name: UserName
           in: path
@@ -21308,7 +21308,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.Person.ListPerson.GetCount.AsEmployee-ef29
+      operationId: People.Person.Person.GetCount.AsEmployee-ef29
       parameters:
         - name: ConsistencyLevel
           in: header
@@ -21444,7 +21444,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.Person.ListPerson.GetCount.AsManager-2d48
+      operationId: People.Person.Person.GetCount.AsManager-2d48
       parameters:
         - name: ConsistencyLevel
           in: header

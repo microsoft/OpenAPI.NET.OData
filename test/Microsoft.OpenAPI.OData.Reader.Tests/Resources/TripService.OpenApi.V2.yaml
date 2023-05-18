@@ -691,7 +691,7 @@ paths:
   '/Airports/{IcaoCode}/Location/EmergencyAuthority/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: Airports.EmergencyAuthority.ListAddressInfo.GetCount.AsEventLocation-e708
+      operationId: Airports.EmergencyAuthority.AddressInfo.GetCount.AsEventLocation-e708
       parameters:
         - in: path
           name: IcaoCode
@@ -1082,7 +1082,7 @@ paths:
   /Me/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count:
     get:
       summary: Get the number of the resource
-      operationId: Me.ListAddressInfo.GetCount.AsEventLocation-5575
+      operationId: Me.AddressInfo.GetCount.AsEventLocation-5575
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -1402,7 +1402,7 @@ paths:
   /Me/BestFriend/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count:
     get:
       summary: Get the number of the resource
-      operationId: Me.BestFriend.ListAddressInfo.GetCount.AsEventLocation-0105
+      operationId: Me.BestFriend.AddressInfo.GetCount.AsEventLocation-0105
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -1915,7 +1915,7 @@ paths:
   '/Me/Friends/{UserName}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: Me.Friends.ListAddressInfo.GetCount.AsEventLocation-42c7
+      operationId: Me.Friends.AddressInfo.GetCount.AsEventLocation-42c7
       parameters:
         - in: path
           name: UserName
@@ -2344,7 +2344,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.ListFriends.GetCount.AsEmployee-884b
+      operationId: Me.Friends.GetCount.AsEmployee-884b
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -2450,7 +2450,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.ListFriends.GetCount.AsManager-9376
+      operationId: Me.Friends.GetCount.AsManager-9376
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -2907,7 +2907,7 @@ paths:
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/BestFriend/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count:
     get:
       summary: Get the number of the resource
-      operationId: Me.BestFriend.ListAddressInfo.GetCount.AsEventLocation-842c
+      operationId: Me.BestFriend.AddressInfo.GetCount.AsEventLocation-842c
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -3365,7 +3365,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends/{UserName}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: Me.Friends.ListAddressInfo.GetCount.AsEventLocation-feb8
+      operationId: Me.Friends.AddressInfo.GetCount.AsEventLocation-feb8
       parameters:
         - in: path
           name: UserName
@@ -3733,7 +3733,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.ListFriends.GetCount.AsManager-85ff
+      operationId: Me.Friends.GetCount.AsManager-85ff
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -4051,7 +4051,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: Me.Peers.ListAddressInfo.GetCount.AsEventLocation-be1d
+      operationId: Me.Peers.AddressInfo.GetCount.AsEventLocation-be1d
       parameters:
         - in: path
           name: UserName
@@ -5333,7 +5333,7 @@ paths:
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/BestFriend/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count:
     get:
       summary: Get the number of the resource
-      operationId: Me.BestFriend.ListAddressInfo.GetCount.AsEventLocation-692e
+      operationId: Me.BestFriend.AddressInfo.GetCount.AsEventLocation-692e
       parameters:
         - in: header
           name: ConsistencyLevel
@@ -5796,7 +5796,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: Me.DirectReports.ListAddressInfo.GetCount.AsEventLocation-a070
+      operationId: Me.DirectReports.AddressInfo.GetCount.AsEventLocation-a070
       parameters:
         - in: path
           name: UserName
@@ -6322,7 +6322,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Friends/{UserName}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: Me.Friends.ListAddressInfo.GetCount.AsEventLocation-4d69
+      operationId: Me.Friends.AddressInfo.GetCount.AsEventLocation-4d69
       parameters:
         - in: path
           name: UserName
@@ -6690,7 +6690,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.ListFriends.GetCount.AsEmployee-6a35
+      operationId: Me.Friends.GetCount.AsEmployee-6a35
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -8334,7 +8334,7 @@ paths:
   '/NewComePeople/{UserName}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: NewComePeople.ListAddressInfo.GetCount.AsEventLocation-29d3
+      operationId: NewComePeople.AddressInfo.GetCount.AsEventLocation-29d3
       parameters:
         - in: path
           name: UserName
@@ -8721,7 +8721,7 @@ paths:
   '/NewComePeople/{UserName}/BestFriend/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: NewComePeople.BestFriend.ListAddressInfo.GetCount.AsEventLocation-ba36
+      operationId: NewComePeople.BestFriend.AddressInfo.GetCount.AsEventLocation-ba36
       parameters:
         - in: path
           name: UserName
@@ -9276,7 +9276,7 @@ paths:
   '/NewComePeople/{UserName}/Friends/{UserName1}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: NewComePeople.Friends.ListAddressInfo.GetCount.AsEventLocation-be92
+      operationId: NewComePeople.Friends.AddressInfo.GetCount.AsEventLocation-be92
       parameters:
         - in: path
           name: UserName
@@ -9709,7 +9709,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Get the number of the resource
-      operationId: NewComePeople.ListFriends.GetCount.AsEmployee-4069
+      operationId: NewComePeople.Friends.GetCount.AsEmployee-4069
       parameters:
         - in: path
           name: UserName
@@ -9815,7 +9815,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Get the number of the resource
-      operationId: NewComePeople.ListFriends.GetCount.AsManager-d1d3
+      operationId: NewComePeople.Friends.GetCount.AsManager-d1d3
       parameters:
         - in: path
           name: UserName
@@ -11132,7 +11132,7 @@ paths:
   '/People/{UserName}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: People.ListAddressInfo.GetCount.AsEventLocation-4abd
+      operationId: People.AddressInfo.GetCount.AsEventLocation-4abd
       parameters:
         - in: path
           name: UserName
@@ -11520,7 +11520,7 @@ paths:
   '/People/{UserName}/BestFriend/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: People.BestFriend.ListAddressInfo.GetCount.AsEventLocation-fe88
+      operationId: People.BestFriend.AddressInfo.GetCount.AsEventLocation-fe88
       parameters:
         - in: path
           name: UserName
@@ -12112,7 +12112,7 @@ paths:
   '/People/{UserName}/Friends/{UserName1}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: People.Friends.ListAddressInfo.GetCount.AsEventLocation-2795
+      operationId: People.Friends.AddressInfo.GetCount.AsEventLocation-2795
       parameters:
         - in: path
           name: UserName
@@ -12601,7 +12601,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.ListFriends.GetCount.AsEmployee-a96c
+      operationId: People.Friends.GetCount.AsEmployee-a96c
       parameters:
         - in: path
           name: UserName
@@ -12719,7 +12719,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.ListFriends.GetCount.AsManager-26b3
+      operationId: People.Friends.GetCount.AsManager-26b3
       parameters:
         - in: path
           name: UserName
@@ -13273,7 +13273,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/BestFriend/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: People.BestFriend.ListAddressInfo.GetCount.AsEventLocation-0343
+      operationId: People.BestFriend.AddressInfo.GetCount.AsEventLocation-0343
       parameters:
         - in: path
           name: UserName
@@ -13804,7 +13804,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends/{UserName1}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: People.Friends.ListAddressInfo.GetCount.AsEventLocation-1f2b
+      operationId: People.Friends.AddressInfo.GetCount.AsEventLocation-1f2b
       parameters:
         - in: path
           name: UserName
@@ -14226,7 +14226,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.ListFriends.GetCount.AsManager-b145
+      operationId: People.Friends.GetCount.AsManager-b145
       parameters:
         - in: path
           name: UserName
@@ -14592,7 +14592,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: People.Peers.ListAddressInfo.GetCount.AsEventLocation-ef5e
+      operationId: People.Peers.AddressInfo.GetCount.AsEventLocation-ef5e
       parameters:
         - in: path
           name: UserName
@@ -16079,7 +16079,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/BestFriend/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: People.BestFriend.ListAddressInfo.GetCount.AsEventLocation-5af3
+      operationId: People.BestFriend.AddressInfo.GetCount.AsEventLocation-5af3
       parameters:
         - in: path
           name: UserName
@@ -16615,7 +16615,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: People.DirectReports.ListAddressInfo.GetCount.AsEventLocation-5d49
+      operationId: People.DirectReports.AddressInfo.GetCount.AsEventLocation-5d49
       parameters:
         - in: path
           name: UserName
@@ -17225,7 +17225,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Friends/{UserName1}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
     get:
       summary: Get the number of the resource
-      operationId: People.Friends.ListAddressInfo.GetCount.AsEventLocation-4480
+      operationId: People.Friends.AddressInfo.GetCount.AsEventLocation-4480
       parameters:
         - in: path
           name: UserName
@@ -17647,7 +17647,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.ListFriends.GetCount.AsEmployee-f325
+      operationId: People.Friends.GetCount.AsEmployee-f325
       parameters:
         - in: path
           name: UserName
@@ -19215,7 +19215,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.Person.ListPerson.GetCount.AsEmployee-ef29
+      operationId: People.Person.Person.GetCount.AsEmployee-ef29
       parameters:
         - in: header
           name: ConsistencyLevel
@@ -19329,7 +19329,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.Person.ListPerson.GetCount.AsManager-2d48
+      operationId: People.Person.Person.GetCount.AsManager-2d48
       parameters:
         - in: header
           name: ConsistencyLevel
