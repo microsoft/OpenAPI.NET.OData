@@ -318,15 +318,7 @@ namespace Microsoft.OpenApi.OData.Common
                 string listOrGet = null;
                 if (includeListOrGetPrefix)
                 {
-                    if (!isIndexedCollValuedNavProp &&
-                    (secondLastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
-                    {
-                        listOrGet = "List";
-                    }
-                    else
-                    {
-                        listOrGet = "Get";
-                    }
+                    listOrGet = !isIndexedCollValuedNavProp && (secondLastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many ? "List" : "Get";
                 }
                 else
                 {
