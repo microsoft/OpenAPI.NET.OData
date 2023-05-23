@@ -320,10 +320,6 @@ namespace Microsoft.OpenApi.OData.Common
                 {
                     listOrGet = !isIndexedCollValuedNavProp && (secondLastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many ? "List" : "Get";
                 }
-                else
-                {
-                    listOrGet = null;
-                }
 
                 operationId = GenerateNavigationPropertyPathOperationId(path, listOrGet);
             }
