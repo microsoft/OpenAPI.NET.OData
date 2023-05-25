@@ -195,7 +195,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             return model.GetAllElements().OfType<IEdmOperation>()
                 .Where(o => o.IsBound == operation.IsBound && o.FullName() == operation.FullName() &&
-                o.Parameters.First().Type.Definition == operation.Parameters.First().Type.Definition
+                o.Parameters.First().Type.Definition.FullTypeName() == operation.Parameters.First().Type.Definition.FullTypeName()
                 ).Count() > 1;
         }
 
