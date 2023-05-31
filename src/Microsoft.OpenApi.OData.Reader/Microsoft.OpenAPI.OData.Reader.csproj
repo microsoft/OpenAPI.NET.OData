@@ -22,6 +22,7 @@
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
 - Resolves operation ids for $count and overloaded functions paths #382, #383
+- Updates README #13, #253, #40
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
@@ -31,6 +32,7 @@
     <DocumentationFile>..\..\bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <!-- https://github.com/dotnet/sourcelink/blob/main/docs/README.md#embeduntrackedsources -->
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <Import Project="..\Build.props" />
@@ -46,6 +48,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+	<None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>

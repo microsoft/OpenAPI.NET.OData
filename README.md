@@ -1,8 +1,6 @@
 [![nuget](https://img.shields.io/nuget/v/Microsoft.OpenApi.OData.svg)](https://www.nuget.org/packages/Microsoft.OpenApi.OData/)
 
-# Convert OData to OpenAPI.NET [Preview]
-
-[**Disclaimer:This library is in a preview state. Feedback and contribution is welcome!**]
+# Convert OData to OpenAPI.NET
 
 ## Introduction
 
@@ -83,11 +81,6 @@ The `GetEdmModel()` method can load a model in 3 ways:
 
 3. Create the Edm model using Web API OData model builder. For details refer to the [web api model builder article](http://odata.github.io/WebApi/#02-01-model-builder-abstract)
 
-## Nightly builds
-
-The nightly build process will upload a Nuget package for OpenAPI.OData.reader to [OpenAPIOData MyGet gallery](https://www.myget.org/gallery/openapiodata).
-
-To connect to OpenAPI.OData.reader feed, use [this](https://www.myget.org/F/openapiodata/api/v3/index.json) URL source.
 
 ## Nuget packages
 
@@ -104,6 +97,8 @@ the rights to use your contribution. For details, visit [https://cla.microsoft.c
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
 a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
 provided by the bot. You will only need to do this once across all repos using our CLA.
+
+You can also open an issue directly on this repo via this [link](https://github.com/microsoft/OpenAPI.NET.OData/issues/new?assignees=&labels=&projects=&template=bug_report.md).
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
