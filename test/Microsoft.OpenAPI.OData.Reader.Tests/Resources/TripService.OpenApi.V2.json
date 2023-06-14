@@ -28151,7 +28151,7 @@
             "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails"
           }
         },
-        "innererror": {
+        "innerError": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError"
         }
       }

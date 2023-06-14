@@ -19776,7 +19776,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails'
-      innererror:
+      innerError:
         $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError'
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails:
     required:

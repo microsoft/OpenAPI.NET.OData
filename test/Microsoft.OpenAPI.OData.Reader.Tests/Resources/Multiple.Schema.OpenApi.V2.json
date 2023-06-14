@@ -5782,7 +5782,7 @@
             "$ref": "#/definitions/Default.ODataErrors.ErrorDetails"
           }
         },
-        "innererror": {
+        "innerError": {
           "$ref": "#/definitions/Default.ODataErrors.InnerError"
         }
       }

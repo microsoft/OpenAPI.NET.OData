@@ -32,7 +32,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ODataErrors.ErrorDetails'
-        innererror:
+        innerError:
           $ref: '#/components/schemas/ODataErrors.InnerError'
     ODataErrors.ErrorDetails:
       required:

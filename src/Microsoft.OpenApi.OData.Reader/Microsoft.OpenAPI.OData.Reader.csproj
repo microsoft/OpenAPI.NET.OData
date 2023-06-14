@@ -23,6 +23,7 @@
     <PackageReleaseNotes>
 - Resolves operation ids for $count and overloaded functions paths #382, #383
 - Updates README #13, #253, #40
+- Fixes casing in default propertyName for `innerError` in the `ErrorMainSchema`
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
