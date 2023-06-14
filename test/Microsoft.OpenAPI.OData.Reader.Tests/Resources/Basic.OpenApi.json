@@ -1149,7 +1149,7 @@
               "$ref": "#/components/schemas/DefaultNs.ODataErrors.ErrorDetails"
             }
           },
-          "innererror": {
+          "innerError": {
             "$ref": "#/components/schemas/DefaultNs.ODataErrors.InnerError"
           }
         }

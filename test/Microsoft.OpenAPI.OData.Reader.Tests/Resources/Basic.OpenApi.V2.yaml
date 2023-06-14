@@ -685,7 +685,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/DefaultNs.ODataErrors.ErrorDetails'
-      innererror:
+      innerError:
         $ref: '#/definitions/DefaultNs.ODataErrors.InnerError'
   DefaultNs.ODataErrors.ErrorDetails:
     required:

@@ -44,7 +44,7 @@
             "$ref": "#/definitions/ODataErrors.ErrorDetails"
           }
         },
-        "innererror": {
+        "innerError": {
           "$ref": "#/definitions/ODataErrors.InnerError"
         }
       }

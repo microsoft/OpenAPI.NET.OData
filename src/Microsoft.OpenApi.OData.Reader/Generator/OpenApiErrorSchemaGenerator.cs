@@ -155,7 +155,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     },
                     {
-                        "innererror",
+                        "innerError",
                         new OpenApiSchema
                         {
                             UnresolvedReference = true,

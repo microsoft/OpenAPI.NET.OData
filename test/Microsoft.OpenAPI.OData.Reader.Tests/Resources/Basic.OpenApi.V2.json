@@ -1045,7 +1045,7 @@
             "$ref": "#/definitions/DefaultNs.ODataErrors.ErrorDetails"
           }
         },
-        "innererror": {
+        "innerError": {
           "$ref": "#/definitions/DefaultNs.ODataErrors.InnerError"
         }
       }

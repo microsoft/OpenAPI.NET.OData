@@ -31,7 +31,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/ODataErrors.ErrorDetails'
-      innererror:
+      innerError:
         $ref: '#/definitions/ODataErrors.InnerError'
   ODataErrors.ErrorDetails:
     required:

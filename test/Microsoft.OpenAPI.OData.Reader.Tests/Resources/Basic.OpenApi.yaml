@@ -755,7 +755,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DefaultNs.ODataErrors.ErrorDetails'
-        innererror:
+        innerError:
           $ref: '#/components/schemas/DefaultNs.ODataErrors.InnerError'
     DefaultNs.ODataErrors.ErrorDetails:
       required:

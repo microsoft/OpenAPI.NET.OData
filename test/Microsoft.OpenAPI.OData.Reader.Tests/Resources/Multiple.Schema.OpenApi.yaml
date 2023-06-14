@@ -4696,7 +4696,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Default.ODataErrors.ErrorDetails'
-        innererror:
+        innerError:
           $ref: '#/components/schemas/Default.ODataErrors.InnerError'
     Default.ODataErrors.ErrorDetails:
       required:
