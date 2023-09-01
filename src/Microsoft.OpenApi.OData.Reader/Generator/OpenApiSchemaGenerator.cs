@@ -317,6 +317,18 @@ namespace Microsoft.OpenApi.OData.Generator
                 // whose value is the value of the unqualified annotation Core.Description of the enumeration type.
                 Description = context.Model.GetDescriptionAnnotation(enumType)
             };
+            
+            // If the enum is flagged, add the extension info to the description
+            if (context.Settings.AddEnumFlagsExtension && enumType.IsFlags)
+            {
+                var enumFlagsExtension = new OpenApiEnumFlagsExtension
+                {
+                    IsFlags = true,
+                    Style = "simple"
+                };
+                schema.Extensions.Add(enumFlagsExtension.Name, enumFlagsExtension);
+            }
+
             var extension = (context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi2_0 ||
                             context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi3_0 ) &&
                             context.Settings.AddEnumDescriptionExtension ? 

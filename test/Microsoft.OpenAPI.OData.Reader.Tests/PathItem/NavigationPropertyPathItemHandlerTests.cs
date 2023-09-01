@@ -147,7 +147,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 }
                 else
                 {
-                    Assert.Equal(1, pathItem.Parameters.Count); // Customer ID
+                    Assert.Single(pathItem.Parameters); // Customer ID
                 }
             }
             else

@@ -44,7 +44,7 @@ public class ComplexPropertyPutOperationHandlerTests
 		Assert.Equal("Update the BillingAddress value.", put.Description);
 
 		Assert.NotNull(put.Parameters);
-		Assert.Equal(1, put.Parameters.Count); //id
+		Assert.Single(put.Parameters); //id
 
 		Assert.NotNull(put.Responses);
 		Assert.Equal(2, put.Responses.Count);
@@ -95,7 +95,7 @@ public class ComplexPropertyPutOperationHandlerTests
 		Assert.Equal("Update the BillingAddress value.", put.Description);
 
 		Assert.NotNull(put.Parameters);
-		Assert.Equal(1, put.Parameters.Count); //id
+		Assert.Single(put.Parameters); //id
 
 		Assert.NotNull(put.Responses);
 		Assert.Equal(2, put.Responses.Count);

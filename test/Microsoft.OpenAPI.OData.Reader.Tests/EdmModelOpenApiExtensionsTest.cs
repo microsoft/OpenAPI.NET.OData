@@ -243,6 +243,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
 
+#pragma warning disable CS0618 // Type or member is obsolete
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = true,
@@ -255,6 +256,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 AppendBoundOperationsOnDerivedTypeCastSegments = true,
                 IncludeAssemblyInfo = false
             };
+#pragma warning restore CS0618 // Type or member is obsolete
 
             // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, settings);

@@ -31294,7 +31294,11 @@
           "Feature3",
           "Feature4"
         ],
-        "type": "string"
+        "type": "string",
+        "x-ms-enum-flags": {
+          "isFlags": true,
+          "style": "simple"
+        }
       },
       "Edm.Geography": {
         "$ref": "#/components/schemas/Edm.Geometry"

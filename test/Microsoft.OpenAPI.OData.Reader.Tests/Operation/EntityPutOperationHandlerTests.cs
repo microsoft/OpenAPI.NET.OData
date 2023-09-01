@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Customers.Customer", tag.Name);
 
             Assert.NotNull(putOperation.Parameters);
-            Assert.Equal(1, putOperation.Parameters.Count);
+            Assert.Single(putOperation.Parameters);
 
             Assert.NotNull(putOperation.RequestBody);
 

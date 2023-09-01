@@ -304,7 +304,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Equal(1, get.Parameters.Count);
+                Assert.Single(get.Parameters);
                 Assert.DoesNotContain(queryOption, get.Parameters.Select(p => p.Name));
             }
         }

@@ -299,7 +299,7 @@ schema:
 
             // Assert
             Assert.NotNull(parameters);
-            Assert.Equal(1, parameters.Count);
+            Assert.Single(parameters);
             string json = altParameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(@"{
   ""name"": ""AltId"",
