@@ -58,6 +58,13 @@ Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.OpenApiEnumF
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.Style.get -> string
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.Style.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.Write(Microsoft.OpenApi.Writers.IOpenApiWriter writer, Microsoft.OpenApi.OpenApiSpecVersion specVersion) -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.OpenApiPrimaryErrorMessageExtension() -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.Write(Microsoft.OpenApi.Writers.IOpenApiWriter writer, Microsoft.OpenApi.OpenApiSpecVersion specVersion) -> void
+static Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.Name.get -> string
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.IsPrimaryErrorMessage.get -> bool
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.IsPrimaryErrorMessage.set -> void
+static Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.Parse(Microsoft.OpenApi.Any.IOpenApiAny source) -> Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Action = 6 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Create = 2 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
