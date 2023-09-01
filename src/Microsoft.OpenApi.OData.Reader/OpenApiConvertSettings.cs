@@ -262,6 +262,11 @@ namespace Microsoft.OpenApi.OData
         public bool AddEnumDescriptionExtension { get; set; } = false;
 
         /// <summary>
+        /// Gets/sets a value indicating whether or not to add a "x-ms-enum-flags" extension to the enum type schema.
+        /// </summary>
+        public bool AddEnumFlagsExtension { get; set; } = true;
+        
+        /// <summary>
         /// Gets/sets a value indicating whether the error responses should be described as a default response or as 4XX and 5XX error responses.
         /// </summary>
         public bool ErrorResponsesAsDefault { get; set; } = true;
@@ -377,6 +382,7 @@ namespace Microsoft.OpenApi.OData
                 RequireDerivedTypesConstraintForODataTypeCastSegments = this.RequireDerivedTypesConstraintForODataTypeCastSegments,
                 EnableDeprecationInformation = this.EnableDeprecationInformation,
                 AddEnumDescriptionExtension = this.AddEnumDescriptionExtension,
+                AddEnumFlagsExtension = this.AddEnumFlagsExtension,
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
                 InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
                 RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,

@@ -19625,6 +19625,9 @@ definitions:
       - Feature3
       - Feature4
     type: string
+    x-ms-enum-flags:
+      isFlags: true
+      style: simple
   Edm.Geography:
     $ref: '#/definitions/Edm.Geometry'
   Edm.GeographyPoint:

@@ -43,7 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("People.Actions", tag.Name);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(1, operation.Parameters.Count);
+            Assert.Single(operation.Parameters);
             Assert.Equal(new string[] { "UserName" }, operation.Parameters.Select(p => p.Name));
 
             Assert.NotNull(operation.RequestBody);
@@ -82,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal($"{entitySetName}.Actions", tag.Name);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(1, operation.Parameters.Count);
+            Assert.Single(operation.Parameters);
             Assert.Equal(new string[] { "id" }, operation.Parameters.Select(p => p.Name));
 
             Assert.NotNull(operation.RequestBody);

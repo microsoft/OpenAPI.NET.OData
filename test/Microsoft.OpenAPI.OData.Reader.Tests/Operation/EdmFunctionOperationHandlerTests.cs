@@ -102,7 +102,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("People.Functions", tag.Name);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(1, operation.Parameters.Count);
+            Assert.Single(operation.Parameters);
             Assert.Equal(new string[] { "UserName" }, operation.Parameters.Select(p => p.Name));
 
             Assert.Null(operation.RequestBody);
