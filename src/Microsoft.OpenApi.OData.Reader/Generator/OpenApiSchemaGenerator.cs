@@ -323,8 +323,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 var enumFlagsExtension = new OpenApiEnumFlagsExtension
                 {
-                    IsFlags = true,
-                    Style = "simple"
+                    IsFlags = true
                 };
                 schema.Extensions.Add(enumFlagsExtension.Name, enumFlagsExtension);
             }

@@ -23,10 +23,6 @@ public class OpenApiEnumFlagsExtension : IOpenApiExtension
     /// Whether the enum is a flagged enum.
     /// </summary>
     public bool IsFlags { get; set; }
-    /// <summary>
-    /// The serialization style of the flagged enum.
-    /// </summary>
-    public string Style { get; set; }
 	/// <inheritdoc />
     public void Write(IOpenApiWriter writer, OpenApiSpecVersion specVersion)
     {
@@ -35,7 +31,6 @@ public class OpenApiEnumFlagsExtension : IOpenApiExtension
         
         writer.WriteStartObject();
         writer.WriteProperty(nameof(IsFlags).ToFirstCharacterLowerCase(), IsFlags);
-        writer.WriteProperty(nameof(Style).ToFirstCharacterLowerCase(),Style);
         writer.WriteEndObject();
     } 
 }

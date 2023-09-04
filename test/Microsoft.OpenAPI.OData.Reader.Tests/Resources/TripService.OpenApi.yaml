@@ -21807,7 +21807,6 @@ components:
       type: string
       x-ms-enum-flags:
         isFlags: true
-        style: simple
     Edm.Geography:
       $ref: '#/components/schemas/Edm.Geometry'
     Edm.GeographyPoint:

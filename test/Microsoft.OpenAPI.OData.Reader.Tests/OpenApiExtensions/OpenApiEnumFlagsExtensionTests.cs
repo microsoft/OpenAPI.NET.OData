@@ -39,7 +39,6 @@ public class OpenApiEnumFlagsExtensionTests
 
         // Assert
         Assert.False(extension.IsFlags);
-        Assert.Null(extension.Style);
         Assert.Contains("\"isFlags\": false", result);
         Assert.DoesNotContain("\"style\"", result);
     }
@@ -60,9 +59,7 @@ public class OpenApiEnumFlagsExtensionTests
 
         // Assert
         Assert.True(extension.IsFlags);
-        Assert.Null(extension.Style);
         Assert.Contains("\"isFlags\": true", result);
-        Assert.DoesNotContain("\"style\":", result);
     }
 
     [Fact]
@@ -70,8 +67,7 @@ public class OpenApiEnumFlagsExtensionTests
     {
         // Arrange
         OpenApiEnumFlagsExtension extension = new() {
-            IsFlags = true,
-            Style = "simple"
+            IsFlags = true
         };
         using TextWriter sWriter = new StringWriter();
         OpenApiJsonWriter writer = new(sWriter);
@@ -82,8 +78,6 @@ public class OpenApiEnumFlagsExtensionTests
 
         // Assert
         Assert.True(extension.IsFlags);
-        Assert.NotNull(extension.Style);
         Assert.Contains("\"isFlags\": true", result);
-        Assert.Contains("\"style\": \"simple\"", result);
     }
 }
