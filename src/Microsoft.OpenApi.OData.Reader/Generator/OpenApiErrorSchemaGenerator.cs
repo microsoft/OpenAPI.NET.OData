@@ -6,9 +6,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.OpenApiExtensions;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -133,7 +135,8 @@ namespace Microsoft.OpenApi.OData.Generator
                         "code", new OpenApiSchema { Type = "string", Nullable = false }
                     },
                     {
-                        "message", new OpenApiSchema { Type = "string", Nullable = false, }
+                        "message", new OpenApiSchema { Type = "string", Nullable = false, Extensions = new Dictionary<string, IOpenApiExtension> 
+                                                                                    { { OpenApiPrimaryErrorMessageExtension.Name, new OpenApiPrimaryErrorMessageExtension { IsPrimaryErrorMessage = true } } } }
                     },
                     {
                         "target", new OpenApiSchema { Type = "string", Nullable = true }

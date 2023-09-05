@@ -679,6 +679,7 @@ definitions:
         type: string
       message:
         type: string
+        x-ms-primary-error-message: true
       target:
         type: string
       details:
