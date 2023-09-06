@@ -15,7 +15,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Exceptions;
 using System.Linq;
 using Microsoft.OpenApi.Interfaces;
-using Microsoft.OpenApi.OData.OpenApiExtensions;
+using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Generator
@@ -324,9 +324,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 var enumFlagsExtension = new OpenApiEnumFlagsExtension
                 {
                     IsFlags = true,
-                    Style = "simple"
                 };
-                schema.Extensions.Add(enumFlagsExtension.Name, enumFlagsExtension);
+                schema.Extensions.Add(OpenApiEnumFlagsExtension.Name, enumFlagsExtension);
             }
 
             var extension = (context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi2_0 ||
@@ -345,7 +344,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             if(extension?.ValuesDescriptions.Any() ?? false)
-                schema.Extensions.Add(extension.Name, extension);
+                schema.Extensions.Add(OpenApiEnumValuesDescriptionExtension.Name, extension);
             schema.Title = enumType.Name;
             return schema;
         }

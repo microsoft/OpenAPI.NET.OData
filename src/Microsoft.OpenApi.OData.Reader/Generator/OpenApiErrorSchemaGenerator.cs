@@ -10,7 +10,7 @@ using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.OpenApiExtensions;
+using Microsoft.OpenApi.MicrosoftExtensions;
 
 namespace Microsoft.OpenApi.OData.Generator
 {

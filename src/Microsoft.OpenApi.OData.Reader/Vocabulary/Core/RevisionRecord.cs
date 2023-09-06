@@ -1,7 +1,7 @@
 using System;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.OpenApiExtensions;
+using Microsoft.OpenApi.MicrosoftExtensions;
 
 namespace Microsoft.OpenApi.OData.Vocabulary.Core;
 
@@ -37,8 +37,8 @@ internal class RevisionRecord : RevisionType
 	{
 		return new OpenApiDeprecationExtension
 		{
-			Date = Date,
-			RemovalDate = RemovalDate,
+			Date = Date.HasValue ? new DateTimeOffset(Date.Value, TimeSpan.Zero) : default,
+			RemovalDate = RemovalDate.HasValue ? new DateTimeOffset(RemovalDate.Value, TimeSpan.Zero) : default,
 			Description = Description,
 			Version = Version,
 		};

@@ -51,20 +51,10 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.IsFlags.get -> bool
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.IsFlags.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.Name.get -> string
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.OpenApiEnumFlagsExtension() -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.Style.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.Style.set -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.Write(Microsoft.OpenApi.Writers.IOpenApiWriter writer, Microsoft.OpenApi.OpenApiSpecVersion specVersion) -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.OpenApiPrimaryErrorMessageExtension() -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.Write(Microsoft.OpenApi.Writers.IOpenApiWriter writer, Microsoft.OpenApi.OpenApiSpecVersion specVersion) -> void
-static Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.Name.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.IsPrimaryErrorMessage.get -> bool
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.IsPrimaryErrorMessage.set -> void
-static Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.Parse(Microsoft.OpenApi.Any.IOpenApiAny source) -> Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Action = 6 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Create = 2 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
@@ -333,13 +323,8 @@ Microsoft.OpenApi.OData.Edm.ODataSegment.Deprecation.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.OpenApiDeprecationExtension() -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Name.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Version.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Version.set -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Description.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Description.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.RemovalDate.get -> System.DateTime?
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.RemovalDate.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.get -> System.DateTime?
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.set -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Write(Microsoft.OpenApi.Writers.IOpenApiWriter writer, Microsoft.OpenApi.OpenApiSpecVersion specVersion) -> void
 Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions

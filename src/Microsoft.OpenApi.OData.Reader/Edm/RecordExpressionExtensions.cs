@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            return (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            return (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmIntegerConstantExpression value) ?
                 value.Value :
                 null;
@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            return (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            return (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
             property.Value is IEdmStringConstantExpression value) ?
                 value.Value :
                 null;
@@ -63,7 +63,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            return (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            return (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmBooleanConstantExpression value) ?
                 value.Value :
                 null;
@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            return (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            return (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmDateConstantExpression value) ?
                 value.Value :
                 null;
@@ -99,7 +99,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            return (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            return (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmEnumMemberExpression value &&
                 value.EnumMembers != null &&
                 value.EnumMembers.Any() &&
@@ -121,7 +121,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            if (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            if (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmRecordExpression recordValue)
             {
                 T a = new();
@@ -143,7 +143,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            return (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            return (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmPathExpression value) ?
                 value.Path :
                 null;
@@ -160,7 +160,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            if (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            if (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmCollectionExpression value && value.Elements != null)
             {
                 IList<string> properties = 
@@ -189,7 +189,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            if (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            if (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmCollectionExpression collection && collection.Elements != null)
             {
                 IList<string> items = collection.Elements
@@ -215,7 +215,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            if (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+            if (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmCollectionExpression collection && collection.Elements != null)
             {
                 IList<T> items = new List<T>();

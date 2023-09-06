@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -92,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     operation.Deprecated = true;
                     var deprecationDetails = deprecationInfo.GetOpenApiExtension();
-                    operation.Extensions.Add(deprecationDetails.Name, deprecationDetails);
+                    operation.Extensions.Add(OpenApiDeprecationExtension.Name, deprecationDetails);
                 }
             }
         }
