@@ -802,7 +802,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             if (annotatable != null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, annotatable))
                             {
                                 continue;
-                            }                            
+                            }                          
                         }
 
                         ODataPath newPath = subPath.Clone();
@@ -824,13 +824,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 foreach (var path in value.Where(x => !_pathKindToSkipForNavigationProperties.Contains(x.Kind)))
                 {
                     ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
-
-                    if (!npSegment.NavigationProperty.ContainsTarget)
-                    {
-                        continue;
-                    }
                     
-                    if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty))
+                    if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty, npSegment.NavigationProperty.ContainsTarget))
                     {
                         continue;
                     }
@@ -954,12 +949,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             continue;
                         }
 
-                        if (!npSegment.NavigationProperty.ContainsTarget)
-                        {
-                            continue;
-                        }
-
-                        if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty))
+                        if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty, npSegment.NavigationProperty.ContainsTarget))
                         {
                             continue;
                         }
