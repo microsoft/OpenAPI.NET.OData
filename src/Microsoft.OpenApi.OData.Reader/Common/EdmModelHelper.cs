@@ -393,25 +393,26 @@ namespace Microsoft.OpenApi.OData.Common
 
             return segmentName;
         }
-    
+
         /// <summary>
         /// Checks whether an operation is allowed on a model element.
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <param name="edmOperation">The target operation.</param>
         /// <param name="annotatable">The model element.</param>
+        /// <param name="operationAllowed">Optional: Default is true.
+        /// The operation will be allowed by default if the annotation Org.OData.Core.V1.RequiresExplicitBinding is undefined for the given operation. </param>
         /// <returns>true if the operation is allowed, otherwise false.</returns>
-        internal static bool IsOperationAllowed(IEdmModel model, IEdmOperation edmOperation, IEdmVocabularyAnnotatable annotatable)
+        internal static bool IsOperationAllowed(IEdmModel model, IEdmOperation edmOperation, IEdmVocabularyAnnotatable annotatable, bool operationAllowed = true)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(edmOperation, nameof(edmOperation));
             Utils.CheckArgumentNull(annotatable, nameof(annotatable));
 
             var requiresExplicitBinding = model.FindVocabularyAnnotations(edmOperation).FirstOrDefault(x => x.Term.Name == CapabilitiesConstants.RequiresExplicitBindingName);
-
             if (requiresExplicitBinding == null)
             {
-                return true;
+                return operationAllowed;
             }
             
             var boundOperations = model.GetCollection(annotatable, CapabilitiesConstants.ExplicitOperationBindings)?.ToList();
