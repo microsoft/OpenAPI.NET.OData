@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.5.0-preview4</Version>
+    <Version>1.5.0-preview5</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -25,6 +25,7 @@
 - Updates README #13, #253, #40
 - Fixes casing in default propertyName for `innerError` in the `ErrorMainSchema`
 - Adds support for `x-ms-enum-flags` extension for flagged enums
+- Use containment together with RequiresExplicitBinding annotation to check whether to append bound operations to navigation properties #430
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
