@@ -15,7 +15,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Exceptions;
 using System.Linq;
 using Microsoft.OpenApi.Interfaces;
-using Microsoft.OpenApi.OData.OpenApiExtensions;
+using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Generator
@@ -317,6 +317,17 @@ namespace Microsoft.OpenApi.OData.Generator
                 // whose value is the value of the unqualified annotation Core.Description of the enumeration type.
                 Description = context.Model.GetDescriptionAnnotation(enumType)
             };
+            
+            // If the enum is flagged, add the extension info to the description
+            if (context.Settings.AddEnumFlagsExtension && enumType.IsFlags)
+            {
+                var enumFlagsExtension = new OpenApiEnumFlagsExtension
+                {
+                    IsFlags = true,
+                };
+                schema.Extensions.Add(OpenApiEnumFlagsExtension.Name, enumFlagsExtension);
+            }
+
             var extension = (context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi2_0 ||
                             context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi3_0 ) &&
                             context.Settings.AddEnumDescriptionExtension ? 
@@ -333,7 +344,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             if(extension?.ValuesDescriptions.Any() ?? false)
-                schema.Extensions.Add(extension.Name, extension);
+                schema.Extensions.Add(OpenApiEnumValuesDescriptionExtension.Name, extension);
             schema.Title = enumType.Name;
             return schema;
         }

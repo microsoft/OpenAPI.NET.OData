@@ -25,6 +25,7 @@ components:
           type: string
         message:
           type: string
+          x-ms-primary-error-message: true
         target:
           type: string
           nullable: true
@@ -32,7 +33,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ODataErrors.ErrorDetails'
-        innererror:
+        innerError:
           $ref: '#/components/schemas/ODataErrors.InnerError'
     ODataErrors.ErrorDetails:
       required:

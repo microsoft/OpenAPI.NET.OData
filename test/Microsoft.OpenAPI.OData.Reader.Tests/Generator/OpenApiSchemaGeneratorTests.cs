@@ -523,7 +523,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Null(declaredSchema.OneOf);
 
             Assert.NotNull(declaredSchema.Properties);
-            Assert.Equal(1, declaredSchema.Properties.Count);
+            Assert.Single(declaredSchema.Properties);
             var property = Assert.Single(declaredSchema.Properties);
             Assert.Equal("Price", property.Key);
             Assert.Equal("decimal", property.Value.OneOf.FirstOrDefault(x => !string.IsNullOrEmpty(x.Format))?.Format);
@@ -674,7 +674,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Null(declaredSchema.OneOf);
 
             Assert.NotNull(declaredSchema.Properties);
-            Assert.Equal(1, declaredSchema.Properties.Count);
+            Assert.Single(declaredSchema.Properties);
             var property = Assert.Single(declaredSchema.Properties);
             Assert.Equal("Name", property.Key);
             Assert.Equal("string", property.Value.Type);
@@ -750,7 +750,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Null(declaredSchema.OneOf);
 
             Assert.NotNull(declaredSchema.Properties);
-            Assert.Equal(1, declaredSchema.Properties.Count);
+            Assert.Single(declaredSchema.Properties);
             var property = Assert.Single(declaredSchema.Properties);
             Assert.Equal("Extra", property.Key);
             Assert.Equal("integer", property.Value.Type);

@@ -109,7 +109,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             if (declarePathParametersOnPathItem)
             {
                 Assert.NotEmpty(pathItem.Parameters);
-                Assert.Equal(1, pathItem.Parameters.Count);
+                Assert.Single(pathItem.Parameters);
             }
             else
             {

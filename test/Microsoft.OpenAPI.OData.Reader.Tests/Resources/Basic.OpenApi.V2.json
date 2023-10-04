@@ -1034,7 +1034,8 @@
           "type": "string"
         },
         "message": {
-          "type": "string"
+          "type": "string",
+          "x-ms-primary-error-message": true
         },
         "target": {
           "type": "string"
@@ -1045,7 +1046,7 @@
             "$ref": "#/definitions/DefaultNs.ODataErrors.ErrorDetails"
           }
         },
-        "innererror": {
+        "innerError": {
           "$ref": "#/definitions/DefaultNs.ODataErrors.InnerError"
         }
       }

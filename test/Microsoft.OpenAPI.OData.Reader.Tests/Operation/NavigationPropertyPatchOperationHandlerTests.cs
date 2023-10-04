@@ -51,7 +51,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("People.Person", tag.Name);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(1, operation.Parameters.Count);
+            Assert.Single(operation.Parameters);
 
             Assert.NotNull(operation.RequestBody);
             Assert.Equal("New navigation property values", operation.RequestBody.Description);

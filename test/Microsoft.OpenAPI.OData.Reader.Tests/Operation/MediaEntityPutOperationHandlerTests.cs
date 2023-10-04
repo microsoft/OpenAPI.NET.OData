@@ -122,13 +122,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.True(putOperation.RequestBody.Content.ContainsKey("image/jpeg"));
                 Assert.Equal("The logo image.", putOperation.Description);
 
-                Assert.Equal(1, putOperation2.RequestBody.Content.Keys.Count);
+                Assert.Single(putOperation2.RequestBody.Content.Keys);
                 Assert.True(putOperation2.RequestBody.Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
             }
             else
             {
-                Assert.Equal(1, putOperation.RequestBody.Content.Keys.Count);
-                Assert.Equal(1, putOperation2.RequestBody.Content.Keys.Count);
+                Assert.Single(putOperation.RequestBody.Content.Keys);
+                Assert.Single(putOperation2.RequestBody.Content.Keys);
                 Assert.True(putOperation.RequestBody.Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
                 Assert.True(putOperation2.RequestBody.Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
             }

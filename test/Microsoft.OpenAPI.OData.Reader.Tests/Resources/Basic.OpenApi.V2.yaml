@@ -679,13 +679,14 @@ definitions:
         type: string
       message:
         type: string
+        x-ms-primary-error-message: true
       target:
         type: string
       details:
         type: array
         items:
           $ref: '#/definitions/DefaultNs.ODataErrors.ErrorDetails'
-      innererror:
+      innerError:
         $ref: '#/definitions/DefaultNs.ODataErrors.InnerError'
   DefaultNs.ODataErrors.ErrorDetails:
     required:

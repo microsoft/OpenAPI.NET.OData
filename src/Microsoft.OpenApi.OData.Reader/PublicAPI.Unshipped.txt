@@ -17,6 +17,8 @@ Microsoft.OpenApi.OData.Edm.ODataSegment.GetPathItemName(Microsoft.OpenApi.OData
 Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.ODataTypeCastSegment(Microsoft.OData.Edm.IEdmStructuredType structuredType, Microsoft.OData.Edm.IEdmModel model) -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddAlternateKeyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddAlternateKeyPaths.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.AddEnumFlagsExtension.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.AddEnumFlagsExtension.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.get -> System.Collections.Generic.Dictionary<Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey, string>
@@ -48,6 +50,11 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.set -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.Name.get -> string
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.OpenApiEnumFlagsExtension() -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.OpenApiPrimaryErrorMessageExtension() -> void
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Action = 6 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Create = 2 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
@@ -316,13 +323,8 @@ Microsoft.OpenApi.OData.Edm.ODataSegment.Deprecation.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.OpenApiDeprecationExtension() -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Name.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Version.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Version.set -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Description.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Description.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.RemovalDate.get -> System.DateTime?
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.RemovalDate.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.get -> System.DateTime?
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.set -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Write(Microsoft.OpenApi.Writers.IOpenApiWriter writer, Microsoft.OpenApi.OpenApiSpecVersion specVersion) -> void
 Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions

@@ -105,11 +105,11 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 // RequestBody
                 Assert.NotNull(post.RequestBody);
-                Assert.Equal(1, post.RequestBody.Content.Keys.Count);
+                Assert.Single(post.RequestBody.Content.Keys);
                 Assert.True(post.RequestBody.Content.ContainsKey(Constants.ApplicationJsonMediaType));
 
                 // Response
-                Assert.Equal(1, post.Responses[Constants.StatusCode201].Content.Keys.Count);
+                Assert.Single(post.Responses[Constants.StatusCode201].Content.Keys);
                 Assert.True(post.Responses[Constants.StatusCode201].Content.ContainsKey(Constants.ApplicationJsonMediaType));
             }
 

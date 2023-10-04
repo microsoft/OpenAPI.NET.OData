@@ -101,13 +101,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.True(getOperation.Responses[statusCode].Content.ContainsKey("image/jpeg"));
                 Assert.Equal("The logo image.", getOperation.Description);
 
-                Assert.Equal(1, getOperation2.Responses[statusCode].Content.Keys.Count);
+                Assert.Single(getOperation2.Responses[statusCode].Content.Keys);
                 Assert.True(getOperation2.Responses[statusCode].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
             }
             else
             {
-                Assert.Equal(1, getOperation.Responses[statusCode].Content.Keys.Count);
-                Assert.Equal(1, getOperation2.Responses[statusCode].Content.Keys.Count);
+                Assert.Single(getOperation.Responses[statusCode].Content.Keys);
+                Assert.Single(getOperation2.Responses[statusCode].Content.Keys);
                 Assert.True(getOperation.Responses[statusCode].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
                 Assert.True(getOperation2.Responses[statusCode].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
             }

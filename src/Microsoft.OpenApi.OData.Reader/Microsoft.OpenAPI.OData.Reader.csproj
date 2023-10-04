@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.5.0-preview1</Version>
+    <Version>1.5.0-preview4</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -23,6 +23,8 @@
     <PackageReleaseNotes>
 - Resolves operation ids for $count and overloaded functions paths #382, #383
 - Updates README #13, #253, #40
+- Fixes casing in default propertyName for `innerError` in the `ErrorMainSchema`
+- Adds support for `x-ms-enum-flags` extension for flagged enums
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
@@ -42,8 +44,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.OData.Edm" Version="7.16.0" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.6.4" />
+    <PackageReference Include="Microsoft.OData.Edm" Version="7.18.0" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.9" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

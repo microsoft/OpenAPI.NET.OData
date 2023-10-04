@@ -5771,7 +5771,8 @@
           "type": "string"
         },
         "message": {
-          "type": "string"
+          "type": "string",
+          "x-ms-primary-error-message": true
         },
         "target": {
           "type": "string"
@@ -5782,7 +5783,7 @@
             "$ref": "#/definitions/Default.ODataErrors.ErrorDetails"
           }
         },
-        "innererror": {
+        "innerError": {
           "$ref": "#/definitions/Default.ODataErrors.InnerError"
         }
       }

@@ -249,11 +249,11 @@
           <Annotation Term="Org.OData.Core.V1.Description" String="Unknown gender or prefers not to say." />
       </Member>
     </EnumType>
-      <EnumType Name="Feature">
+      <EnumType Name="Feature" IsFlags="true">
         <Member Name="Feature1" Value="0" />
         <Member Name="Feature2" Value="1" />
         <Member Name="Feature3" Value="2" />
-        <Member Name="Feature4" Value="3" />
+        <Member Name="Feature4" Value="4" />
       </EnumType>
       <Function Name="GetPersonWithMostFriends">
         <ReturnType Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
