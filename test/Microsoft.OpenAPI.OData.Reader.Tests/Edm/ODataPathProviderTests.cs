@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18832, paths.Count());
+            Assert.Equal(20942, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(19483, paths.Count());
+            Assert.Equal(21593, paths.Count());
         }
 
         [Theory]
@@ -147,6 +147,28 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             {
                 Assert.NotNull(testPath);
             }
+        }
+
+        [Fact]
+        public void GetPathsForComposableFunctionsReturnsAllPaths()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.ComposableFunctionsModel;
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings
+            {
+                RequireDerivedTypesConstraintForBoundOperations = true,
+                AppendBoundOperationsOnDerivedTypeCastSegments = true
+            };
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(38, paths.Count());
+            Assert.Equal(20, paths.Where(p => p.LastSegment is ODataOperationSegment).Count());
+            Assert.Equal(12, paths.Where(p => p.Segments.Count > 1 && p.LastSegment is ODataNavigationPropertySegment && p.Segments[p.Segments.Count - 2] is ODataOperationSegment).Count());
         }
 
         [Fact]

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="composable.functions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="arrayItem">
+        <Property Name="index" Type="Edm.Int64" Nullable="false" />
+        <Property Name="value" Type="Edm.String" />
+      </EntityType>
+	  <EntityType Name="array">
+		<Key>
+		  <PropertyRef Name="id" />
+		</Key>
+		<Property Name="id" Type="Edm.Int64" Nullable="false" />
+		<Property Name="size" Type="Edm.Int64"/>
+		<NavigationProperty Name="items" Type="Collection(composable.functions.arrayItem)"/>
+	  </EntityType>
+      <Action Name="clean" IsBound="true">
+		<Parameter Name="bindingParameter" Type="composable.functions.array"/>
+	  </Action>
+	  <Function Name="range" IsBound="true" IsComposable="true">
+		<Parameter Name="bindingParameter" Type="composable.functions.array"/>
+		<ReturnType Type="composable.functions.array"/>
+	  </Function>
+	  <Function Name="filter" IsBound="true" IsComposable="true">
+		<Parameter Name="bindingParameter" Type="composable.functions.array"/>
+		<ReturnType Type="composable.functions.array"/>
+	  </Function>
+	  <Function Name="sort" IsBound="true" IsComposable="true">
+		<Parameter Name="bindingParameter" Type="composable.functions.array"/>
+		<ReturnType Type="composable.functions.array"/>
+	  </Function>
+	  <Function Name="itemAt" IsBound="true">
+		<Parameter Name="bindingParameter" Type="composable.functions.array"/>
+		<Parameter Name="index" Type="Edm.Int32"/>
+		<ReturnType Type="composable.functions.arrayItem"/>
+	  </Function>
+	  <EntityContainer Name="ComposableFunctions">
+		<EntitySet Name="arrays" EntityType="composable.functions.array"/>
+	  </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

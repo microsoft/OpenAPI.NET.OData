@@ -708,10 +708,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         private void RetrieveBoundOperationPaths(OpenApiConvertSettings convertSettings)
         {
-            // process functions before actions
-            var edmFunctions = _model.GetAllElements().OfType<IEdmFunction>().Where(e => e.IsBound).ToList();
-            var edmActions = _model.GetAllElements().OfType<IEdmOperation>().Where(e => e.IsBound && e is not IEdmFunction).ToList();
-            foreach (var edmOperation in edmFunctions.Concat(edmActions))
+            foreach (var edmOperation in _model.GetAllElements().OfType<IEdmOperation>().Where(x => x.IsBound))
             {
                 if (!CanFilter(edmOperation))
                 {
@@ -731,20 +728,8 @@ namespace Microsoft.OpenApi.OData.Edm
                     continue;
                 }
 
-                var firstEntityType = bindingType.AsEntity().EntityDefinition();
-                
-                bool filter(IEdmNavigationSource z) =>
-                    z.EntityType() != firstEntityType &&
-                    z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
+                var allEntitiesForOperation = GetAllEntitiesForOperation(bindingType);
 
-                var allEntitiesForOperation = new IEdmEntityType[] { firstEntityType }
-                    .Union(_model.EntityContainer.EntitySets()
-                            .Where(filter).Select(x => x.EntityType())) //Search all EntitySets
-                    .Union(_model.EntityContainer.Singletons()
-                            .Where(filter).Select(x => x.EntityType())) //Search all singletons
-                    .Distinct()
-                    .ToList();
-                
                 foreach (var bindingEntityType in allEntitiesForOperation)
                 {
                     // 1. Search for corresponding navigation source path
@@ -758,12 +743,83 @@ namespace Microsoft.OpenApi.OData.Edm
 
                     // 4. Search for derived generated navigation property
                     AppendBoundOperationOnDerivedNavigationPropertyPath(edmOperation, isCollection, bindingEntityType, convertSettings);
+                }
+            }
 
-                    // 5. Search for operation
+            // all operations appended to properties
+            // append bound operations to functions
+            foreach (var edmOperation in _model.GetAllElements().OfType<IEdmOperation>().Where(x => x.IsBound))
+            {
+                if (!CanFilter(edmOperation))
+                {
+                    continue;
+                }
+
+                IEdmOperationParameter bindingParameter = edmOperation.Parameters.First();
+                IEdmTypeReference bindingType = bindingParameter.Type;
+
+                bool isCollection = bindingType.IsCollection();
+                if (isCollection)
+                {
+                    bindingType = bindingType.AsCollection().ElementType();
+                }
+                if (!bindingType.IsEntity())
+                {
+                    continue;
+                }
+
+                var allEntitiesForOperation = GetAllEntitiesForOperation(bindingType);
+
+                foreach (var bindingEntityType in allEntitiesForOperation)
+                {
                     AppendBoundOperationOnOperationPath(edmOperation, isCollection, bindingEntityType);
                 }
             }
+
+            // append navigation properties to functions with return type
+            var functionPaths = _allOperationPaths.Where(x => x.LastSegment is ODataOperationSegment operationSegment
+                                                    && operationSegment.Operation is IEdmFunction edmFunction
+                                                    && edmFunction.IsComposable
+                                                    && edmFunction.ReturnType != null
+                                                    && edmFunction.ReturnType.Definition is IEdmEntityType returnBindingEntityType).ToList();
+
+            foreach( var functionPath in functionPaths)
+            {
+                if (functionPath.LastSegment is not ODataOperationSegment operationSegment
+                                                    || operationSegment.Operation is not IEdmFunction edmFunction
+                                                    || !edmFunction.IsComposable
+                                                    || edmFunction.ReturnType == null
+                                                    || edmFunction.ReturnType.Definition is not IEdmEntityType returnBindingEntityType)
+                {
+                    continue;
+                }
+
+                foreach (var navProperty in returnBindingEntityType.NavigationProperties())
+                {
+                    ODataPath newNavigationPath = functionPath.Clone();
+                    newNavigationPath.Push(new ODataNavigationPropertySegment(navProperty));
+                    AppendPath(newNavigationPath);
+                }
+            }
         }
+
+        private List<IEdmEntityType> GetAllEntitiesForOperation(IEdmTypeReference bindingType)
+        {
+            var firstEntityType = bindingType.AsEntity().EntityDefinition();
+
+            bool filter(IEdmNavigationSource z) =>
+                z.EntityType() != firstEntityType &&
+                z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
+
+            return new IEdmEntityType[] { firstEntityType }
+                    .Union(_model.EntityContainer.EntitySets()
+                            .Where(filter).Select(x => x.EntityType())) //Search all EntitySets
+                    .Union(_model.EntityContainer.Singletons()
+                            .Where(filter).Select(x => x.EntityType())) //Search all singletons
+                    .Distinct()
+                    .ToList();
+        }
+
         private static readonly HashSet<ODataPathKind> _oDataPathKindsToSkipForOperationsWhenSingle = new() {
             ODataPathKind.EntitySet,
             ODataPathKind.MediaEntity,
@@ -1011,41 +1067,19 @@ namespace Microsoft.OpenApi.OData.Edm
 
             foreach (var path in paths)
             {
-                if (path.LastSegment is ODataOperationSegment operationSegment)
+                if (path.LastSegment is not ODataOperationSegment operationSegment 
+                    || (path.Segments.Count > 1 && path.Segments[path.Segments.Count - 2] is ODataOperationSegment)
+                    || operationSegment.Operation is not IEdmFunction edmFunction || !edmFunction.IsComposable
+                    || edmFunction.ReturnType == null || !edmFunction.ReturnType.Definition.Equals(bindingEntityType)
+                    || isCollection
+                    || !EdmModelHelper.IsOperationAllowed(_model, edmOperation, operationSegment.Operation, true))
                 {
-                    if (path.Segments.Count > 1 && path.Segments[path.Segments.Count - 2] is ODataOperationSegment)
-                    {
-                        continue;
-                    }
-
-                    if (operationSegment.Operation is IEdmFunction edmFunction && edmFunction.IsComposable)
-                    {
-                        if (edmFunction.ReturnType != null && edmFunction.ReturnType.Definition.Equals(bindingEntityType))
-                        {
-                            if (!isCollection)
-                            {
-                                if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, operationSegment.Operation, true))
-                                {
-                                    continue;
-                                }
-
-                                ODataPath newOperationPath = path.Clone();
-                                newOperationPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
-                                AppendPath(newOperationPath);
-
-                                if (edmOperation.ReturnType != null && edmOperation.ReturnType.Definition is IEdmEntityType returnBindingEntityType)
-                                {
-                                    foreach (var navProperty in returnBindingEntityType.NavigationProperties())
-                                    {
-                                        ODataPath newNavigationPath = newOperationPath.Clone();
-                                        newNavigationPath.Push(new ODataNavigationPropertySegment(navProperty));
-                                        AppendPath(newNavigationPath);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    continue;
                 }
+
+                ODataPath newOperationPath = path.Clone();
+                newOperationPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
+                AppendPath(newOperationPath);
             }
         }
     }
