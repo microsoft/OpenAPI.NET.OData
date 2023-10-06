@@ -313,7 +313,7 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 return ODataPathKind.OperationImport;
             }
-            else if (Segments.Any(c => c.Kind == ODataSegmentKind.Operation))
+            else if (Segments.Last().Kind == ODataSegmentKind.Operation)
             {
                 return ODataPathKind.Operation;
             }

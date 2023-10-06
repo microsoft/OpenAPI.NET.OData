@@ -1032,6 +1032,16 @@ namespace Microsoft.OpenApi.OData.Edm
                                 ODataPath newOperationPath = path.Clone();
                                 newOperationPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
                                 AppendPath(newOperationPath);
+
+                                if (edmOperation.ReturnType != null && edmOperation.ReturnType.Definition is IEdmEntityType returnBindingEntityType)
+                                {
+                                    foreach (var navProperty in returnBindingEntityType.NavigationProperties())
+                                    {
+                                        ODataPath newNavigationPath = newOperationPath.Clone();
+                                        newNavigationPath.Push(new ODataNavigationPropertySegment(navProperty));
+                                        AppendPath(newNavigationPath);
+                                    }
+                                }
                             }
                         }
                     }
