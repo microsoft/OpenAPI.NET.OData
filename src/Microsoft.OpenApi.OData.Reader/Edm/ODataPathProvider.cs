@@ -708,7 +708,10 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         private void RetrieveBoundOperationPaths(OpenApiConvertSettings convertSettings)
         {
-            foreach (var edmOperation in _model.GetAllElements().OfType<IEdmOperation>().Where(e => e.IsBound))
+            // process functions before actions
+            var edmFunctions = _model.GetAllElements().OfType<IEdmFunction>().Where(e => e.IsBound).ToList();
+            var edmActions = _model.GetAllElements().OfType<IEdmOperation>().Where(e => e.IsBound && e is not IEdmFunction).ToList();
+            foreach (var edmOperation in edmFunctions.Concat(edmActions))
             {
                 if (!CanFilter(edmOperation))
                 {
@@ -755,6 +758,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
                     // 4. Search for derived generated navigation property
                     AppendBoundOperationOnDerivedNavigationPropertyPath(edmOperation, isCollection, bindingEntityType, convertSettings);
+
+                    // 5. Search for operation
+                    AppendBoundOperationOnOperationPath(edmOperation, isCollection, bindingEntityType);
                 }
             }
         }
@@ -989,6 +995,45 @@ namespace Microsoft.OpenApi.OData.Edm
                         newPath.Push(new ODataTypeCastSegment(bindingEntityType, _model));
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
                         AppendPath(newPath);
+                    }
+                }
+            }
+        }
+
+        private void AppendBoundOperationOnOperationPath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType)
+        {
+            bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
+
+            // only composable functions
+            var paths = _allOperationPaths.Where(x => x.LastSegment is ODataOperationSegment operationSegment
+                                                    && operationSegment.Operation is IEdmFunction edmFunction
+                                                    && edmFunction.IsComposable).ToList();
+
+            foreach (var path in paths)
+            {
+                if (path.LastSegment is ODataOperationSegment operationSegment)
+                {
+                    if (path.Segments.Count > 1 && path.Segments[path.Segments.Count - 2] is ODataOperationSegment)
+                    {
+                        continue;
+                    }
+
+                    if (operationSegment.Operation is IEdmFunction edmFunction && edmFunction.IsComposable)
+                    {
+                        if (edmFunction.ReturnType != null && edmFunction.ReturnType.Definition.Equals(bindingEntityType))
+                        {
+                            if (!isCollection)
+                            {
+                                if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, operationSegment.Operation, true))
+                                {
+                                    continue;
+                                }
+
+                                ODataPath newOperationPath = path.Clone();
+                                newOperationPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
+                                AppendPath(newOperationPath);
+                            }
+                        }
                     }
                 }
             }
