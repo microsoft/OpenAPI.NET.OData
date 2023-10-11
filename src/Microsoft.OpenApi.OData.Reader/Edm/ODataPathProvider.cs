@@ -708,7 +708,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         private void RetrieveBoundOperationPaths(OpenApiConvertSettings convertSettings)
         {
-            foreach (var edmOperation in _model.GetAllElements().OfType<IEdmOperation>().Where(x => x.IsBound))
+            var edmOperations = _model.GetAllElements().OfType<IEdmOperation>().Where(x => x.IsBound).ToArray();
+            foreach (var edmOperation in edmOperations)
             {
                 if (!CanFilter(edmOperation))
                 {
@@ -748,7 +749,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             // all operations appended to properties
             // append bound operations to functions
-            foreach (var edmOperation in _model.GetAllElements().OfType<IEdmOperation>().Where(x => x.IsBound))
+            foreach (var edmOperation in edmOperations)
             {
                 if (!CanFilter(edmOperation))
                 {
@@ -781,7 +782,7 @@ namespace Microsoft.OpenApi.OData.Edm
                                                     && operationSegment.Operation is IEdmFunction edmFunction
                                                     && edmFunction.IsComposable
                                                     && edmFunction.ReturnType != null
-                                                    && edmFunction.ReturnType.Definition is IEdmEntityType returnBindingEntityType).ToList();
+                                                    && edmFunction.ReturnType.Definition is IEdmEntityType returnBindingEntityType);
 
             foreach( var functionPath in functionPaths)
             {
