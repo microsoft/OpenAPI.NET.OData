@@ -136,14 +136,6 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <returns>The entity content description.</returns>
         protected IDictionary<string, OpenApiMediaType> GetContentDescription()
         {
-            var content = new Dictionary<string, OpenApiMediaType>();
-
-            OpenApiSchema schema = new OpenApiSchema
-            {
-                Type = "string",
-                Format = "binary"
-            };
-
             // Fetch the respective AcceptableMediaTypes
             (_, var property) = GetStreamElements();
             IEnumerable<string> mediaTypes = null;
@@ -153,11 +145,21 @@ namespace Microsoft.OpenApi.OData.Operation
                     CoreConstants.AcceptableMediaTypes);
             }
 
+            OpenApiSchema schema = new()
+            {
+                Type = "string",
+                Format = "binary"
+            };
+
+            var content = new Dictionary<string, OpenApiMediaType>();
             if (mediaTypes != null)
             {
                 foreach (string item in mediaTypes)
                 {
-                    content.Add(item, null);
+                    content.Add(item, new OpenApiMediaType
+                    {
+                        Schema = schema
+                    });
                 }
             }
             else
