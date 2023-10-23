@@ -93,6 +93,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             var statusCode = useHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode200;
             Assert.Equal(new[] { statusCode, "default" }, getOperation.Responses.Select(r => r.Key));
             Assert.Equal(new[] { statusCode, "default" }, getOperation2.Responses.Select(r => r.Key));
+            Assert.NotNull(getOperation.Responses[statusCode].Content.Values?.Select(x => x.Schema));
+            Assert.Equal(new string[] { "binary" }, getOperation.Responses[statusCode].Content.Values.Select(x => x.Schema.Format));
+            Assert.Equal(new string[] { "string" }, getOperation.Responses[statusCode].Content.Values.Select(x => x.Schema.Type));
 
             if (!string.IsNullOrEmpty(annotation))
             {
