@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
@@ -235,13 +234,22 @@ namespace Microsoft.OpenApi.OData.Common
         internal static string GenerateComplexPropertyPathTagName(ODataPath path, ODataContext context)
         {
             Utils.CheckArgumentNull(path, nameof(path));
-
-            // Get the segment before the last complex type segment
+            
             ODataComplexPropertySegment complexSegment = path.Segments.OfType<ODataComplexPropertySegment>()?.Last();
             Utils.CheckArgumentNull(complexSegment, nameof(complexSegment));
 
+            // Get the segment before the last complex type segment
             int complexSegmentIndex = path.Segments.IndexOf(complexSegment);
             ODataSegment preComplexSegment = path.Segments.ElementAt(complexSegmentIndex - 1);
+            int preComplexSegmentIndex = path.Segments.IndexOf(preComplexSegment);
+
+            while (preComplexSegment is ODataTypeCastSegment)
+            {
+                // Tag names don't include OData type cast segment identifiers 
+                preComplexSegmentIndex--;
+                preComplexSegment = path.Segments.ElementAt(preComplexSegmentIndex);
+            }
+
             string tagName = null;
 
             if (preComplexSegment is ODataNavigationSourceSegment sourceSegment)
@@ -254,12 +262,12 @@ namespace Microsoft.OpenApi.OData.Common
             }
             else if (preComplexSegment is ODataKeySegment)
             {
-                var thirdLastSegment = path.Segments.ElementAt(complexSegmentIndex - 2);
-                if (thirdLastSegment is ODataNavigationPropertySegment)
+                var prevKeySegment = path.Segments.ElementAt(preComplexSegmentIndex - 1);
+                if (prevKeySegment is ODataNavigationPropertySegment)
                 {
                     tagName = GenerateNavigationPropertyPathTagName(path, context);
                 }
-                else if (thirdLastSegment is ODataNavigationSourceSegment sourceSegment1)
+                else if (prevKeySegment is ODataNavigationSourceSegment sourceSegment1)
                 {
                     tagName = $"{sourceSegment1.NavigationSource.Name}";
                 }
