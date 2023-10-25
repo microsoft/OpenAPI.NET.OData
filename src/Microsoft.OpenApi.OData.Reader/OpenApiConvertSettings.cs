@@ -247,8 +247,18 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/Sets a value indicating whether or not to expand derived types to retrieve their declared navigation properties.
         /// </summary>
-        public bool ExpandDerivedTypesNavigationProperties { get; set; } = true;
+        [Obsolete("Use RetrieveDerivedTypesProperties to Get or Set the value.")]
+        public bool ExpandDerivedTypesNavigationProperties
+        {
+            get => RetrieveDerivedTypesProperties;
+            set => RetrieveDerivedTypesProperties = value;
+        }
 
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not to retrieve complex or navigation properties declared in derived types.
+        /// </summary>
+        public bool RetrieveDerivedTypesProperties { get; set; } = true;
+        
         /// <summary>
         /// Gets/sets a value indicating whether or not to set the deprecated tag for the operation when a revision is present as well as the "x-ms-deprecation" extension with additional information.
         /// </summary>
@@ -387,6 +397,7 @@ namespace Microsoft.OpenApi.OData
                 InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
                 RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
                 ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties,
+                RetrieveDerivedTypesProperties = this.RetrieveDerivedTypesProperties,
                 CustomXMLAttributesMapping = this.CustomXMLAttributesMapping,
                 CustomHttpMethodLinkRelMapping = this.CustomHttpMethodLinkRelMapping,
                 AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments,

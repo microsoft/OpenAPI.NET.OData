@@ -44,6 +44,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.NamespacePrefixToStripForInMethod
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.RetrieveDerivedTypesProperties.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.RetrieveDerivedTypesProperties.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.SemVerVersion.get -> string
 Microsoft.OpenApi.OData.OpenApiConvertSettings.SemVerVersion.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.get -> bool
