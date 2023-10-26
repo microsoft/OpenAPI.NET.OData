@@ -234,7 +234,8 @@ namespace Microsoft.OpenApi.OData.Common
         internal static string GenerateComplexPropertyPathTagName(ODataPath path, ODataContext context)
         {
             Utils.CheckArgumentNull(path, nameof(path));
-            
+            Utils.CheckArgumentNull(context, nameof(context));
+
             ODataComplexPropertySegment complexSegment = path.Segments.OfType<ODataComplexPropertySegment>()?.Last();
             Utils.CheckArgumentNull(complexSegment, nameof(complexSegment));
 
@@ -245,6 +246,7 @@ namespace Microsoft.OpenApi.OData.Common
 
             while (preComplexSegment is ODataTypeCastSegment)
             {
+                // Skip this segment,
                 // Tag names don't include OData type cast segment identifiers 
                 preComplexSegmentIndex--;
                 preComplexSegment = path.Segments.ElementAt(preComplexSegmentIndex);
