@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18264, paths.Count());
+            Assert.Equal(18280, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -83,6 +83,12 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.getMemberGroups")));
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.getMemberObjects")));
             Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.restore")));
+
+            // Test that complex and navigation properties on derived types are created
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals(
+                "/identity/authenticationEventsFlows({id})/microsoft.graph.externalUsersSelfServiceSignUpEventsFlow/onAttributeCollection/microsoft.graph.onAttributeCollectionExternalUsersSelfServiceSignUp/attributes")));
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals(
+                "/identity/authenticationEventsFlows({id})/microsoft.graph.externalUsersSelfServiceSignUpEventsFlow/onAuthenticationMethodLoadStart/microsoft.graph.onAuthenticationMethodLoadStartExternalUsersSelfServiceSignUp/identityProviders")));
         }
 
         [Fact]
