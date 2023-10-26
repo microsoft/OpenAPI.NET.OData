@@ -250,14 +250,14 @@ namespace Microsoft.OpenApi.OData
         [Obsolete("Use RetrieveDerivedTypesProperties to Get or Set the value.")]
         public bool ExpandDerivedTypesNavigationProperties
         {
-            get => RetrieveDerivedTypesProperties;
-            set => RetrieveDerivedTypesProperties = value;
+            get => GenerateDerivedTypesProperties;
+            set => GenerateDerivedTypesProperties = value;
         }
 
         /// <summary>
         /// Gets/Sets a value indicating whether or not to retrieve complex or navigation properties declared in derived types.
         /// </summary>
-        public bool RetrieveDerivedTypesProperties { get; set; } = true;
+        public bool GenerateDerivedTypesProperties { get; set; } = true;
         
         /// <summary>
         /// Gets/sets a value indicating whether or not to set the deprecated tag for the operation when a revision is present as well as the "x-ms-deprecation" extension with additional information.
@@ -396,8 +396,7 @@ namespace Microsoft.OpenApi.OData
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
                 InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
                 RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
-                ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties,
-                RetrieveDerivedTypesProperties = this.RetrieveDerivedTypesProperties,
+                GenerateDerivedTypesProperties = this.GenerateDerivedTypesProperties,
                 CustomXMLAttributesMapping = this.CustomXMLAttributesMapping,
                 CustomHttpMethodLinkRelMapping = this.CustomHttpMethodLinkRelMapping,
                 AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments,

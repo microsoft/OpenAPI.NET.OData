@@ -687,7 +687,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    if (convertSettings.RetrieveDerivedTypesProperties)
+                    if (convertSettings.GenerateDerivedTypesProperties)
                     {
                         if (annotable is IEdmNavigationProperty navigationProperty && !navigationProperty.ContainsTarget)
                         {
