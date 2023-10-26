@@ -2603,6 +2603,173 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     x-description: Casts the previous resource to Employee.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo:
+    get:
+      tags:
+        - Me.Location
+      summary: Get AddressInfo property value
+      operationId: Me.ListAddressInfo
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Address
+              - Address desc
+              - City
+              - City desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Address
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    patch:
+      tags:
+        - Me.Location
+      summary: Update property AddressInfo value.
+      operationId: Me.UpdateAddressInfo
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    post:
+      tags:
+        - Me.Location
+      summary: Sets a new value for the collection of Location.
+      operationId: Me.SetAddressInfo
+      consumes:
+        - application/json
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/$count:
+    get:
+      tags:
+        - Me.Location
+      summary: Get the number of the resource
+      operationId: Me.AddressInfo.GetCount-8488
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    x-description: Provides operations to count the resources in the collection.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
+    get:
+      tags:
+        - Me.Location
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      operationId: Me.ListAddressInfo.AsEventLocation
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    x-description: Casts the previous resource to EventLocation.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Me.AddressInfo.GetCount.AsEventLocation-9375
+      parameters:
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    x-description: Provides operations to count the resources in the collection.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/BestFriend:
     get:
       tags:
@@ -3749,6 +3916,88 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     x-description: Provides operations to count the resources in the collection.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/HomeAddress:
+    get:
+      tags:
+        - Me.Location
+      summary: Get HomeAddress property value
+      operationId: Me.GetHomeAddress
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Address
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Result entities
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    patch:
+      tags:
+        - Me.Location
+      summary: Update property HomeAddress value.
+      operationId: Me.UpdateHomeAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
+    get:
+      tags:
+        - Me.Location
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      operationId: Me.GetHomeAddress.AsEventLocation
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    x-description: Casts the previous resource to EventLocation.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers:
     get:
       tags:
@@ -5025,6 +5274,181 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     x-description: Casts the previous resource to Manager.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo:
+    get:
+      tags:
+        - Me.Location
+      summary: Get AddressInfo property value
+      operationId: Me.ListAddressInfo
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Address
+              - Address desc
+              - City
+              - City desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Address
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    patch:
+      tags:
+        - Me.Location
+      summary: Update property AddressInfo value.
+      operationId: Me.UpdateAddressInfo
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    post:
+      tags:
+        - Me.Location
+      summary: Sets a new value for the collection of Location.
+      operationId: Me.SetAddressInfo
+      consumes:
+        - application/json
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/$count:
+    get:
+      tags:
+        - Me.Location
+      summary: Get the number of the resource
+      operationId: Me.AddressInfo.GetCount-75da
+      parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    x-description: Provides operations to count the resources in the collection.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
+    get:
+      tags:
+        - Me.Location
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      operationId: Me.ListAddressInfo.AsEventLocation
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    x-description: Casts the previous resource to EventLocation.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Me.AddressInfo.GetCount.AsEventLocation-f67e
+      parameters:
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    x-description: Provides operations to count the resources in the collection.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/BestFriend:
     get:
       tags:
@@ -6706,6 +7130,88 @@ paths:
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     x-description: Provides operations to count the resources in the collection.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/HomeAddress:
+    get:
+      tags:
+        - Me.Location
+      summary: Get HomeAddress property value
+      operationId: Me.GetHomeAddress
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Address
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Result entities
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    patch:
+      tags:
+        - Me.Location
+      summary: Update property HomeAddress value.
+      operationId: Me.UpdateHomeAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
+    get:
+      tags:
+        - Me.Location
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      operationId: Me.GetHomeAddress.AsEventLocation
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    x-description: Casts the previous resource to EventLocation.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire:
     post:
       tags:
@@ -12907,6 +13413,210 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     x-description: Casts the previous resource to Employee.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo':
+    get:
+      tags:
+        - People.Location
+      summary: Get AddressInfo property value
+      operationId: People.ListAddressInfo
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Address
+              - Address desc
+              - City
+              - City desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Address
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    patch:
+      tags:
+        - People.Location
+      summary: Update property AddressInfo value.
+      operationId: People.UpdateAddressInfo
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    post:
+      tags:
+        - People.Location
+      summary: Sets a new value for the collection of Location.
+      operationId: People.SetAddressInfo
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/$count':
+    get:
+      tags:
+        - People.Location
+      summary: Get the number of the resource
+      operationId: People.AddressInfo.GetCount-3d43
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    x-description: Provides operations to count the resources in the collection.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation':
+    get:
+      tags:
+        - People.Location
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      operationId: People.ListAddressInfo.AsEventLocation
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    x-description: Casts the previous resource to EventLocation.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: People.AddressInfo.GetCount.AsEventLocation-ac7d
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    x-description: Provides operations to count the resources in the collection.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/BestFriend':
     get:
       tags:
@@ -14248,6 +14958,107 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     x-description: Provides operations to count the resources in the collection.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/HomeAddress':
+    get:
+      tags:
+        - People.Location
+      summary: Get HomeAddress property value
+      operationId: People.GetHomeAddress
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Address
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Result entities
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    patch:
+      tags:
+        - People.Location
+      summary: Update property HomeAddress value.
+      operationId: People.UpdateHomeAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation':
+    get:
+      tags:
+        - People.Location
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      operationId: People.GetHomeAddress.AsEventLocation
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    x-description: Casts the previous resource to EventLocation.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
     get:
       tags:
@@ -15709,6 +16520,218 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     x-description: Casts the previous resource to Manager.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo':
+    get:
+      tags:
+        - People.Location
+      summary: Get AddressInfo property value
+      operationId: People.ListAddressInfo
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Address
+              - Address desc
+              - City
+              - City desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Address
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    patch:
+      tags:
+        - People.Location
+      summary: Update property AddressInfo value.
+      operationId: People.UpdateAddressInfo
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    post:
+      tags:
+        - People.Location
+      summary: Sets a new value for the collection of Location.
+      operationId: People.SetAddressInfo
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/$count':
+    get:
+      tags:
+        - People.Location
+      summary: Get the number of the resource
+      operationId: People.AddressInfo.GetCount-f84e
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    x-description: Provides operations to count the resources in the collection.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation':
+    get:
+      tags:
+        - People.Location
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      operationId: People.ListAddressInfo.AsEventLocation
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    x-description: Casts the previous resource to EventLocation.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: People.AddressInfo.GetCount.AsEventLocation-3722
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: ConsistencyLevel
+          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
+          type: string
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    x-description: Provides operations to count the resources in the collection.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/BestFriend':
     get:
       tags:
@@ -17669,6 +18692,107 @@ paths:
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     x-description: Provides operations to count the resources in the collection.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/HomeAddress':
+    get:
+      tags:
+        - People.Location
+      summary: Get HomeAddress property value
+      operationId: People.GetHomeAddress
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Address
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Result entities
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    patch:
+      tags:
+        - People.Location
+      summary: Update property HomeAddress value.
+      operationId: People.UpdateHomeAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation':
+    get:
+      tags:
+        - People.Location
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      operationId: People.GetHomeAddress.AsEventLocation
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    x-description: Casts the previous resource to EventLocation.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire':
     post:
       tags:

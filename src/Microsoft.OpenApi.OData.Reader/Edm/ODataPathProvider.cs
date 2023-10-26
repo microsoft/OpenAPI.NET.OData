@@ -687,7 +687,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    if (convertSettings.ExpandDerivedTypesNavigationProperties)
+                    if (convertSettings.GenerateDerivedTypesProperties)
                     {
                         if (annotable is IEdmNavigationProperty navigationProperty && !navigationProperty.ContainsTarget)
                         {
@@ -698,6 +698,11 @@ namespace Microsoft.OpenApi.OData.Edm
                         {
                             RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
                         }
+                        
+                        if (targetType is IEdmEntityType entityType)
+                        {
+                            RetrieveComplexPropertyPaths(entityType, castPath, convertSettings);
+                        }                                                
                     }
                 }
             }
