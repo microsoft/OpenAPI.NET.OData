@@ -168,6 +168,15 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 if (segment == navPropSegments.Last())
                 {
+                    // If there exists an OData type cast segment present in the path,
+                    // this segement identifier needs to be added to the operation id
+                    ODataTypeCastSegment typeCastSegment = path.Segments.OfType<ODataTypeCastSegment>().LastOrDefault();
+                    if (typeCastSegment != null && path.Kind == ODataPathKind.NavigationProperty)
+                    {
+                        IEdmSchemaElement schemaElement = typeCastSegment.StructuredType as IEdmSchemaElement;
+                        items.Add("As" + Utils.UpperFirstChar(schemaElement.Name));
+                    }
+                    
                     items.Add(segment.NavigationProperty.Name);
                     break;
                 }
