@@ -163,7 +163,7 @@ namespace Microsoft.OpenApi.OData.Common
 
             // For navigation property paths with odata type cast segments
             // the OData type cast segments identifiers will be used in the operation id
-            IEnumerable<ODataSegment> segments = path.Segments.Skip(1).Where(s => s is ODataNavigationPropertySegment || s is ODataTypeCastSegment);
+            IEnumerable<ODataSegment> segments = path.Segments.Skip(1).Where(static s => s is ODataNavigationPropertySegment || s is ODataTypeCastSegment);
             Utils.CheckArgumentNull(segments, nameof(segments));
 
             string previousTypeCastSegmentId = null;
