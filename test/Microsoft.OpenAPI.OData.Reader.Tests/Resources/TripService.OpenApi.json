@@ -4439,7 +4439,7 @@
         ],
         "summary": "Get BestFriend from Me",
         "description": "The best friend.",
-        "operationId": "Me.GetBestFriend",
+        "operationId": "Me.AsEmployee.GetBestFriend",
         "parameters": [
           {
             "name": "$select",
@@ -4522,7 +4522,7 @@
         ],
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
-        "operationId": "Me.UpdateBestFriend",
+        "operationId": "Me.AsEmployee.UpdateBestFriend",
         "requestBody": {
           "description": "New navigation property values",
           "content": {
@@ -5133,7 +5133,7 @@
           "Me.Person"
         ],
         "summary": "Get Friends from Me",
-        "operationId": "Me.ListFriends",
+        "operationId": "Me.AsEmployee.ListFriends",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -6335,7 +6335,7 @@
           "Me.Person"
         ],
         "summary": "Get Peers from Me",
-        "operationId": "Me.ListPeers",
+        "operationId": "Me.AsEmployee.ListPeers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -7151,7 +7151,7 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
-        "operationId": "Me.ListTrips",
+        "operationId": "Me.AsEmployee.ListTrips",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -7281,7 +7281,7 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
-        "operationId": "Me.CreateTrips",
+        "operationId": "Me.AsEmployee.CreateTrips",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -7330,7 +7330,7 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
-        "operationId": "Me.GetTrips",
+        "operationId": "Me.AsEmployee.GetTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -7419,7 +7419,7 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
-        "operationId": "Me.UpdateTrips",
+        "operationId": "Me.AsEmployee.UpdateTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -7469,7 +7469,7 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
-        "operationId": "Me.DeleteTrips",
+        "operationId": "Me.AsEmployee.DeleteTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -7674,7 +7674,7 @@
           "Me.Trips.PlanItem"
         ],
         "summary": "Get PlanItems from Me",
-        "operationId": "Me.Trips.ListPlanItems",
+        "operationId": "Me.AsEmployee.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "TripId",
@@ -8627,7 +8627,7 @@
         ],
         "summary": "Get BestFriend from Me",
         "description": "The best friend.",
-        "operationId": "Me.GetBestFriend",
+        "operationId": "Me.AsManager.GetBestFriend",
         "parameters": [
           {
             "name": "$select",
@@ -8710,7 +8710,7 @@
         ],
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
-        "operationId": "Me.UpdateBestFriend",
+        "operationId": "Me.AsManager.UpdateBestFriend",
         "requestBody": {
           "description": "New navigation property values",
           "content": {
@@ -9349,7 +9349,7 @@
           "Me.Person"
         ],
         "summary": "Get DirectReports from Me",
-        "operationId": "Me.ListDirectReports",
+        "operationId": "Me.AsManager.ListDirectReports",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -10192,7 +10192,7 @@
           "Me.Person"
         ],
         "summary": "Get Friends from Me",
-        "operationId": "Me.ListFriends",
+        "operationId": "Me.AsManager.ListFriends",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -11446,7 +11446,7 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
-        "operationId": "Me.ListTrips",
+        "operationId": "Me.AsManager.ListTrips",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -11576,7 +11576,7 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
-        "operationId": "Me.CreateTrips",
+        "operationId": "Me.AsManager.CreateTrips",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -11625,7 +11625,7 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
-        "operationId": "Me.GetTrips",
+        "operationId": "Me.AsManager.GetTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -11714,7 +11714,7 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
-        "operationId": "Me.UpdateTrips",
+        "operationId": "Me.AsManager.UpdateTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -11764,7 +11764,7 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
-        "operationId": "Me.DeleteTrips",
+        "operationId": "Me.AsManager.DeleteTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -11969,7 +11969,7 @@
           "Me.Trips.PlanItem"
         ],
         "summary": "Get PlanItems from Me",
-        "operationId": "Me.Trips.ListPlanItems",
+        "operationId": "Me.AsManager.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "TripId",
@@ -21648,7 +21648,7 @@
         ],
         "summary": "Get BestFriend from People",
         "description": "The best friend.",
-        "operationId": "People.GetBestFriend",
+        "operationId": "People.AsEmployee.GetBestFriend",
         "parameters": [
           {
             "name": "UserName",
@@ -21741,7 +21741,7 @@
         ],
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
-        "operationId": "People.UpdateBestFriend",
+        "operationId": "People.AsEmployee.UpdateBestFriend",
         "parameters": [
           {
             "name": "UserName",
@@ -22506,7 +22506,7 @@
           "People.Person"
         ],
         "summary": "Get Friends from People",
-        "operationId": "People.ListFriends",
+        "operationId": "People.AsEmployee.ListFriends",
         "parameters": [
           {
             "name": "UserName",
@@ -23914,7 +23914,7 @@
           "People.Person"
         ],
         "summary": "Get Peers from People",
-        "operationId": "People.ListPeers",
+        "operationId": "People.AsEmployee.ListPeers",
         "parameters": [
           {
             "name": "UserName",
@@ -24872,7 +24872,7 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
-        "operationId": "People.ListTrips",
+        "operationId": "People.AsEmployee.ListTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -25012,7 +25012,7 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
-        "operationId": "People.CreateTrips",
+        "operationId": "People.AsEmployee.CreateTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -25073,7 +25073,7 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
-        "operationId": "People.GetTrips",
+        "operationId": "People.AsEmployee.GetTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -25172,7 +25172,7 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
-        "operationId": "People.UpdateTrips",
+        "operationId": "People.AsEmployee.UpdateTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -25232,7 +25232,7 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
-        "operationId": "People.DeleteTrips",
+        "operationId": "People.AsEmployee.DeleteTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -25457,7 +25457,7 @@
           "People.Trips.PlanItem"
         ],
         "summary": "Get PlanItems from People",
-        "operationId": "People.Trips.ListPlanItems",
+        "operationId": "People.AsEmployee.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "UserName",
@@ -26592,7 +26592,7 @@
         ],
         "summary": "Get BestFriend from People",
         "description": "The best friend.",
-        "operationId": "People.GetBestFriend",
+        "operationId": "People.AsManager.GetBestFriend",
         "parameters": [
           {
             "name": "UserName",
@@ -26685,7 +26685,7 @@
         ],
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
-        "operationId": "People.UpdateBestFriend",
+        "operationId": "People.AsManager.UpdateBestFriend",
         "parameters": [
           {
             "name": "UserName",
@@ -27478,7 +27478,7 @@
           "People.Person"
         ],
         "summary": "Get DirectReports from People",
-        "operationId": "People.ListDirectReports",
+        "operationId": "People.AsManager.ListDirectReports",
         "parameters": [
           {
             "name": "UserName",
@@ -28463,7 +28463,7 @@
           "People.Person"
         ],
         "summary": "Get Friends from People",
-        "operationId": "People.ListFriends",
+        "operationId": "People.AsManager.ListFriends",
         "parameters": [
           {
             "name": "UserName",
@@ -29935,7 +29935,7 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
-        "operationId": "People.ListTrips",
+        "operationId": "People.AsManager.ListTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -30075,7 +30075,7 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
-        "operationId": "People.CreateTrips",
+        "operationId": "People.AsManager.CreateTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -30136,7 +30136,7 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
-        "operationId": "People.GetTrips",
+        "operationId": "People.AsManager.GetTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -30235,7 +30235,7 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
-        "operationId": "People.UpdateTrips",
+        "operationId": "People.AsManager.UpdateTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -30295,7 +30295,7 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
-        "operationId": "People.DeleteTrips",
+        "operationId": "People.AsManager.DeleteTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -30520,7 +30520,7 @@
           "People.Trips.PlanItem"
         ],
         "summary": "Get PlanItems from People",
-        "operationId": "People.Trips.ListPlanItems",
+        "operationId": "People.AsManager.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "UserName",

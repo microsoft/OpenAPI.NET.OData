@@ -2776,7 +2776,7 @@ paths:
         - Me.Person
       summary: Get BestFriend from Me
       description: The best friend.
-      operationId: Me.GetBestFriend
+      operationId: Me.AsEmployee.GetBestFriend
       produces:
         - application/json
       parameters:
@@ -2831,7 +2831,7 @@ paths:
         - Me.Person
       summary: Update the best friend.
       description: Update an instance of a best friend.
-      operationId: Me.UpdateBestFriend
+      operationId: Me.AsEmployee.UpdateBestFriend
       consumes:
         - application/json
       parameters:
@@ -3232,7 +3232,7 @@ paths:
       tags:
         - Me.Person
       summary: Get Friends from Me
-      operationId: Me.ListFriends
+      operationId: Me.AsEmployee.ListFriends
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -4003,7 +4003,7 @@ paths:
       tags:
         - Me.Person
       summary: Get Peers from Me
-      operationId: Me.ListPeers
+      operationId: Me.AsEmployee.ListPeers
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -4523,7 +4523,7 @@ paths:
         - Me.Trip
       summary: List trips.
       description: Retrieve a list of trips.
-      operationId: Me.ListTrips
+      operationId: Me.AsEmployee.ListTrips
       parameters:
         - in: header
           name: ConsistencyLevel
@@ -4599,7 +4599,7 @@ paths:
         - Me.Trip
       summary: Create a trip.
       description: Create a new trip.
-      operationId: Me.CreateTrips
+      operationId: Me.AsEmployee.CreateTrips
       consumes:
         - application/json
       produces:
@@ -4635,7 +4635,7 @@ paths:
         - Me.Trip
       summary: Get a trip.
       description: Retrieve the properties of a trip.
-      operationId: Me.GetTrips
+      operationId: Me.AsEmployee.GetTrips
       produces:
         - application/json
       parameters:
@@ -4692,7 +4692,7 @@ paths:
         - Me.Trip
       summary: Update a trip.
       description: Update an instance of a trip.
-      operationId: Me.UpdateTrips
+      operationId: Me.AsEmployee.UpdateTrips
       consumes:
         - application/json
       parameters:
@@ -4728,7 +4728,7 @@ paths:
         - Me.Trip
       summary: Delete a trip.
       description: Delete an instance of a trip.
-      operationId: Me.DeleteTrips
+      operationId: Me.AsEmployee.DeleteTrips
       parameters:
         - in: path
           name: TripId
@@ -4861,7 +4861,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Get PlanItems from Me
-      operationId: Me.Trips.ListPlanItems
+      operationId: Me.AsEmployee.Trips.ListPlanItems
       parameters:
         - in: path
           name: TripId
@@ -5455,7 +5455,7 @@ paths:
         - Me.Person
       summary: Get BestFriend from Me
       description: The best friend.
-      operationId: Me.GetBestFriend
+      operationId: Me.AsManager.GetBestFriend
       produces:
         - application/json
       parameters:
@@ -5510,7 +5510,7 @@ paths:
         - Me.Person
       summary: Update the best friend.
       description: Update an instance of a best friend.
-      operationId: Me.UpdateBestFriend
+      operationId: Me.AsManager.UpdateBestFriend
       consumes:
         - application/json
       parameters:
@@ -5919,7 +5919,7 @@ paths:
       tags:
         - Me.Person
       summary: Get DirectReports from Me
-      operationId: Me.ListDirectReports
+      operationId: Me.AsManager.ListDirectReports
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -6446,7 +6446,7 @@ paths:
       tags:
         - Me.Person
       summary: Get Friends from Me
-      operationId: Me.ListFriends
+      operationId: Me.AsManager.ListFriends
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -7250,7 +7250,7 @@ paths:
         - Me.Trip
       summary: List trips.
       description: Retrieve a list of trips.
-      operationId: Me.ListTrips
+      operationId: Me.AsManager.ListTrips
       parameters:
         - in: header
           name: ConsistencyLevel
@@ -7326,7 +7326,7 @@ paths:
         - Me.Trip
       summary: Create a trip.
       description: Create a new trip.
-      operationId: Me.CreateTrips
+      operationId: Me.AsManager.CreateTrips
       consumes:
         - application/json
       produces:
@@ -7362,7 +7362,7 @@ paths:
         - Me.Trip
       summary: Get a trip.
       description: Retrieve the properties of a trip.
-      operationId: Me.GetTrips
+      operationId: Me.AsManager.GetTrips
       produces:
         - application/json
       parameters:
@@ -7419,7 +7419,7 @@ paths:
         - Me.Trip
       summary: Update a trip.
       description: Update an instance of a trip.
-      operationId: Me.UpdateTrips
+      operationId: Me.AsManager.UpdateTrips
       consumes:
         - application/json
       parameters:
@@ -7455,7 +7455,7 @@ paths:
         - Me.Trip
       summary: Delete a trip.
       description: Delete an instance of a trip.
-      operationId: Me.DeleteTrips
+      operationId: Me.AsManager.DeleteTrips
       parameters:
         - in: path
           name: TripId
@@ -7588,7 +7588,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Get PlanItems from Me
-      operationId: Me.Trips.ListPlanItems
+      operationId: Me.AsManager.Trips.ListPlanItems
       parameters:
         - in: path
           name: TripId
@@ -13623,7 +13623,7 @@ paths:
         - People.Person
       summary: Get BestFriend from People
       description: The best friend.
-      operationId: People.GetBestFriend
+      operationId: People.AsEmployee.GetBestFriend
       produces:
         - application/json
       parameters:
@@ -13684,7 +13684,7 @@ paths:
         - People.Person
       summary: Update the best friend.
       description: Update an instance of a best friend.
-      operationId: People.UpdateBestFriend
+      operationId: People.AsEmployee.UpdateBestFriend
       consumes:
         - application/json
       parameters:
@@ -14172,7 +14172,7 @@ paths:
       tags:
         - People.Person
       summary: Get Friends from People
-      operationId: People.ListFriends
+      operationId: People.AsEmployee.ListFriends
       parameters:
         - in: path
           name: UserName
@@ -15064,7 +15064,7 @@ paths:
       tags:
         - People.Person
       summary: Get Peers from People
-      operationId: People.ListPeers
+      operationId: People.AsEmployee.ListPeers
       parameters:
         - in: path
           name: UserName
@@ -15668,7 +15668,7 @@ paths:
         - People.Trip
       summary: List trips.
       description: Retrieve a list of trips.
-      operationId: People.ListTrips
+      operationId: People.AsEmployee.ListTrips
       parameters:
         - in: path
           name: UserName
@@ -15750,7 +15750,7 @@ paths:
         - People.Trip
       summary: Create a trip.
       description: Create a new trip.
-      operationId: People.CreateTrips
+      operationId: People.AsEmployee.CreateTrips
       consumes:
         - application/json
       produces:
@@ -15792,7 +15792,7 @@ paths:
         - People.Trip
       summary: Get a trip.
       description: Retrieve the properties of a trip.
-      operationId: People.GetTrips
+      operationId: People.AsEmployee.GetTrips
       produces:
         - application/json
       parameters:
@@ -15855,7 +15855,7 @@ paths:
         - People.Trip
       summary: Update a trip.
       description: Update an instance of a trip.
-      operationId: People.UpdateTrips
+      operationId: People.AsEmployee.UpdateTrips
       consumes:
         - application/json
       parameters:
@@ -15897,7 +15897,7 @@ paths:
         - People.Trip
       summary: Delete a trip.
       description: Delete an instance of a trip.
-      operationId: People.DeleteTrips
+      operationId: People.AsEmployee.DeleteTrips
       parameters:
         - in: path
           name: UserName
@@ -16042,7 +16042,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Get PlanItems from People
-      operationId: People.Trips.ListPlanItems
+      operationId: People.AsEmployee.Trips.ListPlanItems
       parameters:
         - in: path
           name: UserName
@@ -16738,7 +16738,7 @@ paths:
         - People.Person
       summary: Get BestFriend from People
       description: The best friend.
-      operationId: People.GetBestFriend
+      operationId: People.AsManager.GetBestFriend
       produces:
         - application/json
       parameters:
@@ -16799,7 +16799,7 @@ paths:
         - People.Person
       summary: Update the best friend.
       description: Update an instance of a best friend.
-      operationId: People.UpdateBestFriend
+      operationId: People.AsManager.UpdateBestFriend
       consumes:
         - application/json
       parameters:
@@ -17295,7 +17295,7 @@ paths:
       tags:
         - People.Person
       summary: Get DirectReports from People
-      operationId: People.ListDirectReports
+      operationId: People.AsManager.ListDirectReports
       parameters:
         - in: path
           name: UserName
@@ -17906,7 +17906,7 @@ paths:
       tags:
         - People.Person
       summary: Get Friends from People
-      operationId: People.ListFriends
+      operationId: People.AsManager.ListFriends
       parameters:
         - in: path
           name: UserName
@@ -18837,7 +18837,7 @@ paths:
         - People.Trip
       summary: List trips.
       description: Retrieve a list of trips.
-      operationId: People.ListTrips
+      operationId: People.AsManager.ListTrips
       parameters:
         - in: path
           name: UserName
@@ -18919,7 +18919,7 @@ paths:
         - People.Trip
       summary: Create a trip.
       description: Create a new trip.
-      operationId: People.CreateTrips
+      operationId: People.AsManager.CreateTrips
       consumes:
         - application/json
       produces:
@@ -18961,7 +18961,7 @@ paths:
         - People.Trip
       summary: Get a trip.
       description: Retrieve the properties of a trip.
-      operationId: People.GetTrips
+      operationId: People.AsManager.GetTrips
       produces:
         - application/json
       parameters:
@@ -19024,7 +19024,7 @@ paths:
         - People.Trip
       summary: Update a trip.
       description: Update an instance of a trip.
-      operationId: People.UpdateTrips
+      operationId: People.AsManager.UpdateTrips
       consumes:
         - application/json
       parameters:
@@ -19066,7 +19066,7 @@ paths:
         - People.Trip
       summary: Delete a trip.
       description: Delete an instance of a trip.
-      operationId: People.DeleteTrips
+      operationId: People.AsManager.DeleteTrips
       parameters:
         - in: path
           name: UserName
@@ -19211,7 +19211,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Get PlanItems from People
-      operationId: People.Trips.ListPlanItems
+      operationId: People.AsManager.Trips.ListPlanItems
       parameters:
         - in: path
           name: UserName
