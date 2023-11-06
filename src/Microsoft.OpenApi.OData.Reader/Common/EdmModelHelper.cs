@@ -161,19 +161,25 @@ namespace Microsoft.OpenApi.OData.Common
                 navigationSource.Name
             };
 
-            IEnumerable<ODataNavigationPropertySegment> navPropSegments = path.Segments.Skip(1).OfType<ODataNavigationPropertySegment>();
-            Utils.CheckArgumentNull(navPropSegments, nameof(navPropSegments));
+            // For navigation property paths with odata type cast segments
+            // the OData type cast segments identifiers will be used in the operation id
+            IEnumerable<ODataSegment> segments = path.Segments.Skip(1).Where(static s => s is ODataNavigationPropertySegment || s is ODataTypeCastSegment);
+            Utils.CheckArgumentNull(segments, nameof(segments));
 
-            foreach (var segment in navPropSegments)
+            string previousTypeCastSegmentId = null;
+            foreach (var segment in segments)
             {
-                if (segment == navPropSegments.Last())
+                if (segment is ODataNavigationPropertySegment navPropSegment)
                 {
-                    items.Add(segment.NavigationProperty.Name);
-                    break;
+                    items.Add(navPropSegment.NavigationProperty.Name);
                 }
-                else
+                else if (segment is ODataTypeCastSegment typeCastSegment && path.Kind == ODataPathKind.NavigationProperty)
                 {
-                    items.Add(segment.NavigationProperty.Name);
+                    // Only the last OData type cast segment identifier is added to the operation id
+                    items.Remove(previousTypeCastSegmentId);
+                    IEdmSchemaElement schemaElement = typeCastSegment.StructuredType as IEdmSchemaElement;
+                    previousTypeCastSegmentId = "As" + Utils.UpperFirstChar(schemaElement.Name);
+                    items.Add(previousTypeCastSegmentId);
                 }
             }
 
