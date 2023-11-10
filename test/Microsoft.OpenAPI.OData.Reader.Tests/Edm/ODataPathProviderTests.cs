@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18280, paths.Count());
+            Assert.Equal(18288, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -89,6 +89,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                 "/identity/authenticationEventsFlows({id})/microsoft.graph.externalUsersSelfServiceSignUpEventsFlow/onAttributeCollection/microsoft.graph.onAttributeCollectionExternalUsersSelfServiceSignUp/attributes")));
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals(
                 "/identity/authenticationEventsFlows({id})/microsoft.graph.externalUsersSelfServiceSignUpEventsFlow/onAuthenticationMethodLoadStart/microsoft.graph.onAuthenticationMethodLoadStartExternalUsersSelfServiceSignUp/identityProviders")));
+
+            // Test that navigation properties on nested complex properties are created
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals(
+                "/identity/authenticationEventsFlows({id})/conditions/applications/includeApplications")));
         }
 
         [Fact]
@@ -109,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(18931, paths.Count());
+            Assert.Equal(18939, paths.Count());
         }
 
         [Theory]
