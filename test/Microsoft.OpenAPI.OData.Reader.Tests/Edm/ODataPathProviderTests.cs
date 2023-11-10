@@ -84,13 +84,13 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.getMemberObjects")));
             Assert.Null(paths.FirstOrDefault(p => p.GetPathItemName().Equals("/directoryObjects({id})/microsoft.graph.restore")));
 
-            // Test that complex and navigation properties on derived types are created
+            // Test that complex and navigation properties within derived types are appended
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals(
                 "/identity/authenticationEventsFlows({id})/microsoft.graph.externalUsersSelfServiceSignUpEventsFlow/onAttributeCollection/microsoft.graph.onAttributeCollectionExternalUsersSelfServiceSignUp/attributes")));
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals(
                 "/identity/authenticationEventsFlows({id})/microsoft.graph.externalUsersSelfServiceSignUpEventsFlow/onAuthenticationMethodLoadStart/microsoft.graph.onAuthenticationMethodLoadStartExternalUsersSelfServiceSignUp/identityProviders")));
 
-            // Test that navigation properties on nested complex properties are created
+            // Test that navigation properties within nested complex properties are appended
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals(
                 "/identity/authenticationEventsFlows({id})/conditions/applications/includeApplications")));
         }
