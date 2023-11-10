@@ -306,41 +306,99 @@ namespace Microsoft.OpenApi.OData.Edm
 
             if (!convertSettings.EnableNavigationPropertyPath) return;
 
-            foreach (IEdmStructuralProperty sp in entityType.StructuralProperties()
+            foreach (IEdmStructuralProperty structProperty in entityType.StructuralProperties()
                                                     .Where(x => x.Type.IsComplex() ||
                                                             x.Type.IsCollection() && x.Type.Definition.AsElementType() is IEdmComplexType))
             {
-                if (!ShouldCreateComplexPropertyPaths(sp, convertSettings)) continue;
+                if (!ShouldCreateComplexPropertyPaths(structProperty, convertSettings)) continue;
 
-                currentPath.Push(new ODataComplexPropertySegment(sp));
+                currentPath.Push(new ODataComplexPropertySegment(structProperty));
                 AppendPath(currentPath.Clone());
 
-
-                if (sp.Type.IsCollection())
+                if (structProperty.Type.IsCollection())
                 {
-                    CreateTypeCastPaths(currentPath, convertSettings, sp.Type.Definition.AsElementType() as IEdmComplexType, sp, true);
-                    var count = _model.GetRecord<CountRestrictionsType>(sp, CapabilitiesConstants.CountRestrictions);
-                    if(count?.IsCountable ?? true)
+                    CreateTypeCastPaths(currentPath, convertSettings, structProperty.Type.Definition.AsElementType() as IEdmComplexType, structProperty, true);
+                    var count = _model.GetRecord<CountRestrictionsType>(structProperty, CapabilitiesConstants.CountRestrictions);
+                    if (count?.IsCountable ?? true)
                         CreateCountPath(currentPath, convertSettings);
                 }
                 else
                 {
-                    var complexTypeReference = sp.Type.AsComplex();
-                    var definition = complexTypeReference.ComplexDefinition();
+                    var complexType = structProperty.Type.AsComplex().ComplexDefinition();
 
-                    CreateTypeCastPaths(currentPath, convertSettings, definition, sp, false);
-                    foreach (IEdmNavigationProperty np in complexTypeReference
-                                                        .DeclaredNavigationProperties()
-                                                        .Union(definition
-                                                                        .FindAllBaseTypes()
-                                                                        .SelectMany(x => x.DeclaredNavigationProperties()))
-                                                        .Distinct()
-                                                        .Where(CanFilter))
-                    {
-                        var count = _model.GetRecord<CountRestrictionsType>(np, CapabilitiesConstants.CountRestrictions);
-                        RetrieveNavigationPropertyPaths(np, count, currentPath, convertSettings);
-                    }
+                    CreateTypeCastPaths(currentPath, convertSettings, complexType, structProperty, false);
+
+                    // Append navigation property paths for this complex property
+                    RetrieveComplexTypeNavigationPropertyPaths(complexType, currentPath, convertSettings);
+
+                    // Traverse this complex property to rerieve nested navigation property paths
+                    TraverseComplexProperty(structProperty, currentPath, convertSettings);
                 }
+
+                currentPath.Pop();
+            }
+        }
+
+        /// <summary>
+        /// Retrieves navigation property paths for complex types.
+        /// </summary>
+        /// <param name="complexType">The target complex type.</param>
+        /// <param name="currentPath">The current path.</param>
+        /// <param name="convertSettings">The convert settings.</param>
+        private bool RetrieveComplexTypeNavigationPropertyPaths(IEdmComplexType complexType, ODataPath currentPath, OpenApiConvertSettings convertSettings)
+        {
+            Utils.CheckArgumentNull(complexType, nameof(complexType));
+            Utils.CheckArgumentNull(currentPath, nameof(currentPath));
+            Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
+
+            var navigationProperties = complexType
+                                        .DeclaredNavigationProperties()
+                                        .Union(complexType
+                                                        .FindAllBaseTypes()
+                                                        .SelectMany(x => x.DeclaredNavigationProperties()))
+                                        .Distinct()
+                                        .Where(CanFilter);
+
+            if (!navigationProperties.Any()) return false;
+
+            foreach (var np in navigationProperties)
+            {
+                var count = _model.GetRecord<CountRestrictionsType>(np, CapabilitiesConstants.CountRestrictions);
+                RetrieveNavigationPropertyPaths(np, count, currentPath, convertSettings);
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// Traverses a complex property to generate navigation property paths within nested complex properties.
+        /// </summary>
+        /// <param name="structuralProperty">The target complex property.</param>
+        /// <param name="currentPath">The current path.</param>
+        /// <param name="convertSettings">The convert settings.</param>
+        private void TraverseComplexProperty(IEdmStructuralProperty structuralProperty, ODataPath currentPath, OpenApiConvertSettings convertSettings)
+        {
+            Utils.CheckArgumentNull(structuralProperty, nameof(structuralProperty));
+            Utils.CheckArgumentNull(currentPath, nameof(currentPath));
+            Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
+
+            var complexType = structuralProperty.Type.AsComplex().ComplexDefinition();
+            Debug.Assert(complexType != null);
+
+            foreach (IEdmStructuralProperty sp in complexType.DeclaredStructuralProperties()
+                                                    .Where(x => x.Type.IsComplex() ||
+                                                            x.Type.IsCollection() && x.Type.Definition.AsElementType() is IEdmComplexType))
+            {
+                currentPath.Push(new ODataComplexPropertySegment(sp));
+
+                var spComplexType = sp.Type.AsComplex().ComplexDefinition();
+
+                if (!RetrieveComplexTypeNavigationPropertyPaths(spComplexType, currentPath, convertSettings))
+                {
+                    TraverseComplexProperty(sp, currentPath, convertSettings);
+                }
+
                 currentPath.Pop();
             }
         }
