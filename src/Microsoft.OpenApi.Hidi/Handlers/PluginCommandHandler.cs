@@ -11,10 +11,10 @@ using Microsoft.OpenApi.Hidi.Options;
 
 namespace Microsoft.OpenApi.Hidi.Handlers
 {
-    internal class TransformCommandHandler : ICommandHandler
+    internal class PluginCommandHandler : ICommandHandler
     {
         public CommandOptions CommandOptions { get; }
-        public TransformCommandHandler(CommandOptions commandOptions)
+        public PluginCommandHandler(CommandOptions commandOptions)
         {
             CommandOptions = commandOptions;
         }
@@ -28,10 +28,10 @@ namespace Microsoft.OpenApi.Hidi.Handlers
             var cancellationToken = (CancellationToken)context.BindingContext.GetRequiredService(typeof(CancellationToken));
 
             using var loggerFactory = Logger.ConfigureLogger(hidiOptions.LogLevel);
-            var logger = loggerFactory.CreateLogger<TransformCommandHandler>();
+            var logger = loggerFactory.CreateLogger<PluginCommandHandler>();
             try
             {
-                await OpenApiService.TransformOpenApiDocument(hidiOptions, logger, cancellationToken).ConfigureAwait(false);
+                await OpenApiService.PluginManifest(hidiOptions, logger, cancellationToken).ConfigureAwait(false);
 
                 return 0;
             }
@@ -45,7 +45,7 @@ namespace Microsoft.OpenApi.Hidi.Handlers
                 throw; // so debug tools go straight to the source of the exception when attached
 #else
 #pragma warning disable CA2254
-                logger.LogCritical( ex.Message);
+                logger.LogCritical(ex.Message);
 #pragma warning restore CA2254
                 return 1;
 #endif
