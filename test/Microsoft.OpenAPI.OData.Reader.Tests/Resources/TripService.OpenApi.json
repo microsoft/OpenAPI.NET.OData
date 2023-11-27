@@ -4165,6 +4165,272 @@
         }
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo": {
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get AddressInfo property value",
+        "operationId": "Me.ListAddressInfo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "Address desc",
+                  "City",
+                  "City desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "City"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "patch": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Update property AddressInfo value.",
+        "operationId": "Me.UpdateAddressInfo",
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "post": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "Me.SetAddressInfo",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get the number of the resource",
+        "operationId": "Me.AddressInfo.GetCount-8488",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+      "description": "Casts the previous resource to EventLocation.",
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "operationId": "Me.ListAddressInfo.AsEventLocation",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Me.AddressInfo.GetCount.AsEventLocation-9375",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/BestFriend": {
       "description": "Provides operations to manage the BestFriend property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -4173,7 +4439,7 @@
         ],
         "summary": "Get BestFriend from Me",
         "description": "The best friend.",
-        "operationId": "Me.GetBestFriend",
+        "operationId": "Me.AsEmployee.GetBestFriend",
         "parameters": [
           {
             "name": "$select",
@@ -4256,7 +4522,7 @@
         ],
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
-        "operationId": "Me.UpdateBestFriend",
+        "operationId": "Me.AsEmployee.UpdateBestFriend",
         "requestBody": {
           "description": "New navigation property values",
           "content": {
@@ -4867,7 +5133,7 @@
           "Me.Person"
         ],
         "summary": "Get Friends from Me",
-        "operationId": "Me.ListFriends",
+        "operationId": "Me.AsEmployee.ListFriends",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -5936,6 +6202,132 @@
         }
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/HomeAddress": {
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get HomeAddress property value",
+        "operationId": "Me.GetHomeAddress",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "City"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "patch": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Update property HomeAddress value.",
+        "operationId": "Me.UpdateHomeAddress",
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+      "description": "Casts the previous resource to EventLocation.",
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "operationId": "Me.GetHomeAddress.AsEventLocation",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
       "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
@@ -5943,7 +6335,7 @@
           "Me.Person"
         ],
         "summary": "Get Peers from Me",
-        "operationId": "Me.ListPeers",
+        "operationId": "Me.AsEmployee.ListPeers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -6759,7 +7151,7 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
-        "operationId": "Me.ListTrips",
+        "operationId": "Me.AsEmployee.ListTrips",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -6889,7 +7281,7 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
-        "operationId": "Me.CreateTrips",
+        "operationId": "Me.AsEmployee.CreateTrips",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -6938,7 +7330,7 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
-        "operationId": "Me.GetTrips",
+        "operationId": "Me.AsEmployee.GetTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -7027,7 +7419,7 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
-        "operationId": "Me.UpdateTrips",
+        "operationId": "Me.AsEmployee.UpdateTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -7077,7 +7469,7 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
-        "operationId": "Me.DeleteTrips",
+        "operationId": "Me.AsEmployee.DeleteTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -7282,7 +7674,7 @@
           "Me.Trips.PlanItem"
         ],
         "summary": "Get PlanItems from Me",
-        "operationId": "Me.Trips.ListPlanItems",
+        "operationId": "Me.AsEmployee.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "TripId",
@@ -7933,6 +8325,300 @@
         }
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo": {
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get AddressInfo property value",
+        "operationId": "Me.ListAddressInfo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "Address desc",
+                  "City",
+                  "City desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "City"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "patch": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Update property AddressInfo value.",
+        "operationId": "Me.UpdateAddressInfo",
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "post": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "Me.SetAddressInfo",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get the number of the resource",
+        "operationId": "Me.AddressInfo.GetCount-75da",
+        "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+      "description": "Casts the previous resource to EventLocation.",
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "operationId": "Me.ListAddressInfo.AsEventLocation",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Me.AddressInfo.GetCount.AsEventLocation-f67e",
+        "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/BestFriend": {
       "description": "Provides operations to manage the BestFriend property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -7941,7 +8627,7 @@
         ],
         "summary": "Get BestFriend from Me",
         "description": "The best friend.",
-        "operationId": "Me.GetBestFriend",
+        "operationId": "Me.AsManager.GetBestFriend",
         "parameters": [
           {
             "name": "$select",
@@ -8024,7 +8710,7 @@
         ],
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
-        "operationId": "Me.UpdateBestFriend",
+        "operationId": "Me.AsManager.UpdateBestFriend",
         "requestBody": {
           "description": "New navigation property values",
           "content": {
@@ -8663,7 +9349,7 @@
           "Me.Person"
         ],
         "summary": "Get DirectReports from Me",
-        "operationId": "Me.ListDirectReports",
+        "operationId": "Me.AsManager.ListDirectReports",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -9506,7 +10192,7 @@
           "Me.Person"
         ],
         "summary": "Get Friends from Me",
-        "operationId": "Me.ListFriends",
+        "operationId": "Me.AsManager.ListFriends",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -10575,6 +11261,132 @@
         }
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/HomeAddress": {
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get HomeAddress property value",
+        "operationId": "Me.GetHomeAddress",
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "City"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "patch": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Update property HomeAddress value.",
+        "operationId": "Me.UpdateHomeAddress",
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+      "description": "Casts the previous resource to EventLocation.",
+      "get": {
+        "tags": [
+          "Me.Location"
+        ],
+        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "operationId": "Me.GetHomeAddress.AsEventLocation",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire": {
       "description": "Provides operations to call the Hire method.",
       "post": {
@@ -10634,7 +11446,7 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
-        "operationId": "Me.ListTrips",
+        "operationId": "Me.AsManager.ListTrips",
         "parameters": [
           {
             "name": "ConsistencyLevel",
@@ -10764,7 +11576,7 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
-        "operationId": "Me.CreateTrips",
+        "operationId": "Me.AsManager.CreateTrips",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -10813,7 +11625,7 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
-        "operationId": "Me.GetTrips",
+        "operationId": "Me.AsManager.GetTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -10902,7 +11714,7 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
-        "operationId": "Me.UpdateTrips",
+        "operationId": "Me.AsManager.UpdateTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -10952,7 +11764,7 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
-        "operationId": "Me.DeleteTrips",
+        "operationId": "Me.AsManager.DeleteTrips",
         "parameters": [
           {
             "name": "TripId",
@@ -11157,7 +11969,7 @@
           "Me.Trips.PlanItem"
         ],
         "summary": "Get PlanItems from Me",
-        "operationId": "Me.Trips.ListPlanItems",
+        "operationId": "Me.AsManager.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "TripId",
@@ -20498,6 +21310,336 @@
         }
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo": {
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get AddressInfo property value",
+        "operationId": "People.ListAddressInfo",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "Address desc",
+                  "City",
+                  "City desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "City"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "patch": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Update property AddressInfo value.",
+        "operationId": "People.UpdateAddressInfo",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "post": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "People.SetAddressInfo",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get the number of the resource",
+        "operationId": "People.AddressInfo.GetCount-3d43",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+      "description": "Casts the previous resource to EventLocation.",
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "operationId": "People.ListAddressInfo.AsEventLocation",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "People.AddressInfo.GetCount.AsEventLocation-ac7d",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/BestFriend": {
       "description": "Provides operations to manage the BestFriend property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -20506,7 +21648,7 @@
         ],
         "summary": "Get BestFriend from People",
         "description": "The best friend.",
-        "operationId": "People.GetBestFriend",
+        "operationId": "People.AsEmployee.GetBestFriend",
         "parameters": [
           {
             "name": "UserName",
@@ -20599,7 +21741,7 @@
         ],
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
-        "operationId": "People.UpdateBestFriend",
+        "operationId": "People.AsEmployee.UpdateBestFriend",
         "parameters": [
           {
             "name": "UserName",
@@ -21364,7 +22506,7 @@
           "People.Person"
         ],
         "summary": "Get Friends from People",
-        "operationId": "People.ListFriends",
+        "operationId": "People.AsEmployee.ListFriends",
         "parameters": [
           {
             "name": "UserName",
@@ -22605,6 +23747,166 @@
         }
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/HomeAddress": {
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get HomeAddress property value",
+        "operationId": "People.GetHomeAddress",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "City"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "patch": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Update property HomeAddress value.",
+        "operationId": "People.UpdateHomeAddress",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+      "description": "Casts the previous resource to EventLocation.",
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "operationId": "People.GetHomeAddress.AsEventLocation",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
       "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
@@ -22612,7 +23914,7 @@
           "People.Person"
         ],
         "summary": "Get Peers from People",
-        "operationId": "People.ListPeers",
+        "operationId": "People.AsEmployee.ListPeers",
         "parameters": [
           {
             "name": "UserName",
@@ -23570,7 +24872,7 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
-        "operationId": "People.ListTrips",
+        "operationId": "People.AsEmployee.ListTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -23710,7 +25012,7 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
-        "operationId": "People.CreateTrips",
+        "operationId": "People.AsEmployee.CreateTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -23771,7 +25073,7 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
-        "operationId": "People.GetTrips",
+        "operationId": "People.AsEmployee.GetTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -23870,7 +25172,7 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
-        "operationId": "People.UpdateTrips",
+        "operationId": "People.AsEmployee.UpdateTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -23930,7 +25232,7 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
-        "operationId": "People.DeleteTrips",
+        "operationId": "People.AsEmployee.DeleteTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -24155,7 +25457,7 @@
           "People.Trips.PlanItem"
         ],
         "summary": "Get PlanItems from People",
-        "operationId": "People.Trips.ListPlanItems",
+        "operationId": "People.AsEmployee.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "UserName",
@@ -24924,6 +26226,364 @@
         }
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo": {
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get AddressInfo property value",
+        "operationId": "People.ListAddressInfo",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "Address desc",
+                  "City",
+                  "City desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "City"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "patch": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Update property AddressInfo value.",
+        "operationId": "People.UpdateAddressInfo",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "post": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "People.SetAddressInfo",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get the number of the resource",
+        "operationId": "People.AddressInfo.GetCount-f84e",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+      "description": "Casts the previous resource to EventLocation.",
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "operationId": "People.ListAddressInfo.AsEventLocation",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "People.AddressInfo.GetCount.AsEventLocation-3722",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/BestFriend": {
       "description": "Provides operations to manage the BestFriend property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -24932,7 +26592,7 @@
         ],
         "summary": "Get BestFriend from People",
         "description": "The best friend.",
-        "operationId": "People.GetBestFriend",
+        "operationId": "People.AsManager.GetBestFriend",
         "parameters": [
           {
             "name": "UserName",
@@ -25025,7 +26685,7 @@
         ],
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
-        "operationId": "People.UpdateBestFriend",
+        "operationId": "People.AsManager.UpdateBestFriend",
         "parameters": [
           {
             "name": "UserName",
@@ -25818,7 +27478,7 @@
           "People.Person"
         ],
         "summary": "Get DirectReports from People",
-        "operationId": "People.ListDirectReports",
+        "operationId": "People.AsManager.ListDirectReports",
         "parameters": [
           {
             "name": "UserName",
@@ -26803,7 +28463,7 @@
           "People.Person"
         ],
         "summary": "Get Friends from People",
-        "operationId": "People.ListFriends",
+        "operationId": "People.AsManager.ListFriends",
         "parameters": [
           {
             "name": "UserName",
@@ -28044,6 +29704,166 @@
         }
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/HomeAddress": {
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get HomeAddress property value",
+        "operationId": "People.GetHomeAddress",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Address",
+                  "City"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "patch": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Update property HomeAddress value.",
+        "operationId": "People.UpdateHomeAddress",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+      "description": "Casts the previous resource to EventLocation.",
+      "get": {
+        "tags": [
+          "People.Location"
+        ],
+        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "operationId": "People.GetHomeAddress.AsEventLocation",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire": {
       "description": "Provides operations to call the Hire method.",
       "post": {
@@ -28115,7 +29935,7 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
-        "operationId": "People.ListTrips",
+        "operationId": "People.AsManager.ListTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -28255,7 +30075,7 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
-        "operationId": "People.CreateTrips",
+        "operationId": "People.AsManager.CreateTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -28316,7 +30136,7 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
-        "operationId": "People.GetTrips",
+        "operationId": "People.AsManager.GetTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -28415,7 +30235,7 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
-        "operationId": "People.UpdateTrips",
+        "operationId": "People.AsManager.UpdateTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -28475,7 +30295,7 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
-        "operationId": "People.DeleteTrips",
+        "operationId": "People.AsManager.DeleteTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -28700,7 +30520,7 @@
           "People.Trips.PlanItem"
         ],
         "summary": "Get PlanItems from People",
-        "operationId": "People.Trips.ListPlanItems",
+        "operationId": "People.AsManager.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "UserName",

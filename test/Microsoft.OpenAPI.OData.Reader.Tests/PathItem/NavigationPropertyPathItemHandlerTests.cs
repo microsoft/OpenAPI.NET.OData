@@ -506,7 +506,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             OpenApiConvertSettings settings = new()
             {
-                ExpandDerivedTypesNavigationProperties = false
+                GenerateDerivedTypesProperties = false
             };
             ODataContext context = new(model, settings);
             IEdmSingleton ipSingleton = model.EntityContainer.FindSingleton("informationProtection");
@@ -543,7 +543,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             OpenApiConvertSettings settings = new()
             {
-                ExpandDerivedTypesNavigationProperties = false
+                GenerateDerivedTypesProperties = false
             };
             ODataContext context = new(model, settings);
             IEdmEntitySet users = model.EntityContainer.FindEntitySet("users");
