@@ -17,6 +17,7 @@
     <None Remove="Resources\Basic.OpenApi.V2.json" />
     <None Remove="Resources\Basic.OpenApi.yaml" />
     <None Remove="Resources\Basic.OpenApi.V2.yaml" />
+    <None Remove="Resources\ComposableFunctions.OData.xml" />
     <None Remove="Resources\Empty.OpenApi.json" />
     <None Remove="Resources\Empty.OpenApi.V2.json" />
     <None Remove="Resources\Empty.OpenApi.yaml" />
@@ -34,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\ComposableFunctions.OData.xml" />
     <EmbeddedResource Include="Resources\Multiple.Schema.OData.xml" />
   </ItemGroup>
 

@@ -43,6 +43,8 @@ namespace Microsoft.OpenApi.OData.Tests
 
         public static IEdmModel GraphBetaModel { get; }
 
+        public static IEdmModel ComposableFunctionsModel { get; }
+
         static EdmModelHelper()
         {
             MultipleInheritanceEdmModel = CreateMultipleInheritanceEdmModel();
@@ -53,6 +55,7 @@ namespace Microsoft.OpenApi.OData.Tests
             GraphBetaModel = LoadEdmModel("Graph.Beta.OData.xml");
             MultipleSchemasEdmModel = LoadEdmModel("Multiple.Schema.OData.xml");
             InheritanceEdmModelAcrossReferences = CreateInheritanceEdmModelAcrossReferences();
+            ComposableFunctionsModel = LoadEdmModel("ComposableFunctions.OData.xml");
         }
 
         private static IEdmModel LoadEdmModel(string source)
