@@ -283,12 +283,15 @@ schema:
             EdmEntityType customer = new("NS", "Customer");
             customer.AddKeys(customer.AddStructuralProperty("Id", EdmPrimitiveTypeKind.String));
 
-            IEdmProperty alternateId = customer.AddStructuralProperty("AlternateId", EdmPrimitiveTypeKind.String);
-            model.AddAlternateKeyAnnotation(customer, new Dictionary<string, IEdmProperty> { { "AltId", alternateId } });
+            IEdmProperty alternateId1 = customer.AddStructuralProperty("AlternateId1", EdmPrimitiveTypeKind.String);
+            IEdmProperty alternateId2 = customer.AddStructuralProperty("AlternateId2", EdmPrimitiveTypeKind.String);
+            model.AddAlternateKeyAnnotation(customer, new Dictionary<string, IEdmProperty> { { "AltId1", alternateId1 } });
+            model.AddAlternateKeyAnnotation(customer, new Dictionary<string, IEdmProperty> { { "AltId2", alternateId2 } });
+            IDictionary<string, string> keyMappings = new Dictionary<string, string> { { "AltId1", "AltId1" } };
 
             model.AddElement(customer);
             ODataContext context = new(model);
-            ODataKeySegment keySegment = new(customer)
+            ODataKeySegment keySegment = new(customer, keyMappings)
             {
                 IsAlternateKey = true
             };
@@ -302,7 +305,7 @@ schema:
             Assert.Single(parameters);
             string json = altParameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(@"{
-  ""name"": ""AltId"",
+  ""name"": ""AltId1"",
   ""in"": ""path"",
   ""description"": ""Alternate key of Customer"",
   ""required"": true,
@@ -330,9 +333,11 @@ schema:
                     { "AltId2", alternateId2 }
                 });
 
+            IDictionary<string, string> keyMappings = new Dictionary<string, string> { { "AltId1", "AltId1" }, { "AltId2", "AltId2" } };
+
             model.AddElement(customer);
             ODataContext context = new(model);
-            ODataKeySegment keySegment = new(customer)
+            ODataKeySegment keySegment = new(customer, keyMappings)
             {
                 IsAlternateKey = true
             };
