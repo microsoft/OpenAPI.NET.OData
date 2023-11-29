@@ -289,7 +289,7 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (ODataKeySegment keySegment in path.OfType<ODataKeySegment>())
             {
                 IDictionary<string, string> mapping = parameterMappings[keySegment];
-                pathParameters.AddRange(context.CreateKeyParameters(keySegment, mapping));                    
+                pathParameters.AddRange(context.CreateKeyParameters(keySegment, mapping));
             }
 
             // Add the route prefix parameter v1{data}
