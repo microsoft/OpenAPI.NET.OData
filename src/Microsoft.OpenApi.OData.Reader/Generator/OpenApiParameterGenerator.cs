@@ -12,6 +12,8 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using System.Diagnostics;
+using System;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -151,19 +153,20 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="context">The OData context.</param>
         /// <param name="keySegment">The key segment.</param>
         /// <param name="parameterNameMapping">The parameter name mapping.</param>
-        /// <returns>The created the list of <see cref="OpenApiParameter"/>.</returns>
+        /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
         public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, ODataKeySegment keySegment,
             IDictionary<string, string> parameterNameMapping = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(keySegment, nameof(keySegment));
+            
+            if (keySegment.IsAlternateKey)
+                return CreateAlternateKeyParameters(context, keySegment);
 
             IEdmEntityType entityType = keySegment.EntityType;
-            if (keySegment.IsAlternateKey)
-                return CreateAlternateKeyParameters(context, entityType);
+            IList<IEdmStructuralProperty> keys = entityType.Key().ToList();
 
             List<OpenApiParameter> parameters = new();
-            IList<IEdmStructuralProperty> keys = entityType.Key().ToList();
             if (keys.Count() == 1)
             {
                 string keyName = keys.First().Name;
@@ -177,7 +180,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 OpenApiParameter parameter = new OpenApiParameter
                 {
-                    Name = parameterNameMapping == null ? keyName: parameterNameMapping[keyName],
+                    Name = parameterNameMapping == null ? keyName : parameterNameMapping[keyName],
                     In = ParameterLocation.Path,
                     Required = true,
                     Description = $"The unique identifier of {entityType.Name}",
@@ -195,7 +198,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     OpenApiParameter parameter = new OpenApiParameter
                     {
                         Name = parameterNameMapping == null ?
-                            keyProperty.Name:
+                            keyProperty.Name :
                             parameterNameMapping[keyProperty.Name],// By design: not prefix with type name if enable type name prefix
                         In = ParameterLocation.Path,
                         Required = true,
@@ -216,15 +219,28 @@ namespace Microsoft.OpenApi.OData.Generator
             return parameters;
         }
 
-        private static IList<OpenApiParameter> CreateAlternateKeyParameters(ODataContext context, IEdmEntityType entityType)
+
+        /// <summary>
+        /// Create alternate key parameters for the <see cref="ODataKeySegment"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="keySegment">The key segment.</param>
+        /// <returns>A list of <see cref="OpenApiParameter"/> of alternate key parameters.</returns>
+        private static IList<OpenApiParameter> CreateAlternateKeyParameters(ODataContext context, ODataSegment keySegment)
         {
+            Debug.Assert(keySegment.Kind == ODataSegmentKind.Key);
+            
             IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
-            IEnumerable<IDictionary<string, IEdmProperty>> alternateKeys = context.Model.GetAlternateKeysAnnotation(entityType);
+            IEdmEntityType entityType = keySegment.EntityType;
+            IEnumerable<IDictionary<string, IEdmProperty>> alternateKeys = context.Model.GetAlternateKeysAnnotation(entityType);            
+            
             foreach (var alternateKey in alternateKeys)
             {
                 if (alternateKey.Count() == 1)
                 {
-                    parameters.Add(
+                    if (keySegment.Identifier.Equals(alternateKey.First().Key, StringComparison.OrdinalIgnoreCase))
+                    {
+                        parameters.Add(
                         new OpenApiParameter
                         {
                             Name = alternateKey.First().Key,
@@ -234,12 +250,15 @@ namespace Microsoft.OpenApi.OData.Generator
                             Required = true
                         }
                      );
+                    }                    
                 }
                 else
                 {
                     foreach (var compositekey in alternateKey)
                     {
-                        parameters.Add(
+                        if (keySegment.Identifier.Contains(compositekey.Key))
+                        {
+                            parameters.Add(
                             new OpenApiParameter
                             {
                                 Name = compositekey.Key,
@@ -248,7 +267,8 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Schema = context.CreateEdmTypeSchema(compositekey.Value.Type),
                                 Required = true
                             }
-                        );
+                         );
+                        }                        
                     }
                 }
             }
