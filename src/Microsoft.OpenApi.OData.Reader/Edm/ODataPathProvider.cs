@@ -597,6 +597,8 @@ namespace Microsoft.OpenApi.OData.Edm
                     // append a navigation property key.
                     if (targetsMany)
                     {
+                        CreateAlternateKeyPath(currentPath, navEntityType);
+
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         AppendPath(currentPath.Clone());
 

@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.5.0-preview10</Version>
+    <Version>1.5.0-preview11</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -31,6 +31,7 @@
 - Retrieves complex properties of derived types #437
 - Updates operationIds of navigation property paths with OData type cast segments #442
 - Generate navigation property paths defined in nested complex properties #446
+- Adds support for alternate keys to collection navigation properties #410
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>

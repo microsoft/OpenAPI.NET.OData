@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(16967, paths.Count());
+            Assert.Equal(16976, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -93,6 +93,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Test that navigation properties within nested complex properties are appended
             Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals(
                 "/identity/authenticationEventsFlows({id})/conditions/applications/includeApplications")));
+
+            // Test that alternate keys are appended for collection navigation properties
+            Assert.NotNull(paths.FirstOrDefault(p => p.GetPathItemName().Equals(
+                "/employeeExperience/learningProviders({id})/learningContents(externalId='{externalId}')")));
         }
 
         [Fact]
@@ -113,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17618, paths.Count());
+            Assert.Equal(17627, paths.Count());
         }
 
         [Theory]
