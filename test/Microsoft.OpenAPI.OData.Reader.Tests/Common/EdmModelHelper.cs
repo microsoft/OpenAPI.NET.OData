@@ -408,7 +408,7 @@ namespace Microsoft.OpenApi.OData.Tests
             _output.WriteLine(actual);
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual.ChangeLineBreaks());
         }
 
         public static string GetCsdl(IEdmModel model)

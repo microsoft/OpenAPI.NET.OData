@@ -26,15 +26,27 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         public void CreateMediaEntityGetOperationReturnsCorrectOperation(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
         {
             // Arrange
-            string qualifiedName = CoreConstants.AcceptableMediaTypes;
             string annotation = $@"
-            <Annotation Term=""{qualifiedName}"" >
+            <Annotation Term=""Org.OData.Core.V1.AcceptableMediaTypes"" >
               <Collection>
                 <String>image/png</String>
                 <String>image/jpeg</String>
               </Collection>
             </Annotation>
-            <Annotation Term=""Org.OData.Core.V1.Description"" String=""The logo image."" />";
+            <Annotation Term=""Org.OData.Core.V1.Description"" String=""The logo image."" />
+            <Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+              <Record>
+                <PropertyValue Property=""CustomQueryOptions"">
+                  <Collection>
+                    <Record>
+                      <PropertyValue Property=""Name"" String=""format"" />
+                      <PropertyValue Property=""Description"" String=""Specify the format the item's content should be downloaded as."" />
+                      <PropertyValue Property=""Required"" Bool=""false"" />
+                    </Record>                
+                  </Collection>
+                </PropertyValue>
+              </Record>
+            </Annotation>";
 
             // Assert
             VerifyMediaEntityGetOperation("", enableOperationId, useHTTPStatusCodeClass2XX);
@@ -107,12 +119,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.True(getOperation.Responses[statusCode].Content.ContainsKey("image/png"));
                 Assert.True(getOperation.Responses[statusCode].Content.ContainsKey("image/jpeg"));
                 Assert.Equal("The logo image.", getOperation.Description);
+                Assert.Equal(2, getOperation.Parameters.Count);
+                Assert.NotNull(getOperation.Parameters.FirstOrDefault(x => x.Name.Equals("format")));
 
                 Assert.Single(getOperation2.Responses[statusCode].Content.Keys);
                 Assert.True(getOperation2.Responses[statusCode].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
             }
             else
             {
+                Assert.Single(getOperation.Parameters);
                 Assert.Single(getOperation.Responses[statusCode].Content.Keys);
                 Assert.Single(getOperation2.Responses[statusCode].Content.Keys);
                 Assert.True(getOperation.Responses[statusCode].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
