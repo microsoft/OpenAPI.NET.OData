@@ -21,6 +21,27 @@ namespace Microsoft.OpenApi.OData.Operation
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
+        private IEdmProperty _property = null;
+        private ReadRestrictionsType _readRestrictions = null;
+
+        protected override void Initialize(ODataContext context, ODataPath path)
+        {
+            base.Initialize(context, path);
+            (_, _property) = GetStreamElements();
+
+            if (_property != null)
+            {
+                if (_property is IEdmNavigationProperty)
+                {
+                    _readRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(_property, CapabilitiesConstants.NavigationRestrictions)?
+                        .RestrictedProperties?.FirstOrDefault()?.ReadRestrictions;
+                }
+                else
+                {
+                    _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(_property, CapabilitiesConstants.ReadRestrictions);
+                }
+            }            
+        }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
@@ -34,23 +55,19 @@ namespace Microsoft.OpenApi.OData.Operation
             // Description
             if (LastSegmentIsStreamPropertySegment)
             {
-                (_, var property) = GetStreamElements();
                 string description;
 
-                if (property is IEdmNavigationProperty)
+                if (_property is IEdmNavigationProperty)
                 {
-                    ReadRestrictionsType readRestriction = Context.Model.GetRecord<NavigationRestrictionsType>(property, CapabilitiesConstants.NavigationRestrictions)?
-                        .RestrictedProperties?.FirstOrDefault()?.ReadRestrictions;
-
                     description = LastSegmentIsKeySegment
-                        ? readRestriction?.ReadByKeyRestrictions?.Description
-                        : readRestriction?.Description
-                        ?? Context.Model.GetDescriptionAnnotation(property);
+                        ? _readRestrictions?.ReadByKeyRestrictions?.Description
+                        : _readRestrictions?.Description
+                        ?? Context.Model.GetDescriptionAnnotation(_property);
                 }
                 else
                 {
                     // Structural property
-                    description = Context.Model.GetDescriptionAnnotation(property);
+                    description = Context.Model.GetDescriptionAnnotation(_property);
                 }
 
                 operation.Description = description;
@@ -105,6 +122,25 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
+        }
+
+        /// <inheritdoc/>
+        protected override void AppendCustomParameters(OpenApiOperation operation)
+        {
+            if (_readRestrictions == null)
+            {
+                return;
+            }
+
+            if (_readRestrictions.CustomHeaders != null)
+            {
+                AppendCustomParameters(operation, _readRestrictions.CustomHeaders, ParameterLocation.Header);
+            }
+
+            if (_readRestrictions.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation, _readRestrictions.CustomQueryOptions, ParameterLocation.Query);
+            }
         }
     }
 }

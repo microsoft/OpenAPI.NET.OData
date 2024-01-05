@@ -22,6 +22,27 @@ namespace Microsoft.OpenApi.OData.Operation
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Put;
+        private IEdmProperty _property = null;
+        private UpdateRestrictionsType _updateRestrictions = null;
+
+        protected override void Initialize(ODataContext context, ODataPath path)
+        {
+            base.Initialize(context, path);
+            (_, _property) = GetStreamElements();
+            
+            if (_property != null) 
+            {
+                if (_property is IEdmNavigationProperty)
+                {
+                    _updateRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(_property, CapabilitiesConstants.NavigationRestrictions)?
+                        .RestrictedProperties?.FirstOrDefault()?.UpdateRestrictions;
+                }
+                else
+                {
+                    _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(_property, CapabilitiesConstants.UpdateRestrictions);
+                }
+            }            
+        }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
@@ -35,20 +56,17 @@ namespace Microsoft.OpenApi.OData.Operation
             // Description
             if (LastSegmentIsStreamPropertySegment)
             {
-                (_, var property) = GetStreamElements();
                 string description;
 
-                if (property is IEdmNavigationProperty)
+                if (_property is IEdmNavigationProperty)
                 {
-                    UpdateRestrictionsType updateRestriction = Context.Model.GetRecord<NavigationRestrictionsType>(property, CapabilitiesConstants.NavigationRestrictions)?
-                        .RestrictedProperties?.FirstOrDefault()?.UpdateRestrictions;
 
-                    description = updateRestriction?.Description ?? Context.Model.GetDescriptionAnnotation(property);
+                    description = _updateRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(_property);
                 }
                 else
                 {
                     // Structural property
-                    description = Context.Model.GetDescriptionAnnotation(property);
+                    description = Context.Model.GetDescriptionAnnotation(_property);
                 }
 
                 operation.Description = description;
@@ -114,6 +132,25 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
+        }
+
+        /// <inheritdoc/>
+        protected override void AppendCustomParameters(OpenApiOperation operation)
+        {
+            if (_updateRestrictions == null)
+            {
+                return;
+            }
+
+            if (_updateRestrictions.CustomHeaders != null)
+            {
+                AppendCustomParameters(operation, _updateRestrictions.CustomHeaders, ParameterLocation.Header);
+            }
+
+            if (_updateRestrictions.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation, _updateRestrictions.CustomQueryOptions, ParameterLocation.Query);
+            }
         }
     }
 }
