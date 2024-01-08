@@ -98,29 +98,37 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
 
     private OpenApiSchema GetOpenApiSchema()
     {
-        return ComplexPropertySegment.Property.Type.IsCollection() ?
-            new OpenApiSchema
+        var schema = new OpenApiSchema
+        {
+            UnresolvedReference = true,
+            Reference = new OpenApiReference
             {
-                Type = "array",
-                Items = new OpenApiSchema
+                Type = ReferenceType.Schema,
+                Id = ComplexPropertySegment.ComplexType.FullName()
+            }
+        };
+
+        if (ComplexPropertySegment.Property.Type.IsCollection())
+        {
+            return new OpenApiSchema
+            {
+                Type = Constants.ObjectType,
+                Properties = new Dictionary<string, OpenApiSchema>
                 {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
                     {
-                        Type = ReferenceType.Schema,
-                        Id = ComplexPropertySegment.ComplexType.FullName()
+                        "value",
+                        new OpenApiSchema
+                        {
+                            Type = "array",
+                            Items = schema
+                        }
                     }
                 }
-            }
-        :
-            new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = ComplexPropertySegment.ComplexType.FullName()
-                }
             };
+        }
+        else
+        {
+            return schema;
+        }
     }
 }
