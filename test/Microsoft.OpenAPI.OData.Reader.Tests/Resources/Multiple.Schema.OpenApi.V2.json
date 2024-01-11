@@ -1078,9 +1078,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                  }
+                }
               }
             }
           }
@@ -1811,9 +1816,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                  }
+                }
               }
             }
           }
@@ -2776,9 +2786,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
+                  }
+                }
               }
             }
           }
@@ -3009,9 +3024,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
+                  }
+                }
               }
             }
           }
@@ -3914,9 +3934,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                  }
+                }
               }
             }
           }
