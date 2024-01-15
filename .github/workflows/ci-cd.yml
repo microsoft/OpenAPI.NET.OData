@@ -25,7 +25,7 @@ jobs:
           # Get default branch
           $repo = 'microsoft/OpenAPI.NET.OData'
           $defaultBranch = Invoke-RestMethod -Method GET -Uri https://api.github.com/repos/$repo | Select-Object -ExpandProperty default_branch
-          Write-Output "::set-output name=default_branch::$(echo $defaultBranch)"
+          Write-Output "default_branch=$(echo $defaultBranch) >> $GITHUB_OUTPUT"
 
       - name: Conditionals handler
         id: conditionals_handler
@@ -37,7 +37,7 @@ jobs:
           if ( $githubRef -like "*$defaultBranch*" ) {
             $isDefaultBranch = 'true'
           }
-          Write-Output "::set-output name=is_default_branch::$(echo $isDefaultBranch)"
+          Write-Output "is_default_branch=$(echo $isDefaultBranch) >> $GITHUB_OUTPUT"
 
       - name: Checkout repository
         id: checkout_repo
