@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Edm;
@@ -78,7 +77,7 @@ public class ComplexPropertyPutOperationHandlerTests
 		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
 		var entity = entitySet.EntityType();
-		var property = entity.FindProperty("BillingAddress");
+		var property = entity.FindProperty("AlternativeAddresses");
 		var settings = new OpenApiConvertSettings
 		{
 			EnableOperationId = enableOperationId
@@ -91,8 +90,8 @@ public class ComplexPropertyPutOperationHandlerTests
 
 		// Assert
 		Assert.NotNull(put);
-		Assert.Equal("Update the BillingAddress.", put.Summary);
-		Assert.Equal("Update the BillingAddress value.", put.Description);
+		Assert.Equal("Update the AlternativeAddresses.", put.Summary);
+		Assert.Equal("Update the AlternativeAddresses value.", put.Description);
 
 		Assert.NotNull(put.Parameters);
 		Assert.Single(put.Parameters); //id
@@ -100,10 +99,16 @@ public class ComplexPropertyPutOperationHandlerTests
 		Assert.NotNull(put.Responses);
 		Assert.Equal(2, put.Responses.Count);
 		Assert.Equal(new[] { "204", "default" }, put.Responses.Select(r => r.Key));
+		var schema = put.RequestBody?.Content.FirstOrDefault().Value?.Schema;
 
-		if (enableOperationId)
+        Assert.NotNull(schema);
+		Assert.Equal("object", schema.Type);
+		Assert.Equal("value", schema.Properties.FirstOrDefault().Key);
+        Assert.Equal("array", schema.Properties.FirstOrDefault().Value.Type);
+
+        if (enableOperationId)
 		{
-			Assert.Equal("Customers.UpdateBillingAddress", put.OperationId);
+			Assert.Equal("Customers.UpdateAlternativeAddresses", put.OperationId);
 		}
 		else
 		{

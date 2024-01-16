@@ -903,9 +903,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -1480,9 +1485,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -1943,9 +1953,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -2644,9 +2659,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -3861,9 +3881,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -4324,9 +4349,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -4952,9 +4982,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -6047,9 +6082,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -7672,9 +7712,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -8147,9 +8192,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -8783,9 +8833,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -9547,9 +9602,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -12533,9 +12593,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -13061,9 +13126,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -13857,9 +13927,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -16513,9 +16588,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -17068,9 +17148,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -17877,9 +17962,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -19278,9 +19368,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -19833,9 +19928,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -20561,9 +20661,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -21818,9 +21923,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -23675,9 +23785,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -24242,9 +24357,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -24978,9 +25098,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }
@@ -25854,9 +25979,14 @@
             "description": "New property values",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  }
+                }
               }
             }
           }

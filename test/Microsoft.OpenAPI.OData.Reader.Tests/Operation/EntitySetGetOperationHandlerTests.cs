@@ -356,8 +356,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         </Property>
         <Property Name=""MailingAddress"" Type=""NS.Address"" Nullable=""false"" />
         <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"">
-            <Annotation Term=""Org.OData.Core.V1.Description"" String=""The AlternativeAddresses."" />           
-            <Annotation Term=""Org.OData.Core.V1.LongDescription"" String=""The AlternativeAddresses value."" />           
+            <Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+                <Record>
+                    <PropertyValue Property=""Description"" String=""Get the AlternativeAddresses."" />            
+                    <PropertyValue Property=""LongDescription"" String=""Get the AlternativeAddresses value."" />            
+                </Record>
+            </Annotation>
+            <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+                <Record>
+                    <PropertyValue Property=""Description"" String=""Update the AlternativeAddresses."" />            
+                    <PropertyValue Property=""LongDescription"" String=""Update the AlternativeAddresses value."" />            
+                </Record>
+            </Annotation>        
         </Property>
       </EntityType>
       <EntityContainer Name =""Default"">

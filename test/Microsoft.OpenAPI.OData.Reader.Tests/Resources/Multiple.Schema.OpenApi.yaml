@@ -848,9 +848,12 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
         required: true
       responses:
         '204':
@@ -1424,9 +1427,12 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
         required: true
       responses:
         '204':
@@ -2209,9 +2215,12 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
         required: true
       responses:
         '204':
@@ -2385,9 +2394,12 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
         required: true
       responses:
         '204':
@@ -3091,9 +3103,12 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
         required: true
       responses:
         '204':
