@@ -62,13 +62,15 @@ namespace Microsoft.OpenApi.OData.Operation
             });
 
             // for collection, we should have @id in query
-            if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many &&
+                Path.Segments.Reverse().Skip(1).First() is ODataNavigationPropertySegment)
             {
                 operation.Parameters.Add(new OpenApiParameter
                 {
                     Name = "@id",
                     In = ParameterLocation.Query,
-                    Description = "Delete Uri",
+                    Description = "The Delete Uri",
+                    Required = true,
                     Schema = new OpenApiSchema
                     {
                         Type = "string"

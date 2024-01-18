@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -65,22 +65,21 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
             }
 
-            // So far, we only consider the non-containment
-            Debug.Assert(!NavigationProperty.ContainsTarget);
-
             // Create the ref
             if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 ODataSegment penultimateSegment = Path.Segments.Reverse().Skip(1).First();
                 if (penultimateSegment is ODataKeySegment)
                 {
-                    // Collection-valued: DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
+                    // Collection-valued indexed: DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
                     AddDeleteOperation(item, restriction);
                 }
                 else
                 {
                     AddReadOperation(item, restriction);
                     AddInsertOperation(item, restriction);
+                    // Collection-valued: DELETE ~/entityset/{key}/collection-valued-Nav/$ref?$id='{navKey}'
+                    AddDeleteOperation(item, restriction);
                 }
             }
             else
