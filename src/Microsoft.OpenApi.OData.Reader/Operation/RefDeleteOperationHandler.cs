@@ -69,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     Name = "@id",
                     In = ParameterLocation.Query,
-                    Description = "The Delete Uri",
+                    Description = "The delete Uri",
                     Required = true,
                     Schema = new OpenApiSchema
                     {
