@@ -629,11 +629,6 @@ paths:
           description: ETag
           schema:
             type: string
-        - name: '@id'
-          in: query
-          description: Delete Uri
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -757,6 +752,39 @@ paths:
           x-ms-docs-key-type: DocumentDto
       requestBody:
         $ref: '#/components/requestBodies/refPostBody'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Documents.RevisionDto
+      summary: Delete ref of navigation property Revisions for Documents
+      operationId: Documents.DeleteRefRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+        - name: '@id'
+          in: query
+          description: The delete Uri
+          required: true
+          schema:
+            type: string
       responses:
         '204':
           description: Success
@@ -1311,11 +1339,6 @@ paths:
           description: ETag
           schema:
             type: string
-        - name: '@id'
-          in: query
-          description: Delete Uri
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -1622,6 +1645,39 @@ paths:
           x-ms-docs-key-type: LibraryDto
       requestBody:
         $ref: '#/components/requestBodies/refPostBody'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Libraries.DocumentDto
+      summary: Delete ref of navigation property Documents for Libraries
+      operationId: Libraries.DeleteRefDocuments
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+        - name: '@id'
+          in: query
+          description: The delete Uri
+          required: true
+          schema:
+            type: string
       responses:
         '204':
           description: Success
@@ -2884,11 +2940,6 @@ paths:
           description: ETag
           schema:
             type: string
-        - name: '@id'
-          in: query
-          description: Delete Uri
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -3012,6 +3063,39 @@ paths:
           x-ms-docs-key-type: DocumentDto
       requestBody:
         $ref: '#/components/requestBodies/refPostBody'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Tasks.RevisionDto
+      summary: Delete ref of navigation property Revisions for Tasks
+      operationId: Tasks.DeleteRefRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+        - name: '@id'
+          in: query
+          description: The delete Uri
+          required: true
+          schema:
+            type: string
       responses:
         '204':
           description: Success
