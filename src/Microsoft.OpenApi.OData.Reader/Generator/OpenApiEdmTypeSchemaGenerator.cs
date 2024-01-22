@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -461,45 +461,18 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(context != null);
             Debug.Assert(typeReference != null);
 
-            OpenApiSchema schema = new OpenApiSchema();
-
-            // AnyOf will only be valid openApi for version 3
-            // otherwise the reference should be set directly
-            // as per OASIS documentation for openApi version 2
-            if (typeReference.IsNullable && 
-                (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0))
+            OpenApiSchema schema = new OpenApiSchema
             {
-                schema.Reference = null;
-                schema.AnyOf = new List<OpenApiSchema>
-                {
-                    new OpenApiSchema
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = typeReference.Definition.FullTypeName()
-                        }
-                    },
-                    new OpenApiSchema
-                    {
-                        Type = "object",
-                        Nullable = true
-                    }
-                };
-            }
-            else
-            {
-                schema.Type = null;
-                schema.AnyOf = null;
-                schema.Reference = new OpenApiReference
+                Type = null,
+                AnyOf = null,
+                Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
                     Id = typeReference.Definition.FullTypeName()
-                };
-                schema.UnresolvedReference = true; 
-                schema.Nullable = typeReference.IsNullable;
-            }
+                },
+                UnresolvedReference = true,
+                Nullable = typeReference.IsNullable
+            };
 
             return schema;
         }
