@@ -161,18 +161,16 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Theory]
-        [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
-        [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
-        [InlineData(true, OpenApiSpecVersion.OpenApi2_0)]
-        [InlineData(false, OpenApiSpecVersion.OpenApi2_0)]
-        public void CreateResponseForEdmFunctionReturnCorrectResponses(bool isFunctionImport, OpenApiSpecVersion specVersion)
+       
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateResponseForEdmFunctionReturnCorrectResponses(bool isFunctionImport)
         {
             // Arrange
             string operationName = "GetPersonWithMostFriends";
             IEdmModel model = EdmModelHelper.TripServiceModel;
             ODataContext context = new ODataContext(model);
 
-            context.Settings.OpenApiSpecVersion = specVersion;
 
             // Act
             OpenApiResponses responses;
@@ -201,30 +199,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(response.Content);
             OpenApiMediaType mediaType = response.Content["application/json"];
 
-            // openApi version 2 should not use AnyOf
-            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
-            {
-                Assert.NotNull(mediaType.Schema);
-                Assert.Null(mediaType.Schema.AnyOf);
-                Assert.NotNull(mediaType.Schema.Reference);
-                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", mediaType.Schema.Reference.Id);
-                Assert.True(mediaType.Schema.Nullable);
-            }
-            else
-            {
-                Assert.NotNull(mediaType.Schema);
-                Assert.Null(mediaType.Schema.Reference);
-                Assert.NotNull(mediaType.Schema.AnyOf);
-                Assert.Equal(2, mediaType.Schema.AnyOf.Count);
-                var anyOfRef = mediaType.Schema.AnyOf.FirstOrDefault();
-                Assert.NotNull(anyOfRef);
-                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOfRef.Reference.Id);
-                var anyOfNull = mediaType.Schema.AnyOf.Skip(1).FirstOrDefault();
-                Assert.NotNull(anyOfNull.Type);
-                Assert.Equal("object", anyOfNull.Type);
-                Assert.True(anyOfNull.Nullable);
-
-            }
+            Assert.NotNull(mediaType.Schema);
+            Assert.Null(mediaType.Schema.AnyOf);
+            Assert.NotNull(mediaType.Schema.Reference);
+            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", mediaType.Schema.Reference.Id);
+            Assert.True(mediaType.Schema.Nullable);   
         }
 
         [Fact]
@@ -378,15 +357,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 ""value"": {
                   ""type"": ""array"",
                   ""items"": {
-                    ""anyOf"": [
-                      {
-                        ""$ref"": ""#/components/schemas/microsoft.graph.application""
-                      },
-                      {
-                        ""type"": ""object"",
-                        ""nullable"": true
-                      }
-                    ]
+                    ""$ref"": ""#/components/schemas/microsoft.graph.application""
                   }
                 }
               }
@@ -415,15 +386,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ""value"": {
               ""type"": ""array"",
               ""items"": {
-                ""anyOf"": [
-                  {
-                    ""$ref"": ""#/components/schemas/microsoft.graph.application""
-                  },
-                  {
-                    ""type"": ""object"",
-                    ""nullable"": true
-                  }
-                ]
+                ""$ref"": ""#/components/schemas/microsoft.graph.application""
               }
             },
             ""@odata.nextLink"": {
