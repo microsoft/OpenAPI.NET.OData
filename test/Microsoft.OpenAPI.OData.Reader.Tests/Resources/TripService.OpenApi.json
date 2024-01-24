@@ -2798,14 +2798,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -3631,6 +3623,48 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete ref of navigation property Friends for Me",
+        "operationId": "Me.DeleteRefFriends",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -5317,14 +5351,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6072,6 +6098,48 @@
           "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete ref of navigation property Friends for Me",
+        "operationId": "Me.DeleteRefFriends",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
@@ -6517,14 +6585,6 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
             "schema": {
               "type": "string"
             }
@@ -7165,6 +7225,48 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for Me",
+        "operationId": "Me.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -7873,14 +7975,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -8052,6 +8146,61 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Me.Trips.PlanItem"
+        ],
+        "summary": "Delete ref of navigation property PlanItems for Me",
+        "operationId": "Me.Trips.DeleteRefPlanItems",
+        "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "The unique identifier of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -9549,14 +9698,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -10238,6 +10379,48 @@
           "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for Me",
+        "operationId": "Me.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Friends": {
@@ -10398,14 +10581,6 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
             "schema": {
               "type": "string"
             }
@@ -11140,6 +11315,48 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete ref of navigation property Friends for Me",
+        "operationId": "Me.DeleteRefFriends",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -12188,14 +12405,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -12367,6 +12576,61 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Me.Trips.PlanItem"
+        ],
+        "summary": "Delete ref of navigation property PlanItems for Me",
+        "operationId": "Me.Trips.DeleteRefPlanItems",
+        "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "The unique identifier of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -13189,14 +13453,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -13368,6 +13624,61 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Me.Trips.PlanItem"
+        ],
+        "summary": "Delete ref of navigation property PlanItems for Me",
+        "operationId": "Me.Trips.DeleteRefPlanItems",
+        "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "The unique identifier of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -15226,14 +15537,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -16131,6 +16434,51 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Delete ref of navigation property Friends for NewComePeople",
+        "operationId": "NewComePeople.DeleteRefFriends",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -17641,14 +17989,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -17829,6 +18169,64 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "NewComePeople.Trips.PlanItem"
+        ],
+        "summary": "Delete ref of navigation property PlanItems for NewComePeople",
+        "operationId": "NewComePeople.Trips.DeleteRefPlanItems",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "The unique identifier of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -19773,14 +20171,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -20748,6 +21138,58 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete ref of navigation property Friends for People",
+        "operationId": "People.DeleteRefFriends",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -22780,14 +23222,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -23667,6 +24101,58 @@
           "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete ref of navigation property Friends for People",
+        "operationId": "People.DeleteRefFriends",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
@@ -24186,14 +24672,6 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
             "schema": {
               "type": "string"
             }
@@ -24956,6 +25434,58 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for People",
+        "operationId": "People.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -25746,14 +26276,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -25955,6 +26477,71 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Trips.PlanItem"
+        ],
+        "summary": "Delete ref of navigation property PlanItems for People",
+        "operationId": "People.Trips.DeleteRefPlanItems",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "The unique identifier of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -27768,14 +28355,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -28579,6 +29158,58 @@
           "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for People",
+        "operationId": "People.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Friends": {
@@ -28759,14 +29390,6 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
             "schema": {
               "type": "string"
             }
@@ -29633,6 +30256,58 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete ref of navigation property Friends for People",
+        "operationId": "People.DeleteRefFriends",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -30829,14 +31504,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -31038,6 +31705,71 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Trips.PlanItem"
+        ],
+        "summary": "Delete ref of navigation property PlanItems for People",
+        "operationId": "People.Trips.DeleteRefPlanItems",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "The unique identifier of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -31974,14 +32706,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -32183,6 +32907,71 @@
         "requestBody": {
           "$ref": "#/components/requestBodies/refPostBody"
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Trips.PlanItem"
+        ],
+        "summary": "Delete ref of navigation property PlanItems for People",
+        "operationId": "People.Trips.DeleteRefPlanItems",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "The unique identifier of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "The delete Uri",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
