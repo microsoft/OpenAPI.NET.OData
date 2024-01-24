@@ -7775,15 +7775,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       }
                     }
                   }
@@ -12205,15 +12197,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       }
                     }
                   }
@@ -13253,15 +13237,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       }
                     }
                   }
@@ -17791,15 +17767,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       }
                     }
                   }
@@ -26056,15 +26024,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       }
                     }
                   }
@@ -31284,15 +31244,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       }
                     }
                   }
@@ -32486,15 +32438,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       }
                     }
                   }
@@ -33542,15 +33486,7 @@
           "AddressInfo": {
             "type": "array",
             "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-                },
-                {
-                  "type": "object",
-                  "nullable": true
-                }
-              ]
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
           },
           "HomeAddress": {
@@ -34674,15 +34610,7 @@
                 "value": {
                   "type": "array",
                   "items": {
-                    "anyOf": [
-                      {
-                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-                      },
-                      {
-                        "type": "object",
-                        "nullable": true
-                      }
-                    ]
+                    "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
                   }
                 }
               }
@@ -34717,15 +34645,7 @@
                 "value": {
                   "type": "array",
                   "items": {
-                    "anyOf": [
-                      {
-                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                      },
-                      {
-                        "type": "object",
-                        "nullable": true
-                      }
-                    ]
+                    "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                   }
                 }
               }

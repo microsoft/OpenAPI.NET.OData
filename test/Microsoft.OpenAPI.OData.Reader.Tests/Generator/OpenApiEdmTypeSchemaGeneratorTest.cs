@@ -78,15 +78,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Equal(@"{
   ""type"": ""array"",
   ""items"": {
-    ""anyOf"": [
-      {
-        ""$ref"": ""#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
-      },
-      {
-        ""type"": ""object"",
-        ""nullable"": true
-      }
-    ]
+    ""$ref"": ""#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
   }
 }".ChangeLineBreaks(), json);
             }           
