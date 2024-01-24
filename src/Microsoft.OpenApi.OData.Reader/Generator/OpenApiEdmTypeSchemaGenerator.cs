@@ -480,7 +480,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 schema.Reference = null;
                 schema.AnyOf = new List<OpenApiSchema>
                 {
-                    new() {
+                    new OpenApiSchema
+                    {
                         UnresolvedReference = true,
                         Reference = new OpenApiReference
                         {
@@ -488,7 +489,8 @@ namespace Microsoft.OpenApi.OData.Generator
                             Id = typeReference.Definition.FullTypeName()
                         }
                     },
-                    new() {
+                    new OpenApiSchema
+                    {
                         Type = "object",
                         Nullable = true
                     }

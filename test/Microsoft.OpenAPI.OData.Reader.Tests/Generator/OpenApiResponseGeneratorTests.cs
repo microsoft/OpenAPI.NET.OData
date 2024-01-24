@@ -159,7 +159,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Act & Assert
             Assert.Throws<ArgumentNullException>("operation", () => context.CreateResponses(operation: null));
         }
-                
+
         [Theory]
         [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
