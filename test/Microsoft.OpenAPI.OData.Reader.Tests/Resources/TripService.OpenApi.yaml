@@ -5397,10 +5397,7 @@ paths:
                   value:
                     type: array
                     items:
-                      anyOf:
-                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                        - type: object
-                          nullable: true
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -8494,10 +8491,7 @@ paths:
                   value:
                     type: array
                     items:
-                      anyOf:
-                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                        - type: object
-                          nullable: true
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9237,10 +9231,7 @@ paths:
                   value:
                     type: array
                     items:
-                      anyOf:
-                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                        - type: object
-                          nullable: true
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -12377,10 +12368,7 @@ paths:
                   value:
                     type: array
                     items:
-                      anyOf:
-                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                        - type: object
-                          nullable: true
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
@@ -18153,10 +18141,7 @@ paths:
                   value:
                     type: array
                     items:
-                      anyOf:
-                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                        - type: object
-                          nullable: true
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -21801,10 +21786,7 @@ paths:
                   value:
                     type: array
                     items:
-                      anyOf:
-                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                        - type: object
-                          nullable: true
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -22651,10 +22633,7 @@ paths:
                   value:
                     type: array
                     items:
-                      anyOf:
-                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                        - type: object
-                          nullable: true
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -23382,10 +23361,7 @@ components:
         AddressInfo:
           type: array
           items:
-            anyOf:
-              - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-              - type: object
-                nullable: true
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         HomeAddress:
           anyOf:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
@@ -24085,10 +24061,7 @@ components:
               value:
                 type: array
                 items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-                    - type: object
-                      nullable: true
+                  $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
     UpdatePersonLastNameResponse:
       description: Success
       content:
@@ -24110,10 +24083,7 @@ components:
               value:
                 type: array
                 items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                    - type: object
-                      nullable: true
+                  $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
   parameters:
     top:
       name: $top
