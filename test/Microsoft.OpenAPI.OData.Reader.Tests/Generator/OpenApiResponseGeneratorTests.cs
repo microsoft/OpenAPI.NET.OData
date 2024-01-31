@@ -378,15 +378,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 ""value"": {
                   ""type"": ""array"",
                   ""items"": {
-                    ""anyOf"": [
-                      {
-                        ""$ref"": ""#/components/schemas/microsoft.graph.application""
-                      },
-                      {
-                        ""type"": ""object"",
-                        ""nullable"": true
-                      }
-                    ]
+                    ""$ref"": ""#/components/schemas/microsoft.graph.application""
                   }
                 }
               }
@@ -415,15 +407,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ""value"": {
               ""type"": ""array"",
               ""items"": {
-                ""anyOf"": [
-                  {
-                    ""$ref"": ""#/components/schemas/microsoft.graph.application""
-                  },
-                  {
-                    ""type"": ""object"",
-                    ""nullable"": true
-                  }
-                ]
+                ""$ref"": ""#/components/schemas/microsoft.graph.application""
               }
             },
             ""@odata.nextLink"": {

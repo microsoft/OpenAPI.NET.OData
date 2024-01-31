@@ -3319,10 +3319,7 @@ components:
         Tags:
           type: array
           items:
-            anyOf:
-              - $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
-              - type: object
-                nullable: true
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
         Revisions:
           type: array
           items:
@@ -3785,17 +3782,11 @@ components:
         DocumentClasses:
           type: array
           items:
-            anyOf:
-              - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
-              - type: object
-                nullable: true
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
         Tags:
           type: array
           items:
-            anyOf:
-              - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
-              - type: object
-                nullable: true
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
         Library:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
@@ -4537,10 +4528,7 @@ components:
             Documents:
               type: array
               items:
-                anyOf:
-                  - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
-                  - type: object
-                    nullable: true
+                $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
       example:
         Id: integer (identifier)
         DomainId: integer

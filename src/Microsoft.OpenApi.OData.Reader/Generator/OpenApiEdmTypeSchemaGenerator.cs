@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -34,13 +34,20 @@ namespace Microsoft.OpenApi.OData.Generator
 
             switch (edmTypeReference.TypeKind())
             {
-                case EdmTypeKind.Collection:
-                    // Collection-valued structural and navigation are represented as Schema Objects of type array.
-                    // The value of the items keyword is a Schema Object specifying the type of the items. 
+                // Collection-valued structural and navigation are represented as Schema Objects of type array.
+                // The value of the items keyword is a Schema Object specifying the type of the items.
+                case EdmTypeKind.Collection:  
+                    
+                    IEdmTypeReference typeRef = edmTypeReference.AsCollection().ElementType();
+                    OpenApiSchema schema;
+                    schema = typeRef.TypeKind() == EdmTypeKind.Complex || typeRef.TypeKind() == EdmTypeKind.Entity
+                        ? context.CreateStructuredTypeSchema(typeRef.AsStructured(), true)
+                        : context.CreateEdmTypeSchema(typeRef);
+
                     return new OpenApiSchema
                     {
                         Type = "array",
-                        Items = context.CreateEdmTypeSchema(edmTypeReference.AsCollection().ElementType())
+                        Items = schema
                     };
 
                 // Complex, enum, entity, entity reference are represented as JSON References to the Schema Object of the complex,
@@ -456,7 +463,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return schema;
         }
 
-        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredTypeReference typeReference)
+        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredTypeReference typeReference, bool isTypeCollection = false)
         {
             Debug.Assert(context != null);
             Debug.Assert(typeReference != null);
@@ -466,7 +473,8 @@ namespace Microsoft.OpenApi.OData.Generator
             // AnyOf will only be valid openApi for version 3
             // otherwise the reference should be set directly
             // as per OASIS documentation for openApi version 2
-            if (typeReference.IsNullable && 
+            // Collections of structured types cannot be nullable
+            if (typeReference.IsNullable && !isTypeCollection &&
                 (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0))
             {
                 schema.Reference = null;
@@ -497,7 +505,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Type = ReferenceType.Schema,
                     Id = typeReference.Definition.FullTypeName()
                 };
-                schema.UnresolvedReference = true; 
+                schema.UnresolvedReference = true;
                 schema.Nullable = typeReference.IsNullable;
             }
 

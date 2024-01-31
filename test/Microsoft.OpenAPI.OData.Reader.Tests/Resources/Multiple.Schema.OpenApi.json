@@ -4716,15 +4716,7 @@
           "Tags": {
             "type": "array",
             "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
-                },
-                {
-                  "type": "object",
-                  "nullable": true
-                }
-              ]
+              "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
             }
           },
           "Revisions": {
@@ -5307,29 +5299,13 @@
           "DocumentClasses": {
             "type": "array",
             "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
-                },
-                {
-                  "type": "object",
-                  "nullable": true
-                }
-              ]
+              "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
             }
           },
           "Tags": {
             "type": "array",
             "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
-                },
-                {
-                  "type": "object",
-                  "nullable": true
-                }
-              ]
+              "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
             }
           },
           "Library": {
@@ -6311,15 +6287,7 @@
               "Documents": {
                 "type": "array",
                 "items": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
-                    },
-                    {
-                      "type": "object",
-                      "nullable": true
-                    }
-                  ]
+                  "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
                 }
               }
             }
