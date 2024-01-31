@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -204,19 +204,20 @@ namespace Microsoft.OpenApi.OData.PathItem
                 DeleteRestrictionsType entityDeleteRestriction = Context.Model.GetRecord<DeleteRestrictionsType>(_navPropEntityType);
                 bool isDeletableDefault = navPropDeleteRestriction == null && entityDeleteRestriction == null;
 
-                if (isDeletableDefault ||
+                if ((isDeletableDefault ||
                 ((entityDeleteRestriction?.IsDeletable ?? true) &&
-                (navPropDeleteRestriction?.IsDeletable ?? true)))
+                (navPropDeleteRestriction?.IsDeletable ?? true))) &&
+                (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many ||
+                LastSegmentIsKeySegment))
                 {
-                    if (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment)
-                    {
-                        AddOperation(item, OperationType.Delete);
-                    }
+                    AddOperation(item, OperationType.Delete);
                 }
             }
             else
             {
-                if ((navPropDeleteRestriction?.IsDeletable ?? false) &&
+                // Add delete operation for non-contained nav. props only if explicitly set to true via annotation
+                // Note: Use Deletable and not IsDeletable
+                if ((navPropDeleteRestriction?.Deletable ?? false) && 
                     (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many ||
                     LastSegmentIsKeySegment))
                 {
