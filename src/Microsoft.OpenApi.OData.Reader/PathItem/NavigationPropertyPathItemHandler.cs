@@ -213,16 +213,13 @@ namespace Microsoft.OpenApi.OData.PathItem
                     AddOperation(item, OperationType.Delete);
                 }
             }
-            else
+            else if ((navPropDeleteRestriction?.Deletable ?? false) &&
+                    (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many ||
+                    LastSegmentIsKeySegment))
             {
                 // Add delete operation for non-contained nav. props only if explicitly set to true via annotation
                 // Note: Use Deletable and not IsDeletable
-                if ((navPropDeleteRestriction?.Deletable ?? false) && 
-                    (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many ||
-                    LastSegmentIsKeySegment))
-                {
-                    AddOperation(item, OperationType.Delete);
-                }
+                AddOperation(item, OperationType.Delete);
             }
 
             return;
