@@ -7761,6 +7761,26 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -8369,6 +8389,24 @@
                   "StartsAt desc",
                   "EndsAt",
                   "EndsAt desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "PlanItems"
                 ],
                 "type": "string"
               }
@@ -12183,6 +12221,26 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -13219,6 +13277,26 @@
                   "FavoriteFeature desc",
                   "Features",
                   "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
                 ],
                 "type": "string"
               }
@@ -17073,6 +17151,24 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "PlanItems"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -17749,6 +17845,26 @@
                   "FavoriteFeature desc",
                   "Features",
                   "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
                 ],
                 "type": "string"
               }
@@ -26010,6 +26126,26 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -26710,6 +26846,24 @@
                   "StartsAt desc",
                   "EndsAt",
                   "EndsAt desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "PlanItems"
                 ],
                 "type": "string"
               }
@@ -31230,6 +31384,26 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -32420,6 +32594,26 @@
                   "FavoriteFeature desc",
                   "Features",
                   "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
                 ],
                 "type": "string"
               }
