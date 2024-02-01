@@ -61,12 +61,22 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         [Theory]
         [InlineData(true, true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
         [InlineData(true, false, new OperationType[] { OperationType.Get, OperationType.Post })]
-        [InlineData(false, true, new OperationType[] { OperationType.Get })]
+        [InlineData(false, true, new OperationType[] { OperationType.Get, OperationType.Delete })] // Deletablity explicitly set via annotation
         [InlineData(false, false, new OperationType[] { OperationType.Get})]
         public void CreateCollectionNavigationPropertyPathItemReturnsCorrectPathItem(bool containment, bool keySegment, OperationType[] expected)
         {
+            string annotation = 
+                containment ? 
+                "" : 
+                @"
+<Annotation Term=""Org.OData.Capabilities.V1.DeleteRestrictions"">
+  <Record>
+    <PropertyValue Property=""Deletable"" Bool=""true"" />
+  </Record>
+</Annotation>";
+            
             // Arrange
-            IEdmModel model = GetEdmModel("");
+            IEdmModel model = GetEdmModel(annotation: "", annotation2: annotation);
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
@@ -591,7 +601,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal("true", isHiddenValue);
         }
 
-        public static IEdmModel GetEdmModel(string annotation)
+        public static IEdmModel GetEdmModel(string annotation, string annotation2 = "")
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
   <edmx:DataServices>
@@ -629,11 +639,14 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
       <Annotations Target=""NS.Default/Customers"">
         {0}
       </Annotations>
+      <Annotations Target=""NS.Customer/Orders"">
+        {1}
+      </Annotations>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>";
 
-            string modelText = string.Format(template, annotation);
+            string modelText = string.Format(template, annotation, annotation2);
 
             IEdmModel model;
             IEnumerable<EdmError> errors;
