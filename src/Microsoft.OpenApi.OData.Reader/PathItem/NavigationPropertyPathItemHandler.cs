@@ -199,26 +199,23 @@ namespace Microsoft.OpenApi.OData.PathItem
             DeleteRestrictionsType navPropDeleteRestriction = restriction?.DeleteRestrictions ??
                Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty);
 
-            if (NavigationProperty.ContainsTarget)
-            {
-                DeleteRestrictionsType entityDeleteRestriction = Context.Model.GetRecord<DeleteRestrictionsType>(_navPropEntityType);
-                bool isDeletableDefault = navPropDeleteRestriction == null && entityDeleteRestriction == null;
+            if (!(NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment))
+                return;
 
-                if ((isDeletableDefault ||
+            DeleteRestrictionsType entityDeleteRestriction = Context.Model.GetRecord<DeleteRestrictionsType>(_navPropEntityType);
+            bool isDeletable = 
+                (navPropDeleteRestriction == null && entityDeleteRestriction == null) ||
                 ((entityDeleteRestriction?.IsDeletable ?? true) &&
-                (navPropDeleteRestriction?.IsDeletable ?? true))) &&
-                (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many ||
-                LastSegmentIsKeySegment))
-                {
-                    AddOperation(item, OperationType.Delete);
-                }
+                (navPropDeleteRestriction?.IsDeletable ?? true));
+
+            if (NavigationProperty.ContainsTarget && isDeletable)
+            {
+                AddOperation(item, OperationType.Delete);
             }
-            else if ((navPropDeleteRestriction?.Deletable ?? false) &&
-                    (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many ||
-                    LastSegmentIsKeySegment))
+            else if (navPropDeleteRestriction?.Deletable ?? false)
             {
                 // Add delete operation for non-contained nav. props only if explicitly set to true via annotation
-                // Note: Use Deletable and not IsDeletable
+                // Note: Use Deletable and NOT IsDeletable
                 AddOperation(item, OperationType.Delete);
             }
 
