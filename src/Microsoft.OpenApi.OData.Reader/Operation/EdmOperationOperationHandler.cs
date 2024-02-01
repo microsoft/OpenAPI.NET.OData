@@ -249,6 +249,12 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         operation.Parameters.AppendParameter(orderbyParameter);
                     }
+
+                    // $expand
+                    if (Context.CreateExpand(function, entityType) is OpenApiParameter expandParameter)
+                    {
+                        operation.Parameters.AppendParameter(expandParameter);
+                    }
                 }
             }
         }
