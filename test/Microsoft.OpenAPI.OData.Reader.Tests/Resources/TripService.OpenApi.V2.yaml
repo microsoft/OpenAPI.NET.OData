@@ -4925,6 +4925,17 @@ paths:
               - Features
               - Features desc
             type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           description: Success
@@ -5309,6 +5320,15 @@ paths:
               - StartsAt desc
               - EndsAt
               - EndsAt desc
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
             type: string
       responses:
         '200':
@@ -7742,6 +7762,17 @@ paths:
               - Features
               - Features desc
             type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           description: Success
@@ -8413,6 +8444,17 @@ paths:
               - FavoriteFeature desc
               - Features
               - Features desc
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
             type: string
       responses:
         '200':
@@ -10781,6 +10823,15 @@ paths:
               - EndsAt
               - EndsAt desc
             type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
+            type: string
       responses:
         '200':
           $ref: '#/responses/GetFriendsTripsResponse'
@@ -11208,6 +11259,17 @@ paths:
               - FavoriteFeature desc
               - Features
               - Features desc
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
             type: string
       responses:
         '200':
@@ -16432,6 +16494,17 @@ paths:
               - Features
               - Features desc
             type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           description: Success
@@ -16871,6 +16944,15 @@ paths:
               - StartsAt desc
               - EndsAt
               - EndsAt desc
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - PlanItems
             type: string
       responses:
         '200':
@@ -19709,6 +19791,17 @@ paths:
               - Features
               - Features desc
             type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
       responses:
         '200':
           description: Success
@@ -20470,6 +20563,17 @@ paths:
               - FavoriteFeature desc
               - Features
               - Features desc
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
             type: string
       responses:
         '200':
