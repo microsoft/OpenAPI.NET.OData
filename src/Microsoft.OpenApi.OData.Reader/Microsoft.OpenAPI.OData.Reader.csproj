@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.6.0-preview.5</Version>
+    <Version>1.6.0-preview.6</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -27,6 +27,7 @@
 - Fixes inconsistency of nullability of schemas of properties that are a collection of structured types #467
 - Generates $expand query parameter for operations whose return type is a collection #481
 - Adds delete operation for non-contained navigation properties only if explicitly allowed via annotation #483
+- Appends parameters and fixes operation ids of navigation property paths generated via composable functions #486
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
