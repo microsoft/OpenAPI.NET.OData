@@ -187,6 +187,7 @@ namespace Microsoft.OpenApi.OData.Common
                 }
                 else if (segment is ODataOperationSegment operationSegment)
                 {
+                    // Navigation property generated via composable function
                     items.Add(operationSegment.Identifier);
                 }
             }
