@@ -292,6 +292,29 @@ namespace Microsoft.OpenApi.OData.Generator
                 pathParameters.AddRange(context.CreateKeyParameters(keySegment, mapping));
             }
 
+            foreach (ODataOperationSegment operationSegment in path.OfType<ODataOperationSegment>())
+            {
+                if (operationSegment.Operation is not IEdmFunction function)
+                {
+                    continue;
+                }
+
+                if (operationSegment.ParameterMappings != null)
+                {
+                    IList<OpenApiParameter> parameters = context.CreateParameters(function, operationSegment.ParameterMappings);
+                    foreach (var parameter in parameters)
+                    {
+                        pathParameters.AppendParameter(parameter);
+                    }
+                }
+                else
+                {
+                    IDictionary<string, string> mappings = parameterMappings[operationSegment];
+                    IList<OpenApiParameter> parameters = context.CreateParameters(function, mappings);
+                    pathParameters.AddRange(parameters);                    
+                }
+            }
+
             // Add the route prefix parameter v1{data}
             if (context.Settings.RoutePathPrefixProvider?.Parameters != null)
             {
