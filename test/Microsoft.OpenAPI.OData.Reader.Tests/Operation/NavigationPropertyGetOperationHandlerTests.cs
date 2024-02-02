@@ -69,6 +69,37 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
         }
 
+        [Fact]
+        public void CreateNavigationGetOperationViaComposableFunctionReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model, new OpenApiConvertSettings()
+            {
+                EnableOperationId = true
+            });
+
+            IEdmEntitySet sites = model.EntityContainer.FindEntitySet("sites");
+            IEdmEntityType site = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "site");
+            IEdmNavigationProperty analytics = site.DeclaredNavigationProperties().First(c => c.Name == "analytics");
+            IEdmOperation getByPath = model.SchemaElements.OfType<IEdmOperation>().First(f => f.Name == "getByPath");
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(sites),
+                new ODataKeySegment(site),
+                new ODataOperationSegment(getByPath),
+                new ODataNavigationPropertySegment(analytics));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("sites.getByPath.GetAnalytics", operation.OperationId);
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(4, operation.Parameters.Count);
+            Assert.Contains(operation.Parameters, x => x.Name == "path");
+        }
+
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
