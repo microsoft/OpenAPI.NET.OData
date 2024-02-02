@@ -26,6 +26,7 @@
 - Adds a delete operation and a required @id query parameter to collection-valued navigation property paths with $ref #453
 - Fixes inconsistency of nullability of schemas of properties that are a collection of structured types #467
 - Generates $expand query parameter for operations whose return type is a collection #481
+- Adds delete operation for non-contained navigation properties only if explicitly allowed via annotation #483
 - Appends parameters and fixes operation ids of navigation property paths generated via composable functions 3486
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>

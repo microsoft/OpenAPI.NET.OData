@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -199,29 +199,24 @@ namespace Microsoft.OpenApi.OData.PathItem
             DeleteRestrictionsType navPropDeleteRestriction = restriction?.DeleteRestrictions ??
                Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty);
 
-            if (NavigationProperty.ContainsTarget)
-            {
-                DeleteRestrictionsType entityDeleteRestriction = Context.Model.GetRecord<DeleteRestrictionsType>(_navPropEntityType);
-                bool isDeletableDefault = navPropDeleteRestriction == null && entityDeleteRestriction == null;
+            if (!(NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment))
+                return;
 
-                if (isDeletableDefault ||
+            DeleteRestrictionsType entityDeleteRestriction = Context.Model.GetRecord<DeleteRestrictionsType>(_navPropEntityType);
+            bool isDeletable = 
+                (navPropDeleteRestriction == null && entityDeleteRestriction == null) ||
                 ((entityDeleteRestriction?.IsDeletable ?? true) &&
-                (navPropDeleteRestriction?.IsDeletable ?? true)))
-                {
-                    if (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment)
-                    {
-                        AddOperation(item, OperationType.Delete);
-                    }
-                }
-            }
-            else
+                (navPropDeleteRestriction?.IsDeletable ?? true));
+
+            if (NavigationProperty.ContainsTarget && isDeletable)
             {
-                if ((navPropDeleteRestriction?.IsDeletable ?? false) &&
-                    (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many ||
-                    LastSegmentIsKeySegment))
-                {
-                    AddOperation(item, OperationType.Delete);
-                }
+                AddOperation(item, OperationType.Delete);
+            }
+            else if (navPropDeleteRestriction?.Deletable ?? false)
+            {
+                // Add delete operation for non-contained nav. props only if explicitly set to true via annotation
+                // Note: Use Deletable and NOT IsDeletable
+                AddOperation(item, OperationType.Delete);
             }
 
             return;

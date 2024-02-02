@@ -247,7 +247,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/Sets a value indicating whether or not to expand derived types to retrieve their declared navigation properties.
         /// </summary>
-        [Obsolete("Use RetrieveDerivedTypesProperties to Get or Set the value.")]
+        [Obsolete("Use GenerateDerivedTypesProperties to Get or Set the value.")]
         public bool ExpandDerivedTypesNavigationProperties
         {
             get => GenerateDerivedTypesProperties;
@@ -299,7 +299,7 @@ namespace Microsoft.OpenApi.OData
         public bool RequireRestrictionAnnotationsToGenerateComplexPropertyPaths { get; set; } = true;
 
         /// <summary>
-        /// Gets/sets a dictionary containing a mapping of custom atttribute names and extension names.
+        /// Gets/sets a dictionary containing a mapping of custom attribute names and extension names.
         /// </summary>
         public Dictionary<string, string> CustomXMLAttributesMapping { get; set; } = new();
 
