@@ -1,8 +1,9 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
@@ -241,6 +242,36 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Empty(operation.Security);
             }
+        }
+
+        [Fact]
+        public void CreateNavigationGetOperationWithAlternateKeyReturnsCorrectOperationId()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model, new OpenApiConvertSettings()
+            {
+                EnableOperationId = true
+            });
+
+            IEdmSingleton singleton = model.EntityContainer.FindSingleton("communications");
+            IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "cloudCommunications");
+            IEdmNavigationProperty navProp = entityType.DeclaredNavigationProperties().First(c => c.Name == "onlineMeetings");
+            IDictionary<string, string> keyMappings = new Dictionary<string, string> { { "joinWebUrl", "joinWebUrl" } };
+
+            ODataPath path = new(new ODataNavigationSourceSegment(singleton),
+                new ODataNavigationPropertySegment(navProp),
+                new ODataKeySegment(entityType, keyMappings)
+                {
+                    IsAlternateKey = true
+                });
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("communications.onlineMeetings.GetByJoinWebUrl", operation.OperationId);
         }
     }
 }

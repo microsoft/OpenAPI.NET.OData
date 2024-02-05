@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(16976, paths.Count());
+            Assert.Equal(16980, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -117,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17627, paths.Count());
+            Assert.Equal(17631, paths.Count());
         }
 
         [Theory]
