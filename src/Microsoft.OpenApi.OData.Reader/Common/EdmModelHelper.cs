@@ -163,11 +163,13 @@ namespace Microsoft.OpenApi.OData.Common
 
             // For navigation property paths with odata type cast segments
             // the OData type cast segments identifiers will be used in the operation id
+            // The same applies for navigation property paths with operation segments.
             IEnumerable<ODataSegment> segments = path.Segments.Skip(1)
                 .Where(static s => 
                 s is ODataNavigationPropertySegment ||
                 s is ODataTypeCastSegment ||
-                s is ODataOperationSegment);
+                s is ODataOperationSegment ||
+                s is ODataKeySegment);
             Utils.CheckArgumentNull(segments, nameof(segments));
 
             string previousTypeCastSegmentId = null;
@@ -189,6 +191,18 @@ namespace Microsoft.OpenApi.OData.Common
                 {
                     // Navigation property generated via composable function
                     items.Add(operationSegment.Identifier);
+                }
+                else if (segment is ODataKeySegment keySegment && keySegment.IsAlternateKey)
+                {
+                    // We'll consider alternate keys in the operation id to eliminate potential duplicates with operation id of primary path                    
+                    if (segment == segments.Last())
+                    {                        
+                        items.Add("By" + string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x))));
+                    }
+                    else
+                    {
+                        items.Add(keySegment.Identifier);
+                    }
                 }
             }
 

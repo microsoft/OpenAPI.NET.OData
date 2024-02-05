@@ -73,16 +73,30 @@ namespace Microsoft.OpenApi.OData.Operation
                 // in the operationId to avoid potential
                 // duplicates in entity vs entityset functions/actions
 
-                List<string> identifiers = new();
+                List<string> identifiers = [];
                 foreach (ODataSegment segment in Path.Segments)
                 {
-                    if (segment is not ODataKeySegment)
+                    if (segment is ODataKeySegment keySegment)
                     {
-                        identifiers.Add(segment.Identifier);
+                        if (!keySegment.IsAlternateKey) 
+                        {
+                            identifiers.Add(segment.EntityType.Name);
+                            continue;
+                        }
+
+                        // We'll consider alternate keys in the operation id to eliminate potential duplicates with operation id of primary path
+                        if (segment == Path.Segments.Last())
+                        {
+                            identifiers.Add("By" + string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x))));
+                        }
+                        else
+                        {
+                            identifiers.Add(keySegment.Identifier);
+                        }
                     }
                     else
                     {
-                        identifiers.Add(segment.EntityType.Name);
+                        identifiers.Add(segment.Identifier);
                     }
                 }
 
