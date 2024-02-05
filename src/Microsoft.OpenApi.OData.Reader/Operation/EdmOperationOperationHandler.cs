@@ -73,7 +73,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 // in the operationId to avoid potential
                 // duplicates in entity vs entityset functions/actions
 
-                List<string> identifiers = [];
+                List<string> identifiers = new();
                 foreach (ODataSegment segment in Path.Segments)
                 {
                     if (segment is ODataKeySegment keySegment)
