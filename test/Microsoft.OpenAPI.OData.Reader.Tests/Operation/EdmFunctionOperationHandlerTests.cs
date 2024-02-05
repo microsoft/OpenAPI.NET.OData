@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
@@ -478,6 +479,38 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Usage: periodStart={periodStart}", operation.Parameters.First(x => x.Name == "periodStart").Description);
             Assert.Equal("Usage: periodEnd={periodEnd}", operation.Parameters.First(x => x.Name == "periodEnd").Description);
 
+        }
+
+        [Fact]
+        public void CreateFunctionOperationWithAlternateKeyReturnsCorrectOperationId()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model, new OpenApiConvertSettings()
+            {
+                EnableOperationId = true
+            });
+
+            IEdmSingleton singleton = model.EntityContainer.FindSingleton("communications");
+            IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "cloudCommunications");
+            IEdmNavigationProperty navProp = entityType.DeclaredNavigationProperties().First(c => c.Name == "onlineMeetings");
+            IEdmOperation action = model.SchemaElements.OfType<IEdmOperation>().First(f => f.Name == "sendVirtualAppointmentReminderSms");
+            IDictionary<string, string> keyMappings = new Dictionary<string, string> { { "joinWebUrl", "joinWebUrl" } };
+
+            ODataPath path = new(new ODataNavigationSourceSegment(singleton),
+                new ODataNavigationPropertySegment(navProp),
+                new ODataKeySegment(entityType, keyMappings)
+                {
+                    IsAlternateKey = true
+                },
+                new ODataOperationSegment(action));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("communications.onlineMeetings.joinWebUrl.sendVirtualAppointmentReminderSms", operation.OperationId);
         }
     }
 }
