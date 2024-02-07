@@ -4622,6 +4622,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -5232,6 +5236,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -5542,6 +5550,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -5583,6 +5595,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -5873,6 +5889,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -5914,6 +5934,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -6328,6 +6352,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -6382,6 +6410,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -7459,6 +7491,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -8069,6 +8105,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -8142,6 +8182,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -8752,6 +8796,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -9102,6 +9150,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -9144,6 +9196,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -9480,6 +9536,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -9534,6 +9594,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -10040,6 +10104,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -10094,6 +10162,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -10963,6 +11035,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -11561,6 +11637,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -11595,6 +11675,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -11722,6 +11806,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - in: query
           name: $select
           description: Select properties to be returned
@@ -13778,6 +13866,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - in: query
           name: $select
           description: Select properties to be returned
@@ -16161,6 +16253,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -16843,6 +16939,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -17013,6 +17113,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - in: query
           name: $select
           description: Select properties to be returned
@@ -17206,6 +17310,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -17260,6 +17368,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -17605,6 +17717,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -17659,6 +17775,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -18134,6 +18254,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -18200,6 +18324,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -19458,6 +19586,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -20140,6 +20272,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -20231,6 +20367,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -20913,6 +21053,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -20938,6 +21082,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -20963,6 +21111,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -21052,6 +21204,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -21077,6 +21233,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -21166,6 +21326,10 @@ paths:
           name: ConsistencyLevel
           description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
           type: string
+          x-examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:

@@ -6668,7 +6668,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -7516,7 +7522,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -7965,7 +7977,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -8026,7 +8044,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -8445,7 +8469,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -8506,7 +8536,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -9096,7 +9132,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -9175,7 +9217,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -10716,7 +10764,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -11564,7 +11618,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -11671,7 +11731,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -12519,7 +12585,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -13028,7 +13100,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -13093,7 +13171,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -13575,7 +13659,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -13654,7 +13744,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -14372,7 +14468,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -14453,7 +14555,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -15702,7 +15810,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -16546,7 +16660,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -16604,7 +16724,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -16779,7 +16905,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "in": "query",
@@ -19684,7 +19816,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "in": "query",
@@ -23073,7 +23211,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -24017,7 +24161,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -24260,7 +24410,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "in": "query",
@@ -24538,7 +24694,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -24617,7 +24779,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -25110,7 +25278,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -25189,7 +25363,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -25861,7 +26041,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -25956,7 +26142,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -27739,7 +27931,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -28683,7 +28881,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -28814,7 +29018,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -29758,7 +29968,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -29797,7 +30013,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -29836,7 +30058,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -29957,7 +30185,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
@@ -29996,7 +30230,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/top"
@@ -30117,7 +30357,13 @@
             "in": "header",
             "name": "ConsistencyLevel",
             "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string"
+            "type": "string",
+            "x-examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/parameters/search"
