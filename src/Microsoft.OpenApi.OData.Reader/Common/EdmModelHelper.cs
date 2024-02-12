@@ -362,7 +362,7 @@ namespace Microsoft.OpenApi.OData.Common
                     prefix = navPropSegment?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many ? "List" : "Get";
                 }
 
-                operationId =  GenerateNavigationPropertyPathOperationId(path, prefix);
+                operationId = GenerateNavigationPropertyPathOperationId(path, prefix);
             }
             else if (secondLastSegment is ODataKeySegment keySegment)
             {
