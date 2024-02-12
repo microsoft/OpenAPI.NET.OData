@@ -2643,7 +2643,7 @@ paths:
       tags:
         - Me.Location
       summary: Get AddressInfo property value
-      operationId: Me.ListAddressInfo
+      operationId: Me.AsEmployee.ListAddressInfo
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2693,7 +2693,7 @@ paths:
       tags:
         - Me.Location
       summary: Update property AddressInfo value.
-      operationId: Me.UpdateAddressInfo
+      operationId: Me.AsEmployee.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -2723,7 +2723,7 @@ paths:
       tags:
         - Me.Location
       summary: Sets a new value for the collection of Location.
-      operationId: Me.SetAddressInfo
+      operationId: Me.AsEmployee.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -2755,7 +2755,7 @@ paths:
       tags:
         - Me.Location
       summary: Get the number of the resource
-      operationId: Me.AddressInfo.GetCount-8488
+      operationId: Me.AsEmployee.AddressInfo.GetCount-8488
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -2901,7 +2901,7 @@ paths:
         - Me.Person
       summary: Get ref of BestFriend from Me
       description: The best friend.
-      operationId: Me.GetRefBestFriend
+      operationId: Me.AsEmployee.GetRefBestFriend
       produces:
         - application/json
       responses:
@@ -2923,7 +2923,7 @@ paths:
         - Me.Person
       summary: Update the best friend.
       description: Update an instance of a best friend.
-      operationId: Me.UpdateRefBestFriend
+      operationId: Me.AsEmployee.UpdateRefBestFriend
       parameters:
         - $ref: '#/parameters/refPutBody'
       responses:
@@ -2942,7 +2942,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property BestFriend for Me
-      operationId: Me.DeleteRefBestFriend
+      operationId: Me.AsEmployee.DeleteRefBestFriend
       parameters:
         - in: header
           name: If-Match
@@ -2966,7 +2966,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get AddressInfo property value
-      operationId: Me.BestFriend.ListAddressInfo
+      operationId: Me.AsEmployee.BestFriend.ListAddressInfo
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -3016,7 +3016,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property AddressInfo value.
-      operationId: Me.BestFriend.UpdateAddressInfo
+      operationId: Me.AsEmployee.BestFriend.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -3046,7 +3046,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: Me.BestFriend.SetAddressInfo
+      operationId: Me.AsEmployee.BestFriend.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -3078,7 +3078,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get the number of the resource
-      operationId: Me.BestFriend.AddressInfo.GetCount-81de
+      operationId: Me.AsEmployee.BestFriend.AddressInfo.GetCount-81de
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -3136,7 +3136,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get HomeAddress property value
-      operationId: Me.BestFriend.GetHomeAddress
+      operationId: Me.AsEmployee.BestFriend.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -3174,7 +3174,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property HomeAddress value.
-      operationId: Me.BestFriend.UpdateHomeAddress
+      operationId: Me.AsEmployee.BestFriend.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -3362,7 +3362,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property Friends for Me
-      operationId: Me.DeleteRefFriends
+      operationId: Me.AsEmployee.DeleteRefFriends
       parameters:
         - in: path
           name: UserName
@@ -3392,7 +3392,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get AddressInfo property value
-      operationId: Me.Friends.ListAddressInfo
+      operationId: Me.AsEmployee.Friends.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -3448,7 +3448,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property AddressInfo value.
-      operationId: Me.Friends.UpdateAddressInfo
+      operationId: Me.AsEmployee.Friends.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -3484,7 +3484,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: Me.Friends.SetAddressInfo
+      operationId: Me.AsEmployee.Friends.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -3522,7 +3522,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get the number of the resource
-      operationId: Me.Friends.AddressInfo.GetCount-660e
+      operationId: Me.AsEmployee.Friends.AddressInfo.GetCount-660e
       parameters:
         - in: path
           name: UserName
@@ -3599,7 +3599,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get HomeAddress property value
-      operationId: Me.Friends.GetHomeAddress
+      operationId: Me.AsEmployee.Friends.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -3643,7 +3643,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property HomeAddress value.
-      operationId: Me.Friends.UpdateHomeAddress
+      operationId: Me.AsEmployee.Friends.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -3761,7 +3761,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.Friends.GetCount-0cb7
+      operationId: Me.AsEmployee.Friends.GetCount-0cb7
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -3782,7 +3782,7 @@ paths:
       tags:
         - Me.Person
       summary: Get ref of Friends from Me
-      operationId: Me.ListRefFriends
+      operationId: Me.AsEmployee.ListRefFriends
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -3834,7 +3834,7 @@ paths:
       tags:
         - Me.Person
       summary: Create new navigation property ref to Friends for Me
-      operationId: Me.CreateRefFriends
+      operationId: Me.AsEmployee.CreateRefFriends
       parameters:
         - $ref: '#/parameters/refPostBody'
       responses:
@@ -3853,7 +3853,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property Friends for Me
-      operationId: Me.DeleteRefFriends
+      operationId: Me.AsEmployee.DeleteRefFriends
       parameters:
         - in: header
           name: If-Match
@@ -3988,7 +3988,7 @@ paths:
       tags:
         - Me.Location
       summary: Get HomeAddress property value
-      operationId: Me.GetHomeAddress
+      operationId: Me.AsEmployee.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -4026,7 +4026,7 @@ paths:
       tags:
         - Me.Location
       summary: Update property HomeAddress value.
-      operationId: Me.UpdateHomeAddress
+      operationId: Me.AsEmployee.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -4156,7 +4156,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property Peers for Me
-      operationId: Me.DeleteRefPeers
+      operationId: Me.AsEmployee.DeleteRefPeers
       parameters:
         - in: path
           name: UserName
@@ -4186,7 +4186,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get AddressInfo property value
-      operationId: Me.Peers.ListAddressInfo
+      operationId: Me.AsEmployee.Peers.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -4242,7 +4242,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property AddressInfo value.
-      operationId: Me.Peers.UpdateAddressInfo
+      operationId: Me.AsEmployee.Peers.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -4278,7 +4278,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: Me.Peers.SetAddressInfo
+      operationId: Me.AsEmployee.Peers.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -4316,7 +4316,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get the number of the resource
-      operationId: Me.Peers.AddressInfo.GetCount-3e91
+      operationId: Me.AsEmployee.Peers.AddressInfo.GetCount-3e91
       parameters:
         - in: path
           name: UserName
@@ -4393,7 +4393,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get HomeAddress property value
-      operationId: Me.Peers.GetHomeAddress
+      operationId: Me.AsEmployee.Peers.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -4437,7 +4437,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property HomeAddress value.
-      operationId: Me.Peers.UpdateHomeAddress
+      operationId: Me.AsEmployee.Peers.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -4494,7 +4494,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.Peers.GetCount-9fc2
+      operationId: Me.AsEmployee.Peers.GetCount-9fc2
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -4515,7 +4515,7 @@ paths:
       tags:
         - Me.Person
       summary: Get ref of Peers from Me
-      operationId: Me.ListRefPeers
+      operationId: Me.AsEmployee.ListRefPeers
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -4567,7 +4567,7 @@ paths:
       tags:
         - Me.Person
       summary: Create new navigation property ref to Peers for Me
-      operationId: Me.CreateRefPeers
+      operationId: Me.AsEmployee.CreateRefPeers
       parameters:
         - $ref: '#/parameters/refPostBody'
       responses:
@@ -4586,7 +4586,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property Peers for Me
-      operationId: Me.DeleteRefPeers
+      operationId: Me.AsEmployee.DeleteRefPeers
       parameters:
         - in: header
           name: If-Match
@@ -5043,7 +5043,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Delete ref of navigation property PlanItems for Me
-      operationId: Me.Trips.DeleteRefPlanItems
+      operationId: Me.AsEmployee.Trips.DeleteRefPlanItems
       parameters:
         - in: path
           name: TripId
@@ -5085,7 +5085,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Get the number of the resource
-      operationId: Me.Trips.PlanItems.GetCount-a822
+      operationId: Me.AsEmployee.Trips.PlanItems.GetCount-a822
       parameters:
         - in: path
           name: TripId
@@ -5115,7 +5115,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Get ref of PlanItems from Me
-      operationId: Me.Trips.ListRefPlanItems
+      operationId: Me.AsEmployee.Trips.ListRefPlanItems
       parameters:
         - in: path
           name: TripId
@@ -5164,7 +5164,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Create new navigation property ref to PlanItems for Me
-      operationId: Me.Trips.CreateRefPlanItems
+      operationId: Me.AsEmployee.Trips.CreateRefPlanItems
       parameters:
         - in: path
           name: TripId
@@ -5192,7 +5192,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Delete ref of navigation property PlanItems for Me
-      operationId: Me.Trips.DeleteRefPlanItems
+      operationId: Me.AsEmployee.Trips.DeleteRefPlanItems
       parameters:
         - in: path
           name: TripId
@@ -5230,7 +5230,7 @@ paths:
       tags:
         - Me.Trip
       summary: Get the number of the resource
-      operationId: Me.Trips.GetCount-5aa2
+      operationId: Me.AsEmployee.Trips.GetCount-5aa2
       parameters:
         - in: header
           name: ConsistencyLevel
@@ -5432,7 +5432,7 @@ paths:
       tags:
         - Me.Location
       summary: Get AddressInfo property value
-      operationId: Me.ListAddressInfo
+      operationId: Me.AsManager.ListAddressInfo
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -5482,7 +5482,7 @@ paths:
       tags:
         - Me.Location
       summary: Update property AddressInfo value.
-      operationId: Me.UpdateAddressInfo
+      operationId: Me.AsManager.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -5512,7 +5512,7 @@ paths:
       tags:
         - Me.Location
       summary: Sets a new value for the collection of Location.
-      operationId: Me.SetAddressInfo
+      operationId: Me.AsManager.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -5544,7 +5544,7 @@ paths:
       tags:
         - Me.Location
       summary: Get the number of the resource
-      operationId: Me.AddressInfo.GetCount-75da
+      operationId: Me.AsManager.AddressInfo.GetCount-75da
       parameters:
         - in: header
           name: ConsistencyLevel
@@ -5706,7 +5706,7 @@ paths:
         - Me.Person
       summary: Get ref of BestFriend from Me
       description: The best friend.
-      operationId: Me.GetRefBestFriend
+      operationId: Me.AsManager.GetRefBestFriend
       produces:
         - application/json
       responses:
@@ -5728,7 +5728,7 @@ paths:
         - Me.Person
       summary: Update the best friend.
       description: Update an instance of a best friend.
-      operationId: Me.UpdateRefBestFriend
+      operationId: Me.AsManager.UpdateRefBestFriend
       parameters:
         - $ref: '#/parameters/refPutBody'
       responses:
@@ -5747,7 +5747,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property BestFriend for Me
-      operationId: Me.DeleteRefBestFriend
+      operationId: Me.AsManager.DeleteRefBestFriend
       parameters:
         - in: header
           name: If-Match
@@ -5771,7 +5771,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get AddressInfo property value
-      operationId: Me.BestFriend.ListAddressInfo
+      operationId: Me.AsManager.BestFriend.ListAddressInfo
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -5821,7 +5821,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property AddressInfo value.
-      operationId: Me.BestFriend.UpdateAddressInfo
+      operationId: Me.AsManager.BestFriend.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -5851,7 +5851,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: Me.BestFriend.SetAddressInfo
+      operationId: Me.AsManager.BestFriend.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -5883,7 +5883,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get the number of the resource
-      operationId: Me.BestFriend.AddressInfo.GetCount-6ea6
+      operationId: Me.AsManager.BestFriend.AddressInfo.GetCount-6ea6
       parameters:
         - in: header
           name: ConsistencyLevel
@@ -5957,7 +5957,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get HomeAddress property value
-      operationId: Me.BestFriend.GetHomeAddress
+      operationId: Me.AsManager.BestFriend.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -5995,7 +5995,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property HomeAddress value.
-      operationId: Me.BestFriend.UpdateHomeAddress
+      operationId: Me.AsManager.BestFriend.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -6180,7 +6180,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property DirectReports for Me
-      operationId: Me.DeleteRefDirectReports
+      operationId: Me.AsManager.DeleteRefDirectReports
       parameters:
         - in: path
           name: UserName
@@ -6210,7 +6210,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get AddressInfo property value
-      operationId: Me.DirectReports.ListAddressInfo
+      operationId: Me.AsManager.DirectReports.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -6266,7 +6266,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property AddressInfo value.
-      operationId: Me.DirectReports.UpdateAddressInfo
+      operationId: Me.AsManager.DirectReports.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -6302,7 +6302,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: Me.DirectReports.SetAddressInfo
+      operationId: Me.AsManager.DirectReports.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -6340,7 +6340,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get the number of the resource
-      operationId: Me.DirectReports.AddressInfo.GetCount-f650
+      operationId: Me.AsManager.DirectReports.AddressInfo.GetCount-f650
       parameters:
         - in: path
           name: UserName
@@ -6433,7 +6433,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get HomeAddress property value
-      operationId: Me.DirectReports.GetHomeAddress
+      operationId: Me.AsManager.DirectReports.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -6477,7 +6477,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property HomeAddress value.
-      operationId: Me.DirectReports.UpdateHomeAddress
+      operationId: Me.AsManager.DirectReports.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -6534,7 +6534,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.DirectReports.GetCount-8b92
+      operationId: Me.AsManager.DirectReports.GetCount-8b92
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -6555,7 +6555,7 @@ paths:
       tags:
         - Me.Person
       summary: Get ref of DirectReports from Me
-      operationId: Me.ListRefDirectReports
+      operationId: Me.AsManager.ListRefDirectReports
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -6607,7 +6607,7 @@ paths:
       tags:
         - Me.Person
       summary: Create new navigation property ref to DirectReports for Me
-      operationId: Me.CreateRefDirectReports
+      operationId: Me.AsManager.CreateRefDirectReports
       parameters:
         - $ref: '#/parameters/refPostBody'
       responses:
@@ -6626,7 +6626,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property DirectReports for Me
-      operationId: Me.DeleteRefDirectReports
+      operationId: Me.AsManager.DeleteRefDirectReports
       parameters:
         - in: header
           name: If-Match
@@ -6744,7 +6744,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property Friends for Me
-      operationId: Me.DeleteRefFriends
+      operationId: Me.AsManager.DeleteRefFriends
       parameters:
         - in: path
           name: UserName
@@ -6774,7 +6774,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get AddressInfo property value
-      operationId: Me.Friends.ListAddressInfo
+      operationId: Me.AsManager.Friends.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -6830,7 +6830,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property AddressInfo value.
-      operationId: Me.Friends.UpdateAddressInfo
+      operationId: Me.AsManager.Friends.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -6866,7 +6866,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: Me.Friends.SetAddressInfo
+      operationId: Me.AsManager.Friends.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -6904,7 +6904,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get the number of the resource
-      operationId: Me.Friends.AddressInfo.GetCount-b7db
+      operationId: Me.AsManager.Friends.AddressInfo.GetCount-b7db
       parameters:
         - in: path
           name: UserName
@@ -6981,7 +6981,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Get HomeAddress property value
-      operationId: Me.Friends.GetHomeAddress
+      operationId: Me.AsManager.Friends.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -7025,7 +7025,7 @@ paths:
       tags:
         - Me.Person.Location
       summary: Update property HomeAddress value.
-      operationId: Me.Friends.UpdateHomeAddress
+      operationId: Me.AsManager.Friends.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -7143,7 +7143,7 @@ paths:
       tags:
         - Me.Person
       summary: Get the number of the resource
-      operationId: Me.Friends.GetCount-60a7
+      operationId: Me.AsManager.Friends.GetCount-60a7
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -7164,7 +7164,7 @@ paths:
       tags:
         - Me.Person
       summary: Get ref of Friends from Me
-      operationId: Me.ListRefFriends
+      operationId: Me.AsManager.ListRefFriends
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -7216,7 +7216,7 @@ paths:
       tags:
         - Me.Person
       summary: Create new navigation property ref to Friends for Me
-      operationId: Me.CreateRefFriends
+      operationId: Me.AsManager.CreateRefFriends
       parameters:
         - $ref: '#/parameters/refPostBody'
       responses:
@@ -7235,7 +7235,7 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property Friends for Me
-      operationId: Me.DeleteRefFriends
+      operationId: Me.AsManager.DeleteRefFriends
       parameters:
         - in: header
           name: If-Match
@@ -7370,7 +7370,7 @@ paths:
       tags:
         - Me.Location
       summary: Get HomeAddress property value
-      operationId: Me.GetHomeAddress
+      operationId: Me.AsManager.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -7408,7 +7408,7 @@ paths:
       tags:
         - Me.Location
       summary: Update property HomeAddress value.
-      operationId: Me.UpdateHomeAddress
+      operationId: Me.AsManager.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -7912,7 +7912,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Delete ref of navigation property PlanItems for Me
-      operationId: Me.Trips.DeleteRefPlanItems
+      operationId: Me.AsManager.Trips.DeleteRefPlanItems
       parameters:
         - in: path
           name: TripId
@@ -7954,7 +7954,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Get the number of the resource
-      operationId: Me.Trips.PlanItems.GetCount-5ad2
+      operationId: Me.AsManager.Trips.PlanItems.GetCount-5ad2
       parameters:
         - in: path
           name: TripId
@@ -7984,7 +7984,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Get ref of PlanItems from Me
-      operationId: Me.Trips.ListRefPlanItems
+      operationId: Me.AsManager.Trips.ListRefPlanItems
       parameters:
         - in: path
           name: TripId
@@ -8033,7 +8033,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Create new navigation property ref to PlanItems for Me
-      operationId: Me.Trips.CreateRefPlanItems
+      operationId: Me.AsManager.Trips.CreateRefPlanItems
       parameters:
         - in: path
           name: TripId
@@ -8061,7 +8061,7 @@ paths:
       tags:
         - Me.Trips.PlanItem
       summary: Delete ref of navigation property PlanItems for Me
-      operationId: Me.Trips.DeleteRefPlanItems
+      operationId: Me.AsManager.Trips.DeleteRefPlanItems
       parameters:
         - in: path
           name: TripId
@@ -8099,7 +8099,7 @@ paths:
       tags:
         - Me.Trip
       summary: Get the number of the resource
-      operationId: Me.Trips.GetCount-f3f4
+      operationId: Me.AsManager.Trips.GetCount-f3f4
       parameters:
         - in: header
           name: ConsistencyLevel
@@ -13921,7 +13921,7 @@ paths:
       tags:
         - People.Location
       summary: Get AddressInfo property value
-      operationId: People.ListAddressInfo
+      operationId: People.AsEmployee.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -13977,7 +13977,7 @@ paths:
       tags:
         - People.Location
       summary: Update property AddressInfo value.
-      operationId: People.UpdateAddressInfo
+      operationId: People.AsEmployee.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -14013,7 +14013,7 @@ paths:
       tags:
         - People.Location
       summary: Sets a new value for the collection of Location.
-      operationId: People.SetAddressInfo
+      operationId: People.AsEmployee.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -14051,7 +14051,7 @@ paths:
       tags:
         - People.Location
       summary: Get the number of the resource
-      operationId: People.AddressInfo.GetCount-3d43
+      operationId: People.AsEmployee.AddressInfo.GetCount-3d43
       parameters:
         - in: path
           name: UserName
@@ -14228,7 +14228,7 @@ paths:
         - People.Person
       summary: Get ref of BestFriend from People
       description: The best friend.
-      operationId: People.GetRefBestFriend
+      operationId: People.AsEmployee.GetRefBestFriend
       produces:
         - application/json
       parameters:
@@ -14257,7 +14257,7 @@ paths:
         - People.Person
       summary: Update the best friend.
       description: Update an instance of a best friend.
-      operationId: People.UpdateRefBestFriend
+      operationId: People.AsEmployee.UpdateRefBestFriend
       parameters:
         - in: path
           name: UserName
@@ -14282,7 +14282,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property BestFriend for People
-      operationId: People.DeleteRefBestFriend
+      operationId: People.AsEmployee.DeleteRefBestFriend
       parameters:
         - in: path
           name: UserName
@@ -14312,7 +14312,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get AddressInfo property value
-      operationId: People.BestFriend.ListAddressInfo
+      operationId: People.AsEmployee.BestFriend.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -14368,7 +14368,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property AddressInfo value.
-      operationId: People.BestFriend.UpdateAddressInfo
+      operationId: People.AsEmployee.BestFriend.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -14404,7 +14404,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: People.BestFriend.SetAddressInfo
+      operationId: People.AsEmployee.BestFriend.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -14442,7 +14442,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get the number of the resource
-      operationId: People.BestFriend.AddressInfo.GetCount-cb8a
+      operationId: People.AsEmployee.BestFriend.AddressInfo.GetCount-cb8a
       parameters:
         - in: path
           name: UserName
@@ -14519,7 +14519,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get HomeAddress property value
-      operationId: People.BestFriend.GetHomeAddress
+      operationId: People.AsEmployee.BestFriend.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -14563,7 +14563,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property HomeAddress value.
-      operationId: People.BestFriend.UpdateHomeAddress
+      operationId: People.AsEmployee.BestFriend.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -14776,7 +14776,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property Friends for People
-      operationId: People.DeleteRefFriends
+      operationId: People.AsEmployee.DeleteRefFriends
       parameters:
         - in: path
           name: UserName
@@ -14812,7 +14812,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get AddressInfo property value
-      operationId: People.Friends.ListAddressInfo
+      operationId: People.AsEmployee.Friends.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -14874,7 +14874,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property AddressInfo value.
-      operationId: People.Friends.UpdateAddressInfo
+      operationId: People.AsEmployee.Friends.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -14916,7 +14916,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: People.Friends.SetAddressInfo
+      operationId: People.AsEmployee.Friends.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -14960,7 +14960,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get the number of the resource
-      operationId: People.Friends.AddressInfo.GetCount-1e8b
+      operationId: People.AsEmployee.Friends.AddressInfo.GetCount-1e8b
       parameters:
         - in: path
           name: UserName
@@ -15055,7 +15055,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get HomeAddress property value
-      operationId: People.Friends.GetHomeAddress
+      operationId: People.AsEmployee.Friends.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -15105,7 +15105,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property HomeAddress value.
-      operationId: People.Friends.UpdateHomeAddress
+      operationId: People.AsEmployee.Friends.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -15241,7 +15241,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.Friends.GetCount-4db4
+      operationId: People.AsEmployee.Friends.GetCount-4db4
       parameters:
         - in: path
           name: UserName
@@ -15268,7 +15268,7 @@ paths:
       tags:
         - People.Person
       summary: Get ref of Friends from People
-      operationId: People.ListRefFriends
+      operationId: People.AsEmployee.ListRefFriends
       parameters:
         - in: path
           name: UserName
@@ -15326,7 +15326,7 @@ paths:
       tags:
         - People.Person
       summary: Create new navigation property ref to Friends for People
-      operationId: People.CreateRefFriends
+      operationId: People.AsEmployee.CreateRefFriends
       parameters:
         - in: path
           name: UserName
@@ -15351,7 +15351,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property Friends for People
-      operationId: People.DeleteRefFriends
+      operationId: People.AsEmployee.DeleteRefFriends
       parameters:
         - in: path
           name: UserName
@@ -15504,7 +15504,7 @@ paths:
       tags:
         - People.Location
       summary: Get HomeAddress property value
-      operationId: People.GetHomeAddress
+      operationId: People.AsEmployee.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -15548,7 +15548,7 @@ paths:
       tags:
         - People.Location
       summary: Update property HomeAddress value.
-      operationId: People.UpdateHomeAddress
+      operationId: People.AsEmployee.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -15697,7 +15697,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property Peers for People
-      operationId: People.DeleteRefPeers
+      operationId: People.AsEmployee.DeleteRefPeers
       parameters:
         - in: path
           name: UserName
@@ -15733,7 +15733,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get AddressInfo property value
-      operationId: People.Peers.ListAddressInfo
+      operationId: People.AsEmployee.Peers.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -15795,7 +15795,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property AddressInfo value.
-      operationId: People.Peers.UpdateAddressInfo
+      operationId: People.AsEmployee.Peers.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -15837,7 +15837,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: People.Peers.SetAddressInfo
+      operationId: People.AsEmployee.Peers.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -15881,7 +15881,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get the number of the resource
-      operationId: People.Peers.AddressInfo.GetCount-755d
+      operationId: People.AsEmployee.Peers.AddressInfo.GetCount-755d
       parameters:
         - in: path
           name: UserName
@@ -15976,7 +15976,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get HomeAddress property value
-      operationId: People.Peers.GetHomeAddress
+      operationId: People.AsEmployee.Peers.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -16026,7 +16026,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property HomeAddress value.
-      operationId: People.Peers.UpdateHomeAddress
+      operationId: People.AsEmployee.Peers.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -16095,7 +16095,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.Peers.GetCount-44d2
+      operationId: People.AsEmployee.Peers.GetCount-44d2
       parameters:
         - in: path
           name: UserName
@@ -16122,7 +16122,7 @@ paths:
       tags:
         - People.Person
       summary: Get ref of Peers from People
-      operationId: People.ListRefPeers
+      operationId: People.AsEmployee.ListRefPeers
       parameters:
         - in: path
           name: UserName
@@ -16180,7 +16180,7 @@ paths:
       tags:
         - People.Person
       summary: Create new navigation property ref to Peers for People
-      operationId: People.CreateRefPeers
+      operationId: People.AsEmployee.CreateRefPeers
       parameters:
         - in: path
           name: UserName
@@ -16205,7 +16205,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property Peers for People
-      operationId: People.DeleteRefPeers
+      operationId: People.AsEmployee.DeleteRefPeers
       parameters:
         - in: path
           name: UserName
@@ -16710,7 +16710,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Delete ref of navigation property PlanItems for People
-      operationId: People.Trips.DeleteRefPlanItems
+      operationId: People.AsEmployee.Trips.DeleteRefPlanItems
       parameters:
         - in: path
           name: UserName
@@ -16758,7 +16758,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Get the number of the resource
-      operationId: People.Trips.PlanItems.GetCount-7df9
+      operationId: People.AsEmployee.Trips.PlanItems.GetCount-7df9
       parameters:
         - in: path
           name: UserName
@@ -16794,7 +16794,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Get ref of PlanItems from People
-      operationId: People.Trips.ListRefPlanItems
+      operationId: People.AsEmployee.Trips.ListRefPlanItems
       parameters:
         - in: path
           name: UserName
@@ -16849,7 +16849,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Create new navigation property ref to PlanItems for People
-      operationId: People.Trips.CreateRefPlanItems
+      operationId: People.AsEmployee.Trips.CreateRefPlanItems
       parameters:
         - in: path
           name: UserName
@@ -16883,7 +16883,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Delete ref of navigation property PlanItems for People
-      operationId: People.Trips.DeleteRefPlanItems
+      operationId: People.AsEmployee.Trips.DeleteRefPlanItems
       parameters:
         - in: path
           name: UserName
@@ -16927,7 +16927,7 @@ paths:
       tags:
         - People.Trip
       summary: Get the number of the resource
-      operationId: People.Trips.GetCount-c760
+      operationId: People.AsEmployee.Trips.GetCount-c760
       parameters:
         - in: path
           name: UserName
@@ -17168,7 +17168,7 @@ paths:
       tags:
         - People.Location
       summary: Get AddressInfo property value
-      operationId: People.ListAddressInfo
+      operationId: People.AsManager.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -17224,7 +17224,7 @@ paths:
       tags:
         - People.Location
       summary: Update property AddressInfo value.
-      operationId: People.UpdateAddressInfo
+      operationId: People.AsManager.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -17260,7 +17260,7 @@ paths:
       tags:
         - People.Location
       summary: Sets a new value for the collection of Location.
-      operationId: People.SetAddressInfo
+      operationId: People.AsManager.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -17298,7 +17298,7 @@ paths:
       tags:
         - People.Location
       summary: Get the number of the resource
-      operationId: People.AddressInfo.GetCount-f84e
+      operationId: People.AsManager.AddressInfo.GetCount-f84e
       parameters:
         - in: path
           name: UserName
@@ -17491,7 +17491,7 @@ paths:
         - People.Person
       summary: Get ref of BestFriend from People
       description: The best friend.
-      operationId: People.GetRefBestFriend
+      operationId: People.AsManager.GetRefBestFriend
       produces:
         - application/json
       parameters:
@@ -17520,7 +17520,7 @@ paths:
         - People.Person
       summary: Update the best friend.
       description: Update an instance of a best friend.
-      operationId: People.UpdateRefBestFriend
+      operationId: People.AsManager.UpdateRefBestFriend
       parameters:
         - in: path
           name: UserName
@@ -17545,7 +17545,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property BestFriend for People
-      operationId: People.DeleteRefBestFriend
+      operationId: People.AsManager.DeleteRefBestFriend
       parameters:
         - in: path
           name: UserName
@@ -17575,7 +17575,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get AddressInfo property value
-      operationId: People.BestFriend.ListAddressInfo
+      operationId: People.AsManager.BestFriend.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -17631,7 +17631,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property AddressInfo value.
-      operationId: People.BestFriend.UpdateAddressInfo
+      operationId: People.AsManager.BestFriend.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -17667,7 +17667,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: People.BestFriend.SetAddressInfo
+      operationId: People.AsManager.BestFriend.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -17705,7 +17705,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get the number of the resource
-      operationId: People.BestFriend.AddressInfo.GetCount-5a39
+      operationId: People.AsManager.BestFriend.AddressInfo.GetCount-5a39
       parameters:
         - in: path
           name: UserName
@@ -17798,7 +17798,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get HomeAddress property value
-      operationId: People.BestFriend.GetHomeAddress
+      operationId: People.AsManager.BestFriend.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -17842,7 +17842,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property HomeAddress value.
-      operationId: People.BestFriend.UpdateHomeAddress
+      operationId: People.AsManager.BestFriend.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -18052,7 +18052,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property DirectReports for People
-      operationId: People.DeleteRefDirectReports
+      operationId: People.AsManager.DeleteRefDirectReports
       parameters:
         - in: path
           name: UserName
@@ -18088,7 +18088,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get AddressInfo property value
-      operationId: People.DirectReports.ListAddressInfo
+      operationId: People.AsManager.DirectReports.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -18150,7 +18150,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property AddressInfo value.
-      operationId: People.DirectReports.UpdateAddressInfo
+      operationId: People.AsManager.DirectReports.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -18192,7 +18192,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: People.DirectReports.SetAddressInfo
+      operationId: People.AsManager.DirectReports.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -18236,7 +18236,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get the number of the resource
-      operationId: People.DirectReports.AddressInfo.GetCount-f46e
+      operationId: People.AsManager.DirectReports.AddressInfo.GetCount-f46e
       parameters:
         - in: path
           name: UserName
@@ -18347,7 +18347,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get HomeAddress property value
-      operationId: People.DirectReports.GetHomeAddress
+      operationId: People.AsManager.DirectReports.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -18397,7 +18397,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property HomeAddress value.
-      operationId: People.DirectReports.UpdateHomeAddress
+      operationId: People.AsManager.DirectReports.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -18466,7 +18466,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.DirectReports.GetCount-0ec4
+      operationId: People.AsManager.DirectReports.GetCount-0ec4
       parameters:
         - in: path
           name: UserName
@@ -18493,7 +18493,7 @@ paths:
       tags:
         - People.Person
       summary: Get ref of DirectReports from People
-      operationId: People.ListRefDirectReports
+      operationId: People.AsManager.ListRefDirectReports
       parameters:
         - in: path
           name: UserName
@@ -18551,7 +18551,7 @@ paths:
       tags:
         - People.Person
       summary: Create new navigation property ref to DirectReports for People
-      operationId: People.CreateRefDirectReports
+      operationId: People.AsManager.CreateRefDirectReports
       parameters:
         - in: path
           name: UserName
@@ -18576,7 +18576,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property DirectReports for People
-      operationId: People.DeleteRefDirectReports
+      operationId: People.AsManager.DeleteRefDirectReports
       parameters:
         - in: path
           name: UserName
@@ -18706,7 +18706,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property Friends for People
-      operationId: People.DeleteRefFriends
+      operationId: People.AsManager.DeleteRefFriends
       parameters:
         - in: path
           name: UserName
@@ -18742,7 +18742,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get AddressInfo property value
-      operationId: People.Friends.ListAddressInfo
+      operationId: People.AsManager.Friends.ListAddressInfo
       parameters:
         - in: path
           name: UserName
@@ -18804,7 +18804,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property AddressInfo value.
-      operationId: People.Friends.UpdateAddressInfo
+      operationId: People.AsManager.Friends.UpdateAddressInfo
       consumes:
         - application/json
       parameters:
@@ -18846,7 +18846,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Sets a new value for the collection of Location.
-      operationId: People.Friends.SetAddressInfo
+      operationId: People.AsManager.Friends.SetAddressInfo
       consumes:
         - application/json
       parameters:
@@ -18890,7 +18890,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get the number of the resource
-      operationId: People.Friends.AddressInfo.GetCount-f486
+      operationId: People.AsManager.Friends.AddressInfo.GetCount-f486
       parameters:
         - in: path
           name: UserName
@@ -18985,7 +18985,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Get HomeAddress property value
-      operationId: People.Friends.GetHomeAddress
+      operationId: People.AsManager.Friends.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -19035,7 +19035,7 @@ paths:
       tags:
         - People.Person.Location
       summary: Update property HomeAddress value.
-      operationId: People.Friends.UpdateHomeAddress
+      operationId: People.AsManager.Friends.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -19171,7 +19171,7 @@ paths:
       tags:
         - People.Person
       summary: Get the number of the resource
-      operationId: People.Friends.GetCount-1c0c
+      operationId: People.AsManager.Friends.GetCount-1c0c
       parameters:
         - in: path
           name: UserName
@@ -19198,7 +19198,7 @@ paths:
       tags:
         - People.Person
       summary: Get ref of Friends from People
-      operationId: People.ListRefFriends
+      operationId: People.AsManager.ListRefFriends
       parameters:
         - in: path
           name: UserName
@@ -19256,7 +19256,7 @@ paths:
       tags:
         - People.Person
       summary: Create new navigation property ref to Friends for People
-      operationId: People.CreateRefFriends
+      operationId: People.AsManager.CreateRefFriends
       parameters:
         - in: path
           name: UserName
@@ -19281,7 +19281,7 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property Friends for People
-      operationId: People.DeleteRefFriends
+      operationId: People.AsManager.DeleteRefFriends
       parameters:
         - in: path
           name: UserName
@@ -19434,7 +19434,7 @@ paths:
       tags:
         - People.Location
       summary: Get HomeAddress property value
-      operationId: People.GetHomeAddress
+      operationId: People.AsManager.GetHomeAddress
       produces:
         - application/json
       parameters:
@@ -19478,7 +19478,7 @@ paths:
       tags:
         - People.Location
       summary: Update property HomeAddress value.
-      operationId: People.UpdateHomeAddress
+      operationId: People.AsManager.UpdateHomeAddress
       consumes:
         - application/json
       parameters:
@@ -20043,7 +20043,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Delete ref of navigation property PlanItems for People
-      operationId: People.Trips.DeleteRefPlanItems
+      operationId: People.AsManager.Trips.DeleteRefPlanItems
       parameters:
         - in: path
           name: UserName
@@ -20091,7 +20091,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Get the number of the resource
-      operationId: People.Trips.PlanItems.GetCount-fa08
+      operationId: People.AsManager.Trips.PlanItems.GetCount-fa08
       parameters:
         - in: path
           name: UserName
@@ -20127,7 +20127,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Get ref of PlanItems from People
-      operationId: People.Trips.ListRefPlanItems
+      operationId: People.AsManager.Trips.ListRefPlanItems
       parameters:
         - in: path
           name: UserName
@@ -20182,7 +20182,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Create new navigation property ref to PlanItems for People
-      operationId: People.Trips.CreateRefPlanItems
+      operationId: People.AsManager.Trips.CreateRefPlanItems
       parameters:
         - in: path
           name: UserName
@@ -20216,7 +20216,7 @@ paths:
       tags:
         - People.Trips.PlanItem
       summary: Delete ref of navigation property PlanItems for People
-      operationId: People.Trips.DeleteRefPlanItems
+      operationId: People.AsManager.Trips.DeleteRefPlanItems
       parameters:
         - in: path
           name: UserName
@@ -20260,7 +20260,7 @@ paths:
       tags:
         - People.Trip
       summary: Get the number of the resource
-      operationId: People.Trips.GetCount-1f8c
+      operationId: People.AsManager.Trips.GetCount-1f8c
       parameters:
         - in: path
           name: UserName
