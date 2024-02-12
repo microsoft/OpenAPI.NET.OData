@@ -179,7 +179,9 @@ namespace Microsoft.OpenApi.OData.Common
                 {
                     items.Add(navPropSegment.NavigationProperty.Name);
                 }
-                else if (segment is ODataTypeCastSegment typeCastSegment && path.Kind != ODataPathKind.TypeCast)
+                else if (segment is ODataTypeCastSegment typeCastSegment
+                    && path.Kind != ODataPathKind.TypeCast // ex: ~/NavSource/NavProp/TypeCast
+                    && !(path.Kind == ODataPathKind.DollarCount && path.Segments.ElementAt(path.Segments.Count - 2)?.Kind == ODataSegmentKind.TypeCast)) // ex: ~/NavSource/NavProp/TypeCast/$count
                 {
                     // Only the last OData type cast segment identifier is added to the operation id
                     items.Remove(previousTypeCastSegmentId);
@@ -380,7 +382,7 @@ namespace Microsoft.OpenApi.OData.Common
                     }
                     operationId = (entitySet != null) ? entitySet.Name : singleton.Name;
                     operationId += $".{entityTypeName}.{operationName}";
-                }                
+                }
             }
             else if (secondLastSegment is ODataNavigationSourceSegment)
             {
