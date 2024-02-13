@@ -179,7 +179,9 @@ namespace Microsoft.OpenApi.OData.Common
                 {
                     items.Add(navPropSegment.NavigationProperty.Name);
                 }
-                else if (segment is ODataTypeCastSegment typeCastSegment && path.Kind == ODataPathKind.NavigationProperty)
+                else if (segment is ODataTypeCastSegment typeCastSegment
+                    && path.Kind != ODataPathKind.TypeCast // ex: ~/NavSource/NavProp/TypeCast
+                    && !(path.Kind == ODataPathKind.DollarCount && path.Segments.ElementAt(path.Segments.Count - 2)?.Kind == ODataSegmentKind.TypeCast)) // ex: ~/NavSource/NavProp/TypeCast/$count
                 {
                     // Only the last OData type cast segment identifier is added to the operation id
                     items.Remove(previousTypeCastSegmentId);
@@ -352,28 +354,35 @@ namespace Microsoft.OpenApi.OData.Common
                 string listOrGet = includeListOrGetPrefix ? (complexSegment.Property.Type.IsCollection() ? "List" : "Get") : null;
                 operationId = GenerateComplexPropertyPathOperationId(path, listOrGet);
             }
-            else if (secondLastSegment as ODataNavigationPropertySegment is not null || isIndexedCollValuedNavProp)
+            else if (secondLastSegment is ODataNavigationPropertySegment navPropSegment)
             {
-                string listOrGet = null;
+                string prefix = null;
                 if (includeListOrGetPrefix)
                 {
-                    listOrGet = !isIndexedCollValuedNavProp && (secondLastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many ? "List" : "Get";
+                    prefix = navPropSegment?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many ? "List" : "Get";
                 }
 
-                operationId = GenerateNavigationPropertyPathOperationId(path, listOrGet);
+                operationId = GenerateNavigationPropertyPathOperationId(path, prefix);
             }
-            else if (secondLastSegment is ODataKeySegment keySegment && !isIndexedCollValuedNavProp)
+            else if (secondLastSegment is ODataKeySegment keySegment)
             {
-                string entityTypeName = keySegment.EntityType.Name;
-                string getPrefix = includeListOrGetPrefix ? "Get" : null;
-                string operationName = $"{getPrefix}{Utils.UpperFirstChar(entityTypeName)}";
-                if (keySegment.IsAlternateKey)
+                if (isIndexedCollValuedNavProp)
                 {
-                    string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
-                    operationName = $"{operationName}By{alternateKeyName}";
+                    operationId = GenerateNavigationPropertyPathOperationId(path, "Get");
                 }
-                operationId = (entitySet != null) ? entitySet.Name : singleton.Name;
-                operationId += $".{entityTypeName}.{operationName}";
+                else
+                {
+                    string entityTypeName = keySegment.EntityType.Name;
+                    string getPrefix = includeListOrGetPrefix ? "Get" : null;
+                    string operationName = $"{getPrefix}{Utils.UpperFirstChar(entityTypeName)}";
+                    if (keySegment.IsAlternateKey)
+                    {
+                        string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
+                        operationName = $"{operationName}By{alternateKeyName}";
+                    }
+                    operationId = (entitySet != null) ? entitySet.Name : singleton.Name;
+                    operationId += $".{entityTypeName}.{operationName}";
+                }
             }
             else if (secondLastSegment is ODataNavigationSourceSegment)
             {
