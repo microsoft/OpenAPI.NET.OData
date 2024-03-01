@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the navigation properties which do not allow rebinding.
         /// </summary>
-        public IList<string> NonUpdatableNavigationProperties { get; private set; }       
+        public IList<string> NonUpdatableNavigationProperties { get; private set; } 
 
         /// <summary>
         /// Gets the maximum number of navigation properties that can be traversed when addressing the collection or entity to update.
