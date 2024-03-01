@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the navigation properties which do not allow rebinding.
         /// </summary>
-        public IList<string> NonUpdatableNavigationProperties { get; private set; }
+        public IList<string> NonUpdatableNavigationProperties { get; private set; }       
 
         /// <summary>
         /// Gets the maximum number of navigation properties that can be traversed when addressing the collection or entity to update.
@@ -129,6 +129,18 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public bool IsUpdateMethodPut => UpdateMethod.HasValue && UpdateMethod.Value == HttpMethod.PUT;
 
         /// <summary>
+        /// Lists the MIME types acceptable for the request content
+        /// </summary>
+        /// <remarks>This is not an official OASIS standard property.</remarks>
+        public IList<string> RequestContentTypes { get; private set; }
+
+        /// <summary>
+        /// Lists the MIME types acceptable for the response content
+        /// </summary>
+        /// <remarks>This is not an official OASIS standard property.</remarks>
+        public IList<string> ResponseContentTypes { get; private set; }
+
+        /// <summary>
         /// Init the <see cref="UpdateRestrictionsType"/>.
         /// </summary>
         /// <param name="record">The input record.</param>
@@ -155,7 +167,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             TypecastSegmentSupported = record.GetBoolean("TypecastSegmentSupported");
 
             // NonUpdatableNavigationProperties
-            NonUpdatableNavigationProperties = record.GetCollectionPropertyPath("NonUpdatableNavigationProperties");
+            NonUpdatableNavigationProperties = record.GetCollectionPropertyPath("NonUpdatableNavigationProperties");            
 
             // MaxLevels
             MaxLevels = record.GetInteger("MaxLevels");
@@ -177,6 +189,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // LongDescription
             LongDescription = record.GetString("LongDescription");
+
+            // RequestContentTypes
+            RequestContentTypes = record.GetCollection("RequestContentTypes");
+
+            // ResponseContentTypes
+            ResponseContentTypes = record.GetCollection("ResponseContentTypes");
         }
     }
 }
