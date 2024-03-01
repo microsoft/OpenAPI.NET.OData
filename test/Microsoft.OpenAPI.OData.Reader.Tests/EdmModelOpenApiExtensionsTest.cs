@@ -230,7 +230,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
-            {            
+            {
                 Assert.Equal(Resources.GetString("TripService.OpenApi.V2.json").ChangeLineBreaks(), json);
             }
             else
