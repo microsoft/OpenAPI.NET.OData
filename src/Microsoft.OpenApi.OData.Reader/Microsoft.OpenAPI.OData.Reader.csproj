@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.6.0-preview.8</Version>
+    <Version>1.6.0-preview.9</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -30,6 +30,7 @@
 - Appends parameters and fixes operation ids of navigation property paths generated via composable functions #486
 - Use alternate keys in the generation of operation ids of operations and navigation property alternate paths #488
 - Fixes operation ids of paths with type cast segments #492
+- Uses convert setting to toggle between generating query options schemas of type string array or enums #197
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
