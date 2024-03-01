@@ -356,6 +356,12 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableAliasForOperationSegments { get; set; } = false;
 
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not to generate the schema of query options as an array of string values.
+        /// If false, the schema will be generated as an array of enum string values.
+        /// </summary>
+        public bool UseStringArrayForQueryOptionsSchema { get; set; } = true;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -409,7 +415,8 @@ namespace Microsoft.OpenApi.OData
                 NamespacePrefixToStripForInMethodPaths = this.NamespacePrefixToStripForInMethodPaths,
                 EnableAliasForTypeCastSegments = this.EnableAliasForTypeCastSegments,
                 SemVerVersion = this.SemVerVersion,
-                EnableAliasForOperationSegments = this.EnableAliasForOperationSegments
+                EnableAliasForOperationSegments = this.EnableAliasForOperationSegments,
+                UseStringArrayForQueryOptionsSchema = this.UseStringArrayForQueryOptionsSchema
             };
 
             return newSettings;
