@@ -94,7 +94,8 @@ namespace Microsoft.OpenApi.OData.Tests
             {
                 OpenApiSpecVersion = specVersion,
                 ShowSchemaExamples = true, // test for schema examples
-                IncludeAssemblyInfo = false
+                IncludeAssemblyInfo = false,
+                UseStringArrayForQueryOptionsSchema = false
             };
 
             // Act
@@ -123,7 +124,8 @@ namespace Microsoft.OpenApi.OData.Tests
             {
                 OpenApiSpecVersion = specVersion,
                 ShowSchemaExamples = true,
-                IncludeAssemblyInfo = false
+                IncludeAssemblyInfo = false,
+                UseStringArrayForQueryOptionsSchema = false
             };
 
             // Act
@@ -153,7 +155,8 @@ namespace Microsoft.OpenApi.OData.Tests
                 OpenApiSpecVersion = specVersion,
                 ShowLinks = true, // test Links
                 ShowSchemaExamples = true,
-                IncludeAssemblyInfo = false
+                IncludeAssemblyInfo = false,
+                UseStringArrayForQueryOptionsSchema = false
             };
 
             // Act
@@ -183,7 +186,8 @@ namespace Microsoft.OpenApi.OData.Tests
                 OpenApiSpecVersion = specVersion,
                 ShowLinks = true, // test Links
                 ShowSchemaExamples = true,
-                IncludeAssemblyInfo = false
+                IncludeAssemblyInfo = false,
+                UseStringArrayForQueryOptionsSchema = false
             };
 
             // Act
@@ -226,7 +230,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
-            {
+            {            
                 Assert.Equal(Resources.GetString("TripService.OpenApi.V2.json").ChangeLineBreaks(), json);
             }
             else

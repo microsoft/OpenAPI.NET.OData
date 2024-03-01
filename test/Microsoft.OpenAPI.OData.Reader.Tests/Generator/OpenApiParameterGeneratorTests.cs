@@ -375,12 +375,18 @@ schema:
 }".ChangeLineBreaks(), json2);
         }
 
-        [Fact]
-        public void CreateOrderByAndSelectAndExpandParametersWorks()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOrderByAndSelectAndExpandParametersWorks(bool useStringArrayForQueryOptionsSchema)
         {
             // Arrange
             IEdmModel model = GetEdmModel();
-            ODataContext context = new ODataContext(model, new OpenApiConvertSettings());
+            ODataContext context = new(model,
+                new OpenApiConvertSettings() 
+                { 
+                    UseStringArrayForQueryOptionsSchema = useStringArrayForQueryOptionsSchema 
+                });
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("Catalog");
             IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Customer");
@@ -388,7 +394,7 @@ schema:
 
             // Act & Assert
             // OrderBy
-            string orderByItemsText = @"""enum"": [
+            string orderByItemsText = useStringArrayForQueryOptionsSchema ? null :  @"""enum"": [
         ""ID"",
         ""ID desc""
       ],";
@@ -397,7 +403,7 @@ schema:
             VerifyCreateOrderByParameter(navigationProperty, context);
 
             // Select
-            string selectItemsText = @"""enum"": [
+            string selectItemsText = useStringArrayForQueryOptionsSchema ? null : @"""enum"": [
         ""ID"",
         ""Addresses""
       ],";
@@ -406,13 +412,13 @@ schema:
             VerifyCreateSelectParameter(navigationProperty, context);
 
             // Expand
-            string expandItemsText = @"""enum"": [
+            string expandItemsText = useStringArrayForQueryOptionsSchema ? null : @"""enum"": [
         ""*"",
         ""Addresses""
       ],";
             VerifyCreateExpandParameter(entitySet, context, expandItemsText);
 
-            string expandItemsDefaultText = @"""enum"": [
+            string expandItemsDefaultText = useStringArrayForQueryOptionsSchema ? null : @"""enum"": [
         ""*""
       ],";
             VerifyCreateExpandParameter(singleton, context, expandItemsDefaultText);
@@ -537,7 +543,24 @@ schema:
 
             string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
-            string expected = $@"{{
+            string expected = expandItemsText == null
+                ? 
+                $@"{{
+  ""name"": ""$expand"",
+  ""in"": ""query"",
+  ""description"": ""Expand related entities"",
+  ""style"": ""form"",
+  ""explode"": false,
+  ""schema"": {{
+    ""uniqueItems"": true,
+    ""type"": ""array"",
+    ""items"": {{
+      ""type"": ""string""
+    }}
+  }}
+}}"
+                :
+                $@"{{
   ""name"": ""$expand"",
   ""in"": ""query"",
   ""description"": ""Expand related entities"",
