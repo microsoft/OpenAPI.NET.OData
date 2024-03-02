@@ -28,11 +28,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - AirlineCode
-                - AirlineCode desc
-                - Name
-                - Name desc
               type: string
         - name: $select
           in: query
@@ -43,9 +38,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - AirlineCode
-                - Name
               type: string
         - name: $expand
           in: query
@@ -56,8 +48,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -110,9 +100,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - AirlineCode
-                - Name
               type: string
         - name: $expand
           in: query
@@ -123,8 +110,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -223,15 +208,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Name
-                - Name desc
-                - IcaoCode
-                - IcaoCode desc
-                - IataCode
-                - IataCode desc
-                - Location
-                - Location desc
               type: string
         - name: $select
           in: query
@@ -242,11 +218,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Name
-                - IcaoCode
-                - IataCode
-                - Location
               type: string
         - name: $expand
           in: query
@@ -257,8 +228,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -311,11 +280,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Name
-                - IcaoCode
-                - IataCode
-                - Location
               type: string
         - name: $expand
           in: query
@@ -326,8 +290,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -412,11 +374,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
-                - Loc
-                - EmergencyAuthority
               type: string
         - name: $expand
           in: query
@@ -427,9 +384,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - EmergencyAuthority
               type: string
       responses:
         '200':
@@ -490,21 +444,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -515,11 +454,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -630,11 +564,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -645,9 +574,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -658,8 +584,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -813,9 +737,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -826,8 +747,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -975,21 +894,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -1000,11 +904,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -1067,11 +966,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -1082,9 +976,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -1095,8 +986,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -1244,21 +1133,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -1269,11 +1143,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -1407,11 +1276,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -1422,9 +1286,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -1435,8 +1296,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -1582,9 +1441,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -1595,8 +1451,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -1671,21 +1525,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -1696,11 +1535,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -1734,21 +1568,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -1759,11 +1578,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -1802,29 +1616,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -1835,21 +1626,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -1860,11 +1636,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -1941,11 +1712,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -1956,9 +1722,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -1969,8 +1732,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -2160,9 +1921,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -2173,8 +1931,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -2272,21 +2028,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -2297,11 +2038,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -2342,21 +2078,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -2367,11 +2088,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -2431,29 +2147,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -2537,29 +2230,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -2570,21 +2240,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -2595,11 +2250,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -2655,29 +2305,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -2688,21 +2315,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -2713,11 +2325,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -2767,9 +2374,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -2780,8 +2384,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -2856,21 +2458,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -2881,11 +2468,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -2923,11 +2505,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -2938,9 +2515,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -2951,8 +2525,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -3100,21 +2672,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -3125,11 +2682,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -3263,11 +2815,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -3278,9 +2825,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -3291,8 +2835,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -3438,9 +2980,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -3451,8 +2990,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -3527,21 +3064,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -3552,11 +3074,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -3595,29 +3112,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -3628,21 +3122,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -3653,11 +3132,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -3734,11 +3208,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -3749,9 +3218,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -3762,8 +3228,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -3953,9 +3417,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -3966,8 +3427,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -4065,21 +3524,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -4090,11 +3534,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -4154,29 +3593,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -4260,29 +3676,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -4293,21 +3686,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -4318,11 +3696,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -4372,9 +3745,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -4385,8 +3755,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -4466,29 +3834,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -4499,21 +3844,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -4524,11 +3854,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -4602,11 +3927,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -4617,9 +3937,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -4630,8 +3947,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -4821,9 +4136,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -4834,8 +4146,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -4952,29 +4262,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -5068,23 +4355,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $select
           in: query
@@ -5095,16 +4365,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -5115,9 +4375,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -5191,16 +4448,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -5211,9 +4458,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -5336,21 +4580,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $orderby
           in: query
@@ -5361,29 +4590,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $expand
           in: query
@@ -5394,11 +4600,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -5457,17 +4658,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
         - name: $select
           in: query
@@ -5478,12 +4668,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - ConfirmationCode
-                - StartsAt
-                - EndsAt
-                - Duration
               type: string
         - name: $expand
           in: query
@@ -5494,8 +4678,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -5620,17 +4802,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
       responses:
         '200':
@@ -5790,16 +4961,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $orderby
           in: query
@@ -5810,23 +4971,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $expand
           in: query
@@ -5837,9 +4981,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -5891,21 +5032,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -5916,11 +5042,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -5958,11 +5079,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -5973,9 +5089,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -5986,8 +5099,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -6153,21 +5264,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -6178,11 +5274,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -6316,11 +5407,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -6331,9 +5417,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -6344,8 +5427,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -6509,9 +5590,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -6522,8 +5600,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -6598,21 +5674,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -6623,11 +5684,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -6666,29 +5722,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -6699,21 +5732,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -6724,11 +5742,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -6802,11 +5815,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -6817,9 +5825,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -6830,8 +5835,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -7039,9 +6042,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -7052,8 +6052,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -7170,29 +6168,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -7276,29 +6251,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -7309,21 +6261,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -7334,11 +6271,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -7415,11 +6347,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -7430,9 +6357,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -7443,8 +6367,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -7634,9 +6556,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -7647,8 +6566,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -7746,21 +6663,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -7771,11 +6673,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -7835,29 +6732,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -7941,29 +6815,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -7974,21 +6825,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -7999,11 +6835,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -8053,9 +6884,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -8066,8 +6894,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -8190,23 +7016,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $select
           in: query
@@ -8217,16 +7026,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -8237,9 +7036,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -8313,16 +7109,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -8333,9 +7119,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -8458,21 +7241,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $orderby
           in: query
@@ -8483,29 +7251,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $expand
           in: query
@@ -8516,11 +7261,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -8579,17 +7319,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
         - name: $select
           in: query
@@ -8600,12 +7329,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - ConfirmationCode
-                - StartsAt
-                - EndsAt
-                - Duration
               type: string
         - name: $expand
           in: query
@@ -8616,8 +7339,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -8742,17 +7463,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
       responses:
         '200':
@@ -8945,23 +7655,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $select
           in: query
@@ -8972,16 +7665,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -8992,9 +7675,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -9068,16 +7748,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -9088,9 +7758,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -9213,21 +7880,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $orderby
           in: query
@@ -9238,29 +7890,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $expand
           in: query
@@ -9271,11 +7900,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -9334,17 +7958,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
         - name: $select
           in: query
@@ -9355,12 +7968,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - ConfirmationCode
-                - StartsAt
-                - EndsAt
-                - Duration
               type: string
         - name: $expand
           in: query
@@ -9371,8 +7978,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -9497,17 +8102,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
       responses:
         '200':
@@ -9642,29 +8236,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -9675,21 +8246,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -9700,11 +8256,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -9757,21 +8308,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -9782,11 +8318,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -9876,11 +8407,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -9891,9 +8417,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -9904,8 +8427,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -10079,21 +8600,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -10104,11 +8610,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -10277,11 +8778,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -10292,9 +8788,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -10305,8 +8798,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -10514,9 +9005,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -10527,8 +9015,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -10626,21 +9112,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -10651,11 +9122,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -10696,21 +9162,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -10721,11 +9172,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -10771,29 +9217,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -10804,21 +9227,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -10829,11 +9237,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -10909,11 +9312,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -10924,9 +9322,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -10937,8 +9332,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -11152,9 +9545,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -11165,8 +9555,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -11267,21 +9655,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -11292,11 +9665,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -11338,21 +9706,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -11363,11 +9716,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -11429,29 +9777,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -11539,29 +9864,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -11572,21 +9874,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -11597,11 +9884,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -11659,29 +9941,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -11692,21 +9951,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -11717,11 +9961,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -11773,9 +10012,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -11786,8 +10022,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -11899,16 +10133,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $orderby
           in: query
@@ -11919,23 +10143,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $expand
           in: query
@@ -11946,9 +10153,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -12110,23 +10314,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $select
           in: query
@@ -12137,16 +10324,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -12157,9 +10334,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -12233,16 +10407,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -12253,9 +10417,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -12378,21 +10539,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $orderby
           in: query
@@ -12403,29 +10549,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $expand
           in: query
@@ -12436,11 +10559,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -12497,17 +10615,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
         - name: $select
           in: query
@@ -12518,12 +10625,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - ConfirmationCode
-                - StartsAt
-                - EndsAt
-                - Duration
               type: string
         - name: $expand
           in: query
@@ -12534,8 +10635,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -12660,17 +10759,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
       responses:
         '200':
@@ -12826,29 +10914,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -12859,21 +10924,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -12884,11 +10934,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -12962,21 +11007,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -12987,11 +11017,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -13099,11 +11124,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -13114,9 +11134,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -13127,8 +11144,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -13320,21 +11335,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -13345,11 +11345,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -13521,11 +11516,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -13536,9 +11526,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -13549,8 +11536,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -13740,9 +11725,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -13753,8 +11735,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -13852,21 +11832,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -13877,11 +11842,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -13922,21 +11882,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -13947,11 +11892,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -13997,29 +11937,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -14030,21 +11947,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -14055,11 +11957,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -14150,11 +12047,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -14165,9 +12057,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -14178,8 +12067,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -14411,9 +12298,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -14424,8 +12308,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -14544,21 +12426,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -14569,11 +12436,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -14621,21 +12483,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -14646,11 +12493,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -14724,29 +12566,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -14852,29 +12671,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -14885,21 +12681,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -14910,11 +12691,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -14984,29 +12760,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -15017,21 +12770,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -15042,11 +12780,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -15110,9 +12843,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -15123,8 +12853,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -15231,21 +12959,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -15256,11 +12969,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -15305,11 +13013,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -15320,9 +13023,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -15333,8 +13033,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -15526,21 +13224,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -15551,11 +13234,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -15727,11 +13405,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -15742,9 +13415,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -15755,8 +13425,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -15946,9 +13614,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -15959,8 +13624,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -16058,21 +13721,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -16083,11 +13731,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -16133,29 +13776,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -16166,21 +13786,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -16191,11 +13796,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -16286,11 +13886,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -16301,9 +13896,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -16314,8 +13906,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -16547,9 +14137,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -16560,8 +14147,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -16680,21 +14265,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -16705,11 +14275,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -16783,29 +14348,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -16911,29 +14453,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -16944,21 +14463,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -16969,11 +14473,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -17037,9 +14536,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -17050,8 +14546,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -17154,29 +14648,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -17187,21 +14658,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -17212,11 +14668,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -17304,11 +14755,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -17319,9 +14765,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -17332,8 +14775,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -17565,9 +15006,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -17578,8 +15016,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -17724,29 +15160,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -17862,23 +15275,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $select
           in: query
@@ -17889,16 +15285,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -17909,9 +15295,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -18000,16 +15383,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -18020,9 +15393,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -18166,21 +15536,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $orderby
           in: query
@@ -18191,29 +15546,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $expand
           in: query
@@ -18224,11 +15556,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -18294,17 +15621,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
         - name: $select
           in: query
@@ -18315,12 +15631,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - ConfirmationCode
-                - StartsAt
-                - EndsAt
-                - Duration
               type: string
         - name: $expand
           in: query
@@ -18331,8 +15641,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -18478,17 +15786,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
       responses:
         '200':
@@ -18684,16 +15981,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $orderby
           in: query
@@ -18704,23 +15991,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $expand
           in: query
@@ -18731,9 +16001,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -18809,21 +16076,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -18834,11 +16086,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -18883,11 +16130,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -18898,9 +16140,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -18911,8 +16150,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -19122,21 +16359,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -19147,11 +16369,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -19323,11 +16540,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -19338,9 +16550,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -19351,8 +16560,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -19560,9 +16767,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -19573,8 +16777,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -19672,21 +16874,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -19697,11 +16884,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -19747,29 +16929,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -19780,21 +16939,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -19805,11 +16949,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -19897,11 +17036,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -19912,9 +17046,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -19925,8 +17056,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -20176,9 +17305,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -20189,8 +17315,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -20335,29 +17459,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -20463,29 +17564,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -20496,21 +17574,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -20521,11 +17584,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -20616,11 +17674,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - Address desc
-                - City
-                - City desc
               type: string
         - name: $select
           in: query
@@ -20631,9 +17684,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -20644,8 +17694,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -20877,9 +17925,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -20890,8 +17935,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -21010,21 +18053,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -21035,11 +18063,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -21113,29 +18136,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
       responses:
         '200':
@@ -21241,29 +18241,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -21274,21 +18251,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -21299,11 +18261,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -21367,9 +18324,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - Address
-                - City
               type: string
         - name: $expand
           in: query
@@ -21380,8 +18334,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -21535,23 +18487,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $select
           in: query
@@ -21562,16 +18497,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -21582,9 +18507,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -21673,16 +18595,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -21693,9 +18605,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -21839,21 +18748,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $orderby
           in: query
@@ -21864,29 +18758,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $expand
           in: query
@@ -21897,11 +18768,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -21967,17 +18833,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
         - name: $select
           in: query
@@ -21988,12 +18843,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - ConfirmationCode
-                - StartsAt
-                - EndsAt
-                - Duration
               type: string
         - name: $expand
           in: query
@@ -22004,8 +18853,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -22151,17 +18998,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
       responses:
         '200':
@@ -22397,23 +19233,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
               type: string
         - name: $select
           in: query
@@ -22424,16 +19243,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -22444,9 +19253,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -22535,16 +19341,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
               type: string
         - name: $expand
           in: query
@@ -22555,9 +19351,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - PlanItems
               type: string
       responses:
         '200':
@@ -22701,21 +19494,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $orderby
           in: query
@@ -22726,29 +19504,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $expand
           in: query
@@ -22759,11 +19514,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -22829,17 +19579,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
         - name: $select
           in: query
@@ -22850,12 +19589,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - ConfirmationCode
-                - StartsAt
-                - EndsAt
-                - Duration
               type: string
         - name: $expand
           in: query
@@ -22866,8 +19599,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
               type: string
       responses:
         '200':
@@ -23013,17 +19744,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - PlanItemId
-                - PlanItemId desc
-                - ConfirmationCode
-                - ConfirmationCode desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-                - Duration
-                - Duration desc
               type: string
       responses:
         '200':
@@ -23218,29 +19938,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -23251,21 +19948,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -23276,11 +19958,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':
@@ -23354,29 +20031,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
               type: string
         - name: $select
           in: query
@@ -23387,21 +20041,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
               type: string
         - name: $expand
           in: query
@@ -23412,11 +20051,6 @@ paths:
             uniqueItems: true
             type: array
             items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
               type: string
       responses:
         '200':

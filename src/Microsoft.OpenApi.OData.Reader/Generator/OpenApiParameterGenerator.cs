@@ -555,7 +555,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Items = new OpenApiSchema
                     {
                         Type = "string",
-                        Enum = orderByItems
+                        Enum = context.Settings.UseStringArrayForQueryOptionsSchema ? null : orderByItems
                     }
                 },
                 Style = ParameterStyle.Form,
@@ -639,7 +639,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Items = new OpenApiSchema
                     {
                         Type = "string",
-                        Enum = selectItems
+                        Enum = context.Settings.UseStringArrayForQueryOptionsSchema ? null : selectItems
                     }
                 },
                 Style = ParameterStyle.Form,
@@ -720,7 +720,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Items = new OpenApiSchema
                     {
                         Type = "string",
-                        Enum = expandItems
+                        Enum = context.Settings.UseStringArrayForQueryOptionsSchema ? null : expandItems
                     }
                 },
                 Style = ParameterStyle.Form,

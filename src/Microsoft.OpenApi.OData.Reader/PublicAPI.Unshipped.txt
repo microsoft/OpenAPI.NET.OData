@@ -50,6 +50,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.SemVerVersion.get -> string
 Microsoft.OpenApi.OData.OpenApiConvertSettings.SemVerVersion.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseStringArrayForQueryOptionsSchema.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseStringArrayForQueryOptionsSchema.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension
