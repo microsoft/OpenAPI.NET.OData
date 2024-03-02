@@ -61,7 +61,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Required = true,
                 Description = "New navigation property values",
-                Content = GetContent(schema, _updateRestriction.RequestContentTypes)
+                Content = GetContent(schema, _updateRestriction?.RequestContentTypes)
             };
 
             base.SetRequestBody(operation);

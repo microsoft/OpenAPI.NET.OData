@@ -64,7 +64,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Required = true,
                 Description = "New navigation property",
-                Content = GetContent(schema, _insertRestriction.RequestContentTypes)
+                Content = GetContent(schema, _insertRestriction?.RequestContentTypes)
             };
 
             base.SetRequestBody(operation);
@@ -87,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     new OpenApiResponse
                     {
                         Description = "Created navigation property.",
-                        Content = GetContent(schema, _insertRestriction.ResponseContentTypes)
+                        Content = GetContent(schema, _insertRestriction?.ResponseContentTypes)
                     }
                 }
             };
