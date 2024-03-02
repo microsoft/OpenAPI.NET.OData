@@ -139,17 +139,16 @@ namespace Microsoft.OpenApi.OData.Operation
             };
         }
 
-        protected IDictionary<string, OpenApiMediaType> GetContent(OpenApiSchema schema = null, IEnumerable<string> mimeTypes = null)
+        protected IDictionary<string, OpenApiMediaType> GetContent(OpenApiSchema schema = null, IEnumerable<string> mediaTypes = null)
         {
             schema ??= GetOpenApiSchema();
             var content = new Dictionary<string, OpenApiMediaType>();
 
-            // Add the respective content types
-            if (mimeTypes != null)
+            if (mediaTypes != null)
             {
-                foreach (string item in mimeTypes)
+                foreach (string mediaType in mediaTypes)
                 {
-                    content.Add(item, new OpenApiMediaType
+                    content.Add(mediaType, new OpenApiMediaType
                     {
                         Schema = schema
                     });
