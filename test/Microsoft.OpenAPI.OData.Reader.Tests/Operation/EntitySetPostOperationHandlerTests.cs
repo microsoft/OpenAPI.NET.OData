@@ -229,15 +229,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         }
 
         [Fact]
-        public void CreateEntitySetPostOperationReturnsCorrectOperationWithAnnotatedRequestBodyContent()
+        public void CreateEntitySetPostOperationReturnsCorrectOperationWithAnnotatedRequestBodyAndResponseContent()
         {
             IEdmModel model = OData.Tests.EdmModelHelper.GraphBetaModel;
             OpenApiConvertSettings settings = new();
             ODataContext context = new(model, settings);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("directoryObjects");
             Assert.NotNull(entitySet);
-            
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet));
+
+            ODataPath path = new(new ODataNavigationSourceSegment(entitySet));
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
@@ -245,6 +245,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation.RequestBody);
             Assert.Equal("multipart/form-data", operation.RequestBody.Content.First().Key);
+            Assert.NotNull(operation.Responses);
+            Assert.Equal("multipart/form-data", operation.Responses.First().Value.Content.First().Key);
         }
 
         internal static IEdmModel GetEdmModel(string annotation, bool hasStream = false)

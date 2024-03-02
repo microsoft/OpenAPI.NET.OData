@@ -79,13 +79,13 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public bool IsInsertable => Insertable == null || Insertable.Value == true;
 
         /// <summary>
-        /// Lists the MIME types acceptable for the request content
+        /// Lists the media types acceptable for the request content
         /// </summary>
         /// <remarks>This is not an official OASIS standard property.</remarks>
         public IList<string> RequestContentTypes { get; private set; }
 
         /// <summary>
-        /// Lists the MIME types acceptable for the response content
+        /// Lists the media types acceptable for the response content
         /// </summary>
         /// <remarks>This is not an official OASIS standard property.</remarks>
         public IList<string> ResponseContentTypes { get; private set; }

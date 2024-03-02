@@ -76,7 +76,7 @@ namespace Microsoft.OpenApi.OData.Operation
             var content = new Dictionary<string, OpenApiMediaType>();
             IEnumerable<string> mediaTypes = _updateRestrictions?.RequestContentTypes;
 
-            // Add the respective content types
+            // Add the annotated request content media types
             if (mediaTypes != null)
             {
                 foreach (string mediaType in mediaTypes)

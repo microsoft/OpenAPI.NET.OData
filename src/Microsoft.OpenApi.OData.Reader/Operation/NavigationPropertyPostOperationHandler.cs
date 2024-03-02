@@ -94,7 +94,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
-        }        
+        }
 
         protected override void SetSecurity(OpenApiOperation operation)
         {

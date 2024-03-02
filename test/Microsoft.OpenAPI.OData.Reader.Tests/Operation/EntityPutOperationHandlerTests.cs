@@ -187,7 +187,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("directoryObjects");
             Assert.NotNull(entitySet);
 
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+            ODataPath path = new(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);

@@ -74,14 +74,14 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         public void CreateNavigationPostOperationReturnsCorrectOperationWithAnnotatedRequestBodyContent()
         {
             IEdmModel model = EdmModelHelper.GraphBetaModel;
-            OpenApiConvertSettings settings = new OpenApiConvertSettings();
-            ODataContext context = new ODataContext(model, settings);
+            OpenApiConvertSettings settings = new();
+            ODataContext context = new(model, settings);
             IEdmSingleton sTon = model.EntityContainer.FindSingleton("identity");
             Assert.NotNull(sTon);
             IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "identityContainer");
             IEdmNavigationProperty navProperty = entity.DeclaredNavigationProperties().First(c => c.Name == "apiConnectors");
 
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(sTon), new ODataNavigationPropertySegment(navProperty));
+            ODataPath path = new(new ODataNavigationSourceSegment(sTon), new ODataNavigationPropertySegment(navProperty));
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);

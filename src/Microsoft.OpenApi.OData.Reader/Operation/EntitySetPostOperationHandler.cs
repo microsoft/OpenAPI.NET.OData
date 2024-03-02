@@ -149,7 +149,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else
             {
-                // Add annotated request content mime types
+                // Add the annotated request content media types
                 IEnumerable<string> mediaTypes = _insertRestrictions?.RequestContentTypes;
                 if (mediaTypes != null)
                 {
