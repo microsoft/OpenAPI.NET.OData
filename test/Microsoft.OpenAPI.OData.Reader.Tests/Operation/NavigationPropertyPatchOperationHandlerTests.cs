@@ -79,6 +79,27 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
         }
 
+        [Fact]
+        public void CreateNavigationPatchOperationReturnsCorrectOperationWithAnnotatedRequestBodyContent()
+        {
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new OpenApiConvertSettings();
+            ODataContext context = new ODataContext(model, settings);
+            IEdmSingleton sTon = model.EntityContainer.FindSingleton("identity");
+            Assert.NotNull(sTon);
+            IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "identityContainer");
+            IEdmNavigationProperty navProperty = entity.DeclaredNavigationProperties().First(c => c.Name == "apiConnectors");
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(sTon), new ODataNavigationPropertySegment(navProperty));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation.RequestBody);
+            Assert.Equal("application/xhtml+xml", operation.RequestBody.Content.First().Key);
+        }
+
         [Theory]
         [InlineData(true)]
         [InlineData(false)]

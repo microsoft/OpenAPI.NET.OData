@@ -86,8 +86,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
 
+            // Assert
             Assert.NotNull(operation.RequestBody);
-
             Assert.Equal("application/xhtml+xml", operation.RequestBody.Content.First().Key);
         }
 

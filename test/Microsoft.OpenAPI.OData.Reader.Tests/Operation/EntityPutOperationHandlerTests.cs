@@ -177,5 +177,24 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Empty(putOperation.Security);
             }
         }
+
+        [Fact]
+        public void CreateEntityPutOperationReturnsCorrectOperationWithAnnotatedRequestBodyContent()
+        {
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new();
+            ODataContext context = new(model, settings);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("directoryObjects");
+            Assert.NotNull(entitySet);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation.RequestBody);
+            Assert.Equal("multipart/form-data", operation.RequestBody.Content.First().Key);
+        }
     }
 }
