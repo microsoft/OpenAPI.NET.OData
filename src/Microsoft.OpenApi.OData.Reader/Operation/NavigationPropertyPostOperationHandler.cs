@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
@@ -61,32 +60,11 @@ namespace Microsoft.OpenApi.OData.Operation
                 schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
             }
 
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = NavigationProperty.ToEntityType().FullName()
-                    }
-                };
-            }
-
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
                 Description = "New navigation property",
-                Content = new Dictionary<string, OpenApiMediaType>
-                {
-                    {
-                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                        {
-                            Schema = schema
-                        }
-                    }
-                }
+                Content = GetContent(schema, _insertRestriction?.RequestContentTypes)
             };
 
             base.SetRequestBody(operation);
@@ -102,19 +80,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
             }
 
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = NavigationProperty.ToEntityType().FullName()
-                    }
-                };
-            }
-
             operation.Responses = new OpenApiResponses
             {
                 {
@@ -122,16 +87,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     new OpenApiResponse
                     {
                         Description = "Created navigation property.",
-                        Content = new Dictionary<string, OpenApiMediaType>
-                        {
-                            {
-                                Constants.ApplicationJsonMediaType,
-                                new OpenApiMediaType
-                                {
-                                    Schema = schema
-                                }
-                            }
-                        }
+                        Content = GetContent(schema, _insertRestriction?.ResponseContentTypes)
                     }
                 }
             };

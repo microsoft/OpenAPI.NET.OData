@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -129,6 +129,18 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public bool IsUpdateMethodPut => UpdateMethod.HasValue && UpdateMethod.Value == HttpMethod.PUT;
 
         /// <summary>
+        /// Lists the media types acceptable for the request content
+        /// </summary>
+        /// <remarks>This is not an official OASIS standard property.</remarks>
+        public IList<string> RequestContentTypes { get; private set; }
+
+        /// <summary>
+        /// Lists the media types acceptable for the response content
+        /// </summary>
+        /// <remarks>This is not an official OASIS standard property.</remarks>
+        public IList<string> ResponseContentTypes { get; private set; }
+
+        /// <summary>
         /// Init the <see cref="UpdateRestrictionsType"/>.
         /// </summary>
         /// <param name="record">The input record.</param>
@@ -177,6 +189,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // LongDescription
             LongDescription = record.GetString("LongDescription");
+
+            // RequestContentTypes
+            RequestContentTypes = record.GetCollection("RequestContentTypes");
+
+            // ResponseContentTypes
+            ResponseContentTypes = record.GetCollection("ResponseContentTypes");
         }
     }
 }

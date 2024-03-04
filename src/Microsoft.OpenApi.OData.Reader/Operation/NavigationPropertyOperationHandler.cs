@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
@@ -135,6 +136,46 @@ namespace Microsoft.OpenApi.OData.Operation
                 CapabilitiesConstants.DeleteRestrictions => Restriction?.DeleteRestrictions ??
                                         Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions),
                 _ => null,
+            };
+        }
+
+        protected IDictionary<string, OpenApiMediaType> GetContent(OpenApiSchema schema = null, IEnumerable<string> mediaTypes = null)
+        {
+            schema ??= GetOpenApiSchema();
+            var content = new Dictionary<string, OpenApiMediaType>();
+
+            if (mediaTypes != null)
+            {
+                foreach (string mediaType in mediaTypes)
+                {
+                    content.Add(mediaType, new OpenApiMediaType
+                    {
+                        Schema = schema
+                    });
+                }
+            }
+            else
+            {
+                // Default content type
+                content.Add(Constants.ApplicationJsonMediaType, new OpenApiMediaType
+                {
+                    Schema = schema
+                });
+            };
+
+            return content;
+        }
+
+        protected OpenApiSchema GetOpenApiSchema()
+        {
+            return new OpenApiSchema
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = NavigationProperty.ToEntityType().FullName()
+                }
             };
         }
     }

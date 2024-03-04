@@ -64,18 +64,39 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Required = true,
                 Description = "New property values",
-                Content = new Dictionary<string, OpenApiMediaType>
-                {
-                    {
-                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                        {
-                            Schema = GetOpenApiSchema()
-                        }
-                    }
-                }
+                Content = GetContent()
             };
 
             base.SetRequestBody(operation);
+        }
+
+        protected IDictionary<string, OpenApiMediaType> GetContent()
+        {
+            OpenApiSchema schema = GetOpenApiSchema();
+            var content = new Dictionary<string, OpenApiMediaType>();
+            IEnumerable<string> mediaTypes = _updateRestrictions?.RequestContentTypes;
+
+            // Add the annotated request content media types
+            if (mediaTypes != null)
+            {
+                foreach (string mediaType in mediaTypes)
+                {
+                    content.Add(mediaType, new OpenApiMediaType
+                    {
+                        Schema = schema
+                    });
+                }
+            }
+            else
+            {
+                // Default content type
+                content.Add(Constants.ApplicationJsonMediaType, new OpenApiMediaType
+                {
+                    Schema = schema
+                });
+            };
+
+            return content;
         }
 
         /// <inheritdoc/>

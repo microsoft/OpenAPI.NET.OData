@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -50,20 +50,18 @@ namespace Microsoft.OpenApi.OData.Operation
 
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
-        {            
+        {
+            OpenApiSchema schema = null;
+            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
+            }
+
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
                 Description = "New navigation property values",
-                Content = new Dictionary<string, OpenApiMediaType>
-                {
-                    {
-                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                        {
-                            Schema = GetOpenApiSchema()
-                        }
-                    }
-                }
+                Content = GetContent(schema, _updateRestriction?.RequestContentTypes)
             };
 
             base.SetRequestBody(operation);
@@ -102,24 +100,6 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 AppendCustomParameters(operation, _updateRestriction.CustomQueryOptions, ParameterLocation.Query);
             }
-        }
-
-        private OpenApiSchema GetOpenApiSchema()
-        {           
-            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
-            {
-                return EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
-            }
-
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = NavigationProperty.ToEntityType().FullName()
-                }
-            };
         }
     }
 }

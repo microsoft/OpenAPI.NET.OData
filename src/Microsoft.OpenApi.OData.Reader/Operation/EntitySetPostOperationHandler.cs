@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
                 else
                 {
-                    // Default content type
+                    // Default stream content type
                     content.Add(Constants.ApplicationOctetStreamMediaType, new OpenApiMediaType
                     {
                         Schema = new OpenApiSchema
@@ -147,11 +147,29 @@ namespace Microsoft.OpenApi.OData.Operation
                     });
                 }
             }
-
-            content.Add(Constants.ApplicationJsonMediaType, new OpenApiMediaType
+            else
             {
-                Schema = schema
-            });
+                // Add the annotated request content media types
+                IEnumerable<string> mediaTypes = _insertRestrictions?.RequestContentTypes;
+                if (mediaTypes != null)
+                {
+                    foreach (string mediaType in mediaTypes)
+                    {
+                        content.Add(mediaType, new OpenApiMediaType
+                        {
+                            Schema = schema
+                        });
+                    }
+                }
+                else
+                {
+                    // Default content type
+                    content.Add(Constants.ApplicationJsonMediaType, new OpenApiMediaType
+                    {
+                        Schema = schema
+                    });
+                }                
+            }            
 
             return content;
         }

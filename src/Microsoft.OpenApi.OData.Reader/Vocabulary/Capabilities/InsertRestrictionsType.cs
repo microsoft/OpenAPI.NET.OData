@@ -79,6 +79,18 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public bool IsInsertable => Insertable == null || Insertable.Value == true;
 
         /// <summary>
+        /// Lists the media types acceptable for the request content
+        /// </summary>
+        /// <remarks>This is not an official OASIS standard property.</remarks>
+        public IList<string> RequestContentTypes { get; private set; }
+
+        /// <summary>
+        /// Lists the media types acceptable for the response content
+        /// </summary>
+        /// <remarks>This is not an official OASIS standard property.</remarks>
+        public IList<string> ResponseContentTypes { get; private set; }
+
+        /// <summary>
         /// Test the input navigation property do not allow deep insert.
         /// </summary>
         /// <param name="navigationPropertyPath">The input navigation property path.</param>
@@ -127,6 +139,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // LongDescription
             LongDescription = record.GetString("LongDescription");
+
+            // RequestContentTypes
+            RequestContentTypes = record.GetCollection("RequestContentTypes");
+
+            // ResponseContentTypes
+            ResponseContentTypes = record.GetCollection("ResponseContentTypes");
         }
     }
 }

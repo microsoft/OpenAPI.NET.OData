@@ -11,6 +11,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System.Linq;
 using System.Xml.Linq;
 using Xunit;
 
@@ -79,26 +80,22 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 if (!string.IsNullOrEmpty(annotation))
                 {
                     // RequestBody
-                    Assert.Equal(2, post.RequestBody.Content.Keys.Count);
+                    Assert.Single(post.RequestBody.Content.Keys);
                     Assert.True(post.RequestBody.Content.ContainsKey("application/todo"));
-                    Assert.True(post.RequestBody.Content.ContainsKey(Constants.ApplicationJsonMediaType));
 
                     // Response
-                    Assert.Equal(2, post.Responses[statusCode].Content.Keys.Count);
+                    Assert.Single(post.Responses[statusCode].Content.Keys);
                     Assert.True(post.Responses[statusCode].Content.ContainsKey("application/todo"));
-                    Assert.True(post.Responses[statusCode].Content.ContainsKey(Constants.ApplicationJsonMediaType));
                 }
                 else
                 {
                     // RequestBody
-                    Assert.Equal(2, post.RequestBody.Content.Keys.Count);
+                    Assert.Single(post.RequestBody.Content.Keys);
                     Assert.True(post.RequestBody.Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
-                    Assert.True(post.RequestBody.Content.ContainsKey(Constants.ApplicationJsonMediaType));
 
                     // Response
-                    Assert.Equal(2, post.Responses[statusCode].Content.Keys.Count);
+                    Assert.Single(post.Responses[statusCode].Content.Keys);
                     Assert.True(post.Responses[statusCode].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
-                    Assert.True(post.Responses[statusCode].Content.ContainsKey(Constants.ApplicationJsonMediaType));
                 }
             }
             else
@@ -229,6 +226,27 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Empty(post.Security);
             }
+        }
+
+        [Fact]
+        public void CreateEntitySetPostOperationReturnsCorrectOperationWithAnnotatedRequestBodyAndResponseContent()
+        {
+            IEdmModel model = OData.Tests.EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new();
+            ODataContext context = new(model, settings);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("directoryObjects");
+            Assert.NotNull(entitySet);
+
+            ODataPath path = new(new ODataNavigationSourceSegment(entitySet));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation.RequestBody);
+            Assert.Equal("multipart/form-data", operation.RequestBody.Content.First().Key);
+            Assert.NotNull(operation.Responses);
+            Assert.Equal("multipart/form-data", operation.Responses.First().Value.Content.First().Key);
         }
 
         internal static IEdmModel GetEdmModel(string annotation, bool hasStream = false)
