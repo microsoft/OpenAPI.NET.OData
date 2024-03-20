@@ -407,7 +407,7 @@
           <Annotation Term="Org.OData.Core.V1.Description" String="Resets the data source to default values." />
         </ActionImport>
       </EntityContainer>
-      <Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person/Trips">
+		<Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Container/People/Trips">
 		<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
 		  <Record>
 			<PropertyValue Property="CustomHeaders">

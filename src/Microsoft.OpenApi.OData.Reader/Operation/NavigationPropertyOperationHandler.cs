@@ -3,8 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -13,6 +11,8 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -51,6 +51,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         protected bool LastSegmentIsRefSegment { get; private set; }
 
+        /// <summary>
+        /// Gets the annotation target path for the navigation property
+        /// </summary>
+        protected EdmTargetPath TargetPath { get ; private set; }
+
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
@@ -77,7 +82,18 @@ namespace Microsoft.OpenApi.OData.Operation
                 navigation = Context.Model.GetRecord<NavigationRestrictionsType>(singleton, CapabilitiesConstants.NavigationRestrictions);
             }
 
+            var targetPathSegments = new List<IEdmElement> { Context.Model.EntityContainer };
+            foreach (var segment in path.Segments)
+            {
+                if (segment is ODataKeySegment)
+                    continue; 
+                targetPathSegments.Add(segment as IEdmElement);
+            }
+
+            TargetPath = new EdmTargetPath(targetPathSegments);
+
             Restriction = navigation?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty != null && r.NavigationProperty == Path.NavigationPropertyPath())
+                    ?? Context.Model.GetRecord<NavigationRestrictionsType>(TargetPath, CapabilitiesConstants.NavigationRestrictions)?.RestrictedProperties?.FirstOrDefault()
                     ?? Context.Model.GetRecord<NavigationRestrictionsType>(NavigationProperty, CapabilitiesConstants.NavigationRestrictions)?.RestrictedProperties?.FirstOrDefault();
         }
 
@@ -113,7 +129,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(NavigationProperty, CustomLinkRel) is Link externalDocs)
+            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) is Link externalDocs)
             {
                 operation.ExternalDocs = new OpenApiExternalDocs()
                 { 
