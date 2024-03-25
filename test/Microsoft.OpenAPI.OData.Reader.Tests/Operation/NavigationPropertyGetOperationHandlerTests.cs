@@ -71,6 +71,32 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         }
 
         [Fact]
+        public void CreateNavigationGetOperationWithTargetPathAnnotationsReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new ODataContext(model, new OpenApiConvertSettings());
+            IEdmEntitySet users = model.EntityContainer.FindEntitySet("users");
+            Assert.NotNull(users);
+
+            IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
+            IEdmNavigationProperty navProperty = user.DeclaredNavigationProperties().First(c => c.Name == "appRoleAssignments");
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(users), new ODataKeySegment(users.EntityType()), new ODataNavigationPropertySegment(navProperty));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("List appRoleAssignments granted to a user", operation.Summary);
+            Assert.Equal("Retrieve the list of appRoleAssignments that are currently granted to a user. This operation also returns app role assignments granted to groups that the user is a direct member of.", operation.Description);
+         
+            Assert.NotNull(operation.ExternalDocs);
+            Assert.Equal("Find more info here", operation.ExternalDocs.Description);
+            Assert.Equal("https://learn.microsoft.com/graph/api/user-list-approleassignments?view=graph-rest-1.0", operation.ExternalDocs.Url.ToString());
+        }
+
+        [Fact]
         public void CreateNavigationGetOperationViaComposableFunctionReturnsCorrectOperation()
         {
             // Arrange
