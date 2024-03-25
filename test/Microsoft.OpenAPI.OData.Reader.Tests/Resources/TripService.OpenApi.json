@@ -2512,7 +2512,7 @@
           "Me.Person"
         ],
         "summary": "Delete ref of navigation property Friends for Me",
-        "operationId": "Me.DeleteRefFriends",
+        "operationId": "Me.friends.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -4733,7 +4733,7 @@
           "Me.Person"
         ],
         "summary": "Delete ref of navigation property Friends for Me",
-        "operationId": "Me.AsEmployee.DeleteRefFriends",
+        "operationId": "Me.AsEmployee.friends.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -5805,7 +5805,7 @@
           "Me.Person"
         ],
         "summary": "Delete ref of navigation property Peers for Me",
-        "operationId": "Me.AsEmployee.DeleteRefPeers",
+        "operationId": "Me.AsEmployee.peers.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -7028,7 +7028,7 @@
           "Me.Trips.PlanItem"
         ],
         "summary": "Delete ref of navigation property PlanItems for Me",
-        "operationId": "Me.AsEmployee.Trips.DeleteRefPlanItems",
+        "operationId": "Me.AsEmployee.Trips.planItems.DeleteRefPlanItem",
         "parameters": [
           {
             "name": "TripId",
@@ -8595,7 +8595,7 @@
           "Me.Person"
         ],
         "summary": "Delete ref of navigation property DirectReports for Me",
-        "operationId": "Me.AsManager.DeleteRefDirectReports",
+        "operationId": "Me.AsManager.directReports.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -9391,7 +9391,7 @@
           "Me.Person"
         ],
         "summary": "Delete ref of navigation property Friends for Me",
-        "operationId": "Me.AsManager.DeleteRefFriends",
+        "operationId": "Me.AsManager.friends.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -10973,7 +10973,7 @@
           "Me.Trips.PlanItem"
         ],
         "summary": "Delete ref of navigation property PlanItems for Me",
-        "operationId": "Me.AsManager.Trips.DeleteRefPlanItems",
+        "operationId": "Me.AsManager.Trips.planItems.DeleteRefPlanItem",
         "parameters": [
           {
             "name": "TripId",
@@ -11905,7 +11905,7 @@
           "Me.Trips.PlanItem"
         ],
         "summary": "Delete ref of navigation property PlanItems for Me",
-        "operationId": "Me.Trips.DeleteRefPlanItems",
+        "operationId": "Me.Trips.planItems.DeleteRefPlanItem",
         "parameters": [
           {
             "name": "TripId",
@@ -13770,7 +13770,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete ref of navigation property Friends for NewComePeople",
-        "operationId": "NewComePeople.DeleteRefFriends",
+        "operationId": "NewComePeople.friends.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -15900,7 +15900,7 @@
           "NewComePeople.Trips.PlanItem"
         ],
         "summary": "Delete ref of navigation property PlanItems for NewComePeople",
-        "operationId": "NewComePeople.Trips.DeleteRefPlanItems",
+        "operationId": "NewComePeople.Trips.planItems.DeleteRefPlanItem",
         "parameters": [
           {
             "name": "UserName",
@@ -17873,7 +17873,7 @@
           "People.Person"
         ],
         "summary": "Delete ref of navigation property Friends for People",
-        "operationId": "People.DeleteRefFriends",
+        "operationId": "People.friends.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -20592,7 +20592,7 @@
           "People.Person"
         ],
         "summary": "Delete ref of navigation property Friends for People",
-        "operationId": "People.AsEmployee.DeleteRefFriends",
+        "operationId": "People.AsEmployee.friends.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -21880,7 +21880,7 @@
           "People.Person"
         ],
         "summary": "Delete ref of navigation property Peers for People",
-        "operationId": "People.AsEmployee.DeleteRefPeers",
+        "operationId": "People.AsEmployee.peers.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -23317,7 +23317,7 @@
           "People.Trips.PlanItem"
         ],
         "summary": "Delete ref of navigation property PlanItems for People",
-        "operationId": "People.AsEmployee.Trips.DeleteRefPlanItems",
+        "operationId": "People.AsEmployee.Trips.planItems.DeleteRefPlanItem",
         "parameters": [
           {
             "name": "UserName",
@@ -25240,7 +25240,7 @@
           "People.Person"
         ],
         "summary": "Delete ref of navigation property DirectReports for People",
-        "operationId": "People.AsManager.DeleteRefDirectReports",
+        "operationId": "People.AsManager.directReports.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -26188,7 +26188,7 @@
           "People.Person"
         ],
         "summary": "Delete ref of navigation property Friends for People",
-        "operationId": "People.AsManager.DeleteRefFriends",
+        "operationId": "People.AsManager.friends.DeleteRefPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -28060,7 +28060,7 @@
           "People.Trips.PlanItem"
         ],
         "summary": "Delete ref of navigation property PlanItems for People",
-        "operationId": "People.AsManager.Trips.DeleteRefPlanItems",
+        "operationId": "People.AsManager.Trips.planItems.DeleteRefPlanItem",
         "parameters": [
           {
             "name": "UserName",
@@ -29146,7 +29146,7 @@
           "People.Trips.PlanItem"
         ],
         "summary": "Delete ref of navigation property PlanItems for People",
-        "operationId": "People.Trips.DeleteRefPlanItems",
+        "operationId": "People.Trips.planItems.DeleteRefPlanItem",
         "parameters": [
           {
             "name": "UserName",

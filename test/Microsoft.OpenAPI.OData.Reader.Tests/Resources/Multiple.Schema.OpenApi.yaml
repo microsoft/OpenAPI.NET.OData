@@ -602,7 +602,7 @@ paths:
       tags:
         - Documents.RevisionDto
       summary: Delete ref of navigation property Revisions for Documents
-      operationId: Documents.DeleteRefRevisions
+      operationId: Documents.revisions.DeleteRefRevisionDto
       parameters:
         - name: Id
           in: path
@@ -1312,7 +1312,7 @@ paths:
       tags:
         - Libraries.DocumentDto
       summary: Delete ref of navigation property Documents for Libraries
-      operationId: Libraries.DeleteRefDocuments
+      operationId: Libraries.documents.DeleteRefDocumentDto
       parameters:
         - name: Id
           in: path
@@ -2913,7 +2913,7 @@ paths:
       tags:
         - Tasks.RevisionDto
       summary: Delete ref of navigation property Revisions for Tasks
-      operationId: Tasks.DeleteRefRevisions
+      operationId: Tasks.revisions.DeleteRefRevisionDto
       parameters:
         - name: Id
           in: path
