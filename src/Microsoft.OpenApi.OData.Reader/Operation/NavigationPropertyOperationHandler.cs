@@ -13,6 +13,7 @@ using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -54,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Gets the annotation target path for the navigation property
         /// </summary>
-        protected EdmTargetPath TargetPath { get ; private set; }
+        protected string TargetPath { get ; private set; }
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -82,18 +83,17 @@ namespace Microsoft.OpenApi.OData.Operation
                 navigation = Context.Model.GetRecord<NavigationRestrictionsType>(singleton, CapabilitiesConstants.NavigationRestrictions);
             }
 
-            var targetPathSegments = new List<IEdmElement> { Context.Model.EntityContainer };
+            var targetPath = new StringBuilder(Context.Model.EntityContainer.FullName());
             foreach (var segment in path.Segments)
             {
-                if (segment is ODataKeySegment)
-                    continue; 
-                targetPathSegments.Add(segment as IEdmElement);
+                if (segment is not ODataKeySegment)
+                {
+                    targetPath.Append($"/{segment.Identifier}");
+                }
             }
-
-            TargetPath = new EdmTargetPath(targetPathSegments);
+            TargetPath = targetPath.ToString();
 
             Restriction = navigation?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty != null && r.NavigationProperty == Path.NavigationPropertyPath())
-                    ?? Context.Model.GetRecord<NavigationRestrictionsType>(TargetPath, CapabilitiesConstants.NavigationRestrictions)?.RestrictedProperties?.FirstOrDefault()
                     ?? Context.Model.GetRecord<NavigationRestrictionsType>(NavigationProperty, CapabilitiesConstants.NavigationRestrictions)?.RestrictedProperties?.FirstOrDefault();
         }
 
@@ -129,13 +129,19 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) is Link externalDocs)
+            if (Context.Settings.ShowExternalDocs)
             {
-                operation.ExternalDocs = new OpenApiExternalDocs()
-                { 
-                    Description = CoreConstants.ExternalDocsDescription, 
-                    Url = externalDocs.Href 
-                };
+                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
+                    Context.Model.GetLinkRecord(NavigationProperty, CustomLinkRel);
+
+                if (externalDocs != null)
+                {
+                    operation.ExternalDocs = new OpenApiExternalDocs()
+                    {
+                        Description = CoreConstants.ExternalDocsDescription,
+                        Url = externalDocs.Href
+                    };
+                }
             }
         }
             
@@ -150,12 +156,16 @@ namespace Microsoft.OpenApi.OData.Operation
             return annotationTerm switch
             {
                 CapabilitiesConstants.ReadRestrictions => Restriction?.ReadRestrictions ??
+                                        Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions) ??
                                         Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions),
                 CapabilitiesConstants.UpdateRestrictions => Restriction?.UpdateRestrictions ??
+                                        Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions) ??
                                         Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty, CapabilitiesConstants.UpdateRestrictions),
                 CapabilitiesConstants.InsertRestrictions => Restriction?.InsertRestrictions ??
+                                        Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions) ??
                                         Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions),
                 CapabilitiesConstants.DeleteRestrictions => Restriction?.DeleteRestrictions ??
+                                        Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions) ??
                                         Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions),
                 _ => null,
             };

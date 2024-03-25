@@ -407,56 +407,56 @@
           <Annotation Term="Org.OData.Core.V1.Description" String="Resets the data source to default values." />
         </ActionImport>
       </EntityContainer>
-		<Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Container/People/Trips">
-		<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
-		  <Record>
-			<PropertyValue Property="CustomHeaders">
-				  <Collection>
-					  <Record>
-						  <PropertyValue Property="Name" String="ConsistencyLevel" />
-						  <PropertyValue Property="Description" String="Indicates the requested consistency level." />
-						  <PropertyValue Property="DocumentationURL" String="https://docs.tripservice.com/advanced-queries" />
-						  <PropertyValue Property="Required" Bool="false" />
-						  <PropertyValue Property="ExampleValues">
-							  <Collection>
-								  <Record>
-									  <PropertyValue Property="Value" String="eventual" />
-									  <PropertyValue Property="Description" String="$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'." />
-								  </Record>
-							  </Collection>
-						  </PropertyValue>
-					  </Record>
-				  </Collection>
-			  </PropertyValue>
-			<PropertyValue Property="LongDescription" String="Retrieve a list of trips." />
-			<PropertyValue Property="Description" String="List trips." />
-			<PropertyValue Property="ReadByKeyRestrictions">
-			  <Record>
-				<PropertyValue Property="LongDescription" String="Retrieve the properties of a trip." />
-				<PropertyValue Property="Description" String="Get a trip." />
-			  </Record>
-			</PropertyValue>
-		  </Record>
-		</Annotation>
-		<Annotation Term="Org.OData.Capabilities.V1.DeleteRestrictions">
-		  <Record>
-			<PropertyValue Property="LongDescription" String="Delete an instance of a trip." />
-			<PropertyValue Property="Description" String="Delete a trip." />
-		  </Record>
-		</Annotation>
-		<Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
-		  <Record>
-			<PropertyValue Property="LongDescription" String="Update an instance of a trip." />
-			<PropertyValue Property="Description" String="Update a trip." />
-		  </Record>
-		</Annotation>
-		<Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
-		  <Record>
-			<PropertyValue Property="LongDescription" String="Create a new trip." />
-			<PropertyValue Property="Description" String="Create a trip." />
-		  </Record>
-		</Annotation>		
-      </Annotations>
+		<Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person/Trips">
+			<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+				<Record>
+					<PropertyValue Property="CustomHeaders">
+						<Collection>
+							<Record>
+								<PropertyValue Property="Name" String="ConsistencyLevel" />
+								<PropertyValue Property="Description" String="Indicates the requested consistency level." />
+								<PropertyValue Property="DocumentationURL" String="https://docs.tripservice.com/advanced-queries" />
+								<PropertyValue Property="Required" Bool="false" />
+								<PropertyValue Property="ExampleValues">
+									<Collection>
+										<Record>
+											<PropertyValue Property="Value" String="eventual" />
+											<PropertyValue Property="Description" String="$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'." />
+										</Record>
+									</Collection>
+								</PropertyValue>
+							</Record>
+						</Collection>
+					</PropertyValue>
+					<PropertyValue Property="LongDescription" String="Retrieve a list of trips." />
+					<PropertyValue Property="Description" String="List trips." />
+					<PropertyValue Property="ReadByKeyRestrictions">
+						<Record>
+							<PropertyValue Property="LongDescription" String="Retrieve the properties of a trip." />
+							<PropertyValue Property="Description" String="Get a trip." />
+						</Record>
+					</PropertyValue>
+				</Record>
+			</Annotation>
+			<Annotation Term="Org.OData.Capabilities.V1.DeleteRestrictions">
+				<Record>
+					<PropertyValue Property="LongDescription" String="Delete an instance of a trip." />
+					<PropertyValue Property="Description" String="Delete a trip." />
+				</Record>
+			</Annotation>
+			<Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+				<Record>
+					<PropertyValue Property="LongDescription" String="Update an instance of a trip." />
+					<PropertyValue Property="Description" String="Update a trip." />
+				</Record>
+			</Annotation>
+			<Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
+				<Record>
+					<PropertyValue Property="LongDescription" String="Create a new trip." />
+					<PropertyValue Property="Description" String="Create a trip." />
+				</Record>
+			</Annotation>
+		</Annotations>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

@@ -164,6 +164,28 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Gets the record value (a complex type) for the given target path.
+        /// </summary>
+        /// <typeparam name="T">The CLR mapping type.</typeparam>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="targetPath">The string representation of the Edm target path.</param>
+        /// <param name="qualifiedName">The Term qualified name.</param>
+        /// <returns></returns>
+        public static T GetRecord<T>(this IEdmModel model, string targetPath, string qualifiedName)
+            where T : IRecord, new()
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(targetPath, nameof(targetPath));
+            Utils.CheckArgumentNull(qualifiedName, nameof(qualifiedName));
+
+            IEdmTargetPath target = model.GetTargetPath(targetPath);
+            if (target == null)
+                return default;
+
+            return model.GetRecord<T>(target, qualifiedName);
+        }
+
+        /// <summary>
         /// Gets the collection of string term value for the given <see cref="IEdmVocabularyAnnotatable"/>.
         /// </summary>
         /// <param name="model">The Edm model.</param>
@@ -259,6 +281,28 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Gets the collection of record value (a complex type) for the given targetPath.
+        /// </summary>
+        /// <typeparam name="T">The CLR mapping type.</typeparam>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="targetPath">The string representation of the Edm target path.</param>
+        /// <param name="qualifiedName">The Term qualified name.</param>
+        /// <returns></returns>
+        public static IEnumerable<T> GetCollection<T>(this IEdmModel model, string targetPath, string qualifiedName)
+            where T : IRecord, new()
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(targetPath, nameof(targetPath));
+            Utils.CheckArgumentNull(qualifiedName, nameof(qualifiedName));
+
+            IEdmTargetPath target = model.GetTargetPath(targetPath);
+            if (target == null)
+                return null;
+
+            return model.GetCollection<T>(target, qualifiedName);
+        }
+
+        /// <summary>
         /// Gets the links record value (a complex type) for the given <see cref="IEdmVocabularyAnnotatable"/>.
         /// </summary>
         /// <param name="model">The Edm model.</param>
@@ -271,6 +315,21 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(target, nameof(target));
 
             return model.GetCollection<Link>(target, CoreConstants.Links)?.FirstOrDefault(x => x.Rel == linkRel);
+        }
+
+        /// <summary>
+        /// Gets the links record value (a complex type) for the given target path.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="targetPath">The string representation of the Edm target path.</param>
+        /// <param name="linkRel">The link relation type for path operation.</param>
+        /// <returns>Null or the links record value (a complex type) for this annotation.</returns>
+        public static Link GetLinkRecord(this IEdmModel model, string targetPath, string linkRel)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(targetPath, nameof(targetPath));
+
+            return model.GetCollection<Link>(targetPath, CoreConstants.Links)?.FirstOrDefault(x => x.Rel == linkRel);
         }
 
         /// <summary>
