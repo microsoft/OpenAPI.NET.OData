@@ -13,7 +13,6 @@ using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -52,11 +51,6 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         protected bool LastSegmentIsRefSegment { get; private set; }
 
-        /// <summary>
-        /// Gets the annotation target path for the navigation property
-        /// </summary>
-        protected string TargetPath { get ; private set; }
-
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
@@ -82,16 +76,6 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 navigation = Context.Model.GetRecord<NavigationRestrictionsType>(singleton, CapabilitiesConstants.NavigationRestrictions);
             }
-
-            var targetPath = new StringBuilder(Context.Model.EntityContainer.FullName());
-            foreach (var segment in path.Segments)
-            {
-                if (segment is not ODataKeySegment)
-                {
-                    targetPath.Append($"/{segment.Identifier}");
-                }
-            }
-            TargetPath = targetPath.ToString();
 
             Restriction = navigation?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty != null && r.NavigationProperty == Path.NavigationPropertyPath())
                     ?? Context.Model.GetRecord<NavigationRestrictionsType>(NavigationProperty, CapabilitiesConstants.NavigationRestrictions)?.RestrictedProperties?.FirstOrDefault();
@@ -144,7 +128,18 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             }
         }
-            
+
+        /// <inheritdoc/>
+        protected override void SetTargetPath()
+        {
+            base.SetTargetPath();
+            if (Path.LastSegment is ODataRefSegment)
+            {
+                int lastIndex = TargetPath.LastIndexOf('/');
+                TargetPath = lastIndex > 0 ? TargetPath.Substring(0, lastIndex) : TargetPath;
+            }
+        }
+
         /// <summary>
         /// Retrieves the CRUD restrictions annotations for the navigation property
         /// in context, given a capability annotation term.
