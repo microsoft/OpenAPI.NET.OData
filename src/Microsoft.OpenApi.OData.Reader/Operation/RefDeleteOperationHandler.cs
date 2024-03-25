@@ -3,13 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -41,7 +41,21 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             {
                 string prefix = "DeleteRef";
-                operation.OperationId = GetOperationId(prefix);
+                var segments = GetOperationId().Split('.').ToList();
+                
+                if (SecondLastSegmentIsKeySegment)
+                {
+                    segments[segments.Count - 1] = Utils.ToFirstCharacterLowerCase(segments[segments.Count - 1]);
+                    var lastSegment = prefix + Utils.UpperFirstChar(NavigationProperty.ToEntityType().Name);
+                    segments.Add(lastSegment);
+                    operation.OperationId = string.Join(".", segments);
+                }
+                else
+                {
+                    var lastSegment = segments.LastOrDefault();
+                    segments[segments.Count - 1] = prefix + lastSegment;
+                    operation.OperationId = string.Join(".", segments);
+                }
             }            
         }
 
