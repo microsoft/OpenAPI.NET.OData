@@ -3,8 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -13,6 +11,8 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -107,16 +107,33 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(NavigationProperty, CustomLinkRel) is Link externalDocs)
+            if (Context.Settings.ShowExternalDocs)
             {
-                operation.ExternalDocs = new OpenApiExternalDocs()
-                { 
-                    Description = CoreConstants.ExternalDocsDescription, 
-                    Url = externalDocs.Href 
-                };
+                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
+                    Context.Model.GetLinkRecord(NavigationProperty, CustomLinkRel);
+
+                if (externalDocs != null)
+                {
+                    operation.ExternalDocs = new OpenApiExternalDocs()
+                    {
+                        Description = CoreConstants.ExternalDocsDescription,
+                        Url = externalDocs.Href
+                    };
+                }
             }
         }
-            
+
+        /// <inheritdoc/>
+        protected override void SetTargetPath()
+        {
+            base.SetTargetPath();
+            if (Path.LastSegment is ODataRefSegment)
+            {
+                int lastIndex = TargetPath.LastIndexOf('/');
+                TargetPath = lastIndex > 0 ? TargetPath.Substring(0, lastIndex) : TargetPath;
+            }
+        }
+
         /// <summary>
         /// Retrieves the CRUD restrictions annotations for the navigation property
         /// in context, given a capability annotation term.
@@ -128,12 +145,16 @@ namespace Microsoft.OpenApi.OData.Operation
             return annotationTerm switch
             {
                 CapabilitiesConstants.ReadRestrictions => Restriction?.ReadRestrictions ??
+                                        Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions) ??
                                         Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions),
                 CapabilitiesConstants.UpdateRestrictions => Restriction?.UpdateRestrictions ??
+                                        Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions) ??
                                         Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty, CapabilitiesConstants.UpdateRestrictions),
                 CapabilitiesConstants.InsertRestrictions => Restriction?.InsertRestrictions ??
+                                        Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions) ??
                                         Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions),
                 CapabilitiesConstants.DeleteRestrictions => Restriction?.DeleteRestrictions ??
+                                        Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions) ??
                                         Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions),
                 _ => null,
             };
