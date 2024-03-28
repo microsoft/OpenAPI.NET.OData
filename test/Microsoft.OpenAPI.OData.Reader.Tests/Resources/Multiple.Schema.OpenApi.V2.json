@@ -760,7 +760,7 @@
           "Documents.RevisionDto"
         ],
         "summary": "Delete ref of navigation property Revisions for Documents",
-        "operationId": "Documents.DeleteRefRevisions",
+        "operationId": "Documents.revisions.DeleteRefRevisionDto",
         "parameters": [
           {
             "in": "path",
@@ -1673,7 +1673,7 @@
           "Libraries.DocumentDto"
         ],
         "summary": "Delete ref of navigation property Documents for Libraries",
-        "operationId": "Libraries.DeleteRefDocuments",
+        "operationId": "Libraries.documents.DeleteRefDocumentDto",
         "parameters": [
           {
             "in": "path",
@@ -3688,7 +3688,7 @@
           "Tasks.RevisionDto"
         ],
         "summary": "Delete ref of navigation property Revisions for Tasks",
-        "operationId": "Tasks.DeleteRefRevisions",
+        "operationId": "Tasks.revisions.DeleteRefRevisionDto",
         "parameters": [
           {
             "in": "path",

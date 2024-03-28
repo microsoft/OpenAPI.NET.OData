@@ -42,6 +42,11 @@ namespace Microsoft.OpenApi.OData.Operation
         protected bool LastSegmentIsKeySegment { get; private set; }
 
         /// <summary>
+        /// Gets a bool value indicating whether the second last segment in a $ref path is a key segment
+        /// </summary>
+        protected bool SecondLastSegmentIsKeySegment { get; private set; }
+
+        /// <summary>
         /// Gets a bool value indicating whether the last segment is a $ref segment.
         /// </summary>
         protected bool LastSegmentIsRefSegment { get; private set; }
@@ -56,6 +61,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             LastSegmentIsKeySegment = path.LastSegment is ODataKeySegment;
             LastSegmentIsRefSegment = path.LastSegment is ODataRefSegment;
+            SecondLastSegmentIsKeySegment = Path.Segments.Reverse().Skip(1).Take(1).Single().Kind == ODataSegmentKind.Key;
             NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
 
             IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
