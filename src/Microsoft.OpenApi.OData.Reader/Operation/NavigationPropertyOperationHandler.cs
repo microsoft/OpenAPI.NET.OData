@@ -129,17 +129,6 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-        /// <inheritdoc/>
-        protected override void SetTargetPath()
-        {
-            base.SetTargetPath();
-            if (Path.LastSegment is ODataRefSegment)
-            {
-                int lastIndex = TargetPath.LastIndexOf('/');
-                TargetPath = lastIndex > 0 ? TargetPath.Substring(0, lastIndex) : TargetPath;
-            }
-        }
-
         /// <summary>
         /// Retrieves the CRUD restrictions annotations for the navigation property
         /// in context, given a capability annotation term.

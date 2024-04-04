@@ -303,11 +303,16 @@ namespace Microsoft.OpenApi.OData.Operation
         protected virtual void SetTargetPath()
         {
             var targetPath = new StringBuilder(Context.Model.EntityContainer.FullName());
-            foreach (var segment in Path.Segments.Where(segment => segment is not ODataKeySegment))
+
+            bool skipLastSegment = Path.LastSegment is ODataRefSegment;
+            foreach (var segment in Path.Segments.Where(segment => segment is not ODataKeySegment 
+                && segment is not ODataTypeCastSegment // TODO: Presence of type casts in the TargetPath is currently throwing exceptions in Edm lib. Remove after update.
+                && !(skipLastSegment && segment == Path.LastSegment)))
             {
                 targetPath.Append($"/{segment.Identifier}");
             }
             TargetPath = targetPath.ToString();
         }
+
     }
 }

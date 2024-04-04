@@ -17,8 +17,8 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
     /// <inheritdoc/>
     protected override void Initialize(ODataContext context, ODataPath path)
     {
+        base.Initialize(context, path);
         ComplexPropertySegment = path.LastSegment as ODataComplexPropertySegment ?? throw Error.ArgumentNull(nameof(path));
-        base.SetTargetPath();
     }
 
     /// <inheritdoc/>
