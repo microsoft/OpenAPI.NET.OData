@@ -90,7 +90,11 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(operation.Parameters);
-            Assert.NotEmpty(operation.Parameters);
+            Assert.Equal(4, operation.Parameters.Count);
+            Assert.Equal(new[] { "id", "ConsistencyLevel", "search", "filter" },
+                operation.Parameters.Select(x => x.Name ?? x.Reference.Id).ToList());
+
+            Assert.Equal("Get the number of the resource", operation.Summary);
 
             Assert.Null(operation.RequestBody);
 

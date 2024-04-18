@@ -218,12 +218,5 @@ namespace Microsoft.OpenApi.OData.Operation
                 AppendCustomParameters(operation, readRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
         }
-
-        protected override void SetTargetPath()
-        {
-            base.SetTargetPath();
-            int lastIndex = TargetPath.LastIndexOf('/');
-            TargetPath = lastIndex > 0 ? TargetPath.Substring(0, lastIndex) : TargetPath;
-        }
     }
 }
