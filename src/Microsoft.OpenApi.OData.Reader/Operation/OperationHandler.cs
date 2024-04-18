@@ -304,9 +304,8 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             var targetPath = new StringBuilder(Context.Model.EntityContainer.FullName());
 
-            bool skipLastSegment = Path.LastSegment is ODataRefSegment;
+            bool skipLastSegment = Path.LastSegment is ODataRefSegment || Path.LastSegment is ODataDollarCountSegment;
             foreach (var segment in Path.Segments.Where(segment => segment is not ODataKeySegment 
-                && segment is not ODataTypeCastSegment // TODO: Presence of type casts in the TargetPath is currently throwing exceptions in Edm lib. Remove after update.
                 && !(skipLastSegment && segment == Path.LastSegment)))
             {
                 targetPath.Append($"/{segment.Identifier}");
