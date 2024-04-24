@@ -63,6 +63,7 @@
 				</Property>
 				<Property Name="FavoriteFeature" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature" Nullable="false" />
 				<Property Name="Features" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature)" Nullable="false" />
+				<Property Name="Photo" Type="Edm.Stream"/>
 				<NavigationProperty Name="Friends" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)">
 					<Annotation Term="Org.OData.Validation.V1.DerivedTypeConstraint">
 						<Collection>
@@ -73,6 +74,29 @@
 					<Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
 						<Record>
 							<PropertyValue Property="Referenceable" Bool="true" />
+						</Record>
+					</Annotation>
+					<Annotation Term="Org.OData.Core.V1.Description" String="Friends of person" />
+					<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+						<Record>
+							<PropertyValue Property="CustomHeaders">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Name" String="ConsistencyLevel" />
+										<PropertyValue Property="Description" String="Indicates the requested consistency level." />
+										<PropertyValue Property="DocumentationURL" String="https://docs.microsoft.com/graph/aad-advanced-queries" />
+										<PropertyValue Property="Required" Bool="false" />
+										<PropertyValue Property="ExampleValues">
+											<Collection>
+												<Record>
+													<PropertyValue Property="Value" String="eventual" />
+													<PropertyValue Property="Description" String="$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'." />
+												</Record>
+											</Collection>
+										</PropertyValue>
+									</Record>
+								</Collection>
+							</PropertyValue>
 						</Record>
 					</Annotation>
 				</NavigationProperty>
@@ -455,6 +479,140 @@
 						<PropertyValue Property="LongDescription" String="Create a new trip." />
 						<PropertyValue Property="Description" String="Create a trip." />
 					</Record>
+				</Annotation>
+				<Annotation Term="Org.OData.Core.V1.Links">
+					<Collection>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/create" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/user-post-trips?view=graph-rest-1.0" />
+						</Record>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/list" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/user-list-trips?view=graph-rest-1.0" />
+						</Record>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/update" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/user-update-trips?view=graph-rest-1.0" />
+						</Record>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/delete" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/user-delete-trips?view=graph-rest-1.0" />
+						</Record>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/get" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/user-get-trips?view=graph-rest-1.0" />
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Container/Me">
+				<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="Get signed in person" />
+						<PropertyValue Property="LongDescription" String="Retrieve the properties and relationships of Person object." />
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Container/People/HomeAddress">
+				<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="Get home address" />
+						<PropertyValue Property="LongDescription" String="Get the home address of a specific person" />
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Container/People/Friends">
+				<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="List friends" />
+						<PropertyValue Property="LongDescription" String="List the friends of a specific person" />
+					</Record>
+				</Annotation>
+				<Annotation Term="Org.OData.Capabilities.V1.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="Delete a friend." />
+						<PropertyValue Property="LongDescription" String="Delete an instance of a friend relationship." />
+					</Record>
+				</Annotation>
+				<Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="Create a friend." />
+						<PropertyValue Property="LongDescription" String="Create a new friend." />
+					</Record>
+				</Annotation>
+				<Annotation Term="Org.OData.Core.V1.Links">
+					<Collection>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/create" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/person-post-friend?view=graph-rest-1.0" />
+						</Record>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/list" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/person-list-friends?view=graph-rest-1.0" />
+						</Record>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/delete" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/person-delete-friend?view=graph-rest-1.0" />
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Container/People/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager">
+				<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="Get best friend" />
+						<PropertyValue Property="LongDescription" String="Get the item of type Person cast as Manager" />
+					</Record>
+				</Annotation>
+				<Annotation Term="Org.OData.Core.V1.Links">
+					<Collection>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/list" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/person-get-friend-manager?view=graph-rest-1.0" />
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Container/People/FavoriteFeature">
+				<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="Get favourite feature" />
+						<PropertyValue Property="LongDescription" String="Get the favourite feature of a specific person" />
+					</Record>
+				</Annotation>
+				<Annotation Term="Org.OData.Core.V1.Links">
+					<Collection>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/list" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/person-favorite-feature?view=graph-rest-1.0" />
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Container/People/Photo">
+				<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="Get photo" />
+						<PropertyValue Property="LongDescription" String="Get photo of a specific user" />
+					</Record>
+				</Annotation>
+				<Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="Update photo" />
+						<PropertyValue Property="LongDescription" String="Update photo of a specific user" />
+					</Record>
+				</Annotation>
+				<Annotation Term="Org.OData.Core.V1.Links">
+					<Collection>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/list" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/person-get-photo?view=graph-rest-1.0" />
+						</Record>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/update" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/person-update-photo?view=graph-rest-1.0" />
+						</Record>
+					</Collection>
 				</Annotation>
 			</Annotations>
 		</Schema>

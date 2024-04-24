@@ -9,7 +9,6 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Vocabulary;
 using Microsoft.OpenApi.OData.Vocabulary.Authorization;
@@ -287,12 +286,12 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="target">The Edm target.</param>
         /// <param name="linkRel">The link relation type for path operation.</param>
         /// <returns>Null or the links record value (a complex type) for this annotation.</returns>
-        public static Link GetLinkRecord(this IEdmModel model, IEdmVocabularyAnnotatable target, string linkRel)
+        public static LinkType GetLinkRecord(this IEdmModel model, IEdmVocabularyAnnotatable target, string linkRel)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            return model.GetCollection<Link>(target, CoreConstants.Links)?.FirstOrDefault(x => x.Rel == linkRel);
+            return model.GetCollection<LinkType>(target, CoreConstants.Links)?.FirstOrDefault(x => x.Rel == linkRel);
         }
 
         /// <summary>
@@ -302,7 +301,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="targetPath">The string representation of the Edm target path.</param>
         /// <param name="linkRel">The link relation type for path operation.</param>
         /// <returns>Null or the links record value (a complex type) for this annotation.</returns>
-        public static Link GetLinkRecord(this IEdmModel model, string targetPath, string linkRel)
+        public static LinkType GetLinkRecord(this IEdmModel model, string targetPath, string linkRel)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -350,6 +349,18 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 return null;
             });
+        }
+
+        public static string GetDescriptionAnnotation(this IEdmModel model, string targetPath)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(targetPath, nameof(targetPath));
+
+            IEdmTargetPath target = model.GetTargetPath(targetPath);
+            if (target == null)
+                return null;
+
+            return model.GetDescriptionAnnotation(target);
         }
 
         private static T GetOrAddCached<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName, Func<T> createFunc)

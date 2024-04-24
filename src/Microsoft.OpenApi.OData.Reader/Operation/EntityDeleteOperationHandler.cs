@@ -29,7 +29,17 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.Initialize(context, path);
 
-            _deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
+            _deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+            var entityDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
+
+            if (_deleteRestrictions == null)
+            {
+                _deleteRestrictions = entityDeleteRestrictions;
+            }
+            else
+            {
+                _deleteRestrictions.MergePropertiesIfNull(entityDeleteRestrictions);
+            }
         }
 
         /// <inheritdoc/>

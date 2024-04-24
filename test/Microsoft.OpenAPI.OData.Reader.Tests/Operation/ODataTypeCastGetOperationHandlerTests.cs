@@ -54,7 +54,7 @@ public class ODataTypeCastGetOperationHandlerTests
         Assert.Single(tag.Extensions);
 
         Assert.NotNull(operation.Parameters);
-        Assert.Equal(9, operation.Parameters.Count);
+        Assert.Equal(10, operation.Parameters.Count);
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
@@ -113,7 +113,7 @@ public class ODataTypeCastGetOperationHandlerTests
         Assert.Empty(tag.Extensions);
 
         Assert.NotNull(operation.Parameters);
-        Assert.Equal(4, operation.Parameters.Count); //select, expand, id, id
+        Assert.Equal(5, operation.Parameters.Count); //select, expand, id, id, ConsistencyLevel
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
@@ -349,5 +349,35 @@ public class ODataTypeCastGetOperationHandlerTests
             Assert.Null(operation.OperationId);
         }
         Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
+    }
+    [Fact]
+    public void CreateODataTypeCastGetOperationReturnsCorrectOperationForSingleNavigationPropertyWithTargetPathAnnotations()
+    {// .../People/{id}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
+        // Arrange
+        IEdmModel model = EdmModelHelper.TripServiceModel;
+        ODataContext context = new(model, new OpenApiConvertSettings());
+        IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+        Assert.NotNull(people);
+
+        IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+        IEdmEntityType manager = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Manager");
+        IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "BestFriend");
+        ODataPath path = new(new ODataNavigationSourceSegment(people),
+                                                                    new ODataKeySegment(people.EntityType()),
+                                                                    new ODataNavigationPropertySegment(navProperty),
+                                                                    new ODataTypeCastSegment(manager, model));
+
+        // Act
+        var operation = _operationHandler.CreateOperation(context, path);
+
+        // Assert
+        Assert.NotNull(operation);
+        Assert.Equal("Get best friend", operation.Summary);
+        Assert.Equal("Get the item of type Person cast as Manager", operation.Description);
+
+        Assert.NotNull(operation.ExternalDocs);
+        Assert.Equal("Find more info here", operation.ExternalDocs.Description);
+        Assert.Equal("https://learn.microsoft.com/graph/api/person-get-friend-manager?view=graph-rest-1.0", operation.ExternalDocs.Url.ToString());
+
     }
 }

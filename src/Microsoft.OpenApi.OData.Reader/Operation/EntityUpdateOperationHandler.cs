@@ -25,7 +25,17 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.Initialize(context, path);
 
-            _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
+            _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+            var entityUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
+
+            if (_updateRestrictions == null)
+            {
+                _updateRestrictions = entityUpdateRestrictions;
+            }
+            else
+            {
+                _updateRestrictions.MergePropertiesIfNull(entityUpdateRestrictions);
+            }
         }
 
         /// <inheritdoc/>

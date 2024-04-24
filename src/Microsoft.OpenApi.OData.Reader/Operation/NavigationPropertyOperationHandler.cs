@@ -137,22 +137,76 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <returns>The restriction annotation, or null if not available.</returns>
         protected IRecord GetRestrictionAnnotation(string annotationTerm)
         {
-            return annotationTerm switch
+            switch (annotationTerm)
             {
-                CapabilitiesConstants.ReadRestrictions => Restriction?.ReadRestrictions ??
-                                        Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions) ??
-                                        Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions),
-                CapabilitiesConstants.UpdateRestrictions => Restriction?.UpdateRestrictions ??
-                                        Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions) ??
-                                        Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty, CapabilitiesConstants.UpdateRestrictions),
-                CapabilitiesConstants.InsertRestrictions => Restriction?.InsertRestrictions ??
-                                        Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions) ??
-                                        Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions),
-                CapabilitiesConstants.DeleteRestrictions => Restriction?.DeleteRestrictions ??
-                                        Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions) ??
-                                        Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions),
-                _ => null,
-            };
+                case CapabilitiesConstants.ReadRestrictions:
+                    var readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+                    if (readRestrictions != null && Restriction?.ReadRestrictions != null)
+                    {
+                        readRestrictions.MergePropertiesIfNull(Restriction.ReadRestrictions);
+                    }
+                    readRestrictions ??= Restriction?.ReadRestrictions;
+
+                    var navPropReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions);
+                    if (readRestrictions != null && navPropReadRestrictions != null)
+                    {
+                        readRestrictions.MergePropertiesIfNull(navPropReadRestrictions);
+                    }
+                    readRestrictions ??= navPropReadRestrictions;
+
+                    return readRestrictions;
+                case CapabilitiesConstants.UpdateRestrictions:
+                    var updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+                    if (updateRestrictions != null && Restriction?.UpdateRestrictions != null)
+                    {
+                        updateRestrictions.MergePropertiesIfNull(Restriction.UpdateRestrictions);
+                    }
+                    updateRestrictions ??= Restriction?.UpdateRestrictions;
+
+                    var navPropUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty, CapabilitiesConstants.UpdateRestrictions);
+                    if (updateRestrictions != null && navPropUpdateRestrictions != null)
+                    {
+                        updateRestrictions.MergePropertiesIfNull(navPropUpdateRestrictions);
+                    }
+                    updateRestrictions ??= navPropUpdateRestrictions;
+
+                    return updateRestrictions;
+                case CapabilitiesConstants.InsertRestrictions:
+                    var insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+                    if (insertRestrictions != null && Restriction?.InsertRestrictions != null)
+                    {
+                        insertRestrictions.MergePropertiesIfNull(Restriction.InsertRestrictions);
+                    }
+                    insertRestrictions ??= Restriction?.InsertRestrictions;
+
+                    var navPropInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions);
+                    if (insertRestrictions != null && navPropInsertRestrictions != null)
+                    {
+                        insertRestrictions.MergePropertiesIfNull(navPropInsertRestrictions);
+                    }
+                    insertRestrictions ??= navPropInsertRestrictions;
+
+                    return insertRestrictions;
+                case CapabilitiesConstants.DeleteRestrictions:
+                    var deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+                    if (deleteRestrictions != null && Restriction?.DeleteRestrictions != null)
+                    {
+                        deleteRestrictions.MergePropertiesIfNull(Restriction.DeleteRestrictions);
+                    }
+                    deleteRestrictions ??= Restriction?.DeleteRestrictions;
+
+                    var navPropDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions);
+                    if (deleteRestrictions != null && navPropDeleteRestrictions != null)
+                    {
+                        deleteRestrictions.MergePropertiesIfNull(navPropDeleteRestrictions);
+                    }
+                    deleteRestrictions ??= navPropDeleteRestrictions;
+
+                    return deleteRestrictions;
+                default:
+                    return null;
+
+            }
         }
 
         protected IDictionary<string, OpenApiMediaType> GetContent(OpenApiSchema schema = null, IEnumerable<string> mediaTypes = null)

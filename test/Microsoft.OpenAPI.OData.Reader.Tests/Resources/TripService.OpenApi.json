@@ -1228,6 +1228,83 @@
         }
       }
     },
+    "/Airports/{IcaoCode}/Location/EmergencyAuthority/Photo": {
+      "description": "Provides operations to manage the media for the Airport entity.",
+      "get": {
+        "tags": [
+          "Airports.Person"
+        ],
+        "summary": "Get Photo for the navigation property EmergencyAuthority from Airports",
+        "operationId": "Airports.GetEmergencyAuthorityPhoto",
+        "parameters": [
+          {
+            "name": "IcaoCode",
+            "in": "path",
+            "description": "The unique identifier of Airport",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Airport"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Airports.Person"
+        ],
+        "summary": "Update Photo for the navigation property EmergencyAuthority in Airports",
+        "operationId": "Airports.UpdateEmergencyAuthorityPhoto",
+        "parameters": [
+          {
+            "name": "IcaoCode",
+            "in": "path",
+            "description": "The unique identifier of Airport",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Airport"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Airports/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -1369,7 +1446,8 @@
         "tags": [
           "Me.Person"
         ],
-        "summary": "Get Me",
+        "summary": "Get signed in person",
+        "description": "Retrieve the properties and relationships of Person object.",
         "operationId": "Me.Person.GetPerson",
         "parameters": [
           {
@@ -2416,6 +2494,73 @@
         }
       }
     },
+    "/Me/BestFriend/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Photo for the navigation property BestFriend from Me",
+        "operationId": "Me.GetBestFriendPhoto",
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "put": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Update Photo for the navigation property BestFriend in Me",
+        "operationId": "Me.UpdateBestFriendPhoto",
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Friends": {
       "description": "Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -2423,8 +2568,23 @@
           "Me.Person"
         ],
         "summary": "Get Friends from Me",
+        "description": "Friends of person",
         "operationId": "Me.ListFriends",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -3046,6 +3206,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -3118,6 +3292,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -3170,6 +3358,97 @@
         }
       }
     },
+    "/Me/Friends/{UserName}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Photo for the navigation property Friends from Me",
+        "operationId": "Me.GetFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "put": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Update Photo for the navigation property Friends in Me",
+        "operationId": "Me.UpdateFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -3179,6 +3458,20 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.Friends.GetCount-182b",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -3210,8 +3503,23 @@
           "Me.Person"
         ],
         "summary": "Get ref of Friends from Me",
+        "description": "Friends of person",
         "operationId": "Me.ListRefFriends",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -3338,6 +3646,20 @@
         "operationId": "Me.ListFriends.AsEmployee",
         "parameters": [
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -3422,6 +3744,20 @@
         "operationId": "Me.Friends.GetCount.AsEmployee-884b",
         "parameters": [
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -3454,6 +3790,20 @@
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
         "operationId": "Me.ListFriends.AsManager",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -3538,6 +3888,20 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.Friends.GetCount.AsManager-9376",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -3923,6 +4287,20 @@
         "operationId": "Me.AsEmployee.AddressInfo.GetCount-8488",
         "parameters": [
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -3977,6 +4355,20 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.AddressInfo.GetCount.AsEventLocation-9375",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -4378,6 +4770,20 @@
         "operationId": "Me.AsEmployee.BestFriend.AddressInfo.GetCount-81de",
         "parameters": [
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -4432,6 +4838,20 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.BestFriend.AddressInfo.GetCount.AsEventLocation-842c",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -4637,6 +5057,73 @@
         }
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/BestFriend/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Photo for the navigation property BestFriend from Me",
+        "operationId": "Me.GetBestFriendPhoto",
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "put": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Update Photo for the navigation property BestFriend in Me",
+        "operationId": "Me.UpdateBestFriendPhoto",
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends": {
       "description": "Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -4644,8 +5131,23 @@
           "Me.Person"
         ],
         "summary": "Get Friends from Me",
+        "description": "Friends of person",
         "operationId": "Me.AsEmployee.ListFriends",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -4994,6 +5496,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -5069,6 +5585,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -5267,6 +5797,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -5319,6 +5863,97 @@
         }
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends/{UserName}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Photo for the navigation property Friends from Me",
+        "operationId": "Me.GetFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "put": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Update Photo for the navigation property Friends in Me",
+        "operationId": "Me.UpdateFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -5328,6 +5963,20 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.AsEmployee.Friends.GetCount-0cb7",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -5359,8 +6008,23 @@
           "Me.Person"
         ],
         "summary": "Get ref of Friends from Me",
+        "description": "Friends of person",
         "operationId": "Me.AsEmployee.ListRefFriends",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -5487,6 +6151,20 @@
         "operationId": "Me.ListFriends.AsManager",
         "parameters": [
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -5570,6 +6248,20 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.Friends.GetCount.AsManager-85ff",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -6066,6 +6758,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -6141,6 +6847,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -6305,6 +7025,97 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Photo for the navigation property Peers from Me",
+        "operationId": "Me.GetPeersPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "put": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Update Photo for the navigation property Peers in Me",
+        "operationId": "Me.UpdatePeersPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6485,6 +7296,10 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-list-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsEmployee.ListTrips",
         "parameters": [
           {
@@ -6582,6 +7397,10 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-post-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsEmployee.CreateTrips",
         "requestBody": {
           "description": "New navigation property",
@@ -6631,6 +7450,10 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-get-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsEmployee.GetTrips",
         "parameters": [
           {
@@ -6705,6 +7528,10 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-update-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsEmployee.UpdateTrips",
         "parameters": [
           {
@@ -6755,6 +7582,10 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-delete-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsEmployee.DeleteTrips",
         "parameters": [
           {
@@ -8503,6 +9334,73 @@
         }
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/BestFriend/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Photo for the navigation property BestFriend from Me",
+        "operationId": "Me.GetBestFriendPhoto",
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "put": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Update Photo for the navigation property BestFriend in Me",
+        "operationId": "Me.UpdateBestFriendPhoto",
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
       "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
@@ -9137,6 +10035,97 @@
         }
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Photo for the navigation property DirectReports from Me",
+        "operationId": "Me.GetDirectReportsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "put": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Update Photo for the navigation property DirectReports in Me",
+        "operationId": "Me.UpdateDirectReportsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -9302,8 +10291,23 @@
           "Me.Person"
         ],
         "summary": "Get Friends from Me",
+        "description": "Friends of person",
         "operationId": "Me.AsManager.ListFriends",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -9925,6 +10929,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -9977,6 +10995,97 @@
         }
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Friends/{UserName}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Photo for the navigation property Friends from Me",
+        "operationId": "Me.GetFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "put": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Update Photo for the navigation property Friends in Me",
+        "operationId": "Me.UpdateFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -9986,6 +11095,20 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.AsManager.Friends.GetCount-60a7",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -10017,8 +11140,23 @@
           "Me.Person"
         ],
         "summary": "Get ref of Friends from Me",
+        "description": "Friends of person",
         "operationId": "Me.AsManager.ListRefFriends",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -10145,6 +11283,20 @@
         "operationId": "Me.ListFriends.AsEmployee",
         "parameters": [
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -10228,6 +11380,20 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.Friends.GetCount.AsEmployee-6a35",
         "parameters": [
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -10430,6 +11596,10 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-list-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsManager.ListTrips",
         "parameters": [
           {
@@ -10527,6 +11697,10 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-post-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsManager.CreateTrips",
         "requestBody": {
           "description": "New navigation property",
@@ -10576,6 +11750,10 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-get-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsManager.GetTrips",
         "parameters": [
           {
@@ -10650,6 +11828,10 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-update-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsManager.UpdateTrips",
         "parameters": [
           {
@@ -10700,6 +11882,10 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-delete-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.AsManager.DeleteTrips",
         "parameters": [
           {
@@ -11354,6 +12540,73 @@
         "x-ms-docs-operation-type": "function"
       }
     },
+    "/Me/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Photo for Person from Me",
+        "operationId": "Me.Person.GetPhoto",
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "put": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Update Photo for Person in Me",
+        "operationId": "Me.Person.UpdatePhoto",
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      }
+    },
     "/Me/Trips": {
       "description": "Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -11362,6 +12615,10 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-list-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.ListTrips",
         "parameters": [
           {
@@ -11459,6 +12716,10 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-post-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.CreateTrips",
         "requestBody": {
           "description": "New navigation property",
@@ -11508,6 +12769,10 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-get-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.GetTrips",
         "parameters": [
           {
@@ -11582,6 +12847,10 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-update-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.UpdateTrips",
         "parameters": [
           {
@@ -11632,6 +12901,10 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-delete-trips?view=graph-rest-1.0"
+        },
         "operationId": "Me.DeleteTrips",
         "parameters": [
           {
@@ -13675,6 +14948,97 @@
         }
       }
     },
+    "/NewComePeople/{UserName}/BestFriend/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Get Photo for the navigation property BestFriend from NewComePeople",
+        "operationId": "NewComePeople.GetBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/bestfriend",
+          "description": "The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API."
+        }
+      },
+      "put": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Update Photo for the navigation property BestFriend in NewComePeople",
+        "operationId": "NewComePeople.UpdateBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/bestfriend",
+          "description": "The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API."
+        }
+      }
+    },
     "/NewComePeople/{UserName}/Friends": {
       "description": "Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -13682,6 +15046,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get Friends from NewComePeople",
+        "description": "Friends of person",
         "operationId": "NewComePeople.ListFriends",
         "parameters": [
           {
@@ -13693,6 +15058,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -14372,6 +15751,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -14447,6 +15840,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -14492,6 +15899,103 @@
         }
       }
     },
+    "/NewComePeople/{UserName}/Friends/{UserName1}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Get Photo for the navigation property Friends from NewComePeople",
+        "operationId": "NewComePeople.GetFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Update Photo for the navigation property Friends in NewComePeople",
+        "operationId": "NewComePeople.UpdateFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/NewComePeople/{UserName}/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -14510,6 +16014,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -14535,6 +16053,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get ref of Friends from NewComePeople",
+        "description": "Friends of person",
         "operationId": "NewComePeople.ListRefFriends",
         "parameters": [
           {
@@ -14546,6 +16065,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -14684,6 +16217,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -14771,6 +16318,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -14805,6 +16366,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -14892,6 +16467,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -15342,6 +16931,83 @@
         "x-ms-docs-operation-type": "function"
       }
     },
+    "/NewComePeople/{UserName}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Get Photo for Person from NewComePeople",
+        "operationId": "NewComePeople.Person.GetPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Update Photo for Person in NewComePeople",
+        "operationId": "NewComePeople.Person.UpdatePhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/NewComePeople/{UserName}/Trips": {
       "description": "Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -15350,6 +17016,10 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-list-trips?view=graph-rest-1.0"
+        },
         "operationId": "NewComePeople.ListTrips",
         "parameters": [
           {
@@ -15450,6 +17120,10 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-post-trips?view=graph-rest-1.0"
+        },
         "operationId": "NewComePeople.CreateTrips",
         "parameters": [
           {
@@ -15500,6 +17174,10 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-get-trips?view=graph-rest-1.0"
+        },
         "operationId": "NewComePeople.GetTrips",
         "parameters": [
           {
@@ -15577,6 +17255,10 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-update-trips?view=graph-rest-1.0"
+        },
         "operationId": "NewComePeople.UpdateTrips",
         "parameters": [
           {
@@ -15630,6 +17312,10 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-delete-trips?view=graph-rest-1.0"
+        },
         "operationId": "NewComePeople.DeleteTrips",
         "parameters": [
           {
@@ -17701,7 +19387,12 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "summary": "Get best friend",
+        "description": "Get the item of type Person cast as Manager",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/person-get-friend-manager?view=graph-rest-1.0"
+        },
         "operationId": "People.GetBestFriend.AsManager",
         "parameters": [
           {
@@ -17767,13 +19458,109 @@
         }
       }
     },
+    "/People/{UserName}/BestFriend/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get Photo for the navigation property BestFriend from People",
+        "operationId": "People.GetBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "put": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update Photo for the navigation property BestFriend in People",
+        "operationId": "People.UpdateBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Friends": {
       "description": "Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "People.Person"
         ],
-        "summary": "Get Friends from People",
+        "summary": "List friends",
+        "description": "List the friends of a specific person",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/person-list-friends?view=graph-rest-1.0"
+        },
         "operationId": "People.ListFriends",
         "parameters": [
           {
@@ -17785,6 +19572,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -17872,7 +19673,12 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Delete ref of navigation property Friends for People",
+        "summary": "Delete a friend.",
+        "description": "Delete an instance of a friend relationship.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/person-delete-friend?view=graph-rest-1.0"
+        },
         "operationId": "People.friends.DeleteRefPerson",
         "parameters": [
           {
@@ -18517,6 +20323,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -18599,6 +20419,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -18651,6 +20485,117 @@
         }
       }
     },
+    "/People/{UserName}/Friends/{UserName1}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get Photo for the navigation property Friends from People",
+        "operationId": "People.GetFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "put": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update Photo for the navigation property Friends in People",
+        "operationId": "People.UpdateFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -18669,6 +20614,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -18700,7 +20659,12 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Get ref of Friends from People",
+        "summary": "List friends",
+        "description": "List the friends of a specific person",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/person-list-friends?view=graph-rest-1.0"
+        },
         "operationId": "People.ListRefFriends",
         "parameters": [
           {
@@ -18712,6 +20676,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -18764,7 +20742,12 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Create new navigation property ref to Friends for People",
+        "summary": "Create a friend.",
+        "description": "Create a new friend.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/person-post-friend?view=graph-rest-1.0"
+        },
         "operationId": "People.CreateRefFriends",
         "parameters": [
           {
@@ -18802,7 +20785,12 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Delete ref of navigation property Friends for People",
+        "summary": "Delete a friend.",
+        "description": "Delete an instance of a friend relationship.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/person-delete-friend?view=graph-rest-1.0"
+        },
         "operationId": "People.DeleteRefFriends",
         "parameters": [
           {
@@ -18869,6 +20857,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -18965,6 +20967,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -19006,6 +21022,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -19102,6 +21132,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -19130,7 +21174,8 @@
         "tags": [
           "People.Location"
         ],
-        "summary": "Get HomeAddress property value",
+        "summary": "Get home address",
+        "description": "Get the home address of a specific person",
         "operationId": "People.GetHomeAddress",
         "parameters": [
           {
@@ -19586,6 +21631,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -19661,6 +21720,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -20161,6 +22234,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -20236,6 +22323,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -20486,6 +22587,97 @@
         }
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/BestFriend/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get Photo for the navigation property BestFriend from People",
+        "operationId": "People.GetBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "put": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update Photo for the navigation property BestFriend in People",
+        "operationId": "People.UpdateBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends": {
       "description": "Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -20493,6 +22685,7 @@
           "People.Person"
         ],
         "summary": "Get Friends from People",
+        "description": "Friends of person",
         "operationId": "People.AsEmployee.ListFriends",
         "parameters": [
           {
@@ -20504,6 +22697,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -20903,6 +23110,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -20998,6 +23219,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -21236,6 +23471,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -21288,6 +23537,117 @@
         }
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends/{UserName1}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get Photo for the navigation property Friends from People",
+        "operationId": "People.GetFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "put": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update Photo for the navigation property Friends in People",
+        "operationId": "People.UpdateFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -21306,6 +23666,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -21338,6 +23712,7 @@
           "People.Person"
         ],
         "summary": "Get ref of Friends from People",
+        "description": "Friends of person",
         "operationId": "People.AsEmployee.ListRefFriends",
         "parameters": [
           {
@@ -21349,6 +23724,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -21508,6 +23897,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -21600,6 +24003,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -22191,6 +24608,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -22286,6 +24717,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -22480,6 +24925,117 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get Photo for the navigation property Peers from People",
+        "operationId": "People.GetPeersPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "put": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update Photo for the navigation property Peers in People",
+        "operationId": "People.UpdatePeersPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -22702,6 +25258,10 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-list-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsEmployee.ListTrips",
         "parameters": [
           {
@@ -22809,6 +25369,10 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-post-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsEmployee.CreateTrips",
         "parameters": [
           {
@@ -22870,6 +25434,10 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-get-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsEmployee.GetTrips",
         "parameters": [
           {
@@ -22954,6 +25522,10 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-update-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsEmployee.UpdateTrips",
         "parameters": [
           {
@@ -23014,6 +25586,10 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-delete-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsEmployee.DeleteTrips",
         "parameters": [
           {
@@ -25138,6 +27714,97 @@
         }
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/BestFriend/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get Photo for the navigation property BestFriend from People",
+        "operationId": "People.GetBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "put": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update Photo for the navigation property BestFriend in People",
+        "operationId": "People.UpdateBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
       "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
@@ -25882,6 +28549,117 @@
         }
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get Photo for the navigation property DirectReports from People",
+        "operationId": "People.GetDirectReportsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "put": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update Photo for the navigation property DirectReports in People",
+        "operationId": "People.UpdateDirectReportsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -26089,6 +28867,7 @@
           "People.Person"
         ],
         "summary": "Get Friends from People",
+        "description": "Friends of person",
         "operationId": "People.AsManager.ListFriends",
         "parameters": [
           {
@@ -26100,6 +28879,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -26832,6 +29625,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
@@ -26884,6 +29691,117 @@
         }
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Friends/{UserName1}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get Photo for the navigation property Friends from People",
+        "operationId": "People.GetFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "put": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update Photo for the navigation property Friends in People",
+        "operationId": "People.UpdateFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Friends/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -26902,6 +29820,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -26934,6 +29866,7 @@
           "People.Person"
         ],
         "summary": "Get ref of Friends from People",
+        "description": "Friends of person",
         "operationId": "People.AsManager.ListRefFriends",
         "parameters": [
           {
@@ -26945,6 +29878,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/top"
@@ -27104,6 +30051,20 @@
             "x-ms-docs-key-type": "Person"
           },
           {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -27196,6 +30157,20 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "ConsistencyLevel",
+            "in": "header",
+            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "example-1": {
+                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
+                "value": "eventual"
+              }
+            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -27445,6 +30420,10 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-list-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsManager.ListTrips",
         "parameters": [
           {
@@ -27552,6 +30531,10 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-post-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsManager.CreateTrips",
         "parameters": [
           {
@@ -27613,6 +30596,10 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-get-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsManager.GetTrips",
         "parameters": [
           {
@@ -27697,6 +30684,10 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-update-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsManager.UpdateTrips",
         "parameters": [
           {
@@ -27757,6 +30748,10 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-delete-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.AsManager.DeleteTrips",
         "parameters": [
           {
@@ -28523,6 +31518,107 @@
         "x-ms-docs-operation-type": "function"
       }
     },
+    "/People/{UserName}/Photo": {
+      "description": "Provides operations to manage the media for the Person entity.",
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get photo",
+        "description": "Get photo of a specific user",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/person-get-photo?view=graph-rest-1.0"
+        },
+        "operationId": "People.Person.GetPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved media content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "put": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update photo",
+        "description": "Update photo of a specific user",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/person-update-photo?view=graph-rest-1.0"
+        },
+        "operationId": "People.Person.UpdatePhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New media content.",
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      }
+    },
     "/People/{UserName}/Trips": {
       "description": "Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
@@ -28531,6 +31627,10 @@
         ],
         "summary": "List trips.",
         "description": "Retrieve a list of trips.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-list-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.ListTrips",
         "parameters": [
           {
@@ -28638,6 +31738,10 @@
         ],
         "summary": "Create a trip.",
         "description": "Create a new trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-post-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.CreateTrips",
         "parameters": [
           {
@@ -28699,6 +31803,10 @@
         ],
         "summary": "Get a trip.",
         "description": "Retrieve the properties of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-get-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.GetTrips",
         "parameters": [
           {
@@ -28783,6 +31891,10 @@
         ],
         "summary": "Update a trip.",
         "description": "Update an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-update-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.UpdateTrips",
         "parameters": [
           {
@@ -28843,6 +31955,10 @@
         ],
         "summary": "Delete a trip.",
         "description": "Delete an instance of a trip.",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/user-delete-trips?view=graph-rest-1.0"
+        },
         "operationId": "People.DeleteTrips",
         "parameters": [
           {
@@ -29946,11 +33062,17 @@
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
             }
           },
+          "Photo": {
+            "type": "string",
+            "format": "base64url",
+            "nullable": true
+          },
           "Friends": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             },
+            "description": "Friends of person",
             "x-ms-navigationProperty": true
           },
           "BestFriend": {
@@ -31189,6 +34311,7 @@
           },
           "LastName": "String",
           "MiddleName": "String",
+          "Photo": "Stream",
           "Trips": [
             {
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"

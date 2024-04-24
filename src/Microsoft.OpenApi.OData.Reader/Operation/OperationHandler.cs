@@ -285,6 +285,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     OperationType.Get => Path.LastSegment?.Kind ==  ODataSegmentKind.Key ? LinkRelKey.ReadByKey : LinkRelKey.List,
                     OperationType.Post => LinkRelKey.Create,
                     OperationType.Patch => LinkRelKey.Update,
+                    OperationType.Put => LinkRelKey.Update,
                     OperationType.Delete => LinkRelKey.Delete,
                     _ => null,
                 };

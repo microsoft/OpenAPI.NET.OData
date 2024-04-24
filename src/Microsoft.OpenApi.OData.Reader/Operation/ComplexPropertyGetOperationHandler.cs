@@ -26,7 +26,17 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     {
         base.Initialize(context, path);
 
-        _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
+        _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+        var complexPropertyReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
+
+        if (_readRestrictions == null)
+        {
+            _readRestrictions = complexPropertyReadRestrictions;
+        }
+        else
+        {
+            _readRestrictions.MergePropertiesIfNull(complexPropertyReadRestrictions);
+        }
     }
 
     /// <inheritdoc/>

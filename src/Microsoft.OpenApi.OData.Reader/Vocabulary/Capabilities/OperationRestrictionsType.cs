@@ -37,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public IList<CustomParameter> CustomQueryOptions { get; private set; }
 
         /// <summary>
-        /// Init the <see cref="SearchRestrictionsType"/>.
+        /// Init the <see cref="OperationRestrictionsType"/>.
         /// </summary>
         /// <param name="record">The input record.</param>
         public void Initialize(IEdmRecordExpression record)
@@ -55,6 +55,24 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // CustomQueryOptions
             CustomQueryOptions = record.GetCollection<CustomParameter>("CustomQueryOptions");
+        }
+
+        /// <summary>
+        /// Merges properties of the specified <see cref="OperationRestrictionsType"/> object into this instance if they are null.
+        /// </summary>
+        /// <param name="source">The <see cref="OperationRestrictionsType"/> object containing properties to merge.</param>
+        public void MergePropertiesIfNull(OperationRestrictionsType source)
+        {
+            if (source == null)
+                return;
+
+            FilterSegmentSupported ??= source.FilterSegmentSupported;
+
+            Permissions ??= source.Permissions;
+
+            CustomHeaders ??= source.CustomHeaders;
+
+            CustomQueryOptions ??= source.CustomQueryOptions;
         }
     }
 }

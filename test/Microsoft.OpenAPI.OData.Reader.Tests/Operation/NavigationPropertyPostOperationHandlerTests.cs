@@ -74,26 +74,26 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         public void CreateNavigationPostOperationWithTargetPathAnnotationsReturnsCorrectOperation()
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            IEdmModel model = EdmModelHelper.TripServiceModel;
             ODataContext context = new(model, new OpenApiConvertSettings());
-            IEdmEntitySet users = model.EntityContainer.FindEntitySet("users");
-            Assert.NotNull(users);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
 
-            IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
-            IEdmNavigationProperty navProperty = user.DeclaredNavigationProperties().First(c => c.Name == "appRoleAssignments");
-            ODataPath path = new(new ODataNavigationSourceSegment(users), new ODataKeySegment(users.EntityType()), new ODataNavigationPropertySegment(navProperty));
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Friends");
+            ODataPath path = new(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType()), new ODataNavigationPropertySegment(navProperty));
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
 
             // Assert
             Assert.NotNull(operation);
-            Assert.Equal("Grant an appRoleAssignment to a user", operation.Summary);
-            Assert.Equal("Use this API to assign an app role to a user.", operation.Description);
+            Assert.Equal("Create a friend.", operation.Summary);
+            Assert.Equal("Create a new friend.", operation.Description);
 
             Assert.NotNull(operation.ExternalDocs);
             Assert.Equal("Find more info here", operation.ExternalDocs.Description);
-            Assert.Equal("https://learn.microsoft.com/graph/api/user-post-approleassignments?view=graph-rest-1.0", operation.ExternalDocs.Url.ToString());
+            Assert.Equal("https://learn.microsoft.com/graph/api/person-post-friend?view=graph-rest-1.0", operation.ExternalDocs.Url.ToString());
         }
 
         [Fact]

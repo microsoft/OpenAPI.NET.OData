@@ -65,13 +65,19 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(Singleton, CustomLinkRel) is Link externalDocs)
+            if (Context.Settings.ShowExternalDocs)
             {
-                operation.ExternalDocs = new OpenApiExternalDocs() 
-                { 
-                    Description = CoreConstants.ExternalDocsDescription, 
-                    Url = externalDocs.Href 
-                };
+                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
+                    Context.Model.GetLinkRecord(Singleton, CustomLinkRel);
+
+                if (externalDocs != null)
+                {
+                    operation.ExternalDocs = new OpenApiExternalDocs()
+                    {
+                        Description = CoreConstants.ExternalDocsDescription,
+                        Url = externalDocs.Href
+                    };
+                }
             }
         }
     }

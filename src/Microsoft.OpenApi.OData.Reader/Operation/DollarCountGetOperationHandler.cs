@@ -199,9 +199,17 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions)
-                ?? Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
+            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            ReadRestrictionsType annotatableReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
 
+            if (readRestrictions == null)
+            {
+                readRestrictions = annotatableReadRestrictions;
+            }
+            else
+            {
+                readRestrictions.MergePropertiesIfNull(annotatableReadRestrictions);
+            }
             
             if (readRestrictions == null)
             {

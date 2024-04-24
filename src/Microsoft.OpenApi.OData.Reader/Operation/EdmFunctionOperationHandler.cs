@@ -30,8 +30,19 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetBasicInfo(operation);
 
+            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            ReadRestrictionsType operationReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperation, CapabilitiesConstants.ReadRestrictions);
+
+            if (readRestrictions == null)
+            {
+                readRestrictions = operationReadRestrictions;
+            }
+            else
+            {
+                readRestrictions.MergePropertiesIfNull(operationReadRestrictions);
+            }
+
             // Description
-            var readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperation, CapabilitiesConstants.ReadRestrictions);
             if (!string.IsNullOrWhiteSpace(readRestrictions?.LongDescription))
             {
                 operation.Description = readRestrictions.LongDescription;
