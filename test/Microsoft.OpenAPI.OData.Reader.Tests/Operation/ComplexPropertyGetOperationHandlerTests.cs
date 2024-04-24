@@ -6,6 +6,7 @@
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests;
@@ -100,4 +101,30 @@ public class ComplexPropertyGetOperationHandlerTests
 			Assert.Null(get.OperationId);
 		}
 	}
+
+    [Fact]
+    public void CreateComplexPropertyGetOperationWithTargetPathAnnotationsReturnsCorrectOperation()
+    {
+        // Arrange
+        IEdmModel model = EdmModelHelper.TripServiceModel;
+        ODataContext context = new(model, new OpenApiConvertSettings());
+        IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+        Assert.NotNull(people);
+
+        IEdmEntityType person = people.EntityType();
+        IEdmProperty complexProperty = person.FindProperty("FavoriteFeature");
+        ODataPath path = new (new ODataNavigationSourceSegment(people), new ODataKeySegment(person), new ODataComplexPropertySegment(complexProperty as IEdmStructuralProperty));
+
+        // Act
+        var operation = _operationHandler.CreateOperation(context, path);
+
+        // Assert
+        Assert.NotNull(operation);
+        Assert.Equal("Get favourite feature", operation.Summary);
+        Assert.Equal("Get the favourite feature of a specific person", operation.Description);
+
+        Assert.NotNull(operation.ExternalDocs);
+        Assert.Equal("Find more info here", operation.ExternalDocs.Description);
+        Assert.Equal("https://learn.microsoft.com/graph/api/person-favorite-feature?view=graph-rest-1.0", operation.ExternalDocs.Url.ToString());
+    }
 }

@@ -14,6 +14,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation;
 
@@ -168,14 +169,17 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// <inheritdoc/>
 	protected override void SetBasicInfo(OpenApiOperation operation)
 	{
-		// Summary
-		if (IsSingleElement)
-			operation.Summary = $"Get the item of type {ParentSchemaElement.ShortQualifiedName()} as {TargetSchemaElement.ShortQualifiedName()}";
-		else
-			operation.Summary = $"Get the items of type {TargetSchemaElement.ShortQualifiedName()} in the {ParentSchemaElement.ShortQualifiedName()} collection";
+        ReadRestrictionsType _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
 
-		// OperationId
-		if (Context.Settings.EnableOperationId)
+        // Summary
+        string placeHolder = IsSingleElement 
+			? $"Get the item of type {ParentSchemaElement.ShortQualifiedName()} as {TargetSchemaElement.ShortQualifiedName()}" 
+			: $"Get the items of type {TargetSchemaElement.ShortQualifiedName()} in the {ParentSchemaElement.ShortQualifiedName()} collection";
+        operation.Summary = _readRestrictions?.Description ?? placeHolder;
+        operation.Description = _readRestrictions?.LongDescription;
+
+        // OperationId
+        if (Context.Settings.EnableOperationId)
 			operation.OperationId = EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}";
 
         base.SetBasicInfo(operation);
@@ -425,6 +429,18 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
         if (readRestrictions.CustomQueryOptions != null)
         {
             AppendCustomParameters(operation, readRestrictions.CustomQueryOptions, ParameterLocation.Query);
+        }
+    }
+
+    protected override void SetExternalDocs(OpenApiOperation operation)
+    {
+        if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) is LinkType externalDocs)
+        {
+            operation.ExternalDocs = new OpenApiExternalDocs()
+            {
+                Description = CoreConstants.ExternalDocsDescription,
+                Url = externalDocs.Href
+            };
         }
     }
 }

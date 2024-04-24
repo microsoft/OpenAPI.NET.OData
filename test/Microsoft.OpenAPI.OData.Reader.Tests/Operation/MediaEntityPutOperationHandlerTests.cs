@@ -159,5 +159,33 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Null(putOperation2.OperationId);
             }
         }
+
+        [Fact]
+        public void CreateMediaEntityPropertyPutOperationWithTargetPathAnnotationsReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = OData.Tests.EdmModelHelper.TripServiceModel;
+            ODataContext context = new(model, new OpenApiConvertSettings());
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            IEdmEntityType person = people.EntityType();
+            IEdmStructuralProperty property = person.StructuralProperties().First(c => c.Name == "Photo");
+            ODataPath path = new(new ODataNavigationSourceSegment(people),
+                new ODataKeySegment(person),
+                new ODataStreamPropertySegment(property.Name));
+
+            // Act
+            var operation = _operationalHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("Update photo", operation.Summary);
+            Assert.Equal("Update photo of a specific user", operation.Description);
+
+            Assert.NotNull(operation.ExternalDocs);
+            Assert.Equal("Find more info here", operation.ExternalDocs.Description);
+            Assert.Equal("https://learn.microsoft.com/graph/api/person-update-photo?view=graph-rest-1.0", operation.ExternalDocs.Url.ToString());
+        }
     }
 }

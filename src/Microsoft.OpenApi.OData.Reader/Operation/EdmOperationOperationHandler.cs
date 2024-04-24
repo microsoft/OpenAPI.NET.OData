@@ -21,6 +21,8 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EdmOperationOperationHandler : OperationHandler
     {
+        private OperationRestrictionsType _operationRestriction;
+
         /// <summary>
         /// Gets the navigation source.
         /// </summary>
@@ -43,7 +45,9 @@ namespace Microsoft.OpenApi.OData.Operation
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
-        { 
+        {
+            base.Initialize(context, path);
+
             // It's bound operation, the first segment must be the navigaiton source.
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             NavigationSource = navigationSourceSegment.NavigationSource;
@@ -53,7 +57,17 @@ namespace Microsoft.OpenApi.OData.Operation
 
             HasTypeCast = path.Segments.Any(s => s is ODataTypeCastSegment);
 
-            base.Initialize(context, path);
+            _operationRestriction = Context.Model.GetRecord<OperationRestrictionsType>(TargetPath, CapabilitiesConstants.OperationRestrictions);
+            var operationRestrictions = Context.Model.GetRecord<OperationRestrictionsType>(EdmOperation, CapabilitiesConstants.OperationRestrictions);
+
+            if (_operationRestriction == null)
+            {
+                _operationRestriction = operationRestrictions;
+            }
+            else
+            {
+                _operationRestriction.MergePropertiesIfNull(operationRestrictions);
+            }
         }
 
         /// <inheritdoc/>
@@ -63,7 +77,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = "Invoke " + (EdmOperation.IsAction() ? "action " : "function ") + EdmOperation.Name;
 
             // Description
-            operation.Description = Context.Model.GetDescriptionAnnotation(EdmOperation);
+            operation.Description = Context.Model.GetDescriptionAnnotation(TargetPath) ?? Context.Model.GetDescriptionAnnotation(EdmOperation);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -161,32 +175,30 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            OperationRestrictionsType restriction = Context.Model.GetRecord<OperationRestrictionsType>(EdmOperation, CapabilitiesConstants.OperationRestrictions);
-            if (restriction == null || restriction.Permissions == null)
+            if (_operationRestriction == null || _operationRestriction.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(restriction.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions).ToList();
         }
 
         /// <inheritdoc/>
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            OperationRestrictionsType restriction = Context.Model.GetRecord<OperationRestrictionsType>(EdmOperation, CapabilitiesConstants.OperationRestrictions);
-            if (restriction == null)
+            if (_operationRestriction == null)
             {
                 return;
             }
 
-            if (restriction.CustomHeaders != null)
+            if (_operationRestriction.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, restriction.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, _operationRestriction.CustomHeaders, ParameterLocation.Header);
             }
 
-            if (restriction.CustomQueryOptions != null)
+            if (_operationRestriction.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, restriction.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, _operationRestriction.CustomQueryOptions, ParameterLocation.Query);
             }
         }
 
@@ -261,13 +273,19 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(EdmOperation, CustomLinkRel) is Link externalDocs)
+            if (Context.Settings.ShowExternalDocs)
             {
-                operation.ExternalDocs = new OpenApiExternalDocs()
+                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
+                    Context.Model.GetLinkRecord(EdmOperation, CustomLinkRel);
+
+                if (externalDocs != null)
                 {
-                    Description = CoreConstants.ExternalDocsDescription,
-                    Url = externalDocs.Href
-                };
+                    operation.ExternalDocs = new OpenApiExternalDocs()
+                    {
+                        Description = CoreConstants.ExternalDocsDescription,
+                        Url = externalDocs.Href
+                    };
+                }
             }
         }
 

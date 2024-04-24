@@ -23,7 +23,17 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
     {
         base.Initialize(context, path);
 
-        _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
+        _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+        var complexPropertyUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
+
+        if (_updateRestrictions == null)
+        {
+            _updateRestrictions = complexPropertyUpdateRestrictions;
+        }
+        else
+        {
+            _updateRestrictions.MergePropertiesIfNull(complexPropertyUpdateRestrictions);
+        }
     }
 
     /// <inheritdoc/>

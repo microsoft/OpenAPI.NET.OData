@@ -50,6 +50,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.NotNull(operation.Parameters);
             Assert.NotEmpty(operation.Parameters);
+            Assert.Equal(3, operation.Parameters.Count);
 
             Assert.Null(operation.RequestBody);
 

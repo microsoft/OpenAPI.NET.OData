@@ -30,7 +30,17 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.Initialize(context, path);
 
-            _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+            _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            var entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+
+            if (_readRestrictions == null)
+            {
+                _readRestrictions = entityReadRestrictions;
+            }
+            else
+            {
+                _readRestrictions.MergePropertiesIfNull(entityReadRestrictions);
+            }
         }
 
         /// <inheritdoc/>

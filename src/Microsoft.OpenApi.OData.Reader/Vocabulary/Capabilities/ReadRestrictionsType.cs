@@ -77,6 +77,29 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // LongDescription
             LongDescription = record.GetString("LongDescription");
         }
+
+
+        /// <summary>
+        /// Merges properties of the specified <see cref="ReadRestrictionsBase"/> object into this instance if they are null.
+        /// </summary>
+        /// <param name="source">The <see cref="ReadRestrictionsBase"/> object containing properties to merge.</param>
+        public void MergePropertiesIfNull(ReadRestrictionsBase source)
+        {
+            if (source == null)
+                return;
+
+            Readable ??= source.Readable;
+
+            Permissions ??= source.Permissions;
+
+            CustomHeaders ??= source.CustomHeaders;
+
+            CustomQueryOptions ??= source.CustomQueryOptions;
+
+            Description ??= source.Description;
+
+            LongDescription ??= source.LongDescription;
+        }
     }
 
     /// <summary>
@@ -110,6 +133,20 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // ReadByKeyRestrictions
             ReadByKeyRestrictions = record.GetRecord<ReadByKeyRestrictions>("ReadByKeyRestrictions");
+        }
+
+        /// <summary>
+        /// Merges properties of the specified <see cref="ReadRestrictionsType"/> object into this instance if they are null.
+        /// </summary>
+        /// <param name="source">The <see cref="ReadRestrictionsType"/> object containing properties to merge.</param>
+        public void MergePropertiesIfNull(ReadRestrictionsType source)
+        {
+            base.MergePropertiesIfNull(source);
+
+            if (source == null)
+                return;
+
+            ReadByKeyRestrictions ??= source.ReadByKeyRestrictions;
         }
     }
 }

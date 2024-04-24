@@ -26,7 +26,17 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             throw new InvalidOperationException("OData conventions do not support POSTing to a complex property that is not a collection.");
         }
 
-        _insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
+        _insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+        var complexPropertyInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
+
+        if (_insertRestrictions == null)
+        {
+            _insertRestrictions = complexPropertyInsertRestrictions;
+        }
+        else
+        {
+            _insertRestrictions.MergePropertiesIfNull(complexPropertyInsertRestrictions);
+        }
     }
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Post;

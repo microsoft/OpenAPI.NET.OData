@@ -31,7 +31,17 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.Initialize(context, path);
 
-            _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+            _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            var entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+
+            if (_readRestrictions == null)
+            {
+                _readRestrictions = entityReadRestrictions;
+            }
+            else
+            {
+                _readRestrictions.MergePropertiesIfNull(entityReadRestrictions);
+            }
         }
 
         /// <inheritdoc/>
@@ -75,35 +85,35 @@ namespace Microsoft.OpenApi.OData.Operation
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
             // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
             // $top
-            OpenApiParameter parameter = Context.CreateTop(EntitySet);
+            OpenApiParameter parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $skip
-            parameter = Context.CreateSkip(EntitySet);
+            parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $search
-            parameter = Context.CreateSearch(EntitySet);
+            parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $filter
-            parameter = Context.CreateFilter(EntitySet);
+            parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $count
-            parameter = Context.CreateCount(EntitySet);
+            parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);

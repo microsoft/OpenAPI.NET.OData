@@ -22,26 +22,36 @@ namespace Microsoft.OpenApi.OData.Operation
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Put;
-        private IEdmProperty _property = null;
+        
         private UpdateRestrictionsType _updateRestrictions = null;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
-            (_, _property) = GetStreamElements();
-            
-            if (_property != null) 
+
+            if (Property != null)
             {
-                if (_property is IEdmNavigationProperty)
+                _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+                if (Property is IEdmNavigationProperty)
                 {
-                    _updateRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(_property, CapabilitiesConstants.NavigationRestrictions)?
-                        .RestrictedProperties?.FirstOrDefault()?.UpdateRestrictions;
+                    var navigationUpdateRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(Property, CapabilitiesConstants.NavigationRestrictions)?
+                            .RestrictedProperties?.FirstOrDefault()?.UpdateRestrictions;
+                    if (_updateRestrictions != null && navigationUpdateRestrictions != null)
+                    {
+                        _updateRestrictions.MergePropertiesIfNull(navigationUpdateRestrictions);
+                    }
+                    _updateRestrictions ??= navigationUpdateRestrictions;
                 }
                 else
                 {
-                    _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(_property, CapabilitiesConstants.UpdateRestrictions);
+                    var propertyUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Property, CapabilitiesConstants.UpdateRestrictions);
+                    if (_updateRestrictions != null && propertyUpdateRestrictions != null)
+                    {
+                        _updateRestrictions.MergePropertiesIfNull(propertyUpdateRestrictions);
+                    }
+                    _updateRestrictions ??= propertyUpdateRestrictions;
                 }
-            }            
+            }
         }
 
         /// <inheritdoc/>
@@ -49,27 +59,15 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Summary
             string placeholderValue = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "media content";
-            operation.Summary = IsNavigationPropertyPath
-                ? $"Update {placeholderValue} for the navigation property {NavigationProperty.Name} in {NavigationSource.Name}"
+            operation.Summary = _updateRestrictions?.Description;
+            operation.Summary ??= IsNavigationPropertyPath
+                ? $"Update {placeholderValue} for the navigation property {NavigationProperty.Name} in {NavigationSourceSegment.NavigationSource.Name}"
                 : $"Update {placeholderValue} for {NavigationSourceSegment.EntityType.Name} in {NavigationSourceSegment.Identifier}";
 
             // Description
             if (LastSegmentIsStreamPropertySegment)
             {
-                string description;
-
-                if (_property is IEdmNavigationProperty)
-                {
-
-                    description = _updateRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(_property);
-                }
-                else
-                {
-                    // Structural property
-                    description = Context.Model.GetDescriptionAnnotation(_property);
-                }
-
-                operation.Description = description;
+                operation.Description = _updateRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
             }
 
             // OperationId

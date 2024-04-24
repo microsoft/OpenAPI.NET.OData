@@ -179,13 +179,13 @@ namespace Microsoft.OpenApi.OData.Operation
 
             OpenApiParameter parameter;
 
-            parameter = Context.CreateSearch(annotatable);
+            parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(annotatable);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
-            parameter = Context.CreateFilter(annotatable);
+            parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(annotatable);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -199,8 +199,18 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
+            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            ReadRestrictionsType annotatableReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
 
+            if (readRestrictions == null)
+            {
+                readRestrictions = annotatableReadRestrictions;
+            }
+            else
+            {
+                readRestrictions.MergePropertiesIfNull(annotatableReadRestrictions);
+            }
+            
             if (readRestrictions == null)
             {
                 return;
