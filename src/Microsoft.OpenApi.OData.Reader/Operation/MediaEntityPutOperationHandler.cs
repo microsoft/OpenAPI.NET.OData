@@ -65,10 +65,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 : $"Update {placeholderValue} for {NavigationSourceSegment.EntityType.Name} in {NavigationSourceSegment.Identifier}";
 
             // Description
-            if (LastSegmentIsStreamPropertySegment)
-            {
-                operation.Description = _updateRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
-            }
+             operation.Description = _updateRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
 
             // OperationId
             if (Context.Settings.EnableOperationId)

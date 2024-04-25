@@ -63,25 +63,22 @@ namespace Microsoft.OpenApi.OData.Operation
                 : $"Get {placeholderValue} for {NavigationSourceSegment.EntityType.Name} from {NavigationSourceSegment.Identifier}";
 
             // Description
-            if (LastSegmentIsStreamPropertySegment)
+            string description;
+
+            if (Property is IEdmNavigationProperty)
             {
-                string description;
-
-                if (Property is IEdmNavigationProperty)
-                {
-                    description = LastSegmentIsKeySegment
-                        ? _readRestrictions?.ReadByKeyRestrictions?.LongDescription
-                        : _readRestrictions?.LongDescription
-                        ?? Context.Model.GetDescriptionAnnotation(Property);
-                }
-                else
-                {
-                    // Structural property
-                    description = _readRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
-                }
-
-                operation.Description = description;
+                description = LastSegmentIsKeySegment
+                    ? _readRestrictions?.ReadByKeyRestrictions?.LongDescription
+                    : _readRestrictions?.LongDescription
+                    ?? Context.Model.GetDescriptionAnnotation(Property);
             }
+            else
+            {
+                // Structural property
+                description = _readRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
+            }
+
+            operation.Description = description;
 
             // OperationId
             if (Context.Settings.EnableOperationId)

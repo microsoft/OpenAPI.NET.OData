@@ -4,10 +4,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -58,10 +55,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 : $"Delete {placeholderValue} for {NavigationSourceSegment.EntityType.Name} in {NavigationSourceSegment.Identifier}";
 
             // Description
-            if (LastSegmentIsStreamPropertySegment)
-            {
-                operation.Description = _deleteRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
-            }
+            operation.Description = _deleteRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
