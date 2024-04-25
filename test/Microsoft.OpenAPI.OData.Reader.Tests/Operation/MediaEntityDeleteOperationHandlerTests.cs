@@ -62,7 +62,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Null(operation.RequestBody);
 
             Assert.Equal(2, operation.Responses.Count);
-            Assert.Equal(["204", "default"], operation.Responses.Select(e => e.Key));
+            Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
 
             if (enableOperationId)
             {
