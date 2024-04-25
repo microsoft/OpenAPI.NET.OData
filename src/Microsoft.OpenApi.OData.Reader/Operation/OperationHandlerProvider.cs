@@ -73,11 +73,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 {OperationType.Delete, new RefDeleteOperationHandler() }
             }},
 
-            // media entity operation (Get|Put)
+            // media entity operation (Get|Put|Delete)
             {ODataPathKind.MediaEntity, new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new MediaEntityGetOperationHandler() },
-                {OperationType.Put, new MediaEntityPutOperationHandler() }
+                {OperationType.Put, new MediaEntityPutOperationHandler() },
+                {OperationType.Delete, new MediaEntityDeleteOperationHandler() }
             }},
 
             // $metadata operation (Get)

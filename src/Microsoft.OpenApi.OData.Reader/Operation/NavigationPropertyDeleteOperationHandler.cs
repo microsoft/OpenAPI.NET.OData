@@ -88,6 +88,7 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetResponses(operation);
         }
 
+        /// <inheritdoc/>
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
             if (_deleteRestriction == null)

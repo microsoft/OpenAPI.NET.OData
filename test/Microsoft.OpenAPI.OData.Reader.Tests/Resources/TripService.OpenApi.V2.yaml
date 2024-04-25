@@ -761,6 +761,27 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+    delete:
+      tags:
+        - Airports.Person
+      summary: Delete Photo for the navigation property EmergencyAuthority in Airports
+      operationId: Airports.DeleteEmergencyAuthorityPhoto
+      parameters:
+        - in: path
+          name: IcaoCode
+          description: The unique identifier of Airport
+          required: true
+          type: string
+          x-ms-docs-key-type: Airport
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
     x-description: Provides operations to manage the media for the Airport entity.
   /Airports/$count:
     get:
@@ -1532,6 +1553,27 @@ paths:
         date: '2021-08-24T00:00:00.0000000+00:00'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete Photo for the navigation property BestFriend in Me
+      operationId: Me.DeleteBestFriendPhoto
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     x-description: Provides operations to manage the media for the Person entity.
   /Me/Friends:
     get:
@@ -2059,6 +2101,33 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete Photo for the navigation property Friends in Me
+      operationId: Me.DeleteFriendsPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -3101,6 +3170,27 @@ paths:
         date: '2021-08-24T00:00:00.0000000+00:00'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete Photo for the navigation property BestFriend in Me
+      operationId: Me.DeleteBestFriendPhoto
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     x-description: Provides operations to manage the media for the Person entity.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends:
     get:
@@ -3595,6 +3685,33 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete Photo for the navigation property Friends in Me
+      operationId: Me.DeleteFriendsPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -4310,6 +4427,33 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete Photo for the navigation property Peers in Me
+      operationId: Me.DeletePeersPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -5731,6 +5875,27 @@ paths:
         date: '2021-08-24T00:00:00.0000000+00:00'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete Photo for the navigation property BestFriend in Me
+      operationId: Me.DeleteBestFriendPhoto
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     x-description: Provides operations to manage the media for the Person entity.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports:
     get:
@@ -6164,6 +6329,33 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete Photo for the navigation property DirectReports in Me
+      operationId: Me.DeleteDirectReportsPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -6751,6 +6943,33 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete Photo for the navigation property Friends in Me
+      operationId: Me.DeleteFriendsPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -7693,6 +7912,27 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete Photo for Person in Me
+      operationId: Me.Person.DeletePhoto
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -9182,6 +9422,33 @@ paths:
         date: '2021-08-24T00:00:00.0000000+00:00'
         version: 2021-05/bestfriend
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
+    delete:
+      tags:
+        - NewComePeople.Person
+      summary: Delete Photo for the navigation property BestFriend in NewComePeople
+      operationId: NewComePeople.DeleteBestFriendPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     x-description: Provides operations to manage the media for the Person entity.
   '/NewComePeople/{UserName}/Friends':
     get:
@@ -9728,6 +9995,33 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    delete:
+      tags:
+        - NewComePeople.Person
+      summary: Delete Photo for the navigation property Friends in NewComePeople
+      operationId: NewComePeople.DeleteFriendsPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -10303,6 +10597,27 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    delete:
+      tags:
+        - NewComePeople.Person
+      summary: Delete Photo for Person in NewComePeople
+      operationId: NewComePeople.Person.DeletePhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -11846,6 +12161,33 @@ paths:
         date: '2021-08-24T00:00:00.0000000+00:00'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    delete:
+      tags:
+        - People.Person
+      summary: Delete Photo for the navigation property BestFriend in People
+      operationId: People.DeleteBestFriendPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     x-description: Provides operations to manage the media for the Person entity.
   '/People/{UserName}/Friends':
     get:
@@ -12470,6 +12812,39 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    delete:
+      tags:
+        - People.Person
+      summary: Delete Photo for the navigation property Friends in People
+      operationId: People.DeleteFriendsPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -13748,6 +14123,33 @@ paths:
         date: '2021-08-24T00:00:00.0000000+00:00'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    delete:
+      tags:
+        - People.Person
+      summary: Delete Photo for the navigation property BestFriend in People
+      operationId: People.DeleteBestFriendPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     x-description: Provides operations to manage the media for the Person entity.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends':
     get:
@@ -14326,6 +14728,39 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    delete:
+      tags:
+        - People.Person
+      summary: Delete Photo for the navigation property Friends in People
+      operationId: People.DeleteFriendsPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -15174,6 +15609,39 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    delete:
+      tags:
+        - People.Person
+      summary: Delete Photo for the navigation property Peers in People
+      operationId: People.DeletePeersPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -16873,6 +17341,33 @@ paths:
         date: '2021-08-24T00:00:00.0000000+00:00'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    delete:
+      tags:
+        - People.Person
+      summary: Delete Photo for the navigation property BestFriend in People
+      operationId: People.DeleteBestFriendPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     x-description: Provides operations to manage the media for the Person entity.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
     get:
@@ -17384,6 +17879,39 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    delete:
+      tags:
+        - People.Person
+      summary: Delete Photo for the navigation property DirectReports in People
+      operationId: People.DeleteDirectReportsPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -18079,6 +18607,39 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    delete:
+      tags:
+        - People.Person
+      summary: Delete Photo for the navigation property Friends in People
+      operationId: People.DeleteFriendsPhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success
@@ -19193,6 +19754,37 @@ paths:
           schema:
             format: binary
             type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000+00:00'
+        date: '2021-08-24T00:00:00.0000000+00:00'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
+    delete:
+      tags:
+        - People.Person
+      summary: Delete photo
+      description: Delete photo of a specific user
+      externalDocs:
+        description: Find more info here
+        url: https://learn.microsoft.com/graph/api/person-delete-photo?view=graph-rest-1.0
+      operationId: People.Person.DeletePhoto
+      parameters:
+        - in: path
+          name: UserName
+          description: The unique identifier of Person
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
       responses:
         '204':
           description: Success

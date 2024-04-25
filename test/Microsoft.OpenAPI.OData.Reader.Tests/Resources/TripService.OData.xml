@@ -602,6 +602,12 @@
 						<PropertyValue Property="LongDescription" String="Update photo of a specific user" />
 					</Record>
 				</Annotation>
+				<Annotation Term="Org.OData.Capabilities.V1.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Description" String="Delete photo" />
+						<PropertyValue Property="LongDescription" String="Delete photo of a specific user" />
+					</Record>
+				</Annotation>
 				<Annotation Term="Org.OData.Core.V1.Links">
 					<Collection>
 						<Record>
@@ -611,6 +617,10 @@
 						<Record>
 							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/update" />
 							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/person-update-photo?view=graph-rest-1.0" />
+						</Record>
+						<Record>
+							<PropertyValue Property="rel" String="https://graph.microsoft.com/rels/docs/delete" />
+							<PropertyValue Property="href" String="https://learn.microsoft.com/graph/api/person-delete-photo?view=graph-rest-1.0" />
 						</Record>
 					</Collection>
 				</Annotation>
