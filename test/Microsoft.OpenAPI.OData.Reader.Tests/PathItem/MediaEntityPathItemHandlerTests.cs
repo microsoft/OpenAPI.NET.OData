@@ -88,19 +88,19 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem2.Operations);
             Assert.NotEmpty(pathItem.Operations);
             Assert.NotEmpty(pathItem2.Operations);
-            Assert.Equal(2, pathItem.Operations.Count);
-            Assert.Equal(2, pathItem2.Operations.Count);
-            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Put },
+            Assert.Equal(3, pathItem.Operations.Count);
+            Assert.Equal(3, pathItem2.Operations.Count);
+            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete },
                 pathItem.Operations.Select(o => o.Key));
-            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Put },
+            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete },
                 pathItem2.Operations.Select(o => o.Key));
             Assert.NotEmpty(pathItem.Description);
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put })]
-        [InlineData(false, new OperationType[] { OperationType.Put })]
-        public void CreateMediaEntityPathItemWorksForReadByKeyRestrictionsCapablities(bool readable, OperationType[] expected)
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
+        [InlineData(false, new OperationType[] { OperationType.Put, OperationType.Delete })]
+        public void CreateMediaEntityPathItemWorksForReadByKeyRestrictionsCapabilities(bool readable, OperationType[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -120,15 +120,33 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put })]
-        [InlineData(false, new OperationType[] { OperationType.Get })]
-        public void CreateMediaEntityPathItemWorksForUpdateRestrictionsCapablities(bool updatable, OperationType[] expected)
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
+        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Delete })]
+        public void CreateMediaEntityPathItemWorksForUpdateRestrictionsCapabilities(bool updatable, OperationType[] expected)
         {
             // Arrange
             string annotation = $@"
 <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
   <Record>
     <PropertyValue Property=""Updatable"" Bool=""{updatable}"" />
+  </Record>
+</Annotation>";
+
+            // Assert
+            VerifyPathItemOperationsForStreamPropertySegment(annotation, expected);
+            VerifyPathItemOperationsForStreamContentSegment(annotation, expected);
+        }
+
+        [Theory]
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
+        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Put })]
+        public void CreateMediaEntityPathItemWorksForDeleteRestrictionsCapabilities(bool deletable, OperationType[] expected)
+        {
+            // Arrange
+            string annotation = $@"
+<Annotation Term=""Org.OData.Capabilities.V1.DeleteRestrictions"">
+  <Record>
+    <PropertyValue Property=""Deletable"" Bool=""{deletable}"" />
   </Record>
 </Annotation>";
 

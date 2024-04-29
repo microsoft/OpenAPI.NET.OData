@@ -50,6 +50,15 @@ namespace Microsoft.OpenApi.OData.PathItem
             {
                 AddOperation(item, OperationType.Put);
             }
+
+            DeleteRestrictionsType delete = EntitySet != null
+                ? Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet)
+                : Context.Model.GetRecord<DeleteRestrictionsType>(Singleton);
+
+            if (delete == null || delete.IsDeletable)
+            {
+                AddOperation(item, OperationType.Delete);
+            }
         }
 
         /// <inheritdoc/>

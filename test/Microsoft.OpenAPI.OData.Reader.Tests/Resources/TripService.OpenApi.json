@@ -1303,6 +1303,41 @@
             "$ref": "#/components/responses/error"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Airports.Person"
+        ],
+        "summary": "Delete Photo for the navigation property EmergencyAuthority in Airports",
+        "operationId": "Airports.DeleteEmergencyAuthorityPhoto",
+        "parameters": [
+          {
+            "name": "IcaoCode",
+            "in": "path",
+            "description": "The unique identifier of Airport",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Airport"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/Airports/$count": {
@@ -2559,6 +2594,38 @@
           "version": "2021-05/me",
           "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
         }
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete Photo for the navigation property BestFriend in Me",
+        "operationId": "Me.DeleteBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
       }
     },
     "/Me/Friends": {
@@ -3432,6 +3499,48 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete Photo for the navigation property Friends in Me",
+        "operationId": "Me.DeleteFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -5122,6 +5231,38 @@
           "version": "2021-05/me",
           "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
         }
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete Photo for the navigation property BestFriend in Me",
+        "operationId": "Me.DeleteBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends": {
@@ -5937,6 +6078,48 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete Photo for the navigation property Friends in Me",
+        "operationId": "Me.DeleteFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -7113,6 +7296,48 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete Photo for the navigation property Peers in Me",
+        "operationId": "Me.DeletePeersPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -9399,6 +9624,38 @@
           "version": "2021-05/me",
           "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
         }
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete Photo for the navigation property BestFriend in Me",
+        "operationId": "Me.DeleteBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
@@ -10109,6 +10366,48 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete Photo for the navigation property DirectReports in Me",
+        "operationId": "Me.DeleteDirectReportsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -11069,6 +11368,48 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete Photo for the navigation property Friends in Me",
+        "operationId": "Me.DeleteFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -12590,6 +12931,38 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/me",
+          "description": "The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete Photo for Person in Me",
+        "operationId": "Me.Person.DeletePhoto",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -15037,6 +15410,48 @@
           "version": "2021-05/bestfriend",
           "description": "The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API."
         }
+      },
+      "delete": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Delete Photo for the navigation property BestFriend in NewComePeople",
+        "operationId": "NewComePeople.DeleteBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/bestfriend",
+          "description": "The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API."
+        }
       }
     },
     "/NewComePeople/{UserName}/Friends": {
@@ -15986,6 +16401,51 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Delete Photo for the navigation property Friends in NewComePeople",
+        "operationId": "NewComePeople.DeleteFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -16998,6 +17458,41 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NewComePeople.Person"
+        ],
+        "summary": "Delete Photo for Person in NewComePeople",
+        "operationId": "NewComePeople.Person.DeletePhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -19547,6 +20042,48 @@
           "version": "2021-05/people",
           "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
         }
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete Photo for the navigation property BestFriend in People",
+        "operationId": "People.DeleteBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
       }
     },
     "/People/{UserName}/Friends": {
@@ -20579,6 +21116,58 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete Photo for the navigation property Friends in People",
+        "operationId": "People.DeleteFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -22676,6 +23265,48 @@
           "version": "2021-05/people",
           "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
         }
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete Photo for the navigation property BestFriend in People",
+        "operationId": "People.DeleteBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Friends": {
@@ -23631,6 +24262,58 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete Photo for the navigation property Friends in People",
+        "operationId": "People.DeleteFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -25033,6 +25716,58 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete Photo for the navigation property Peers in People",
+        "operationId": "People.DeletePeersPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -27803,6 +28538,48 @@
           "version": "2021-05/people",
           "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
         }
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete Photo for the navigation property BestFriend in People",
+        "operationId": "People.DeleteBestFriendPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
@@ -28643,6 +29420,58 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete Photo for the navigation property DirectReports in People",
+        "operationId": "People.DeleteDirectReportsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -29785,6 +30614,58 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete Photo for the navigation property Friends in People",
+        "operationId": "People.DeleteFriendsPhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"
@@ -31602,6 +32483,53 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "deprecated": true,
+        "x-ms-deprecation": {
+          "removalDate": "2023-03-15T00:00:00.0000000+00:00",
+          "date": "2021-08-24T00:00:00.0000000+00:00",
+          "version": "2021-05/people",
+          "description": "The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API."
+        }
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete photo",
+        "description": "Delete photo of a specific user",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "https://learn.microsoft.com/graph/api/person-delete-photo?view=graph-rest-1.0"
+        },
+        "operationId": "People.Person.DeletePhoto",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "The unique identifier of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"

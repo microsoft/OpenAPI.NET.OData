@@ -31,6 +31,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected bool LastSegmentIsStreamPropertySegment { get; private set; }
 
+        protected bool LastSegmentIsStreamContentSegment { get; private set; }
+
         /// <summary>
         /// Gets a bool value indicating whether the last segment is a key segment.
         /// </summary>
@@ -58,6 +60,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             LastSegmentIsStreamPropertySegment = Path.LastSegment.Kind == ODataSegmentKind.StreamProperty;
 
+            LastSegmentIsStreamContentSegment = Path.LastSegment.Kind == ODataSegmentKind.StreamContent;
+            
             LastSegmentIsKeySegment = path.LastSegment is ODataKeySegment;
 
             (_, Property) = GetStreamElements();
@@ -196,13 +200,17 @@ namespace Microsoft.OpenApi.OData.Operation
         protected (IEdmEntityType entityType, IEdmProperty property) GetStreamElements()
         {
             // Only ODataStreamPropertySegment is annotatable
-            if (!LastSegmentIsStreamPropertySegment) return (null, null);
+            if (!LastSegmentIsStreamPropertySegment && !LastSegmentIsStreamContentSegment) return (null, null);
 
             // Retrieve the entity type of the segment before the stream property segment
-            var entityType = Path.Segments.ElementAtOrDefault(Path.Segments.Count - 2).EntityType;
+            var entityType = LastSegmentIsStreamContentSegment
+                ? Path.Segments.ElementAtOrDefault(Path.Segments.Count - 3).EntityType
+                : Path.Segments.ElementAtOrDefault(Path.Segments.Count - 2).EntityType;
 
             // The stream property can either be a structural type or a navigation property type
-            ODataSegment lastSegmentProp = Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
+            ODataSegment lastSegmentProp = LastSegmentIsStreamContentSegment
+                ? Path.Segments.Reverse().Skip(1).FirstOrDefault()
+                : Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
             IEdmProperty property = GetStructuralProperty(entityType, lastSegmentProp.Identifier);
             if (property == null)
             {
