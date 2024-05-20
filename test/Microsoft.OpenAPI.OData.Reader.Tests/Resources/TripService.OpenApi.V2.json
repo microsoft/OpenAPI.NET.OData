@@ -30590,10 +30590,10 @@
             "type": "string"
           }
         },
-        "TripData": {},
+        "TripData": { },
         "DestinationInfo": {
           "type": "array",
-          "items": {}
+          "items": { }
         },
         "StartsAt": {
           "format": "date-time",
