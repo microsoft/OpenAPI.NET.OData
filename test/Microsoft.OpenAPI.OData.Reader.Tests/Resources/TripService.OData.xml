@@ -207,6 +207,8 @@
 				<Property Name="Budget" Type="Edm.Single" Nullable="false" />
 				<Property Name="Description" Type="Edm.String" />
 				<Property Name="Tags" Type="Collection(Edm.String)" />
+				<Property Name="TripData" Type="Edm.Untyped" />
+				<Property Name="DestinationInfo" Type="Collection(Edm.Untyped)" />
 				<Property Name="StartsAt" Type="Edm.DateTimeOffset" Nullable="false" />
 				<Property Name="EndsAt" Type="Edm.DateTimeOffset" Nullable="false" />
 				<NavigationProperty Name="PlanItems" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem)" >
