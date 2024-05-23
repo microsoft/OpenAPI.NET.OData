@@ -28,15 +28,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
             InsertRestrictionsType operationReadRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EdmOperation, CapabilitiesConstants.InsertRestrictions);
-
-            if (insertRestrictions == null)
-            {
-                insertRestrictions = operationReadRestrictions;
-            }
-            else
-            {
-                insertRestrictions.MergePropertiesIfNull(operationReadRestrictions);
-            }
+            insertRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
+            insertRestrictions ??= operationReadRestrictions;
 
             // Description
             if (!string.IsNullOrWhiteSpace(insertRestrictions?.LongDescription))

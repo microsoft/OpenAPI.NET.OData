@@ -141,65 +141,41 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 case CapabilitiesConstants.ReadRestrictions:
                     var readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-                    if (readRestrictions != null && Restriction?.ReadRestrictions != null)
-                    {
-                        readRestrictions.MergePropertiesIfNull(Restriction.ReadRestrictions);
-                    }
+                    readRestrictions?.MergePropertiesIfNull(Restriction?.ReadRestrictions);
                     readRestrictions ??= Restriction?.ReadRestrictions;
 
                     var navPropReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions);
-                    if (readRestrictions != null && navPropReadRestrictions != null)
-                    {
-                        readRestrictions.MergePropertiesIfNull(navPropReadRestrictions);
-                    }
+                    readRestrictions?.MergePropertiesIfNull(navPropReadRestrictions);
                     readRestrictions ??= navPropReadRestrictions;
 
                     return readRestrictions;
                 case CapabilitiesConstants.UpdateRestrictions:
                     var updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
-                    if (updateRestrictions != null && Restriction?.UpdateRestrictions != null)
-                    {
-                        updateRestrictions.MergePropertiesIfNull(Restriction.UpdateRestrictions);
-                    }
+                    updateRestrictions?.MergePropertiesIfNull(Restriction?.UpdateRestrictions);
                     updateRestrictions ??= Restriction?.UpdateRestrictions;
 
                     var navPropUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty, CapabilitiesConstants.UpdateRestrictions);
-                    if (updateRestrictions != null && navPropUpdateRestrictions != null)
-                    {
-                        updateRestrictions.MergePropertiesIfNull(navPropUpdateRestrictions);
-                    }
+                    updateRestrictions?.MergePropertiesIfNull(navPropUpdateRestrictions);
                     updateRestrictions ??= navPropUpdateRestrictions;
 
                     return updateRestrictions;
                 case CapabilitiesConstants.InsertRestrictions:
                     var insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
-                    if (insertRestrictions != null && Restriction?.InsertRestrictions != null)
-                    {
-                        insertRestrictions.MergePropertiesIfNull(Restriction.InsertRestrictions);
-                    }
+                    insertRestrictions?.MergePropertiesIfNull(Restriction?.InsertRestrictions);
                     insertRestrictions ??= Restriction?.InsertRestrictions;
 
                     var navPropInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions);
-                    if (insertRestrictions != null && navPropInsertRestrictions != null)
-                    {
-                        insertRestrictions.MergePropertiesIfNull(navPropInsertRestrictions);
-                    }
+                    insertRestrictions?.MergePropertiesIfNull(navPropInsertRestrictions);
                     insertRestrictions ??= navPropInsertRestrictions;
 
                     return insertRestrictions;
                 case CapabilitiesConstants.DeleteRestrictions:
                     var deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
-                    if (deleteRestrictions != null && Restriction?.DeleteRestrictions != null)
-                    {
-                        deleteRestrictions.MergePropertiesIfNull(Restriction.DeleteRestrictions);
-                    }
+                    deleteRestrictions?.MergePropertiesIfNull(Restriction?.DeleteRestrictions);
                     deleteRestrictions ??= Restriction?.DeleteRestrictions;
 
                     var navPropDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions);
-                    if (deleteRestrictions != null && navPropDeleteRestrictions != null)
-                    {
-                        deleteRestrictions.MergePropertiesIfNull(navPropDeleteRestrictions);
-                    }
+                    deleteRestrictions?.MergePropertiesIfNull(navPropDeleteRestrictions);
                     deleteRestrictions ??= navPropDeleteRestrictions;
 
                     return deleteRestrictions;

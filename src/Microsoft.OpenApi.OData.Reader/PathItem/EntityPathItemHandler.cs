@@ -24,10 +24,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
             ReadRestrictionsType entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
-            if (readRestrictions != null && entityReadRestrictions != null)
-            {
-                readRestrictions.MergePropertiesIfNull(entityReadRestrictions);
-            }
+            readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
             readRestrictions ??= entityReadRestrictions;
             if (readRestrictions == null ||
                (readRestrictions.ReadByKeyRestrictions == null && readRestrictions.IsReadable) ||
@@ -39,10 +36,7 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
             UpdateRestrictionsType entityUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
-            if (updateRestrictions != null && entityUpdateRestrictions != null)
-            {
-                updateRestrictions.MergePropertiesIfNull(entityUpdateRestrictions);
-            }
+            updateRestrictions?.MergePropertiesIfNull(entityUpdateRestrictions);
             updateRestrictions ??= entityUpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
             {
@@ -58,10 +52,7 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             DeleteRestrictionsType deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
             DeleteRestrictionsType entityDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
-            if (deleteRestrictions != null && entityUpdateRestrictions != null)
-            {
-                deleteRestrictions.MergePropertiesIfNull(entityDeleteRestrictions);
-            }
+            deleteRestrictions?.MergePropertiesIfNull(entityDeleteRestrictions);
             deleteRestrictions ??= entityDeleteRestrictions;
             if (deleteRestrictions?.IsDeletable ?? true)
             {

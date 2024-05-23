@@ -26,10 +26,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 	{
         ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
         ReadRestrictionsType complexTypeReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions);
-        if (readRestrictions != null && complexTypeReadRestrictions != null)
-        {
-            readRestrictions.MergePropertiesIfNull(complexTypeReadRestrictions);
-        }
+        readRestrictions?.MergePropertiesIfNull(complexTypeReadRestrictions);
         readRestrictions ??= complexTypeReadRestrictions;
         bool isReadable = readRestrictions?.Readable ?? false;
 		if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isReadable) ||
@@ -40,10 +37,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 
         UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
         UpdateRestrictionsType complexTypeUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty, CapabilitiesConstants.UpdateRestrictions);
-        if (updateRestrictions != null && complexTypeUpdateRestrictions != null)
-        {
-            updateRestrictions.MergePropertiesIfNull(complexTypeUpdateRestrictions);
-        }
+        updateRestrictions?.MergePropertiesIfNull(complexTypeUpdateRestrictions);
         updateRestrictions ??= complexTypeUpdateRestrictions;
 		bool isUpdatable = updateRestrictions?.Updatable ?? false;
 		if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isUpdatable) ||
@@ -63,10 +57,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
         {
             InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
             InsertRestrictionsType entityInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions);
-            if (insertRestrictions != null && entityInsertRestrictions != null)
-            {
-                insertRestrictions.MergePropertiesIfNull(entityInsertRestrictions);
-            }
+            insertRestrictions?.MergePropertiesIfNull(entityInsertRestrictions);
             insertRestrictions ??= entityInsertRestrictions;
             bool isInsertable = insertRestrictions?.Insertable ?? false;
 			if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isInsertable) ||

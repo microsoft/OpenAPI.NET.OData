@@ -30,10 +30,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             // Retrieve a singleton.
             ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
             ReadRestrictionsType singletonReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
-            if (readRestrictions != null && singletonReadRestrictions != null)
-            {
-                readRestrictions.MergePropertiesIfNull(singletonReadRestrictions);
-            }
+            readRestrictions?.MergePropertiesIfNull(singletonReadRestrictions);
             readRestrictions ??= singletonReadRestrictions;
             if (readRestrictions?.IsReadable ?? true)
             {
@@ -43,10 +40,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             // Update a singleton
             UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
             UpdateRestrictionsType singletonUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
-            if (updateRestrictions != null && singletonUpdateRestrictions != null)
-            {
-                updateRestrictions.MergePropertiesIfNull(singletonUpdateRestrictions);
-            }
+            updateRestrictions?.MergePropertiesIfNull(singletonUpdateRestrictions);
             updateRestrictions ??= singletonUpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
             {

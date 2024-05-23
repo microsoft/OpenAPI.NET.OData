@@ -416,15 +416,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
         ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
         var annotatableReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
-
-        if (readRestrictions == null)
-        {
-            readRestrictions = annotatableReadRestrictions;
-        }
-        else
-        {
-            readRestrictions.MergePropertiesIfNull(annotatableReadRestrictions);
-        }
+        readRestrictions?.MergePropertiesIfNull(annotatableReadRestrictions);
+        readRestrictions ??= annotatableReadRestrictions;
 
         if (readRestrictions == null)
         {

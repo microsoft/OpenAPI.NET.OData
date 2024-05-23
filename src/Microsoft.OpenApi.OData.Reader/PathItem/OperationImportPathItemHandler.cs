@@ -45,10 +45,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 // so far, <Term Name="ReadRestrictions" Type="Capabilities.ReadRestrictionsType" AppliesTo="EntitySet Singleton FunctionImport">
                 ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
                 ReadRestrictionsType operationReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperationImport, CapabilitiesConstants.ReadRestrictions);
-                if (readRestrictions != null && operationReadRestrictions != null)
-                {
-                    readRestrictions.MergePropertiesIfNull(operationReadRestrictions);
-                }
+                readRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
                 readRestrictions ??= operationReadRestrictions;
                 if (readRestrictions?.IsReadable ?? true)
                 {

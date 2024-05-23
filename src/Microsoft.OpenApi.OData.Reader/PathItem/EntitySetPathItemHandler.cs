@@ -29,10 +29,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
             ReadRestrictionsType entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
-            if (readRestrictions != null && entityReadRestrictions != null)
-            {
-                readRestrictions.MergePropertiesIfNull(entityReadRestrictions);
-            }
+            readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
             readRestrictions ??= entityReadRestrictions;
             if (readRestrictions?.IsReadable ?? true)
             {
@@ -41,10 +38,7 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
             InsertRestrictionsType entityInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
-            if (insertRestrictions != null && entityReadRestrictions != null)
-            {
-                insertRestrictions.MergePropertiesIfNull(entityInsertRestrictions);
-            }
+            insertRestrictions?.MergePropertiesIfNull(entityInsertRestrictions);
             insertRestrictions ??= entityInsertRestrictions;
             if (insertRestrictions?.IsInsertable ?? true)
             {

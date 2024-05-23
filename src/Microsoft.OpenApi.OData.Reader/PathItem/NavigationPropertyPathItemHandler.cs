@@ -75,30 +75,18 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             // Update restrictions
             UpdateRestrictionsType navPropUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
-            if (navPropUpdateRestrictions != null && restriction?.UpdateRestrictions != null)
-            {
-                navPropUpdateRestrictions.MergePropertiesIfNull(restriction.UpdateRestrictions);
-            }
+            navPropUpdateRestrictions?.MergePropertiesIfNull(restriction?.UpdateRestrictions);
             navPropUpdateRestrictions ??= restriction?.UpdateRestrictions;
             UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty);
-            if (navPropUpdateRestrictions != null && updateRestrictions != null)
-            {
-                navPropUpdateRestrictions.MergePropertiesIfNull(updateRestrictions);
-            }
+            navPropUpdateRestrictions?.MergePropertiesIfNull(updateRestrictions);
             navPropUpdateRestrictions ??= updateRestrictions;
 
             // Insert restrictions
             InsertRestrictionsType navPropInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
-            if (navPropInsertRestrictions != null && restriction?.InsertRestrictions != null)
-            {
-                navPropInsertRestrictions.MergePropertiesIfNull(restriction.InsertRestrictions);
-            }
+            navPropInsertRestrictions?.MergePropertiesIfNull(restriction?.InsertRestrictions);
             navPropInsertRestrictions ??= restriction?.InsertRestrictions;
             InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty);
-            if (navPropInsertRestrictions != null && insertRestrictions != null)
-            {
-                navPropInsertRestrictions.MergePropertiesIfNull(insertRestrictions);
-            }
+            navPropInsertRestrictions?.MergePropertiesIfNull(insertRestrictions);
             navPropInsertRestrictions ??= insertRestrictions;
 
             // Entity insert restrictions
@@ -174,22 +162,15 @@ namespace Microsoft.OpenApi.OData.PathItem
         private void AddGetOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
             ReadRestrictionsType navPropReadRestriction = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            if (navPropReadRestriction != null && restriction?.ReadRestrictions != null)
-            {
-                navPropReadRestriction.MergePropertiesIfNull(restriction.ReadRestrictions);
-            }
+            navPropReadRestriction?.MergePropertiesIfNull(restriction?.ReadRestrictions);
             navPropReadRestriction ??= restriction?.ReadRestrictions;
             ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty);
-            if (navPropReadRestriction != null && readRestrictions != null)
-            {
-                navPropReadRestriction.MergePropertiesIfNull(readRestrictions);
-            }
+            navPropReadRestriction?.MergePropertiesIfNull(readRestrictions);
             navPropReadRestriction ??= readRestrictions;
 
 
             ReadRestrictionsType entityReadRestriction = Context.Model.GetRecord<ReadRestrictionsType>(_navPropEntityType);
             bool isReadableDefault = navPropReadRestriction == null && entityReadRestriction == null;
-
             if (isReadableDefault)
             {
                 AddOperation(item, OperationType.Get);
@@ -232,16 +213,10 @@ namespace Microsoft.OpenApi.OData.PathItem
             Debug.Assert(!LastSegmentIsRefSegment);
 
             DeleteRestrictionsType navPropDeleteRestriction = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
-            if (navPropDeleteRestriction != null && restriction?.DeleteRestrictions != null)
-            {
-                navPropDeleteRestriction.MergePropertiesIfNull(restriction.DeleteRestrictions);
-            }
+            navPropDeleteRestriction?.MergePropertiesIfNull(restriction?.DeleteRestrictions);
             navPropDeleteRestriction ??= restriction?.DeleteRestrictions;
             DeleteRestrictionsType insertRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty);
-            if (navPropDeleteRestriction != null && insertRestrictions != null)
-            {
-                navPropDeleteRestriction.MergePropertiesIfNull(insertRestrictions);
-            }
+            navPropDeleteRestriction?.MergePropertiesIfNull(insertRestrictions);
             navPropDeleteRestriction ??= insertRestrictions;
 
             if (!(NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment))

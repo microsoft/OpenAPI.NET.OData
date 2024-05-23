@@ -37,39 +37,32 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
             IEdmVocabularyAnnotatable target = entitySet;
-            if (target == null)
-            {
-                target = NavigationSource as IEdmSingleton;
-            }
+            target ??= NavigationSource as IEdmSingleton;
 
             string navigationPropertyPath = String.Join("/",
                 Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment)).Select(e => e.Identifier));
-
-            
+           
             NavigationRestrictionsType navigationRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(TargetPath, CapabilitiesConstants.NavigationRestrictions);
             NavigationRestrictionsType sourceNavigationRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
-            if (navigationRestrictions != null && sourceNavigationRestrictions != null)
-            {
-                navigationRestrictions.MergePropertiesIfNull(sourceNavigationRestrictions);
-            }
+            navigationRestrictions?.MergePropertiesIfNull(sourceNavigationRestrictions);
             navigationRestrictions ??= sourceNavigationRestrictions;
             NavigationPropertyRestriction restriction = navigationRestrictions?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty == navigationPropertyPath);
 
             // verify using individual first
-            if (restriction != null && restriction.Navigability != null && restriction.Navigability.Value == NavigationType.None)
+            if (restriction?.Navigability != null && restriction.Navigability.Value == NavigationType.None)
             {
                 return;
             }
 
-            if (restriction == null || restriction.Navigability == null)
+            // if the individual has not navigability setting, use the global navigability setting
+            if (restriction?.Navigability == null 
+                && navigationRestrictions != null 
+                && navigationRestrictions.Navigability != null 
+                && navigationRestrictions.Navigability.Value == NavigationType.None)
             {
-                // if the individual has not navigability setting, use the global navigability setting
-                if (navigationRestrictions != null && navigationRestrictions.Navigability != null && navigationRestrictions.Navigability.Value == NavigationType.None)
-                {
-                    // Default navigability for all navigation properties of the annotation target.
-                    // Individual navigation properties can override this value via `RestrictedProperties/Navigability`.
-                    return;
-                }
+                // Default navigability for all navigation properties of the annotation target.
+                // Individual navigation properties can override this value via `RestrictedProperties/Navigability`.
+                return;
             }
 
             // Create the ref
@@ -100,10 +93,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         private void AddDeleteOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
             DeleteRestrictionsType deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
-            if (deleteRestrictions != null && restriction?.DeleteRestrictions != null)
-            {
-                deleteRestrictions.MergePropertiesIfNull(restriction.DeleteRestrictions);
-            }
+            deleteRestrictions?.MergePropertiesIfNull(restriction?.DeleteRestrictions);
             deleteRestrictions ??= restriction?.DeleteRestrictions;
             if (deleteRestrictions?.IsDeletable ?? true)
             {
@@ -114,10 +104,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         private void AddReadOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
             ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            if (readRestrictions != null && restriction?.ReadRestrictions != null)
-            {
-                readRestrictions.MergePropertiesIfNull(restriction.ReadRestrictions);
-            }
+            readRestrictions?.MergePropertiesIfNull(restriction?.ReadRestrictions);
             readRestrictions ??= restriction?.ReadRestrictions;
             if (readRestrictions?.IsReadable ?? true)
             {
@@ -128,10 +115,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         private void AddInsertOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
             InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
-            if (insertRestrictions != null && restriction?.InsertRestrictions != null)
-            {
-                insertRestrictions.MergePropertiesIfNull(restriction.InsertRestrictions);
-            }
+            insertRestrictions?.MergePropertiesIfNull(restriction?.InsertRestrictions);
             insertRestrictions ??= restriction?.InsertRestrictions;
             if (insertRestrictions?.IsInsertable ?? true)
             {
@@ -142,10 +126,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         private void AddUpdateOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
             UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
-            if (updateRestrictions != null && restriction?.UpdateRestrictions != null)
-            {
-                updateRestrictions.MergePropertiesIfNull(restriction.UpdateRestrictions);
-            }
+            updateRestrictions?.MergePropertiesIfNull(restriction?.UpdateRestrictions);
             updateRestrictions ??= restriction?.UpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
             {
