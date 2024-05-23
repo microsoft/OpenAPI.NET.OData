@@ -3,11 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 {
@@ -238,6 +238,22 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // Referenceable
             Referenceable = record.GetBoolean("Referenceable");
+        }
+
+        /// <summary>
+        /// Merges properties of the specified <see cref="NavigationRestrictionsType"/> object into this instance if they are null.
+        /// </summary>
+        /// <param name="source">The <see cref="NavigationRestrictionsType"/> object containing properties to merge.</param>
+        public void MergePropertiesIfNull(NavigationRestrictionsType source)
+        {
+            if (source == null)
+                return;
+
+            Navigability ??= source.Navigability;
+
+            RestrictedProperties ??= source.RestrictedProperties;
+
+            Referenceable ??= source.Referenceable;
         }
     }
 }

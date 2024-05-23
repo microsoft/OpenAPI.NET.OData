@@ -199,19 +199,19 @@ namespace Microsoft.OpenApi.OData.Operation
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateOrderBy(NavigationProperty);
+                parameter = Context.CreateOrderBy(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateOrderBy(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSelect(NavigationProperty);
+                parameter = Context.CreateSelect(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateSelect(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateExpand(NavigationProperty);
+                parameter = Context.CreateExpand(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateExpand(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
@@ -219,13 +219,13 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else
             {
-                OpenApiParameter parameter = Context.CreateSelect(NavigationProperty);
+                OpenApiParameter parameter = Context.CreateSelect(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateSelect(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateExpand(NavigationProperty);
+                parameter = Context.CreateExpand(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateExpand(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);

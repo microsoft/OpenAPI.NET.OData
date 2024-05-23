@@ -45,8 +45,15 @@ namespace Microsoft.OpenApi.OData.PathItem
             string navigationPropertyPath = String.Join("/",
                 Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment)).Select(e => e.Identifier));
 
-            NavigationRestrictionsType navigation = Context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
-            NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty == navigationPropertyPath);
+            
+            NavigationRestrictionsType navigationRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(TargetPath, CapabilitiesConstants.NavigationRestrictions);
+            NavigationRestrictionsType sourceNavigationRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
+            if (navigationRestrictions != null && sourceNavigationRestrictions != null)
+            {
+                navigationRestrictions.MergePropertiesIfNull(sourceNavigationRestrictions);
+            }
+            navigationRestrictions ??= sourceNavigationRestrictions;
+            NavigationPropertyRestriction restriction = navigationRestrictions?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty == navigationPropertyPath);
 
             // verify using individual first
             if (restriction != null && restriction.Navigability != null && restriction.Navigability.Value == NavigationType.None)
@@ -57,7 +64,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             if (restriction == null || restriction.Navigability == null)
             {
                 // if the individual has not navigability setting, use the global navigability setting
-                if (navigation != null && navigation.Navigability != null && navigation.Navigability.Value == NavigationType.None)
+                if (navigationRestrictions != null && navigationRestrictions.Navigability != null && navigationRestrictions.Navigability.Value == NavigationType.None)
                 {
                     // Default navigability for all navigation properties of the annotation target.
                     // Individual navigation properties can override this value via `RestrictedProperties/Navigability`.
@@ -92,8 +99,13 @@ namespace Microsoft.OpenApi.OData.PathItem
 
         private void AddDeleteOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
-            DeleteRestrictionsType delete = restriction?.DeleteRestrictions;
-            if (delete == null || delete.IsDeletable)
+            DeleteRestrictionsType deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+            if (deleteRestrictions != null && restriction?.DeleteRestrictions != null)
+            {
+                deleteRestrictions.MergePropertiesIfNull(restriction.DeleteRestrictions);
+            }
+            deleteRestrictions ??= restriction?.DeleteRestrictions;
+            if (deleteRestrictions?.IsDeletable ?? true)
             {
                 AddOperation(item, OperationType.Delete);
             }
@@ -101,8 +113,13 @@ namespace Microsoft.OpenApi.OData.PathItem
 
         private void AddReadOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
-            ReadRestrictionsType read = restriction?.ReadRestrictions;
-            if (read == null || read.IsReadable)
+            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            if (readRestrictions != null && restriction?.ReadRestrictions != null)
+            {
+                readRestrictions.MergePropertiesIfNull(restriction.ReadRestrictions);
+            }
+            readRestrictions ??= restriction?.ReadRestrictions;
+            if (readRestrictions?.IsReadable ?? true)
             {
                 AddOperation(item, OperationType.Get);
             }
@@ -110,8 +127,13 @@ namespace Microsoft.OpenApi.OData.PathItem
 
         private void AddInsertOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
-            InsertRestrictionsType insert = restriction?.InsertRestrictions;
-            if (insert == null || insert.IsInsertable)
+            InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+            if (insertRestrictions != null && restriction?.InsertRestrictions != null)
+            {
+                insertRestrictions.MergePropertiesIfNull(restriction.InsertRestrictions);
+            }
+            insertRestrictions ??= restriction?.InsertRestrictions;
+            if (insertRestrictions?.IsInsertable ?? true)
             {
                 AddOperation(item, OperationType.Post);
             }
@@ -119,8 +141,13 @@ namespace Microsoft.OpenApi.OData.PathItem
 
         private void AddUpdateOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
-            UpdateRestrictionsType update = restriction?.UpdateRestrictions;
-            if (update == null || update.IsUpdatable)
+            UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+            if (updateRestrictions != null && restriction?.UpdateRestrictions != null)
+            {
+                updateRestrictions.MergePropertiesIfNull(restriction.UpdateRestrictions);
+            }
+            updateRestrictions ??= restriction?.UpdateRestrictions;
+            if (updateRestrictions?.IsUpdatable ?? true)
             {
                 AddOperation(item, OperationType.Put);
             }
@@ -136,6 +163,7 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
         }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {

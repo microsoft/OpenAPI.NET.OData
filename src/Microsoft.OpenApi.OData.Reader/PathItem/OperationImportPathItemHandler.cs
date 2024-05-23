@@ -43,8 +43,14 @@ namespace Microsoft.OpenApi.OData.PathItem
                 // how to invoke the function import.
 
                 // so far, <Term Name="ReadRestrictions" Type="Capabilities.ReadRestrictionsType" AppliesTo="EntitySet Singleton FunctionImport">
-                ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperationImport, CapabilitiesConstants.ReadRestrictions);
-                if (read == null || read.IsReadable)
+                ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+                ReadRestrictionsType operationReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperationImport, CapabilitiesConstants.ReadRestrictions);
+                if (readRestrictions != null && operationReadRestrictions != null)
+                {
+                    readRestrictions.MergePropertiesIfNull(operationReadRestrictions);
+                }
+                readRestrictions ??= operationReadRestrictions;
+                if (readRestrictions?.IsReadable ?? true)
                 {
                     AddOperation(item, OperationType.Get);
                 }

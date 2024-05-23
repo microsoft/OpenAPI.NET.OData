@@ -128,7 +128,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected virtual void Initialize(ODataContext context, ODataPath path)
         {
             SetCustomLinkRelType();
-            SetTargetPath();
+            TargetPath = path.GetTargetPath(context.Model);
         }
 
         /// <summary>
@@ -296,22 +296,6 @@ namespace Microsoft.OpenApi.OData.Operation
                     CustomLinkRel = linkRelValue;
                 }
             }
-        }
-
-        /// <summary>
-        /// Set string representation of the Edm Target Path for annotations
-        /// </summary>
-        protected virtual void SetTargetPath()
-        {
-            var targetPath = new StringBuilder(Context.Model.EntityContainer.FullName());
-
-            bool skipLastSegment = Path.LastSegment is ODataRefSegment || Path.LastSegment is ODataDollarCountSegment;
-            foreach (var segment in Path.Segments.Where(segment => segment is not ODataKeySegment 
-                && !(skipLastSegment && segment == Path.LastSegment)))
-            {
-                targetPath.Append($"/{segment.Identifier}");
-            }
-            TargetPath = targetPath.ToString();
         }
 
     }

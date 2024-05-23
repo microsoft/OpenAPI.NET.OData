@@ -260,6 +260,26 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Get string representation of the Edm Target Path for annotations
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <returns>The string representation of the Edm target path.</returns>
+        internal string GetTargetPath(IEdmModel model)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+
+            var targetPath = new StringBuilder(model.EntityContainer.FullName());
+
+            bool skipLastSegment = LastSegment is ODataRefSegment || LastSegment is ODataDollarCountSegment;
+            foreach (var segment in Segments.Where(segment => segment is not ODataKeySegment
+                && !(skipLastSegment && segment == LastSegment)))
+            {
+                targetPath.Append($"/{segment.Identifier}");
+            }
+            return targetPath.ToString();
+        }
+
+        /// <summary>
         /// Output the path string.
         /// </summary>
         /// <returns>The string.</returns>

@@ -310,8 +310,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			if (IsSingleElement)
 			{
 				new OpenApiParameter[] {
-						Context.CreateSelect(navigationProperty),
-						Context.CreateExpand(navigationProperty),
+                        Context.CreateSelect(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateSelect(navigationProperty),
+                        Context.CreateExpand(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateExpand(navigationProperty),
 					}
 				.Where(x => x != null)
 				.ToList()
@@ -322,9 +322,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				GetParametersForAnnotableOfMany(navigationProperty)
 				.Union(
 					new OpenApiParameter[] {
-						Context.CreateOrderBy(navigationProperty),
-						Context.CreateSelect(navigationProperty),
-						Context.CreateExpand(navigationProperty),
+                        Context.CreateOrderBy(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateOrderBy(navigationProperty),
+                        Context.CreateSelect(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateSelect(navigationProperty),
+                        Context.CreateExpand(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateExpand(navigationProperty),
 					})
 				.Where(x => x != null)
 				.ToList()
@@ -336,8 +336,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			if(IsSingleElement)
 			{
 				new OpenApiParameter[] {
-						Context.CreateSelect(entitySet),
-						Context.CreateExpand(entitySet),
+                        Context.CreateSelect(TargetPath, entitySet.EntityType()) ?? Context.CreateSelect(entitySet),
+                        Context.CreateExpand(TargetPath, entitySet.EntityType()) ?? Context.CreateExpand(entitySet),
 					}
 				.Where(x => x != null)
 				.ToList()
@@ -348,9 +348,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				GetParametersForAnnotableOfMany(entitySet)
 				.Union(
 					new OpenApiParameter[] {
-						Context.CreateOrderBy(entitySet),
-						Context.CreateSelect(entitySet),
-						Context.CreateExpand(entitySet),
+                        Context.CreateOrderBy(TargetPath, entitySet.EntityType()) ?? Context.CreateOrderBy(entitySet),
+                        Context.CreateSelect(TargetPath, entitySet.EntityType()) ?? Context.CreateSelect(entitySet),
+                        Context.CreateExpand(TargetPath, entitySet.EntityType()) ?? Context.CreateExpand(entitySet),
 					})
 				.Where(x => x != null)
 				.ToList()
@@ -360,8 +360,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		else if(singleton != null)
 		{
 			new OpenApiParameter[] {
-					Context.CreateSelect(singleton),
-					Context.CreateExpand(singleton),
+                    Context.CreateSelect(TargetPath, singleton.EntityType()) ?? Context.CreateSelect(singleton),
+                    Context.CreateExpand(TargetPath, singleton.EntityType()) ?? Context.CreateExpand(singleton),
 				}
 			.Where(x => x != null)
 			.ToList()
@@ -373,7 +373,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// Need to verify that TopSupported or others should be applied to navigation source.
 		// So, how about for the navigation property.
 		return new OpenApiParameter[] {
-			Context.CreateTop(annotable),
+            Context.CreateTop(annotable),
 			Context.CreateSkip(annotable),
 			Context.CreateSearch(annotable),
 			Context.CreateFilter(annotable),
@@ -413,8 +413,18 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
     {
 		if (annotatable == null)
 			return;
-        
-        ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
+
+        ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+        var annotatableReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
+
+        if (readRestrictions == null)
+        {
+            readRestrictions = annotatableReadRestrictions;
+        }
+        else
+        {
+            readRestrictions.MergePropertiesIfNull(annotatableReadRestrictions);
+        }
 
         if (readRestrictions == null)
         {
