@@ -67,6 +67,19 @@ namespace Microsoft.OpenApi.OData.Edm
             });
         }
 
+        public static bool? GetBoolean(this IEdmModel model, string targetPath, string qualifiedName)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(targetPath, nameof(targetPath));
+            Utils.CheckArgumentNull(qualifiedName, nameof(qualifiedName));
+
+            IEdmTargetPath target = model.GetTargetPath(targetPath);
+            if (target == null)
+                return default;
+
+            return model.GetBoolean(target, qualifiedName);
+        }
+
         /// <summary>
         /// Gets the string term value for the given <see cref="IEdmVocabularyAnnotatable"/>.
         /// </summary>

@@ -168,7 +168,6 @@ namespace Microsoft.OpenApi.OData.PathItem
             navPropReadRestriction?.MergePropertiesIfNull(readRestrictions);
             navPropReadRestriction ??= readRestrictions;
 
-
             ReadRestrictionsType entityReadRestriction = Context.Model.GetRecord<ReadRestrictionsType>(_navPropEntityType);
             bool isReadableDefault = navPropReadRestriction == null && entityReadRestriction == null;
             if (isReadableDefault)

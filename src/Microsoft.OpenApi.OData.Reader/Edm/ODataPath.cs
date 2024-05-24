@@ -145,7 +145,6 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(settings, nameof(settings));
 
             // From Open API spec, parameter name is case sensitive, so don't use the IgnoreCase HashSet.
-            // HashSet<string> parameters = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             HashSet<string> parameters = new();
             StringBuilder sb = new();
 
@@ -238,7 +237,6 @@ namespace Microsoft.OpenApi.OData.Edm
             IDictionary<ODataSegment, IDictionary<string, string>> parameterMapping = new Dictionary<ODataSegment, IDictionary<string, string>>();
 
             // From Open API spec, parameter name is case sensitive, so don't use the IgnoreCase HashSet.
-            // HashSet<string> parameters = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             HashSet<string> parameters = new HashSet<string>();
 
             foreach (var segment in Segments)

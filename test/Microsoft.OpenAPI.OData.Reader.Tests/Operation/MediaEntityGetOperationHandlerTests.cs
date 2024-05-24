@@ -207,6 +207,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(operation);
             Assert.Equal("Get photo", operation.Summary);
             Assert.Equal("Get photo of a specific user", operation.Description);
+            Assert.Single(operation.Parameters);
 
             Assert.NotNull(operation.ExternalDocs);
             Assert.Equal("Find more info here", operation.ExternalDocs.Description);
