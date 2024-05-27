@@ -35,7 +35,6 @@ namespace Microsoft.OpenApi.OData.PathItem
             ReadRestrictionsType navSourceReadRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<ReadRestrictionsType>(EntitySet)
                 : Context.Model.GetRecord<ReadRestrictionsType>(Singleton);
-            readRestrictions?.MergePropertiesIfNull(navSourceReadRestrictions);
             readRestrictions ??= navSourceReadRestrictions;
             if (readRestrictions == null ||
                (readRestrictions.ReadByKeyRestrictions == null && readRestrictions.IsReadable) ||
@@ -48,7 +47,6 @@ namespace Microsoft.OpenApi.OData.PathItem
             UpdateRestrictionsType navSourceUpdateRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet)
                 : Context.Model.GetRecord<UpdateRestrictionsType>(Singleton);
-            updateRestrictions?.MergePropertiesIfNull(navSourceUpdateRestrictions);
             updateRestrictions ??= navSourceUpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
             {
@@ -59,11 +57,6 @@ namespace Microsoft.OpenApi.OData.PathItem
             DeleteRestrictionsType navSourceDeleteRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet)
                 : Context.Model.GetRecord<DeleteRestrictionsType>(Singleton);
-            if (deleteRestrictions != null && navSourceDeleteRestrictions != null)
-            {
-                deleteRestrictions.MergePropertiesIfNull(navSourceDeleteRestrictions);
-            }
-            deleteRestrictions?.MergePropertiesIfNull(navSourceDeleteRestrictions);
             deleteRestrictions ??= navSourceDeleteRestrictions;
             if (deleteRestrictions?.IsDeletable ?? true)
             {
