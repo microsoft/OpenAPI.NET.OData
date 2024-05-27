@@ -32,15 +32,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
             var singletonReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
-
-            if (_readRestrictions == null)
-            {
-                _readRestrictions = singletonReadRestrictions;
-            }
-            else
-            {
-                _readRestrictions.MergePropertiesIfNull(singletonReadRestrictions);
-            }
+            _readRestrictions?.MergePropertiesIfNull(singletonReadRestrictions);
+            _readRestrictions ??= singletonReadRestrictions;
         }
 
         /// <inheritdoc/>

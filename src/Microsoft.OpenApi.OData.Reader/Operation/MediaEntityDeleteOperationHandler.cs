@@ -26,19 +26,13 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     var navigationDeleteRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(Property, CapabilitiesConstants.NavigationRestrictions)?
                             .RestrictedProperties?.FirstOrDefault()?.DeleteRestrictions;
-                    if (_deleteRestrictions != null && navigationDeleteRestrictions != null)
-                    {
-                        _deleteRestrictions.MergePropertiesIfNull(navigationDeleteRestrictions);
-                    }
+                    _deleteRestrictions?.MergePropertiesIfNull(navigationDeleteRestrictions);
                     _deleteRestrictions ??= navigationDeleteRestrictions;
                 }
                 else
                 {
                     var propertyDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(Property, CapabilitiesConstants.DeleteRestrictions);
-                    if (_deleteRestrictions != null && propertyDeleteRestrictions != null)
-                    {
-                        _deleteRestrictions.MergePropertiesIfNull(propertyDeleteRestrictions);
-                    }
+                    _deleteRestrictions?.MergePropertiesIfNull(propertyDeleteRestrictions);
                     _deleteRestrictions ??= propertyDeleteRestrictions;
                 }
             }

@@ -145,39 +145,39 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                // Need to verify that TopSupported or others should be applyed to navigaiton source.
+                // Need to verify that TopSupported or others should be applied to navigaiton source.
                 // So, how about for the navigation property.
-                OpenApiParameter parameter = Context.CreateTop(NavigationProperty);
+                OpenApiParameter parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSkip(NavigationProperty);
+                parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSearch(NavigationProperty);
+                parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateFilter(NavigationProperty);
+                parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateCount(NavigationProperty);
+                parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateOrderBy(NavigationProperty);
+                parameter = Context.CreateOrderBy(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateOrderBy(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);

@@ -165,6 +165,12 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
+            OpenApiParameter selectParameter = Context.CreateSelect(TargetPath, NavigationProperty.ToEntityType()) 
+                ?? Context.CreateSelect(NavigationProperty);
+
+            OpenApiParameter expandParameter = Context.CreateExpand(TargetPath, NavigationProperty.ToEntityType()) 
+                ?? Context.CreateExpand(NavigationProperty);
+
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 // Need to verify that TopSupported or others should be applied to navigation source.
@@ -199,36 +205,32 @@ namespace Microsoft.OpenApi.OData.Operation
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateOrderBy(NavigationProperty);
+                parameter = Context.CreateOrderBy(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateOrderBy(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSelect(NavigationProperty);
-                if (parameter != null)
+                if (selectParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
+                    operation.Parameters.Add(selectParameter);
                 }
 
-                parameter = Context.CreateExpand(NavigationProperty);
-                if (parameter != null)
+                if (expandParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
+                    operation.Parameters.Add(expandParameter);
                 }
             }
             else
             {
-                OpenApiParameter parameter = Context.CreateSelect(NavigationProperty);
-                if (parameter != null)
+                if (selectParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
+                    operation.Parameters.Add(selectParameter);
                 }
 
-                parameter = Context.CreateExpand(NavigationProperty);
-                if (parameter != null)
+                if (expandParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
+                    operation.Parameters.Add(expandParameter);
                 }
             }
         }

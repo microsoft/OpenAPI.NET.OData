@@ -32,15 +32,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
             var singletonUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
-
-            if (_updateRestrictions == null)
-            {
-                _updateRestrictions = singletonUpdateRestrictions;
-            }
-            else
-            {
-                _updateRestrictions.MergePropertiesIfNull(singletonUpdateRestrictions);
-            }
+            _updateRestrictions?.MergePropertiesIfNull(singletonUpdateRestrictions);
+            _updateRestrictions ??= singletonUpdateRestrictions;
         }
 
         /// <inheritdoc/>

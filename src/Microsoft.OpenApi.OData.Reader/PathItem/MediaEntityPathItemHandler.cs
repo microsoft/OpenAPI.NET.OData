@@ -31,31 +31,34 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            ReadRestrictionsType read = EntitySet != null
+            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            ReadRestrictionsType navSourceReadRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<ReadRestrictionsType>(EntitySet)
                 : Context.Model.GetRecord<ReadRestrictionsType>(Singleton);
-
-            if (read == null ||
-               (read.ReadByKeyRestrictions == null && read.IsReadable) ||
-               (read.ReadByKeyRestrictions != null && read.ReadByKeyRestrictions.IsReadable))
+            readRestrictions ??= navSourceReadRestrictions;
+            if (readRestrictions == null ||
+               (readRestrictions.ReadByKeyRestrictions == null && readRestrictions.IsReadable) ||
+               (readRestrictions.ReadByKeyRestrictions != null && readRestrictions.ReadByKeyRestrictions.IsReadable))
             {
                 AddOperation(item, OperationType.Get);
             }
 
-            UpdateRestrictionsType update = EntitySet != null
+            UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+            UpdateRestrictionsType navSourceUpdateRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet)
                 : Context.Model.GetRecord<UpdateRestrictionsType>(Singleton);
-
-            if (update == null || update.IsUpdatable)
+            updateRestrictions ??= navSourceUpdateRestrictions;
+            if (updateRestrictions?.IsUpdatable ?? true)
             {
                 AddOperation(item, OperationType.Put);
             }
 
-            DeleteRestrictionsType delete = EntitySet != null
+            DeleteRestrictionsType deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+            DeleteRestrictionsType navSourceDeleteRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet)
                 : Context.Model.GetRecord<DeleteRestrictionsType>(Singleton);
-
-            if (delete == null || delete.IsDeletable)
+            deleteRestrictions ??= navSourceDeleteRestrictions;
+            if (deleteRestrictions?.IsDeletable ?? true)
             {
                 AddOperation(item, OperationType.Delete);
             }

@@ -28,15 +28,8 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
 
         _insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
         var complexPropertyInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
-
-        if (_insertRestrictions == null)
-        {
-            _insertRestrictions = complexPropertyInsertRestrictions;
-        }
-        else
-        {
-            _insertRestrictions.MergePropertiesIfNull(complexPropertyInsertRestrictions);
-        }
+        _insertRestrictions?.MergePropertiesIfNull(complexPropertyInsertRestrictions);
+        _insertRestrictions ??= complexPropertyInsertRestrictions;
     }
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Post;

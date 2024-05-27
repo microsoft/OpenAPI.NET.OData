@@ -33,15 +33,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
             var entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
-
-            if (_readRestrictions == null)
-            {
-                _readRestrictions = entityReadRestrictions;
-            }
-            else
-            {
-                _readRestrictions.MergePropertiesIfNull(entityReadRestrictions);
-            }
+            _readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
+            _readRestrictions ??= entityReadRestrictions;
         }
 
         /// <inheritdoc/>
@@ -124,21 +117,21 @@ namespace Microsoft.OpenApi.OData.Operation
             // of just providing a comma-separated list of properties can be expressed via an array-valued
             // parameter with an enum constraint
             // $order
-            parameter = Context.CreateOrderBy(EntitySet);
+            parameter = Context.CreateOrderBy(TargetPath, EntitySet.EntityType()) ?? Context.CreateOrderBy(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $select
-            parameter = Context.CreateSelect(EntitySet);
+            parameter = Context.CreateSelect(TargetPath, EntitySet.EntityType()) ?? Context.CreateSelect(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $expand
-            parameter = Context.CreateExpand(EntitySet);
+            parameter = Context.CreateExpand(TargetPath, EntitySet.EntityType()) ?? Context.CreateExpand(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);

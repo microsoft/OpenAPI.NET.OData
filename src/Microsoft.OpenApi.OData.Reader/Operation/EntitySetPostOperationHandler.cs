@@ -33,15 +33,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             _insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
             var entityInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
-
-            if (_insertRestrictions == null)
-            {
-                _insertRestrictions = entityInsertRestrictions;
-            }
-            else
-            {
-                _insertRestrictions.MergePropertiesIfNull(entityInsertRestrictions);
-            }
+            _insertRestrictions?.MergePropertiesIfNull(entityInsertRestrictions);
+            _insertRestrictions ??= entityInsertRestrictions;
         }
 
         /// <inheritdoc/>

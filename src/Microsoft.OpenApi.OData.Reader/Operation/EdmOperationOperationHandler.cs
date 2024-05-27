@@ -59,15 +59,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             _operationRestriction = Context.Model.GetRecord<OperationRestrictionsType>(TargetPath, CapabilitiesConstants.OperationRestrictions);
             var operationRestrictions = Context.Model.GetRecord<OperationRestrictionsType>(EdmOperation, CapabilitiesConstants.OperationRestrictions);
-
-            if (_operationRestriction == null)
-            {
-                _operationRestriction = operationRestrictions;
-            }
-            else
-            {
-                _operationRestriction.MergePropertiesIfNull(operationRestrictions);
-            }
+            _operationRestriction?.MergePropertiesIfNull(operationRestrictions);
+            _operationRestriction ??= operationRestrictions;
         }
 
         /// <inheritdoc/>

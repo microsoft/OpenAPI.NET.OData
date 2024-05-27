@@ -207,4 +207,64 @@ public class ComplexPropertyPathItemHandlerTests
 		string isHiddenValue = (isHiddenExtension as OpenApiString)?.Value;
 		Assert.Equal("true", isHiddenValue);
 	}
+
+	[Theory]
+	[InlineData("true", "true", "true", 3)]
+	[InlineData("false", "false", "false", 0)]
+	[InlineData ("false", "false", "true", 1)]
+    public void CreatesComplexPropertyPathsBasedOnTargetPathAnnotations(string readable, string insertable, string updatable, int operationCount)
+    {
+		// Arrange
+        var annotation = $@"
+<Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
+    <Record>
+    <PropertyValue Property=""Insertable"" Bool=""{insertable}"" />
+    </Record>
+</Annotation>
+<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+  <Record>
+	<PropertyValue Property=""Readable"" Bool=""{readable}"" />
+  </Record>
+</Annotation>
+<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+  <Record>
+    <PropertyValue Property=""Updatable"" Bool=""{updatable}"" />
+  </Record>
+</Annotation>";
+        var target = @"""NS.Default/Customers/AlternativeAddresses""";
+        var model = EntitySetPathItemHandlerTests.GetEdmModel(annotation, target);
+        var context = new ODataContext(model, new OpenApiConvertSettings());
+
+        var entitySet = model.EntityContainer.FindEntitySet("Customers");
+        Assert.NotNull(entitySet); // guard
+
+        var entityType = entitySet.EntityType();
+        var property = entityType.FindProperty("AlternativeAddresses");
+        Assert.NotNull(property); // guard
+
+        var path = new ODataPath(
+			new ODataNavigationSourceSegment(entitySet), 
+			new ODataKeySegment(entityType), 
+			new ODataComplexPropertySegment(property as IEdmStructuralProperty));
+        Assert.Equal(ODataPathKind.ComplexProperty, path.Kind); // guard
+
+		// Act
+        var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+		// Assert
+        Assert.NotNull(pathItem);
+        Assert.Equal(operationCount, pathItem.Operations.Count);
+        if (operationCount == 1)
+        {
+            Assert.True(pathItem.Operations.ContainsKey(OperationType.Patch));
+            Assert.False(pathItem.Operations.ContainsKey(OperationType.Post));
+            Assert.False(pathItem.Operations.ContainsKey(OperationType.Get));
+        }
+        else if (operationCount == 3) 
+        {
+            Assert.True(pathItem.Operations.ContainsKey(OperationType.Patch));
+            Assert.True(pathItem.Operations.ContainsKey(OperationType.Post));
+            Assert.True(pathItem.Operations.ContainsKey(OperationType.Get));
+        }
+    }
 }

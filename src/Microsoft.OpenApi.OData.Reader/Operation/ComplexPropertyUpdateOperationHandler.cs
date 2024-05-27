@@ -25,15 +25,8 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
 
         _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
         var complexPropertyUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
-
-        if (_updateRestrictions == null)
-        {
-            _updateRestrictions = complexPropertyUpdateRestrictions;
-        }
-        else
-        {
-            _updateRestrictions.MergePropertiesIfNull(complexPropertyUpdateRestrictions);
-        }
+        _updateRestrictions?.MergePropertiesIfNull(complexPropertyUpdateRestrictions);
+        _updateRestrictions ??= complexPropertyUpdateRestrictions;
     }
 
     /// <inheritdoc/>
