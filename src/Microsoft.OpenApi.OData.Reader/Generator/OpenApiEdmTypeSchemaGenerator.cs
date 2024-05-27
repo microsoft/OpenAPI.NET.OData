@@ -72,6 +72,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmTypeKind.EntityReference:
                     return context.CreateTypeDefinitionSchema(edmTypeReference.AsTypeDefinition());
 
+                case EdmTypeKind.Untyped:
+                    return new OpenApiSchema();
+
                 case EdmTypeKind.None:
                 default:
                     throw Error.NotSupported(String.Format(SRResource.NotSupportedEdmTypeKind, edmTypeReference.TypeKind()));

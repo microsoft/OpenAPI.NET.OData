@@ -180,6 +180,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     return GetTypeNameForExample(new EdmPrimitiveTypeReference(typedef.UnderlyingType, edmTypeReference.IsNullable));
 
                 case EdmTypeKind.Untyped:
+                    return new OpenApiObject();
+
                 case EdmTypeKind.EntityReference:
                 default:
                     throw new OpenApiException("Not support for the type kind " + edmTypeReference.TypeKind());

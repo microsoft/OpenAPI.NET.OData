@@ -56,8 +56,8 @@ namespace Microsoft.OpenApi.OData.Tests
             var schemas = context.CreateSchemas();
 
             var stringCollectionResponse = schemas["StringCollectionResponse"];
-            var flightCollectionResponse = schemas["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];                      
-            
+            var flightCollectionResponse = schemas["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
+
             if (enablePagination || enableCount)
             {
                 Assert.Collection(stringCollectionResponse.AllOf,
@@ -79,7 +79,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Equal("array", stringCollectionResponse.Properties["value"].Type);
                 Assert.Equal("array", flightCollectionResponse.Properties["value"].Type);
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight", flightCollectionResponse.Properties["value"].Items.Reference.Id);
-            }            
+            }
         }
 
         [Fact]
@@ -903,7 +903,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             string json = schema.SerializeAsJson(specVersion);
             _output.WriteLine(json);
-            
+
             // Assert
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
@@ -956,7 +956,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ""pattern"": ""^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$"",
   ""type"": ""string"",
   ""readOnly"": true
-}".ChangeLineBreaks(), json);    
+}".ChangeLineBreaks(), json);
             }
             else
             {
@@ -1116,6 +1116,32 @@ namespace Microsoft.OpenApi.OData.Tests
   ],
   ""default"": ""3.1415926535897931""
 }".ChangeLineBreaks(), json);
+        }
+
+
+        [Fact]
+        public void NonNullableUntypedPropertyWorks()
+        {
+            ODataContext context = new ODataContext(
+                EdmModelHelper.BasicEdmModel,
+                new OpenApiConvertSettings 
+                { 
+                    ShowSchemaExamples = true
+                });
+            EdmEntityType entitType = new EdmEntityType("NS", "Entity");
+            IEdmStructuralProperty property = new EdmStructuralProperty(
+                entitType, "UntypedProperty", EdmCoreModel.Instance.GetUntyped());
+
+            // Act
+            var schema = context.CreatePropertySchema(property);
+
+            // Assert
+            Assert.NotNull(schema);
+            Assert.Null(schema.Type);
+
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            Assert.Equal("{ }", json);
         }
     }
 }
