@@ -139,6 +139,32 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
         [Theory]
         [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
+        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Delete })]
+        public void CreateMediaEntityPathItemWorksForUpdateRestrictionsCapabilitiesWithTargetPathAnnotations(bool updatable, OperationType[] expected)
+        {
+            string annotation = $@"
+<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+    <Record>
+    <PropertyValue Property=""Updatable"" Bool=""{!updatable}"" />
+    </Record>
+</Annotation>";
+
+            // Arrange
+            string streamPropertyTargetPathAnnotation = $@"
+<Annotations Target=""microsoft.graph.GraphService/Todos/Logo"">
+    <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+      <Record>
+        <PropertyValue Property=""Updatable"" Bool=""{updatable}"" />
+      </Record>
+    </Annotation>
+</Annotations>";
+
+            // Assert
+            VerifyPathItemOperationsForStreamPropertySegment(annotation, expected, streamPropertyTargetPathAnnotation);
+        }
+
+        [Theory]
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
         [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Put })]
         public void CreateMediaEntityPathItemWorksForDeleteRestrictionsCapabilities(bool deletable, OperationType[] expected)
         {
@@ -155,10 +181,39 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             VerifyPathItemOperationsForStreamContentSegment(annotation, expected);
         }
 
-        private void VerifyPathItemOperationsForStreamPropertySegment(string annotation, OperationType[] expected)
+        [Theory]
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
+        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Put })]
+        public void CreateMediaEntityPathItemWorksForDeleteRestrictionsCapabilitiesWithTargetPathAnnotations(bool deletable, OperationType[] expected)
         {
             // Arrange
-            IEdmModel model = GetEdmModel(annotation);
+            string annotation = $@"
+<Annotation Term=""Org.OData.Capabilities.V1.DeleteRestrictions"">
+  <Record>
+    <PropertyValue Property=""Deletable"" Bool=""{!deletable}"" />
+  </Record>
+</Annotation>";
+
+
+            // Arrange
+            string streamPropertyTargetPathAnnotation = $@"
+<Annotations Target=""microsoft.graph.GraphService/Todos/Logo"">
+    <Annotation Term=""Org.OData.Capabilities.V1.DeleteRestrictions"">
+      <Record>
+        <PropertyValue Property=""Deletable"" Bool=""{deletable}"" />
+      </Record>
+    </Annotation>
+</Annotations>";
+
+            // Assert
+            VerifyPathItemOperationsForStreamPropertySegment(annotation, expected, streamPropertyTargetPathAnnotation);
+        }
+
+        private void VerifyPathItemOperationsForStreamPropertySegment(string annotation, OperationType[] expected, string targetPathAnnotations = "")
+        {
+            // Arrange
+            
+            IEdmModel model = GetEdmModel(annotation, targetPathAnnotations);
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Todos");
             Assert.NotNull(entitySet); // guard
@@ -180,10 +235,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
         }
 
-        private void VerifyPathItemOperationsForStreamContentSegment(string annotation, OperationType[] expected)
+        private void VerifyPathItemOperationsForStreamContentSegment(string annotation, OperationType[] expected, string targetPathAnnotations = null)
         {
             // Arrange
-            IEdmModel model = GetEdmModel(annotation);
+            IEdmModel model = GetEdmModel(annotation, targetPathAnnotations);
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Todos");
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("me");
@@ -217,7 +272,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal(expected, pathItem2.Operations.Select(e => e.Key));
         }
 
-        private IEdmModel GetEdmModel(string annotation)
+        private IEdmModel GetEdmModel(string annotation, string targetPathAnnotation = "")
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
   <edmx:DataServices>
@@ -247,10 +302,11 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
       <Annotations Target=""microsoft.graph.GraphService/me"" >
        {0}
       </Annotations>
+      {1}
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>";
-            string modelText = string.Format(template, annotation);
+            string modelText = string.Format(template, annotation, targetPathAnnotation);
             bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out IEdmModel model, out _);
             Assert.True(result);
             return model;

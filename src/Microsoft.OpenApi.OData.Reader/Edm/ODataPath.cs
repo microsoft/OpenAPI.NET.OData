@@ -268,7 +268,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
             var targetPath = new StringBuilder(model.EntityContainer.FullName());
 
-            bool skipLastSegment = LastSegment is ODataRefSegment || LastSegment is ODataDollarCountSegment;
+            bool skipLastSegment = LastSegment is ODataRefSegment 
+                || LastSegment is ODataDollarCountSegment
+                || LastSegment is ODataStreamContentSegment;
             foreach (var segment in Segments.Where(segment => segment is not ODataKeySegment
                 && !(skipLastSegment && segment == LastSegment)))
             {
