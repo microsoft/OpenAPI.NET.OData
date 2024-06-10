@@ -135,6 +135,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Act & Assert
             var paths = provider.GetPaths(model, settings);
             Assert.NotNull(paths);
+
             if (indexable)
             {
                 Assert.Equal(3, paths.Count());
@@ -145,7 +146,6 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                 Assert.Equal(2, paths.Count());
                 Assert.DoesNotContain("/Customers({ID})", paths.Select(p => p.GetPathItemName()));
             }
-            
         }
 
         [Theory]
