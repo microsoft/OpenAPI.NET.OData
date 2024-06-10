@@ -119,6 +119,34 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths);
             Assert.Equal(17631, paths.Count());
         }
+                
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void GetEntitySetPathsWithIndexableByKeyAnnotationWorks(bool indexable)
+        {
+            // Arrange
+            string indexableAnnotation = @"<Annotation Term=""Org.OData.Capabilities.V1.IndexableByKey"" Bool=""{0}"" />";
+            indexableAnnotation = string.Format(indexableAnnotation, indexable);
+            IEdmModel model = GetInheritanceModel(indexableAnnotation);
+            ODataPathProvider provider = new();
+            var settings = new OpenApiConvertSettings();
+
+            // Act & Assert
+            var paths = provider.GetPaths(model, settings);
+            Assert.NotNull(paths);
+            if (indexable)
+            {
+                Assert.Equal(3, paths.Count());
+                Assert.Contains("/Customers({ID})", paths.Select(p => p.GetPathItemName()));
+            }
+            else
+            {
+                Assert.Equal(2, paths.Count());
+                Assert.DoesNotContain("/Customers({ID})", paths.Select(p => p.GetPathItemName()));
+            }
+            
+        }
 
         [Theory]
         [InlineData(true, true)]
