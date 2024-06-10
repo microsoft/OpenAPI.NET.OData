@@ -259,7 +259,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 CreateTypeCastPaths(path, convertSettings, entityType, entitySet, true); // ~/entitySet/subType
 
                 if (convertSettings.AddAlternateKeyPaths)
-                    CreateAlternateKeyPath(path, entityType); //~/entitySet/{alternateKeyId}                               
+                    CreateAlternateKeyPath(path, entityType); //~/entitySet/{alternateKeyId}
 
                 indexableByKey = _model.GetBoolean(targetPath, CapabilitiesConstants.IndexableByKey)
                     ?? _model.GetBoolean(entitySet, CapabilitiesConstants.IndexableByKey);
