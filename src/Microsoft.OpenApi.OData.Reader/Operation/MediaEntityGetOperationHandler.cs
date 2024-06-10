@@ -21,24 +21,27 @@ namespace Microsoft.OpenApi.OData.Operation
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
-        private IEdmProperty _property = null;
         private ReadRestrictionsType _readRestrictions = null;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
-            (_, _property) = GetStreamElements();
 
-            if (_property != null)
+            if (Property != null)
             {
-                if (_property is IEdmNavigationProperty)
+                _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+                if (Property is IEdmNavigationProperty)
                 {
-                    _readRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(_property, CapabilitiesConstants.NavigationRestrictions)?
-                        .RestrictedProperties?.FirstOrDefault()?.ReadRestrictions;
+                    var navigationReadRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(Property, CapabilitiesConstants.NavigationRestrictions)?
+                            .RestrictedProperties?.FirstOrDefault()?.ReadRestrictions;
+                    _readRestrictions?.MergePropertiesIfNull(navigationReadRestrictions);
+                    _readRestrictions ??= navigationReadRestrictions;
                 }
                 else
                 {
-                    _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(_property, CapabilitiesConstants.ReadRestrictions);
+                    var propertyReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(Property, CapabilitiesConstants.ReadRestrictions);
+                    _readRestrictions?.MergePropertiesIfNull(propertyReadRestrictions);
+                    _readRestrictions ??= propertyReadRestrictions;
                 }
             }            
         }
@@ -48,30 +51,28 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Summary
             string placeholderValue = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "media content";
-            operation.Summary = IsNavigationPropertyPath
-                ? $"Get {placeholderValue} for the navigation property {NavigationProperty.Name} from {NavigationSource.Name}"
+            operation.Summary = _readRestrictions?.Description;
+            operation.Summary ??= IsNavigationPropertyPath
+                ? $"Get {placeholderValue} for the navigation property {NavigationProperty.Name} from {NavigationSourceSegment.NavigationSource.Name}"
                 : $"Get {placeholderValue} for {NavigationSourceSegment.EntityType.Name} from {NavigationSourceSegment.Identifier}";
 
             // Description
-            if (LastSegmentIsStreamPropertySegment)
+            string description;
+
+            if (Property is IEdmNavigationProperty)
             {
-                string description;
-
-                if (_property is IEdmNavigationProperty)
-                {
-                    description = LastSegmentIsKeySegment
-                        ? _readRestrictions?.ReadByKeyRestrictions?.Description
-                        : _readRestrictions?.Description
-                        ?? Context.Model.GetDescriptionAnnotation(_property);
-                }
-                else
-                {
-                    // Structural property
-                    description = Context.Model.GetDescriptionAnnotation(_property);
-                }
-
-                operation.Description = description;
+                description = LastSegmentIsKeySegment
+                    ? _readRestrictions?.ReadByKeyRestrictions?.LongDescription
+                    : _readRestrictions?.LongDescription
+                    ?? Context.Model.GetDescriptionAnnotation(Property);
             }
+            else
+            {
+                // Structural property
+                description = _readRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
+            }
+
+            operation.Description = description;
 
             // OperationId
             if (Context.Settings.EnableOperationId)

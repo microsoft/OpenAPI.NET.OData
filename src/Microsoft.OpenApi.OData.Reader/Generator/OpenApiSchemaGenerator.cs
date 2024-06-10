@@ -700,6 +700,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     return array;
 
                 case EdmTypeKind.Untyped:
+                    return new OpenApiObject();
+
                 case EdmTypeKind.TypeDefinition:
                 case EdmTypeKind.EntityReference:
                 default:

@@ -123,5 +123,35 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // LongDescription
             LongDescription = record.GetString("LongDescription");
         }
+
+        /// <summary>
+        /// Merges properties of the specified <see cref="DeleteRestrictionsType"/> object into this instance if they are null.
+        /// </summary>
+        /// <param name="source">The <see cref="DeleteRestrictionsType"/> object containing properties to merge.</param>
+        public void MergePropertiesIfNull(DeleteRestrictionsType source)
+        {
+            if (source == null)
+                return;
+
+            Deletable ??= source.Deletable;
+
+            NonDeletableNavigationProperties ??= source.NonDeletableNavigationProperties;
+
+            MaxLevels ??= source.MaxLevels;
+
+            FilterSegmentSupported ??= source.FilterSegmentSupported;
+
+            TypecastSegmentSupported ??= source.TypecastSegmentSupported;
+
+            Permissions ??= source.Permissions;
+
+            CustomHeaders ??= source.CustomHeaders;
+
+            CustomQueryOptions ??= source.CustomQueryOptions;
+
+            Description ??= source.Description;
+
+            LongDescription ??= source.LongDescription;
+        }
     }
 }

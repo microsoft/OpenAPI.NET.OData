@@ -1,24 +1,14 @@
-﻿// ------------------------------------------------------------
-//  Copyright (c) Microsoft Corporation.  All rights reserved.
-//  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
-// ------------------------------------------------------------
-
-using System.Linq;
-using Microsoft.OData.Edm;
+﻿using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
-    /// <summary>
-    /// Delete an Entity
-    /// The Path Item Object for the entity set contains the keyword delete with an Operation Object as value
-    /// that describes the capabilities for deleting the entity.
-    /// </summary>
-    internal class EntityDeleteOperationHandler : EntitySetOperationHandler
+    internal class MediaEntityDeleteOperationHandler : MediaEntityOperationalHandler
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Delete;
@@ -29,39 +19,46 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.Initialize(context, path);
 
-            _deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
-            var entityDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
-            _deleteRestrictions?.MergePropertiesIfNull(entityDeleteRestrictions);
-            _deleteRestrictions ??= entityDeleteRestrictions;
+            if (Property != null)
+            {
+                _deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+                if (Property is IEdmNavigationProperty)
+                {
+                    var navigationDeleteRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(Property, CapabilitiesConstants.NavigationRestrictions)?
+                            .RestrictedProperties?.FirstOrDefault()?.DeleteRestrictions;
+                    _deleteRestrictions?.MergePropertiesIfNull(navigationDeleteRestrictions);
+                    _deleteRestrictions ??= navigationDeleteRestrictions;
+                }
+                else
+                {
+                    var propertyDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(Property, CapabilitiesConstants.DeleteRestrictions);
+                    _deleteRestrictions?.MergePropertiesIfNull(propertyDeleteRestrictions);
+                    _deleteRestrictions ??= propertyDeleteRestrictions;
+                }
+            }
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            IEdmEntityType entityType = EntitySet.EntityType();
-            ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
+            // Summary
+            string placeholderValue = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "media content";
+            operation.Summary = _deleteRestrictions?.Description;
+            operation.Summary ??= IsNavigationPropertyPath
+                ? $"Delete {placeholderValue} for the navigation property {NavigationProperty.Name} in {NavigationSourceSegment.NavigationSource.Name}"
+                : $"Delete {placeholderValue} for {NavigationSourceSegment.EntityType.Name} in {NavigationSourceSegment.Identifier}";
 
             // Description
-            string placeHolder = $"Delete entity from {EntitySet.Name}";
-            if (keySegment.IsAlternateKey)
-            {
-                placeHolder = $"{placeHolder} by {keySegment.Identifier}";
-            }
-            operation.Summary = _deleteRestrictions?.Description ?? placeHolder;
-            operation.Description = _deleteRestrictions?.LongDescription;
+            operation.Description = _deleteRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string typeName = entityType.Name;
-                string operationName =$"Delete{Utils.UpperFirstChar(typeName)}";
-                if (keySegment.IsAlternateKey)
-                {
-                    string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
-                    operationName = $"{operationName}By{alternateKeyName}";
-                }
-                operation.OperationId =  $"{EntitySet.Name}.{typeName}.{operationName}";          
+                string identifier = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "Content";
+                operation.OperationId = GetOperationId("Delete", identifier);
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -87,7 +84,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // Response for Delete methods should be 204 No Content
             OpenApiConvertSettings settings = Context.Settings.Clone();
             settings.UseSuccessStatusCodeRange = false;
-            
+
             operation.AddErrorResponses(settings, true);
             base.SetResponses(operation);
         }
@@ -102,6 +99,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Security = Context.CreateSecurityRequirements(_deleteRestrictions.Permissions).ToList();
         }
 
+        /// <inheritdoc/>
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
             if (_deleteRestrictions == null)

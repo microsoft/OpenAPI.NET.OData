@@ -69,6 +69,38 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
         }
 
+        [Fact]
+        public void CreateDollarCountGetOperationForNavigationPropertyWithTargetPathAnnotationsReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model, new OpenApiConvertSettings());
+            IEdmEntitySet users = model.EntityContainer.FindEntitySet("users");
+            Assert.NotNull(users);
+
+            IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
+            IEdmNavigationProperty navProperty = user.DeclaredNavigationProperties().First(c => c.Name == "appRoleAssignments");
+            ODataPath path = new(new ODataNavigationSourceSegment(users),
+                new ODataKeySegment(users.EntityType()),
+                new ODataNavigationPropertySegment(navProperty),
+                new ODataDollarCountSegment());
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(4, operation.Parameters.Count);
+            Assert.Equal(new[] { "id", "ConsistencyLevel", "search", "filter" },
+                operation.Parameters.Select(x => x.Name ?? x.Reference.Id).ToList());
+
+            Assert.Equal("Get the number of the resource", operation.Summary);
+
+            Assert.Null(operation.RequestBody);
+
+            Assert.Equal(2, operation.Responses.Count);
+        }
+
         [Theory]
         [InlineData(true, true)]
         [InlineData(false, true)]
@@ -114,6 +146,33 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Null(operation.OperationId);
             }
+        }
+
+        [Fact]
+        public void CreateDollarCountGetOperationForNavigationSourceWithTargetPathAnnotationsReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model, new OpenApiConvertSettings());
+            IEdmEntitySet users = model.EntityContainer.FindEntitySet("users");
+            Assert.NotNull(users);
+
+            ODataPath path = new(new ODataNavigationSourceSegment(users),
+                new ODataDollarCountSegment());
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("Get the number of the resource", operation.Summary);
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(3, operation.Parameters.Count);
+            Assert.Equal(new[] { "ConsistencyLevel", "search", "filter" },
+                operation.Parameters.Select(x => x.Name ?? x.Reference.Id).ToList());
+
+            Assert.Null(operation.RequestBody);
+            Assert.Equal(2, operation.Responses.Count);
         }
     }
 }

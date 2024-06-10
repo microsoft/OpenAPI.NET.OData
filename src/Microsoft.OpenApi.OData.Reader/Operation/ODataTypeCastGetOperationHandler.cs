@@ -14,6 +14,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation;
 
@@ -168,14 +169,17 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// <inheritdoc/>
 	protected override void SetBasicInfo(OpenApiOperation operation)
 	{
-		// Summary
-		if (IsSingleElement)
-			operation.Summary = $"Get the item of type {ParentSchemaElement.ShortQualifiedName()} as {TargetSchemaElement.ShortQualifiedName()}";
-		else
-			operation.Summary = $"Get the items of type {TargetSchemaElement.ShortQualifiedName()} in the {ParentSchemaElement.ShortQualifiedName()} collection";
+        ReadRestrictionsType _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
 
-		// OperationId
-		if (Context.Settings.EnableOperationId)
+        // Summary
+        string placeHolder = IsSingleElement 
+			? $"Get the item of type {ParentSchemaElement.ShortQualifiedName()} as {TargetSchemaElement.ShortQualifiedName()}" 
+			: $"Get the items of type {TargetSchemaElement.ShortQualifiedName()} in the {ParentSchemaElement.ShortQualifiedName()} collection";
+        operation.Summary = _readRestrictions?.Description ?? placeHolder;
+        operation.Description = _readRestrictions?.LongDescription;
+
+        // OperationId
+        if (Context.Settings.EnableOperationId)
 			operation.OperationId = EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}";
 
         base.SetBasicInfo(operation);
@@ -306,8 +310,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			if (IsSingleElement)
 			{
 				new OpenApiParameter[] {
-						Context.CreateSelect(navigationProperty),
-						Context.CreateExpand(navigationProperty),
+                        Context.CreateSelect(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateSelect(navigationProperty),
+                        Context.CreateExpand(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateExpand(navigationProperty),
 					}
 				.Where(x => x != null)
 				.ToList()
@@ -318,9 +322,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				GetParametersForAnnotableOfMany(navigationProperty)
 				.Union(
 					new OpenApiParameter[] {
-						Context.CreateOrderBy(navigationProperty),
-						Context.CreateSelect(navigationProperty),
-						Context.CreateExpand(navigationProperty),
+                        Context.CreateOrderBy(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateOrderBy(navigationProperty),
+                        Context.CreateSelect(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateSelect(navigationProperty),
+                        Context.CreateExpand(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateExpand(navigationProperty),
 					})
 				.Where(x => x != null)
 				.ToList()
@@ -332,8 +336,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			if(IsSingleElement)
 			{
 				new OpenApiParameter[] {
-						Context.CreateSelect(entitySet),
-						Context.CreateExpand(entitySet),
+                        Context.CreateSelect(TargetPath, entitySet.EntityType()) ?? Context.CreateSelect(entitySet),
+                        Context.CreateExpand(TargetPath, entitySet.EntityType()) ?? Context.CreateExpand(entitySet),
 					}
 				.Where(x => x != null)
 				.ToList()
@@ -344,9 +348,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				GetParametersForAnnotableOfMany(entitySet)
 				.Union(
 					new OpenApiParameter[] {
-						Context.CreateOrderBy(entitySet),
-						Context.CreateSelect(entitySet),
-						Context.CreateExpand(entitySet),
+                        Context.CreateOrderBy(TargetPath, entitySet.EntityType()) ?? Context.CreateOrderBy(entitySet),
+                        Context.CreateSelect(TargetPath, entitySet.EntityType()) ?? Context.CreateSelect(entitySet),
+                        Context.CreateExpand(TargetPath, entitySet.EntityType()) ?? Context.CreateExpand(entitySet),
 					})
 				.Where(x => x != null)
 				.ToList()
@@ -356,8 +360,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		else if(singleton != null)
 		{
 			new OpenApiParameter[] {
-					Context.CreateSelect(singleton),
-					Context.CreateExpand(singleton),
+                    Context.CreateSelect(TargetPath, singleton.EntityType()) ?? Context.CreateSelect(singleton),
+                    Context.CreateExpand(TargetPath, singleton.EntityType()) ?? Context.CreateExpand(singleton),
 				}
 			.Where(x => x != null)
 			.ToList()
@@ -369,7 +373,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// Need to verify that TopSupported or others should be applied to navigation source.
 		// So, how about for the navigation property.
 		return new OpenApiParameter[] {
-			Context.CreateTop(annotable),
+            Context.CreateTop(annotable),
 			Context.CreateSkip(annotable),
 			Context.CreateSearch(annotable),
 			Context.CreateFilter(annotable),
@@ -409,8 +413,11 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
     {
 		if (annotatable == null)
 			return;
-        
-        ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
+
+        ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+        var annotatableReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
+        readRestrictions?.MergePropertiesIfNull(annotatableReadRestrictions);
+        readRestrictions ??= annotatableReadRestrictions;
 
         if (readRestrictions == null)
         {
@@ -425,6 +432,18 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
         if (readRestrictions.CustomQueryOptions != null)
         {
             AppendCustomParameters(operation, readRestrictions.CustomQueryOptions, ParameterLocation.Query);
+        }
+    }
+
+    protected override void SetExternalDocs(OpenApiOperation operation)
+    {
+        if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) is LinkType externalDocs)
+        {
+            operation.ExternalDocs = new OpenApiExternalDocs()
+            {
+                Description = CoreConstants.ExternalDocsDescription,
+                Url = externalDocs.Href
+            };
         }
     }
 }

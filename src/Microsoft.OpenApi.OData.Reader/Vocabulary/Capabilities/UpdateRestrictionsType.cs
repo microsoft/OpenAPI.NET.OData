@@ -196,5 +196,47 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // ResponseContentTypes
             ResponseContentTypes = record.GetCollection("ResponseContentTypes");
         }
+
+        /// <summary>
+        /// Merges properties of the specified <see cref="UpdateRestrictionsType"/> object into this instance if they are null.
+        /// </summary>
+        /// <param name="source">The <see cref="UpdateRestrictionsType"/> object containing properties to merge.</param>
+        public void MergePropertiesIfNull(UpdateRestrictionsType source)
+        {
+            if (source == null)
+                return;
+
+            Updatable ??= source.Updatable;
+
+            Upsertable ??= source.Upsertable;
+
+            DeltaUpdateSupported ??= source.DeltaUpdateSupported;
+
+            UpdateMethod ??= source.UpdateMethod;
+
+            FilterSegmentSupported ??= source.FilterSegmentSupported;
+
+            TypecastSegmentSupported ??= source.TypecastSegmentSupported;
+
+            NonUpdatableNavigationProperties ??= source.NonUpdatableNavigationProperties;
+
+            MaxLevels ??= source.MaxLevels;
+
+            Permissions ??= source.Permissions;
+
+            QueryOptions ??= source.QueryOptions;
+
+            CustomHeaders ??= source.CustomHeaders;
+
+            CustomQueryOptions ??= source.CustomQueryOptions;
+
+            Description ??= source.Description;
+
+            LongDescription ??= source.LongDescription;
+
+            RequestContentTypes ??= source.RequestContentTypes;
+
+            ResponseContentTypes ??= source.ResponseContentTypes;
+        }
     }
 }

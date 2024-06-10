@@ -165,70 +165,72 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
+            OpenApiParameter selectParameter = Context.CreateSelect(TargetPath, NavigationProperty.ToEntityType()) 
+                ?? Context.CreateSelect(NavigationProperty);
+
+            OpenApiParameter expandParameter = Context.CreateExpand(TargetPath, NavigationProperty.ToEntityType()) 
+                ?? Context.CreateExpand(NavigationProperty);
+
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 // Need to verify that TopSupported or others should be applied to navigation source.
                 // So, how about for the navigation property.
-                OpenApiParameter parameter = Context.CreateTop(NavigationProperty);
+                OpenApiParameter parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSkip(NavigationProperty);
+                parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSearch(NavigationProperty);
+                parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateFilter(NavigationProperty);
+                parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateCount(NavigationProperty);
+                parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateOrderBy(NavigationProperty);
+                parameter = Context.CreateOrderBy(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateOrderBy(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSelect(NavigationProperty);
-                if (parameter != null)
+                if (selectParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
+                    operation.Parameters.Add(selectParameter);
                 }
 
-                parameter = Context.CreateExpand(NavigationProperty);
-                if (parameter != null)
+                if (expandParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
+                    operation.Parameters.Add(expandParameter);
                 }
             }
             else
             {
-                OpenApiParameter parameter = Context.CreateSelect(NavigationProperty);
-                if (parameter != null)
+                if (selectParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
+                    operation.Parameters.Add(selectParameter);
                 }
 
-                parameter = Context.CreateExpand(NavigationProperty);
-                if (parameter != null)
+                if (expandParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
+                    operation.Parameters.Add(expandParameter);
                 }
             }
         }

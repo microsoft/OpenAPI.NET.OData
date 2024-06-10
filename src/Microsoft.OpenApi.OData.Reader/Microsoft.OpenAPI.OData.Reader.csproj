@@ -15,24 +15,14 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.6.0</Version>
+    <Version>1.6.5</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
-- Reads annotations on structural properties of stream types for media entity paths #399
-- Updates the format of the request body schema of a collection of complex property #423
-- Adds a delete operation and a required @id query parameter to collection-valued navigation property paths with $ref #453
-- Fixes inconsistency of nullability of schemas of properties that are a collection of structured types #467
-- Generates $expand query parameter for operations whose return type is a collection #481
-- Adds delete operation for non-contained navigation properties only if explicitly allowed via annotation #483
-- Appends parameters and fixes operation ids of navigation property paths generated via composable functions #486
-- Use alternate keys in the generation of operation ids of operations and navigation property alternate paths #488
-- Fixes operation ids of paths with type cast segments #492
-- Uses convert setting to toggle between generating query options schemas of type string array or enums #197
-- Adds ability to change the response or request body content media type based on custom annotation properties #405
-    </PackageReleaseNotes>
+		- Use annotations with path as target to dermine whether to add an operation #535
+	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">..\..\bin\Debug\</OutputPath>
@@ -51,7 +41,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.OData.Edm" Version="7.20.0" />
+    <PackageReference Include="Microsoft.OData.Edm" Version="7.21.3" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.6.14" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>

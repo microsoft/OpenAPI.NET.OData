@@ -28,15 +28,21 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetOperations(OpenApiPathItem item)
         {
             // Retrieve a singleton.
-            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(Singleton);
-            if (read == null || read.IsReadable)
+            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            ReadRestrictionsType singletonReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
+            readRestrictions?.MergePropertiesIfNull(singletonReadRestrictions);
+            readRestrictions ??= singletonReadRestrictions;
+            if (readRestrictions?.IsReadable ?? true)
             {
                 AddOperation(item, OperationType.Get);
             }
 
             // Update a singleton
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton);
-            if (update == null || update.IsUpdatable)
+            UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+            UpdateRestrictionsType singletonUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
+            updateRestrictions?.MergePropertiesIfNull(singletonUpdateRestrictions);
+            updateRestrictions ??= singletonUpdateRestrictions;
+            if (updateRestrictions?.IsUpdatable ?? true)
             {
                 AddOperation(item, OperationType.Patch);
             }

@@ -145,7 +145,6 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(settings, nameof(settings));
 
             // From Open API spec, parameter name is case sensitive, so don't use the IgnoreCase HashSet.
-            // HashSet<string> parameters = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             HashSet<string> parameters = new();
             StringBuilder sb = new();
 
@@ -238,7 +237,6 @@ namespace Microsoft.OpenApi.OData.Edm
             IDictionary<ODataSegment, IDictionary<string, string>> parameterMapping = new Dictionary<ODataSegment, IDictionary<string, string>>();
 
             // From Open API spec, parameter name is case sensitive, so don't use the IgnoreCase HashSet.
-            // HashSet<string> parameters = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             HashSet<string> parameters = new HashSet<string>();
 
             foreach (var segment in Segments)
@@ -257,6 +255,28 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             return parameterMapping;
+        }
+
+        /// <summary>
+        /// Get string representation of the Edm Target Path for annotations
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <returns>The string representation of the Edm target path.</returns>
+        internal string GetTargetPath(IEdmModel model)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+
+            var targetPath = new StringBuilder(model.EntityContainer.FullName());
+
+            bool skipLastSegment = LastSegment is ODataRefSegment 
+                || LastSegment is ODataDollarCountSegment
+                || LastSegment is ODataStreamContentSegment;
+            foreach (var segment in Segments.Where(segment => segment is not ODataKeySegment
+                && !(skipLastSegment && segment == LastSegment)))
+            {
+                targetPath.Append($"/{segment.Identifier}");
+            }
+            return targetPath.ToString();
         }
 
         /// <summary>

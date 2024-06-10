@@ -3,9 +3,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OData.Edm;
+using System.Text;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.Models;
@@ -32,6 +33,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// The path parameters in the path
         /// </summary>
         protected IList<OpenApiParameter> PathParameters;
+
+        /// <summary>
+        /// The string representation of the Edm target path for annotations.
+        /// </summary>
+        protected string TargetPath;
 
         /// <inheritdoc/>
         public virtual OpenApiOperation CreateOperation(ODataContext context, ODataPath path)
@@ -122,6 +128,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected virtual void Initialize(ODataContext context, ODataPath path)
         {
             SetCustomLinkRelType();
+            TargetPath = path.GetTargetPath(context.Model);
         }
 
         /// <summary>
@@ -278,6 +285,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     OperationType.Get => Path.LastSegment?.Kind ==  ODataSegmentKind.Key ? LinkRelKey.ReadByKey : LinkRelKey.List,
                     OperationType.Post => LinkRelKey.Create,
                     OperationType.Patch => LinkRelKey.Update,
+                    OperationType.Put => LinkRelKey.Update,
                     OperationType.Delete => LinkRelKey.Delete,
                     _ => null,
                 };
@@ -289,5 +297,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             }
         }
+
     }
 }

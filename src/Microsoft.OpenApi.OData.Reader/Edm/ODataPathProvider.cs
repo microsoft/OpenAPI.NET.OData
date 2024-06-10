@@ -249,7 +249,9 @@ namespace Microsoft.OpenApi.OData.Edm
             // for entity set, create a path with key and a $count path
             if (entitySet != null)
             {
-                count = _model.GetRecord<CountRestrictionsType>(entitySet, CapabilitiesConstants.CountRestrictions);
+                string targetPath = path.GetTargetPath(_model);
+                count = _model.GetRecord<CountRestrictionsType>(targetPath, CapabilitiesConstants.CountRestrictions)
+                    ?? _model.GetRecord<CountRestrictionsType>(entitySet, CapabilitiesConstants.CountRestrictions);
                 if(count?.Countable ?? true) // ~/entitySet/$count
                     CreateCountPath(path, convertSettings);
 
@@ -310,16 +312,22 @@ namespace Microsoft.OpenApi.OData.Edm
                                                     .Where(x => x.Type.IsComplex() ||
                                                             x.Type.IsCollection() && x.Type.Definition.AsElementType() is IEdmComplexType))
             {
-                if (!ShouldCreateComplexPropertyPaths(sp, convertSettings)) continue;
-
                 currentPath.Push(new ODataComplexPropertySegment(sp));
+                var targetPath = currentPath.GetTargetPath(_model);
+                if (!ShouldCreateComplexPropertyPaths(sp, targetPath, convertSettings))
+                {
+                    currentPath.Pop();
+                    continue;
+                }
                 AppendPath(currentPath.Clone());
 
                 if (sp.Type.IsCollection())
                 {
                     CreateTypeCastPaths(currentPath, convertSettings, sp.Type.Definition.AsElementType() as IEdmComplexType, sp, true);
-                    var count = _model.GetRecord<CountRestrictionsType>(sp, CapabilitiesConstants.CountRestrictions);
-                    if (count?.IsCountable ?? true)
+                    var isCountable = _model.GetRecord<CountRestrictionsType>(targetPath, CapabilitiesConstants.CountRestrictions)?.IsCountable
+                        ?? _model.GetRecord<CountRestrictionsType>(sp, CapabilitiesConstants.CountRestrictions)?.IsCountable
+                        ?? true;
+                    if (isCountable)
                         CreateCountPath(currentPath, convertSettings);
                 }
                 else
@@ -363,7 +371,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
             foreach (var np in navigationProperties)
             {
-                var count = _model.GetRecord<CountRestrictionsType>(np, CapabilitiesConstants.CountRestrictions);
+                var targetPath = currentPath.GetTargetPath(_model);
+                var count = _model.GetRecord<CountRestrictionsType>(targetPath, CapabilitiesConstants.CountRestrictions)
+                    ?? _model.GetRecord<CountRestrictionsType>(np, CapabilitiesConstants.CountRestrictions);
                 RetrieveNavigationPropertyPaths(np, count, currentPath, convertSettings);
             }
 
@@ -407,9 +417,10 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Evaluates whether or not to create paths for complex properties.
         /// </summary>
         /// <param name="complexProperty">The target complex property.</param>
+        /// <param name="targetPath">The annotation target path for the complex property.</param>
         /// <param name="convertSettings">The settings for the current conversion.</param>
         /// <returns>true or false.</returns>
-        private bool ShouldCreateComplexPropertyPaths(IEdmStructuralProperty complexProperty, OpenApiConvertSettings convertSettings)
+        private bool ShouldCreateComplexPropertyPaths(IEdmStructuralProperty complexProperty, string targetPath, OpenApiConvertSettings convertSettings)
         {
             Utils.CheckArgumentNull(complexProperty, nameof(complexProperty)); 
             Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
@@ -417,9 +428,15 @@ namespace Microsoft.OpenApi.OData.Edm
             if (!convertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
                 return true;
 
-            bool isReadable = _model.GetRecord<ReadRestrictionsType>(complexProperty, CapabilitiesConstants.ReadRestrictions)?.Readable ?? false;
-            bool isUpdatable = _model.GetRecord<UpdateRestrictionsType>(complexProperty, CapabilitiesConstants.UpdateRestrictions)?.Updatable ?? false;
-            bool isInsertable = _model.GetRecord<InsertRestrictionsType>(complexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable ?? false;
+            bool isReadable = _model.GetRecord<ReadRestrictionsType>(targetPath, CapabilitiesConstants.ReadRestrictions)?.Readable 
+                ?? _model.GetRecord<ReadRestrictionsType>(complexProperty, CapabilitiesConstants.ReadRestrictions)?.Readable 
+                ?? false;
+            bool isUpdatable = _model.GetRecord<UpdateRestrictionsType>(targetPath, CapabilitiesConstants.UpdateRestrictions)?.Updatable 
+                ??_model.GetRecord<UpdateRestrictionsType>(complexProperty, CapabilitiesConstants.UpdateRestrictions)?.Updatable 
+                ?? false;
+            bool isInsertable = _model.GetRecord<InsertRestrictionsType>(targetPath, CapabilitiesConstants.InsertRestrictions)?.Insertable
+                ?? _model.GetRecord<InsertRestrictionsType>(complexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable 
+                ?? false;
 
             return isReadable || isUpdatable || isInsertable;
         }
@@ -525,9 +542,13 @@ namespace Microsoft.OpenApi.OData.Edm
             AppendPath(currentPath.Clone());
             visitedNavigationProperties.Push(navPropFullyQualifiedName);
 
+            // For fetching annotations
+            var targetPath = currentPath.GetTargetPath(_model);
+
             // Check whether a collection-valued navigation property should be indexed by key value(s).
             // Find indexability annotation annotated directly via NavigationPropertyRestriction.
-            bool? annotatedIndexability = _model.GetBoolean(navigationProperty, CapabilitiesConstants.IndexableByKey);
+            bool? annotatedIndexability = _model.GetBoolean(targetPath, CapabilitiesConstants.IndexableByKey)
+                ?? _model.GetBoolean(navigationProperty, CapabilitiesConstants.IndexableByKey);
             bool indexableByKey = true;
 
             if (restriction?.IndexableByKey != null)
@@ -550,7 +571,8 @@ namespace Microsoft.OpenApi.OData.Edm
                     if (count == null)
                     {
                         // First, get the directly annotated restriction annotation of the navigation property
-                        count = _model.GetRecord<CountRestrictionsType>(navigationProperty, CapabilitiesConstants.CountRestrictions);
+                        count = _model.GetRecord<CountRestrictionsType>(targetPath, CapabilitiesConstants.CountRestrictions)
+                            ?? _model.GetRecord<CountRestrictionsType>(navigationProperty, CapabilitiesConstants.CountRestrictions);
                         createCountPath = count?.Countable;
                     }
 

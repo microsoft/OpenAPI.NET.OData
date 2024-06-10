@@ -3,8 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -13,6 +11,8 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -42,6 +42,11 @@ namespace Microsoft.OpenApi.OData.Operation
         protected bool LastSegmentIsKeySegment { get; private set; }
 
         /// <summary>
+        /// Gets a bool value indicating whether the second last segment in a $ref path is a key segment
+        /// </summary>
+        protected bool SecondLastSegmentIsKeySegment { get; private set; }
+
+        /// <summary>
         /// Gets a bool value indicating whether the last segment is a $ref segment.
         /// </summary>
         protected bool LastSegmentIsRefSegment { get; private set; }
@@ -56,6 +61,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             LastSegmentIsKeySegment = path.LastSegment is ODataKeySegment;
             LastSegmentIsRefSegment = path.LastSegment is ODataRefSegment;
+            SecondLastSegmentIsKeySegment = Path.Segments.Reverse().Skip(1).Take(1).Single().Kind == ODataSegmentKind.Key;
             NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
 
             IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
@@ -107,16 +113,22 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(NavigationProperty, CustomLinkRel) is Link externalDocs)
+            if (Context.Settings.ShowExternalDocs)
             {
-                operation.ExternalDocs = new OpenApiExternalDocs()
-                { 
-                    Description = CoreConstants.ExternalDocsDescription, 
-                    Url = externalDocs.Href 
-                };
+                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
+                    Context.Model.GetLinkRecord(NavigationProperty, CustomLinkRel);
+
+                if (externalDocs != null)
+                {
+                    operation.ExternalDocs = new OpenApiExternalDocs()
+                    {
+                        Description = CoreConstants.ExternalDocsDescription,
+                        Url = externalDocs.Href
+                    };
+                }
             }
         }
-            
+
         /// <summary>
         /// Retrieves the CRUD restrictions annotations for the navigation property
         /// in context, given a capability annotation term.
@@ -125,18 +137,52 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <returns>The restriction annotation, or null if not available.</returns>
         protected IRecord GetRestrictionAnnotation(string annotationTerm)
         {
-            return annotationTerm switch
+            switch (annotationTerm)
             {
-                CapabilitiesConstants.ReadRestrictions => Restriction?.ReadRestrictions ??
-                                        Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions),
-                CapabilitiesConstants.UpdateRestrictions => Restriction?.UpdateRestrictions ??
-                                        Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty, CapabilitiesConstants.UpdateRestrictions),
-                CapabilitiesConstants.InsertRestrictions => Restriction?.InsertRestrictions ??
-                                        Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions),
-                CapabilitiesConstants.DeleteRestrictions => Restriction?.DeleteRestrictions ??
-                                        Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions),
-                _ => null,
-            };
+                case CapabilitiesConstants.ReadRestrictions:
+                    var readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+                    readRestrictions?.MergePropertiesIfNull(Restriction?.ReadRestrictions);
+                    readRestrictions ??= Restriction?.ReadRestrictions;
+
+                    var navPropReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions);
+                    readRestrictions?.MergePropertiesIfNull(navPropReadRestrictions);
+                    readRestrictions ??= navPropReadRestrictions;
+
+                    return readRestrictions;
+                case CapabilitiesConstants.UpdateRestrictions:
+                    var updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+                    updateRestrictions?.MergePropertiesIfNull(Restriction?.UpdateRestrictions);
+                    updateRestrictions ??= Restriction?.UpdateRestrictions;
+
+                    var navPropUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty, CapabilitiesConstants.UpdateRestrictions);
+                    updateRestrictions?.MergePropertiesIfNull(navPropUpdateRestrictions);
+                    updateRestrictions ??= navPropUpdateRestrictions;
+
+                    return updateRestrictions;
+                case CapabilitiesConstants.InsertRestrictions:
+                    var insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+                    insertRestrictions?.MergePropertiesIfNull(Restriction?.InsertRestrictions);
+                    insertRestrictions ??= Restriction?.InsertRestrictions;
+
+                    var navPropInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions);
+                    insertRestrictions?.MergePropertiesIfNull(navPropInsertRestrictions);
+                    insertRestrictions ??= navPropInsertRestrictions;
+
+                    return insertRestrictions;
+                case CapabilitiesConstants.DeleteRestrictions:
+                    var deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+                    deleteRestrictions?.MergePropertiesIfNull(Restriction?.DeleteRestrictions);
+                    deleteRestrictions ??= Restriction?.DeleteRestrictions;
+
+                    var navPropDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions);
+                    deleteRestrictions?.MergePropertiesIfNull(navPropDeleteRestrictions);
+                    deleteRestrictions ??= navPropDeleteRestrictions;
+
+                    return deleteRestrictions;
+                default:
+                    return null;
+
+            }
         }
 
         protected IDictionary<string, OpenApiMediaType> GetContent(OpenApiSchema schema = null, IEnumerable<string> mediaTypes = null)

@@ -146,5 +146,39 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // ResponseContentTypes
             ResponseContentTypes = record.GetCollection("ResponseContentTypes");
         }
+
+        /// <summary>
+        /// Merges properties of the specified <see cref="InsertRestrictionsType"/> object into this instance if they are null.
+        /// </summary>
+        /// <param name="source">The <see cref="InsertRestrictionsType"/> object containing properties to merge.</param>
+        public void MergePropertiesIfNull(InsertRestrictionsType source)
+        {
+            if (source == null)
+                return;
+
+            Insertable ??= source.Insertable;
+
+            NonInsertableNavigationProperties ??= source.NonInsertableNavigationProperties;
+
+            MaxLevels ??= source.MaxLevels;
+
+            TypecastSegmentSupported ??= source.TypecastSegmentSupported;
+
+            Permissions ??= source.Permissions;
+
+            QueryOptions ??= source.QueryOptions;
+
+            CustomHeaders ??= source.CustomHeaders;
+
+            CustomQueryOptions ??= source.CustomQueryOptions;
+
+            Description ??= source.Description;
+
+            LongDescription ??= source.LongDescription;
+
+            RequestContentTypes ??= source.RequestContentTypes;
+
+            ResponseContentTypes ??= source.ResponseContentTypes;
+        }
     }
 }

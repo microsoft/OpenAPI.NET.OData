@@ -26,7 +26,10 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     {
         base.Initialize(context, path);
 
-        _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
+        _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+        var complexPropertyReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
+        _readRestrictions?.MergePropertiesIfNull(complexPropertyReadRestrictions);
+        _readRestrictions ??= complexPropertyReadRestrictions;
     }
 
     /// <inheritdoc/>
@@ -54,41 +57,40 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         OpenApiParameter parameter;
         if(ComplexPropertySegment.Property.Type.IsCollection())
         {
-
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
             // and it does not list system query options not allowed for this collection, see terms
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
             // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
             // $top
-            parameter = Context.CreateTop(ComplexPropertySegment.Property);
+            parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $skip
-            parameter = Context.CreateSkip(ComplexPropertySegment.Property);
+            parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $search
-            parameter = Context.CreateSearch(ComplexPropertySegment.Property);
+            parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $filter
-            parameter = Context.CreateFilter(ComplexPropertySegment.Property);
+            parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $count
-            parameter = Context.CreateCount(ComplexPropertySegment.Property);
+            parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -99,7 +101,8 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             // of just providing a comma-separated list of properties can be expressed via an array-valued
             // parameter with an enum constraint
             // $order
-            parameter = Context.CreateOrderBy(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
+            parameter = Context.CreateOrderBy(TargetPath, ComplexPropertySegment.ComplexType) 
+                ?? Context.CreateOrderBy(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -107,14 +110,16 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         }
 
         // $select
-        parameter = Context.CreateSelect(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
+        parameter = Context.CreateSelect(TargetPath, ComplexPropertySegment.ComplexType) 
+            ?? Context.CreateSelect(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
         if (parameter != null)
         {
             operation.Parameters.Add(parameter);
         }
 
         // $expand
-        parameter = Context.CreateExpand(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
+        parameter = Context.CreateExpand(TargetPath, ComplexPropertySegment.ComplexType) 
+            ?? Context.CreateExpand(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
         if (parameter != null)
         {
             operation.Parameters.Add(parameter);

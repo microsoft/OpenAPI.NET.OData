@@ -71,6 +71,36 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         }
 
         [Fact]
+        public void CreateNavigationGetOperationWithTargetPathAnnotationsAndNavigationPropertyAnnotationsReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new(model, new OpenApiConvertSettings());
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Friends");
+            ODataPath path = new(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType()), new ODataNavigationPropertySegment(navProperty));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("List friends", operation.Summary);
+            Assert.Equal("List the friends of a specific person", operation.Description);
+         
+            Assert.NotNull(operation.ExternalDocs);
+            Assert.Equal("Find more info here", operation.ExternalDocs.Description);
+            Assert.Equal("https://learn.microsoft.com/graph/api/person-list-friends?view=graph-rest-1.0", operation.ExternalDocs.Url.ToString());
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(10, operation.Parameters.Count);
+            Assert.Contains(operation.Parameters, x => x.Name == "ConsistencyLevel");
+        }
+
+        [Fact]
         public void CreateNavigationGetOperationViaComposableFunctionReturnsCorrectOperation()
         {
             // Arrange

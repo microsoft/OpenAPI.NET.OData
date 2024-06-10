@@ -26,8 +26,12 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetBasicInfo(operation);
 
+            InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+            InsertRestrictionsType operationReadRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EdmOperation, CapabilitiesConstants.InsertRestrictions);
+            insertRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
+            insertRestrictions ??= operationReadRestrictions;
+
             // Description
-            var insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EdmOperation, CapabilitiesConstants.InsertRestrictions);
             if (!string.IsNullOrWhiteSpace(insertRestrictions?.LongDescription))
             {
                 operation.Description = insertRestrictions.LongDescription;
