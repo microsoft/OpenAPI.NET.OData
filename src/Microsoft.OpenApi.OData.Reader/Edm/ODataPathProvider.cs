@@ -245,6 +245,7 @@ namespace Microsoft.OpenApi.OData.Edm
             IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
             IEdmEntityType entityType = navigationSource.EntityType();
             CountRestrictionsType count = null;
+            bool? indexableByKey = false;
 
             // for entity set, create a path with key and a $count path
             if (entitySet != null)
@@ -258,12 +259,17 @@ namespace Microsoft.OpenApi.OData.Edm
                 CreateTypeCastPaths(path, convertSettings, entityType, entitySet, true); // ~/entitySet/subType
 
                 if (convertSettings.AddAlternateKeyPaths)
-                    CreateAlternateKeyPath(path, entityType); //~/entitySet/{alternateKeyId}
+                    CreateAlternateKeyPath(path, entityType); //~/entitySet/{alternateKeyId}                               
 
-                path.Push(new ODataKeySegment(entityType)); // ~/entitySet/{id}
-                AppendPath(path.Clone());
+                indexableByKey = _model.GetBoolean(targetPath, CapabilitiesConstants.IndexableByKey)
+                    ?? _model.GetBoolean(entitySet, CapabilitiesConstants.IndexableByKey);
 
-                CreateTypeCastPaths(path, convertSettings, entityType, entitySet, false); // ~/entitySet/{id}/subType
+                if (indexableByKey ?? true)
+                {
+                    path.Push(new ODataKeySegment(entityType)); // ~/entitySet/{id}
+                    AppendPath(path.Clone());
+                    CreateTypeCastPaths(path, convertSettings, entityType, entitySet, false); // ~/entitySet/{id}/subType
+                }
             }
             else if (navigationSource is IEdmSingleton singleton)
             { // ~/singleton/subType
@@ -285,7 +291,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
-            if (entitySet != null)
+            if (entitySet != null && (indexableByKey ?? true))
             {
                 path.Pop(); // end of entity
             }
