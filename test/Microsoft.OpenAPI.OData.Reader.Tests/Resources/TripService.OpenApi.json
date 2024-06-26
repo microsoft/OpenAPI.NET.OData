@@ -590,7 +590,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1039,7 +1039,7 @@
         "tags": [
           "Airports.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Airports.EmergencyAuthority.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -1055,7 +1055,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1145,7 +1152,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1204,7 +1211,7 @@
         "tags": [
           "Airports.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Airports.EmergencyAuthority.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -1220,7 +1227,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1782,11 +1796,18 @@
         "tags": [
           "Me.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.ListAddressInfo.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -2237,11 +2258,18 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -2325,7 +2353,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2386,11 +2414,18 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -2445,7 +2480,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2507,7 +2542,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3029,7 +3064,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -3045,7 +3080,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3149,7 +3191,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3222,7 +3264,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -3238,7 +3280,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3317,7 +3366,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3403,7 +3452,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4074,7 +4123,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4135,11 +4184,18 @@
         "tags": [
           "Me.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.GetHomeAddress.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -4194,7 +4250,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4439,11 +4495,18 @@
         "tags": [
           "Me.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.ListAddressInfo.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -4922,11 +4985,18 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5024,7 +5094,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5085,11 +5155,18 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5144,7 +5221,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5680,7 +5757,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -5696,7 +5773,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5814,7 +5898,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5887,7 +5971,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -5903,7 +5987,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5982,7 +6073,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6508,7 +6599,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6569,11 +6660,18 @@
         "tags": [
           "Me.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.GetHomeAddress.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6984,7 +7082,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.Peers.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -7000,7 +7098,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -7118,7 +7223,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7191,7 +7296,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.Peers.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -7207,7 +7312,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -8587,7 +8699,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8832,11 +8944,18 @@
         "tags": [
           "Me.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.ListAddressInfo.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9315,11 +9434,18 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9417,7 +9543,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9478,11 +9604,18 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9537,7 +9670,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10054,7 +10187,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.DirectReports.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -10070,7 +10203,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -10188,7 +10328,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10261,7 +10401,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.DirectReports.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -10277,7 +10417,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -10984,7 +11131,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -11000,7 +11147,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -11104,7 +11258,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11177,7 +11331,7 @@
         "tags": [
           "Me.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -11193,7 +11347,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -11272,7 +11433,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11798,7 +11959,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11859,11 +12020,18 @@
         "tags": [
           "Me.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "Me.GetHomeAddress.AsEventLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -14354,7 +14522,7 @@
         "tags": [
           "NewComePeople.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "NewComePeople.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -14370,7 +14538,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -14939,7 +15114,7 @@
         "tags": [
           "NewComePeople.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "NewComePeople.BestFriend.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -14955,7 +15130,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -15073,7 +15255,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15146,7 +15328,7 @@
         "tags": [
           "NewComePeople.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "NewComePeople.BestFriend.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -15162,7 +15344,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -15227,7 +15416,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15299,7 +15488,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15883,7 +16072,7 @@
         "tags": [
           "NewComePeople.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "NewComePeople.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -15909,7 +16098,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -16033,7 +16229,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16102,7 +16298,7 @@
         "tags": [
           "NewComePeople.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "NewComePeople.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -16128,7 +16324,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -16210,7 +16413,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16299,7 +16502,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17008,7 +17211,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17067,7 +17270,7 @@
         "tags": [
           "NewComePeople.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "NewComePeople.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -17083,7 +17286,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -19005,7 +19215,7 @@
         "tags": [
           "People.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -19021,7 +19231,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -19580,7 +19797,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -19596,7 +19813,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -19700,7 +19924,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19773,7 +19997,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -19789,7 +20013,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -19854,7 +20085,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19931,7 +20162,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -20556,7 +20787,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -20582,7 +20813,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -20706,7 +20944,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -20789,7 +21027,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -20815,7 +21053,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -20904,7 +21149,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21000,7 +21245,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21808,7 +22053,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21881,7 +22126,7 @@
         "tags": [
           "People.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -21897,7 +22142,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -21976,7 +22228,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22263,7 +22515,7 @@
         "tags": [
           "People.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -22279,7 +22531,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -22866,7 +23125,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -22882,7 +23141,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -23000,7 +23266,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23073,7 +23339,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -23089,7 +23355,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -23154,7 +23427,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23784,7 +24057,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -23810,7 +24083,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -23948,7 +24228,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24031,7 +24311,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -24057,7 +24337,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -24146,7 +24433,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24774,7 +25061,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24847,7 +25134,7 @@
         "tags": [
           "People.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -24863,7 +25150,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -25334,7 +25628,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.Peers.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -25360,7 +25654,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -25498,7 +25799,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -25581,7 +25882,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.Peers.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -25607,7 +25908,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -27249,7 +27557,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -27536,7 +27844,7 @@
         "tags": [
           "People.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -27552,7 +27860,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -28139,7 +28454,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -28155,7 +28470,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -28273,7 +28595,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -28346,7 +28668,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -28362,7 +28684,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -28427,7 +28756,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -29038,7 +29367,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.DirectReports.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -29064,7 +29393,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -29202,7 +29538,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -29285,7 +29621,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.DirectReports.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -29311,7 +29647,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -30150,7 +30493,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
         "parameters": [
           {
@@ -30176,7 +30519,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -30300,7 +30650,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -30383,7 +30733,7 @@
         "tags": [
           "People.Person.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -30409,7 +30759,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -30498,7 +30855,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -31126,7 +31483,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Result entities",
+            "description": "Entity result.",
             "content": {
               "application/json": {
                 "schema": {
@@ -31199,7 +31556,7 @@
         "tags": [
           "People.Location"
         ],
-        "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection",
+        "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
         "operationId": "People.GetHomeAddress.AsEventLocation",
         "parameters": [
           {
@@ -31215,7 +31572,14 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse"
+            "description": "Entity result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                }
+              }
+            }
           },
           "default": {
             "$ref": "#/components/responses/error"

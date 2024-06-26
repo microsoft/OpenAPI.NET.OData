@@ -387,7 +387,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -679,7 +679,7 @@ paths:
     get:
       tags:
         - Airports.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Airports.EmergencyAuthority.ListAddressInfo.AsEventLocation
       parameters:
         - name: IcaoCode
@@ -691,7 +691,11 @@ paths:
           x-ms-docs-key-type: Airport
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
   '/Airports/{IcaoCode}/Location/EmergencyAuthority/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
@@ -750,7 +754,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -787,7 +791,7 @@ paths:
     get:
       tags:
         - Airports.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Airports.EmergencyAuthority.GetHomeAddress.AsEventLocation
       parameters:
         - name: IcaoCode
@@ -799,7 +803,11 @@ paths:
           x-ms-docs-key-type: Airport
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
   '/Airports/{IcaoCode}/Location/EmergencyAuthority/Photo':
@@ -1158,11 +1166,15 @@ paths:
     get:
       tags:
         - Me.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.ListAddressInfo.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1468,11 +1480,15 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.BestFriend.ListAddressInfo.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1529,7 +1545,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -1570,11 +1586,15 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.BestFriend.GetHomeAddress.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1613,7 +1633,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -1656,7 +1676,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -2005,7 +2025,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.Friends.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -2017,7 +2037,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2088,7 +2112,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -2137,7 +2161,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.Friends.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -2149,7 +2173,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2204,7 +2232,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -2263,7 +2291,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -2706,7 +2734,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -2747,11 +2775,15 @@ paths:
     get:
       tags:
         - Me.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.GetHomeAddress.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2790,7 +2822,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -2950,11 +2982,15 @@ paths:
     get:
       tags:
         - Me.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.ListAddressInfo.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3278,11 +3314,15 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.BestFriend.ListAddressInfo.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3348,7 +3388,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -3389,11 +3429,15 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.BestFriend.GetHomeAddress.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3432,7 +3476,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -3790,7 +3834,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.Friends.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -3802,7 +3846,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3882,7 +3930,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -3931,7 +3979,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.Friends.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -3943,7 +3991,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3998,7 +4050,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -4348,7 +4400,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -4389,11 +4441,15 @@ paths:
     get:
       tags:
         - Me.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.GetHomeAddress.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -4665,7 +4721,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.Peers.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -4677,7 +4733,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -4757,7 +4817,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -4806,7 +4866,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.Peers.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -4818,7 +4878,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -5760,7 +5824,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -5920,11 +5984,15 @@ paths:
     get:
       tags:
         - Me.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.ListAddressInfo.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -6248,11 +6316,15 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.BestFriend.ListAddressInfo.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -6318,7 +6390,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -6359,11 +6431,15 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.BestFriend.GetHomeAddress.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -6402,7 +6478,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -6747,7 +6823,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.DirectReports.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -6759,7 +6835,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -6839,7 +6919,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -6888,7 +6968,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.DirectReports.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -6900,7 +6980,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -7372,7 +7456,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.Friends.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -7384,7 +7468,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -7455,7 +7543,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -7504,7 +7592,7 @@ paths:
     get:
       tags:
         - Me.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.Friends.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -7516,7 +7604,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -7571,7 +7663,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -7921,7 +8013,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -7962,11 +8054,15 @@ paths:
     get:
       tags:
         - Me.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: Me.GetHomeAddress.AsEventLocation
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9654,7 +9750,7 @@ paths:
     get:
       tags:
         - NewComePeople.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: NewComePeople.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -9666,7 +9762,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
@@ -10049,7 +10149,7 @@ paths:
     get:
       tags:
         - NewComePeople.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: NewComePeople.BestFriend.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -10061,7 +10161,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -10141,7 +10245,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -10190,7 +10294,7 @@ paths:
     get:
       tags:
         - NewComePeople.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: NewComePeople.BestFriend.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -10202,7 +10306,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -10248,7 +10356,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -10298,7 +10406,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -10682,7 +10790,7 @@ paths:
     get:
       tags:
         - NewComePeople.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: NewComePeople.Friends.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -10701,7 +10809,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/{UserName1}/AddressInfo/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation/$count':
@@ -10783,7 +10895,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -10827,7 +10939,7 @@ paths:
     get:
       tags:
         - NewComePeople.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: NewComePeople.Friends.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -10846,7 +10958,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
@@ -10902,7 +11018,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -10962,7 +11078,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -11418,7 +11534,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -11455,7 +11571,7 @@ paths:
     get:
       tags:
         - NewComePeople.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: NewComePeople.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -11467,7 +11583,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
@@ -12745,7 +12865,7 @@ paths:
     get:
       tags:
         - People.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -12757,7 +12877,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -13137,7 +13261,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.BestFriend.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -13149,7 +13273,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -13220,7 +13348,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -13269,7 +13397,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.BestFriend.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -13281,7 +13409,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -13327,7 +13459,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -13381,7 +13513,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -13802,7 +13934,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.Friends.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -13821,7 +13953,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -13906,7 +14042,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -13962,7 +14098,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.Friends.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -13981,7 +14117,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -14043,7 +14183,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -14109,7 +14249,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -14649,7 +14789,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -14698,7 +14838,7 @@ paths:
     get:
       tags:
         - People.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -14710,7 +14850,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -14765,7 +14909,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -14954,7 +15098,7 @@ paths:
     get:
       tags:
         - People.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -14966,7 +15110,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -15364,7 +15512,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.BestFriend.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -15376,7 +15524,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -15456,7 +15608,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -15505,7 +15657,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.BestFriend.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -15517,7 +15669,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -15563,7 +15719,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -15986,7 +16142,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.Friends.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -16005,7 +16161,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -16099,7 +16259,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -16155,7 +16315,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.Friends.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -16174,7 +16334,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -16236,7 +16400,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -16657,7 +16821,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -16706,7 +16870,7 @@ paths:
     get:
       tags:
         - People.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -16718,7 +16882,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -17032,7 +17200,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.Peers.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -17051,7 +17219,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -17145,7 +17317,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -17201,7 +17373,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.Peers.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -17220,7 +17392,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -18343,7 +18519,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -18532,7 +18708,7 @@ paths:
     get:
       tags:
         - People.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -18544,7 +18720,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -18942,7 +19122,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.BestFriend.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -18954,7 +19134,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -19034,7 +19218,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -19083,7 +19267,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.BestFriend.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -19095,7 +19279,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -19141,7 +19329,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -19551,7 +19739,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.DirectReports.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -19570,7 +19758,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -19664,7 +19856,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -19720,7 +19912,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.DirectReports.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -19739,7 +19931,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -20303,7 +20499,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.Friends.ListAddressInfo.AsEventLocation
       parameters:
         - name: UserName
@@ -20322,7 +20518,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -20407,7 +20607,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -20463,7 +20663,7 @@ paths:
     get:
       tags:
         - People.Person.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.Friends.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -20482,7 +20682,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -20544,7 +20748,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -20965,7 +21169,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
+          description: Entity result.
           content:
             application/json:
               schema:
@@ -21014,7 +21218,7 @@ paths:
     get:
       tags:
         - People.Location
-      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location collection
+      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
       operationId: People.GetHomeAddress.AsEventLocation
       parameters:
         - name: UserName
@@ -21026,7 +21230,11 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocationCollectionResponse'
+          description: Entity result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
