@@ -21,7 +21,7 @@
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
-		- Fixes OData type cast paths response objects #546
+		- Fixes empty response objects for OData type cast paths. #546
 	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
