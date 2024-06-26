@@ -34,10 +34,13 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
     private bool isKeySegment;
 
+	private bool secondLastSegmentIsComplexProperty;
+
 	private bool IsSingleElement 
 	{
 		get => isKeySegment ||
-				singleton != null ||
+				secondLastSegmentIsComplexProperty ||
+                singleton != null ||
 					(navigationProperty != null &&
 					!navigationProperty.Type.IsCollection() &&
 					entitySet == null);
@@ -62,7 +65,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// reseting the fields as we're reusing the handler
 		singleton = null;
 		isKeySegment = false;
-		restriction = null;
+		secondLastSegmentIsComplexProperty = false;
+        restriction = null;
 		entitySet = null;
 		navigationProperty = null;
 		parentStructuredType = null;
@@ -101,6 +105,10 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			{
 				SetAnnotatableRestrictionFromNavigationSourceSegment(sourceSegment1);
             }
+		}
+		else if (SecondLastSegment is ODataComplexPropertySegment)
+		{
+			secondLastSegmentIsComplexProperty = true;
 		}
 
 		if (path.Last() is ODataTypeCastSegment odataTypeCastSegment)
@@ -187,77 +195,39 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 	/// <inheritdoc/>
 	protected override void SetResponses(OpenApiOperation operation)
-	{
-		if (IsSingleElement)
-			SetSingleResponse(operation);
+    {
+        if (IsSingleElement)
+		{
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    UnresolvedReference = true,
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = TargetSchemaElement.FullName()
+                    }
+                };
+            }
+
+            SetSingleResponse(operation, schema);
+        }
 		else
-			SetCollectionResponse(operation);
+		{
+            SetCollectionResponse(operation, TargetSchemaElement.FullName());
+        }			
 
 		operation.AddErrorResponses(Context.Settings, false);
 
 		base.SetResponses(operation);
-	}
-
-	private void SetCollectionResponse(OpenApiOperation operation)
-	{
-		operation.Responses = new OpenApiResponses
-		{
-			{
-				Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-				new OpenApiResponse
-				{
-					UnresolvedReference = true,
-					Reference = new OpenApiReference()
-					{
-						Type = ReferenceType.Response,
-						Id = $"{TargetSchemaElement.FullName()}{Constants.CollectionSchemaSuffix}"
-					},
-				}
-			}
-		};
-	}
-
-	private void SetSingleResponse(OpenApiOperation operation)
-	{
-		OpenApiSchema schema = null;
-
-		if (Context.Settings.EnableDerivedTypesReferencesForResponses)
-		{
-			schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model);
-		}
-
-		if (schema == null)
-		{
-			schema = new OpenApiSchema
-			{
-				UnresolvedReference = true,
-				Reference = new OpenApiReference
-				{
-					Type = ReferenceType.Schema,
-					Id = TargetSchemaElement.FullName()
-				}
-			};
-		}
-		operation.Responses = new OpenApiResponses
-		{
-			{
-				Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-				new OpenApiResponse
-				{
-					Description = "Result entities",
-					Content = new Dictionary<string, OpenApiMediaType>
-					{
-						{
-							Constants.ApplicationJsonMediaType,
-							new OpenApiMediaType
-							{
-								Schema = schema
-							}
-						}
-					},
-				}
-			}
-		};
 	}
 
 	/// <inheritdoc/>

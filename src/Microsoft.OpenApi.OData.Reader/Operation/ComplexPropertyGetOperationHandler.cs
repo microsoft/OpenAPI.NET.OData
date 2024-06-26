@@ -143,39 +143,13 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        if(ComplexPropertySegment.Property.Type.IsCollection())
-            SetCollectionResponse(operation);
+        if (ComplexPropertySegment.Property.Type.IsCollection())
+        {
+            SetCollectionResponse(operation, ComplexPropertySegment.ComplexType.FullName());
+        }
         else
-            SetSingleResponse(operation);
-        operation.AddErrorResponses(Context.Settings, false);
-
-        base.SetResponses(operation);
-    }
-    private void SetCollectionResponse(OpenApiOperation operation)
-    {
-        operation.Responses = new OpenApiResponses
         {
-            {
-                Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                new OpenApiResponse
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference()
-                    {
-                        Type = ReferenceType.Response,
-                        Id = $"{ComplexPropertySegment.ComplexType.FullName()}{Constants.CollectionSchemaSuffix}"
-                    },
-                }
-            }
-        };
-    }
-    private void SetSingleResponse(OpenApiOperation operation)
-    {
-        OpenApiSchema schema = null;
-
-        if (schema == null)
-        {
-            schema = new OpenApiSchema
+            OpenApiSchema schema = new()
             {
                 UnresolvedReference = true,
                 Reference = new OpenApiReference
@@ -184,28 +158,14 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
                     Id = ComplexPropertySegment.ComplexType.FullName()
                 }
             };
+
+            SetSingleResponse(operation, schema);
         }
-        operation.Responses = new OpenApiResponses
-        {
-            {
-                Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                new OpenApiResponse
-                {
-                    Description = "Result entities",
-                    Content = new Dictionary<string, OpenApiMediaType>
-                    {
-                        {
-                            Constants.ApplicationJsonMediaType,
-                            new OpenApiMediaType
-                            {
-                                Schema = schema
-                            }
-                        }
-                    },
-                }
-            }
-        };
+
+        operation.AddErrorResponses(Context.Settings, false);
+        base.SetResponses(operation);
     }
+   
     protected override void SetSecurity(OpenApiOperation operation)
     {
         if (_readRestrictions?.Permissions == null)
