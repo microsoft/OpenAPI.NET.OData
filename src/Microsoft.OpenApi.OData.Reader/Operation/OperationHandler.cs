@@ -5,8 +5,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.OData.Edm;
-using System.Text;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.Models;
@@ -298,5 +296,78 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
+        internal void SetCollectionResponse(OpenApiOperation operation, string targetElementFullName)
+        {
+            Utils.CheckArgumentNull(operation, nameof(operation));
+            Utils.CheckArgumentNullOrEmpty(targetElementFullName, nameof(targetElementFullName));            
+
+            var schema = new OpenApiSchema
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference()
+                {
+                    Type = ReferenceType.Response,
+                    Id = $"{targetElementFullName}{Constants.CollectionSchemaSuffix}"
+                }
+            };
+
+            operation.Responses = new OpenApiResponses
+            {
+                {
+                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                    new OpenApiResponse
+                    {
+                        Description = "Collection entities result.",
+                        Content = new Dictionary<string, OpenApiMediaType>
+                        {
+                            {
+                                Constants.ApplicationJsonMediaType,
+                                new OpenApiMediaType
+                                {
+                                    Schema = schema
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
+        internal void SetSingleResponse(OpenApiOperation operation, string targetElementFullName)
+        {
+            Utils.CheckArgumentNull(operation, nameof(operation));
+            Utils.CheckArgumentNullOrEmpty(targetElementFullName, nameof(targetElementFullName));
+
+            var schema = new OpenApiSchema
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = targetElementFullName
+                }
+            };
+
+            operation.Responses = new OpenApiResponses
+            {
+                {
+                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                    new OpenApiResponse
+                    {
+                        Description = "Entity result.",
+                        Content = new Dictionary<string, OpenApiMediaType>
+                        {
+                            {
+                                Constants.ApplicationJsonMediaType,
+                                new OpenApiMediaType
+                                {
+                                    Schema = schema
+                                }
+                            }
+                        },
+                    }
+                }
+            };
+        }
     }
 }
