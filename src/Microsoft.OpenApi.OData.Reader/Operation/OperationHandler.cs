@@ -318,21 +318,11 @@ namespace Microsoft.OpenApi.OData.Operation
             };
         }
 
-        internal void SetSingleResponse(OpenApiOperation operation, string targetElementFullName)
+        internal void SetSingleResponse(OpenApiOperation operation, OpenApiSchema schema)
         {
             Utils.CheckArgumentNull(operation, nameof(operation));
-            Utils.CheckArgumentNullOrEmpty(targetElementFullName, nameof(targetElementFullName));
-
-            var schema = new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = targetElementFullName
-                }
-            };
-
+            Utils.CheckArgumentNull(schema, nameof(schema));
+            
             operation.Responses = new OpenApiResponses
             {
                 {

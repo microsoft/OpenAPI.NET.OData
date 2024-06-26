@@ -144,9 +144,23 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     protected override void SetResponses(OpenApiOperation operation)
     {
         if (ComplexPropertySegment.Property.Type.IsCollection())
+        {
             SetCollectionResponse(operation, ComplexPropertySegment.ComplexType.FullName());
+        }
         else
-            SetSingleResponse(operation, ComplexPropertySegment.ComplexType.FullName());
+        {
+            OpenApiSchema schema = new()
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = ComplexPropertySegment.ComplexType.FullName()
+                }
+            };
+
+            SetSingleResponse(operation, schema);
+        }
 
         operation.AddErrorResponses(Context.Settings, false);
         base.SetResponses(operation);

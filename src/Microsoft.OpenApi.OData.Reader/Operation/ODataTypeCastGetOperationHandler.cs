@@ -197,9 +197,33 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	protected override void SetResponses(OpenApiOperation operation)
     {
         if (IsSingleElement)
-			SetSingleResponse(operation, TargetSchemaElement.FullName());
+		{
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    UnresolvedReference = true,
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = TargetSchemaElement.FullName()
+                    }
+                };
+            }
+
+            SetSingleResponse(operation, schema);
+        }
 		else
-			SetCollectionResponse(operation, TargetSchemaElement.FullName());
+		{
+            SetCollectionResponse(operation, TargetSchemaElement.FullName());
+        }			
 
 		operation.AddErrorResponses(Context.Settings, false);
 
