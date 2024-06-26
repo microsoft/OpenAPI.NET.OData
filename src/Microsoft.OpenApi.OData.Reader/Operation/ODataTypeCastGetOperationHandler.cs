@@ -195,8 +195,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 	/// <inheritdoc/>
 	protected override void SetResponses(OpenApiOperation operation)
-	{		
-		if (IsSingleElement)
+    {
+        if (IsSingleElement)
 			SetSingleResponse(operation, TargetSchemaElement.FullName());
 		else
 			SetCollectionResponse(operation, TargetSchemaElement.FullName());
