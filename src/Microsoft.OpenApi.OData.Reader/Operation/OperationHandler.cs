@@ -301,32 +301,17 @@ namespace Microsoft.OpenApi.OData.Operation
             Utils.CheckArgumentNull(operation, nameof(operation));
             Utils.CheckArgumentNullOrEmpty(targetElementFullName, nameof(targetElementFullName));            
 
-            var schema = new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference()
-                {
-                    Type = ReferenceType.Response,
-                    Id = $"{targetElementFullName}{Constants.CollectionSchemaSuffix}"
-                }
-            };
-
             operation.Responses = new OpenApiResponses
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                     new OpenApiResponse
                     {
-                        Description = "Collection entities result.",
-                        Content = new Dictionary<string, OpenApiMediaType>
+                        UnresolvedReference = true,
+                        Reference = new OpenApiReference()
                         {
-                            {
-                                Constants.ApplicationJsonMediaType,
-                                new OpenApiMediaType
-                                {
-                                    Schema = schema
-                                }
-                            }
+                            Type = ReferenceType.Response,
+                            Id = $"{targetElementFullName}{Constants.CollectionSchemaSuffix}"
                         }
                     }
                 }
