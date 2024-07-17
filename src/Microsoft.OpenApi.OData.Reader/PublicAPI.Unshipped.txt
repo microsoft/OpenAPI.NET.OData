@@ -21,6 +21,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.AddEnumFlagsExtension.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddEnumFlagsExtension.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ComposableFunctionsExpansionDepth.get -> int
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ComposableFunctionsExpansionDepth.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.get -> System.Collections.Generic.Dictionary<Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey, string>
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableAliasForOperationSegments.get -> bool
