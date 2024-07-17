@@ -890,9 +890,24 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 foreach (var navProperty in returnBindingEntityType.NavigationProperties())
                 {
-                    ODataPath newNavigationPath = functionPath.Clone();
-                    newNavigationPath.Push(new ODataNavigationPropertySegment(navProperty));
-                    AppendPath(newNavigationPath);
+                    if (convertSettings.ComposableFunctionsExpansionDepth > 0)
+                    { // Generate nav. props of composable functions
+                        ODataSegment secondLastSeg = functionPath.ElementAt(functionPath.Count - 2);
+
+                        if (convertSettings.ComposableFunctionsExpansionDepth < 2 &&
+                            functionPath.LastSegment is ODataOperationSegment &&
+                            secondLastSeg is ODataOperationSegment)
+                        {
+                            // Only one level of composable functions expansion allowed
+                            continue;
+                        }
+                        else
+                        {
+                            ODataPath newNavigationPath = functionPath.Clone();
+                            newNavigationPath.Push(new ODataNavigationPropertySegment(navProperty));
+                            AppendPath(newNavigationPath);
+                        }
+                    }                   
                 }
             }
         }
@@ -1167,6 +1182,12 @@ namespace Microsoft.OpenApi.OData.Edm
                     || edmFunction.ReturnType == null || !edmFunction.ReturnType.Definition.Equals(bindingEntityType)
                     || isCollection
                     || !EdmModelHelper.IsOperationAllowed(_model, edmOperation, operationSegment.Operation, true))
+                {
+                    continue;
+                }
+
+                var segName = path.LastSegment as ODataOperationSegment;
+                if (edmOperation.Name.Equals(segName?.Identifier))
                 {
                     continue;
                 }
