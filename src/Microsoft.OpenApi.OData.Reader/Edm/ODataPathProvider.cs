@@ -888,25 +888,31 @@ namespace Microsoft.OpenApi.OData.Edm
                     continue;
                 }
 
-                foreach (var navProperty in returnBindingEntityType.NavigationProperties())
-                {
-                    if (convertSettings.ComposableFunctionsExpansionDepth > 0)
-                    { // Generate nav. props of composable functions
-                        ODataSegment secondLastSeg = functionPath.ElementAt(functionPath.Count - 2);
-
-                        if (convertSettings.ComposableFunctionsExpansionDepth < 2 &&
+                ODataSegment secondLastSeg = functionPath.ElementAt(functionPath.Count - 2);
+                if (convertSettings.ComposableFunctionsExpansionDepth < 2 &&
                             functionPath.LastSegment is ODataOperationSegment &&
                             secondLastSeg is ODataOperationSegment)
-                        {
-                            // Only one level of composable functions expansion allowed
-                            continue;
-                        }
-                        else
-                        {
-                            ODataPath newNavigationPath = functionPath.Clone();
-                            newNavigationPath.Push(new ODataNavigationPropertySegment(navProperty));
-                            AppendPath(newNavigationPath);
-                        }
+                {
+                    // Only one level of composable functions expansion allowed
+                    continue;
+                }
+
+                foreach (var navProperty in returnBindingEntityType.NavigationProperties())
+                {
+                    /* Get number of segments already appended after the first composable function segment
+                     */
+                    int composableFuncSegIndex = functionPath.Segments.IndexOf(
+                        functionPath.Segments.FirstOrDefault(
+                            x => x is ODataOperationSegment operationSegment &&
+                            operationSegment.Operation is IEdmFunction edmFunction &&
+                            edmFunction.IsComposable));                   
+                    int currentDepth = functionPath.Count - composableFuncSegIndex - 1;
+
+                    if (currentDepth < convertSettings.ComposableFunctionsExpansionDepth)
+                    {
+                        ODataPath newNavigationPath = functionPath.Clone();
+                        newNavigationPath.Push(new ODataNavigationPropertySegment(navProperty));
+                        AppendPath(newNavigationPath);
                     }                   
                 }
             }
