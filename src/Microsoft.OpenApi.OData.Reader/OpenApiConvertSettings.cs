@@ -362,6 +362,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool UseStringArrayForQueryOptionsSchema { get; set; } = true;
 
+        /// <summary>
+        /// Gets/Sets a value indicating the depth to expand composable functions.
+        /// </summary>
+        public int ComposableFunctionsExpansionDepth { get; set; } = 1;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -416,7 +421,8 @@ namespace Microsoft.OpenApi.OData
                 EnableAliasForTypeCastSegments = this.EnableAliasForTypeCastSegments,
                 SemVerVersion = this.SemVerVersion,
                 EnableAliasForOperationSegments = this.EnableAliasForOperationSegments,
-                UseStringArrayForQueryOptionsSchema = this.UseStringArrayForQueryOptionsSchema
+                UseStringArrayForQueryOptionsSchema = this.UseStringArrayForQueryOptionsSchema,
+                ComposableFunctionsExpansionDepth = this.ComposableFunctionsExpansionDepth
             };
 
             return newSettings;

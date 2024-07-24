@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(16980, paths.Count());
+            Assert.Equal(15210, paths.Count());
             AssertGraphBetaModelPaths(paths);
         }
 
@@ -117,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17631, paths.Count());
+            Assert.Equal(15861, paths.Count());
         }
                 
         [Theory]
@@ -208,9 +208,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(38, paths.Count());
-            Assert.Equal(20, paths.Where(p => p.LastSegment is ODataOperationSegment).Count());
-            Assert.Equal(12, paths.Where(p => p.Segments.Count > 1 && p.LastSegment is ODataNavigationPropertySegment && p.Segments[p.Segments.Count - 2] is ODataOperationSegment).Count());
+            Assert.Equal(26, paths.Count());
+            Assert.Equal(17, paths.Where(p => p.LastSegment is ODataOperationSegment).Count());
+            Assert.Equal(3, paths.Where(p => p.Segments.Count > 1 && p.LastSegment is ODataNavigationPropertySegment && p.Segments[p.Segments.Count - 2] is ODataOperationSegment).Count());
         }
 
         [Fact]
