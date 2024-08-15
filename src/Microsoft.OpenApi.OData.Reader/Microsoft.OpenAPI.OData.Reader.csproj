@@ -12,7 +12,7 @@
     <Company>Microsoft</Company>
     <Title>Microsoft Open API OData Reader</Title>
     <RootNamespace>Microsoft.OpenApi.OData</RootNamespace>
-    <TargetFrameworks>net8</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
     <Version>2.0.0</Version>
@@ -23,6 +23,7 @@
     <PackageReleaseNotes>
 		- Upgraded to Microsoft.Odata.Edm 8.0.0
     - Cleaned up obsolete APIs
+    - Changed target framework to net8.0
 	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
