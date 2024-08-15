@@ -22,6 +22,7 @@ using System.Net.Http;
 
 namespace OoasGui
 {
+    [System.Runtime.Versioning.SupportedOSPlatform("windows")]
     public partial class MainForm : Form
     {
         private OpenApiFormat Format { get; set; } = OpenApiFormat.Json;
