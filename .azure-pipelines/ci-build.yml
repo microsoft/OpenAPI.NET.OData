@@ -91,7 +91,7 @@ extends:
               AuthAKVName: 'akv-prod-eastus'
               AuthCertName: 'ReferenceLibraryPrivateCert'
               AuthSignCertName: 'ReferencePackagePublisherCertificate'              
-              Pattern: '*.dll'
+              Pattern: '*.dll, *.exe'
               UseMinimatch: true
               signConfigType: inlineSignParams
               inlineOperation: |
