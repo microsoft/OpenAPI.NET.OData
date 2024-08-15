@@ -63,7 +63,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("me");
             Assert.NotNull(entitySet); // guard
             Assert.NotNull(singleton);
-            IEdmEntityType entityType = entitySet.EntityType();
+            IEdmEntityType entityType = entitySet.EntityType;
 
             IEdmStructuralProperty sp = entityType.DeclaredStructuralProperties().First(c => c.Name == "Logo");
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
@@ -217,7 +217,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Todos");
             Assert.NotNull(entitySet); // guard
-            IEdmEntityType entityType = entitySet.EntityType();
+            IEdmEntityType entityType = entitySet.EntityType;
 
             IEdmStructuralProperty sp = entityType.DeclaredStructuralProperties().First(c => c.Name == "Logo");
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
@@ -244,7 +244,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("me");
             Assert.NotNull(entitySet); // guard
             Assert.NotNull(singleton);
-            IEdmEntityType entityType = entitySet.EntityType();
+            IEdmEntityType entityType = entitySet.EntityType;
 
             IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
             IEdmNavigationProperty navProperty = user.DeclaredNavigationProperties().First(c => c.Name == "photo");

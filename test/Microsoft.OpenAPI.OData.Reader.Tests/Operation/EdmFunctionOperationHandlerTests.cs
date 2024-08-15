@@ -32,7 +32,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "GetFriendsTrips");
           Assert.NotNull(function);
 
-          ODataPath path = new(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType()), new ODataOperationSegment(function));
+          ODataPath path = new(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType), new ODataOperationSegment(function));
 
           // Act
           var operation = _operationHandler.CreateOperation(context, path);
@@ -57,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "GetFavoriteAirline");
           Assert.NotNull(function);
 
-          ODataPath path = new(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType()), new ODataOperationSegment(function));
+          ODataPath path = new(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType), new ODataOperationSegment(function));
 
           // Act
           var operation = _operationHandler.CreateOperation(context, path);
@@ -90,7 +90,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "GetFavoriteAirline");
             Assert.NotNull(function);
 
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType()), new ODataOperationSegment(function));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType), new ODataOperationSegment(function));
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
@@ -127,7 +127,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == functionName);
             Assert.NotNull(function);
 
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataOperationSegment(function));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType), new ODataOperationSegment(function));
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);

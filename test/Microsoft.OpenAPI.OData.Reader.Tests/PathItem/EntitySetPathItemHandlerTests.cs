@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model);
             var entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+            var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType));
             Assert.Equal(ODataPathKind.Entity, path.Kind); // guard
 
             // Act

@@ -63,7 +63,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType));
 
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);
@@ -92,7 +92,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model, convertSettings);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType));
 
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);
@@ -127,7 +127,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType));
 
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);
@@ -241,7 +241,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType));
 
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);
@@ -271,7 +271,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             };
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            ODataPath path = new(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+            ODataPath path = new(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType));
 
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);

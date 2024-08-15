@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             IEdmAction action = model.SchemaElements.OfType<IEdmAction>().First(f => f.Name == "ShareTrip");
             Assert.NotNull(action);
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType()), new ODataOperationSegment(action));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType), new ODataOperationSegment(action));
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
@@ -69,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             IEdmAction action = model.SchemaElements.OfType<IEdmAction>().First(f => f.Name == actionName);
             Assert.NotNull(action);
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataOperationSegment(action));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType), new ODataOperationSegment(action));
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);

@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 EnableOperationId = enableOperationId
             };
             ODataContext context = new ODataContext(model, settings);
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType));
 
             // Act
             var delete = _operationHandler.CreateOperation(context, path);
@@ -127,7 +127,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             ODataContext context = new ODataContext(model);
             IEdmEntitySet customers = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(customers); // guard
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(customers), new ODataKeySegment(customers.EntityType()));
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(customers), new ODataKeySegment(customers.EntityType));
 
             // Act
             var delete = _operationHandler.CreateOperation(context, path);

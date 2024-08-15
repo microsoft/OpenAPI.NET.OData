@@ -36,7 +36,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
             IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "BestFriend");
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(people),
-                new ODataKeySegment(people.EntityType()),
+                new ODataKeySegment(people.EntityType),
                 new ODataNavigationPropertySegment(navProperty),
                 ODataRefSegment.Instance);
 
