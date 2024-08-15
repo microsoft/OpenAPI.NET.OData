@@ -149,7 +149,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
             base.SetBasicInfo(pathItem);
-            pathItem.Description = $"Provides operations to manage the collection of {NavigationSource?.EntityType().Name ?? NavigationProperty?.Type.ShortQualifiedName()} entities.";
+            pathItem.Description = $"Provides operations to manage the collection of {NavigationSource?.EntityType.Name ?? NavigationProperty?.Type.ShortQualifiedName()} entities.";
         }
     }
 }

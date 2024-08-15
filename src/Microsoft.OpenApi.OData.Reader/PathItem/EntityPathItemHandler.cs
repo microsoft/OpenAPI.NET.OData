@@ -64,7 +64,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetExtensions(OpenApiPathItem pathItem)
         {
             base.SetExtensions(pathItem);
-            pathItem.Extensions.AddCustomAttributesToExtensions(Context, EntitySet.EntityType());
+            pathItem.Extensions.AddCustomAttributesToExtensions(Context, EntitySet.EntityType);
         }
     }
 }

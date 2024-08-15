@@ -102,7 +102,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             string TagNameFromNavigationSourceSegment(ODataNavigationSourceSegment sourceSegment)
             {
-                return $"{sourceSegment.NavigationSource.Name}.{sourceSegment.NavigationSource.EntityType().Name}";
+                return $"{sourceSegment.NavigationSource.Name}.{sourceSegment.NavigationSource.EntityType.Name}";
             }
 
             string TagNameFromNavigationPropertySegment()

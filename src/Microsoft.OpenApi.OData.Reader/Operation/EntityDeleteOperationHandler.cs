@@ -38,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            IEdmEntityType entityType = EntitySet.EntityType();
+            IEdmEntityType entityType = EntitySet.EntityType;
             ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
 
             // Description

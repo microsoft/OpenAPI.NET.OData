@@ -261,9 +261,9 @@ namespace Microsoft.OpenApi.OData.Common
                 case ODataNavigationPropertySegment navPropSegment:
                     return navPropSegment.EntityType;
                 case ODataNavigationSourceSegment navSourceSegment when navSourceSegment.NavigationSource is IEdmEntitySet entitySet:
-                    return entitySet.EntityType();
+                    return entitySet.EntityType;
                 case ODataNavigationSourceSegment navSourceSegment when navSourceSegment.NavigationSource is IEdmSingleton singleton:
-                    return singleton.EntityType();
+                    return singleton.EntityType;
                 case ODataKeySegment keySegment:
                     return keySegment.EntityType;
                 case ODataOperationSegment:

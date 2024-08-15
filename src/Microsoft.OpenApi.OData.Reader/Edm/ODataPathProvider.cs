@@ -243,7 +243,7 @@ namespace Microsoft.OpenApi.OData.Edm
             AppendPath(path.Clone());
 
             IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
-            IEdmEntityType entityType = navigationSource.EntityType();
+            IEdmEntityType entityType = navigationSource.EntityType;
             CountRestrictionsType count = null;
             bool? indexableByKey = false;
 
@@ -923,14 +923,14 @@ namespace Microsoft.OpenApi.OData.Edm
             var firstEntityType = bindingType.AsEntity().EntityDefinition();
 
             bool filter(IEdmNavigationSource z) =>
-                z.EntityType() != firstEntityType &&
-                z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
+                z.EntityType != firstEntityType &&
+                z.EntityType.FindAllBaseTypes().Contains(firstEntityType);
 
             return new IEdmEntityType[] { firstEntityType }
                     .Union(_model.EntityContainer.EntitySets()
-                            .Where(filter).Select(x => x.EntityType())) //Search all EntitySets
+                            .Where(filter).Select(x => x.EntityType)) //Search all EntitySets
                     .Union(_model.EntityContainer.Singletons()
-                            .Where(filter).Select(x => x.EntityType())) //Search all singletons
+                            .Where(filter).Select(x => x.EntityType)) //Search all singletons
                     .Distinct()
                     .ToList();
         }
@@ -1082,7 +1082,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             }
                             else
                             {
-                                ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataKeySegment(ns.EntityType()),
+                                ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataKeySegment(ns.EntityType),
                                     new ODataTypeCastSegment(bindingEntityType , _model),
                                     new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
                                 AppendPath(newPath);

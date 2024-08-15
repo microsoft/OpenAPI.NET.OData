@@ -387,8 +387,8 @@ namespace Microsoft.OpenApi.OData.Common
             else if (secondLastSegment is ODataNavigationSourceSegment)
             {
                 operationId = (entitySet != null)
-                    ? entitySet.Name + "." + entitySet.EntityType().Name + $".{(includeListOrGetPrefix ? "List" : null)}" + Utils.UpperFirstChar(entitySet.EntityType().Name)
-                    : singleton.Name + "." + singleton.EntityType().Name + $".{(includeListOrGetPrefix ? "Get" : null)}" + Utils.UpperFirstChar(singleton.EntityType().Name);
+                    ? entitySet.Name + "." + entitySet.EntityType.Name + $".{(includeListOrGetPrefix ? "List" : null)}" + Utils.UpperFirstChar(entitySet.EntityType.Name)
+                    : singleton.Name + "." + singleton.EntityType.Name + $".{(includeListOrGetPrefix ? "Get" : null)}" + Utils.UpperFirstChar(singleton.EntityType.Name);
             }
 
             return operationId;

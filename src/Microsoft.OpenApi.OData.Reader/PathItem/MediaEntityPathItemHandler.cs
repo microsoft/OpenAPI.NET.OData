@@ -82,7 +82,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
             base.SetBasicInfo(pathItem);
-            pathItem.Description = $"Provides operations to manage the media for the {(EntitySet?.EntityType() ?? Singleton?.EntityType()).Name} entity.";
+            pathItem.Description = $"Provides operations to manage the media for the {(EntitySet?.EntityType ?? Singleton?.EntityType).Name} entity.";
         }
     }
 }

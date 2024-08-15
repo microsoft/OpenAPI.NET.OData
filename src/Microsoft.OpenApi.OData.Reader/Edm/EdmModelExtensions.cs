@@ -80,10 +80,10 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 Action<IEdmNavigationSource, IDictionary<IEdmEntityType, IList<IEdmNavigationSource>>> action = (ns, dic) =>
                 {
-                    if (!dic.TryGetValue(ns.EntityType(), out IList<IEdmNavigationSource> value))
+                    if (!dic.TryGetValue(ns.EntityType, out IList<IEdmNavigationSource> value))
                     {
                         value = new List<IEdmNavigationSource>();
-                        dic[ns.EntityType()] = value;
+                        dic[ns.EntityType] = value;
                     }
 
                     value.Add(ns);
@@ -178,8 +178,8 @@ namespace Microsoft.OpenApi.OData.Edm
             
             IEdmTypeReference bindingParameterType = operation.Parameters.First().Type;
 
-            return model.EntityContainer.EntitySets().Select(static x => x.EntityType())
-                .Concat(model.EntityContainer.Singletons().Select(static x => x.EntityType()))
+            return model.EntityContainer.EntitySets().Select(static x => x.EntityType)
+                .Concat(model.EntityContainer.Singletons().Select(static x => x.EntityType))
                 .Where(x => x.FullName().Equals(bindingParameterType.FullName(), StringComparison.OrdinalIgnoreCase)).Count() > 1;
         }
 
