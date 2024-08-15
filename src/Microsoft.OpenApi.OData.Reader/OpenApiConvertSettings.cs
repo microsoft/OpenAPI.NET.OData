@@ -25,19 +25,6 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Get/set the metadata version.
         /// </summary>
-        [Obsolete("Use SemVerVersion to Get or Set the metadata version.")]
-        public Version Version 
-        { 
-            get => Version.TryParse(SemVerVersion, out var version) ? version : null; 
-            set 
-            {
-                SemVerVersion = value?.ToString() ?? "1.0.1";
-            }
-        }
-
-        /// <summary>
-        /// Get/set the metadata version.
-        /// </summary>
         public string SemVerVersion { get; set; } = "1.0.0";
 
         /// <summary>
@@ -117,12 +104,6 @@ namespace Microsoft.OpenApi.OData
         /// Gets/sets a value indicating whether or not to allow the count of a collection of entities.
         /// </summary>
         public bool EnableCount { get; set; }
-
-        /// <summary>
-        /// Gets/sets a value indicating whether or not to reference @odata.nextLink and @odata.count in responses
-        /// </summary>
-        [Obsolete("Deprecated in favor of EnableODataAnnotationReferencesForResponses.")]
-        public bool RefBaseCollectionPaginationCountResponse { get { return EnableODataAnnotationReferencesForResponses; } }
 
         /// <summary>
         /// Gets/sets a value indicating whether or not to reference @odata.nextLink, @odata.deltaLink and @odata.count in responses
@@ -243,16 +224,6 @@ namespace Microsoft.OpenApi.OData
         /// Gets/sets a value indicating whether or not to require a derived types constraint to include the OData type cast segments.
         /// </summary>
         public bool RequireDerivedTypesConstraintForODataTypeCastSegments { get; set; } = true;
-
-        /// <summary>
-        /// Gets/Sets a value indicating whether or not to expand derived types to retrieve their declared navigation properties.
-        /// </summary>
-        [Obsolete("Use GenerateDerivedTypesProperties to Get or Set the value.")]
-        public bool ExpandDerivedTypesNavigationProperties
-        {
-            get => GenerateDerivedTypesProperties;
-            set => GenerateDerivedTypesProperties = value;
-        }
 
         /// <summary>
         /// Gets/Sets a value indicating whether or not to retrieve complex or navigation properties declared in derived types.

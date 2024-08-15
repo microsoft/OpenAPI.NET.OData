@@ -128,11 +128,6 @@ namespace Microsoft.OpenApi.OData.Edm
         public abstract string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters);
 
         /// <summary>
-        /// Provides any deprecation information for the segment.
-        /// </summary>
-        [Obsolete("This property never returned any value or was used by the library.")]
-        public Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension Deprecation { get; set; }
-        /// <summary>
         /// Returns the list of <see cref="IEdmVocabularyAnnotatable"/> this segment refers to.
         /// </summary>
         public abstract IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables();

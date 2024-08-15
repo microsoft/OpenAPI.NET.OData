@@ -247,11 +247,10 @@ namespace Microsoft.OpenApi.OData.Tests
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
 
-#pragma warning disable CS0618 // Type or member is obsolete
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = true,
-                Version = new Version(1, 2, 3), // test that the obsolete property still works
+                SemVerVersion = "1.2.3",
                 ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
                 IEEE754Compatible = true,
                 OpenApiSpecVersion = specVersion,
@@ -260,7 +259,6 @@ namespace Microsoft.OpenApi.OData.Tests
                 AppendBoundOperationsOnDerivedTypeCastSegments = true,
                 IncludeAssemblyInfo = false
             };
-#pragma warning restore CS0618 // Type or member is obsolete
 
             // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, settings);
