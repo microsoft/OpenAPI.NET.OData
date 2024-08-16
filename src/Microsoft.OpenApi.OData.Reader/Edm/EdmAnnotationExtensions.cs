@@ -57,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
                         if (navigationSource != null)
                         {
-                            IEdmEntityType entityType = navigationSource.EntityType();
+                            IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetBoolean(entityType, term);
                         }
                     }
@@ -109,7 +109,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
                         if (navigationSource != null)
                         {
-                            IEdmEntityType entityType = navigationSource.EntityType();
+                            IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetString(entityType, term);
                         }
                     }
@@ -165,7 +165,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
                         if (navigationSource != null)
                         {
-                            IEdmEntityType entityType = navigationSource.EntityType();
+                            IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetRecord<T>(entityType, term);
                         }
                     }
@@ -226,7 +226,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
                         if (navigationSource != null)
                         {
-                            IEdmEntityType entityType = navigationSource.EntityType();
+                            IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetCollection(entityType, term);
                         }
                     }
@@ -282,7 +282,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
                         if (navigationSource != null)
                         {
-                            IEdmEntityType entityType = navigationSource.EntityType();
+                            IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetCollection<T>(entityType, term);
                         }
                     }

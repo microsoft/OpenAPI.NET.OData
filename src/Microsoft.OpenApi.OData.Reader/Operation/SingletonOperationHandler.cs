@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // For example: "Me.User"
             OpenApiTag tag = new OpenApiTag
             {
-                Name = Singleton.Name + "." + Singleton.EntityType().Name,
+                Name = Singleton.Name + "." + Singleton.EntityType.Name,
             };
 
             // Use an extension for TOC (Table of Content)

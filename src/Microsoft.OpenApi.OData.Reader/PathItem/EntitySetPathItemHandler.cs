@@ -59,7 +59,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
             base.SetBasicInfo(pathItem);
-            pathItem.Description = $"Provides operations to manage the collection of {EntitySet.EntityType().Name} entities.";
+            pathItem.Description = $"Provides operations to manage the collection of {EntitySet.EntityType.Name} entities.";
         }
 
         /// <inheritdoc/>

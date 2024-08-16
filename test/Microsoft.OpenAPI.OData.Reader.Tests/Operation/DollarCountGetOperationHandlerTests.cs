@@ -37,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
             IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Trips");
             ODataPath path = new(new ODataNavigationSourceSegment(people),
-                new ODataKeySegment(people.EntityType()),
+                new ODataKeySegment(people.EntityType),
                 new ODataNavigationPropertySegment(navProperty),
                 new ODataDollarCountSegment());
 
@@ -81,7 +81,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
             IEdmNavigationProperty navProperty = user.DeclaredNavigationProperties().First(c => c.Name == "appRoleAssignments");
             ODataPath path = new(new ODataNavigationSourceSegment(users),
-                new ODataKeySegment(users.EntityType()),
+                new ODataKeySegment(users.EntityType),
                 new ODataNavigationPropertySegment(navProperty),
                 new ODataDollarCountSegment());
 

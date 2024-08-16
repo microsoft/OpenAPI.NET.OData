@@ -38,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiTag tag = new OpenApiTag
             {
-                Name = EntitySet.Name + "." + EntitySet.EntityType().Name,
+                Name = EntitySet.Name + "." + EntitySet.EntityType.Name,
             };
 
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));

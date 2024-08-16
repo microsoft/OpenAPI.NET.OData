@@ -186,7 +186,7 @@ namespace Microsoft.OpenApi.OData.Generator
             var collectionEntityTypes = new HashSet<IEdmStructuredType>(
                                                 (context.EntityContainer?
                                                     .EntitySets()
-                                                    .Select(x => x.EntityType()) ??
+                                                    .Select(x => x.EntityType) ??
                                                 Enumerable.Empty<IEdmStructuredType>())
                                                 .Union(context.Model
                                                                 .SchemaElements

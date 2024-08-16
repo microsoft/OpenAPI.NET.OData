@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string typeName = EntitySet.EntityType().Name;
+                string typeName = EntitySet.EntityType.Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".List" + Utils.UpperFirstChar(typeName);
             }
         }
@@ -117,21 +117,21 @@ namespace Microsoft.OpenApi.OData.Operation
             // of just providing a comma-separated list of properties can be expressed via an array-valued
             // parameter with an enum constraint
             // $order
-            parameter = Context.CreateOrderBy(TargetPath, EntitySet.EntityType()) ?? Context.CreateOrderBy(EntitySet);
+            parameter = Context.CreateOrderBy(TargetPath, EntitySet.EntityType) ?? Context.CreateOrderBy(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $select
-            parameter = Context.CreateSelect(TargetPath, EntitySet.EntityType()) ?? Context.CreateSelect(EntitySet);
+            parameter = Context.CreateSelect(TargetPath, EntitySet.EntityType) ?? Context.CreateSelect(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $expand
-            parameter = Context.CreateExpand(TargetPath, EntitySet.EntityType()) ?? Context.CreateExpand(EntitySet);
+            parameter = Context.CreateExpand(TargetPath, EntitySet.EntityType) ?? Context.CreateExpand(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -151,7 +151,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         Reference = new OpenApiReference()
                         {
                             Type = ReferenceType.Response,
-                            Id = $"{EntitySet.EntityType().FullName()}{Constants.CollectionSchemaSuffix}"
+                            Id = $"{EntitySet.EntityType.FullName()}{Constants.CollectionSchemaSuffix}"
                         },
                     }
                 }

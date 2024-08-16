@@ -53,7 +53,7 @@ public class ComplexPropertyPathItemHandlerTests
 		var context = new ODataContext(model, convertSettings);
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
 		Assert.NotNull(entitySet); // guard
-		var entityType = entitySet.EntityType();
+		var entityType = entitySet.EntityType;
 		var property = entityType.FindProperty("BillingAddress");
 		Assert.NotNull(property); // guard
 		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
@@ -106,7 +106,7 @@ public class ComplexPropertyPathItemHandlerTests
 		var context = new ODataContext(model, convertSettings);
         var entitySet = model.EntityContainer.FindEntitySet("Customers");
         Assert.NotNull(entitySet); // guard
-        var entityType = entitySet.EntityType();
+        var entityType = entitySet.EntityType;
         var property = entityType.FindProperty("BillingAddress");
         Assert.NotNull(property); // guard
         var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
@@ -164,7 +164,7 @@ public class ComplexPropertyPathItemHandlerTests
 		var context = new ODataContext(model, convertSettings);
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
 		Assert.NotNull(entitySet); // guard
-		var entityType = entitySet.EntityType();
+		var entityType = entitySet.EntityType;
 		var property = entityType.FindProperty("AlternativeAddresses");
 		Assert.NotNull(property); // guard
 		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
@@ -191,7 +191,7 @@ public class ComplexPropertyPathItemHandlerTests
 		context.Settings.CustomXMLAttributesMapping.Add("ags:IsHidden", "x-ms-isHidden");
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
 		Assert.NotNull(entitySet); // guard
-		var entityType = entitySet.EntityType();
+		var entityType = entitySet.EntityType;
 		var property = entityType.FindProperty("AlternativeAddresses");
 		Assert.NotNull(property); // guard
 		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
@@ -238,7 +238,7 @@ public class ComplexPropertyPathItemHandlerTests
         var entitySet = model.EntityContainer.FindEntitySet("Customers");
         Assert.NotNull(entitySet); // guard
 
-        var entityType = entitySet.EntityType();
+        var entityType = entitySet.EntityType;
         var property = entityType.FindProperty("AlternativeAddresses");
         Assert.NotNull(property); // guard
 

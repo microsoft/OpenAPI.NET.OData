@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace OoasGui
 {
+    [System.Runtime.Versioning.SupportedOSPlatform("windows")]
     static class Program
     {
         /// <summary>

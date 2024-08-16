@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            IEdmEntityType entityType = entitySet.EntityType();
+            IEdmEntityType entityType = entitySet.EntityType;
 
             IEdmNavigationProperty property = entityType.DeclaredNavigationProperties()
                 .FirstOrDefault(c => c.ContainsTarget == containment && c.TargetMultiplicity() == EdmMultiplicity.Many);
@@ -123,7 +123,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model, settings);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            IEdmEntityType entityType = entitySet.EntityType();
+            IEdmEntityType entityType = entitySet.EntityType;
 
             IEdmNavigationProperty property = entityType.DeclaredNavigationProperties()
                 .FirstOrDefault(c => c.ContainsTarget == true && c.TargetMultiplicity() == EdmMultiplicity.Many);
@@ -176,7 +176,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            IEdmEntityType entityType = entitySet.EntityType();
+            IEdmEntityType entityType = entitySet.EntityType;
 
             IEdmNavigationProperty property = entityType.DeclaredNavigationProperties()
                 .FirstOrDefault(c => c.ContainsTarget == containment && c.TargetMultiplicity() != EdmMultiplicity.Many);
@@ -661,7 +661,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(navigationSource);
             Assert.NotNull(navigationPropertyPath);
 
-            IEdmEntityType previousEntityType = navigationSource.EntityType();
+            IEdmEntityType previousEntityType = navigationSource.EntityType;
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(navigationSource), new ODataKeySegment(previousEntityType));
 
             string[] npPaths = navigationPropertyPath.Split('/');

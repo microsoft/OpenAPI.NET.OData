@@ -39,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            IEdmEntityType entityType = EntitySet.EntityType();
+            IEdmEntityType entityType = EntitySet.EntityType;
             ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
 
             // Description
@@ -93,12 +93,12 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
             }
 
             if (Context.Settings.ShowLinks)
             {
-                links = Context.CreateLinks(entityType: EntitySet.EntityType(), entityName: EntitySet.Name,
+                links = Context.CreateLinks(entityType: EntitySet.EntityType, entityName: EntitySet.Name,
                         entityKind: EntitySet.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
             }
 
@@ -110,7 +110,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
-                        Id = EntitySet.EntityType().FullName()
+                        Id = EntitySet.EntityType.FullName()
                     }
                 };
             }

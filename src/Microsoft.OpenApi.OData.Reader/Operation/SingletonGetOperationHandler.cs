@@ -47,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId, it should be unique among all operations described in the API.
             if (Context.Settings.EnableOperationId)
             {
-                string typeName = Singleton.EntityType().Name;
+                string typeName = Singleton.EntityType.Name;
                 operation.OperationId = Singleton.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);
             }
         }
@@ -80,12 +80,12 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model);
             }
 
             if (Context.Settings.ShowLinks)
             {
-                links = Context.CreateLinks(entityType: Singleton.EntityType(), entityName: Singleton.Name,
+                links = Context.CreateLinks(entityType: Singleton.EntityType, entityName: Singleton.Name,
                         entityKind: Singleton.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
             }
 
@@ -97,7 +97,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
-                        Id = Singleton.EntityType().FullName()
+                        Id = Singleton.EntityType.FullName()
                     }
                 };
             }

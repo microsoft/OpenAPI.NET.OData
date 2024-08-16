@@ -362,7 +362,7 @@ namespace Microsoft.OpenApi.OData.Tests
         <Property Name=""Name"" Type=""Edm.String"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""Horse"" BaseType=""NS.Animal"" OpenType=""true"">
-        <Property Name=""Height"" Type=""Edm.Decimal"" Nullable=""false"" Scale=""Variable"" />
+        <Property Name=""Height"" Type=""Edm.Decimal"" Nullable=""false"" Scale=""variable"" />
       </EntityType>
       <ComplexType Name=""Plant"" Abstract=""true"" OpenType=""true"">
         <Property Name=""Color"" Type=""NS.Color"" Nullable=""false"" />
@@ -378,7 +378,7 @@ namespace Microsoft.OpenApi.OData.Tests
         <Property Name=""Name"" Type=""Edm.String"" Nullable=""false"" />
       </ComplexType>
       <ComplexType Name=""Tree"" BaseType=""NS.LandPlant"" OpenType=""true"">
-        <Property Name=""Price"" Type=""Edm.Decimal"" Nullable=""false"" Scale=""Variable"" />
+        <Property Name=""Price"" Type=""Edm.Decimal"" Nullable=""false"" Scale=""variable"" />
       </ComplexType>
       <ComplexType Name=""Flower"" BaseType=""NS.LandPlant"" OpenType=""true"">
         <Property Name=""Height"" Type=""Edm.Double"" Nullable=""false"" />

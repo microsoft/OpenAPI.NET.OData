@@ -151,7 +151,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Act
             IDictionary<string, OpenApiLink> links = context.CreateLinks(
-                entityType: singleton.EntityType(),
+                entityType: singleton.EntityType,
                 entityName: singleton.Name,
                 entityKind: singleton.ContainerElementKind.ToString(),
                 path: path);
@@ -203,7 +203,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             ODataPath path = new(
                 new ODataNavigationSourceSegment(entityset),
-                new ODataKeySegment(entityset.EntityType()));
+                new ODataKeySegment(entityset.EntityType));
 
             var parameters = new List<OpenApiParameter>()
             {
@@ -222,7 +222,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Act
             IDictionary<string, OpenApiLink> links = context.CreateLinks(
-                entityType: entityset.EntityType(),
+                entityType: entityset.EntityType,
                 entityName: entityset.Name,
                 entityKind: entityset.ContainerElementKind.ToString(),
                 path: path,

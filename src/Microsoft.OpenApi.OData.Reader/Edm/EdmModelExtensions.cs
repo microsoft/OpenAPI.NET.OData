@@ -80,10 +80,10 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 Action<IEdmNavigationSource, IDictionary<IEdmEntityType, IList<IEdmNavigationSource>>> action = (ns, dic) =>
                 {
-                    if (!dic.TryGetValue(ns.EntityType(), out IList<IEdmNavigationSource> value))
+                    if (!dic.TryGetValue(ns.EntityType, out IList<IEdmNavigationSource> value))
                     {
                         value = new List<IEdmNavigationSource>();
-                        dic[ns.EntityType()] = value;
+                        dic[ns.EntityType] = value;
                     }
 
                     value.Add(ns);
@@ -146,43 +146,6 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
-        /// Checks if the <paramref name="baseType"/> is assignable to <paramref name="subtype"/>.
-        /// In other words, if <paramref name="subtype"/> is a subtype of <paramref name="baseType"/> or not.
-        /// </summary>
-        /// <param name="baseType">Type of the base type.</param>
-        /// <param name="subtype">Type of the sub type.</param>
-        /// <returns>true, if the <paramref name="baseType"/> is assignable to <paramref name="subtype"/>. Otherwise returns false.</returns>
-        [Obsolete]
-        public static bool IsAssignableFrom(this IEdmEntityType baseType, IEdmEntityType subtype)
-        {
-            Utils.CheckArgumentNull(baseType, nameof(baseType));
-            Utils.CheckArgumentNull(subtype, nameof(subtype));
-
-            if (baseType.TypeKind != subtype.TypeKind)
-            {
-                return false;
-            }
-
-            if (subtype.IsEquivalentTo(baseType))
-            {
-                return true;
-            }
-
-            IEdmStructuredType structuredSubType = subtype;
-            while (structuredSubType != null)
-            {
-                if (structuredSubType.IsEquivalentTo(baseType))
-                {
-                    return true;
-                }
-
-                structuredSubType = structuredSubType.BaseType;
-            }
-
-            return false;
-        }
-
-        /// <summary>
         /// Check whether the operation is overload in the model.
         /// </summary>
         /// <param name="model">The Edm model.</param>
@@ -215,8 +178,8 @@ namespace Microsoft.OpenApi.OData.Edm
             
             IEdmTypeReference bindingParameterType = operation.Parameters.First().Type;
 
-            return model.EntityContainer.EntitySets().Select(static x => x.EntityType())
-                .Concat(model.EntityContainer.Singletons().Select(static x => x.EntityType()))
+            return model.EntityContainer.EntitySets().Select(static x => x.EntityType)
+                .Concat(model.EntityContainer.Singletons().Select(static x => x.EntityType))
                 .Where(x => x.FullName().Equals(bindingParameterType.FullName(), StringComparison.OrdinalIgnoreCase)).Count() > 1;
         }
 

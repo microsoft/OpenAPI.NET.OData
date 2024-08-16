@@ -69,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmEntityType todo = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Todo");
             IEdmStructuralProperty sp = todo.StructuralProperties().First(c => c.Name == "Logo");
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(todos),
-                new ODataKeySegment(todos.EntityType()),
+                new ODataKeySegment(todos.EntityType),
                 new ODataStreamPropertySegment(sp.Name));
 
             IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             IEdmStructuralProperty sp2 = todo.StructuralProperties().First(c => c.Name == "Content");
             ODataPath path3 = new(new ODataNavigationSourceSegment(todos),
-                new ODataKeySegment(todos.EntityType()),
+                new ODataKeySegment(todos.EntityType),
                 new ODataStreamPropertySegment(sp2.Name));
 
             // Act
@@ -169,7 +169,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
             Assert.NotNull(people);
 
-            IEdmEntityType person = people.EntityType();
+            IEdmEntityType person = people.EntityType;
             IEdmStructuralProperty property = person.StructuralProperties().First(c => c.Name == "Photo");
             ODataPath path = new(new ODataNavigationSourceSegment(people),
                 new ODataKeySegment(person),

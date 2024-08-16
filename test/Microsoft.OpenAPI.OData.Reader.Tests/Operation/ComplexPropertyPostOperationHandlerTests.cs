@@ -20,11 +20,11 @@ public class ComplexPropertyPostOperationHandlerTests
 		// Arrange
 		var model = EntitySetPostOperationHandlerTests.GetEdmModel("");
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
-		var entity = entitySet.EntityType();
+		var entity = entitySet.EntityType;
 		var property = entity.FindProperty("BillingAddress");
 		var settings = new OpenApiConvertSettings();
 		var context = new ODataContext(model, settings);
-		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
+		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
 
 		// Act
 		Assert.Throws<InvalidOperationException>(() => _operationHandler.CreateOperation(context, path));
@@ -39,7 +39,7 @@ public class ComplexPropertyPostOperationHandlerTests
 		// Arrange
 		var model = EntitySetPostOperationHandlerTests.GetEdmModel("");
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
-		var entity = entitySet.EntityType();
+		var entity = entitySet.EntityType;
 		var property = entity.FindProperty("AlternativeAddresses");
 		var settings = new OpenApiConvertSettings
 		{
@@ -47,7 +47,7 @@ public class ComplexPropertyPostOperationHandlerTests
 			UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
 		};
 		var context = new ODataContext(model, settings);
-		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
+		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
 
 		// Act
 		var post = _operationHandler.CreateOperation(context, path);

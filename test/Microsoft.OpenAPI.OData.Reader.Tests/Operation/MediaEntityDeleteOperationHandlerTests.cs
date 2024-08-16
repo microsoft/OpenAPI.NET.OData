@@ -26,7 +26,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
             Assert.NotNull(people);
 
-            IEdmEntityType person = people.EntityType();
+            IEdmEntityType person = people.EntityType;
             IEdmStructuralProperty property = person.StructuralProperties().First(c => c.Name == "Photo");
             ODataPath path = new(new ODataNavigationSourceSegment(people),
                 new ODataKeySegment(person),
@@ -105,13 +105,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmSingleton me = model.EntityContainer.FindSingleton("me");
             Assert.NotNull(todos);
 
-            IEdmEntityType todo = todos.EntityType();
+            IEdmEntityType todo = todos.EntityType;
             IEdmStructuralProperty structuralProperty = todo.StructuralProperties().First(c => c.Name == "Logo");
             ODataPath path = new(new ODataNavigationSourceSegment(todos),
                 new ODataKeySegment(todo),
                 new ODataStreamPropertySegment(structuralProperty.Name));
 
-            IEdmEntityType user = me.EntityType();
+            IEdmEntityType user = me.EntityType;
             IEdmNavigationProperty navProperty = user.NavigationProperties().First(c => c.Name == "photo");
             ODataPath path2 = new(new ODataNavigationSourceSegment(me),
                 new ODataNavigationPropertySegment(navProperty),

@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string typeName = EntitySet.EntityType().Name;
+                string typeName = EntitySet.EntityType.Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Create" + Utils.UpperFirstChar(typeName);
             }
         }
@@ -125,9 +125,9 @@ namespace Microsoft.OpenApi.OData.Operation
             OpenApiSchema schema = GetEntitySchema();
             var content = new Dictionary<string, OpenApiMediaType>();
 
-            if (EntitySet.EntityType().HasStream)
+            if (EntitySet.EntityType.HasStream)
             {
-                IEnumerable<string> mediaTypes = Context.Model.GetCollection(EntitySet.EntityType(),
+                IEnumerable<string> mediaTypes = Context.Model.GetCollection(EntitySet.EntityType,
                     CoreConstants.AcceptableMediaTypes);
 
                 if (mediaTypes != null)
@@ -187,7 +187,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
             }
 
             if (schema == null)
@@ -198,7 +198,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
-                        Id = EntitySet.EntityType().FullName()
+                        Id = EntitySet.EntityType.FullName()
                     }
                 };
             }

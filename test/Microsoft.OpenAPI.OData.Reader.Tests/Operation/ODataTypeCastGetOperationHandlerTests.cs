@@ -38,7 +38,7 @@ public class ODataTypeCastGetOperationHandlerTests
         IEdmEntityType employee = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Employee");
         IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Friends");
         ODataPath path = new(new ODataNavigationSourceSegment(people),
-                                                                    new ODataKeySegment(people.EntityType()),
+                                                                    new ODataKeySegment(people.EntityType),
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataTypeCastSegment(employee, model));
 
@@ -96,9 +96,9 @@ public class ODataTypeCastGetOperationHandlerTests
         IEdmEntityType employee = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Employee");
         IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Friends");
         ODataPath path = new(new ODataNavigationSourceSegment(people),
-                                                                    new ODataKeySegment(people.EntityType()),
+                                                                    new ODataKeySegment(people.EntityType),
                                                                     new ODataNavigationPropertySegment(navProperty),
-                                                                    new ODataKeySegment(people.EntityType()),
+                                                                    new ODataKeySegment(people.EntityType),
                                                                     new ODataTypeCastSegment(employee,model));
 
         // Act
@@ -206,7 +206,7 @@ public class ODataTypeCastGetOperationHandlerTests
         IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
         IEdmEntityType employee = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Employee");
         ODataPath path = new(new ODataNavigationSourceSegment(people),
-                                                                    new ODataKeySegment(people.EntityType()),
+                                                                    new ODataKeySegment(people.EntityType),
                                                                     new ODataTypeCastSegment(employee,model));
 
         // Act
@@ -262,7 +262,7 @@ public class ODataTypeCastGetOperationHandlerTests
         IEdmEntityType employee = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Employee");
         IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "BestFriend");
         ODataPath path = new(new ODataNavigationSourceSegment(people),
-                                                                    new ODataKeySegment(people.EntityType()),
+                                                                    new ODataKeySegment(people.EntityType),
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataTypeCastSegment(employee, model));
 
@@ -363,7 +363,7 @@ public class ODataTypeCastGetOperationHandlerTests
         IEdmEntityType manager = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Manager");
         IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "BestFriend");
         ODataPath path = new(new ODataNavigationSourceSegment(people),
-                                                                    new ODataKeySegment(people.EntityType()),
+                                                                    new ODataKeySegment(people.EntityType),
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataTypeCastSegment(manager, model));
 

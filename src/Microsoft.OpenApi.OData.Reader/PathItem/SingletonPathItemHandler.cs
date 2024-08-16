@@ -61,7 +61,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
             base.SetBasicInfo(pathItem);
-            pathItem.Description = $"Provides operations to manage the {Singleton.EntityType().Name} singleton.";
+            pathItem.Description = $"Provides operations to manage the {Singleton.EntityType.Name} singleton.";
         }
 
         /// <inheritdoc/>

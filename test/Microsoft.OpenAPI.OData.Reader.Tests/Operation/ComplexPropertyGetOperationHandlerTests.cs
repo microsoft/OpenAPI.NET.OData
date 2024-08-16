@@ -23,14 +23,14 @@ public class ComplexPropertyGetOperationHandlerTests
 		// Arrange
 		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
-		var entity = entitySet.EntityType();
+		var entity = entitySet.EntityType;
 		var property = entity.FindProperty("BillingAddress");
 		var settings = new OpenApiConvertSettings
 		{
 			EnableOperationId = enableOperationId
 		};
 		var context = new ODataContext(model, settings);
-		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
+		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
 
 		// Act
 		var get = _operationHandler.CreateOperation(context, path);
@@ -66,7 +66,7 @@ public class ComplexPropertyGetOperationHandlerTests
 		// Arrange
 		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
-		var entity = entitySet.EntityType();
+		var entity = entitySet.EntityType;
 		var property = entity.FindProperty("AlternativeAddresses");
 		var settings = new OpenApiConvertSettings
 		{
@@ -74,7 +74,7 @@ public class ComplexPropertyGetOperationHandlerTests
 			UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
 		};
 		var context = new ODataContext(model, settings);
-		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
+		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
 
 		// Act
 		var get = _operationHandler.CreateOperation(context, path);
@@ -111,7 +111,7 @@ public class ComplexPropertyGetOperationHandlerTests
         IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
         Assert.NotNull(people);
 
-        IEdmEntityType person = people.EntityType();
+        IEdmEntityType person = people.EntityType;
         IEdmProperty complexProperty = person.FindProperty("FavoriteFeature");
         ODataPath path = new (new ODataNavigationSourceSegment(people), new ODataKeySegment(person), new ODataComplexPropertySegment(complexProperty as IEdmStructuralProperty));
 

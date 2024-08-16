@@ -35,8 +35,6 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataAnnotationReferencesFo
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataAnnotationReferencesForResponses.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty.set -> void
-Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.get -> bool
-Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get -> System.Collections.Generic.Dictionary<string, string>
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.GenerateDerivedTypesProperties.get -> bool
@@ -45,7 +43,6 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IncludeAssemblyInfo.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.NamespacePrefixToStripForInMethodPaths.get -> string
 Microsoft.OpenApi.OData.OpenApiConvertSettings.NamespacePrefixToStripForInMethodPaths.set -> void
-Microsoft.OpenApi.OData.OpenApiConvertSettings.RefBaseCollectionPaginationCountResponse.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.SemVerVersion.get -> string
@@ -56,11 +53,6 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.UseStringArrayForQueryOptionsSche
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseStringArrayForQueryOptionsSchema.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.set -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.Name.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiEnumFlagsExtension.OpenApiEnumFlagsExtension() -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiPrimaryErrorMessageExtension.OpenApiPrimaryErrorMessageExtension() -> void
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Action = 6 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Create = 2 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
@@ -243,8 +235,6 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.TopExample.get -> int
 Microsoft.OpenApi.OData.OpenApiConvertSettings.TopExample.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.VerifyEdmModel.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.VerifyEdmModel.set -> void
-Microsoft.OpenApi.OData.OpenApiConvertSettings.Version.get -> System.Version
-Microsoft.OpenApi.OData.OpenApiConvertSettings.Version.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDeprecationInformation.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDeprecationInformation.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddEnumDescriptionExtension.get -> bool
@@ -310,7 +300,6 @@ static Microsoft.OpenApi.OData.Common.Utils.UpperFirstChar(string input) -> stri
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.FindAllBaseTypes(this Microsoft.OData.Edm.IEdmEntityType entityType) -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.IEdmEntityType>
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.FindAllBaseTypes(this Microsoft.OData.Edm.IEdmComplexType complexType) -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.IEdmComplexType>
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.GetAllElements(this Microsoft.OData.Edm.IEdmModel model) -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.IEdmSchemaElement>
-static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsAssignableFrom(this Microsoft.OData.Edm.IEdmEntityType baseType, Microsoft.OData.Edm.IEdmEntityType subtype) -> bool
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsOperationImportOverload(this Microsoft.OData.Edm.IEdmModel model, Microsoft.OData.Edm.IEdmOperationImport operationImport) -> bool
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsOperationOverload(this Microsoft.OData.Edm.IEdmModel model, Microsoft.OData.Edm.IEdmOperation operation) -> bool
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsUrlEscapeFunction(this Microsoft.OData.Edm.IEdmModel model, Microsoft.OData.Edm.IEdmFunction function) -> bool
@@ -324,13 +313,4 @@ virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.CanFilter(Microsoft.OData.
 virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.GetPaths(Microsoft.OData.Edm.IEdmModel model, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.OData.Edm.ODataPath>
 virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.Initialize(Microsoft.OData.Edm.IEdmModel model) -> void
 virtual Microsoft.OpenApi.OData.Edm.ODataSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType
-Microsoft.OpenApi.OData.Edm.ODataSegment.Deprecation.get -> Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension
-Microsoft.OpenApi.OData.Edm.ODataSegment.Deprecation.set -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.OpenApiDeprecationExtension() -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Name.get -> string
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.RemovalDate.get -> System.DateTime?
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.RemovalDate.set -> void
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.get -> System.DateTime?
-Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.set -> void
 Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions

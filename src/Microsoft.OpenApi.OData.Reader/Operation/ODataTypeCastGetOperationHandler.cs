@@ -246,8 +246,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
             var singleton = navigationSource as IEdmSingleton;
 
 			tagName = entitySet != null
-                ? entitySet.Name + "." + entitySet.EntityType().Name
-                : singleton.Name + "." + singleton.EntityType().Name;
+                ? entitySet.Name + "." + entitySet.EntityType.Name
+                : singleton.Name + "." + singleton.EntityType.Name;
         }
 		else if (SecondLastSegment is ODataComplexPropertySegment)
 		{
@@ -306,8 +306,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			if(IsSingleElement)
 			{
 				new OpenApiParameter[] {
-                        Context.CreateSelect(TargetPath, entitySet.EntityType()) ?? Context.CreateSelect(entitySet),
-                        Context.CreateExpand(TargetPath, entitySet.EntityType()) ?? Context.CreateExpand(entitySet),
+                        Context.CreateSelect(TargetPath, entitySet.EntityType) ?? Context.CreateSelect(entitySet),
+                        Context.CreateExpand(TargetPath, entitySet.EntityType) ?? Context.CreateExpand(entitySet),
 					}
 				.Where(x => x != null)
 				.ToList()
@@ -318,9 +318,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				GetParametersForAnnotableOfMany(entitySet)
 				.Union(
 					new OpenApiParameter[] {
-                        Context.CreateOrderBy(TargetPath, entitySet.EntityType()) ?? Context.CreateOrderBy(entitySet),
-                        Context.CreateSelect(TargetPath, entitySet.EntityType()) ?? Context.CreateSelect(entitySet),
-                        Context.CreateExpand(TargetPath, entitySet.EntityType()) ?? Context.CreateExpand(entitySet),
+                        Context.CreateOrderBy(TargetPath, entitySet.EntityType) ?? Context.CreateOrderBy(entitySet),
+                        Context.CreateSelect(TargetPath, entitySet.EntityType) ?? Context.CreateSelect(entitySet),
+                        Context.CreateExpand(TargetPath, entitySet.EntityType) ?? Context.CreateExpand(entitySet),
 					})
 				.Where(x => x != null)
 				.ToList()
@@ -330,8 +330,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		else if(singleton != null)
 		{
 			new OpenApiParameter[] {
-                    Context.CreateSelect(TargetPath, singleton.EntityType()) ?? Context.CreateSelect(singleton),
-                    Context.CreateExpand(TargetPath, singleton.EntityType()) ?? Context.CreateExpand(singleton),
+                    Context.CreateSelect(TargetPath, singleton.EntityType) ?? Context.CreateSelect(singleton),
+                    Context.CreateExpand(TargetPath, singleton.EntityType) ?? Context.CreateExpand(singleton),
 				}
 			.Where(x => x != null)
 			.ToList()

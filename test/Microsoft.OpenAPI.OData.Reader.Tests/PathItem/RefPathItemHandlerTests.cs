@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            IEdmEntityType entityType = entitySet.EntityType();
+            IEdmEntityType entityType = entitySet.EntityType;
 
             IEdmNavigationProperty property = entityType.DeclaredNavigationProperties()
                 .FirstOrDefault(c => !c.ContainsTarget &&

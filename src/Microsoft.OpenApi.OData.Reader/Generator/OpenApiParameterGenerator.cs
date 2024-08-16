@@ -574,7 +574,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
-            return context.CreateOrderBy(entitySet, entitySet.EntityType());
+            return context.CreateOrderBy(entitySet, entitySet.EntityType);
         }
 
         public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmSingleton singleton)
@@ -582,7 +582,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(singleton, nameof(singleton));
 
-            return context.CreateOrderBy(singleton, singleton.EntityType());
+            return context.CreateOrderBy(singleton, singleton.EntityType);
         }
 
         public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmNavigationProperty navigationProperty)
@@ -691,7 +691,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
-            return context.CreateSelect(entitySet, entitySet.EntityType());
+            return context.CreateSelect(entitySet, entitySet.EntityType);
         }
 
         public static OpenApiParameter CreateSelect(this ODataContext context, IEdmSingleton singleton)
@@ -699,7 +699,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(singleton, nameof(singleton));
 
-            return context.CreateSelect(singleton, singleton.EntityType());
+            return context.CreateSelect(singleton, singleton.EntityType);
         }
 
         public static OpenApiParameter CreateSelect(this ODataContext context, IEdmNavigationProperty navigationProperty)
@@ -797,7 +797,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
-            return context.CreateExpand(entitySet, entitySet.EntityType());
+            return context.CreateExpand(entitySet, entitySet.EntityType);
         }
 
         public static OpenApiParameter CreateExpand(this ODataContext context, IEdmSingleton singleton)
@@ -805,7 +805,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(singleton, nameof(singleton));
 
-            return context.CreateExpand(singleton, singleton.EntityType());
+            return context.CreateExpand(singleton, singleton.EntityType);
         }
 
         public static OpenApiParameter CreateExpand(this ODataContext context, IEdmNavigationProperty navigationProperty)
