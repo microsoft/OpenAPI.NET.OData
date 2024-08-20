@@ -108,6 +108,28 @@ namespace Microsoft.OpenApi.OData.Edm
                 null;
         }
 
+        public static List<T> GetEnumList<T>(this IEdmRecordExpression record, string propertyName)
+    where T : struct
+        {
+            Utils.CheckArgumentNull(record, nameof(record));
+            Utils.CheckArgumentNull(propertyName, nameof(propertyName));
+
+            var enumValues = new List<T>();
+
+            if (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
+                property.Value is IEdmEnumMemberExpression value &&
+                value.EnumMembers != null)
+            {
+                foreach (var enumMember in value.EnumMembers)
+                {
+                    Enum.TryParse(enumMember.Name, out T result);
+                    enumValues.Add(result);                    
+                }
+            }
+
+            return enumValues;
+        }
+
         /// <summary>
         ///  Get the collection of <typeparamref name="T"/> from the record using the given property name.
         /// </summary>
