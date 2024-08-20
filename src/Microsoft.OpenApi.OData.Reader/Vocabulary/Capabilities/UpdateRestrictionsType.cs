@@ -49,10 +49,10 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public bool? DeltaUpdateSupported { get; private set; }
 
         /// <summary>
-        /// Gets the value indicating the HTTP Method (PUT or PATCH) for updating an entity. 
+        /// Gets the values indicating the HTTP Method (PUT or/and PATCH) for updating an entity. 
         /// If null, PATCH should be supported and PUT MAY be supported.
         /// </summary>
-        public HttpMethod? UpdateMethod { get; private set; }
+        public IList<HttpMethod> UpdateMethods { get; private set; }
 
         /// <summary>
         /// Gets the value indicating Members of collections can be updated via a PATCH request with a '/$filter(...)/$each' segment.
@@ -124,9 +124,14 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         }
 
         /// <summary>
-        /// Tests whether the update method for the entity has been explicitly specified as PUT
+        /// Tests whether the update method for the target has been explicitly specified as PUT
         /// </summary>
-        public bool IsUpdateMethodPut => UpdateMethod.HasValue && UpdateMethod.Value == HttpMethod.PUT;
+        public bool IsUpdateMethodPut => UpdateMethods.Count == 1 && UpdateMethods.FirstOrDefault() == HttpMethod.PUT;
+
+        /// <summary>
+        /// Tests whether the update method for the target has been explicitly specified as PATCH and PUT
+        /// </summary>
+        public bool IsUpdateMethodsPutAndPatch => UpdateMethods.Count == 2 && UpdateMethods.Contains(HttpMethod.PUT) && UpdateMethods.Contains(HttpMethod.PATCH);
 
         /// <summary>
         /// Lists the media types acceptable for the request content
@@ -157,8 +162,8 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // DeltaUpdateSupported
             DeltaUpdateSupported = record.GetBoolean("DeltaUpdateSupported");
 
-            // UpdateMethod
-            UpdateMethod = record.GetEnum<HttpMethod>("UpdateMethod");
+            // UpdateMethods
+            UpdateMethods = record.GetEnumList<HttpMethod>("UpdateMethod");
 
             // FilterSegmentSupported
             FilterSegmentSupported = record.GetBoolean("FilterSegmentSupported");
@@ -212,7 +217,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             DeltaUpdateSupported ??= source.DeltaUpdateSupported;
 
-            UpdateMethod ??= source.UpdateMethod;
+            UpdateMethods ??= source.UpdateMethods;
 
             FilterSegmentSupported ??= source.FilterSegmentSupported;
 
