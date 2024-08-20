@@ -49,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public bool? DeltaUpdateSupported { get; private set; }
 
         /// <summary>
-        /// Gets the values indicating the HTTP Method (PUT or/and PATCH) for updating an entity. 
+        /// Gets the values indicating the HTTP Method (PUT and/or PATCH) for updating an entity. 
         /// If null, PATCH should be supported and PUT MAY be supported.
         /// </summary>
         public IList<HttpMethod> UpdateMethods { get; private set; }
