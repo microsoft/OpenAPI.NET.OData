@@ -24,7 +24,7 @@
 		- Upgraded to Microsoft.Odata.Edm 8.0.0
 		- Cleaned up obsolete APIs
 		- Changed target framework to net8.0
-		- Adds support for retrieving collection of enum values from `UpdateMethod` property of `UpdateRestrictions` annotation #564
+		- Adds support for retrieving collection of enum values from UpdateMethod property of UpdateRestrictions annotation #564
 	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
