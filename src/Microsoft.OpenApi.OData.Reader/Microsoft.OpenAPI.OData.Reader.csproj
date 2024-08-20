@@ -15,15 +15,16 @@
     <TargetFrameworks>net8.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>2.0.0-preview.1</Version>
+    <Version>2.0.0-preview.2</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
 		- Upgraded to Microsoft.Odata.Edm 8.0.0
-    - Cleaned up obsolete APIs
-    - Changed target framework to net8.0
+		- Cleaned up obsolete APIs
+		- Changed target framework to net8.0
+		- Adds support for retrieving collection of enum values from `UpdateMethod` property of `UpdateRestrictions` annotation #564
 	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
