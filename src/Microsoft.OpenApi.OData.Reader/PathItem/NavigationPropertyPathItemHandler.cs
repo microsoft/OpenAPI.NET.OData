@@ -245,7 +245,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             if (updateRestrictionsType?.IsUpdatable ?? true)
             {
-                if (updateRestrictionsType?.IsUpdateMethodsPutAndPatch == true)
+                if (updateRestrictionsType?.IsUpdateMethodPutAndPatch == true)
                 {
                     AddOperation(item, OperationType.Put);
                     AddOperation(item, OperationType.Patch);

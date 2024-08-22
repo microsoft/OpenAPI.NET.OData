@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             updateRestrictions ??= entityUpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
             {
-                if (updateRestrictions?.IsUpdateMethodsPutAndPatch == true)
+                if (updateRestrictions?.IsUpdateMethodPutAndPatch == true)
                 {
                     AddOperation(item, OperationType.Put);
                     AddOperation(item, OperationType.Patch);

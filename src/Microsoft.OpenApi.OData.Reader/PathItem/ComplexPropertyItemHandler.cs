@@ -70,7 +70,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
         if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isUpdatable) ||
             !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
         {
-            if (updateRestrictions?.IsUpdateMethodsPutAndPatch == true)
+            if (updateRestrictions?.IsUpdateMethodPutAndPatch == true)
             {
                 AddOperation(item, OperationType.Put);
                 AddOperation(item, OperationType.Patch);

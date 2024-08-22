@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm.Vocabularies;
@@ -14,17 +15,18 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
     /// <summary>
     /// Enumerates HTTP methods that can be used to update entities
     /// </summary>
+    [Flags]
     internal enum HttpMethod
     {
         /// <summary>
         /// The HTTP PATCH Method
         /// </summary>
-        PATCH,
+        PATCH = 1,
 
         /// <summary>
         /// The HTTP PUT Method
         /// </summary>
-        PUT
+        PUT = 2
     }
     /// <summary>
     /// Complex Type: Org.OData.Capabilities.V1.UpdateRestrictionsType
@@ -46,13 +48,13 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the value indicating Entities can be inserted, updated, and deleted via a PATCH request with a delta payload.
         /// </summary>
-        public bool? DeltaUpdateSupported { get; private set; }
+        public bool? DeltaUpdateSupported { get; private set; }      
 
         /// <summary>
         /// Gets the values indicating the HTTP Method (PUT and/or PATCH) for updating an entity. 
         /// If null, PATCH should be supported and PUT MAY be supported.
         /// </summary>
-        public IList<HttpMethod> UpdateMethods { get; private set; }
+        public HttpMethod? UpdateMethod { get; private set; }
 
         /// <summary>
         /// Gets the value indicating Members of collections can be updated via a PATCH request with a '/$filter(...)/$each' segment.
@@ -126,12 +128,13 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Tests whether the update method for the target has been explicitly specified as PUT
         /// </summary>
-        public bool IsUpdateMethodPut => UpdateMethods.Count == 1 && UpdateMethods.FirstOrDefault() == HttpMethod.PUT;
+        public bool IsUpdateMethodPut => UpdateMethod.HasValue && UpdateMethod.Value == HttpMethod.PUT;
 
         /// <summary>
         /// Tests whether the update method for the target has been explicitly specified as PATCH and PUT
         /// </summary>
-        public bool IsUpdateMethodsPutAndPatch => UpdateMethods.Count == 2 && UpdateMethods.Contains(HttpMethod.PUT) && UpdateMethods.Contains(HttpMethod.PATCH);
+        public bool IsUpdateMethodPutAndPatch => UpdateMethod.HasValue &&
+            (UpdateMethod.Value & (HttpMethod.PUT | HttpMethod.PATCH)) == (HttpMethod.PUT | HttpMethod.PATCH);
 
         /// <summary>
         /// Lists the media types acceptable for the request content
@@ -162,8 +165,8 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // DeltaUpdateSupported
             DeltaUpdateSupported = record.GetBoolean("DeltaUpdateSupported");
 
-            // UpdateMethods
-            UpdateMethods = record.GetEnumList<HttpMethod>("UpdateMethod");
+            // UpdateMethod
+            UpdateMethod = record.GetEnum<HttpMethod>("UpdateMethod");
 
             // FilterSegmentSupported
             FilterSegmentSupported = record.GetBoolean("FilterSegmentSupported");
@@ -217,7 +220,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             DeltaUpdateSupported ??= source.DeltaUpdateSupported;
 
-            UpdateMethods ??= source.UpdateMethods;
+            UpdateMethod ??= source.UpdateMethod;
 
             FilterSegmentSupported ??= source.FilterSegmentSupported;
 
