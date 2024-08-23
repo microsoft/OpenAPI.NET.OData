@@ -243,9 +243,14 @@ namespace Microsoft.OpenApi.OData.PathItem
 
         private void AddUpdateOperation(OpenApiPathItem item, UpdateRestrictionsType updateRestrictionsType)
         {
-            if (updateRestrictionsType == null || updateRestrictionsType.IsUpdatable)
+            if (updateRestrictionsType?.IsUpdatable ?? true)
             {
-                if (updateRestrictionsType != null && updateRestrictionsType.IsUpdateMethodPut)
+                if (updateRestrictionsType?.IsUpdateMethodPutAndPatch == true)
+                {
+                    AddOperation(item, OperationType.Put);
+                    AddOperation(item, OperationType.Patch);
+                }
+                else if (updateRestrictionsType?.IsUpdateMethodPut == true)
                 {
                     AddOperation(item, OperationType.Put);
                 }
@@ -254,6 +259,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                     AddOperation(item, OperationType.Patch);
                 }
             }
+
         }
 
         /// <inheritdoc/>

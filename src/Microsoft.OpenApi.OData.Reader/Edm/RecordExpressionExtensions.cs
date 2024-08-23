@@ -94,18 +94,30 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="propertyName">The property name.</param>
         /// <returns>The Enum value or null.</returns>
         public static T? GetEnum<T>(this IEdmRecordExpression record, string propertyName)
-            where T : struct
+            where T : struct, Enum
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            return (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
+            if (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal))
+                is IEdmPropertyConstructor property &&
                 property.Value is IEdmEnumMemberExpression value &&
                 value.EnumMembers != null &&
-                value.EnumMembers.Any() &&
-                Enum.TryParse(value.EnumMembers.First().Name, out T result)) ?
-                result :
-                null;
+                value.EnumMembers.Any())
+            {
+                long combinedValue = 0;
+                foreach (var enumMember in value.EnumMembers)
+                {
+                    if (Enum.TryParse(enumMember.Name, out T enumValue))
+                    {
+                        combinedValue |= Convert.ToInt64(enumValue);
+                    }
+                }
+
+                return (T)Enum.ToObject(typeof(T), combinedValue);
+            }
+
+            return null;
         }
 
         /// <summary>
