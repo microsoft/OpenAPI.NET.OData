@@ -12,7 +12,7 @@ namespace OoasUtil
 {
     class Program
     {
-        static int Main(string[] args)
+        static async System.Threading.Tasks.Task<int> Main(string[] args)
         {
             // args = new[] { "--json", "--input", @"E:\work\OneApiDesign\test\TripService.OData.xml", "-o", @"E:\work\OneApiDesign\test1\Trip.json" };
             // args = new[] { "--yaml", "-i", @"E:\work\OneApiDesign\test\TripService.OData.xml", "-o", @"E:\work\OneApiDesign\test1\Trip.yaml" };
@@ -53,7 +53,7 @@ namespace OoasUtil
                 generator = new UrlOpenApiGenerator(new Uri(processer.Input), processer.Output, processer.Format.Value, settings);
             }
 
-            if (generator.Generate())
+            if (await generator.GenerateAsync())
             {
                 Console.WriteLine("Succeeded!");
                 return 1;

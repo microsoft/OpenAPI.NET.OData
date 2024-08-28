@@ -13,6 +13,8 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.OData;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace OoasUtil
 {
@@ -42,11 +44,11 @@ namespace OoasUtil
         /// <summary>
         /// Process the arguments.
         /// </summary>
-        protected override IEdmModel GetEdmModel()
+        protected override async Task<IEdmModel> GetEdmModelAsync(CancellationToken cancellationToken = default)
         {
             try
             {
-                string csdl = File.ReadAllText(Input);
+                string csdl = await File.ReadAllTextAsync(Input, cancellationToken);
                 var directory = Path.GetDirectoryName(Input);
                 var parsed = XElement.Parse(csdl);
                 using (XmlReader mainReader = parsed.CreateReader())

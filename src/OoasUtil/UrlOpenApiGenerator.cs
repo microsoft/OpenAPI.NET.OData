@@ -12,6 +12,7 @@ using Microsoft.OpenApi;
 using Microsoft.OpenApi.OData;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace OoasUtil
 {
@@ -41,16 +42,16 @@ namespace OoasUtil
         /// <summary>
         /// Get the Edm model.
         /// </summary>
-        protected override IEdmModel GetEdmModel()
+        protected override async Task<IEdmModel> GetEdmModelAsync(CancellationToken cancellationToken = default)
         {
             Uri requestUri = new (Input.OriginalString + "/$metadata");
 
-            string csdl = GetModelDocumentAsync(requestUri).GetAwaiter().GetResult();
+            string csdl = await GetModelDocumentAsync(requestUri, cancellationToken);
 
             return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
         }
-        private async Task<string> GetModelDocumentAsync(Uri requestUri) {
-            HttpResponseMessage response = await client.GetAsync(requestUri);
+        private async Task<string> GetModelDocumentAsync(Uri requestUri, CancellationToken cancellationToken) {
+            HttpResponseMessage response = await client.GetAsync(requestUri, cancellationToken);
             return await response.Content.ReadAsStringAsync();
         }
         private static readonly HttpClient client = new ();
