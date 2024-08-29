@@ -2,3 +2,4 @@
 
 # IDE0009: Member access should be qualified.
 dotnet_diagnostic.IDE0009.severity = none
+dotnet_diagnostic.CA2016.severity = warning
