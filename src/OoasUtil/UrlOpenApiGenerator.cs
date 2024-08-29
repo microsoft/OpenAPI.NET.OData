@@ -51,8 +51,8 @@ namespace OoasUtil
             return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
         }
         private async Task<string> GetModelDocumentAsync(Uri requestUri, CancellationToken cancellationToken) {
-            HttpResponseMessage response = await client.GetAsync(requestUri, cancellationToken);
-            return await response.Content.ReadAsStringAsync();
+            using HttpResponseMessage response = await client.GetAsync(requestUri, cancellationToken);
+            return await response.Content.ReadAsStringAsync(cancellationToken);
         }
         private static readonly HttpClient client = new ();
 
