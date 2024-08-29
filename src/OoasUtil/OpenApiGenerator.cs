@@ -11,6 +11,8 @@ using Microsoft.OpenApi;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace OoasUtil
 {
@@ -40,7 +42,7 @@ namespace OoasUtil
         /// <param name="output">The output.</param>
         /// <param name="format">The output format.</param>
         /// <param name="settings">Conversion settings.</param>
-        public OpenApiGenerator(string output, OpenApiFormat format, OpenApiConvertSettings settings)
+        protected OpenApiGenerator(string output, OpenApiFormat format, OpenApiConvertSettings settings)
         {
             Output = output;
             Format = format;
@@ -50,11 +52,11 @@ namespace OoasUtil
         /// <summary>
         /// Generate the Open Api.
         /// </summary>
-        public bool Generate()
+        public async Task<bool> GenerateAsync(CancellationToken cancellationToken = default)
         {
             try
             {
-                IEdmModel edmModel = GetEdmModel();
+                IEdmModel edmModel = await GetEdmModelAsync(cancellationToken);
 
                 this.ModifySettings();
 
@@ -62,7 +64,7 @@ namespace OoasUtil
                 {
                     OpenApiDocument document = edmModel.ConvertToOpenApi(Settings);
                     document.Serialize(fs, Settings.OpenApiSpecVersion, Format);
-                    fs.Flush();
+                    await fs.FlushAsync(cancellationToken);
                 }
             }
             catch(Exception e)
@@ -78,6 +80,6 @@ namespace OoasUtil
         {
         }
 
-        protected abstract IEdmModel GetEdmModel();
+        protected abstract Task<IEdmModel> GetEdmModelAsync(CancellationToken cancellationToken = default);
     }
 }
