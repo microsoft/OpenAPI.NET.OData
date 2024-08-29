@@ -64,7 +64,7 @@ namespace OoasUtil
                 {
                     OpenApiDocument document = edmModel.ConvertToOpenApi(Settings);
                     document.Serialize(fs, Settings.OpenApiSpecVersion, Format);
-                    await fs.FlushAsync();
+                    await fs.FlushAsync(cancellationToken);
                 }
             }
             catch(Exception e)
