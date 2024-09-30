@@ -5331,7 +5331,7 @@ paths:
     description: Provides operations to call the GetInvolvedPeople method.
     get:
       tags:
-        - Me.Functions
+        - Me.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: Me.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee.Trips.Trip.GetInvolvedPeople
       parameters:
@@ -5697,7 +5697,7 @@ paths:
     description: Provides operations to call the GetFavoriteAirline method.
     get:
       tags:
-        - Me.Functions
+        - Me.Person
       summary: Invoke function GetFavoriteAirline
       operationId: Me.GetFavoriteAirline
       responses:
@@ -5716,7 +5716,7 @@ paths:
     description: Provides operations to call the GetFriendsTrips method.
     get:
       tags:
-        - Me.Functions
+        - Me.Person
       summary: Invoke function GetFriendsTrips
       operationId: Me.GetFriendsTrips
       parameters:
@@ -5777,7 +5777,7 @@ paths:
     description: Provides operations to call the GetPeersForTrip method.
     post:
       tags:
-        - Me.Actions
+        - Me.Person
       summary: Invoke action GetPeersForTrip
       operationId: Me.GetPeersForTrip
       requestBody:
@@ -8075,7 +8075,7 @@ paths:
     description: Provides operations to call the Hire method.
     post:
       tags:
-        - Me.Actions
+        - Me.Person
       summary: Invoke action Hire
       description: Hires someone for the company.
       operationId: Me.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Hire
@@ -8348,7 +8348,7 @@ paths:
     description: Provides operations to call the GetInvolvedPeople method.
     get:
       tags:
-        - Me.Functions
+        - Me.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: Me.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Trips.Trip.GetInvolvedPeople
       parameters:
@@ -8714,7 +8714,7 @@ paths:
     description: Provides operations to call the ShareTrip method.
     post:
       tags:
-        - Me.Actions
+        - Me.Person
       summary: Invoke action ShareTrip
       description: Details of the shared trip.
       operationId: Me.ShareTrip
@@ -8736,7 +8736,7 @@ paths:
     description: Provides operations to call the UpdatePersonLastName method.
     get:
       tags:
-        - Me.Functions
+        - Me.Person
       summary: Invoke function UpdatePersonLastName
       operationId: Me.UpdatePersonLastName
       parameters:
@@ -9071,7 +9071,7 @@ paths:
     description: Provides operations to call the GetInvolvedPeople method.
     get:
       tags:
-        - Me.Functions
+        - Me.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: Me.Trips.Trip.GetInvolvedPeople
       parameters:
@@ -11594,7 +11594,7 @@ paths:
     description: Provides operations to call the GetFavoriteAirline method.
     get:
       tags:
-        - NewComePeople.Functions
+        - NewComePeople.Person
       summary: Invoke function GetFavoriteAirline
       operationId: NewComePeople.Person.GetFavoriteAirline
       parameters:
@@ -11615,7 +11615,7 @@ paths:
     description: Provides operations to call the GetFriendsTrips method.
     get:
       tags:
-        - NewComePeople.Functions
+        - NewComePeople.Person
       summary: Invoke function GetFriendsTrips
       operationId: NewComePeople.Person.GetFriendsTrips
       parameters:
@@ -11683,7 +11683,7 @@ paths:
     description: Provides operations to call the GetPeersForTrip method.
     post:
       tags:
-        - NewComePeople.Actions
+        - NewComePeople.Person
       summary: Invoke action GetPeersForTrip
       operationId: NewComePeople.Person.GetPeersForTrip
       parameters:
@@ -11706,7 +11706,7 @@ paths:
     description: Provides operations to call the Hire method.
     post:
       tags:
-        - NewComePeople.Actions
+        - NewComePeople.Person
       summary: Invoke action Hire
       description: Hires someone for the company.
       operationId: NewComePeople.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Hire
@@ -11741,7 +11741,7 @@ paths:
     description: Provides operations to call the ShareTrip method.
     post:
       tags:
-        - NewComePeople.Actions
+        - NewComePeople.Person
       summary: Invoke action ShareTrip
       description: Details of the shared trip.
       operationId: NewComePeople.Person.ShareTrip
@@ -11765,7 +11765,7 @@ paths:
     description: Provides operations to call the UpdatePersonLastName method.
     get:
       tags:
-        - NewComePeople.Functions
+        - NewComePeople.Person
       summary: Invoke function UpdatePersonLastName
       operationId: NewComePeople.Person.UpdatePersonLastName
       parameters:
@@ -12106,7 +12106,7 @@ paths:
     description: Provides operations to call the GetInvolvedPeople method.
     get:
       tags:
-        - NewComePeople.Functions
+        - NewComePeople.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: NewComePeople.Person.Trips.Trip.GetInvolvedPeople
       parameters:
@@ -17931,7 +17931,7 @@ paths:
     description: Provides operations to call the GetInvolvedPeople method.
     get:
       tags:
-        - People.Functions
+        - People.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: People.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee.Trips.Trip.GetInvolvedPeople
       parameters:
@@ -18353,7 +18353,7 @@ paths:
     description: Provides operations to call the GetFavoriteAirline method.
     get:
       tags:
-        - People.Functions
+        - People.Person
       summary: Invoke function GetFavoriteAirline
       operationId: People.Person.GetFavoriteAirline
       parameters:
@@ -18380,7 +18380,7 @@ paths:
     description: Provides operations to call the GetFriendsTrips method.
     get:
       tags:
-        - People.Functions
+        - People.Person
       summary: Invoke function GetFriendsTrips
       operationId: People.Person.GetFriendsTrips
       parameters:
@@ -18448,7 +18448,7 @@ paths:
     description: Provides operations to call the GetPeersForTrip method.
     post:
       tags:
-        - People.Actions
+        - People.Person
       summary: Invoke action GetPeersForTrip
       operationId: People.Person.GetPeersForTrip
       parameters:
@@ -21247,7 +21247,7 @@ paths:
     description: Provides operations to call the Hire method.
     post:
       tags:
-        - People.Actions
+        - People.Person
       summary: Invoke action Hire
       description: Hires someone for the company.
       operationId: People.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Hire
@@ -21564,7 +21564,7 @@ paths:
     description: Provides operations to call the GetInvolvedPeople method.
     get:
       tags:
-        - People.Functions
+        - People.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: People.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Trips.Trip.GetInvolvedPeople
       parameters:
@@ -21986,7 +21986,7 @@ paths:
     description: Provides operations to call the ShareTrip method.
     post:
       tags:
-        - People.Actions
+        - People.Person
       summary: Invoke action ShareTrip
       description: Details of the shared trip.
       operationId: People.Person.ShareTrip
@@ -22016,7 +22016,7 @@ paths:
     description: Provides operations to call the UpdatePersonLastName method.
     get:
       tags:
-        - People.Functions
+        - People.Person
       summary: Invoke function UpdatePersonLastName
       operationId: People.Person.UpdatePersonLastName
       parameters:
@@ -22429,7 +22429,7 @@ paths:
     description: Provides operations to call the GetInvolvedPeople method.
     get:
       tags:
-        - People.Functions
+        - People.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: People.Person.Trips.Trip.GetInvolvedPeople
       parameters:
@@ -24065,22 +24065,14 @@ tags:
     x-ms-docs-toc-type: page
   - name: Me.Trip
     x-ms-docs-toc-type: page
-  - name: Me.Functions
-    x-ms-docs-toc-type: container
   - name: Me.Trips.PlanItem
     x-ms-docs-toc-type: page
-  - name: Me.Actions
-    x-ms-docs-toc-type: container
   - name: NewComePeople.Person
     x-ms-docs-toc-type: page
   - name: NewComePeople.Location
     x-ms-docs-toc-type: page
   - name: NewComePeople.Person.Location
     x-ms-docs-toc-type: page
-  - name: NewComePeople.Functions
-    x-ms-docs-toc-type: container
-  - name: NewComePeople.Actions
-    x-ms-docs-toc-type: container
   - name: NewComePeople.Trip
     x-ms-docs-toc-type: page
   - name: NewComePeople.Trips.PlanItem
@@ -24093,11 +24085,7 @@ tags:
     x-ms-docs-toc-type: page
   - name: People.Trip
     x-ms-docs-toc-type: page
-  - name: People.Functions
-    x-ms-docs-toc-type: container
   - name: People.Trips.PlanItem
     x-ms-docs-toc-type: page
-  - name: People.Actions
-    x-ms-docs-toc-type: container
   - name: ResetDataSource
     x-ms-docs-toc-type: container

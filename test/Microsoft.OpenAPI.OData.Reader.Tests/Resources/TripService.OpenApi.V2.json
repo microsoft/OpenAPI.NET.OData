@@ -7215,7 +7215,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
         "tags": [
-          "Me.Functions"
+          "Me.Trip"
         ],
         "summary": "Invoke function GetInvolvedPeople",
         "operationId": "Me.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee.Trips.Trip.GetInvolvedPeople",
@@ -7696,7 +7696,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
-          "Me.Functions"
+          "Me.Person"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "operationId": "Me.GetFavoriteAirline",
@@ -7722,7 +7722,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName='{userName}')": {
       "get": {
         "tags": [
-          "Me.Functions"
+          "Me.Person"
         ],
         "summary": "Invoke function GetFriendsTrips",
         "operationId": "Me.GetFriendsTrips",
@@ -7799,7 +7799,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip": {
       "post": {
         "tags": [
-          "Me.Actions"
+          "Me.Person"
         ],
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "Me.GetPeersForTrip",
@@ -10930,7 +10930,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire": {
       "post": {
         "tags": [
-          "Me.Actions"
+          "Me.Person"
         ],
         "summary": "Invoke action Hire",
         "description": "Hires someone for the company.",
@@ -11287,7 +11287,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
         "tags": [
-          "Me.Functions"
+          "Me.Trip"
         ],
         "summary": "Invoke function GetInvolvedPeople",
         "operationId": "Me.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Trips.Trip.GetInvolvedPeople",
@@ -11768,7 +11768,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
         "tags": [
-          "Me.Actions"
+          "Me.Person"
         ],
         "summary": "Invoke action ShareTrip",
         "description": "Details of the shared trip.",
@@ -11800,7 +11800,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName='{lastName}')": {
       "get": {
         "tags": [
-          "Me.Functions"
+          "Me.Person"
         ],
         "summary": "Invoke function UpdatePersonLastName",
         "operationId": "Me.UpdatePersonLastName",
@@ -12245,7 +12245,7 @@
     "/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
         "tags": [
-          "Me.Functions"
+          "Me.Trip"
         ],
         "summary": "Invoke function GetInvolvedPeople",
         "operationId": "Me.Trips.Trip.GetInvolvedPeople",
@@ -15601,7 +15601,7 @@
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
-          "NewComePeople.Functions"
+          "NewComePeople.Person"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "operationId": "NewComePeople.Person.GetFavoriteAirline",
@@ -15630,7 +15630,7 @@
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName='{userName}')": {
       "get": {
         "tags": [
-          "NewComePeople.Functions"
+          "NewComePeople.Person"
         ],
         "summary": "Invoke function GetFriendsTrips",
         "operationId": "NewComePeople.Person.GetFriendsTrips",
@@ -15715,7 +15715,7 @@
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip": {
       "post": {
         "tags": [
-          "NewComePeople.Actions"
+          "NewComePeople.Person"
         ],
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "NewComePeople.Person.GetPeersForTrip",
@@ -15747,7 +15747,7 @@
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire": {
       "post": {
         "tags": [
-          "NewComePeople.Actions"
+          "NewComePeople.Person"
         ],
         "summary": "Invoke action Hire",
         "description": "Hires someone for the company.",
@@ -15794,7 +15794,7 @@
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
         "tags": [
-          "NewComePeople.Actions"
+          "NewComePeople.Person"
         ],
         "summary": "Invoke action ShareTrip",
         "description": "Details of the shared trip.",
@@ -15827,7 +15827,7 @@
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName='{lastName}')": {
       "get": {
         "tags": [
-          "NewComePeople.Functions"
+          "NewComePeople.Person"
         ],
         "summary": "Invoke function UpdatePersonLastName",
         "operationId": "NewComePeople.Person.UpdatePersonLastName",
@@ -16275,7 +16275,7 @@
     "/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
         "tags": [
-          "NewComePeople.Functions"
+          "NewComePeople.Trip"
         ],
         "summary": "Invoke function GetInvolvedPeople",
         "operationId": "NewComePeople.Person.Trips.Trip.GetInvolvedPeople",
@@ -23947,7 +23947,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
         "tags": [
-          "People.Functions"
+          "People.Trip"
         ],
         "summary": "Invoke function GetInvolvedPeople",
         "operationId": "People.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee.Trips.Trip.GetInvolvedPeople",
@@ -24492,7 +24492,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
-          "People.Functions"
+          "People.Person"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "operationId": "People.Person.GetFavoriteAirline",
@@ -24528,7 +24528,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName='{userName}')": {
       "get": {
         "tags": [
-          "People.Functions"
+          "People.Person"
         ],
         "summary": "Invoke function GetFriendsTrips",
         "operationId": "People.Person.GetFriendsTrips",
@@ -24613,7 +24613,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip": {
       "post": {
         "tags": [
-          "People.Actions"
+          "People.Person"
         ],
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "People.Person.GetPeersForTrip",
@@ -28312,7 +28312,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire": {
       "post": {
         "tags": [
-          "People.Actions"
+          "People.Person"
         ],
         "summary": "Invoke action Hire",
         "description": "Hires someone for the company.",
@@ -28717,7 +28717,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
         "tags": [
-          "People.Functions"
+          "People.Trip"
         ],
         "summary": "Invoke function GetInvolvedPeople",
         "operationId": "People.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Trips.Trip.GetInvolvedPeople",
@@ -29262,7 +29262,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
         "tags": [
-          "People.Actions"
+          "People.Person"
         ],
         "summary": "Invoke action ShareTrip",
         "description": "Details of the shared trip.",
@@ -29302,7 +29302,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName='{lastName}')": {
       "get": {
         "tags": [
-          "People.Functions"
+          "People.Person"
         ],
         "summary": "Invoke function UpdatePersonLastName",
         "operationId": "People.Person.UpdatePersonLastName",
@@ -29836,7 +29836,7 @@
     "/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
         "tags": [
-          "People.Functions"
+          "People.Trip"
         ],
         "summary": "Invoke function GetInvolvedPeople",
         "operationId": "People.Person.Trips.Trip.GetInvolvedPeople",
@@ -31836,16 +31836,8 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Me.Functions",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
       "name": "Me.Trips.PlanItem",
       "x-ms-docs-toc-type": "page"
-    },
-    {
-      "name": "Me.Actions",
-      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "NewComePeople.Person",
@@ -31858,14 +31850,6 @@
     {
       "name": "NewComePeople.Person.Location",
       "x-ms-docs-toc-type": "page"
-    },
-    {
-      "name": "NewComePeople.Functions",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "NewComePeople.Actions",
-      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "NewComePeople.Trip",
@@ -31892,16 +31876,8 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "People.Functions",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
       "name": "People.Trips.PlanItem",
       "x-ms-docs-toc-type": "page"
-    },
-    {
-      "name": "People.Actions",
-      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "ResetDataSource",
