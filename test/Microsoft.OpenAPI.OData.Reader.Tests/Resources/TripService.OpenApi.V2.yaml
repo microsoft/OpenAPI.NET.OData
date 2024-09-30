@@ -4849,7 +4849,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
-        - Me.Functions
+        - Me.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: Me.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee.Trips.Trip.GetInvolvedPeople
       produces:
@@ -5174,7 +5174,7 @@ paths:
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
     get:
       tags:
-        - Me.Functions
+        - Me.Person
       summary: Invoke function GetFavoriteAirline
       operationId: Me.GetFavoriteAirline
       responses:
@@ -5193,7 +5193,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName=''{userName}'')':
     get:
       tags:
-        - Me.Functions
+        - Me.Person
       summary: Invoke function GetFriendsTrips
       operationId: Me.GetFriendsTrips
       parameters:
@@ -5241,7 +5241,7 @@ paths:
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip:
     post:
       tags:
-        - Me.Actions
+        - Me.Person
       summary: Invoke action GetPeersForTrip
       operationId: Me.GetPeersForTrip
       parameters:
@@ -7352,7 +7352,7 @@ paths:
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire:
     post:
       tags:
-        - Me.Actions
+        - Me.Person
       summary: Invoke action Hire
       description: Hires someone for the company.
       operationId: Me.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Hire
@@ -7602,7 +7602,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
-        - Me.Functions
+        - Me.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: Me.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Trips.Trip.GetInvolvedPeople
       produces:
@@ -7927,7 +7927,7 @@ paths:
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip:
     post:
       tags:
-        - Me.Actions
+        - Me.Person
       summary: Invoke action ShareTrip
       description: Details of the shared trip.
       operationId: Me.ShareTrip
@@ -7949,7 +7949,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName=''{lastName}'')':
     get:
       tags:
-        - Me.Functions
+        - Me.Person
       summary: Invoke function UpdatePersonLastName
       operationId: Me.UpdatePersonLastName
       parameters:
@@ -8262,7 +8262,7 @@ paths:
   '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
-        - Me.Functions
+        - Me.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: Me.Trips.Trip.GetInvolvedPeople
       produces:
@@ -10502,7 +10502,7 @@ paths:
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
-        - NewComePeople.Functions
+        - NewComePeople.Person
       summary: Invoke function GetFavoriteAirline
       operationId: NewComePeople.Person.GetFavoriteAirline
       parameters:
@@ -10522,7 +10522,7 @@ paths:
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName=''{userName}'')':
     get:
       tags:
-        - NewComePeople.Functions
+        - NewComePeople.Person
       summary: Invoke function GetFriendsTrips
       operationId: NewComePeople.Person.GetFriendsTrips
       parameters:
@@ -10576,7 +10576,7 @@ paths:
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip':
     post:
       tags:
-        - NewComePeople.Actions
+        - NewComePeople.Person
       summary: Invoke action GetPeersForTrip
       operationId: NewComePeople.Person.GetPeersForTrip
       parameters:
@@ -10597,7 +10597,7 @@ paths:
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire':
     post:
       tags:
-        - NewComePeople.Actions
+        - NewComePeople.Person
       summary: Invoke action Hire
       description: Hires someone for the company.
       operationId: NewComePeople.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Hire
@@ -10629,7 +10629,7 @@ paths:
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
     post:
       tags:
-        - NewComePeople.Actions
+        - NewComePeople.Person
       summary: Invoke action ShareTrip
       description: Details of the shared trip.
       operationId: NewComePeople.Person.ShareTrip
@@ -10651,7 +10651,7 @@ paths:
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName=''{lastName}'')':
     get:
       tags:
-        - NewComePeople.Functions
+        - NewComePeople.Person
       summary: Invoke function UpdatePersonLastName
       operationId: NewComePeople.Person.UpdatePersonLastName
       parameters:
@@ -10959,7 +10959,7 @@ paths:
   '/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
-        - NewComePeople.Functions
+        - NewComePeople.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: NewComePeople.Person.Trips.Trip.GetInvolvedPeople
       produces:
@@ -16203,7 +16203,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
-        - People.Functions
+        - People.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: People.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee.Trips.Trip.GetInvolvedPeople
       produces:
@@ -16576,7 +16576,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
-        - People.Functions
+        - People.Person
       summary: Invoke function GetFavoriteAirline
       operationId: People.Person.GetFavoriteAirline
       parameters:
@@ -16602,7 +16602,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName=''{userName}'')':
     get:
       tags:
-        - People.Functions
+        - People.Person
       summary: Invoke function GetFriendsTrips
       operationId: People.Person.GetFriendsTrips
       parameters:
@@ -16656,7 +16656,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip':
     post:
       tags:
-        - People.Actions
+        - People.Person
       summary: Invoke action GetPeersForTrip
       operationId: People.Person.GetPeersForTrip
       parameters:
@@ -19189,7 +19189,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire':
     post:
       tags:
-        - People.Actions
+        - People.Person
       summary: Invoke action Hire
       description: Hires someone for the company.
       operationId: People.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Hire
@@ -19475,7 +19475,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
-        - People.Functions
+        - People.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: People.Person.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager.Trips.Trip.GetInvolvedPeople
       produces:
@@ -19848,7 +19848,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
     post:
       tags:
-        - People.Actions
+        - People.Person
       summary: Invoke action ShareTrip
       description: Details of the shared trip.
       operationId: People.Person.ShareTrip
@@ -19876,7 +19876,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName=''{lastName}'')':
     get:
       tags:
-        - People.Functions
+        - People.Person
       summary: Invoke function UpdatePersonLastName
       operationId: People.Person.UpdatePersonLastName
       parameters:
@@ -20256,7 +20256,7 @@ paths:
   '/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
-        - People.Functions
+        - People.Trip
       summary: Invoke function GetInvolvedPeople
       operationId: People.Person.Trips.Trip.GetInvolvedPeople
       produces:
@@ -21577,22 +21577,14 @@ tags:
     x-ms-docs-toc-type: page
   - name: Me.Trip
     x-ms-docs-toc-type: page
-  - name: Me.Functions
-    x-ms-docs-toc-type: container
   - name: Me.Trips.PlanItem
     x-ms-docs-toc-type: page
-  - name: Me.Actions
-    x-ms-docs-toc-type: container
   - name: NewComePeople.Person
     x-ms-docs-toc-type: page
   - name: NewComePeople.Location
     x-ms-docs-toc-type: page
   - name: NewComePeople.Person.Location
     x-ms-docs-toc-type: page
-  - name: NewComePeople.Functions
-    x-ms-docs-toc-type: container
-  - name: NewComePeople.Actions
-    x-ms-docs-toc-type: container
   - name: NewComePeople.Trip
     x-ms-docs-toc-type: page
   - name: NewComePeople.Trips.PlanItem
@@ -21605,11 +21597,7 @@ tags:
     x-ms-docs-toc-type: page
   - name: People.Trip
     x-ms-docs-toc-type: page
-  - name: People.Functions
-    x-ms-docs-toc-type: container
   - name: People.Trips.PlanItem
     x-ms-docs-toc-type: page
-  - name: People.Actions
-    x-ms-docs-toc-type: container
   - name: ResetDataSource
     x-ms-docs-toc-type: container
