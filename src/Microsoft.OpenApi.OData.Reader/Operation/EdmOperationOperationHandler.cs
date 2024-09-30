@@ -133,10 +133,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            string tagName = null;
-            var secondLastSegment = Path.Segments.Reverse().Skip(1).First();            
-            GenerateTagName(secondLastSegment, out tagName);            
-            OpenApiTag tag = new OpenApiTag
+            GenerateTagName(out string tagName);
+            OpenApiTag tag = new()
             {
                 Name = tagName,
             };
@@ -148,18 +146,26 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetTags(operation);
         }
 
-        private void GenerateTagName(ODataSegment targetSegment, out string tagName)
-        {
+        /// <summary>
+        /// Genrates the tag name for the operation.
+        /// </summary>
+        /// <param name="tagName">The generated tag name.</param>
+        /// <param name="skip">The number of segments to skip.</param>
+        private void GenerateTagName(out string tagName, int skip = 1)
+        {            
+            var targetSegment = Path.Segments.Reverse().Skip(skip).First();
+
             if (targetSegment is ODataNavigationPropertySegment)
             {
                 tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
             }
-            else if (targetSegment is ODataOperationSegment || targetSegment is ODataOperationImportSegment)
-            {   // Composable function
-                targetSegment = Path.Segments.Reverse().Skip(2).First();
-                GenerateTagName(targetSegment, out tagName);
+            else if (targetSegment is ODataOperationSegment || targetSegment is ODataOperationImportSegment // Composable function
+                || targetSegment is ODataKeySegment) // Previous segmment could be a navigation property or a navigation source segment
+            {   
+                skip += 1;
+                GenerateTagName(out tagName, skip);
             }
-            else // ODataKeySegment or ODataNavigationSourceSegment
+            else // ODataNavigationSourceSegment
             {
                 tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
             }
