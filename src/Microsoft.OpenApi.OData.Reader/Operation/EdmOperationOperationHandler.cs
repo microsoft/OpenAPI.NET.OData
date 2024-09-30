@@ -133,10 +133,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            string value = EdmOperation.IsAction() ? "Actions" : "Functions";
+            string tagName = null;
+            var secondLastSegment = Path.Segments.Reverse().Skip(1).First();            
+            GenerateTagName(secondLastSegment, out tagName);            
             OpenApiTag tag = new OpenApiTag
             {
-                Name = NavigationSource.Name + "." + value,
+                Name = tagName,
             };
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("container"));
             operation.Tags.Add(tag);
@@ -144,6 +146,23 @@ namespace Microsoft.OpenApi.OData.Operation
             Context.AppendTag(tag);
 
             base.SetTags(operation);
+        }
+
+        private void GenerateTagName(ODataSegment targetSegment, out string tagName)
+        {
+            if (targetSegment is ODataNavigationPropertySegment)
+            {
+                tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
+            }
+            else if (targetSegment is ODataOperationSegment || targetSegment is ODataOperationImportSegment)
+            {   // Composable function
+                targetSegment = Path.Segments.Reverse().Skip(2).First();
+                GenerateTagName(targetSegment, out tagName);
+            }
+            else // ODataKeySegment or ODataNavigationSourceSegment
+            {
+                tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
+            }
         }
 
         /// <inheritdoc/>
