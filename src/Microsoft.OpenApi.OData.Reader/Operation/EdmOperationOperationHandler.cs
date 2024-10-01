@@ -154,7 +154,6 @@ namespace Microsoft.OpenApi.OData.Operation
         private void GenerateTagName(out string tagName, int skip = 1)
         {            
             var targetSegment = Path.Segments.Reverse().Skip(skip).FirstOrDefault();
-            targetSegment = null;
 
             switch (targetSegment)
             {
