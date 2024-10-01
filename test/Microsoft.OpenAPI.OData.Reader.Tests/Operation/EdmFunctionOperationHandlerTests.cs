@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -292,6 +292,65 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             if (enableOperationId)
             {
                 Assert.Equal("Customers.Customer.MyFunction-df74", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForComposableOverloadEdmFunctionReturnsCorrectOperationId(bool enableOperationId)
+        {
+            // Arrange
+            EdmModel model = new();
+            EdmEntityType customer = new("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+
+            EdmFunction function = new("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function);
+
+            function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            function.AddParameter("param2", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function);
+
+            EdmFunction function2 = new("NS", "MyFunction2", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function2.AddParameter("entity2", new EdmEntityTypeReference(customer, false));
+            function2.AddParameter("param3", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function2);
+
+            EdmEntityContainer container = new("NS", "Default");
+            EdmEntitySet customers = new(container, "Customers", customer);
+            model.AddElement(container);
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableOperationId = enableOperationId,
+                AddSingleQuotesForStringParameters = true,
+            };
+            ODataContext context = new(model, settings);
+
+            ODataPath path = new(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function),
+                new ODataOperationSegment(function2));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.Customer.MyFunction.MyFunction2-df74", operation.OperationId);
             }
             else
             {
