@@ -155,19 +155,22 @@ namespace Microsoft.OpenApi.OData.Operation
         {            
             var targetSegment = Path.Segments.Reverse().Skip(skip).First();
 
-            if (targetSegment is ODataNavigationPropertySegment)
+            switch (targetSegment)
             {
-                tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
-            }
-            else if (targetSegment is ODataOperationSegment || targetSegment is ODataOperationImportSegment // Composable function
-                || targetSegment is ODataKeySegment) // Previous segmment could be a navigation property or a navigation source segment
-            {   
-                skip += 1;
-                GenerateTagName(out tagName, skip);
-            }
-            else // ODataNavigationSourceSegment
-            {
-                tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
+                case ODataNavigationPropertySegment:
+                    tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
+                    break;
+                case ODataOperationSegment:
+                case ODataOperationImportSegment:
+                // Previous segmment could be a navigation property or a navigation source segment
+                case ODataKeySegment:
+                    skip += 1;
+                    GenerateTagName(out tagName, skip);
+                    break;
+                // ODataNavigationSourceSegment
+                default:
+                    tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
+                    break;
             }
         }
 
