@@ -153,7 +153,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="skip">The number of segments to skip.</param>
         private void GenerateTagName(out string tagName, int skip = 1)
         {            
-            var targetSegment = Path.Segments.Reverse().Skip(skip).First();
+            var targetSegment = Path.Segments.Reverse().Skip(skip).FirstOrDefault();
+            targetSegment = null;
 
             switch (targetSegment)
             {
