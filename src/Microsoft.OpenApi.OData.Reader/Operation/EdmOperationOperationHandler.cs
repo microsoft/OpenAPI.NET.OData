@@ -81,7 +81,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 // duplicates in entity vs entityset functions/actions
 
                 List<string> identifiers = new();
-                string pathHash = string.Empty;
                 foreach (ODataSegment segment in Path.Segments)
                 {
                     if (segment is ODataKeySegment keySegment)
@@ -102,18 +101,6 @@ namespace Microsoft.OpenApi.OData.Operation
                             identifiers.Add(keySegment.Identifier);
                         }
                     }
-                    else if (segment is ODataOperationSegment opSegment)
-                    {
-                        if (opSegment.Operation is IEdmFunction function && Context.Model.IsOperationOverload(function))
-                        {
-                            // Hash the segment to avoid duplicate operationIds
-                            pathHash = string.IsNullOrEmpty(pathHash)
-                                ? opSegment.GetPathHash(Context.Settings)
-                                : (pathHash + opSegment.GetPathHash(Context.Settings)).GetHashSHA256().Substring(0, 4);
-                        }
-
-                        identifiers.Add(segment.Identifier);
-                    }
                     else
                     {
                         identifiers.Add(segment.Identifier);
@@ -122,13 +109,21 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 string operationId = string.Join(".", identifiers);
 
-                if (!string.IsNullOrEmpty(pathHash))
+                if (EdmOperation.IsAction())
                 {
-                    operation.OperationId = operationId + "-" + pathHash;
+                    operation.OperationId = operationId;
                 }
                 else
                 {
-                    operation.OperationId = operationId;
+                    if (Path.LastSegment is ODataOperationSegment operationSegment &&
+                        Context.Model.IsOperationOverload(operationSegment.Operation))
+                    {
+                        operation.OperationId = operationId + "-" + Path.LastSegment.GetPathHash(Context.Settings);
+                    }
+                    else
+                    {
+                        operation.OperationId = operationId;
+                    }
                 }
             }
 
@@ -174,7 +169,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     break;
                 // ODataNavigationSourceSegment
                 default:
-                    tagName = NavigationSource.Name + "." + NavigationSource.EntityType().Name;
+                    tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
                     break;
             }
         }
