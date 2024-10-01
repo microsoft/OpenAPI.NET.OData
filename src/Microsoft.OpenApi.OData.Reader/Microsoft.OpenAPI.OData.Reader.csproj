@@ -27,6 +27,7 @@
 		- Adds support for retrieving collection of enum values from UpdateMethod property of UpdateRestrictions annotation #564
 		- Adds nullable to double schema conversions #581
 		- Updates tag names for actions/functions operations #585
+		- Creates unique operation ids for paths with composable overloaded functions #580
 	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
