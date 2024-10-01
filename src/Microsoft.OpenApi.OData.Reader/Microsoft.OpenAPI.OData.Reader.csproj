@@ -25,6 +25,7 @@
 		- Cleaned up obsolete APIs
 		- Changed target framework to net8.0
 		- Adds support for retrieving collection of enum values from UpdateMethod property of UpdateRestrictions annotation #564
+		- Adds nullable to double schema conversions #581
 		- Updates tag names for actions/functions operations #585
 	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
@@ -45,8 +46,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.OData.Edm" Version="8.0.1" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.6.21" />
+    <PackageReference Include="Microsoft.OData.Edm" Version="8.0.2" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.22" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

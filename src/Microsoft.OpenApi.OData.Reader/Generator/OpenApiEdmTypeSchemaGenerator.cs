@@ -195,8 +195,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.Double: // double
                     schema.OneOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema { Type = Constants.NumberType, Format = "double" },
-                        new OpenApiSchema { Type = Constants.StringType },
+                        new OpenApiSchema { Type = Constants.NumberType, Format = "double", Nullable = true },
+                        new OpenApiSchema { Type = Constants.StringType, Nullable = true },
                         new OpenApiSchema
                         {
                             UnresolvedReference = true,

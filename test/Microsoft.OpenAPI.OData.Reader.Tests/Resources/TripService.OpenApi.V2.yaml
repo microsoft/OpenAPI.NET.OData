@@ -21393,6 +21393,7 @@ definitions:
       - '-INF'
       - INF
       - NaN
+    type: string
 parameters:
   top:
     in: query

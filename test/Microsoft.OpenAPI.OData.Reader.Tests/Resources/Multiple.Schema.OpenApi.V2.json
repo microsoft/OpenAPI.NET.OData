@@ -6118,7 +6118,8 @@
         "-INF",
         "INF",
         "NaN"
-      ]
+      ],
+      "type": "string"
     }
   },
   "parameters": {
