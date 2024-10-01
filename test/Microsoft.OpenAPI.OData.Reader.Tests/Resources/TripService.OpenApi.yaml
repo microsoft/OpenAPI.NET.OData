@@ -914,7 +914,9 @@ paths:
             oneOf:
               - type: number
                 format: double
+                nullable: true
               - type: string
+                nullable: true
               - $ref: '#/components/schemas/ReferenceNumeric'
         - name: lon
           in: path
@@ -923,7 +925,9 @@ paths:
             oneOf:
               - type: number
                 format: double
+                nullable: true
               - type: string
+                nullable: true
               - $ref: '#/components/schemas/ReferenceNumeric'
       responses:
         '200':
@@ -23713,6 +23717,8 @@ components:
         - '-INF'
         - INF
         - NaN
+      type: string
+      nullable: true
   responses:
     error:
       description: error

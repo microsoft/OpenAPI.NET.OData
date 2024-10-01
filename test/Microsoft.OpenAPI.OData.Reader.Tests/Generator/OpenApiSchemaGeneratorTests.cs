@@ -1105,10 +1105,12 @@ namespace Microsoft.OpenApi.OData.Tests
   ""oneOf"": [
     {
       ""type"": ""number"",
-      ""format"": ""double""
+      ""format"": ""double"",
+      ""nullable"": true
     },
     {
-      ""type"": ""string""
+      ""type"": ""string"",
+      ""nullable"": true
     },
     {
       ""$ref"": ""#/components/schemas/ReferenceNumeric""
