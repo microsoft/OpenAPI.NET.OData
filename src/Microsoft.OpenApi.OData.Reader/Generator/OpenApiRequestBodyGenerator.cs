@@ -69,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Generator
             bool allParamsNullable = true;
             foreach (var parameter in action.Parameters.Skip(skip))
             {
-                allParamsNullable = parameter.Type.IsNullable;
+                allParamsNullable &= parameter.Type.IsNullable;
                 parametersSchema.Properties.Add(parameter.Name, context.CreateEdmTypeSchema(parameter.Type));
             }
 
