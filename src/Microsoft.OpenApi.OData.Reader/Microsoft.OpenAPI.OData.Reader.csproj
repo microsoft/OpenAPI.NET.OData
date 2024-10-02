@@ -28,6 +28,7 @@
 		- Adds nullable to double schema conversions #581
 		- Updates tag names for actions/functions operations #585
 		- Creates unique operation ids for paths with composable overloaded functions #580
+		- Sets request body required property to false when all action parameters are optional #582
 	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
