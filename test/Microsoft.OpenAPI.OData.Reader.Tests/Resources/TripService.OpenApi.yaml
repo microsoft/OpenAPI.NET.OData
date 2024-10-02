@@ -8095,7 +8095,6 @@ paths:
                     - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
                     - type: object
                       nullable: true
-        required: true
       responses:
         '204':
           description: Success
@@ -11734,7 +11733,6 @@ paths:
                     - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
                     - type: object
                       nullable: true
-        required: true
       responses:
         '204':
           description: Success
@@ -21275,7 +21273,6 @@ paths:
                     - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
                     - type: object
                       nullable: true
-        required: true
       responses:
         '204':
           description: Success

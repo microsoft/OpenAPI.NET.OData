@@ -7362,7 +7362,6 @@ paths:
         - in: body
           name: body
           description: Action parameters
-          required: true
           schema:
             type: object
             properties:
@@ -10613,7 +10612,6 @@ paths:
         - in: body
           name: body
           description: Action parameters
-          required: true
           schema:
             type: object
             properties:
@@ -19205,7 +19203,6 @@ paths:
         - in: body
           name: body
           description: Action parameters
-          required: true
           schema:
             type: object
             properties:
