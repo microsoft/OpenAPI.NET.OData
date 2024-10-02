@@ -36,6 +36,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var edmAction = new EdmAction("NS", "Checkout", boolType, true, actionEntitySetPath);
             edmAction.AddParameter(new EdmOperationParameter(edmAction, "bindingParameter", new EdmEntityTypeReference(customer, true)));
             edmAction.AddParameter("param", EdmCoreModel.Instance.GetString(true));
+            edmAction.AddParameter("param2", EdmCoreModel.Instance.GetString(false));
+
             model.AddElement(edmAction);
 
             var actionImportEntitySetPath = new EdmPathExpression("Param1/Nav2");
@@ -89,9 +91,17 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var schema = content.Value.Schema;
             Assert.Equal("object", schema.Type);
             Assert.NotNull(schema.Properties);
-            var parameter = Assert.Single(schema.Properties);
-            Assert.Equal("param", parameter.Key);
-            Assert.Equal("string", parameter.Value.Type);
+
+            var parameters = schema.Properties;
+            Assert.Equal(2, parameters.Count);
+
+            var parameter1 = parameters.First(p => p.Key == "param");
+            Assert.Equal("param", parameter1.Key);
+            Assert.Equal("string", parameter1.Value.Type);
+
+            var parameter2 = parameters.First(p => p.Key == "param2");
+            Assert.Equal("param2", parameter2.Key);
+            Assert.Equal("string", parameter2.Value.Type);
         }
 
         [Fact]
@@ -116,6 +126,9 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
           ""param"": {
             ""type"": ""string"",
             ""nullable"": true
+          },
+          ""param2"": {
+            ""type"": ""string""
           }
         }
       }
@@ -146,9 +159,17 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var schema = content.Value.Schema;
             Assert.Equal("object", schema.Type);
             Assert.NotNull(schema.Properties);
-            var parameter = Assert.Single(schema.Properties);
-            Assert.Equal("param", parameter.Key);
-            Assert.Equal("string", parameter.Value.Type);
+
+            var parameters = schema.Properties;
+            Assert.Equal(2, parameters.Count);
+
+            var parameter1 = parameters.First(p => p.Key == "param");
+            Assert.Equal("param", parameter1.Key);
+            Assert.Equal("string", parameter1.Value.Type);
+
+            var parameter2 = parameters.First(p => p.Key == "param2");
+            Assert.Equal("param2", parameter2.Key);
+            Assert.Equal("string", parameter2.Value.Type);
         }
 
         [Fact]
