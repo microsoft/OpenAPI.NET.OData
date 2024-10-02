@@ -66,15 +66,17 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = new Dictionary<string, OpenApiSchema>()
             };
 
+            bool allParamsNullable = true;
             foreach (var parameter in action.Parameters.Skip(skip))
             {
+                allParamsNullable = parameter.Type.IsNullable;
                 parametersSchema.Properties.Add(parameter.Name, context.CreateEdmTypeSchema(parameter.Type));
             }
 
-            OpenApiRequestBody requestBody = new OpenApiRequestBody
+            OpenApiRequestBody requestBody = new()
             {
                 Description = "Action parameters",
-                Required = true,
+                Required = !allParamsNullable,
                 Content = new Dictionary<string, OpenApiMediaType>()
             };
 
