@@ -401,15 +401,20 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Type);
                 Assert.NotNull(schema.OneOf);
                 Assert.Equal(2, schema.OneOf.Count);
-                Assert.Equal(new[] { "number", "string" }, schema.OneOf.Select(a => a.Type));
+                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
+                Assert.NotNull(numberSchema);
+                Assert.True(numberSchema.Nullable);
+                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
+                Assert.NotNull(stringSchema);
+                Assert.True(stringSchema.Nullable);
+                Assert.False(schema.Nullable);
             }
             else
             {
                 Assert.Equal("number", schema.Type);
                 Assert.Null(schema.OneOf);
+                Assert.Equal(isNullable, schema.Nullable);
             }
-
-            Assert.Equal(isNullable, schema.Nullable);
         }
 
         [Theory]
@@ -439,15 +444,20 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Type);
                 Assert.NotNull(schema.OneOf);
                 Assert.Equal(2, schema.OneOf.Count);
-                Assert.Equal(new[] { "integer", "string" }, schema.OneOf.Select(a => a.Type));
+                var integerSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("integer", StringComparison.OrdinalIgnoreCase));
+                Assert.NotNull(integerSchema);
+                Assert.True(integerSchema.Nullable);
+                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
+                Assert.NotNull(stringSchema);
+                Assert.True(stringSchema.Nullable);
+                Assert.False(schema.Nullable);
             }
             else
             {
                 Assert.Equal("integer", schema.Type);
                 Assert.Null(schema.AnyOf);
+                Assert.Equal(isNullable, schema.Nullable);
             }
-
-            Assert.Equal(isNullable, schema.Nullable);
         }
 
         [Theory]
@@ -502,8 +512,16 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.Null(schema.Type);
 
-            Assert.Equal("double", schema.OneOf.FirstOrDefault(x => !string.IsNullOrEmpty(x.Format))?.Format);
-            Assert.Equal(isNullable, schema.Nullable);
+            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
+            Assert.NotNull(numberSchema);
+            Assert.True(numberSchema.Nullable);
+            Assert.Equal("double", numberSchema.Format, StringComparer.OrdinalIgnoreCase);
+
+            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
+            Assert.NotNull(stringSchema);
+            Assert.True(stringSchema.Nullable);
+
+            Assert.False(schema.Nullable);
 
             Assert.Null(schema.AnyOf);
 
@@ -528,8 +546,16 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.Null(schema.Type);
 
-            Assert.Equal("float", schema.OneOf.FirstOrDefault(x => !string.IsNullOrEmpty(x.Format))?.Format);
-            Assert.Equal(isNullable, schema.Nullable);
+            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
+            Assert.NotNull(numberSchema);
+            Assert.True(numberSchema.Nullable);
+            Assert.Equal("float", numberSchema.Format, StringComparer.OrdinalIgnoreCase);
+
+            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
+            Assert.NotNull(stringSchema);
+            Assert.True(stringSchema.Nullable);
+            
+            Assert.False(schema.Nullable);
 
             Assert.Null(schema.AnyOf);
 

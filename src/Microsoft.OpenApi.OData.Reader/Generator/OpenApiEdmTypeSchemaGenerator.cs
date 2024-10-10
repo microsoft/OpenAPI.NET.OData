@@ -133,7 +133,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
 
                 // Nullable properties are marked with the keyword nullable and a value of true.
-                schema.Nullable = primitiveType.IsNullable ? true : false;
+                // oneOf and anyOf don't have type, so they can't be set to nullable, entries are nullable
+                schema.Nullable = schema.AnyOf == null && schema.OneOf == null && primitiveType.IsNullable;
             }
 
             return schema;
@@ -182,8 +183,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         schema.OneOf = new List<OpenApiSchema>
                         {
-                            new OpenApiSchema { Type = Constants.NumberType, Format = Constants.DecimalFormat },
-                            new OpenApiSchema { Type = Constants.StringType },
+                            new OpenApiSchema { Type = Constants.NumberType, Format = Constants.DecimalFormat, Nullable = true },
+                            new OpenApiSchema { Type = Constants.StringType, Nullable = true },
                         };
                     }
                     else
@@ -211,8 +212,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.Single: // single
                     schema.OneOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema { Type = Constants.NumberType, Format = "float" },
-                        new OpenApiSchema { Type = Constants.StringType },
+                        new OpenApiSchema { Type = Constants.NumberType, Format = "float", Nullable = true },
+                        new OpenApiSchema { Type = Constants.StringType, Nullable = true },
                         new OpenApiSchema
                         {
                             UnresolvedReference = true,
@@ -246,8 +247,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         schema.OneOf = new List<OpenApiSchema>
                         {
-                            new OpenApiSchema { Type = Constants.IntegerType, Format = Constants.Int64Format },
-                            new OpenApiSchema { Type = Constants.StringType }
+                            new OpenApiSchema { Type = Constants.IntegerType, Format = Constants.Int64Format, Nullable = true },
+                            new OpenApiSchema { Type = Constants.StringType, Nullable = true }
                         };
                     }
                     else
