@@ -133,8 +133,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
 
                 // Nullable properties are marked with the keyword nullable and a value of true.
-                // oneOf and anyOf don't have type, so they can't be set to nullable, entries are nullable
-                schema.Nullable = schema.AnyOf == null && schema.OneOf == null && primitiveType.IsNullable;
+                // nullable cannot be true when type is empty, often common in anyof/allOf since individual entries are nullable
+                schema.Nullable = !string.IsNullOrEmpty(schema.Type) && primitiveType.IsNullable;
             }
 
             return schema;
