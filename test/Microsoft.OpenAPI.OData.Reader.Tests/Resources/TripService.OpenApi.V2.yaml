@@ -4737,7 +4737,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -4784,7 +4784,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -4821,7 +4821,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -4859,7 +4859,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -4922,7 +4922,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -4977,7 +4977,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -4986,7 +4986,7 @@ paths:
           name: PlanItemId
           description: The unique identifier of PlanItem
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -5019,7 +5019,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -5049,7 +5049,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -5087,7 +5087,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -5115,7 +5115,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7490,7 +7490,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7537,7 +7537,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7574,7 +7574,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7612,7 +7612,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7675,7 +7675,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7730,7 +7730,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7739,7 +7739,7 @@ paths:
           name: PlanItemId
           description: The unique identifier of PlanItem
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7772,7 +7772,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7802,7 +7802,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7840,7 +7840,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -7868,7 +7868,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8150,7 +8150,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8197,7 +8197,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8234,7 +8234,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8272,7 +8272,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8335,7 +8335,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8390,7 +8390,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8399,7 +8399,7 @@ paths:
           name: PlanItemId
           description: The unique identifier of PlanItem
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8432,7 +8432,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8462,7 +8462,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8500,7 +8500,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -8528,7 +8528,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -10856,7 +10856,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -10903,7 +10903,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -10940,7 +10940,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -10975,7 +10975,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -11035,7 +11035,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -11087,7 +11087,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -11096,7 +11096,7 @@ paths:
           name: PlanItemId
           description: The unique identifier of PlanItem
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -11129,7 +11129,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -11159,7 +11159,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -11197,7 +11197,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -11225,7 +11225,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16079,7 +16079,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16132,7 +16132,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16175,7 +16175,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16219,7 +16219,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16288,7 +16288,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16349,7 +16349,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16358,7 +16358,7 @@ paths:
           name: PlanItemId
           description: The unique identifier of PlanItem
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16397,7 +16397,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16433,7 +16433,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16477,7 +16477,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -16511,7 +16511,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19351,7 +19351,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19404,7 +19404,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19447,7 +19447,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19491,7 +19491,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19560,7 +19560,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19621,7 +19621,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19630,7 +19630,7 @@ paths:
           name: PlanItemId
           description: The unique identifier of PlanItem
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19669,7 +19669,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19705,7 +19705,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19749,7 +19749,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -19783,7 +19783,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20132,7 +20132,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20185,7 +20185,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20228,7 +20228,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20272,7 +20272,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20341,7 +20341,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20402,7 +20402,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20411,7 +20411,7 @@ paths:
           name: PlanItemId
           description: The unique identifier of PlanItem
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20450,7 +20450,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20486,7 +20486,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20530,7 +20530,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20564,7 +20564,7 @@ paths:
           name: TripId
           description: The unique identifier of Trip
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -20846,7 +20846,7 @@ definitions:
         format: int64
         allOf:
           - format: int64
-            type: integer
+            type: number
       Emails:
         type: array
         items:
@@ -20944,7 +20944,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ShareId:
         format: uuid
         pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
@@ -20987,7 +20987,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ConfirmationCode:
         type: string
       StartsAt:
@@ -21044,7 +21044,7 @@ definitions:
             format: int64
             allOf:
               - format: int64
-                type: integer
+                type: number
           Peers:
             type: array
             items:
@@ -21060,7 +21060,7 @@ definitions:
             format: int64
             allOf:
               - format: int64
-                type: integer
+                type: number
           BossOffice:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
           DirectReports:
@@ -21450,7 +21450,7 @@ parameters:
           format: int32
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
   GetPeersForTripRequestBody:
     in: body
     name: body
@@ -21465,7 +21465,7 @@ parameters:
           format: int32
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
 responses:
   error:
     description: error
