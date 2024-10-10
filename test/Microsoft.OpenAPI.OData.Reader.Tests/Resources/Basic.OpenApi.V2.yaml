@@ -641,11 +641,11 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       City:
         $ref: '#/definitions/DefaultNs.City'
     example:
-      Id: integer
+      Id: number
       City:
         '@odata.type': DefaultNs.City
   DefaultNs.WorkAddress:
@@ -657,7 +657,7 @@ definitions:
           CountryOrRegion:
             $ref: '#/definitions/DefaultNs.CountryOrRegion'
     example:
-      Id: integer
+      Id: number
       City:
         '@odata.type': DefaultNs.City
       CountryOrRegion:

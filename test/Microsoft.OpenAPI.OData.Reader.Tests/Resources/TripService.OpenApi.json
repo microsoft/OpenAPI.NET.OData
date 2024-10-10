@@ -7805,7 +7805,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -7883,7 +7883,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -7937,7 +7937,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -7990,7 +7990,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -8108,7 +8108,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -8210,7 +8210,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -8223,7 +8223,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "PlanItem"
@@ -8272,7 +8272,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -8318,7 +8318,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -8385,7 +8385,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -8426,7 +8426,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12277,7 +12277,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12355,7 +12355,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12409,7 +12409,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12462,7 +12462,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12580,7 +12580,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12682,7 +12682,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12695,7 +12695,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "PlanItem"
@@ -12744,7 +12744,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12790,7 +12790,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12857,7 +12857,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -12898,7 +12898,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13328,7 +13328,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13406,7 +13406,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13460,7 +13460,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13513,7 +13513,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13631,7 +13631,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13733,7 +13733,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13746,7 +13746,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "PlanItem"
@@ -13795,7 +13795,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13841,7 +13841,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13908,7 +13908,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -13949,7 +13949,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -17907,7 +17907,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -17988,7 +17988,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -18045,7 +18045,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -18097,7 +18097,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -18214,7 +18214,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -18315,7 +18315,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -18328,7 +18328,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "PlanItem"
@@ -18380,7 +18380,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -18429,7 +18429,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -18499,7 +18499,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -18543,7 +18543,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -26505,7 +26505,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -26593,7 +26593,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -26657,7 +26657,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -26720,7 +26720,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -26848,7 +26848,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -26960,7 +26960,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -26973,7 +26973,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "PlanItem"
@@ -27032,7 +27032,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -27088,7 +27088,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -27165,7 +27165,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -27216,7 +27216,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -31869,7 +31869,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -31957,7 +31957,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -32021,7 +32021,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -32084,7 +32084,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -32212,7 +32212,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -32324,7 +32324,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -32337,7 +32337,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "PlanItem"
@@ -32396,7 +32396,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -32452,7 +32452,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -32529,7 +32529,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -32580,7 +32580,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33123,7 +33123,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33211,7 +33211,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33275,7 +33275,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33338,7 +33338,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33466,7 +33466,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33578,7 +33578,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33591,7 +33591,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "PlanItem"
@@ -33650,7 +33650,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33706,7 +33706,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33783,7 +33783,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -33834,7 +33834,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "Trip"
@@ -34316,14 +34316,15 @@
           "Age": {
             "oneOf": [
               {
-                "type": "integer",
-                "format": "int64"
+                "type": "number",
+                "format": "int64",
+                "nullable": true
               },
               {
-                "type": "string"
+                "type": "string",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "Emails": {
             "type": "array",
@@ -34527,7 +34528,7 @@
           "TripId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ShareId": {
@@ -34543,10 +34544,12 @@
             "oneOf": [
               {
                 "type": "number",
-                "format": "float"
+                "format": "float",
+                "nullable": true
               },
               {
-                "type": "string"
+                "type": "string",
+                "nullable": true
               },
               {
                 "$ref": "#/components/schemas/ReferenceNumeric"
@@ -34595,7 +34598,7 @@
           "PlanItemId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ConfirmationCode": {
@@ -34729,11 +34732,13 @@
               "Cost": {
                 "oneOf": [
                   {
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "number",
+                    "format": "int64",
+                    "nullable": true
                   },
                   {
-                    "type": "string"
+                    "type": "string",
+                    "nullable": true
                   }
                 ]
               },
@@ -34760,11 +34765,13 @@
               "Budget": {
                 "oneOf": [
                   {
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "number",
+                    "format": "int64",
+                    "nullable": true
                   },
                   {
-                    "type": "string"
+                    "type": "string",
+                    "nullable": true
                   }
                 ]
               },
@@ -35786,7 +35793,7 @@
                 "tripId": {
                   "maximum": 2147483647,
                   "minimum": -2147483648,
-                  "type": "integer",
+                  "type": "number",
                   "format": "int32"
                 }
               }
@@ -35808,7 +35815,7 @@
                 "tripId": {
                   "maximum": 2147483647,
                   "minimum": -2147483648,
-                  "type": "integer",
+                  "type": "number",
                   "format": "int32"
                 }
               }

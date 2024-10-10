@@ -1076,7 +1076,7 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "City": {
@@ -1084,7 +1084,7 @@
           }
         },
         "example": {
-          "Id": "integer",
+          "Id": "number",
           "City": {
             "@odata.type": "DefaultNs.City"
           }
@@ -1106,7 +1106,7 @@
           }
         ],
         "example": {
-          "Id": "integer",
+          "Id": "number",
           "City": {
             "@odata.type": "DefaultNs.City"
           },
