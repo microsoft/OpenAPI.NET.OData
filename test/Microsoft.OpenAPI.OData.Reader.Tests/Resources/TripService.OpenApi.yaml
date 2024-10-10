@@ -5213,7 +5213,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: $select
@@ -5269,7 +5269,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -5308,7 +5308,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -5346,7 +5346,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -5424,7 +5424,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -5492,7 +5492,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: PlanItemId
@@ -5502,7 +5502,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: PlanItem
         - name: If-Match
@@ -5537,7 +5537,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/search'
@@ -5568,7 +5568,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -5611,7 +5611,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -5641,7 +5641,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -8230,7 +8230,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: $select
@@ -8286,7 +8286,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -8325,7 +8325,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -8363,7 +8363,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -8441,7 +8441,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -8509,7 +8509,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: PlanItemId
@@ -8519,7 +8519,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: PlanItem
         - name: If-Match
@@ -8554,7 +8554,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/search'
@@ -8585,7 +8585,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -8628,7 +8628,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -8658,7 +8658,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -8953,7 +8953,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: $select
@@ -9009,7 +9009,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -9048,7 +9048,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -9086,7 +9086,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -9164,7 +9164,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -9232,7 +9232,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: PlanItemId
@@ -9242,7 +9242,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: PlanItem
         - name: If-Match
@@ -9277,7 +9277,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/search'
@@ -9308,7 +9308,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -9351,7 +9351,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -9381,7 +9381,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -11995,7 +11995,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: $select
@@ -12052,7 +12052,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -12092,7 +12092,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -12128,7 +12128,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -12204,7 +12204,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -12270,7 +12270,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: PlanItemId
@@ -12280,7 +12280,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: PlanItem
         - name: If-Match
@@ -12316,7 +12316,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/search'
@@ -12348,7 +12348,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -12392,7 +12392,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -12423,7 +12423,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -17799,7 +17799,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: $select
@@ -17862,7 +17862,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -17908,7 +17908,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -17953,7 +17953,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -18038,7 +18038,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -18113,7 +18113,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: PlanItemId
@@ -18123,7 +18123,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: PlanItem
         - name: If-Match
@@ -18165,7 +18165,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/search'
@@ -18203,7 +18203,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -18253,7 +18253,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -18290,7 +18290,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -21432,7 +21432,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: $select
@@ -21495,7 +21495,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -21541,7 +21541,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -21586,7 +21586,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -21671,7 +21671,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -21746,7 +21746,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: PlanItemId
@@ -21756,7 +21756,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: PlanItem
         - name: If-Match
@@ -21798,7 +21798,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/search'
@@ -21836,7 +21836,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -21886,7 +21886,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -21923,7 +21923,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -22297,7 +22297,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: $select
@@ -22360,7 +22360,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -22406,7 +22406,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -22451,7 +22451,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -22536,7 +22536,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -22611,7 +22611,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: PlanItemId
@@ -22621,7 +22621,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: PlanItem
         - name: If-Match
@@ -22663,7 +22663,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/search'
@@ -22701,7 +22701,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - $ref: '#/components/parameters/top'
@@ -22751,7 +22751,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
@@ -22788,7 +22788,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: Trip
         - name: If-Match
@@ -23101,10 +23101,11 @@ components:
           $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
         Age:
           oneOf:
-            - type: integer
+            - type: number
               format: int64
+              nullable: true
             - type: string
-          nullable: true
+              nullable: true
         Emails:
           type: array
           items:
@@ -23230,7 +23231,7 @@ components:
         TripId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ShareId:
           pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
@@ -23243,7 +23244,9 @@ components:
           oneOf:
             - type: number
               format: float
+              nullable: true
             - type: string
+              nullable: true
             - $ref: '#/components/schemas/ReferenceNumeric'
         Description:
           type: string
@@ -23277,7 +23280,7 @@ components:
         PlanItemId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ConfirmationCode:
           type: string
@@ -23352,9 +23355,11 @@ components:
           properties:
             Cost:
               oneOf:
-                - type: integer
+                - type: number
                   format: int64
+                  nullable: true
                 - type: string
+                  nullable: true
             Peers:
               type: array
               items:
@@ -23368,9 +23373,11 @@ components:
           properties:
             Budget:
               oneOf:
-                - type: integer
+                - type: number
                   format: int64
+                  nullable: true
                 - type: string
+                  nullable: true
             BossOffice:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
@@ -24030,7 +24037,7 @@ components:
               tripId:
                 maximum: 2147483647
                 minimum: -2147483648
-                type: integer
+                type: number
                 format: int32
       required: true
     GetPeersForTripRequestBody:
@@ -24045,7 +24052,7 @@ components:
               tripId:
                 maximum: 2147483647
                 minimum: -2147483648
-                type: integer
+                type: number
                 format: int32
       required: true
 tags:
