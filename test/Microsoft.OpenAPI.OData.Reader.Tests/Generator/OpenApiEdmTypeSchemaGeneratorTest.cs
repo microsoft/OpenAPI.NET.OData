@@ -151,7 +151,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ""items"": {
     ""maximum"": 2147483647,
     ""minimum"": -2147483648,
-    ""type"": ""integer"",
+    ""type"": ""number"",
     ""format"": ""int32"",
     ""nullable"": true
   }
@@ -358,7 +358,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Equal(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
-  ""type"": ""integer"",
+  ""type"": ""number"",
   ""format"": ""int32"",
   ""nullable"": true
 }".ChangeLineBreaks(), json);
@@ -368,7 +368,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Equal(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
-  ""type"": ""integer"",
+  ""type"": ""number"",
   ""format"": ""int32""
 }".ChangeLineBreaks(), json);
             }
@@ -444,9 +444,9 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Type);
                 Assert.NotNull(schema.OneOf);
                 Assert.Equal(2, schema.OneOf.Count);
-                var integerSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("integer", StringComparison.OrdinalIgnoreCase));
-                Assert.NotNull(integerSchema);
-                Assert.True(integerSchema.Nullable);
+                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
+                Assert.NotNull(numberSchema);
+                Assert.True(numberSchema.Nullable);
                 var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
                 Assert.NotNull(stringSchema);
                 Assert.True(stringSchema.Nullable);
@@ -454,7 +454,7 @@ namespace Microsoft.OpenApi.OData.Tests
             }
             else
             {
-                Assert.Equal("integer", schema.Type);
+                Assert.Equal("number", schema.Type);
                 Assert.Null(schema.AnyOf);
                 Assert.Equal(isNullable, schema.Nullable);
             }

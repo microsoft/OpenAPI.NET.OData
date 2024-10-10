@@ -170,7 +170,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Default = new OpenApiBoolean(false);
                     break;
                 case EdmPrimitiveTypeKind.Byte: // byte
-                    schema.Type = Constants.IntegerType;
+                    schema.Type = Constants.NumberType;
                     schema.Format = "uint8";
                     break;
                 case EdmPrimitiveTypeKind.DateTimeOffset: // datetime offset
@@ -231,13 +231,13 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Pattern = "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$";
                     break;
                 case EdmPrimitiveTypeKind.Int16:
-                    schema.Type = Constants.IntegerType;
+                    schema.Type = Constants.NumberType;
                     schema.Format = "int16";
                     schema.Minimum = Int16.MinValue; // -32768
                     schema.Maximum = Int16.MaxValue; // 32767
                     break;
                 case EdmPrimitiveTypeKind.Int32:
-                    schema.Type = Constants.IntegerType;
+                    schema.Type = Constants.NumberType;
                     schema.Format = "int32";
                     schema.Minimum = Int32.MinValue; // -2147483648
                     schema.Maximum = Int32.MaxValue; // 2147483647
@@ -247,18 +247,18 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         schema.OneOf = new List<OpenApiSchema>
                         {
-                            new OpenApiSchema { Type = Constants.IntegerType, Format = Constants.Int64Format, Nullable = true },
+                            new OpenApiSchema { Type = Constants.NumberType, Format = Constants.Int64Format, Nullable = true },
                             new OpenApiSchema { Type = Constants.StringType, Nullable = true }
                         };
                     }
                     else
                     {
-                        schema.Type = Constants.IntegerType;
+                        schema.Type = Constants.NumberType;
                         schema.Format = Constants.Int64Format;
                     }
                     break;
                 case EdmPrimitiveTypeKind.SByte:
-                    schema.Type = Constants.IntegerType;
+                    schema.Type = Constants.NumberType;
                     schema.Format = "int8";
                     schema.Minimum = SByte.MinValue; // -128
                     schema.Maximum = SByte.MaxValue; // 127
