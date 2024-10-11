@@ -15,7 +15,7 @@
     <TargetFrameworks>net8.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>2.0.0-preview.4</Version>
+    <Version>2.0.0-preview.5</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -28,8 +28,9 @@
 		- Adds nullable to double schema conversions #581
 		- Updates tag names for actions/functions operations #585
 		- Creates unique operation ids for paths with composable overloaded functions #580
-    - Further fixes for double/decimal/float schema conversions #581
-    - Replaced integer types by number types
+        - Further fixes for double/decimal/float schema conversions #581
+        - Replaced integer types by number types
+		- Further fix for generating unique operation ids for paths with composable overloaded functions where all functions in path are overloaded #594
 	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
