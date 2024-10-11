@@ -310,21 +310,28 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
             model.AddElement(customer);
 
-            EdmFunction function = new("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), true, null, false);
-            function.AddParameter("entity", new EdmEntityTypeReference(customer, false));
-            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
-            model.AddElement(function);
+            // Overloaded function 1 
+            EdmFunction function1 = new("NS", "MyFunction1", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function1.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            model.AddElement(function1);
 
-            function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), true, null, false);
-            function.AddParameter("entity", new EdmEntityTypeReference(customer, false));
-            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
-            function.AddParameter("param2", EdmCoreModel.Instance.GetString(false));
-            model.AddElement(function);
+            // Overloaded function 1
+            EdmFunction function2 = new("NS", "MyFunction1", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function2.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function2.AddParameter("param", EdmCoreModel.Instance.GetString(false));
 
-            EdmFunction function2 = new("NS", "MyFunction2", EdmCoreModel.Instance.GetString(false), true, null, false);
-            function2.AddParameter("entity2", new EdmEntityTypeReference(customer, false));
-            function2.AddParameter("param3", EdmCoreModel.Instance.GetString(false));
             model.AddElement(function2);
+
+            // Overloaded function 2
+            EdmFunction function3 = new("NS", "MyFunction2", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function3.AddParameter("entity2", new EdmEntityTypeReference(customer, false));
+            model.AddElement(function3);
+
+            // Overloaded function 2
+            EdmFunction function4 = new("NS", "MyFunction2", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function4.AddParameter("entity2", new EdmEntityTypeReference(customer, false));
+            function4.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function4);
 
             EdmEntityContainer container = new("NS", "Default");
             EdmEntitySet customers = new(container, "Customers", customer);
@@ -337,24 +344,51 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             };
             ODataContext context = new(model, settings);
 
-            ODataPath path = new(new ODataNavigationSourceSegment(customers),
+            ODataPath path1 = new(new ODataNavigationSourceSegment(customers),
                 new ODataKeySegment(customer),
-                new ODataOperationSegment(function),
-                new ODataOperationSegment(function2));
+                new ODataOperationSegment(function1),
+                new ODataOperationSegment(function3));
+
+            ODataPath path2 = new(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function1),
+                new ODataOperationSegment(function4));
+
+            ODataPath path3 = new(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function2),
+                new ODataOperationSegment(function3));
+
+            ODataPath path4 = new(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function2),
+                new ODataOperationSegment(function4));
 
             // Act
-            var operation = _operationHandler.CreateOperation(context, path);
+            var operation1 = _operationHandler.CreateOperation(context, path1);
+            var operation2 = _operationHandler.CreateOperation(context, path2);
+            var operation3 = _operationHandler.CreateOperation(context, path3);
+            var operation4 = _operationHandler.CreateOperation(context, path4);
 
             // Assert
-            Assert.NotNull(operation);
+            Assert.NotNull(operation1);
+            Assert.NotNull(operation2);
+            Assert.NotNull(operation3);
+            Assert.NotNull(operation4);
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.Customer.MyFunction.MyFunction2-df74", operation.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-c53d", operation1.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-4d93", operation2.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-a2b2", operation3.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-7bea", operation4.OperationId);
             }
             else
             {
-                Assert.Null(operation.OperationId);
+                Assert.Null(operation1.OperationId);
+                Assert.Null(operation2.OperationId);
+                Assert.Null(operation3.OperationId);
+                Assert.Null(operation4.OperationId);
             }
         }
 

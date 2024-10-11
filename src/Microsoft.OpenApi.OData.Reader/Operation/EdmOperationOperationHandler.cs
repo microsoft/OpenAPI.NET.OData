@@ -107,7 +107,9 @@ namespace Microsoft.OpenApi.OData.Operation
                         if (opSegment.Operation is IEdmFunction function && Context.Model.IsOperationOverload(function))
                         {
                             // Hash the segment to avoid duplicate operationIds
-                            pathHash = segment.GetPathHash(Context.Settings);
+                            pathHash = string.IsNullOrEmpty(pathHash)
+                                ? opSegment.GetPathHash(Context.Settings)
+                                : (pathHash + opSegment.GetPathHash(Context.Settings)).GetHashSHA256()[..4];
                         }
 
                         identifiers.Add(segment.Identifier);
