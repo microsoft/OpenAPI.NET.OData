@@ -107,7 +107,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         internal string GetOperationId(string prefix = null)
         {            
-            return EdmModelHelper.GenerateNavigationPropertyPathOperationId(Path, prefix);
+            return EdmModelHelper.GenerateNavigationPropertyPathOperationId(Path, Context, prefix);
         }               
 
         /// <inheritdoc/>
