@@ -93,38 +93,40 @@ namespace Microsoft.OpenApi.OData.Common
         /// Generates the operation id from a navigation property path.
         /// </summary>
         /// <param name="path">The target <see cref="ODataPath"/>.</param>
+        /// <param name="context">The OData context.</param>
         /// <param name="prefix">Optional: Identifier indicating whether it is a collection-valued non-indexed or single-valued navigation property.</param>
         /// <returns>The operation id generated from the given navigation property path.</returns>
-        internal static string GenerateNavigationPropertyPathOperationId(ODataPath path, string prefix = null)
+        internal static string GenerateNavigationPropertyPathOperationId(ODataPath path, ODataContext context, string prefix = null)
         {
-            IList<string> items = RetrieveNavigationPropertyPathsOperationIdSegments(path);
+            IList<string> items = RetrieveNavigationPropertyPathsOperationIdSegments(path, context);
 
             if (!items.Any())
                 return null;
 
-            int lastItemIndex = items.Count - 1;
+            int lastItemIndex = items[^1].StartsWith('-') ? items.Count - 2 : items.Count - 1;
             
             if (!string.IsNullOrEmpty(prefix))
             {
-                items[lastItemIndex] = prefix + Utils.UpperFirstChar(items.Last());
+                items[lastItemIndex] = prefix + Utils.UpperFirstChar(items[lastItemIndex]);
             }
             else
             {
-                items[lastItemIndex] = Utils.UpperFirstChar(items.Last());
+                items[lastItemIndex] = Utils.UpperFirstChar(items[lastItemIndex]);
             }
 
-            return string.Join(".", items);
+            return GenerateNavigationPropertyPathOperationId(items);
         }
 
         /// <summary>
         /// Generates the operation id from a complex property path.
         /// </summary>
         /// <param name="path">The target <see cref="ODataPath"/>.</param>
+        /// <param name="context">The OData context.</param>
         /// <param name="prefix">Optional: Identifier indicating whether it is a collection-valued or single-valued complex property.</param>
         /// <returns>The operation id generated from the given complex property path.</returns>
-        internal static string GenerateComplexPropertyPathOperationId(ODataPath path, string prefix = null)
+        internal static string GenerateComplexPropertyPathOperationId(ODataPath path, ODataContext context, string prefix = null)
         {
-            IList<string> items = RetrieveNavigationPropertyPathsOperationIdSegments(path);
+            IList<string> items = RetrieveNavigationPropertyPathsOperationIdSegments(path, context);
 
             if (!items.Any())
                 return null;
@@ -141,15 +143,29 @@ namespace Microsoft.OpenApi.OData.Common
                 items.Add(Utils.UpperFirstChar(lastSegment?.Identifier));
             }
 
-            return string.Join(".", items);
+            return GenerateNavigationPropertyPathOperationId(items);
+        }
+
+        /// <summary>
+        /// Generates a navigation property operation id from a list of string values.
+        /// </summary>
+        /// <param name="items">The list of string values.</param>
+        /// <returns>The generated navigation property operation id.</returns>
+        private static string GenerateNavigationPropertyPathOperationId(IList<string> items)
+        {
+            if (!items.Any())
+                return null;
+
+            return string.Join(".", items).Replace(".-", "-", StringComparison.OrdinalIgnoreCase); // Format any hashed value appropriately (this will be the last value)
         }
 
         /// <summary>
         /// Retrieves the segments of an operation id generated from a navigation property path.
         /// </summary>
         /// <param name="path">The target <see cref="ODataPath"/>.</param>
+        /// <param name="context">The OData context.</param>
         /// <returns>The segments of an operation id generated from the given navigation property path.</returns>
-        internal static IList<string> RetrieveNavigationPropertyPathsOperationIdSegments(ODataPath path)
+        internal static IList<string> RetrieveNavigationPropertyPathsOperationIdSegments(ODataPath path, ODataContext context)
         {
             Utils.CheckArgumentNull(path, nameof(path));
 
@@ -173,6 +189,8 @@ namespace Microsoft.OpenApi.OData.Common
             Utils.CheckArgumentNull(segments, nameof(segments));
 
             string previousTypeCastSegmentId = null;
+            string pathHash = string.Empty;
+
             foreach (var segment in segments)
             {
                 if (segment is ODataNavigationPropertySegment navPropSegment)
@@ -192,6 +210,14 @@ namespace Microsoft.OpenApi.OData.Common
                 else if (segment is ODataOperationSegment operationSegment)
                 {
                     // Navigation property generated via composable function
+                    if (operationSegment.Operation is IEdmFunction function && context.Model.IsOperationOverload(function))
+                    {
+                        // Hash the segment to avoid duplicate operationIds
+                        pathHash = string.IsNullOrEmpty(pathHash)
+                            ? operationSegment.GetPathHash(context.Settings)
+                            : (pathHash + operationSegment.GetPathHash(context.Settings)).GetHashSHA256()[..4];
+                    }
+
                     items.Add(operationSegment.Identifier);
                 }
                 else if (segment is ODataKeySegment keySegment && keySegment.IsAlternateKey)
@@ -206,6 +232,11 @@ namespace Microsoft.OpenApi.OData.Common
                         items.Add(keySegment.Identifier);
                     }
                 }
+            }
+
+            if (!string.IsNullOrEmpty(pathHash))
+            {
+                items.Add("-" + pathHash);
             }
 
             return items;
@@ -320,9 +351,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// Generates the operation id prefix from an OData type cast path.
         /// </summary>
         /// <param name="path">The target <see cref="ODataPath"/>.</param>
+        /// <param name="context">The OData context.</param>
         /// <param name="includeListOrGetPrefix">Optional: Whether to include the List or Get prefix to the generated operation id.</param>
         /// <returns>The operation id prefix generated from the OData type cast path.</returns>
-        internal static string GenerateODataTypeCastPathOperationIdPrefix(ODataPath path, bool includeListOrGetPrefix = true)
+        internal static string GenerateODataTypeCastPathOperationIdPrefix(ODataPath path, ODataContext context, bool includeListOrGetPrefix = true)
         {
             // Get the segment before the last OData type cast segment
             ODataTypeCastSegment typeCastSegment = path.Segments.OfType<ODataTypeCastSegment>()?.Last();
@@ -352,7 +384,7 @@ namespace Microsoft.OpenApi.OData.Common
             if (secondLastSegment is ODataComplexPropertySegment complexSegment)
             {
                 string listOrGet = includeListOrGetPrefix ? (complexSegment.Property.Type.IsCollection() ? "List" : "Get") : null;
-                operationId = GenerateComplexPropertyPathOperationId(path, listOrGet);
+                operationId = GenerateComplexPropertyPathOperationId(path, context, listOrGet);
             }
             else if (secondLastSegment is ODataNavigationPropertySegment navPropSegment)
             {
@@ -362,13 +394,13 @@ namespace Microsoft.OpenApi.OData.Common
                     prefix = navPropSegment?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many ? "List" : "Get";
                 }
 
-                operationId = GenerateNavigationPropertyPathOperationId(path, prefix);
+                operationId = GenerateNavigationPropertyPathOperationId(path, context, prefix);
             }
             else if (secondLastSegment is ODataKeySegment keySegment)
             {
                 if (isIndexedCollValuedNavProp)
                 {
-                    operationId = GenerateNavigationPropertyPathOperationId(path, "Get");
+                    operationId = GenerateNavigationPropertyPathOperationId(path, context, "Get");
                 }
                 else
                 {

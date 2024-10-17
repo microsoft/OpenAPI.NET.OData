@@ -131,6 +131,70 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Contains(operation.Parameters, x => x.Name == "path");
         }
 
+        [Fact]
+        public void CreateNavigationGetOperationViaOverloadedComposableFunctionReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model, new OpenApiConvertSettings()
+            {
+                EnableOperationId = true
+            });
+
+            IEdmEntitySet drives = model.EntityContainer.FindEntitySet("drives");
+            IEdmEntityType drive = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "drive");
+            IEdmNavigationProperty items = drive.DeclaredNavigationProperties().First(c => c.Name == "items");
+            IEdmEntityType driveItem = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "driveItem");
+            IEdmNavigationProperty workbook = driveItem.DeclaredNavigationProperties().First(c => c.Name == "workbook");
+            IEdmEntityType workbookEntity = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "workbook");
+            IEdmNavigationProperty worksheets = workbookEntity.DeclaredNavigationProperties().First(c => c.Name == "worksheets");
+            IEdmEntityType workbookWorksheet = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "workbookWorksheet");
+            IEdmOperation usedRangeWithParams = model.SchemaElements.OfType<IEdmOperation>().First(f => f.Name == "usedRange" && f.Parameters.Any(x => x.Name.Equals("valuesOnly")));
+            IEdmOperation usedRange = model.SchemaElements.OfType<IEdmOperation>().First(f => f.Name == "usedRange" && f.Parameters.Count() == 1);
+            IEdmEntityType workbookRange = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "workbookRange");
+            IEdmNavigationProperty format = workbookRange.DeclaredNavigationProperties().First(c => c.Name == "format");
+
+
+            ODataPath path1 = new(new ODataNavigationSourceSegment(drives),
+                new ODataKeySegment(drive),
+                new ODataNavigationPropertySegment(items),
+                new ODataKeySegment(driveItem),
+                new ODataNavigationPropertySegment(workbook),
+                new ODataNavigationPropertySegment(worksheets),
+                new ODataKeySegment(workbookWorksheet),
+                new ODataOperationSegment(usedRangeWithParams),
+                new ODataNavigationPropertySegment(format));
+
+            ODataPath path2 = new(new ODataNavigationSourceSegment(drives),
+                new ODataKeySegment(drive),
+                new ODataNavigationPropertySegment(items),
+                new ODataKeySegment(driveItem),
+                new ODataNavigationPropertySegment(workbook),
+                new ODataNavigationPropertySegment(worksheets),
+                new ODataKeySegment(workbookWorksheet),
+                new ODataOperationSegment(usedRange),
+                new ODataNavigationPropertySegment(format));
+
+            // Act
+            var operation1 = _operationHandler.CreateOperation(context, path1);
+            var operation2 = _operationHandler.CreateOperation(context, path2);
+
+            // Assert
+            Assert.NotNull(operation1);
+            Assert.NotNull(operation2);
+
+            Assert.Equal("drives.items.workbook.worksheets.usedRange.GetFormat-206d", operation1.OperationId);
+            Assert.Equal("drives.items.workbook.worksheets.usedRange.GetFormat-ec2c", operation2.OperationId);
+
+            Assert.NotNull(operation1.Parameters);
+            Assert.Equal(6, operation1.Parameters.Count);
+            Assert.Contains(operation1.Parameters, x => x.Name == "valuesOnly");
+
+            Assert.NotNull(operation2.Parameters);
+            Assert.Equal(5, operation2.Parameters.Count);
+            Assert.DoesNotContain(operation2.Parameters, x => x.Name == "valuesOnly");
+        }
+
         [Theory]
         [InlineData(true)]
         [InlineData(false)]

@@ -39,7 +39,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         if (Context.Settings.EnableOperationId)
         {
             string prefix = ComplexPropertySegment.Property.Type.IsCollection() ? "List" : "Get";
-            operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, prefix);
+            operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, Context, prefix);
         }
 
         // Summary and Description
