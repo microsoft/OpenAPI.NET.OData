@@ -103,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Common
             if (!items.Any())
                 return null;
 
-            int lastItemIndex = items.Last().StartsWith("-") ? items.Count - 2 : items.Count - 1;
+            int lastItemIndex = items[^1].StartsWith('-') ? items.Count - 2 : items.Count - 1;
             
             if (!string.IsNullOrEmpty(prefix))
             {
@@ -156,7 +156,7 @@ namespace Microsoft.OpenApi.OData.Common
             if (!items.Any())
                 return null;
 
-            return string.Join(".", items).Replace(".-", "-"); // Format any hashed value appropriately (this will be the last value)
+            return string.Join(".", items).Replace(".-", "-", StringComparison.OrdinalIgnoreCase); // Format any hashed value appropriately (this will be the last value)
         }
 
         /// <summary>
