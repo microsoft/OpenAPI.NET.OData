@@ -50,7 +50,8 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             {
                 string typeName = entityType.Name;
-                string operationName = $"Update{ Utils.UpperFirstChar(typeName)}";
+                string prefix = OperationType == OperationType.Patch ? "Update" : "Set";
+                string operationName = $"{prefix}{ Utils.UpperFirstChar(typeName)}";
                 if (keySegment.IsAlternateKey)
                 {
                     string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
