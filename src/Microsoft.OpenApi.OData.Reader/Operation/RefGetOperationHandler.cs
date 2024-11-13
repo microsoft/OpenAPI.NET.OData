@@ -90,7 +90,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 OpenApiSchema schema = new()
                 {
                     // $ref returns string for the Uri?
-                    Type = "string"
+                    Type = JsonSchemaType.String
                 };
                 IDictionary<string, OpenApiLink> links = null;
                 if (Context.Settings.ShowLinks)

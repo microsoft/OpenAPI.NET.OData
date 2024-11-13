@@ -215,7 +215,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                     Required = true,
                     Schema = new OpenApiSchema()
                     {
-                        Type = "string"
+                        Type = JsonSchemaType.String
                     }
                 }
             };

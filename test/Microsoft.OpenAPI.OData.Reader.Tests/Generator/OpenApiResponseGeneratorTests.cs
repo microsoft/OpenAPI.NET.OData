@@ -221,9 +221,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOfRef.Reference.Id);
                 var anyOfNull = mediaType.Schema.AnyOf.Skip(1).FirstOrDefault();
                 Assert.NotNull(anyOfNull.Type);
-                Assert.Equal("object", anyOfNull.Type);
+                Assert.Equal(JsonSchemaType.Object, anyOfNull.Type);
                 Assert.True(anyOfNull.Nullable);
-
             }
         }
 

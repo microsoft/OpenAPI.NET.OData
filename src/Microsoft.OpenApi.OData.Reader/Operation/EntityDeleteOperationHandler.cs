@@ -76,7 +76,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 Description = "ETag",
                 Schema = new OpenApiSchema
                 {
-                    Type = "string"
+                    Type = JsonSchemaType.String
                 }
             });
         }

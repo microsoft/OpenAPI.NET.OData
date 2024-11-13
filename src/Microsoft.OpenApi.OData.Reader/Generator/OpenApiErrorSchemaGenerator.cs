@@ -1,4 +1,4 @@
-// ------------------------------------------------------------
+﻿// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -68,7 +68,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
-                Type = "object",
+                Type = JsonSchemaType.Object,
                 Required = new HashSet<string>
                 {
                     "error"
@@ -77,15 +77,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     {
                         "error",
-                        new OpenApiSchema
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = $"{rootNamespaceName}{MainErrorClassName}"
-                            }
-                        }
+                        new OpenApiSchemaReference($"{rootNamespaceName}{MainErrorClassName}", null)
                     }
                 }
             };
@@ -111,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Generator
             
             return new OpenApiSchema
             {
-                Type = "object",
+                Type = JsonSchemaType.Object,
                 Description = "The structure of this object is service-specific"
             };
         }
@@ -125,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
-                Type = "object",
+                Type = JsonSchemaType.Object,
                 Required = new HashSet<string>
                 {
                     "code", "message"
@@ -133,42 +125,26 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
-                        "code", new OpenApiSchema { Type = "string", Nullable = false }
+                        "code", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false }
                     },
                     {
-                        "message", new OpenApiSchema { Type = "string", Nullable = false, Extensions = new Dictionary<string, IOpenApiExtension> 
+                        "message", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false, Extensions = new Dictionary<string, IOpenApiExtension> 
                                                                                     { { OpenApiPrimaryErrorMessageExtension.Name, new OpenApiPrimaryErrorMessageExtension { IsPrimaryErrorMessage = true } } } }
                     },
                     {
-                        "target", new OpenApiSchema { Type = "string", Nullable = true }
+                        "target", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true }
                     },
                     {
                         "details",
                         new OpenApiSchema
                         {
-                            Type = "array",
-                            Items = new OpenApiSchema
-                            {
-                                UnresolvedReference = true,
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = $"{rootNamespaceName}{ErrorDetailsClassName}"
-                                }
-                            }
+                            Type = JsonSchemaType.Array,
+                            Items = new OpenApiSchemaReference($"{rootNamespaceName}{ErrorDetailsClassName}", null)
                         }
                     },
                     {
                         "innerError",
-                        new OpenApiSchema
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = $"{rootNamespaceName}{InnerErrorClassName}"
-                            }
-                        }
+                        new OpenApiSchemaReference($"{rootNamespaceName}{InnerErrorClassName}", null)
                     }
                 }
             };
@@ -182,7 +158,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
-                Type = "object",
+                Type = JsonSchemaType.Object,
                 Required = new HashSet<string>
                 {
                     "code", "message"
@@ -190,13 +166,13 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
-                        "code", new OpenApiSchema { Type = "string", Nullable = false, }
+                        "code", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false, }
                     },
                     {
-                        "message", new OpenApiSchema { Type = "string", Nullable = false, }
+                        "message", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false, }
                     },
                     {
-                        "target", new OpenApiSchema { Type = "string", Nullable = true, }
+                        "target", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true, }
                     }
                 }
             };

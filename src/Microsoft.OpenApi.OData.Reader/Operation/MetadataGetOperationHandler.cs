@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
-using Microsoft.OpenApi.OData.Generator;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -46,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiSchema schema = new OpenApiSchema
             {
-                Type = "string"
+                Type = JsonSchemaType.String
             };
 
             operation.Responses = new OpenApiResponses

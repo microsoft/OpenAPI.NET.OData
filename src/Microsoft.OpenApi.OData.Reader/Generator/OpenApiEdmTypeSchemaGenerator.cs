@@ -7,12 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -46,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     return new OpenApiSchema
                     {
-                        Type = "array",
+                        Type = JsonSchemaType.Array,
                         Items = schema
                     };
 
@@ -134,7 +135,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 // Nullable properties are marked with the keyword nullable and a value of true.
                 // nullable cannot be true when type is empty, often common in anyof/allOf since individual entries are nullable
-                schema.Nullable = !string.IsNullOrEmpty(schema.Type) && primitiveType.IsNullable;
+                schema.Nullable = !string.IsNullOrEmpty(schema.Type.ToIdentifier()) && primitiveType.IsNullable;
             }
 
             return schema;
@@ -162,19 +163,19 @@ namespace Microsoft.OpenApi.OData.Generator
             switch (primitiveType.PrimitiveKind)
             {
                 case EdmPrimitiveTypeKind.Binary: // binary
-                    schema.Type = Constants.StringType;
+                    schema.Type = JsonSchemaType.String;
                     schema.Format = "base64url";
                     break;
                 case EdmPrimitiveTypeKind.Boolean: // boolean
-                    schema.Type = "boolean";
-                    schema.Default = new OpenApiBoolean(false);
+                    schema.Type = JsonSchemaType.Boolean;
+                    schema.Default = false;
                     break;
                 case EdmPrimitiveTypeKind.Byte: // byte
-                    schema.Type = Constants.NumberType;
+                    schema.Type = JsonSchemaType.Number;
                     schema.Format = "uint8";
                     break;
                 case EdmPrimitiveTypeKind.DateTimeOffset: // datetime offset
-                    schema.Type = Constants.StringType;
+                    schema.Type = JsonSchemaType.String;
                     schema.Format = "date-time";
                     schema.Pattern = "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$";
                     break;
@@ -183,61 +184,45 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         schema.OneOf = new List<OpenApiSchema>
                         {
-                            new OpenApiSchema { Type = Constants.NumberType, Format = Constants.DecimalFormat, Nullable = true },
-                            new OpenApiSchema { Type = Constants.StringType, Nullable = true },
+                            new OpenApiSchema { Type = JsonSchemaType.Number, Format = Constants.DecimalFormat, Nullable = true },
+                            new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
                         };
                     }
                     else
                     {
-                        schema.Type = Constants.NumberType;
+                        schema.Type = JsonSchemaType.Number;
                         schema.Format = Constants.DecimalFormat;
                     }
                     break;
                 case EdmPrimitiveTypeKind.Double: // double
                     schema.OneOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema { Type = Constants.NumberType, Format = "double", Nullable = true },
-                        new OpenApiSchema { Type = Constants.StringType, Nullable = true },
-                        new OpenApiSchema
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = Constants.ReferenceNumericName
-                            }
-                        }
+                        new OpenApiSchema { Type = JsonSchemaType.Number, Format = "double", Nullable = true },
+                        new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
+                        new OpenApiSchemaReference(Constants.ReferenceNumericName, null)
                     };
                     break;
                 case EdmPrimitiveTypeKind.Single: // single
                     schema.OneOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema { Type = Constants.NumberType, Format = "float", Nullable = true },
-                        new OpenApiSchema { Type = Constants.StringType, Nullable = true },
-                        new OpenApiSchema
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = Constants.ReferenceNumericName
-                            }
-                        }
+                        new OpenApiSchema { Type = JsonSchemaType.String, Format = "float", Nullable = true },
+                        new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
+                        new OpenApiSchemaReference(Constants.ReferenceNumericName, null)
                     };
                     break;
                 case EdmPrimitiveTypeKind.Guid: // guid
-                    schema.Type = Constants.StringType;
+                    schema.Type = JsonSchemaType.String;
                     schema.Format = "uuid";
                     schema.Pattern = "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$";
                     break;
                 case EdmPrimitiveTypeKind.Int16:
-                    schema.Type = Constants.NumberType;
+                    schema.Type = JsonSchemaType.Number;
                     schema.Format = "int16";
                     schema.Minimum = Int16.MinValue; // -32768
                     schema.Maximum = Int16.MaxValue; // 32767
                     break;
                 case EdmPrimitiveTypeKind.Int32:
-                    schema.Type = Constants.NumberType;
+                    schema.Type = JsonSchemaType.Number;
                     schema.Format = "int32";
                     schema.Minimum = Int32.MinValue; // -2147483648
                     schema.Maximum = Int32.MaxValue; // 2147483647
@@ -247,172 +232,92 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         schema.OneOf = new List<OpenApiSchema>
                         {
-                            new OpenApiSchema { Type = Constants.NumberType, Format = Constants.Int64Format, Nullable = true },
-                            new OpenApiSchema { Type = Constants.StringType, Nullable = true }
+                            new OpenApiSchema { Type = JsonSchemaType.Number, Format = Constants.Int64Format, Nullable = true },
+                            new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true }
                         };
                     }
                     else
                     {
-                        schema.Type = Constants.NumberType;
+                        schema.Type = JsonSchemaType.Number;
                         schema.Format = Constants.Int64Format;
                     }
                     break;
                 case EdmPrimitiveTypeKind.SByte:
-                    schema.Type = Constants.NumberType;
+                    schema.Type = JsonSchemaType.Number;
                     schema.Format = "int8";
                     schema.Minimum = SByte.MinValue; // -128
                     schema.Maximum = SByte.MaxValue; // 127
                     break;
                 case EdmPrimitiveTypeKind.String: // string
-                    schema.Type = Constants.StringType;
+                    schema.Type = JsonSchemaType.String;
                     break;
                 case EdmPrimitiveTypeKind.Stream: // stream
-                    schema.Type = Constants.StringType;
+                    schema.Type = JsonSchemaType.String;
                     schema.Format = "base64url";
                     break;
                 case EdmPrimitiveTypeKind.Duration: // duration
-                    schema.Type = Constants.StringType;
+                    schema.Type = JsonSchemaType.String;
                     schema.Format = "duration";
                     schema.Pattern = "^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$";
                     break;
                 case EdmPrimitiveTypeKind.Date:
-                    schema.Type = Constants.StringType;
+                    schema.Type = JsonSchemaType.String;
                     schema.Format = "date";
                     schema.Pattern = "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$";
                     break;
                 case EdmPrimitiveTypeKind.TimeOfDay:
-                    schema.Type = Constants.StringType;
+                    schema.Type = JsonSchemaType.String;
                     schema.Format = "time";
                     schema.Pattern = "^([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?$";
                     break;
 
                 case EdmPrimitiveTypeKind.Geography:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.Geography"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.Geography", null);
                     break;
                 case EdmPrimitiveTypeKind.GeographyPoint:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeographyPoint"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeographyPoint", null);
                     break;
                 case EdmPrimitiveTypeKind.GeographyLineString:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeographyLineString"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeographyLineString", null);
                     break;
                 case EdmPrimitiveTypeKind.GeographyPolygon:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeographyPolygon"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeographyPolygon", null);
                     break;
                 case EdmPrimitiveTypeKind.GeographyCollection:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeographyCollection"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeographyCollection", null);
                     break;
                 case EdmPrimitiveTypeKind.GeographyMultiPolygon:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeographyMultiPolygon"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeographyMultiPolygon", null);
                     break;
                 case EdmPrimitiveTypeKind.GeographyMultiLineString:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeographyMultiLineString"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeographyMultiLineString", null);
                     break;
                 case EdmPrimitiveTypeKind.GeographyMultiPoint:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeographyMultiPoint"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeographyMultiPoint", null);
                     break;
                 case EdmPrimitiveTypeKind.Geometry: // Geometry
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.Geometry"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.Geometry", null);
                     break;
                 case EdmPrimitiveTypeKind.GeometryPoint:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeometryPoint"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeometryPoint", null);
                     break;
                 case EdmPrimitiveTypeKind.GeometryLineString:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeometryLineString"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeometryLineString", null);
                     break;
                 case EdmPrimitiveTypeKind.GeometryPolygon:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeometryPolygon"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeometryPolygon", null);
                     break;
                 case EdmPrimitiveTypeKind.GeometryCollection:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeometryCollection"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeometryCollection", null);
                     break;
                 case EdmPrimitiveTypeKind.GeometryMultiPolygon:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeometryMultiPolygon"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeometryMultiPolygon", null);
                     break;
                 case EdmPrimitiveTypeKind.GeometryMultiLineString:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeometryMultiLineString"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeometryMultiLineString", null);
                     break;
                 case EdmPrimitiveTypeKind.GeometryMultiPoint:
-                    schema.Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = "Edm.GeometryMultiPoint"
-                    };
-                    schema.UnresolvedReference = true;
+                    schema = new OpenApiSchemaReference("Edm.GeometryMultiPoint", null);
                     break;
 
                 case EdmPrimitiveTypeKind.None:
@@ -435,18 +340,10 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 schema.AnyOf = new List<OpenApiSchema>
                 {
+                    new OpenApiSchemaReference(typeReference.Definition.FullTypeName(), null),
                     new OpenApiSchema
                     {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = typeReference.Definition.FullTypeName()
-                        }
-                    },
-                    new OpenApiSchema
-                    {
-                        Type = "object",
+                        Type = JsonSchemaType.Object,
                         Nullable = true
                     }
                 };
@@ -479,18 +376,10 @@ namespace Microsoft.OpenApi.OData.Generator
                 schema.Reference = null;
                 schema.AnyOf = new List<OpenApiSchema>
                 {
+                    new OpenApiSchemaReference(typeReference.Definition.FullTypeName(), null),
                     new OpenApiSchema
                     {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = typeReference.Definition.FullTypeName()
-                        }
-                    },
-                    new OpenApiSchema
-                    {
-                        Type = "object",
+                        Type = JsonSchemaType.Object,
                         Nullable = true
                     }
                 };
@@ -518,18 +407,10 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 schema.AnyOf = new List<OpenApiSchema>
                 {
+                    new OpenApiSchemaReference(reference.Definition.FullTypeName(), null),
                     new OpenApiSchema
                     {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = reference.Definition.FullTypeName()
-                        }
-                    },
-                    new OpenApiSchema
-                    {
-                        Type = "object",
+                        Type = JsonSchemaType.Object,
                         Nullable = true
                     }
                 };

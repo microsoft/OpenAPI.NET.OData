@@ -103,10 +103,10 @@ namespace Microsoft.OpenApi.OData.Generator
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Type = "array",
+                                        Type = JsonSchemaType.Array,
                                         Items = new OpenApiSchema
                                         {
-                                            Type = "string"
+                                            Type = JsonSchemaType.String
                                         },
 
                                         // These Parameter Objects optionally can contain the field description,
@@ -641,11 +641,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Order items by property values",
                 Schema = new OpenApiSchema
                 {
-                    Type = "array",
+                    Type = JsonSchemaType.Array,
                     UniqueItems = true,
                     Items = new OpenApiSchema
                     {
-                        Type = "string",
+                        Type = JsonSchemaType.String,
                         Enum = context.Settings.UseStringArrayForQueryOptionsSchema ? null : orderByItems
                     }
                 },
@@ -747,11 +747,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Select properties to be returned",
                 Schema = new OpenApiSchema
                 {
-                    Type = "array",
+                    Type = JsonSchemaType.Array,
                     UniqueItems = true,
                     Items = new OpenApiSchema
                     {
-                        Type = "string",
+                        Type = JsonSchemaType.String,
                         Enum = context.Settings.UseStringArrayForQueryOptionsSchema ? null : selectItems
                     }
                 },
@@ -851,11 +851,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Expand related entities",
                 Schema = new OpenApiSchema
                 {
-                    Type = "array",
+                    Type = JsonSchemaType.Array,
                     UniqueItems = true,
                     Items = new OpenApiSchema
                     {
-                        Type = "string",
+                        Type = JsonSchemaType.String,
                         Enum = context.Settings.UseStringArrayForQueryOptionsSchema ? null : expandItems
                     }
                 },
@@ -874,10 +874,10 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Show only the first n items",
                 Schema = new OpenApiSchema
                 {
-                    Type = "integer",
+                    Type = JsonSchemaType.Integer,
                     Minimum = 0,
                 },
-                Example = new OpenApiInteger(topExample),
+                Example = topExample,
                 Style = ParameterStyle.Form,
                 Explode = false
             };
@@ -893,7 +893,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Skip the first n items",
                 Schema = new OpenApiSchema
                 {
-                    Type = "integer",
+                    Type = JsonSchemaType.Integer,
                     Minimum = 0,
                 },
                 Style = ParameterStyle.Form,
@@ -911,7 +911,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Include count of items",
                 Schema = new OpenApiSchema
                 {
-                    Type = "boolean"
+                    Type = JsonSchemaType.Boolean
                 },
                 Style = ParameterStyle.Form,
                 Explode = false
@@ -928,7 +928,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Filter items by property values",
                 Schema = new OpenApiSchema
                 {
-                    Type = "string"
+                    Type = JsonSchemaType.String
                 },
                 Style = ParameterStyle.Form,
                 Explode = false
@@ -945,7 +945,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Search items by search phrases",
                 Schema = new OpenApiSchema
                 {
-                    Type = "string"
+                    Type = JsonSchemaType.String
                 },
                 Style = ParameterStyle.Form,
                 Explode = false

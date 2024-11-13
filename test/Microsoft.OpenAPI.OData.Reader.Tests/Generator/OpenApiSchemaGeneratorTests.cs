@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -67,17 +66,17 @@ namespace Microsoft.OpenApi.OData.Tests
                 },
                 item =>
                 {
-                    Assert.Equal("array", item.Properties["value"].Type);
+                    Assert.Equal(JsonSchemaType.Array, item.Properties["value"].Type);
                 });
 
-                Assert.Equal("array", flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Type);
+                Assert.Equal(JsonSchemaType.Array, flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Type);
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight",
                     flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Items.Reference.Id);
             }
             else
             {
-                Assert.Equal("array", stringCollectionResponse.Properties["value"].Type);
-                Assert.Equal("array", flightCollectionResponse.Properties["value"].Type);
+                Assert.Equal(JsonSchemaType.Array, stringCollectionResponse.Properties["value"].Type);
+                Assert.Equal(JsonSchemaType.Array, flightCollectionResponse.Properties["value"].Type);
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight", flightCollectionResponse.Properties["value"].Items.Reference.Id);
             }
         }
@@ -100,10 +99,10 @@ namespace Microsoft.OpenApi.OData.Tests
             schemas.TryGetValue(Constants.ReferenceCreateSchemaName, out OpenApiSchema refRequestBody);
 
             Assert.NotNull(refRequestBody);
-            Assert.Equal("object", refRequestBody.Type);
+            Assert.Equal(JsonSchemaType.Object, refRequestBody.Type);
             Assert.Equal(Constants.OdataId, refRequestBody.Properties.First().Key);
-            Assert.Equal("string", refRequestBody.Properties.First().Value.Type);
-            Assert.Equal("object", refRequestBody.AdditionalProperties.Type);
+            Assert.Equal(JsonSchemaType.String, refRequestBody.Properties.First().Value.Type);
+            Assert.Equal(JsonSchemaType.Object, refRequestBody.AdditionalProperties.Type);
         }
 
         [Theory]
@@ -450,7 +449,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.Equal("object", schema.Type);
+            Assert.Equal(JsonSchemaType.Object, schema.Type);
             Assert.Null(schema.AllOf);
 
             Assert.NotNull(schema.Properties);
@@ -503,7 +502,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.True(String.IsNullOrEmpty(schema.Type));
+            Assert.True(String.IsNullOrEmpty(schema.Type.ToIdentifier()));
 
             Assert.NotNull(schema.AllOf);
             Assert.Null(schema.AnyOf);
@@ -517,7 +516,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("NS.LandPlant", baseSchema.Reference.Id);
 
             var declaredSchema = schema.AllOf.Last();
-            Assert.Equal("object", declaredSchema.Type);
+            Assert.Equal(JsonSchemaType.Object, declaredSchema.Type);
             Assert.Null(declaredSchema.AllOf);
             Assert.Null(declaredSchema.AnyOf);
             Assert.Null(declaredSchema.OneOf);
@@ -528,7 +527,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Price", property.Key);
             Assert.Equal("decimal", property.Value.OneOf.FirstOrDefault(x => !string.IsNullOrEmpty(x.Format))?.Format);
             Assert.NotNull(property.Value.OneOf);
-            Assert.Equal(new string[] { "number", "string" }, property.Value.OneOf.Select(e => e.Type));
+            Assert.Equal([JsonSchemaType.Number, JsonSchemaType.String], property.Value.OneOf.Select(e => e.Type));
 
             Assert.Equal("Complex type 'Tree' description.", declaredSchema.Description);
             Assert.Equal("Tree", declaredSchema.Title);
@@ -595,7 +594,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.Equal("object", schema.Type);
+            Assert.Equal(JsonSchemaType.Object, schema.Type);
             Assert.Null(schema.AllOf);
 
             Assert.NotNull(schema.Properties);
@@ -656,7 +655,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.True(String.IsNullOrEmpty(schema.Type));
+            Assert.True(String.IsNullOrEmpty(schema.Type.ToIdentifier()));
 
             Assert.NotNull(schema.AllOf);
             Assert.Null(schema.AnyOf);
@@ -670,7 +669,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("NS.Animal", baseSchema.Reference.Id);
 
             var declaredSchema = schema.AllOf.Last();
-            Assert.Equal("object", declaredSchema.Type);
+            Assert.Equal(JsonSchemaType.Object, declaredSchema.Type);
             Assert.Null(declaredSchema.AllOf);
             Assert.Null(declaredSchema.AnyOf);
             Assert.Null(declaredSchema.OneOf);
@@ -679,7 +678,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Single(declaredSchema.Properties);
             var property = Assert.Single(declaredSchema.Properties);
             Assert.Equal("Name", property.Key);
-            Assert.Equal("string", property.Value.Type);
+            Assert.Equal(JsonSchemaType.String, property.Value.Type);
             Assert.Null(property.Value.OneOf);
 
             Assert.Equal("Entity type 'Human' description.", declaredSchema.Description);
@@ -732,7 +731,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.True(String.IsNullOrEmpty(schema.Type));
+            Assert.True(String.IsNullOrEmpty(schema.Type.ToIdentifier()));
 
             Assert.NotNull(schema.AllOf);
             Assert.Null(schema.AnyOf);
@@ -746,7 +745,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("SubNS.CustomerBase", baseSchema.Reference.Id);
 
             var declaredSchema = schema.AllOf.Last();
-            Assert.Equal("object", declaredSchema.Type);
+            Assert.Equal(JsonSchemaType.Object, declaredSchema.Type);
             Assert.Null(declaredSchema.AllOf);
             Assert.Null(declaredSchema.AnyOf);
             Assert.Null(declaredSchema.OneOf);
@@ -755,7 +754,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Single(declaredSchema.Properties);
             var property = Assert.Single(declaredSchema.Properties);
             Assert.Equal("Extra", property.Key);
-            Assert.Equal("number", property.Value.Type);
+            Assert.Equal(JsonSchemaType.Number, property.Value.Type);
             Assert.Null(property.Value.OneOf);
 
             Assert.Equal("Customer", declaredSchema.Title);
@@ -823,13 +822,13 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.Equal("string", schema.Type);
+            Assert.Equal(JsonSchemaType.String, schema.Type);
             Assert.Equal("Enum type 'Color' description.", schema.Description);
             Assert.Equal("Color", schema.Title);
 
             Assert.NotNull(schema.Enum);
             Assert.Equal(2, schema.Enum.Count);
-            Assert.Equal(new string[] { "Blue", "White" }, schema.Enum.Select(e => ((OpenApiString)e).Value));
+            Assert.Equal([ "Blue", "White" ], schema.Enum.Select(e => e));
 
             // Act
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
@@ -1023,7 +1022,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.Equal("boolean", schema.Type);
+            Assert.Equal(JsonSchemaType.Boolean, schema.Type);
 
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(@"{
@@ -1048,7 +1047,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.Equal("string", schema.Type);
+            Assert.Equal(JsonSchemaType.String, schema.Type);
 
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(@"{
@@ -1073,7 +1072,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.Equal("number", schema.Type);
+            Assert.Equal(JsonSchemaType.Number, schema.Type);
 
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(@"{

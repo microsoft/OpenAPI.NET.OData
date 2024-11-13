@@ -78,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if(context.Settings.EnableDollarCountPath)
                 schemas[Constants.DollarCountSchemaName] = new OpenApiSchema {
-                    Type = "integer",
+                    Type = JsonSchemaType.Integer,
                     Format = "int32"
                 };
 
@@ -96,38 +96,38 @@ namespace Microsoft.OpenApi.OData.Generator
             
             if(context.HasAnyNonContainedCollections())                                        
             {
-                schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = Constants.StringType }, Constants.StringType);
+                schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = JsonSchemaType.String }, Constants.StringType);
             }
 
             schemas[Constants.ReferenceUpdateSchemaName] = new()
             {
-                Type = Constants.ObjectType,
+                Type = JsonSchemaType.Object,
                 Properties = new Dictionary<string, OpenApiSchema>
                     {
-                        {Constants.OdataId, new OpenApiSchema { Type = Constants.StringType, Nullable = false }},
-                        {Constants.OdataType, new OpenApiSchema { Type = Constants.StringType, Nullable = true }},
+                        {Constants.OdataId, new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false }},
+                        {Constants.OdataType, new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true }},
                     }
             };
 
             schemas[Constants.ReferenceCreateSchemaName] = new()
             {
-                Type = Constants.ObjectType,
+                Type = JsonSchemaType.Object,
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
-                    {Constants.OdataId, new OpenApiSchema { Type = Constants.StringType, Nullable = false }}
+                    {Constants.OdataId, new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false }}
                 },
-                AdditionalProperties = new OpenApiSchema { Type = Constants.ObjectType }
+                AdditionalProperties = new OpenApiSchema { Type = JsonSchemaType.Object }
             };
 
             schemas[Constants.ReferenceNumericName] = new()
             {
-                Type = Constants.StringType,
+                Type = JsonSchemaType.String,
                 Nullable = true,
                 Enum =
                 [
-                    new OpenApiString("-INF"),
-                    new OpenApiString("INF"),
-                    new OpenApiString("NaN")
+                    "-INF",
+                    "INF",
+                    "NaN"
                 ]
             };
 
@@ -139,7 +139,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     schemas[Constants.BaseCollectionPaginationCountResponse] = new()
                     {
                         Title = "Base collection pagination and count responses",
-                        Type = Constants.ObjectType,
+                        Type = JsonSchemaType.Object,
                     };
 
                     if (context.Settings.EnableCount)
@@ -154,7 +154,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     schemas[Constants.BaseDeltaFunctionResponse] = new()
                     {
                         Title = "Base delta function response",
-                        Type = Constants.ObjectType
+                        Type = JsonSchemaType.Object
                     };
                     schemas[Constants.BaseDeltaFunctionResponse].Properties.Add(ODataConstants.OdataNextLink);
                     schemas[Constants.BaseDeltaFunctionResponse].Properties.Add(ODataConstants.OdataDeltaLink);
@@ -228,7 +228,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     "value",
                     new OpenApiSchema
                     {
-                        Type = "array",
+                        Type = JsonSchemaType.Array,
                         Items = schema
                     }
                 }
@@ -236,7 +236,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiSchema baseSchema = new()
             {
-                Type = Constants.ObjectType,
+                Type = JsonSchemaType.Object,
                 Properties = properties
             };
 
@@ -274,7 +274,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             collectionSchema.Title = $"Collection of {typeName}";
-            collectionSchema.Type = Constants.ObjectType;
+            collectionSchema.Type = JsonSchemaType.Object;
             return collectionSchema;
         }
 
@@ -294,10 +294,10 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiSchema schema = new()
             {
                 // An enumeration type is represented as a Schema Object of type string
-                Type = Constants.StringType,
+                Type = JsonSchemaType.String,
 
                 // containing the OpenAPI Specification enum keyword.
-                Enum = new List<IOpenApiAny>(),
+                Enum = new List<JsonNode>(),
 
                 // It optionally can contain the field description,
                 // whose value is the value of the unqualified annotation Core.Description of the enumeration type.
@@ -532,7 +532,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Title = (structuredType as IEdmSchemaElement)?.Name,
 
-                    Type = Constants.ObjectType,
+                    Type = JsonSchemaType.Object,
 
                     Discriminator = discriminator,
 
@@ -556,12 +556,12 @@ namespace Microsoft.OpenApi.OData.Generator
                         isBaseTypeAbstractNonEntity ||
                         context.Model.IsBaseTypeReferencedAsTypeInModel(structuredType.BaseType))
                     {
-                        defaultValue = new("#" + structuredType.FullTypeName());
+                        defaultValue = "#" + structuredType.FullTypeName();
                     }
 
                     if (!schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
                     {
-                        Type = Constants.StringType,
+                        Type = JsonSchemaType.String,
                         Default = defaultValue,
                     }))
                     {

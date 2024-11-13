@@ -244,7 +244,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Description = paramDescription,
                     Schema = new OpenApiSchema
                     {
-                        Type = "string"
+                        Type = JsonSchemaType.String
                     },
                     Required = param.Required ?? false
                 };

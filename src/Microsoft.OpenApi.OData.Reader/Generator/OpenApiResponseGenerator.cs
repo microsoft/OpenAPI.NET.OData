@@ -163,7 +163,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 OpenApiSchema baseSchema = new()
                 {
-                    Type = Constants.ObjectType,
+                    Type = JsonSchemaType.Object,
                     Properties = new Dictionary<string, OpenApiSchema>
                     {
                         {
@@ -207,7 +207,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 schema.Title = operation.ReturnType.Definition.AsElementType() is not IEdmEntityType entityType
                         ? null : $"Collection of {entityType.Name}";
-                schema.Type = "object";             
+                schema.Type = JsonSchemaType.Object;             
             }
             else if (operation.ReturnType.IsPrimitive())
             {
@@ -215,7 +215,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 // whose name is value and whose value is a primitive value.
                 schema = new OpenApiSchema
                 {
-                    Type = "object",
+                    Type = JsonSchemaType.Object,
                     Properties = new Dictionary<string, OpenApiSchema>
                     {
                         {
