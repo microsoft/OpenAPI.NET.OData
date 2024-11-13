@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -81,15 +81,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     {
                         Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                        new OpenApiResponse
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Response,
-                                Id = $"String{Constants.CollectionSchemaSuffix}"
-                            },
-                        }
+                        new OpenApiResponseReference($"String{Constants.CollectionSchemaSuffix}", null)
                     }
                 };
             }

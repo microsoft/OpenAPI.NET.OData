@@ -207,15 +207,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
             if (schema == null)
             {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = TargetSchemaElement.FullName()
-                    }
-                };
+                schema = new OpenApiSchemaReference(TargetSchemaElement.FullName(), null);
             }
 
             SetSingleResponse(operation, schema);

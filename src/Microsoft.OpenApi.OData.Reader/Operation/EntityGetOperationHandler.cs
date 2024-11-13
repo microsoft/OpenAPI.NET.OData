@@ -11,6 +11,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -104,15 +105,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (schema == null)
             {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = EntitySet.EntityType.FullName()
-                    }
-                };
+                schema = new OpenApiSchemaReference(EntitySet.EntityType.FullName(), null);
             }
 
             operation.Responses = new OpenApiResponses

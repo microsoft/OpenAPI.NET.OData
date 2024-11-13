@@ -216,15 +216,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (schema == null)
             {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = entityType?.FullName() ?? structuredType.FullTypeName()
-                    }
-                };
+                schema = new OpenApiSchemaReference(entityType?.FullName() ?? structuredType.FullTypeName(), null);
             }
             return CreateCollectionSchema(context, schema, entityType?.Name ?? structuredType.FullTypeName());
         }
@@ -254,15 +246,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 if (context.Settings.EnableODataAnnotationReferencesForResponses)
                 {
                     // @odata.nextLink + @odata.count
-                    OpenApiSchema paginationCountSchema = new()
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = Constants.BaseCollectionPaginationCountResponse
-                        }
-                    };
+                    OpenApiSchema paginationCountSchema = new OpenApiSchemaReference(Constants.BaseCollectionPaginationCountResponse, null);
 
                     collectionSchema = new OpenApiSchema
                     {
@@ -515,15 +499,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     AllOf = new List<OpenApiSchema>
                     {
                         // 1. a JSON Reference to the Schema Object of the base type
-                        new OpenApiSchema
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = structuredType.BaseType.FullTypeName()
-                            }
-                        },
+                        new OpenApiSchemaReference(structuredType.BaseType.FullTypeName(), null),
 
                         // 2. a Schema Object describing the derived type
                         context.CreateStructuredTypeSchema(structuredType, false, false, derivedTypes)
@@ -542,14 +518,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any())
                 {
                     Dictionary<string, string> mapping = derivedTypes
-                        .ToDictionary(x => $"#{x.FullTypeName()}", x => new OpenApiSchema
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = x.FullTypeName()
-                            }
-                        }.Reference.ReferenceV3);
+                        .ToDictionary(x => $"#{x.FullTypeName()}", x => new OpenApiSchemaReference(x.FullTypeName(), null).Reference.ReferenceV3);
 
                     discriminator = new OpenApiDiscriminator
                     {

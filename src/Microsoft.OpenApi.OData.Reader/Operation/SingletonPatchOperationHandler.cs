@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -117,15 +118,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model);
             }
 
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = Singleton.EntityType.FullName()
-                }
-            };
+            return new OpenApiSchemaReference(Singleton.EntityType.FullName(), null);
         }
     }
 }

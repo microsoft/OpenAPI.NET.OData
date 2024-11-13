@@ -5,9 +5,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -305,15 +305,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference()
-                        {
-                            Type = ReferenceType.Response,
-                            Id = $"{targetElementFullName}{Constants.CollectionSchemaSuffix}"
-                        }
-                    }
+                    new OpenApiResponseReference($"{targetElementFullName}{Constants.CollectionSchemaSuffix}", null)
                 }
             };
         }

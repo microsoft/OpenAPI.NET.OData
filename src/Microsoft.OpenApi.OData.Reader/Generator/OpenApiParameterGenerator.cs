@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -362,11 +362,7 @@ namespace Microsoft.OpenApi.OData.Generator
             bool? top = context.Model.GetBoolean(target, CapabilitiesConstants.TopSupported);
             if (top == null || top.Value)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "top" }
-                };
+                return new OpenApiParameterReference("top", null);
             }
 
             return null;
@@ -404,11 +400,7 @@ namespace Microsoft.OpenApi.OData.Generator
             bool? skip = context.Model.GetBoolean(target, CapabilitiesConstants.SkipSupported);
             if (skip == null || skip.Value)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "skip" }
-                };
+                return new OpenApiParameterReference("skip", null);
             }
 
             return null;
@@ -446,11 +438,7 @@ namespace Microsoft.OpenApi.OData.Generator
             SearchRestrictionsType search = context.Model.GetRecord<SearchRestrictionsType>(target, CapabilitiesConstants.SearchRestrictions);
             if (search == null || search.IsSearchable)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "search" }
-                };
+                return new OpenApiParameterReference("search", null);
             }
 
             return null;
@@ -487,11 +475,7 @@ namespace Microsoft.OpenApi.OData.Generator
             CountRestrictionsType count = context.Model.GetRecord<CountRestrictionsType>(target, CapabilitiesConstants.CountRestrictions);
             if (count == null || count.IsCountable)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "count" }
-                };
+                return new OpenApiParameterReference("count", null);
             }
 
             return null;
@@ -529,11 +513,7 @@ namespace Microsoft.OpenApi.OData.Generator
             FilterRestrictionsType filter = context.Model.GetRecord<FilterRestrictionsType>(target, CapabilitiesConstants.FilterRestrictions);
             if (filter == null || filter.IsFilterable)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "filter" }
-                };
+                return new OpenApiParameterReference("filter", null);
             }
 
             return null;

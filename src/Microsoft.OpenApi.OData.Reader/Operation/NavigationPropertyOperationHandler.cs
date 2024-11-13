@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
@@ -214,15 +215,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected OpenApiSchema GetOpenApiSchema()
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = NavigationProperty.ToEntityType().FullName()
-                }
-            };
+            return new OpenApiSchemaReference(NavigationProperty.ToEntityType().FullName(), null);
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -89,18 +90,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         entityKind: Singleton.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
             }
 
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = Singleton.EntityType.FullName()
-                    }
-                };
-            }
+            schema ??= new OpenApiSchemaReference(Singleton.EntityType.FullName(), null);
 
             operation.Responses = new OpenApiResponses
             {

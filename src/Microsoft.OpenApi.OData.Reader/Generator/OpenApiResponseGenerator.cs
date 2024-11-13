@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
@@ -22,40 +23,14 @@ namespace Microsoft.OpenApi.OData.Generator
            new Dictionary<string, OpenApiResponse>
            {
                 { Constants.StatusCodeDefault,
-                    new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Response,
-                            Id = Constants.Error
-                        }
-                    }
+                    new OpenApiResponseReference(Constants.Error, null)
                 },
 
                 { Constants.StatusCode204, new OpenApiResponse { Description = Constants.Success} },
                 { Constants.StatusCode201, new OpenApiResponse { Description = Constants.Created} },
                 { Constants.StatusCodeClass2XX, new OpenApiResponse { Description = Constants.Success} },
-                { Constants.StatusCodeClass4XX, new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Response,
-                            Id = Constants.Error
-                        }
-                    }
-                },
-                { Constants.StatusCodeClass5XX, new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Response,
-                            Id = Constants.Error
-                        }
-                    }
-                }
+                { Constants.StatusCodeClass4XX, new OpenApiResponseReference(Constants.Error, null)},
+                { Constants.StatusCodeClass5XX, new OpenApiResponseReference(Constants.Error, null)}
            };
 
         /// <summary>
@@ -156,15 +131,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 responses.Add(
                     context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference()
-                        {
-                            Type = ReferenceType.Response,
-                            Id = $"{operation.Name}Response"
-                        }
-                    }
+                    new OpenApiResponseReference($"{operation.Name}Response", null)
                  );
             }
             else
@@ -212,16 +179,9 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         AllOf = new List<OpenApiSchema>
                         {
-                            new OpenApiSchema
-                            {
-                                UnresolvedReference = true,
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = operation.IsDeltaFunction() ? Constants.BaseDeltaFunctionResponse  // @odata.nextLink + @odata.deltaLink
-                                        : Constants.BaseCollectionPaginationCountResponse // @odata.nextLink + @odata.count
-                                }
-                            },
+                            new OpenApiSchemaReference(operation.IsDeltaFunction() ? Constants.BaseDeltaFunctionResponse  // @odata.nextLink + @odata.deltaLink
+                                        : Constants.BaseCollectionPaginationCountResponse // @odata.nextLink + @odata.count)
+                                        ,null),
                             baseSchema
                         }
                     };
@@ -315,15 +275,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Constants.ApplicationJsonMediaType,
                         new OpenApiMediaType
                         {
-                            Schema = new OpenApiSchema
-                            {
-                                UnresolvedReference = true,
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = $"{typeName}{Constants.CollectionSchemaSuffix}"
-                                }
-                            }
+                            Schema = new OpenApiSchemaReference($"{typeName}{Constants.CollectionSchemaSuffix}", null) 
                         }
                     }
                 }
@@ -332,14 +284,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
         private static OpenApiResponse CreateCountResponse()
         {
-            OpenApiSchema schema = new()
-            {
-                UnresolvedReference = true,
-                Reference = new() {
-                    Type = ReferenceType.Schema,
-                    Id = Constants.DollarCountSchemaName
-                }
-            };
+            OpenApiSchema schema = new OpenApiSchemaReference(Constants.DollarCountSchemaName, null);
             return new OpenApiResponse
             {
                 Description = "The count of the resource",
@@ -368,15 +313,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Constants.ApplicationJsonMediaType,
                         new OpenApiMediaType
                         {
-                            Schema = new OpenApiSchema
-                            {
-                                UnresolvedReference = true,
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = $"{errorNamespaceName}{OpenApiErrorSchemaGenerator.ODataErrorClassName}"
-                                }
-                            }
+                            Schema = new OpenApiSchemaReference($"{errorNamespaceName}{OpenApiErrorSchemaGenerator.ODataErrorClassName}", null)
                         }
                     }
                 }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -128,16 +129,8 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     {
         return new()
         {
-            Type = "array",
-            Items = new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = ComplexPropertySegment.ComplexType.FullName()
-                }
-            }
+            Type = JsonSchemaType.Array,
+            Items = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), null)
         };
     }
 }

@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -9,6 +9,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -125,15 +126,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiRequestBody"/></returns>
         private static OpenApiRequestBody CreateRefPostRequestBody()
         {
-            OpenApiSchema schema = new()
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = Constants.ReferenceCreateSchemaName
-                }
-            };
+            OpenApiSchema schema = new OpenApiSchemaReference(Constants.ReferenceCreateSchemaName, null);
             return new OpenApiRequestBody
             {
                 Required = true,
@@ -156,15 +149,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiRequestBody"/></returns>
         private static OpenApiRequestBody CreateRefPutRequestBody()
         {
-            OpenApiSchema schema = new()
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = Constants.ReferenceUpdateSchemaName
-                }
-            };
+            OpenApiSchema schema = new OpenApiSchemaReference(Constants.ReferenceUpdateSchemaName, null);
 
             return new OpenApiRequestBody
             {
