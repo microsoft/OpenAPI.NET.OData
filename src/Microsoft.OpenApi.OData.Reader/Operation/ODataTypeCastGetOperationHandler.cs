@@ -6,10 +6,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -254,7 +256,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			};
 
 			if (!IsSingleElement)
-				tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+				tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
 
 			operation.Tags.Add(tag);
 
@@ -359,13 +361,13 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	{
 		if (Context.Settings.EnablePagination && !IsSingleElement)
 		{
-			OpenApiObject extension = new()
+			JsonObject extension = new()
 			{
-				{ "nextLinkName", new OpenApiString("@odata.nextLink")},
-				{ "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+				{ "nextLinkName", "@odata.nextLink"},
+				{ "operationName", Context.Settings.PageableOperationName}
 			};
 
-			operation.Extensions.Add(Constants.xMsPageable, extension);
+			operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
 		}
 
 		base.SetExtensions(operation);

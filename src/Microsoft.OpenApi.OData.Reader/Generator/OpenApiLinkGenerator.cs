@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.OData.Edm;
 using System.Linq;
 
@@ -97,7 +96,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         {
                             link.Parameters[pathKeyName] = new RuntimeExpressionAnyWrapper
                             {
-                                Any = new OpenApiString("$request.path." + pathKeyName)
+                                Any = "$request.path." + pathKeyName
                             };
                         }
                     }

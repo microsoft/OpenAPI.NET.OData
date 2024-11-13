@@ -1,4 +1,4 @@
-// ------------------------------------------------------------
+﻿// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OData.Edm.Vocabularies;
@@ -14,6 +13,9 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Diagnostics;
 using System;
+using System.Text.Json.Nodes;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -187,7 +189,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Schema = context.CreateEdmTypeSchema(keys.First().Type)
                 };
 
-                parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
+                parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
                 parameters.Add(parameter);
             }
             else
@@ -212,7 +214,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         parameter.Description += $", {keyProperty.Name}={quote}{{{parameter.Name}}}{quote}";
                     }
 
-                    parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
+                    parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
                     parameters.Add(parameter);
                 }
             }
@@ -606,7 +608,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return null;
             }
 
-            IList<IOpenApiAny> orderByItems = new List<IOpenApiAny>();
+            IList<JsonNode> orderByItems = new List<JsonNode>();
             foreach (var property in structuredType.StructuralProperties())
             {
                 if (sort != null && sort.IsNonSortableProperty(property.Name))
@@ -620,17 +622,17 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     if (isAscOnly)
                     {
-                        orderByItems.Add(new OpenApiString(property.Name));
+                        orderByItems.Add(property.Name);
                     }
                     else
                     {
-                        orderByItems.Add(new OpenApiString(property.Name + " desc"));
+                        orderByItems.Add(property.Name + " desc");
                     }
                 }
                 else
                 {
-                    orderByItems.Add(new OpenApiString(property.Name));
-                    orderByItems.Add(new OpenApiString(property.Name + " desc"));
+                    orderByItems.Add(property.Name);
+                    orderByItems.Add(property.Name + " desc");
                 }
             }
 
@@ -723,11 +725,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 return null;
             }
 
-            IList<IOpenApiAny> selectItems = new List<IOpenApiAny>();
+            IList<JsonNode> selectItems = new List<JsonNode>();
 
             foreach (var property in structuredType.StructuralProperties())
             {
-                selectItems.Add(new OpenApiString(property.Name));
+                selectItems.Add(property.Name);
             }
 
             foreach (var property in structuredType.NavigationProperties())
@@ -737,7 +739,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                selectItems.Add(new OpenApiString(property.Name));
+                selectItems.Add(property.Name);
             }
 
             return new OpenApiParameter
@@ -829,10 +831,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return null;
             }
 
-            IList<IOpenApiAny> expandItems = new List<IOpenApiAny>
-            {
-                new OpenApiString("*")
-            };
+            IList<JsonNode> expandItems = [ "*" ];
 
             foreach (var property in structuredType.NavigationProperties())
             {
@@ -841,7 +840,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                expandItems.Add(new OpenApiString(property.Name));
+                expandItems.Add(property.Name);
             }
 
             return new OpenApiParameter

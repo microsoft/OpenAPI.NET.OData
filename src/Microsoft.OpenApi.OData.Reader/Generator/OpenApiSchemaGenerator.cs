@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
@@ -17,6 +16,10 @@ using System.Linq;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System.Text.Json.Nodes;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -315,7 +318,8 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             var extension = (context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi2_0 ||
-                            context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi3_0 ) &&
+                            context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi3_0  ||
+                            context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi3_1) &&
                             context.Settings.AddEnumDescriptionExtension ? 
                                 new OpenApiEnumValuesDescriptionExtension {
                                     EnumName = enumType.Name,
@@ -325,7 +329,7 @@ namespace Microsoft.OpenApi.OData.Generator
             // Enum value is an array that contains a string with the member name for each enumeration member.
             foreach (IEdmEnumMember member in enumType.Members)
             {
-                schema.Enum.Add(new OpenApiString(member.Name));
+                schema.Enum.Add(member.Name);
                 AddEnumDescription(member, extension, context);
             }
 
@@ -426,7 +430,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 OpenApiSchema propertySchema = context.CreateEdmTypeSchema(property.Type);
                 propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
                 propertySchema.Extensions.AddCustomAttributesToExtensions(context, property);
-                propertySchema.Extensions.Add(Constants.xMsNavigationProperty, new OpenApiBoolean(true));
+                propertySchema.Extensions?.Add(Constants.xMsNavigationProperty, new OpenApiAny(true));
                 properties.Add(property.Name, propertySchema);
             }
 
@@ -467,7 +471,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(context != null);
             Debug.Assert(structuredType != null);
 
-            IOpenApiAny example = null;
+            JsonNode example = null;
             if (context.Settings.ShowSchemaExamples)
             {
                 example = CreateStructuredTypePropertiesExample(context, structuredType);
@@ -486,7 +490,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     extension = new Dictionary<string, IOpenApiExtension>
                     {
-                        { Constants.xMsDiscriminatorValue, new OpenApiString("#" + structuredType.FullTypeName()) }
+                        { Constants.xMsDiscriminatorValue, new OpenApiAny("#" + structuredType.FullTypeName()) }
                     };
                 }
 
@@ -548,7 +552,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (context.Settings.EnableDiscriminatorValue)
                 {
-                    OpenApiString defaultValue = null;
+                    JsonNode defaultValue = null;
                     bool isBaseTypeEntity = Constants.EntityName.Equals(structuredType.BaseType?.FullTypeName().Split('.').Last(), StringComparison.OrdinalIgnoreCase);
                     bool isBaseTypeAbstractNonEntity = (structuredType.BaseType?.IsAbstract ?? false) && !isBaseTypeEntity;
 
@@ -593,26 +597,23 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static IOpenApiAny CreateStructuredTypePropertiesExample(ODataContext context, IEdmStructuredType structuredType)
+        private static JsonObject CreateStructuredTypePropertiesExample(ODataContext context, IEdmStructuredType structuredType)
         {
-            OpenApiObject example = new OpenApiObject();
-
-            IEdmEntityType entityType = structuredType as IEdmEntityType;
+            JsonObject example = [];
 
             // properties
             foreach (var property in structuredType.Properties())
             {
-               // IOpenApiAny item;
+                // IOpenApiAny item;
                 IEdmTypeReference propertyType = property.Type;
 
-                IOpenApiAny item = GetTypeNameForExample(context, propertyType);
+                JsonNode item = GetTypeNameForExample(context, propertyType);
 
                 EdmTypeKind typeKind = propertyType.TypeKind();
-                if (typeKind == EdmTypeKind.Primitive && item is OpenApiString)
+                if (typeKind == EdmTypeKind.Primitive && item is JsonValue jsonValue && jsonValue.TryGetValue(out string stringAny))
                 {
-                    OpenApiString stringAny = item as OpenApiString;
-                    string value = stringAny.Value;
-                    if (entityType != null && entityType.Key().Any(k => k.Name == property.Name))
+                    string value = stringAny;
+                    if (structuredType is IEdmEntityType entityType && entityType.Key().Any(k => k.Name == property.Name))
                     {
                         value += " (identifier)";
                     }
@@ -620,7 +621,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         value += " (timestamp)";
                     }
-                    item = new OpenApiString(value);
+                    item = value;
                 }
 
                 example.Add(property.Name, item);
@@ -629,7 +630,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return example;
         }
 
-        private static IOpenApiAny GetTypeNameForExample(ODataContext context, IEdmTypeReference edmTypeReference)
+        private static JsonNode GetTypeNameForExample(ODataContext context, IEdmTypeReference edmTypeReference)
         {
             switch (edmTypeReference.TypeKind())
             {
@@ -639,39 +640,41 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     if (edmTypeReference.IsBoolean())
                     {
-                        return new OpenApiBoolean(true);
+                        return true;
                     }
                     else
                     {
                         if (schema.Reference != null)
                         {
-                            return new OpenApiString(schema.Reference.Id);
+                            return schema.Reference.Id;
                         }
                         else
                         {
-                            return new OpenApiString(schema.Type ??
+                            return schema.Type.ToIdentifier() ??
                                 (schema.AnyOf ?? Enumerable.Empty<OpenApiSchema>())
                                 .Union(schema.AllOf ?? Enumerable.Empty<OpenApiSchema>())
                                 .Union(schema.OneOf ?? Enumerable.Empty<OpenApiSchema>())
-                                .FirstOrDefault(static x => !string.IsNullOrEmpty(x.Format))?.Format ?? schema.Format);
+                                .FirstOrDefault(static x => !string.IsNullOrEmpty(x.Format))?.Format ?? schema.Format;
                         }
                     }
 
                 case EdmTypeKind.Entity:
                 case EdmTypeKind.Complex:
                 case EdmTypeKind.Enum:
-                    OpenApiObject obj = new OpenApiObject();
-                    obj[Constants.OdataType] = new OpenApiString(edmTypeReference.FullName());
+                    JsonObject obj = new()
+                    {
+                        [Constants.OdataType] = edmTypeReference.FullName()
+                    };
                     return obj;
 
                 case EdmTypeKind.Collection:
-                    OpenApiArray array = new OpenApiArray();
+                    JsonArray array = [];
                     IEdmTypeReference elementType = edmTypeReference.AsCollection().ElementType();
                     array.Add(GetTypeNameForExample(context, elementType));
                     return array;
 
                 case EdmTypeKind.Untyped:
-                    return new OpenApiObject();
+                    return new JsonObject();
 
                 case EdmTypeKind.TypeDefinition:
                 case EdmTypeKind.EntityReference:
@@ -680,7 +683,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static IOpenApiAny CreateDefault(this IEdmStructuralProperty property)
+        private static JsonNode CreateDefault(this IEdmStructuralProperty property)
         {
             if (property == null ||
                 property.DefaultValueString == null)
@@ -690,7 +693,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (property.Type.IsEnum())
             {
-                return new OpenApiString(property.DefaultValueString);
+                return property.DefaultValueString;
             }
 
             if (!property.Type.IsPrimitive())
@@ -703,10 +706,9 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 case EdmPrimitiveTypeKind.Boolean:
                     {
-                        bool result;
-                        if (Boolean.TryParse(property.DefaultValueString, out result))
+                        if (bool.TryParse(property.DefaultValueString, out bool result))
                         {
-                            return new OpenApiBoolean(result);
+                            return result;
                         }
                     }
                     break;
@@ -714,10 +716,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.Int16:
                 case EdmPrimitiveTypeKind.Int32:
                     {
-                        int result;
-                        if (Int32.TryParse(property.DefaultValueString, out result))
+                        if (int.TryParse(property.DefaultValueString, out int result))
                         {
-                            return new OpenApiInteger(result);
+                            return result;
                         }
                     }
                     break;
@@ -738,7 +739,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     break;
             }
 
-            return new OpenApiString(property.DefaultValueString);
+            return property.DefaultValueString;
         }
     }
 }

@@ -158,7 +158,7 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 foreach (var item in atrributesValueMap)
                 {
-                    extensions.TryAdd(item.Key, new OpenApiString(item.Value));
+                    extensions.TryAdd(item.Key, new OpenApiAny(item.Value));
                 }
             }
         }

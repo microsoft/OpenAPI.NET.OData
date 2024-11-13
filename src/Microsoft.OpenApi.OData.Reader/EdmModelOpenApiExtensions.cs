@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData
 					int index = 1;
 					foreach (var error in errors)
 					{
-						document.Extensions.Add(Constants.xMsEdmModelError + index++, new OpenApiString(error.ToString()));
+						document.Extensions.Add(Constants.xMsEdmModelError + index++, new OpenApiAny(error.ToString()));
 					}
 
 					return document;

@@ -13,6 +13,7 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using System.Text.Json.Nodes;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -313,15 +314,15 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             if (samePaths.Any())
             {
-                OpenApiArray array = new();
+                JsonArray array = new();
                 OpenApiConvertSettings settings = Context.Settings.Clone();
                 settings.EnableKeyAsSegment = Context.KeyAsSegment;
                 foreach (var p in samePaths)
                 {
-                    array.Add(new OpenApiString(p.GetPathItemName(settings)));
+                    array.Add(p.GetPathItemName(settings));
                 }
 
-                item.Extensions.Add(Constants.xMsDosGroupPath, array);   
+                item.Extensions.Add(Constants.xMsDosGroupPath, new OpenApiAny(array));   
             }
 
             base.SetExtensions(item);

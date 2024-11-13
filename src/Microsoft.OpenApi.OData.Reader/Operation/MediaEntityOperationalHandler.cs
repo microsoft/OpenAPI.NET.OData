@@ -1,4 +1,4 @@
-// ------------------------------------------------------------
+﻿// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -88,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             // Use an extension for TOC (Table of Content)
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
 
             operation.Tags.Add(tag);
 

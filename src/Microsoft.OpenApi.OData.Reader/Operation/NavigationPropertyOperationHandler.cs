@@ -90,7 +90,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Name = name
             };
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
@@ -101,7 +101,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("operation"));
 
             base.SetExtensions(operation);
         }

@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -143,7 +144,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Name = tagName,
             };
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("container"));
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
@@ -320,13 +321,13 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.EnablePagination && EdmOperation.ReturnType?.TypeKind() == EdmTypeKind.Collection)
             {
-                OpenApiObject extension = new OpenApiObject
+                JsonObject extension = new JsonObject
                 {
-                    { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                    { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+                    { "nextLinkName", "@odata.nextLink"},
+                    { "operationName", Context.Settings.PageableOperationName}
                 };
 
-                operation.Extensions.Add(Constants.xMsPageable, extension);
+                operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
             }
             base.SetExtensions(operation);
         }
