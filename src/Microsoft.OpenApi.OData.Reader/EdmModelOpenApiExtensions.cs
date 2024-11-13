@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.Any;
@@ -48,7 +47,7 @@ namespace Microsoft.OpenApi.OData
 					int index = 1;
 					foreach (var error in errors)
 					{
-						document.Extensions.Add(Constants.xMsEdmModelError + index++, new OpenApiString(error.ToString()));
+						document.Extensions.Add(Constants.xMsEdmModelError + index++, new OpenApiAny(error.ToString()));
 					}
 
 					return document;

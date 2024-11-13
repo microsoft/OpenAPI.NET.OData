@@ -3,11 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -93,7 +95,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 };
 
                 // Use an extension for TOC (Table of Content)
-                tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+                tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
 
                 operation.Tags.Add(tag);
 
@@ -152,14 +154,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference() {
-                            Type = ReferenceType.Response,
-                            Id = Constants.DollarCountSchemaName
-                        }
-                    }
+                    new OpenApiResponseReference(Constants.DollarCountSchemaName, null)
                 }
             };
             operation.AddErrorResponses(Context.Settings, false);

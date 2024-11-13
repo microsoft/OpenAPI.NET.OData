@@ -33,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("actionImport"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("actionImport"));
 
             base.SetExtensions(operation);
         }

@@ -204,7 +204,7 @@ namespace Microsoft.OpenApi.OData.Tests
                     Assert.Equal(enumType.FullTypeName(), anyOfRef.Reference.Id);
                     var anyOfNull = schema.AnyOf.Skip(1).FirstOrDefault();
                     Assert.NotNull(anyOfNull.Type);
-                    Assert.Equal("object", anyOfNull.Type);
+                    Assert.Equal(JsonSchemaType.Object, anyOfNull.Type);
                     Assert.True(anyOfNull.Nullable);
                 }
                 else
@@ -299,7 +299,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Equal(entity.FullTypeName(), anyOfRef.Reference.Id);
                 var anyOfNull = schema.AnyOf.Skip(1).FirstOrDefault();
                 Assert.NotNull(anyOfNull.Type);
-                Assert.Equal("object", anyOfNull.Type);
+                Assert.Equal(JsonSchemaType.Object, anyOfNull.Type);
                 Assert.True(anyOfNull.Nullable);
             }
         }
@@ -401,17 +401,17 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Type);
                 Assert.NotNull(schema.OneOf);
                 Assert.Equal(2, schema.OneOf.Count);
-                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
+                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.Number));
                 Assert.NotNull(numberSchema);
                 Assert.True(numberSchema.Nullable);
-                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
+                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.String));
                 Assert.NotNull(stringSchema);
                 Assert.True(stringSchema.Nullable);
                 Assert.False(schema.Nullable);
             }
             else
             {
-                Assert.Equal("number", schema.Type);
+                Assert.Equal(JsonSchemaType.Number, schema.Type);
                 Assert.Null(schema.OneOf);
                 Assert.Equal(isNullable, schema.Nullable);
             }
@@ -444,17 +444,17 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Type);
                 Assert.NotNull(schema.OneOf);
                 Assert.Equal(2, schema.OneOf.Count);
-                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
+                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.Number));
                 Assert.NotNull(numberSchema);
                 Assert.True(numberSchema.Nullable);
-                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
+                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.String));
                 Assert.NotNull(stringSchema);
                 Assert.True(stringSchema.Nullable);
                 Assert.False(schema.Nullable);
             }
             else
             {
-                Assert.Equal("number", schema.Type);
+                Assert.Equal(JsonSchemaType.Number, schema.Type);
                 Assert.Null(schema.AnyOf);
                 Assert.Equal(isNullable, schema.Nullable);
             }
@@ -512,12 +512,12 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.Null(schema.Type);
 
-            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
+            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.Number));
             Assert.NotNull(numberSchema);
             Assert.True(numberSchema.Nullable);
             Assert.Equal("double", numberSchema.Format, StringComparer.OrdinalIgnoreCase);
 
-            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
+            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.String));
             Assert.NotNull(stringSchema);
             Assert.True(stringSchema.Nullable);
 

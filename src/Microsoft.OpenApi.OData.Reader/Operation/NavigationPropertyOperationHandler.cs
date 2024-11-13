@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
@@ -89,7 +90,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Name = name
             };
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
@@ -100,7 +101,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("operation"));
 
             base.SetExtensions(operation);
         }
@@ -214,15 +215,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected OpenApiSchema GetOpenApiSchema()
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = NavigationProperty.ToEntityType().FullName()
-                }
-            };
+            return new OpenApiSchemaReference(NavigationProperty.ToEntityType().FullName(), null);
         }
     }
 }

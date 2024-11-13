@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -45,15 +46,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {               
                 if (Context.Model.OperationTargetsMultiplePaths(action))
                 {
-                    operation.RequestBody = new OpenApiRequestBody
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.RequestBody,
-                            Id = $"{action.Name}RequestBody"
-                        }
-                    };
+                    operation.RequestBody = new OpenApiRequestBodyReference($"{action.Name}RequestBody", null);
                 }
                 else
                 {
@@ -67,7 +60,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("action"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("action"));
             base.SetExtensions(operation);
         }
     }

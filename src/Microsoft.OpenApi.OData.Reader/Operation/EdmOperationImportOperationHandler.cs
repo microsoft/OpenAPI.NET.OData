@@ -130,7 +130,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetTags(OpenApiOperation operation)
         {
             operation.Tags = CreateTags(EdmOperationImport);
-            operation.Tags[0].Extensions.Add(Constants.xMsTocType, new OpenApiString("container"));
+            operation.Tags[0].Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
             Context.AppendTag(operation.Tags[0]);
 
             base.SetTags(operation);

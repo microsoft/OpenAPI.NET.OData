@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OData.Edm.Vocabularies;
@@ -14,6 +13,9 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Diagnostics;
 using System;
+using System.Text.Json.Nodes;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -103,10 +105,10 @@ namespace Microsoft.OpenApi.OData.Generator
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Type = "array",
+                                        Type = JsonSchemaType.Array,
                                         Items = new OpenApiSchema
                                         {
-                                            Type = "string"
+                                            Type = JsonSchemaType.String
                                         },
 
                                         // These Parameter Objects optionally can contain the field description,
@@ -187,7 +189,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Schema = context.CreateEdmTypeSchema(keys.First().Type)
                 };
 
-                parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
+                parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
                 parameters.Add(parameter);
             }
             else
@@ -212,7 +214,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         parameter.Description += $", {keyProperty.Name}={quote}{{{parameter.Name}}}{quote}";
                     }
 
-                    parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
+                    parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
                     parameters.Add(parameter);
                 }
             }
@@ -362,11 +364,7 @@ namespace Microsoft.OpenApi.OData.Generator
             bool? top = context.Model.GetBoolean(target, CapabilitiesConstants.TopSupported);
             if (top == null || top.Value)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "top" }
-                };
+                return new OpenApiParameterReference("top", null);
             }
 
             return null;
@@ -404,11 +402,7 @@ namespace Microsoft.OpenApi.OData.Generator
             bool? skip = context.Model.GetBoolean(target, CapabilitiesConstants.SkipSupported);
             if (skip == null || skip.Value)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "skip" }
-                };
+                return new OpenApiParameterReference("skip", null);
             }
 
             return null;
@@ -446,11 +440,7 @@ namespace Microsoft.OpenApi.OData.Generator
             SearchRestrictionsType search = context.Model.GetRecord<SearchRestrictionsType>(target, CapabilitiesConstants.SearchRestrictions);
             if (search == null || search.IsSearchable)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "search" }
-                };
+                return new OpenApiParameterReference("search", null);
             }
 
             return null;
@@ -487,11 +477,7 @@ namespace Microsoft.OpenApi.OData.Generator
             CountRestrictionsType count = context.Model.GetRecord<CountRestrictionsType>(target, CapabilitiesConstants.CountRestrictions);
             if (count == null || count.IsCountable)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "count" }
-                };
+                return new OpenApiParameterReference("count", null);
             }
 
             return null;
@@ -529,11 +515,7 @@ namespace Microsoft.OpenApi.OData.Generator
             FilterRestrictionsType filter = context.Model.GetRecord<FilterRestrictionsType>(target, CapabilitiesConstants.FilterRestrictions);
             if (filter == null || filter.IsFilterable)
             {
-                return new OpenApiParameter
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "filter" }
-                };
+                return new OpenApiParameterReference("filter", null);
             }
 
             return null;
@@ -626,7 +608,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return null;
             }
 
-            IList<IOpenApiAny> orderByItems = new List<IOpenApiAny>();
+            IList<JsonNode> orderByItems = new List<JsonNode>();
             foreach (var property in structuredType.StructuralProperties())
             {
                 if (sort != null && sort.IsNonSortableProperty(property.Name))
@@ -640,17 +622,17 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     if (isAscOnly)
                     {
-                        orderByItems.Add(new OpenApiString(property.Name));
+                        orderByItems.Add(property.Name);
                     }
                     else
                     {
-                        orderByItems.Add(new OpenApiString(property.Name + " desc"));
+                        orderByItems.Add(property.Name + " desc");
                     }
                 }
                 else
                 {
-                    orderByItems.Add(new OpenApiString(property.Name));
-                    orderByItems.Add(new OpenApiString(property.Name + " desc"));
+                    orderByItems.Add(property.Name);
+                    orderByItems.Add(property.Name + " desc");
                 }
             }
 
@@ -661,11 +643,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Order items by property values",
                 Schema = new OpenApiSchema
                 {
-                    Type = "array",
+                    Type = JsonSchemaType.Array,
                     UniqueItems = true,
                     Items = new OpenApiSchema
                     {
-                        Type = "string",
+                        Type = JsonSchemaType.String,
                         Enum = context.Settings.UseStringArrayForQueryOptionsSchema ? null : orderByItems
                     }
                 },
@@ -743,11 +725,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 return null;
             }
 
-            IList<IOpenApiAny> selectItems = new List<IOpenApiAny>();
+            IList<JsonNode> selectItems = new List<JsonNode>();
 
             foreach (var property in structuredType.StructuralProperties())
             {
-                selectItems.Add(new OpenApiString(property.Name));
+                selectItems.Add(property.Name);
             }
 
             foreach (var property in structuredType.NavigationProperties())
@@ -757,7 +739,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                selectItems.Add(new OpenApiString(property.Name));
+                selectItems.Add(property.Name);
             }
 
             return new OpenApiParameter
@@ -767,11 +749,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Select properties to be returned",
                 Schema = new OpenApiSchema
                 {
-                    Type = "array",
+                    Type = JsonSchemaType.Array,
                     UniqueItems = true,
                     Items = new OpenApiSchema
                     {
-                        Type = "string",
+                        Type = JsonSchemaType.String,
                         Enum = context.Settings.UseStringArrayForQueryOptionsSchema ? null : selectItems
                     }
                 },
@@ -849,10 +831,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return null;
             }
 
-            IList<IOpenApiAny> expandItems = new List<IOpenApiAny>
-            {
-                new OpenApiString("*")
-            };
+            IList<JsonNode> expandItems = [ "*" ];
 
             foreach (var property in structuredType.NavigationProperties())
             {
@@ -861,7 +840,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                expandItems.Add(new OpenApiString(property.Name));
+                expandItems.Add(property.Name);
             }
 
             return new OpenApiParameter
@@ -871,11 +850,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Expand related entities",
                 Schema = new OpenApiSchema
                 {
-                    Type = "array",
+                    Type = JsonSchemaType.Array,
                     UniqueItems = true,
                     Items = new OpenApiSchema
                     {
-                        Type = "string",
+                        Type = JsonSchemaType.String,
                         Enum = context.Settings.UseStringArrayForQueryOptionsSchema ? null : expandItems
                     }
                 },
@@ -894,10 +873,10 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Show only the first n items",
                 Schema = new OpenApiSchema
                 {
-                    Type = "integer",
+                    Type = JsonSchemaType.Integer,
                     Minimum = 0,
                 },
-                Example = new OpenApiInteger(topExample),
+                Example = topExample,
                 Style = ParameterStyle.Form,
                 Explode = false
             };
@@ -913,7 +892,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Skip the first n items",
                 Schema = new OpenApiSchema
                 {
-                    Type = "integer",
+                    Type = JsonSchemaType.Integer,
                     Minimum = 0,
                 },
                 Style = ParameterStyle.Form,
@@ -931,7 +910,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Include count of items",
                 Schema = new OpenApiSchema
                 {
-                    Type = "boolean"
+                    Type = JsonSchemaType.Boolean
                 },
                 Style = ParameterStyle.Form,
                 Explode = false
@@ -948,7 +927,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Filter items by property values",
                 Schema = new OpenApiSchema
                 {
-                    Type = "string"
+                    Type = JsonSchemaType.String
                 },
                 Style = ParameterStyle.Form,
                 Explode = false
@@ -965,7 +944,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Search items by search phrases",
                 Schema = new OpenApiSchema
                 {
-                    Type = "string"
+                    Type = JsonSchemaType.String
                 },
                 Style = ParameterStyle.Form,
                 Explode = false

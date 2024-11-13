@@ -5,6 +5,7 @@
 
 using System.Linq;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -47,15 +48,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            operation.RequestBody = new OpenApiRequestBody
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {              
-                    Type = ReferenceType.RequestBody,
-                    Id = Constants.ReferencePutRequestBodyName
-                }
-            };
+            operation.RequestBody = new OpenApiRequestBodyReference(Constants.ReferencePutRequestBodyName, null);
 
             base.SetRequestBody(operation);
         }

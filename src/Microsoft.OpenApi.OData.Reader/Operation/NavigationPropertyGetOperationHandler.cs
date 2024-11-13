@@ -5,9 +5,11 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -64,13 +66,13 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
-                    OpenApiObject extension = new OpenApiObject
+                    JsonObject extension = new JsonObject
                     {
-                        { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                        { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+                        { "nextLinkName", "@odata.nextLink"},
+                        { "operationName", Context.Settings.PageableOperationName}
                     };
 
-                    operation.Extensions.Add(Constants.xMsPageable, extension);
+                    operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
                 }
             }
 
@@ -96,14 +98,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     {
                         Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                        new OpenApiResponse
+                        new OpenApiResponseReference($"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}", null)
                         {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference()
-                            {
-                                Type = ReferenceType.Response,
-                                Id = $"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}"
-                            },
                             Links = links
                         }
                     }
@@ -119,18 +115,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     schema = EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, Context.Model);
                 }
 
-                if (schema == null)
-                {
-                    schema = new OpenApiSchema
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = entityType.FullName()
-                        }
-                    };
-                }
+                schema ??= new OpenApiSchemaReference(entityType.FullName(), null);
 
                 operation.Responses = new OpenApiResponses
                 {

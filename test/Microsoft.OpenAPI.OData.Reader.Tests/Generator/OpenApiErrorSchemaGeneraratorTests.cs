@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
@@ -23,7 +24,7 @@ public class OpenApiErrorSchemaGeneratorTests
 
         var schema = OpenApiErrorSchemaGenerator.CreateInnerErrorSchema(context);
 
-        Assert.Equal("object", schema.Type);
+        Assert.Equal(JsonSchemaType.Object, schema.Type);
         Assert.Empty(schema.Properties);
     }
     [Fact]
@@ -38,7 +39,7 @@ public class OpenApiErrorSchemaGeneratorTests
 
         var schema = OpenApiErrorSchemaGenerator.CreateInnerErrorSchema(context);
 
-        Assert.Equal("object", schema.Type);
+        Assert.Equal(JsonSchemaType.Object, schema.Type);
         Assert.NotEmpty(schema.Properties);
         Assert.Contains("Date", schema.Properties.Keys);
         Assert.Contains("RequestId", schema.Properties.Keys);
