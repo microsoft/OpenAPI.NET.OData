@@ -110,8 +110,8 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
 
             IOperationHandlerProvider provider = Context.OperationHanderProvider;
-            IOperationHandler operationHander = provider.GetHandler(Path.Kind, operationType);
-            item.AddOperation(operationType, operationHander.CreateOperation(Context, Path));
+            IOperationHandler operationHandler = provider.GetHandler(Path.Kind, operationType);
+            item.AddOperation(operationType, operationHandler.CreateOperation(Context, Path));
         }
 
         /// <summary>
