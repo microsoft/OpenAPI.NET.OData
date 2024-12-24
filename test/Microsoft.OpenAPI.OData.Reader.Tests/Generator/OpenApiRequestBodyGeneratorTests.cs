@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -87,11 +88,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             Assert.NotNull(content.Value.Schema);
             var schema = content.Value.Schema;
-            Assert.Equal("object", schema.Type);
+            Assert.Equal(JsonSchemaType.Object, schema.Type);
             Assert.NotNull(schema.Properties);
             var parameter = Assert.Single(schema.Properties);
             Assert.Equal("param", parameter.Key);
-            Assert.Equal("string", parameter.Value.Type);
+            Assert.Equal(JsonSchemaType.String, parameter.Value.Type);
         }
 
         [Fact]
@@ -144,11 +145,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             Assert.NotNull(content.Value.Schema);
             var schema = content.Value.Schema;
-            Assert.Equal("object", schema.Type);
+            Assert.Equal(JsonSchemaType.Object, schema.Type);
             Assert.NotNull(schema.Properties);
             var parameter = Assert.Single(schema.Properties);
             Assert.Equal("param", parameter.Key);
-            Assert.Equal("string", parameter.Value.Type);
+            Assert.Equal(JsonSchemaType.String, parameter.Value.Type);
         }
 
         [Fact]

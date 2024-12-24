@@ -8,6 +8,7 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -90,15 +91,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 // Get the entity type declaring this stream property.
                 (var entityType, _) = GetStreamElements();
 
-                OpenApiSchema schema = new()
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = entityType.FullName()
-                    }
-                };
+                OpenApiSchema schema = new OpenApiSchemaReference(entityType.FullName(), null);
 
                 operation.AddErrorResponses(Context.Settings, addNoContent: true, schema: schema);
             }

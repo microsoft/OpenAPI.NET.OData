@@ -10,6 +10,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Authorization;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -36,15 +37,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     yield return new OpenApiSecurityRequirement
                     {
                         [
-                            new OpenApiSecurityScheme
-                            {
-                                UnresolvedReference = true,
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                    Id = securityScheme.Authorization
-                                }
-                            }
+                            new OpenApiSecuritySchemeReference(securityScheme.Authorization, null)
                         ] = new List<string>(securityScheme.RequiredScopes ?? new List<string>())
                     };
                 }
@@ -69,15 +62,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     yield return new OpenApiSecurityRequirement
                     {
                         [
-                            new OpenApiSecurityScheme
-                            {
-                                UnresolvedReference = true,
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                    Id = permission.SchemeName
-                                }
-                            }
+                            new OpenApiSecuritySchemeReference(permission.SchemeName, null)
                         ] = new List<string>(permission.Scopes?.Select(c => c.Scope) ?? new List<string>())
                     };
                 }

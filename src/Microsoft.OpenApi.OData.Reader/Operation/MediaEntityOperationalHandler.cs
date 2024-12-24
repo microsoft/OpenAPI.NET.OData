@@ -88,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             // Use an extension for TOC (Table of Content)
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
 
             operation.Tags.Add(tag);
 
@@ -166,7 +166,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             OpenApiSchema schema = new()
             {
-                Type = "string",
+                Type = JsonSchemaType.String,
                 Format = "binary"
             };
 

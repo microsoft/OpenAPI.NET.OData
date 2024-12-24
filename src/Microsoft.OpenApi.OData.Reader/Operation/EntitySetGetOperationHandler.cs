@@ -4,9 +4,11 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -57,12 +59,12 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.EnablePagination)
             {
-                OpenApiObject extension = new OpenApiObject
+                JsonObject extension = new JsonObject
                 {
-                    { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                    { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+                    { "nextLinkName", "@odata.nextLink"},
+                    { "operationName", Context.Settings.PageableOperationName}
                 };
-                operation.Extensions.Add(Constants.xMsPageable, extension);
+                operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
 
                 base.SetExtensions(operation);
             }
@@ -145,15 +147,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference()
-                        {
-                            Type = ReferenceType.Response,
-                            Id = $"{EntitySet.EntityType.FullName()}{Constants.CollectionSchemaSuffix}"
-                        },
-                    }
+                    new OpenApiResponseReference($"{EntitySet.EntityType.FullName()}{Constants.CollectionSchemaSuffix}", null)
                 }
             };
 

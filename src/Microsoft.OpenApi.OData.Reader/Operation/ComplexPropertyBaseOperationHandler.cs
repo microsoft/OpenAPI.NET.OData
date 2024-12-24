@@ -34,7 +34,7 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
                 Name = tagName
             };
 
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);

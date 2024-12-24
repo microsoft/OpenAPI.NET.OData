@@ -121,11 +121,11 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Extensions);
 
             pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
-            string isHiddenValue = (isHiddenExtension as OpenApiString)?.Value;
+            string isHiddenValue = (isHiddenExtension as OpenApiAny).Node.GetValue<string>();
             Assert.Equal("true", isHiddenValue);
 
             pathItem.Extensions.TryGetValue("x-ms-workloadName", out IOpenApiExtension isOwnerExtension);
-            string isOwnerValue = (isOwnerExtension as OpenApiString)?.Value;
+            string isOwnerValue = (isOwnerExtension as OpenApiAny).Node.GetValue<string>();
             Assert.Equal("People", isOwnerValue);
         }
     }

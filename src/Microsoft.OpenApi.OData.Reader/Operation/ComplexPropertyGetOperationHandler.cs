@@ -3,11 +3,12 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -130,12 +131,12 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     {
         if (Context.Settings.EnablePagination && ComplexPropertySegment.Property.Type.IsCollection())
         {
-            OpenApiObject extension = new()
+            JsonObject extension = new()
 			{
-                { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+                { "nextLinkName", "@odata.nextLink"},
+                { "operationName", Context.Settings.PageableOperationName}
             };
-            operation.Extensions.Add(Constants.xMsPageable, extension);
+            operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
 
             base.SetExtensions(operation);
         }
@@ -149,15 +150,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         }
         else
         {
-            OpenApiSchema schema = new()
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = ComplexPropertySegment.ComplexType.FullName()
-                }
-            };
+            OpenApiSchema schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), null);
 
             SetSingleResponse(operation, schema);
         }

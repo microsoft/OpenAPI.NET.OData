@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
@@ -109,11 +110,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     {
                         "x-ms-generated-by",
-                        new OpenApiObject
+                        new OpenApiAny(new JsonObject
                         {
-                            { "toolName", new OpenApiString("Microsoft.OpenApi.OData") },
-                            { "toolVersion", new OpenApiString(Assembly.GetExecutingAssembly().GetName().Version.ToString()) }
-                        }
+                            { "toolName", "Microsoft.OpenApi.OData" },
+                            { "toolVersion", Assembly.GetExecutingAssembly().GetName().Version.ToString() }
+                        })
                     }
                 };
             }

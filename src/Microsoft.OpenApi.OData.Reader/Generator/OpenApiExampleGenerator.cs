@@ -7,8 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -77,7 +77,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             OpenApiExample example = new OpenApiExample();
 
-            OpenApiObject value = new OpenApiObject();
+            JsonObject value = new JsonObject();
 
             IEdmEntityType entityType = structuredType as IEdmEntityType;
 
@@ -87,13 +87,12 @@ namespace Microsoft.OpenApi.OData.Generator
                 // IOpenApiAny item;
                 IEdmTypeReference propertyType = property.Type;
 
-                IOpenApiAny item = GetTypeNameForExample(propertyType);
+                JsonNode item = GetTypeNameForExample(propertyType);
 
                 EdmTypeKind typeKind = propertyType.TypeKind();
-                if (typeKind == EdmTypeKind.Primitive && item is OpenApiString)
+                if (typeKind == EdmTypeKind.Primitive && item is JsonValue jsonValue && jsonValue.TryGetValue(out string stringAny))
                 {
-                    OpenApiString stringAny = item as OpenApiString;
-                    string propertyValue = stringAny.Value;
+                    string propertyValue = stringAny;
                     if (entityType != null && entityType.Key().Any(k => k.Name == property.Name))
                     {
                         propertyValue += " (identifier)";
@@ -102,7 +101,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         propertyValue += " (timestamp)";
                     }
-                    item = new OpenApiString(propertyValue);
+                    item = propertyValue;
                 }
 
                 value.Add(property.Name, item);
@@ -111,7 +110,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return example;
         }
 
-        private static IOpenApiAny GetTypeNameForExample(IEdmTypeReference edmTypeReference)
+        private static JsonNode GetTypeNameForExample(IEdmTypeReference edmTypeReference)
         {
             switch (edmTypeReference.TypeKind())
             {
@@ -119,58 +118,60 @@ namespace Microsoft.OpenApi.OData.Generator
                     if (edmTypeReference.IsBinary())
                     {
                         // return new OpenApiBinary(new byte[] { 0x00 }); issue on binary writing
-                        return new OpenApiString(Convert.ToBase64String(new byte[] { 0x00 }));
+                        return Convert.ToBase64String(new byte[] { 0x00 });
                     }
                     else if (edmTypeReference.IsBoolean())
                     {
-                        return new OpenApiBoolean(true);
+                        return true;
                     }
                     else if (edmTypeReference.IsByte())
                     {
-                        return new OpenApiByte(0x00);
+                        return 0x00;
                     }
                     else if (edmTypeReference.IsDate())
                     {
-                        return new OpenApiDate(DateTime.MinValue);
+                        return DateTime.MinValue;
                     }
                     else if (edmTypeReference.IsDateTimeOffset())
                     {
-                        return new OpenApiDateTime(DateTimeOffset.MinValue);
+                        return DateTimeOffset.MinValue;
                     }
                     else if (edmTypeReference.IsDecimal() || edmTypeReference.IsDouble())
                     {
-                        return new OpenApiDouble(0D);
+                        return 0D;
                     }
                     else if (edmTypeReference.IsFloating())
                     {
-                        return new OpenApiFloat(0F);
+                        return 0F;
                     }
                     else if (edmTypeReference.IsGuid())
                     {
-                        return new OpenApiString(Guid.Empty.ToString());
+                        return Guid.Empty.ToString();
                     }
                     else if (edmTypeReference.IsInt16() || edmTypeReference.IsInt32())
                     {
-                        return new OpenApiInteger(0);
+                        return 0;
                     }
                     else if (edmTypeReference.IsInt64())
                     {
-                        return new OpenApiLong(0L);
+                        return 0L;
                     }
                     else
                     {
-                        return new OpenApiString(edmTypeReference.AsPrimitive().PrimitiveDefinition().Name);
+                        return edmTypeReference.AsPrimitive().PrimitiveDefinition().Name;
                     }
 
                 case EdmTypeKind.Entity:
                 case EdmTypeKind.Complex:
                 case EdmTypeKind.Enum:
-                    OpenApiObject obj = new OpenApiObject();
-                    obj["@odata.type"] = new OpenApiString(edmTypeReference.FullName());
+                    JsonObject obj = new()
+                    {
+                        ["@odata.type"] = edmTypeReference.FullName()
+                    };
                     return obj;
 
                 case EdmTypeKind.Collection:
-                    OpenApiArray array = new OpenApiArray();
+                    JsonArray array = [];
                     IEdmTypeReference elementType = edmTypeReference.AsCollection().ElementType();
                     array.Add(GetTypeNameForExample(elementType));
                     return array;
@@ -180,7 +181,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     return GetTypeNameForExample(new EdmPrimitiveTypeReference(typedef.UnderlyingType, edmTypeReference.IsNullable));
 
                 case EdmTypeKind.Untyped:
-                    return new OpenApiObject();
+                    return new JsonObject();
 
                 case EdmTypeKind.EntityReference:
                 default:

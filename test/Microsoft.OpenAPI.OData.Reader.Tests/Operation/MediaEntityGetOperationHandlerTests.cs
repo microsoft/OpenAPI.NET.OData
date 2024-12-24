@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using System.Linq;
@@ -109,7 +110,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             foreach (var item in getOperation.Responses[statusCode].Content)
             {
                 Assert.Equal("binary", item.Value.Schema.Format);
-                Assert.Equal("string", item.Value.Schema.Type);
+                Assert.Equal(JsonSchemaType.String, item.Value.Schema.Type);
             }
 
             if (!string.IsNullOrEmpty(annotation))
