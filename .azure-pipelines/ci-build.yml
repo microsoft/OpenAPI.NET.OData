@@ -6,11 +6,11 @@ name: $(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 trigger:
   branches:
     include:
-      - master
+      - main
 pr:
   branches:
     include:
-      - master
+      - main
 
 variables:
   buildPlatform: 'Any CPU'
@@ -145,7 +145,7 @@ extends:
 
           - task: PowerShell@2
             displayName: 'Validate project version has been incremented'
-            condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
+            condition: and(contains(variables['build.sourceBranch'], 'refs/heads/main'), succeeded())
             inputs:
               targetType: 'filePath'
               filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
@@ -186,7 +186,7 @@ extends:
               PendingAnalysisWaitTimeoutMinutes: '5'
 
     - stage: deploy
-      condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
+      condition: and(contains(variables['build.sourceBranch'], 'refs/heads/main'), succeeded())
       dependsOn: build
       jobs:
         - deployment: deploy
