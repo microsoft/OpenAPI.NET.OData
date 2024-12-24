@@ -18,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperationHandler
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="ComplexPropertyPostOperationHandler"/> class.
+    /// </summary>
+    /// <param name="document">The document to use to lookup references.</param>
+    public ComplexPropertyPostOperationHandler(OpenApiDocument document):base(document)
+    {
+        
+    }
     /// <inheritdoc/>
     protected override void Initialize(ODataContext context, ODataPath path)
     {

@@ -23,6 +23,14 @@ namespace Microsoft.OpenApi.OData.Operation
     internal abstract class NavigationPropertyOperationHandler : OperationHandler
     {
         /// <summary>
+        /// Initializes a new instance of <see cref="NavigationPropertyOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected NavigationPropertyOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
+        /// <summary>
         /// Gets the navigation property.
         /// </summary>
         protected IEdmNavigationProperty NavigationProperty { get; private set; }

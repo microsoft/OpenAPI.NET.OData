@@ -18,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class RefDeleteOperationHandler : NavigationPropertyOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="RefDeleteOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public RefDeleteOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Delete;
         private DeleteRestrictionsType _deleteRestriction;

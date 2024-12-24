@@ -14,105 +14,107 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class OperationHandlerProvider : IOperationHandlerProvider
     {
-        private readonly IDictionary<ODataPathKind, IDictionary<OperationType, IOperationHandler>> _handlers
-            = new Dictionary<ODataPathKind, IDictionary<OperationType, IOperationHandler>>{
+        private static Dictionary<ODataPathKind, IDictionary<OperationType, IOperationHandler>> GetHandlers(OpenApiDocument document)
+            => new()
+            {
 
             // entity set (Get/Post)
             {ODataPathKind.EntitySet, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new EntitySetGetOperationHandler() },
-                {OperationType.Post, new EntitySetPostOperationHandler() }
+                {OperationType.Get, new EntitySetGetOperationHandler(document) },
+                {OperationType.Post, new EntitySetPostOperationHandler(document) }
             }},
 
             // entity (Get/Patch/Put/Delete)
             {ODataPathKind.Entity, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new EntityGetOperationHandler() },
-                {OperationType.Patch, new EntityPatchOperationHandler() },
-                {OperationType.Put, new EntityPutOperationHandler() },
-                {OperationType.Delete, new EntityDeleteOperationHandler() }
+                {OperationType.Get, new EntityGetOperationHandler(document) },
+                {OperationType.Patch, new EntityPatchOperationHandler(document) },
+                {OperationType.Put, new EntityPutOperationHandler(document) },
+                {OperationType.Delete, new EntityDeleteOperationHandler(document) }
             }},
 
             // singleton (Get/Patch)
             {ODataPathKind.Singleton, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new SingletonGetOperationHandler() },
-                {OperationType.Patch, new SingletonPatchOperationHandler() }
+                {OperationType.Get, new SingletonGetOperationHandler(document) },
+                {OperationType.Patch, new SingletonPatchOperationHandler(document) }
             }},
 
             // edm operation (Get|Post)
             {ODataPathKind.Operation, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new EdmFunctionOperationHandler() },
-                {OperationType.Post, new EdmActionOperationHandler() }
+                {OperationType.Get, new EdmFunctionOperationHandler(document) },
+                {OperationType.Post, new EdmActionOperationHandler(document) }
             }},
 
             // edm operation import (Get|Post)
             {ODataPathKind.OperationImport, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new EdmFunctionImportOperationHandler() },
-                {OperationType.Post, new EdmActionImportOperationHandler() }
+                {OperationType.Get, new EdmFunctionImportOperationHandler(document) },
+                {OperationType.Post, new EdmActionImportOperationHandler(document) }
             }},
 
             // navigation property (Get/Patch/Put/Post/Delete)
             {ODataPathKind.NavigationProperty, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new NavigationPropertyGetOperationHandler() },
-                {OperationType.Patch, new NavigationPropertyPatchOperationHandler() },
-                {OperationType.Put, new NavigationPropertyPutOperationHandler() },
-                {OperationType.Post, new NavigationPropertyPostOperationHandler() },
-                {OperationType.Delete, new NavigationPropertyDeleteOperationHandler() }
+                {OperationType.Get, new NavigationPropertyGetOperationHandler(document) },
+                {OperationType.Patch, new NavigationPropertyPatchOperationHandler(document) },
+                {OperationType.Put, new NavigationPropertyPutOperationHandler(document) },
+                {OperationType.Post, new NavigationPropertyPostOperationHandler(document) },
+                {OperationType.Delete, new NavigationPropertyDeleteOperationHandler(document) }
             }},
 
             // navigation property ref (Get/Post/Put/Delete)
             {ODataPathKind.Ref, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new RefGetOperationHandler() },
-                {OperationType.Put, new RefPutOperationHandler() },
-                {OperationType.Post, new RefPostOperationHandler() },
-                {OperationType.Delete, new RefDeleteOperationHandler() }
+                {OperationType.Get, new RefGetOperationHandler(document) },
+                {OperationType.Put, new RefPutOperationHandler(document) },
+                {OperationType.Post, new RefPostOperationHandler(document) },
+                {OperationType.Delete, new RefDeleteOperationHandler(document) }
             }},
 
             // media entity operation (Get|Put|Delete)
             {ODataPathKind.MediaEntity, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new MediaEntityGetOperationHandler() },
-                {OperationType.Put, new MediaEntityPutOperationHandler() },
-                {OperationType.Delete, new MediaEntityDeleteOperationHandler() }
+                {OperationType.Get, new MediaEntityGetOperationHandler(document) },
+                {OperationType.Put, new MediaEntityPutOperationHandler(document) },
+                {OperationType.Delete, new MediaEntityDeleteOperationHandler(document) }
             }},
 
             // $metadata operation (Get)
             {ODataPathKind.Metadata, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new MetadataGetOperationHandler() }
+                {OperationType.Get, new MetadataGetOperationHandler(document) }
             }},
 
             // $count operation (Get)
             {ODataPathKind.DollarCount, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new DollarCountGetOperationHandler() }
+                {OperationType.Get, new DollarCountGetOperationHandler(document) }
             }},
 
             // .../namespace.typename (cast, get)
             {ODataPathKind.TypeCast, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new ODataTypeCastGetOperationHandler() },
+                {OperationType.Get, new ODataTypeCastGetOperationHandler(document) },
             }},
 
             // .../entity/propertyOfComplexType (Get/Patch/Put/Delete)
             {ODataPathKind.ComplexProperty, new Dictionary<OperationType, IOperationHandler>
             {
-                {OperationType.Get, new ComplexPropertyGetOperationHandler() },
-                {OperationType.Patch, new ComplexPropertyPatchOperationHandler() },
-                {OperationType.Put, new ComplexPropertyPutOperationHandler() },
-                {OperationType.Post, new ComplexPropertyPostOperationHandler() }
+                {OperationType.Get, new ComplexPropertyGetOperationHandler(document) },
+                {OperationType.Patch, new ComplexPropertyPatchOperationHandler(document) },
+                {OperationType.Put, new ComplexPropertyPutOperationHandler(document) },
+                {OperationType.Post, new ComplexPropertyPostOperationHandler(document) }
             }}
         };
 
         /// <inheritdoc/>
         public IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType)
         {
-            return _handlers[pathKind][operationType];
+            //TODO refactor to avoid dictionary creation on each call
+            return GetHandlers(document)[pathKind][operationType];
         }
     }
 }

@@ -10,6 +10,14 @@ namespace Microsoft.OpenApi.OData.Operation
 {
     internal class MediaEntityDeleteOperationHandler : MediaEntityOperationalHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="MediaEntityDeleteOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public MediaEntityDeleteOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Delete;
 

@@ -22,6 +22,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EdmOperationOperationHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EdmOperationOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected EdmOperationOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         private OperationRestrictionsType _operationRestriction;
 
         /// <summary>
@@ -234,7 +242,7 @@ namespace Microsoft.OpenApi.OData.Operation
             if (function.ReturnType.IsCollection())
             {
                 // $top
-                if (Context.CreateTop(function) is OpenApiParameter topParameter)
+                if (Context.CreateTop(function, _document) is OpenApiParameter topParameter)
                 {
                     operation.Parameters.AppendParameter(topParameter);
                 }

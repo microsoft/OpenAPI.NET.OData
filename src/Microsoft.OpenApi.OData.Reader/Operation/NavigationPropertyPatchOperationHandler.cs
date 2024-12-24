@@ -14,6 +14,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class NavigationPropertyPatchOperationHandler : NavigationPropertyUpdateOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="NavigationPropertyPatchOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public NavigationPropertyPatchOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
     }

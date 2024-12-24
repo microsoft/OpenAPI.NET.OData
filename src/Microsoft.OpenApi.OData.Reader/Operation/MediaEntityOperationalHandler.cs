@@ -20,6 +20,14 @@ namespace Microsoft.OpenApi.OData.Operation
     internal abstract class MediaEntityOperationalHandler : OperationHandler
     {
         /// <summary>
+        /// Initializes a new instance of <see cref="MediaEntityOperationalHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected MediaEntityOperationalHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
+        /// <summary>
         /// Gets/Sets the NavigationSource segment
         /// </summary>
         protected ODataNavigationSourceSegment NavigationSourceSegment { get; private set; }

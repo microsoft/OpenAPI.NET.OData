@@ -285,7 +285,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created list of <see cref="OpenApiParameter"/></returns>
         public static List<OpenApiParameter> CreatePathParameters(this ODataPath path, ODataContext context)
         {
-            List<OpenApiParameter> pathParameters = new();
+            List<OpenApiParameter> pathParameters = [];
             var parameterMappings = path.CalculateParameterMapping(context.Settings);
 
             foreach (ODataKeySegment keySegment in path.OfType<ODataKeySegment>())
@@ -355,16 +355,18 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="target">The Edm annotation target.</param>
+        /// <param name="document">The Open API document.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
-        public static OpenApiParameter CreateTop(this ODataContext context, IEdmVocabularyAnnotatable target)
+        public static OpenApiParameter CreateTop(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
+            Utils.CheckArgumentNull(document, nameof(document));
 
             bool? top = context.Model.GetBoolean(target, CapabilitiesConstants.TopSupported);
             if (top == null || top.Value)
             {
-                return new OpenApiParameterReference("top", null);
+                return new OpenApiParameterReference("top", document);
             }
 
             return null;
@@ -375,17 +377,19 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="targetPath">The string representation of the Edm target path.</param>
+        /// <param name="document">The Open API document.</param>
         /// <returns></returns>
-        public static OpenApiParameter CreateTop(this ODataContext context, string targetPath)
+        public static OpenApiParameter CreateTop(this ODataContext context, string targetPath, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
+            Utils.CheckArgumentNull(document, nameof(document));
 
             IEdmTargetPath target = context.Model.GetTargetPath(targetPath);
             if (target == null)
                 return null;
 
-            return context.CreateTop(target);
+            return context.CreateTop(target, document);
         }
 
         /// <summary>

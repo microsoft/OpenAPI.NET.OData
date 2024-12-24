@@ -22,6 +22,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EdmOperationImportOperationHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EdmOperationImportOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected EdmOperationImportOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         private OperationRestrictionsType _operationRestriction;
 
         /// <summary>

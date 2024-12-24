@@ -19,6 +19,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EdmActionOperationHandler : EdmOperationOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EdmActionOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EdmActionOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
 

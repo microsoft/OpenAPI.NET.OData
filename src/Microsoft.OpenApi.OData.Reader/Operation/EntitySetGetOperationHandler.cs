@@ -24,6 +24,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntitySetGetOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntitySetGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EntitySetGetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -80,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
             // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
             // $top
-            OpenApiParameter parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(EntitySet);
+            OpenApiParameter parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);

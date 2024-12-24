@@ -18,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class RefPutOperationHandler : NavigationPropertyOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="RefPutOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public RefPutOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
         private UpdateRestrictionsType _updateRestriction;

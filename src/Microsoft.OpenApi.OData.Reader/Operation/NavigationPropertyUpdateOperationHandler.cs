@@ -21,6 +21,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class NavigationPropertyUpdateOperationHandler : NavigationPropertyOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="NavigationPropertyUpdateOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected NavigationPropertyUpdateOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         private UpdateRestrictionsType _updateRestriction;
 
         /// <inheritdoc/>

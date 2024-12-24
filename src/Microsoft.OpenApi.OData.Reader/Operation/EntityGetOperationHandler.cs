@@ -22,6 +22,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntityGetOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntityGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EntityGetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 

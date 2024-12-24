@@ -24,6 +24,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class NavigationPropertyGetOperationHandler : NavigationPropertyOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NavigationPropertyGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public NavigationPropertyGetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -160,7 +168,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 // Need to verify that TopSupported or others should be applied to navigation source.
                 // So, how about for the navigation property.
-                OpenApiParameter parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(NavigationProperty);
+                OpenApiParameter parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);

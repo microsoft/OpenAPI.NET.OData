@@ -17,6 +17,14 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyBaseOperationHandler
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="ComplexPropertyUpdateOperationHandler"/> class.
+    /// </summary>
+    /// <param name="document">The document to use to lookup references.</param>
+    protected ComplexPropertyUpdateOperationHandler(OpenApiDocument document) : base(document)
+    {
+        
+    }
     
     private UpdateRestrictionsType _updateRestrictions;
 

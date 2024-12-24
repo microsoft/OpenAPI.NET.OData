@@ -20,6 +20,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EntityUpdateOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntityUpdateOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected EntityUpdateOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         private UpdateRestrictionsType _updateRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)

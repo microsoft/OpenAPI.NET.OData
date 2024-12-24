@@ -18,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation
     internal abstract class SingletonOperationHandler : OperationHandler
     {
         /// <summary>
+        /// Initializes a new instance of <see cref="SingletonOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected SingletonOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
+        /// <summary>
         /// Gets the <see cref="IEdmSingleton"/>.
         /// </summary>
         protected IEdmSingleton Singleton { get; private set; }

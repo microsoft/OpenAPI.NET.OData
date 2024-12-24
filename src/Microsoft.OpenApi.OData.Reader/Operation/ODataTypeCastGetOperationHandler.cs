@@ -25,6 +25,14 @@ namespace Microsoft.OpenApi.OData.Operation;
 /// </summary>
 internal class ODataTypeCastGetOperationHandler : OperationHandler
 {
+	/// <summary>
+	/// Initializes a new instance of <see cref="ODataTypeCastGetOperationHandler"/> class.
+	/// </summary>
+	/// <param name="document">The document to use to lookup references.</param>
+	public ODataTypeCastGetOperationHandler(OpenApiDocument document):base(document)
+	{
+		
+	}
 	/// <inheritdoc/>
 	public override OperationType OperationType => OperationType.Get;
 
@@ -336,13 +344,13 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	{
 		// Need to verify that TopSupported or others should be applied to navigation source.
 		// So, how about for the navigation property.
-		return new OpenApiParameter[] {
-            Context.CreateTop(annotable),
+		return [
+            Context.CreateTop(annotable, _document),
 			Context.CreateSkip(annotable),
 			Context.CreateSearch(annotable),
 			Context.CreateFilter(annotable),
 			Context.CreateCount(annotable),
-		};
+		];
 	}
 
 	protected override void SetSecurity(OpenApiOperation operation)

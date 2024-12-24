@@ -18,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperationHandler
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="ComplexPropertyGetOperationHandler"/> class.
+    /// </summary>
+    /// <param name="document">The document to use to lookup references.</param>
+    public ComplexPropertyGetOperationHandler(OpenApiDocument document):base(document)
+    {
+        
+    }
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Get;
 
@@ -63,7 +71,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
             // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
             // $top
-            parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(ComplexPropertySegment.Property);
+            parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);

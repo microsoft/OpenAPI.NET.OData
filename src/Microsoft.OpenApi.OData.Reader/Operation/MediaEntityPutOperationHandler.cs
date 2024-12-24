@@ -21,6 +21,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class MediaEntityPutOperationHandler : MediaEntityOperationalHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="MediaEntityPutOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public MediaEntityPutOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Put;
         

@@ -22,6 +22,16 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class OperationHandler : IOperationHandler
     {
+        protected readonly OpenApiDocument _document;
+        /// <summary>
+        /// Creates a new instance of <see cref="OperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">Document to use to lookup references.</param>
+        protected OperationHandler(OpenApiDocument document)
+        {
+            Utils.CheckArgumentNull(document, nameof(document));
+            _document = document;
+        }
         /// <inheritdoc/>
         public abstract OperationType OperationType { get; }
 
