@@ -205,7 +205,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.Single: // single
                     schema.OneOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema { Type = JsonSchemaType.String, Format = "float", Nullable = true },
+                        new OpenApiSchema { Type = JsonSchemaType.Number, Format = "float", Nullable = true },
                         new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
                         new OpenApiSchemaReference(Constants.ReferenceNumericName, null)
                     };
