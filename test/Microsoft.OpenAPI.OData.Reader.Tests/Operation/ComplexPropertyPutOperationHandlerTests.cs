@@ -61,7 +61,7 @@ public class ComplexPropertyPutOperationHandlerTests
 
 		if (enableOperationId)
 		{
-			Assert.Equal("Customers.UpdateBillingAddress", put.OperationId);
+			Assert.Equal("Customers.SetBillingAddress", put.OperationId);
 		}
 		else
 		{
@@ -108,7 +108,7 @@ public class ComplexPropertyPutOperationHandlerTests
 
         if (enableOperationId)
 		{
-			Assert.Equal("Customers.UpdateAlternativeAddresses", put.OperationId);
+			Assert.Equal("Customers.SetAlternativeAddresses", put.OperationId);
 		}
 		else
 		{

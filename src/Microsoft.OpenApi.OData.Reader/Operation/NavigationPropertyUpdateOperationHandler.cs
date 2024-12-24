@@ -41,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string prefix = "Update";
+                string prefix = OperationType == OperationType.Patch ? "Update" : "Set";
                 operation.OperationId = GetOperationId(prefix);
             }
 

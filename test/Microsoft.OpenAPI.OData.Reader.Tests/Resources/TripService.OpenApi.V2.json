@@ -165,7 +165,7 @@
           "Airlines.Airline"
         ],
         "summary": "Update entity in Airlines",
-        "operationId": "Airlines.Airline.UpdateAirline",
+        "operationId": "Airlines.Airline.SetAirline",
         "consumes": [
           "application/json"
         ],
@@ -534,7 +534,7 @@
           "Airports.AirportLocation"
         ],
         "summary": "Update property Location value.",
-        "operationId": "Airports.UpdateLocation",
+        "operationId": "Airports.SetLocation",
         "consumes": [
           "application/json"
         ],

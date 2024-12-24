@@ -125,7 +125,7 @@ paths:
       tags:
         - Airlines.Airline
       summary: Update entity in Airlines
-      operationId: Airlines.Airline.UpdateAirline
+      operationId: Airlines.Airline.SetAirline
       parameters:
         - name: AirlineCode
           in: path
@@ -398,7 +398,7 @@ paths:
       tags:
         - Airports.AirportLocation
       summary: Update property Location value.
-      operationId: Airports.UpdateLocation
+      operationId: Airports.SetLocation
       parameters:
         - name: IcaoCode
           in: path

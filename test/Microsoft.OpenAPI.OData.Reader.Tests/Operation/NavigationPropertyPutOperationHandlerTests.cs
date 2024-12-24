@@ -71,7 +71,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("People.UpdateBestFriend", operation.OperationId);
+                Assert.Equal("People.SetBestFriend", operation.OperationId);
             }
             else
             {
