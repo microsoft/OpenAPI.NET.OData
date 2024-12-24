@@ -109,7 +109,7 @@ namespace Microsoft.OpenApi.OData.Operation
                             // Hash the segment to avoid duplicate operationIds
                             pathHash = string.IsNullOrEmpty(pathHash)
                                 ? opSegment.GetPathHash(Context.Settings)
-                                : (pathHash + opSegment.GetPathHash(Context.Settings)).GetHashSHA256()[..4];
+                                : (pathHash + opSegment.GetPathHash(Context.Settings)).GetHashSHA256().Substring(0, 4);
                         }
 
                         identifiers.Add(segment.Identifier);
