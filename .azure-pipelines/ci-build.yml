@@ -213,4 +213,47 @@ extends:
                     nuGetFeedType: external
                     publishFeedCredentials: 'OpenAPI Nuget Connection'
                     packageParentPath: '$(Pipeline.Workspace)'
+
+        - deployment: create_github_release
+          templateContext:
+            type: releaseJob
+            isProduction: true
+            inputs:
+            - input: pipelineArtifact
+              artifactName: Nugets
+              targetPath: '$(Pipeline.Workspace)'
+          dependsOn: []
+          environment: kiota-github-releases
+          strategy:
+            runOnce:
+              deploy:
+                pool:
+                  vmImage: ubuntu-latest
+                steps:
+                - pwsh: |
+                    $artifactName = Get-ChildItem -Path $(Pipeline.Workspace) -Filter Microsoft.OpenApi.*.nupkg -recurse | select -First 1
+                    $artifactVersion= $artifactName.Name -replace "Microsoft.OpenApi.OData", "" -replace ".nupkg", ""
+                    #Set Variable $artifactName and $artifactVersion
+                    Write-Host "##vso[task.setvariable variable=artifactVersion; isSecret=false;]$artifactVersion"
+                    echo "$artifactVersion"
+                  displayName: 'Fetch Artifact Name'
+                - task: GitHubRelease@1
+                  displayName: 'GitHub release'
+                  condition: succeededOrFailed()
+                  inputs:
+                    gitHubConnection: 'Github-MaggieKimani1'
+                    action: create
+                    tagSource: userSpecifiedTag
+                    tag: '$(artifactVersion)'
+                    title: '$(artifactVersion)'
+                    releaseNotesSource: inline
+                    assets: '$(Pipeline.Workspace)\**\*.nupkg'
+                    changeLogType: issueBased
+                    changeLogLabels: '[ 
+                      { "label" : "feature-work", "feature", "displayName" : "New Features", "state" : "closed" }, 
+                      { "label" : "enhancement", "V2-Enhancement", "displayName" : "Enhancements", "state" : "closed" }, 
+                      { "label" : "bug", "bug-fix", "displayName" : "Bugs", "state" : "closed" }, 
+                      { "label" : "documentation", "doc", "displayName" : "Documentation", "state" : "closed"}, 
+                      { "label" : "dependencies", "displayName" : "Package Updates", "state" : "closed" }
+                      ]'
       
