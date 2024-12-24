@@ -6,11 +6,13 @@ name: $(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 trigger:
   branches:
     include:
-      - master
+      - main
+      - support/v1
 pr:
   branches:
     include:
-      - master
+      - main
+      - support/v1
 
 variables:
   buildPlatform: 'Any CPU'
@@ -60,10 +62,10 @@ extends:
               version: 8.x
 
           # Install the nuget tool.
-          - task: NuGetToolInstaller@0
-            displayName: 'Use NuGet >=5.2.0'
+          - task: NuGetToolInstaller@1
+            displayName: 'Use NuGet >=6.11.0'
             inputs:
-              versionSpec: '>=5.2.0'
+              versionSpec: '>=6.11.0'
               checkLatest: true
 
           # Build the Product project
@@ -81,11 +83,16 @@ extends:
               projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
               arguments: '--configuration $(BuildConfiguration) --no-build'
 
-          - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@3
+          - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
             displayName: 'ESRP CodeSigning'
             inputs:
-              ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
-              FolderPath: src
+              ConnectedServiceName: 'Federated DevX ESRP Managed Identity Connection'
+              FolderPath: 'src'
+              AppRegistrationClientId: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
+              AppRegistrationTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
+              AuthAKVName: 'akv-prod-eastus'
+              AuthCertName: 'ReferenceLibraryPrivateCert'
+              AuthSignCertName: 'ReferencePackagePublisherCertificate'
               signConfigType: inlineSignParams
               inlineOperation: |
                 [
@@ -125,7 +132,10 @@ extends:
                         "toolVersion": "1.0"
                     }
                 ]
-              SessionTimeout: 20
+              SessionTimeout: '20'
+              MaxConcurrency: '50'
+              MaxRetryAttempts: '5'
+              PendingAnalysisWaitTimeoutMinutes: '5'
 
           # Pack
           - task: DotNetCoreCLI@2
@@ -137,17 +147,22 @@ extends:
 
           - task: PowerShell@2
             displayName: 'Validate project version has been incremented'
-            condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
+            condition: and(or(contains(variables['build.sourceBranch'], 'refs/heads/main'), contains(variables['build.sourceBranch'], 'refs/heads/support/v1')), succeeded())
             inputs:
               targetType: 'filePath'
               filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
               pwsh: true
 
-          - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@3
+          - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
             displayName: 'ESRP CodeSigning Nuget Packages'
             inputs:
-              ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
+              ConnectedServiceName: 'Federated DevX ESRP Managed Identity Connection'
               FolderPath: '$(Build.ArtifactStagingDirectory)'
+              AppRegistrationClientId: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
+              AppRegistrationTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
+              AuthAKVName: 'akv-prod-eastus'
+              AuthCertName: 'ReferenceLibraryPrivateCert'
+              AuthSignCertName: 'ReferencePackagePublisherCertificate'              
               Pattern: '*.nupkg'
               signConfigType: inlineSignParams
               inlineOperation: |
@@ -167,13 +182,23 @@ extends:
                         "toolVersion": "1.0"
                     }
                 ]
-              SessionTimeout: 20
+              SessionTimeout: '60'
+              MaxConcurrency: '50'
+              MaxRetryAttempts: '5'
+              PendingAnalysisWaitTimeoutMinutes: '5'
 
     - stage: deploy
-      condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
+      condition: and(or(contains(variables['build.sourceBranch'], 'refs/heads/main'), contains(variables['build.sourceBranch'], 'refs/heads/support/v1')), succeeded())
       dependsOn: build
       jobs:
         - deployment: deploy
+          templateContext:
+            type: releaseJob
+            isProduction: true
+            inputs:
+            - input: pipelineArtifact
+              artifactName: Nugets
+              targetPath: '$(Pipeline.Workspace)'
           environment: nuget-org
           strategy:
             runOnce:
@@ -181,16 +206,54 @@ extends:
                 pool:
                   vmImage: ubuntu-latest
                 steps:
-                - task: DownloadPipelineArtifact@2
-                  displayName: Download nupkg from artifacts
-                  inputs:
-                    artifact: Nugets
-                    source: current
                 - task: 1ES.PublishNuget@1
                   displayName: 'NuGet push'
                   inputs:
-                    packagesToPush: '$(Pipeline.Workspace)/Nugets/Microsoft.OpenApi.OData.*.nupkg'
+                    packagesToPush: '$(Pipeline.Workspace)/Microsoft.OpenApi.OData.*.nupkg'
                     nuGetFeedType: external
                     publishFeedCredentials: 'OpenAPI Nuget Connection'
                     packageParentPath: '$(Pipeline.Workspace)'
+
+        - deployment: create_github_release
+          templateContext:
+            type: releaseJob
+            isProduction: true
+            inputs:
+            - input: pipelineArtifact
+              artifactName: Nugets
+              targetPath: '$(Pipeline.Workspace)'
+          dependsOn: []
+          environment: kiota-github-releases
+          strategy:
+            runOnce:
+              deploy:
+                pool:
+                  vmImage: ubuntu-latest
+                steps:
+                - pwsh: |
+                    $artifactName = Get-ChildItem -Path $(Pipeline.Workspace) -Filter Microsoft.OpenApi.*.nupkg -recurse | select -First 1
+                    $artifactVersion= $artifactName.Name -replace "Microsoft.OpenApi.OData", "" -replace ".nupkg", ""
+                    #Set Variable $artifactName and $artifactVersion
+                    Write-Host "##vso[task.setvariable variable=artifactVersion; isSecret=false;]$artifactVersion"
+                    echo "$artifactVersion"
+                  displayName: 'Fetch Artifact Name'
+                - task: GitHubRelease@1
+                  displayName: 'GitHub release'
+                  condition: succeededOrFailed()
+                  inputs:
+                    gitHubConnection: 'Github-MaggieKimani1'
+                    action: create
+                    tagSource: userSpecifiedTag
+                    tag: 'v$(artifactVersion)'
+                    title: 'v$(artifactVersion)'
+                    releaseNotesSource: inline
+                    assets: '$(Pipeline.Workspace)\**\*.nupkg'
+                    changeLogType: issueBased
+                    changeLogLabels: '[ 
+                      { "label" : "feature-work", "feature", "displayName" : "New Features", "state" : "closed" }, 
+                      { "label" : "enhancement", "V2-Enhancement", "displayName" : "Enhancements", "state" : "closed" }, 
+                      { "label" : "bug", "bug-fix", "displayName" : "Bugs", "state" : "closed" }, 
+                      { "label" : "documentation", "doc", "displayName" : "Documentation", "state" : "closed"}, 
+                      { "label" : "dependencies", "displayName" : "Package Updates", "state" : "closed" }
+                      ]'
       
