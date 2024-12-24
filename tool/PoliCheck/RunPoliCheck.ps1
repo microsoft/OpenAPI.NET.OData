@@ -10,7 +10,7 @@ param(
 #Example: 
 # RunPoliCheck.ps1 -BuildSourceDir "C:\BuildAgent\_work\32\s" 
 #                  -folderName "src" 
-#                  -branchName "odata.net-master" 
+#                  -branchName "odata.net-main" 
 #                  -resultRoot "C:\Users\ODatabld\Documents\PoliCheck\LatestRunResult" 
 #                  -PoliCheckPath "C:\Program Files (x86)\Microsoft\PoliCheck\"
 #

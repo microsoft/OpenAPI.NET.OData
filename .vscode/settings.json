@@ -5,5 +5,6 @@
         "MD025": {
             "front_matter_title": ""
         }
-    }
+    },
+    "azure-pipelines.1ESPipelineTemplatesSchemaFile": true
 }
