@@ -8,15 +8,15 @@ The **Microsoft.OpenAPI.OData.Reader** library helps represent an OData service 
 
 The conversion is based on the mapping doc from [OASIS OData OpenAPI v1.0](https://www.oasis-open.org/committees/document.php?document_id=61852&wg_abbrev=odata) and uses the following :
 
-1. [Capabilities vocabulary annotation](https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Capabilities.V1.xml)
-2. [Authorization vocabulary annotation](https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Authorization.V1.xml)
-3. [Core vocabulary annotation](https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Core.V1.xml)
+1. [Capabilities vocabulary annotation](https://github.com/oasis-tcs/odata-vocabularies/blob/main/vocabularies/Org.OData.Capabilities.V1.xml)
+2. [Authorization vocabulary annotation](https://github.com/oasis-tcs/odata-vocabularies/blob/main/vocabularies/Org.OData.Authorization.V1.xml)
+3. [Core vocabulary annotation](https://github.com/oasis-tcs/odata-vocabularies/blob/main/vocabularies/Org.OData.Core.V1.xml)
 4. Navigation property path
 5. Edm operation and operation import path
 
 ## Overview
 
-The image below is generic overview of how this library can convert the EDM model to an [OpenAPI.NET document](https://github.com/Microsoft/OpenAPI.NET/blob/master/src/Microsoft.OpenApi/Models/OpenApiDocument.cs) object.
+The image below is generic overview of how this library can convert the EDM model to an [OpenAPI.NET document](https://github.com/Microsoft/OpenAPI.NET/blob/main/src/Microsoft.OpenApi/Models/OpenApiDocument.cs) object.
 
 ![Convert OData CSDL to OpenAPI](docs/images/odata-2-openapi.png "Map /// OData CSDL --> OpenAPI.NET")
 
