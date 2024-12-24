@@ -546,12 +546,12 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.Null(schema.Type);
 
-            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
+            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type != null && x.Type.HasValue && (x.Type & JsonSchemaType.Number) is JsonSchemaType.Number);
             Assert.NotNull(numberSchema);
             Assert.True(numberSchema.Nullable);
             Assert.Equal("float", numberSchema.Format, StringComparer.OrdinalIgnoreCase);
 
-            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
+            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type != null && x.Type.HasValue && (x.Type & JsonSchemaType.String) is JsonSchemaType.String);
             Assert.NotNull(stringSchema);
             Assert.True(stringSchema.Nullable);
             
