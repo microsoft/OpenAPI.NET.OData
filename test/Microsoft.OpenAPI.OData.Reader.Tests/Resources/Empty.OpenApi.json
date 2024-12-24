@@ -108,7 +108,9 @@
           "-INF",
           "INF",
           "NaN"
-        ]
+        ],
+        "type": "string",
+        "nullable": true
       }
     },
     "responses": {

@@ -164,7 +164,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "CategoryDto"
@@ -241,7 +241,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "CategoryDto"
@@ -283,7 +283,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "CategoryDto"
@@ -501,7 +501,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -592,7 +592,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -634,7 +634,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -676,7 +676,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -710,7 +710,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -861,7 +861,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -874,7 +874,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -916,7 +916,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -955,7 +955,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -1051,7 +1051,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -1085,7 +1085,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -1135,7 +1135,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -1232,7 +1232,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -1281,7 +1281,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -1336,7 +1336,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -1566,7 +1566,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -1659,7 +1659,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -1701,7 +1701,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -1743,7 +1743,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -1873,7 +1873,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -1886,7 +1886,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -1927,7 +1927,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -1940,7 +1940,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -2037,7 +2037,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -2050,7 +2050,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -2099,7 +2099,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -2112,7 +2112,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -2167,7 +2167,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -2180,7 +2180,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -2219,7 +2219,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -2258,7 +2258,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -2340,7 +2340,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -2374,7 +2374,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "LibraryDto"
@@ -2622,7 +2622,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -2717,7 +2717,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -2759,7 +2759,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -2801,7 +2801,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -2948,7 +2948,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3003,7 +3003,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3037,7 +3037,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3078,7 +3078,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3198,7 +3198,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3247,7 +3247,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3302,7 +3302,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3340,7 +3340,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3459,7 +3459,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3508,7 +3508,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3563,7 +3563,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -3778,7 +3778,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -3869,7 +3869,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -3911,7 +3911,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -3953,7 +3953,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -3987,7 +3987,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4138,7 +4138,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4151,7 +4151,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "RevisionDto"
@@ -4193,7 +4193,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4232,7 +4232,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4328,7 +4328,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4362,7 +4362,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4412,7 +4412,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4509,7 +4509,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4558,7 +4558,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4613,7 +4613,7 @@
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
-              "type": "integer",
+              "type": "number",
               "format": "int32"
             },
             "x-ms-docs-key-type": "DocumentDto"
@@ -4671,7 +4671,7 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Name": {
@@ -4697,7 +4697,7 @@
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ModificationDate": {
@@ -4709,7 +4709,7 @@
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -4728,15 +4728,15 @@
           }
         },
         "example": {
-          "Id": "integer (identifier)",
+          "Id": "number (identifier)",
           "Name": "string",
           "Description": "string",
           "Filename": "string",
           "NumberOfRevisions": "string",
           "Suffix": "string",
-          "DomainId": "integer",
+          "DomainId": "number",
           "ModificationDate": "string (timestamp)",
-          "ModifiedBy": "integer",
+          "ModifiedBy": "number",
           "Tags": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentTagRelDto"
@@ -4756,7 +4756,7 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Name": {
@@ -4774,20 +4774,20 @@
           "LibraryTemplateId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "ParentTypeId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ParentId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "AllowMultiple": {
@@ -4799,19 +4799,19 @@
           "TypeId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreationDate": {
@@ -4822,7 +4822,7 @@
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -4841,20 +4841,20 @@
           }
         },
         "example": {
-          "Id": "integer (identifier)",
+          "Id": "number (identifier)",
           "Name": "string",
           "Number": "string",
           "Description": "string",
-          "LibraryTemplateId": "integer",
-          "ParentTypeId": "integer",
-          "ParentId": "integer",
+          "LibraryTemplateId": "number",
+          "ParentTypeId": "number",
+          "ParentId": "number",
           "AllowMultiple": true,
           "AutoCreate": true,
-          "TypeId": "integer",
-          "DomainId": "integer",
-          "CreatedBy": "integer",
+          "TypeId": "number",
+          "DomainId": "number",
+          "CreatedBy": "number",
           "CreationDate": "string (timestamp)",
-          "ModifiedBy": "integer",
+          "ModifiedBy": "number",
           "ModificationDate": "string (timestamp)",
           "Documents": [
             {
@@ -4870,19 +4870,19 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Number": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DocumentId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -4902,7 +4902,7 @@
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "IsReviewed": {
@@ -4911,7 +4911,7 @@
           "ReviewedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -4927,7 +4927,7 @@
           "ApprovedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -4943,7 +4943,7 @@
           "RejectedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -4956,7 +4956,7 @@
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Document": {
@@ -4973,23 +4973,23 @@
           }
         },
         "example": {
-          "Id": "integer (identifier)",
-          "Number": "integer",
-          "DocumentId": "integer",
+          "Id": "number (identifier)",
+          "Number": "number",
+          "DocumentId": "number",
           "DocumentName": "string",
           "DocumentDescription": "string",
           "CreationDate": "string (timestamp)",
-          "CreatedBy": "integer",
+          "CreatedBy": "number",
           "IsReviewed": true,
-          "ReviewedBy": "integer",
+          "ReviewedBy": "number",
           "ReviewedDate": "string (timestamp)",
           "IsApproved": true,
-          "ApprovedBy": "integer",
+          "ApprovedBy": "number",
           "ApprovedDate": "string (timestamp)",
           "IsRejected": true,
-          "RejectedBy": "integer",
+          "RejectedBy": "number",
           "RejectedDate": "string (timestamp)",
-          "DomainId": "integer",
+          "DomainId": "number",
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           }
@@ -5002,7 +5002,7 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Name": {
@@ -5026,17 +5026,17 @@
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           }
         },
         "example": {
-          "Id": "integer (identifier)",
+          "Id": "number (identifier)",
           "Name": "string",
           "Description": "string",
           "CreationDate": "string (timestamp)",
           "ModificationDate": "string (timestamp)",
-          "DomainId": "integer"
+          "DomainId": "number"
         }
       },
       "Siterra.Documents.App.DTO.DocumentTagRelDto": {
@@ -5059,7 +5059,7 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Name": {
@@ -5073,13 +5073,13 @@
           "StatusId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "TypeId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Keywords": {
@@ -5094,7 +5094,7 @@
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ModificationDate": {
@@ -5105,26 +5105,26 @@
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "LibraryId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "OwnerUserId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "StatusDate": {
@@ -5135,7 +5135,7 @@
           "LastRevisionId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -5152,7 +5152,7 @@
           "CheckoutUserId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -5177,14 +5177,14 @@
           "LastRevisionFileId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "IsDeleted": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "IsNa": {
@@ -5225,14 +5225,14 @@
           "SourceDocumentId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "ScraperMapId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -5245,14 +5245,14 @@
           "SmsId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "IsApprovedOld": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -5263,7 +5263,7 @@
           "ScrapeResultId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -5275,21 +5275,21 @@
           "CategoryId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "SectionId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "VersionCount": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "LastFileName": {
@@ -5360,30 +5360,30 @@
           }
         },
         "example": {
-          "Id": "integer (identifier)",
+          "Id": "number (identifier)",
           "Name": "string",
           "Description": "string",
-          "StatusId": "integer",
-          "TypeId": "integer",
+          "StatusId": "number",
+          "TypeId": "number",
           "Keywords": "string",
           "CreationDate": "string (timestamp)",
-          "CreatedBy": "integer",
+          "CreatedBy": "number",
           "ModificationDate": "string (timestamp)",
-          "ModifiedBy": "integer",
-          "DomainId": "integer",
-          "LibraryId": "integer",
-          "OwnerUserId": "integer",
+          "ModifiedBy": "number",
+          "DomainId": "number",
+          "LibraryId": "number",
+          "OwnerUserId": "number",
           "StatusDate": "string (timestamp)",
-          "LastRevisionId": "integer",
+          "LastRevisionId": "number",
           "CheckoutDate": "string (timestamp)",
           "CheckoutPath": "string",
-          "CheckoutUserId": "integer",
+          "CheckoutUserId": "number",
           "Number": "string",
           "OriginalDate": "string (timestamp)",
           "FileSized": "number",
           "FileClientPath": "string",
-          "LastRevisionFileId": "integer",
-          "IsDeleted": "integer",
+          "LastRevisionFileId": "number",
+          "IsDeleted": "number",
           "IsNa": "number",
           "IsRejected": "number",
           "IsReviewed": "number",
@@ -5392,17 +5392,17 @@
           "RejectedDescription": "string",
           "RejectedReason": "string",
           "ReviewDescription": "string",
-          "SourceDocumentId": "integer",
-          "ScraperMapId": "integer",
+          "SourceDocumentId": "number",
+          "ScraperMapId": "number",
           "LastDownloadedDate": "string (timestamp)",
-          "SmsId": "integer",
-          "IsApprovedOld": "integer",
+          "SmsId": "number",
+          "IsApprovedOld": "number",
           "Suffix": "string",
-          "ScrapeResultId": "integer",
+          "ScrapeResultId": "number",
           "IsApproved": "number",
-          "CategoryId": "integer",
-          "SectionId": "integer",
-          "VersionCount": "integer",
+          "CategoryId": "number",
+          "SectionId": "number",
+          "VersionCount": "number",
           "LastFileName": "string",
           "DocumentClasses": [
             {
@@ -5442,25 +5442,25 @@
           "ClassInstance": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ClassId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DocumentId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreationDate": {
@@ -5471,7 +5471,7 @@
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ModificationDate": {
@@ -5496,12 +5496,12 @@
           }
         },
         "example": {
-          "ClassInstance": "integer",
-          "ClassId": "integer",
-          "DocumentId": "integer",
-          "CreatedBy": "integer",
+          "ClassInstance": "number",
+          "ClassId": "number",
+          "DocumentId": "number",
+          "CreatedBy": "number",
           "CreationDate": "string (timestamp)",
-          "ModifiedBy": "integer",
+          "ModifiedBy": "number",
           "ModificationDate": "string (timestamp)",
           "IsPrimary": true,
           "Document": {
@@ -5516,31 +5516,31 @@
           "DocumentId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "TagId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreationDate": {
@@ -5579,11 +5579,11 @@
           }
         },
         "example": {
-          "DocumentId": "integer",
-          "TagId": "integer",
-          "DomainId": "integer",
-          "CreatedBy": "integer",
-          "ModifiedBy": "integer",
+          "DocumentId": "number",
+          "TagId": "number",
+          "DomainId": "number",
+          "CreatedBy": "number",
+          "ModifiedBy": "number",
           "CreationDate": "string (timestamp)",
           "ModificationDate": "string (timestamp)",
           "Document": {
@@ -5601,13 +5601,13 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Name": {
@@ -5617,7 +5617,7 @@
           "ParentFolderId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -5628,13 +5628,13 @@
           "TypeId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "OwnerUserId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "TotalSize": {
@@ -5644,13 +5644,13 @@
           "FilesCounter": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "FoldersCounter": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreationDate": {
@@ -5666,40 +5666,40 @@
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ProjectId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "SearchRingId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "SiteId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "AssetId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -5719,28 +5719,28 @@
           "ProgramId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "SourceFolderId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "TemplateClassId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "TemplateSubType": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -5750,68 +5750,68 @@
           "IsDeleted": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "StatusId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "SmsId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "ContractId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "VendorId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "OrganizationUnitId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "IncidentId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "EventId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "ClassInstance": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ClassId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "LibraryParent": {
@@ -5873,43 +5873,43 @@
           }
         },
         "example": {
-          "Id": "integer (identifier)",
-          "DomainId": "integer",
+          "Id": "number (identifier)",
+          "DomainId": "number",
           "Name": "string",
-          "ParentFolderId": "integer",
+          "ParentFolderId": "number",
           "Number": "string",
-          "TypeId": "integer",
-          "OwnerUserId": "integer",
+          "TypeId": "number",
+          "OwnerUserId": "number",
           "TotalSize": "number",
-          "FilesCounter": "integer",
-          "FoldersCounter": "integer",
+          "FilesCounter": "number",
+          "FoldersCounter": "number",
           "CreationDate": "string (timestamp)",
           "ModificationDate": "string (timestamp)",
-          "ModifiedBy": "integer",
-          "CreatedBy": "integer",
-          "ProjectId": "integer",
-          "SearchRingId": "integer",
-          "SiteId": "integer",
-          "AssetId": "integer",
+          "ModifiedBy": "number",
+          "CreatedBy": "number",
+          "ProjectId": "number",
+          "SearchRingId": "number",
+          "SiteId": "number",
+          "AssetId": "number",
           "AllowMultiple": true,
           "AutoCreate": true,
           "Description": "string",
           "IsTemplate": true,
-          "ProgramId": "integer",
-          "SourceFolderId": "integer",
-          "TemplateClassId": "integer",
-          "TemplateSubType": "integer",
+          "ProgramId": "number",
+          "SourceFolderId": "number",
+          "TemplateClassId": "number",
+          "TemplateSubType": "number",
           "IsHidden": true,
-          "IsDeleted": "integer",
-          "StatusId": "integer",
-          "SmsId": "integer",
-          "ContractId": "integer",
-          "VendorId": "integer",
-          "OrganizationUnitId": "integer",
-          "IncidentId": "integer",
-          "EventId": "integer",
-          "ClassInstance": "integer",
-          "ClassId": "integer",
+          "IsDeleted": "number",
+          "StatusId": "number",
+          "SmsId": "number",
+          "ContractId": "number",
+          "VendorId": "number",
+          "OrganizationUnitId": "number",
+          "IncidentId": "number",
+          "EventId": "number",
+          "ClassInstance": "number",
+          "ClassId": "number",
           "LibraryParent": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.Library"
           },
@@ -5943,7 +5943,7 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Name": {
@@ -5953,13 +5953,13 @@
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ModificationDate": {
@@ -5975,7 +5975,7 @@
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -5990,27 +5990,27 @@
           "MasterId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "Number": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "ClassId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ParentId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -6057,19 +6057,19 @@
           }
         },
         "example": {
-          "Id": "integer (identifier)",
+          "Id": "number (identifier)",
           "Name": "string",
-          "ModifiedBy": "integer",
-          "CreatedBy": "integer",
+          "ModifiedBy": "number",
+          "CreatedBy": "number",
           "ModificationDate": "string (timestamp)",
           "CreationDate": "string (timestamp)",
-          "DomainId": "integer",
+          "DomainId": "number",
           "Description": "string",
           "XmlName": "string",
-          "MasterId": "integer",
-          "Number": "integer",
-          "ClassId": "integer",
-          "ParentId": "integer",
+          "MasterId": "number",
+          "Number": "number",
+          "ClassId": "number",
+          "ParentId": "number",
           "HasChanged": true,
           "MasterLibraryType": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
@@ -6096,7 +6096,7 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Name": {
@@ -6110,13 +6110,13 @@
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreationDate": {
@@ -6140,20 +6140,20 @@
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "SourceClassId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
           "ContentTypeId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -6164,13 +6164,13 @@
           "IsSelfHosted": {
             "maximum": 32767,
             "minimum": -32768,
-            "type": "integer",
+            "type": "number",
             "format": "int16"
           },
           "SmsId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -6193,21 +6193,21 @@
           }
         },
         "example": {
-          "Id": "integer (identifier)",
+          "Id": "number (identifier)",
           "Name": "string",
           "Path": "string",
-          "ModifiedBy": "integer",
-          "CreatedBy": "integer",
+          "ModifiedBy": "number",
+          "CreatedBy": "number",
           "CreationDate": "string (timestamp)",
           "ModificationDate": "string (timestamp)",
           "Sized": "number",
           "ActualName": "string",
-          "DomainId": "integer",
-          "SourceClassId": "integer",
-          "ContentTypeId": "integer",
+          "DomainId": "number",
+          "SourceClassId": "number",
+          "ContentTypeId": "number",
           "ClientPath": "string",
-          "IsSelfHosted": "integer",
-          "SmsId": "integer",
+          "IsSelfHosted": "number",
+          "SmsId": "number",
           "Latitude": "number",
           "Longitude": "number",
           "Documents": [
@@ -6224,13 +6224,13 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Name": {
@@ -6244,13 +6244,13 @@
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreationDate": {
@@ -6265,12 +6265,12 @@
           }
         },
         "example": {
-          "Id": "integer (identifier)",
-          "DomainId": "integer",
+          "Id": "number (identifier)",
+          "DomainId": "number",
           "Name": "string",
           "Description": "string",
-          "CreatedBy": "integer",
-          "ModifiedBy": "integer",
+          "CreatedBy": "number",
+          "ModifiedBy": "number",
           "CreationDate": "string (timestamp)",
           "ModificationDate": "string (timestamp)"
         }
@@ -6294,12 +6294,12 @@
           }
         ],
         "example": {
-          "Id": "integer (identifier)",
-          "DomainId": "integer",
+          "Id": "number (identifier)",
+          "DomainId": "number",
           "Name": "string",
           "Description": "string",
-          "CreatedBy": "integer",
-          "ModifiedBy": "integer",
+          "CreatedBy": "number",
+          "ModifiedBy": "number",
           "CreationDate": "string (timestamp)",
           "ModificationDate": "string (timestamp)",
           "Documents": [
@@ -6329,12 +6329,12 @@
           }
         ],
         "example": {
-          "Id": "integer (identifier)",
-          "DomainId": "integer",
+          "Id": "number (identifier)",
+          "DomainId": "number",
           "Name": "string",
           "Description": "string",
-          "CreatedBy": "integer",
-          "ModifiedBy": "integer",
+          "CreatedBy": "number",
+          "ModifiedBy": "number",
           "CreationDate": "string (timestamp)",
           "ModificationDate": "string (timestamp)",
           "Documents": [
@@ -6364,12 +6364,12 @@
           }
         ],
         "example": {
-          "Id": "integer (identifier)",
-          "DomainId": "integer",
+          "Id": "number (identifier)",
+          "DomainId": "number",
           "Name": "string",
           "Description": "string",
-          "CreatedBy": "integer",
-          "ModifiedBy": "integer",
+          "CreatedBy": "number",
+          "ModifiedBy": "number",
           "CreationDate": "string (timestamp)",
           "ModificationDate": "string (timestamp)",
           "Documents": [
@@ -6386,19 +6386,19 @@
           "Id": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Number": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DocumentId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -6415,13 +6415,13 @@
           "ModifiedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "CreatedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "Remarks": {
@@ -6431,13 +6431,13 @@
           "FileId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DocumentOwnerContact": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "DocumentDescription": {
@@ -6476,13 +6476,13 @@
           "DomainId": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "IsDeleted": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32"
           },
           "IsReviewed": {
@@ -6495,7 +6495,7 @@
           "ReviewedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -6513,7 +6513,7 @@
           "RejectedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -6523,7 +6523,7 @@
           "ApprovedBy": {
             "maximum": 2147483647,
             "minimum": -2147483648,
-            "type": "integer",
+            "type": "number",
             "format": "int32",
             "nullable": true
           },
@@ -6559,16 +6559,16 @@
           }
         },
         "example": {
-          "Id": "integer (identifier)",
-          "Number": "integer",
-          "DocumentId": "integer",
+          "Id": "number (identifier)",
+          "Number": "number",
+          "DocumentId": "number",
           "ModificationDate": "string (timestamp)",
           "CreationDate": "string (timestamp)",
-          "ModifiedBy": "integer",
-          "CreatedBy": "integer",
+          "ModifiedBy": "number",
+          "CreatedBy": "number",
           "Remarks": "string",
-          "FileId": "integer",
-          "DocumentOwnerContact": "integer",
+          "FileId": "number",
+          "DocumentOwnerContact": "number",
           "DocumentDescription": "string",
           "DocumentStatusDate": "string (timestamp)",
           "DocumentFolder": "string",
@@ -6577,17 +6577,17 @@
           "DocumentType": "string",
           "DocumentName": "string",
           "DocumentNumber": "string",
-          "DomainId": "integer",
-          "IsDeleted": "integer",
+          "DomainId": "number",
+          "IsDeleted": "number",
           "IsReviewed": true,
           "ReviewDescription": "string",
-          "ReviewedBy": "integer",
+          "ReviewedBy": "number",
           "IsRejected": true,
           "RejectedReason": "string",
           "RejectedDescription": "string",
-          "RejectedBy": "integer",
+          "RejectedBy": "number",
           "IsApproved": true,
-          "ApprovedBy": "integer",
+          "ApprovedBy": "number",
           "ReviewedDate": "string (timestamp)",
           "RejectedDate": "string (timestamp)",
           "ApprovedDate": "string (timestamp)",
@@ -6835,7 +6835,9 @@
           "-INF",
           "INF",
           "NaN"
-        ]
+        ],
+        "type": "string",
+        "nullable": true
       }
     },
     "responses": {

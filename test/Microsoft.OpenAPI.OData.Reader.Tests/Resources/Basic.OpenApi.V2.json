@@ -974,14 +974,14 @@
           "format": "int32",
           "maximum": 2147483647,
           "minimum": -2147483648,
-          "type": "integer"
+          "type": "number"
         },
         "City": {
           "$ref": "#/definitions/DefaultNs.City"
         }
       },
       "example": {
-        "Id": "integer",
+        "Id": "number",
         "City": {
           "@odata.type": "DefaultNs.City"
         }
@@ -1003,7 +1003,7 @@
         }
       ],
       "example": {
-        "Id": "integer",
+        "Id": "number",
         "City": {
           "@odata.type": "DefaultNs.City"
         },
@@ -1152,7 +1152,8 @@
         "-INF",
         "INF",
         "NaN"
-      ]
+      ],
+      "type": "string"
     }
   },
   "parameters": {

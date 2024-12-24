@@ -102,7 +102,7 @@ paths:
           name: Id
           description: The unique identifier of CategoryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -148,7 +148,7 @@ paths:
           name: Id
           description: The unique identifier of CategoryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -175,7 +175,7 @@ paths:
           name: Id
           description: The unique identifier of CategoryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -315,7 +315,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -367,7 +367,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -394,7 +394,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -421,7 +421,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -444,7 +444,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -547,7 +547,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -556,7 +556,7 @@ paths:
           name: Id1
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -583,7 +583,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -607,7 +607,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -674,7 +674,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -696,7 +696,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -728,7 +728,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -780,7 +780,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -813,7 +813,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -846,7 +846,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -998,7 +998,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1055,7 +1055,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1082,7 +1082,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1109,7 +1109,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1191,7 +1191,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1200,7 +1200,7 @@ paths:
           name: Id1
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1227,7 +1227,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1236,7 +1236,7 @@ paths:
           name: Id1
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1288,7 +1288,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1297,7 +1297,7 @@ paths:
           name: Id1
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1330,7 +1330,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1339,7 +1339,7 @@ paths:
           name: Id1
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1372,7 +1372,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1381,7 +1381,7 @@ paths:
           name: Id1
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1405,7 +1405,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1429,7 +1429,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1482,7 +1482,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1504,7 +1504,7 @@ paths:
           name: Id
           description: The unique identifier of LibraryDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1670,7 +1670,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1729,7 +1729,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1756,7 +1756,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1785,7 +1785,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1883,7 +1883,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1906,7 +1906,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1928,7 +1928,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -1955,7 +1955,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2030,7 +2030,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2063,7 +2063,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2096,7 +2096,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2120,7 +2120,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2194,7 +2194,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2227,7 +2227,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2260,7 +2260,7 @@ paths:
           name: Id
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2397,7 +2397,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2449,7 +2449,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2476,7 +2476,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2503,7 +2503,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2526,7 +2526,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2629,7 +2629,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2638,7 +2638,7 @@ paths:
           name: Id1
           description: The unique identifier of RevisionDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2665,7 +2665,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2689,7 +2689,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2756,7 +2756,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2778,7 +2778,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2810,7 +2810,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2862,7 +2862,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2895,7 +2895,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2928,7 +2928,7 @@ paths:
           name: Id
           description: The unique identifier of DocumentDto
           required: true
-          type: integer
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
@@ -2965,7 +2965,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Name:
         type: string
       Description:
@@ -2980,7 +2980,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ModificationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -2989,7 +2989,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Tags:
         type: array
         items:
@@ -3000,15 +3000,15 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         x-ms-navigationProperty: true
     example:
-      Id: integer (identifier)
+      Id: number (identifier)
       Name: string
       Description: string
       Filename: string
       NumberOfRevisions: string
       Suffix: string
-      DomainId: integer
+      DomainId: number
       ModificationDate: string (timestamp)
-      ModifiedBy: integer
+      ModifiedBy: number
       Tags:
         - '@odata.type': Siterra.Documents.App.DTO.DocumentTagRelDto
       Revisions:
@@ -3021,7 +3021,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Name:
         type: string
       Number:
@@ -3032,17 +3032,17 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ParentTypeId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ParentId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       AllowMultiple:
         type: boolean
       AutoCreate:
@@ -3051,17 +3051,17 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DomainId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreatedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3070,7 +3070,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ModificationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3081,20 +3081,20 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
         x-ms-navigationProperty: true
     example:
-      Id: integer (identifier)
+      Id: number (identifier)
       Name: string
       Number: string
       Description: string
-      LibraryTemplateId: integer
-      ParentTypeId: integer
-      ParentId: integer
+      LibraryTemplateId: number
+      ParentTypeId: number
+      ParentId: number
       AllowMultiple: true
       AutoCreate: true
-      TypeId: integer
-      DomainId: integer
-      CreatedBy: integer
+      TypeId: number
+      DomainId: number
+      CreatedBy: number
       CreationDate: string (timestamp)
-      ModifiedBy: integer
+      ModifiedBy: number
       ModificationDate: string (timestamp)
       Documents:
         - '@odata.type': Siterra.Documents.App.DTO.DocumentDto
@@ -3106,17 +3106,17 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Number:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DocumentId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DocumentName:
         type: string
       DocumentDescription:
@@ -3129,14 +3129,14 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsReviewed:
         type: boolean
       ReviewedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ReviewedDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3147,7 +3147,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ApprovedDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3158,7 +3158,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       RejectedDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3167,27 +3167,27 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Document:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
     example:
-      Id: integer (identifier)
-      Number: integer
-      DocumentId: integer
+      Id: number (identifier)
+      Number: number
+      DocumentId: number
       DocumentName: string
       DocumentDescription: string
       CreationDate: string (timestamp)
-      CreatedBy: integer
+      CreatedBy: number
       IsReviewed: true
-      ReviewedBy: integer
+      ReviewedBy: number
       ReviewedDate: string (timestamp)
       IsApproved: true
-      ApprovedBy: integer
+      ApprovedBy: number
       ApprovedDate: string (timestamp)
       IsRejected: true
-      RejectedBy: integer
+      RejectedBy: number
       RejectedDate: string (timestamp)
-      DomainId: integer
+      DomainId: number
       Document:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
   Siterra.Documents.App.DTO.CategoryDto:
@@ -3198,7 +3198,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Name:
         type: string
       Description:
@@ -3215,14 +3215,14 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
     example:
-      Id: integer (identifier)
+      Id: number (identifier)
       Name: string
       Description: string
       CreationDate: string (timestamp)
       ModificationDate: string (timestamp)
-      DomainId: integer
+      DomainId: number
   Siterra.Documents.App.DTO.DocumentTagRelDto:
     title: DocumentTagRelDto
     type: object
@@ -3239,7 +3239,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Name:
         type: string
       Description:
@@ -3248,12 +3248,12 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       TypeId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Keywords:
         type: string
       CreationDate:
@@ -3264,7 +3264,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ModificationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3273,22 +3273,22 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DomainId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       LibraryId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       OwnerUserId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       StatusDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3297,7 +3297,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CheckoutDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3308,7 +3308,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Number:
         type: string
       OriginalDate:
@@ -3324,12 +3324,12 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsDeleted:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsNa:
         format: decimal
         type: number
@@ -3353,12 +3353,12 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ScraperMapId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       LastDownloadedDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3367,19 +3367,19 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsApprovedOld:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Suffix:
         type: string
       ScrapeResultId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsApproved:
         format: decimal
         type: number
@@ -3387,17 +3387,17 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       SectionId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       VersionCount:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       LastFileName:
         type: string
       DocumentClasses:
@@ -3425,30 +3425,30 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
         x-ms-navigationProperty: true
     example:
-      Id: integer (identifier)
+      Id: number (identifier)
       Name: string
       Description: string
-      StatusId: integer
-      TypeId: integer
+      StatusId: number
+      TypeId: number
       Keywords: string
       CreationDate: string (timestamp)
-      CreatedBy: integer
+      CreatedBy: number
       ModificationDate: string (timestamp)
-      ModifiedBy: integer
-      DomainId: integer
-      LibraryId: integer
-      OwnerUserId: integer
+      ModifiedBy: number
+      DomainId: number
+      LibraryId: number
+      OwnerUserId: number
       StatusDate: string (timestamp)
-      LastRevisionId: integer
+      LastRevisionId: number
       CheckoutDate: string (timestamp)
       CheckoutPath: string
-      CheckoutUserId: integer
+      CheckoutUserId: number
       Number: string
       OriginalDate: string (timestamp)
       FileSized: number
       FileClientPath: string
-      LastRevisionFileId: integer
-      IsDeleted: integer
+      LastRevisionFileId: number
+      IsDeleted: number
       IsNa: number
       IsRejected: number
       IsReviewed: number
@@ -3457,17 +3457,17 @@ definitions:
       RejectedDescription: string
       RejectedReason: string
       ReviewDescription: string
-      SourceDocumentId: integer
-      ScraperMapId: integer
+      SourceDocumentId: number
+      ScraperMapId: number
       LastDownloadedDate: string (timestamp)
-      SmsId: integer
-      IsApprovedOld: integer
+      SmsId: number
+      IsApprovedOld: number
       Suffix: string
-      ScrapeResultId: integer
+      ScrapeResultId: number
       IsApproved: number
-      CategoryId: integer
-      SectionId: integer
-      VersionCount: integer
+      CategoryId: number
+      SectionId: number
+      VersionCount: number
       LastFileName: string
       DocumentClasses:
         - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
@@ -3491,22 +3491,22 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ClassId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DocumentId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreatedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3515,7 +3515,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ModificationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3525,12 +3525,12 @@ definitions:
       Document:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
     example:
-      ClassInstance: integer
-      ClassId: integer
-      DocumentId: integer
-      CreatedBy: integer
+      ClassInstance: number
+      ClassId: number
+      DocumentId: number
+      CreatedBy: number
       CreationDate: string (timestamp)
-      ModifiedBy: integer
+      ModifiedBy: number
       ModificationDate: string (timestamp)
       IsPrimary: true
       Document:
@@ -3543,27 +3543,27 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       TagId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DomainId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreatedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ModifiedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3577,11 +3577,11 @@ definitions:
       Tag:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
     example:
-      DocumentId: integer
-      TagId: integer
-      DomainId: integer
-      CreatedBy: integer
-      ModifiedBy: integer
+      DocumentId: number
+      TagId: number
+      DomainId: number
+      CreatedBy: number
+      ModifiedBy: number
       CreationDate: string (timestamp)
       ModificationDate: string (timestamp)
       Document:
@@ -3596,31 +3596,31 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DomainId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Name:
         type: string
       ParentFolderId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Number:
         type: string
       TypeId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       OwnerUserId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       TotalSize:
         format: decimal
         type: number
@@ -3628,12 +3628,12 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       FoldersCounter:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3646,32 +3646,32 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreatedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ProjectId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       SearchRingId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       SiteId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       AssetId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       AllowMultiple:
         type: boolean
       AutoCreate:
@@ -3684,74 +3684,74 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       SourceFolderId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       TemplateClassId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       TemplateSubType:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsHidden:
         type: boolean
       IsDeleted:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       StatusId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       SmsId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ContractId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       VendorId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       OrganizationUnitId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IncidentId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       EventId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ClassInstance:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ClassId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       LibraryParent:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library'
       Type:
@@ -3774,43 +3774,43 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library'
         x-ms-navigationProperty: true
     example:
-      Id: integer (identifier)
-      DomainId: integer
+      Id: number (identifier)
+      DomainId: number
       Name: string
-      ParentFolderId: integer
+      ParentFolderId: number
       Number: string
-      TypeId: integer
-      OwnerUserId: integer
+      TypeId: number
+      OwnerUserId: number
       TotalSize: number
-      FilesCounter: integer
-      FoldersCounter: integer
+      FilesCounter: number
+      FoldersCounter: number
       CreationDate: string (timestamp)
       ModificationDate: string (timestamp)
-      ModifiedBy: integer
-      CreatedBy: integer
-      ProjectId: integer
-      SearchRingId: integer
-      SiteId: integer
-      AssetId: integer
+      ModifiedBy: number
+      CreatedBy: number
+      ProjectId: number
+      SearchRingId: number
+      SiteId: number
+      AssetId: number
       AllowMultiple: true
       AutoCreate: true
       Description: string
       IsTemplate: true
-      ProgramId: integer
-      SourceFolderId: integer
-      TemplateClassId: integer
-      TemplateSubType: integer
+      ProgramId: number
+      SourceFolderId: number
+      TemplateClassId: number
+      TemplateSubType: number
       IsHidden: true
-      IsDeleted: integer
-      StatusId: integer
-      SmsId: integer
-      ContractId: integer
-      VendorId: integer
-      OrganizationUnitId: integer
-      IncidentId: integer
-      EventId: integer
-      ClassInstance: integer
-      ClassId: integer
+      IsDeleted: number
+      StatusId: number
+      SmsId: number
+      ContractId: number
+      VendorId: number
+      OrganizationUnitId: number
+      IncidentId: number
+      EventId: number
+      ClassInstance: number
+      ClassId: number
       LibraryParent:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
       Type:
@@ -3831,19 +3831,19 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Name:
         type: string
       ModifiedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreatedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ModificationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3856,7 +3856,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Description:
         type: string
       XmlName:
@@ -3865,22 +3865,22 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Number:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ClassId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ParentId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       HasChanged:
         type: boolean
       MasterLibraryType:
@@ -3898,19 +3898,19 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
         x-ms-navigationProperty: true
     example:
-      Id: integer (identifier)
+      Id: number (identifier)
       Name: string
-      ModifiedBy: integer
-      CreatedBy: integer
+      ModifiedBy: number
+      CreatedBy: number
       ModificationDate: string (timestamp)
       CreationDate: string (timestamp)
-      DomainId: integer
+      DomainId: number
       Description: string
       XmlName: string
-      MasterId: integer
-      Number: integer
-      ClassId: integer
-      ParentId: integer
+      MasterId: number
+      Number: number
+      ClassId: number
+      ParentId: number
       HasChanged: true
       MasterLibraryType:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
@@ -3928,7 +3928,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Name:
         type: string
       Path:
@@ -3937,12 +3937,12 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreatedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3960,29 +3960,29 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       SourceClassId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ContentTypeId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ClientPath:
         type: string
       IsSelfHosted:
         format: int16
         maximum: 32767
         minimum: -32768
-        type: integer
+        type: number
       SmsId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Latitude:
         format: decimal
         type: number
@@ -3995,21 +3995,21 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
         x-ms-navigationProperty: true
     example:
-      Id: integer (identifier)
+      Id: number (identifier)
       Name: string
       Path: string
-      ModifiedBy: integer
-      CreatedBy: integer
+      ModifiedBy: number
+      CreatedBy: number
       CreationDate: string (timestamp)
       ModificationDate: string (timestamp)
       Sized: number
       ActualName: string
-      DomainId: integer
-      SourceClassId: integer
-      ContentTypeId: integer
+      DomainId: number
+      SourceClassId: number
+      ContentTypeId: number
       ClientPath: string
-      IsSelfHosted: integer
-      SmsId: integer
+      IsSelfHosted: number
+      SmsId: number
       Latitude: number
       Longitude: number
       Documents:
@@ -4022,12 +4022,12 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DomainId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Name:
         type: string
       Description:
@@ -4036,12 +4036,12 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ModifiedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -4051,12 +4051,12 @@ definitions:
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
         type: string
     example:
-      Id: integer (identifier)
-      DomainId: integer
+      Id: number (identifier)
+      DomainId: number
       Name: string
       Description: string
-      CreatedBy: integer
-      ModifiedBy: integer
+      CreatedBy: number
+      ModifiedBy: number
       CreationDate: string (timestamp)
       ModificationDate: string (timestamp)
   Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag:
@@ -4070,12 +4070,12 @@ definitions:
             items:
               $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
     example:
-      Id: integer (identifier)
-      DomainId: integer
+      Id: number (identifier)
+      DomainId: number
       Name: string
       Description: string
-      CreatedBy: integer
-      ModifiedBy: integer
+      CreatedBy: number
+      ModifiedBy: number
       CreationDate: string (timestamp)
       ModificationDate: string (timestamp)
       Documents:
@@ -4092,12 +4092,12 @@ definitions:
               $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             x-ms-navigationProperty: true
     example:
-      Id: integer (identifier)
-      DomainId: integer
+      Id: number (identifier)
+      DomainId: number
       Name: string
       Description: string
-      CreatedBy: integer
-      ModifiedBy: integer
+      CreatedBy: number
+      ModifiedBy: number
       CreationDate: string (timestamp)
       ModificationDate: string (timestamp)
       Documents:
@@ -4114,12 +4114,12 @@ definitions:
               $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             x-ms-navigationProperty: true
     example:
-      Id: integer (identifier)
-      DomainId: integer
+      Id: number (identifier)
+      DomainId: number
       Name: string
       Description: string
-      CreatedBy: integer
-      ModifiedBy: integer
+      CreatedBy: number
+      ModifiedBy: number
       CreationDate: string (timestamp)
       ModificationDate: string (timestamp)
       Documents:
@@ -4132,17 +4132,17 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Number:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DocumentId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ModificationDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -4155,24 +4155,24 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       CreatedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       Remarks:
         type: string
       FileId:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DocumentOwnerContact:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       DocumentDescription:
         type: string
       DocumentStatusDate:
@@ -4195,12 +4195,12 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsDeleted:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsReviewed:
         type: boolean
       ReviewDescription:
@@ -4209,7 +4209,7 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsRejected:
         type: boolean
       RejectedReason:
@@ -4220,14 +4220,14 @@ definitions:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       IsApproved:
         type: boolean
       ApprovedBy:
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: integer
+        type: number
       ReviewedDate:
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -4243,16 +4243,16 @@ definitions:
       Document:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
     example:
-      Id: integer (identifier)
-      Number: integer
-      DocumentId: integer
+      Id: number (identifier)
+      Number: number
+      DocumentId: number
       ModificationDate: string (timestamp)
       CreationDate: string (timestamp)
-      ModifiedBy: integer
-      CreatedBy: integer
+      ModifiedBy: number
+      CreatedBy: number
       Remarks: string
-      FileId: integer
-      DocumentOwnerContact: integer
+      FileId: number
+      DocumentOwnerContact: number
       DocumentDescription: string
       DocumentStatusDate: string (timestamp)
       DocumentFolder: string
@@ -4261,17 +4261,17 @@ definitions:
       DocumentType: string
       DocumentName: string
       DocumentNumber: string
-      DomainId: integer
-      IsDeleted: integer
+      DomainId: number
+      IsDeleted: number
       IsReviewed: true
       ReviewDescription: string
-      ReviewedBy: integer
+      ReviewedBy: number
       IsRejected: true
       RejectedReason: string
       RejectedDescription: string
-      RejectedBy: integer
+      RejectedBy: number
       IsApproved: true
-      ApprovedBy: integer
+      ApprovedBy: number
       ReviewedDate: string (timestamp)
       RejectedDate: string (timestamp)
       ApprovedDate: string (timestamp)
@@ -4436,6 +4436,7 @@ definitions:
       - '-INF'
       - INF
       - NaN
+    type: string
 parameters:
   top:
     in: query

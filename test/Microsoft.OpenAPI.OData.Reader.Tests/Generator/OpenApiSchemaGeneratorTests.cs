@@ -551,10 +551,12 @@ namespace Microsoft.OpenApi.OData.Tests
           ""oneOf"": [
             {
               ""type"": ""number"",
-              ""format"": ""decimal""
+              ""format"": ""decimal"",
+              ""nullable"": true
             },
             {
-              ""type"": ""string""
+              ""type"": ""string"",
+              ""nullable"": true
             }
           ]
         }
@@ -614,7 +616,7 @@ namespace Microsoft.OpenApi.OData.Tests
     ""Id"": {
       ""maximum"": 2147483647,
       ""minimum"": -2147483648,
-      ""type"": ""integer"",
+      ""type"": ""number"",
       ""format"": ""int32""
     },
     ""Creatures"": {
@@ -627,7 +629,7 @@ namespace Microsoft.OpenApi.OData.Tests
   },
   ""description"": ""Entity type 'Zoo' description."",
   ""example"": {
-    ""Id"": ""integer (identifier)"",
+    ""Id"": ""number (identifier)"",
     ""Creatures"": [
       {
         ""@odata.type"": ""NS.Creature""
@@ -705,8 +707,8 @@ namespace Microsoft.OpenApi.OData.Tests
     }
   ],
   ""example"": {
-    ""Id"": ""integer (identifier)"",
-    ""Age"": ""integer"",
+    ""Id"": ""number (identifier)"",
+    ""Age"": ""number"",
     ""Name"": ""string""
   }
 }"
@@ -753,7 +755,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Single(declaredSchema.Properties);
             var property = Assert.Single(declaredSchema.Properties);
             Assert.Equal("Extra", property.Key);
-            Assert.Equal("integer", property.Value.Type);
+            Assert.Equal("number", property.Value.Type);
             Assert.Null(property.Value.OneOf);
 
             Assert.Equal("Customer", declaredSchema.Title);
@@ -1071,13 +1073,13 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.Equal("integer", schema.Type);
+            Assert.Equal("number", schema.Type);
 
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
-  ""type"": ""integer"",
+  ""type"": ""number"",
   ""format"": ""int32"",
   ""default"": -128
 }".ChangeLineBreaks(), json);
@@ -1105,10 +1107,12 @@ namespace Microsoft.OpenApi.OData.Tests
   ""oneOf"": [
     {
       ""type"": ""number"",
-      ""format"": ""double""
+      ""format"": ""double"",
+      ""nullable"": true
     },
     {
-      ""type"": ""string""
+      ""type"": ""string"",
+      ""nullable"": true
     },
     {
       ""$ref"": ""#/components/schemas/ReferenceNumeric""

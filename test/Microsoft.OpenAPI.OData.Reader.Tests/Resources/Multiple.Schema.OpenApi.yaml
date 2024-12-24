@@ -113,7 +113,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: CategoryDto
         - name: $select
@@ -168,7 +168,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: CategoryDto
       requestBody:
@@ -197,7 +197,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: CategoryDto
         - name: If-Match
@@ -347,7 +347,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: $select
@@ -413,7 +413,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
@@ -442,7 +442,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: If-Match
@@ -471,7 +471,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
       responses:
@@ -495,7 +495,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/top'
@@ -611,7 +611,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: Id1
@@ -621,7 +621,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - name: If-Match
@@ -650,7 +650,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/search'
@@ -675,7 +675,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/top'
@@ -747,7 +747,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
@@ -771,7 +771,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: If-Match
@@ -805,7 +805,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/top'
@@ -868,7 +868,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
@@ -901,7 +901,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: If-Match
@@ -938,7 +938,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/search'
@@ -1099,7 +1099,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - name: $select
@@ -1168,7 +1168,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
       requestBody:
@@ -1197,7 +1197,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - name: If-Match
@@ -1226,7 +1226,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - $ref: '#/components/parameters/top'
@@ -1321,7 +1321,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - name: Id1
@@ -1331,7 +1331,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: If-Match
@@ -1359,7 +1359,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - name: Id1
@@ -1369,7 +1369,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/top'
@@ -1432,7 +1432,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - name: Id1
@@ -1442,7 +1442,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
@@ -1475,7 +1475,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - name: Id1
@@ -1485,7 +1485,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: If-Match
@@ -1522,7 +1522,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - name: Id1
@@ -1532,7 +1532,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/search'
@@ -1557,7 +1557,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - $ref: '#/components/parameters/search'
@@ -1582,7 +1582,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - $ref: '#/components/parameters/top'
@@ -1640,7 +1640,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
       requestBody:
@@ -1664,7 +1664,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: LibraryDto
         - name: If-Match
@@ -1841,7 +1841,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - name: $select
@@ -1912,7 +1912,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
       requestBody:
@@ -1941,7 +1941,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - name: If-Match
@@ -1970,7 +1970,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - name: $select
@@ -2088,7 +2088,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
       responses:
@@ -2125,7 +2125,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
       requestBody:
@@ -2149,7 +2149,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - name: If-Match
@@ -2177,7 +2177,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - $ref: '#/components/parameters/top'
@@ -2263,7 +2263,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
       requestBody:
@@ -2296,7 +2296,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - name: If-Match
@@ -2333,7 +2333,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - $ref: '#/components/parameters/search'
@@ -2357,7 +2357,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - $ref: '#/components/parameters/top'
@@ -2442,7 +2442,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
       requestBody:
@@ -2475,7 +2475,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - name: If-Match
@@ -2512,7 +2512,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - $ref: '#/components/parameters/search'
@@ -2658,7 +2658,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: $select
@@ -2724,7 +2724,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
@@ -2753,7 +2753,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: If-Match
@@ -2782,7 +2782,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
       responses:
@@ -2806,7 +2806,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/top'
@@ -2922,7 +2922,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: Id1
@@ -2932,7 +2932,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: RevisionDto
         - name: If-Match
@@ -2961,7 +2961,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/search'
@@ -2986,7 +2986,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/top'
@@ -3058,7 +3058,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
@@ -3082,7 +3082,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: If-Match
@@ -3116,7 +3116,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/top'
@@ -3179,7 +3179,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
@@ -3212,7 +3212,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - name: If-Match
@@ -3249,7 +3249,7 @@ paths:
           schema:
             maximum: 2147483647
             minimum: -2147483648
-            type: integer
+            type: number
             format: int32
           x-ms-docs-key-type: DocumentDto
         - $ref: '#/components/parameters/search'
@@ -3283,7 +3283,7 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Name:
           type: string
@@ -3303,7 +3303,7 @@ components:
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3313,7 +3313,7 @@ components:
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         Tags:
@@ -3326,15 +3326,15 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
           x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
+        Id: number (identifier)
         Name: string
         Description: string
         Filename: string
         NumberOfRevisions: string
         Suffix: string
-        DomainId: integer
+        DomainId: number
         ModificationDate: string (timestamp)
-        ModifiedBy: integer
+        ModifiedBy: number
         Tags:
           - '@odata.type': Siterra.Documents.App.DTO.DocumentTagRelDto
         Revisions:
@@ -3346,7 +3346,7 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Name:
           type: string
@@ -3360,18 +3360,18 @@ components:
         LibraryTemplateId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ParentTypeId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ParentId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         AllowMultiple:
           type: boolean
@@ -3380,17 +3380,17 @@ components:
         TypeId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3399,7 +3399,7 @@ components:
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ModificationDate:
@@ -3413,20 +3413,20 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
           x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
+        Id: number (identifier)
         Name: string
         Number: string
         Description: string
-        LibraryTemplateId: integer
-        ParentTypeId: integer
-        ParentId: integer
+        LibraryTemplateId: number
+        ParentTypeId: number
+        ParentId: number
         AllowMultiple: true
         AutoCreate: true
-        TypeId: integer
-        DomainId: integer
-        CreatedBy: integer
+        TypeId: number
+        DomainId: number
+        CreatedBy: number
         CreationDate: string (timestamp)
-        ModifiedBy: integer
+        ModifiedBy: number
         ModificationDate: string (timestamp)
         Documents:
           - '@odata.type': Siterra.Documents.App.DTO.DocumentDto
@@ -3437,17 +3437,17 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Number:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DocumentId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         DocumentName:
@@ -3463,14 +3463,14 @@ components:
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         IsReviewed:
           type: boolean
         ReviewedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ReviewedDate:
@@ -3483,7 +3483,7 @@ components:
         ApprovedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ApprovedDate:
@@ -3496,7 +3496,7 @@ components:
         RejectedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         RejectedDate:
@@ -3507,7 +3507,7 @@ components:
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Document:
           anyOf:
@@ -3516,23 +3516,23 @@ components:
               nullable: true
           x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
-        Number: integer
-        DocumentId: integer
+        Id: number (identifier)
+        Number: number
+        DocumentId: number
         DocumentName: string
         DocumentDescription: string
         CreationDate: string (timestamp)
-        CreatedBy: integer
+        CreatedBy: number
         IsReviewed: true
-        ReviewedBy: integer
+        ReviewedBy: number
         ReviewedDate: string (timestamp)
         IsApproved: true
-        ApprovedBy: integer
+        ApprovedBy: number
         ApprovedDate: string (timestamp)
         IsRejected: true
-        RejectedBy: integer
+        RejectedBy: number
         RejectedDate: string (timestamp)
-        DomainId: integer
+        DomainId: number
         Document:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
     Siterra.Documents.App.DTO.CategoryDto:
@@ -3542,7 +3542,7 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Name:
           type: string
@@ -3561,15 +3561,15 @@ components:
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
       example:
-        Id: integer (identifier)
+        Id: number (identifier)
         Name: string
         Description: string
         CreationDate: string (timestamp)
         ModificationDate: string (timestamp)
-        DomainId: integer
+        DomainId: number
     Siterra.Documents.App.DTO.DocumentTagRelDto:
       title: DocumentTagRelDto
       type: object
@@ -3586,7 +3586,7 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Name:
           type: string
@@ -3597,12 +3597,12 @@ components:
         StatusId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         TypeId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Keywords:
           type: string
@@ -3614,7 +3614,7 @@ components:
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3623,23 +3623,23 @@ components:
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         LibraryId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         OwnerUserId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         StatusDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3648,7 +3648,7 @@ components:
         LastRevisionId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         CheckoutDate:
@@ -3662,7 +3662,7 @@ components:
         CheckoutUserId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         Number:
@@ -3682,13 +3682,13 @@ components:
         LastRevisionFileId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         IsDeleted:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         IsNa:
           type: number
@@ -3720,13 +3720,13 @@ components:
         SourceDocumentId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ScraperMapId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         LastDownloadedDate:
@@ -3737,13 +3737,13 @@ components:
         SmsId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         IsApprovedOld:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         Suffix:
@@ -3752,7 +3752,7 @@ components:
         ScrapeResultId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         IsApproved:
@@ -3762,19 +3762,19 @@ components:
         CategoryId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         SectionId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         VersionCount:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         LastFileName:
           type: string
@@ -3816,30 +3816,30 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
           x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
+        Id: number (identifier)
         Name: string
         Description: string
-        StatusId: integer
-        TypeId: integer
+        StatusId: number
+        TypeId: number
         Keywords: string
         CreationDate: string (timestamp)
-        CreatedBy: integer
+        CreatedBy: number
         ModificationDate: string (timestamp)
-        ModifiedBy: integer
-        DomainId: integer
-        LibraryId: integer
-        OwnerUserId: integer
+        ModifiedBy: number
+        DomainId: number
+        LibraryId: number
+        OwnerUserId: number
         StatusDate: string (timestamp)
-        LastRevisionId: integer
+        LastRevisionId: number
         CheckoutDate: string (timestamp)
         CheckoutPath: string
-        CheckoutUserId: integer
+        CheckoutUserId: number
         Number: string
         OriginalDate: string (timestamp)
         FileSized: number
         FileClientPath: string
-        LastRevisionFileId: integer
-        IsDeleted: integer
+        LastRevisionFileId: number
+        IsDeleted: number
         IsNa: number
         IsRejected: number
         IsReviewed: number
@@ -3848,17 +3848,17 @@ components:
         RejectedDescription: string
         RejectedReason: string
         ReviewDescription: string
-        SourceDocumentId: integer
-        ScraperMapId: integer
+        SourceDocumentId: number
+        ScraperMapId: number
         LastDownloadedDate: string (timestamp)
-        SmsId: integer
-        IsApprovedOld: integer
+        SmsId: number
+        IsApprovedOld: number
         Suffix: string
-        ScrapeResultId: integer
+        ScrapeResultId: number
         IsApproved: number
-        CategoryId: integer
-        SectionId: integer
-        VersionCount: integer
+        CategoryId: number
+        SectionId: number
+        VersionCount: number
         LastFileName: string
         DocumentClasses:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
@@ -3881,22 +3881,22 @@ components:
         ClassInstance:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ClassId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DocumentId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3905,7 +3905,7 @@ components:
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3920,12 +3920,12 @@ components:
               nullable: true
           x-ms-navigationProperty: true
       example:
-        ClassInstance: integer
-        ClassId: integer
-        DocumentId: integer
-        CreatedBy: integer
+        ClassInstance: number
+        ClassId: number
+        DocumentId: number
+        CreatedBy: number
         CreationDate: string (timestamp)
-        ModifiedBy: integer
+        ModifiedBy: number
         ModificationDate: string (timestamp)
         IsPrimary: true
         Document:
@@ -3937,27 +3937,27 @@ components:
         DocumentId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         TagId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -3980,11 +3980,11 @@ components:
               nullable: true
           x-ms-navigationProperty: true
       example:
-        DocumentId: integer
-        TagId: integer
-        DomainId: integer
-        CreatedBy: integer
-        ModifiedBy: integer
+        DocumentId: number
+        TagId: number
+        DomainId: number
+        CreatedBy: number
+        ModifiedBy: number
         CreationDate: string (timestamp)
         ModificationDate: string (timestamp)
         Document:
@@ -3998,12 +3998,12 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Name:
           type: string
@@ -4011,7 +4011,7 @@ components:
         ParentFolderId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         Number:
@@ -4020,12 +4020,12 @@ components:
         TypeId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         OwnerUserId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         TotalSize:
           type: number
@@ -4033,12 +4033,12 @@ components:
         FilesCounter:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         FoldersCounter:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -4051,35 +4051,35 @@ components:
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ProjectId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         SearchRingId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         SiteId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         AssetId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         AllowMultiple:
@@ -4094,25 +4094,25 @@ components:
         ProgramId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         SourceFolderId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         TemplateClassId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         TemplateSubType:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         IsHidden:
@@ -4120,59 +4120,59 @@ components:
         IsDeleted:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         StatusId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         SmsId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ContractId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         VendorId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         OrganizationUnitId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         IncidentId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         EventId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ClassInstance:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ClassId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         LibraryParent:
           anyOf:
@@ -4208,43 +4208,43 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
           x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
-        DomainId: integer
+        Id: number (identifier)
+        DomainId: number
         Name: string
-        ParentFolderId: integer
+        ParentFolderId: number
         Number: string
-        TypeId: integer
-        OwnerUserId: integer
+        TypeId: number
+        OwnerUserId: number
         TotalSize: number
-        FilesCounter: integer
-        FoldersCounter: integer
+        FilesCounter: number
+        FoldersCounter: number
         CreationDate: string (timestamp)
         ModificationDate: string (timestamp)
-        ModifiedBy: integer
-        CreatedBy: integer
-        ProjectId: integer
-        SearchRingId: integer
-        SiteId: integer
-        AssetId: integer
+        ModifiedBy: number
+        CreatedBy: number
+        ProjectId: number
+        SearchRingId: number
+        SiteId: number
+        AssetId: number
         AllowMultiple: true
         AutoCreate: true
         Description: string
         IsTemplate: true
-        ProgramId: integer
-        SourceFolderId: integer
-        TemplateClassId: integer
-        TemplateSubType: integer
+        ProgramId: number
+        SourceFolderId: number
+        TemplateClassId: number
+        TemplateSubType: number
         IsHidden: true
-        IsDeleted: integer
-        StatusId: integer
-        SmsId: integer
-        ContractId: integer
-        VendorId: integer
-        OrganizationUnitId: integer
-        IncidentId: integer
-        EventId: integer
-        ClassInstance: integer
-        ClassId: integer
+        IsDeleted: number
+        StatusId: number
+        SmsId: number
+        ContractId: number
+        VendorId: number
+        OrganizationUnitId: number
+        IncidentId: number
+        EventId: number
+        ClassInstance: number
+        ClassId: number
         LibraryParent:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
         Type:
@@ -4264,7 +4264,7 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Name:
           type: string
@@ -4272,12 +4272,12 @@ components:
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -4290,7 +4290,7 @@ components:
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         Description:
@@ -4302,24 +4302,24 @@ components:
         MasterId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         Number:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ClassId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ParentId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         HasChanged:
@@ -4347,19 +4347,19 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
           x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
+        Id: number (identifier)
         Name: string
-        ModifiedBy: integer
-        CreatedBy: integer
+        ModifiedBy: number
+        CreatedBy: number
         ModificationDate: string (timestamp)
         CreationDate: string (timestamp)
-        DomainId: integer
+        DomainId: number
         Description: string
         XmlName: string
-        MasterId: integer
-        Number: integer
-        ClassId: integer
-        ParentId: integer
+        MasterId: number
+        Number: number
+        ClassId: number
+        ParentId: number
         HasChanged: true
         MasterLibraryType:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
@@ -4376,7 +4376,7 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Name:
           type: string
@@ -4387,12 +4387,12 @@ components:
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -4411,18 +4411,18 @@ components:
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         SourceClassId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ContentTypeId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ClientPath:
@@ -4431,12 +4431,12 @@ components:
         IsSelfHosted:
           maximum: 32767
           minimum: -32768
-          type: integer
+          type: number
           format: int16
         SmsId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         Latitude:
@@ -4453,21 +4453,21 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
           x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
+        Id: number (identifier)
         Name: string
         Path: string
-        ModifiedBy: integer
-        CreatedBy: integer
+        ModifiedBy: number
+        CreatedBy: number
         CreationDate: string (timestamp)
         ModificationDate: string (timestamp)
         Sized: number
         ActualName: string
-        DomainId: integer
-        SourceClassId: integer
-        ContentTypeId: integer
+        DomainId: number
+        SourceClassId: number
+        ContentTypeId: number
         ClientPath: string
-        IsSelfHosted: integer
-        SmsId: integer
+        IsSelfHosted: number
+        SmsId: number
         Latitude: number
         Longitude: number
         Documents:
@@ -4479,12 +4479,12 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Name:
           type: string
@@ -4495,12 +4495,12 @@ components:
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -4511,12 +4511,12 @@ components:
           type: string
           format: date-time
       example:
-        Id: integer (identifier)
-        DomainId: integer
+        Id: number (identifier)
+        DomainId: number
         Name: string
         Description: string
-        CreatedBy: integer
-        ModifiedBy: integer
+        CreatedBy: number
+        ModifiedBy: number
         CreationDate: string (timestamp)
         ModificationDate: string (timestamp)
     Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag:
@@ -4530,12 +4530,12 @@ components:
               items:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
       example:
-        Id: integer (identifier)
-        DomainId: integer
+        Id: number (identifier)
+        DomainId: number
         Name: string
         Description: string
-        CreatedBy: integer
-        ModifiedBy: integer
+        CreatedBy: number
+        ModifiedBy: number
         CreationDate: string (timestamp)
         ModificationDate: string (timestamp)
         Documents:
@@ -4552,12 +4552,12 @@ components:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
               x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
-        DomainId: integer
+        Id: number (identifier)
+        DomainId: number
         Name: string
         Description: string
-        CreatedBy: integer
-        ModifiedBy: integer
+        CreatedBy: number
+        ModifiedBy: number
         CreationDate: string (timestamp)
         ModificationDate: string (timestamp)
         Documents:
@@ -4574,12 +4574,12 @@ components:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
               x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
-        DomainId: integer
+        Id: number (identifier)
+        DomainId: number
         Name: string
         Description: string
-        CreatedBy: integer
-        ModifiedBy: integer
+        CreatedBy: number
+        ModifiedBy: number
         CreationDate: string (timestamp)
         ModificationDate: string (timestamp)
         Documents:
@@ -4591,17 +4591,17 @@ components:
         Id:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Number:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DocumentId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ModificationDate:
@@ -4615,12 +4615,12 @@ components:
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         Remarks:
           type: string
@@ -4628,12 +4628,12 @@ components:
         FileId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DocumentOwnerContact:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         DocumentDescription:
           type: string
@@ -4663,12 +4663,12 @@ components:
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         IsDeleted:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
         IsReviewed:
           type: boolean
@@ -4678,7 +4678,7 @@ components:
         ReviewedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         IsRejected:
@@ -4692,7 +4692,7 @@ components:
         RejectedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         IsApproved:
@@ -4700,7 +4700,7 @@ components:
         ApprovedBy:
           maximum: 2147483647
           minimum: -2147483648
-          type: integer
+          type: number
           format: int32
           nullable: true
         ReviewedDate:
@@ -4725,16 +4725,16 @@ components:
               nullable: true
           x-ms-navigationProperty: true
       example:
-        Id: integer (identifier)
-        Number: integer
-        DocumentId: integer
+        Id: number (identifier)
+        Number: number
+        DocumentId: number
         ModificationDate: string (timestamp)
         CreationDate: string (timestamp)
-        ModifiedBy: integer
-        CreatedBy: integer
+        ModifiedBy: number
+        CreatedBy: number
         Remarks: string
-        FileId: integer
-        DocumentOwnerContact: integer
+        FileId: number
+        DocumentOwnerContact: number
         DocumentDescription: string
         DocumentStatusDate: string (timestamp)
         DocumentFolder: string
@@ -4743,17 +4743,17 @@ components:
         DocumentType: string
         DocumentName: string
         DocumentNumber: string
-        DomainId: integer
-        IsDeleted: integer
+        DomainId: number
+        IsDeleted: number
         IsReviewed: true
         ReviewDescription: string
-        ReviewedBy: integer
+        ReviewedBy: number
         IsRejected: true
         RejectedReason: string
         RejectedDescription: string
-        RejectedBy: integer
+        RejectedBy: number
         IsApproved: true
-        ApprovedBy: integer
+        ApprovedBy: number
         ReviewedDate: string (timestamp)
         RejectedDate: string (timestamp)
         ApprovedDate: string (timestamp)
@@ -4921,6 +4921,8 @@ components:
         - '-INF'
         - INF
         - NaN
+      type: string
+      nullable: true
   responses:
     error:
       description: error

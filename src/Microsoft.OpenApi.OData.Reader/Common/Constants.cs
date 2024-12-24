@@ -3,6 +3,8 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.OpenApi.OData.Common
 {
     /// <summary>
@@ -168,6 +170,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// <summary>
         /// integer type
         /// </summary>
+        [Obsolete("integer is not a valid OpenAPI type. Use number instead.")]
         public static string IntegerType = "integer";
 
         /// <summary>
