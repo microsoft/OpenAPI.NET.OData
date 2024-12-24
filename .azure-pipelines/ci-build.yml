@@ -7,10 +7,12 @@ trigger:
   branches:
     include:
       - main
+      - support/v1
 pr:
   branches:
     include:
       - main
+      - support/v1
 
 variables:
   buildPlatform: 'Any CPU'
@@ -145,7 +147,7 @@ extends:
 
           - task: PowerShell@2
             displayName: 'Validate project version has been incremented'
-            condition: and(contains(variables['build.sourceBranch'], 'refs/heads/main'), succeeded())
+            condition: and(or(contains(variables['build.sourceBranch'], 'refs/heads/main'), contains(variables['build.sourceBranch'], 'refs/heads/support/v1')), succeeded())
             inputs:
               targetType: 'filePath'
               filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
@@ -186,7 +188,7 @@ extends:
               PendingAnalysisWaitTimeoutMinutes: '5'
 
     - stage: deploy
-      condition: and(contains(variables['build.sourceBranch'], 'refs/heads/main'), succeeded())
+      condition: and(or(contains(variables['build.sourceBranch'], 'refs/heads/main'), contains(variables['build.sourceBranch'], 'refs/heads/support/v1')), succeeded())
       dependsOn: build
       jobs:
         - deployment: deploy
