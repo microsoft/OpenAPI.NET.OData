@@ -244,8 +244,8 @@ extends:
                     gitHubConnection: 'Github-MaggieKimani1'
                     action: create
                     tagSource: userSpecifiedTag
-                    tag: '$(artifactVersion)'
-                    title: '$(artifactVersion)'
+                    tag: 'v$(artifactVersion)'
+                    title: 'v$(artifactVersion)'
                     releaseNotesSource: inline
                     assets: '$(Pipeline.Workspace)\**\*.nupkg'
                     changeLogType: issueBased
