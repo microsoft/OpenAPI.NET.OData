@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm
             visitor.Visit(model);
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
 
-            OperationHanderProvider = new OperationHandlerProvider();
+            OperationHandlerProvider = new OperationHandlerProvider();
             PathItemHanderProvider = new PathItemHandlerProvider();
 
             // If no path provider, use the default path provider.
@@ -81,7 +81,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the operation handler provider.
         /// </summary>
-        public IOperationHandlerProvider OperationHanderProvider { get; }
+        public IOperationHandlerProvider OperationHandlerProvider { get; }
 
         /// <summary>
         /// Gets the Edm model.
