@@ -14,107 +14,69 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class OperationHandlerProvider : IOperationHandlerProvider
     {
-        private static Dictionary<ODataPathKind, IDictionary<OperationType, IOperationHandler>> GetHandlers(OpenApiDocument document)
-            => new()
-            {
-
-            // entity set (Get/Post)
-            {ODataPathKind.EntitySet, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new EntitySetGetOperationHandler(document) },
-                {OperationType.Post, new EntitySetPostOperationHandler(document) }
-            }},
-
-            // entity (Get/Patch/Put/Delete)
-            {ODataPathKind.Entity, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new EntityGetOperationHandler(document) },
-                {OperationType.Patch, new EntityPatchOperationHandler(document) },
-                {OperationType.Put, new EntityPutOperationHandler(document) },
-                {OperationType.Delete, new EntityDeleteOperationHandler(document) }
-            }},
-
-            // singleton (Get/Patch)
-            {ODataPathKind.Singleton, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new SingletonGetOperationHandler(document) },
-                {OperationType.Patch, new SingletonPatchOperationHandler(document) }
-            }},
-
-            // edm operation (Get|Post)
-            {ODataPathKind.Operation, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new EdmFunctionOperationHandler(document) },
-                {OperationType.Post, new EdmActionOperationHandler(document) }
-            }},
-
-            // edm operation import (Get|Post)
-            {ODataPathKind.OperationImport, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new EdmFunctionImportOperationHandler(document) },
-                {OperationType.Post, new EdmActionImportOperationHandler(document) }
-            }},
-
-            // navigation property (Get/Patch/Put/Post/Delete)
-            {ODataPathKind.NavigationProperty, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new NavigationPropertyGetOperationHandler(document) },
-                {OperationType.Patch, new NavigationPropertyPatchOperationHandler(document) },
-                {OperationType.Put, new NavigationPropertyPutOperationHandler(document) },
-                {OperationType.Post, new NavigationPropertyPostOperationHandler(document) },
-                {OperationType.Delete, new NavigationPropertyDeleteOperationHandler(document) }
-            }},
-
-            // navigation property ref (Get/Post/Put/Delete)
-            {ODataPathKind.Ref, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new RefGetOperationHandler(document) },
-                {OperationType.Put, new RefPutOperationHandler(document) },
-                {OperationType.Post, new RefPostOperationHandler(document) },
-                {OperationType.Delete, new RefDeleteOperationHandler(document) }
-            }},
-
-            // media entity operation (Get|Put|Delete)
-            {ODataPathKind.MediaEntity, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new MediaEntityGetOperationHandler(document) },
-                {OperationType.Put, new MediaEntityPutOperationHandler(document) },
-                {OperationType.Delete, new MediaEntityDeleteOperationHandler(document) }
-            }},
-
-            // $metadata operation (Get)
-            {ODataPathKind.Metadata, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new MetadataGetOperationHandler(document) }
-            }},
-
-            // $count operation (Get)
-            {ODataPathKind.DollarCount, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new DollarCountGetOperationHandler(document) }
-            }},
-
-            // .../namespace.typename (cast, get)
-            {ODataPathKind.TypeCast, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new ODataTypeCastGetOperationHandler(document) },
-            }},
-
-            // .../entity/propertyOfComplexType (Get/Patch/Put/Delete)
-            {ODataPathKind.ComplexProperty, new Dictionary<OperationType, IOperationHandler>
-            {
-                {OperationType.Get, new ComplexPropertyGetOperationHandler(document) },
-                {OperationType.Patch, new ComplexPropertyPatchOperationHandler(document) },
-                {OperationType.Put, new ComplexPropertyPutOperationHandler(document) },
-                {OperationType.Post, new ComplexPropertyPostOperationHandler(document) }
-            }}
-        };
-
         /// <inheritdoc/>
         public IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType)
         {
-            //TODO refactor to avoid dictionary creation on each call
-            return GetHandlers(document)[pathKind][operationType];
+            return (pathKind, operationType) switch
+            {
+                // entity set (Get/Post)
+                (ODataPathKind.EntitySet, OperationType.Get) => new EntitySetGetOperationHandler(document),
+                (ODataPathKind.EntitySet, OperationType.Post) => new EntitySetPostOperationHandler(document),
+
+                // entity (Get/Patch/Put/Delete)
+                (ODataPathKind.Entity, OperationType.Get) => new EntityGetOperationHandler(document),
+                (ODataPathKind.Entity, OperationType.Patch) => new EntityPatchOperationHandler(document),
+                (ODataPathKind.Entity, OperationType.Put) => new EntityPutOperationHandler(document),
+                (ODataPathKind.Entity, OperationType.Delete) => new EntityDeleteOperationHandler(document),
+
+                // singleton (Get/Patch)
+                (ODataPathKind.Singleton, OperationType.Get) => new SingletonGetOperationHandler(document),
+                (ODataPathKind.Singleton, OperationType.Patch) => new SingletonPatchOperationHandler(document),
+
+                // edm operation (Get|Post)
+                (ODataPathKind.Operation, OperationType.Get) => new EdmFunctionOperationHandler(document),
+                (ODataPathKind.Operation, OperationType.Post) => new EdmActionOperationHandler(document),
+
+                // edm operation import (Get|Post)
+                (ODataPathKind.OperationImport, OperationType.Get) => new EdmFunctionImportOperationHandler(document),
+                (ODataPathKind.OperationImport, OperationType.Post) => new EdmActionImportOperationHandler(document),
+
+                // navigation property (Get/Patch/Put/Post/Delete)
+                (ODataPathKind.NavigationProperty, OperationType.Get) => new NavigationPropertyGetOperationHandler(document),
+                (ODataPathKind.NavigationProperty, OperationType.Patch) => new NavigationPropertyPatchOperationHandler(document),
+                (ODataPathKind.NavigationProperty, OperationType.Put) => new NavigationPropertyPutOperationHandler(document),
+                (ODataPathKind.NavigationProperty, OperationType.Post) => new NavigationPropertyPostOperationHandler(document),
+                (ODataPathKind.NavigationProperty, OperationType.Delete) => new NavigationPropertyDeleteOperationHandler(document),
+
+                // navigation property ref (Get/Post/Put/Delete)
+                (ODataPathKind.Ref, OperationType.Get) => new RefGetOperationHandler(document),
+                (ODataPathKind.Ref, OperationType.Put) => new RefPutOperationHandler(document),
+                (ODataPathKind.Ref, OperationType.Post) => new RefPostOperationHandler(document),
+                (ODataPathKind.Ref, OperationType.Delete) => new RefDeleteOperationHandler(document),
+
+                // media entity operation (Get|Put|Delete)
+                (ODataPathKind.MediaEntity, OperationType.Get) => new MediaEntityGetOperationHandler(document),
+                (ODataPathKind.MediaEntity, OperationType.Put) => new MediaEntityPutOperationHandler(document),
+                (ODataPathKind.MediaEntity, OperationType.Delete) => new MediaEntityDeleteOperationHandler(document),
+
+                // $metadata operation (Get)
+
+                (ODataPathKind.Metadata, OperationType.Get) => new MetadataGetOperationHandler(document),
+
+                // $count operation (Get)
+                (ODataPathKind.DollarCount, OperationType.Get) => new DollarCountGetOperationHandler(document),
+
+                // .../namespace.typename (cast, get)
+                (ODataPathKind.TypeCast, OperationType.Get) => new ODataTypeCastGetOperationHandler(document),
+
+                // .../entity/propertyOfComplexType (Get/Patch/Put/Delete)
+                (ODataPathKind.ComplexProperty, OperationType.Get) => new ComplexPropertyGetOperationHandler(document),
+                (ODataPathKind.ComplexProperty, OperationType.Patch) => new ComplexPropertyPatchOperationHandler(document),
+                (ODataPathKind.ComplexProperty, OperationType.Put) => new ComplexPropertyPutOperationHandler(document),
+                (ODataPathKind.ComplexProperty, OperationType.Post) => new ComplexPropertyPostOperationHandler(document),
+
+                (_, _) => null,
+            };
         }
     }
 }
