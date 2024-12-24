@@ -28,7 +28,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// @odata.count KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, OpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Integer, Format = "int64", Nullable = true });
+        public static KeyValuePair<string, OpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Number, Format = "int64", Nullable = true });
 
         /// <summary>
         /// @odata.deltaLink KeyValue pair

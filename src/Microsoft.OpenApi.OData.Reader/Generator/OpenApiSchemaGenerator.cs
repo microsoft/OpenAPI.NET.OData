@@ -81,8 +81,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if(context.Settings.EnableDollarCountPath)
                 schemas[Constants.DollarCountSchemaName] = new OpenApiSchema {
-                    Type = JsonSchemaType.Integer,
-                    Format = "int32"
+                    Type = JsonSchemaType.Number,
+                    Format = "int64"
                 };
 
             schemas = schemas.Concat(context.GetAllCollectionEntityTypes()

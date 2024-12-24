@@ -873,7 +873,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Show only the first n items",
                 Schema = new OpenApiSchema
                 {
-                    Type = JsonSchemaType.Integer,
+                    Type = JsonSchemaType.Number,
+                    Format = "int64",
                     Minimum = 0,
                 },
                 Example = topExample,
@@ -892,7 +893,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 Description = "Skip the first n items",
                 Schema = new OpenApiSchema
                 {
-                    Type = JsonSchemaType.Integer,
+                    Type = JsonSchemaType.Number,
+                    Format = "int64",
                     Minimum = 0,
                 },
                 Style = ParameterStyle.Form,
