@@ -18,6 +18,16 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal abstract class PathItemHandler : IPathItemHandler
     {
+        private readonly OpenApiDocument _document;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PathItemHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected PathItemHandler(OpenApiDocument document)
+        {
+            Utils.CheckArgumentNull(document, nameof(document));
+            _document = document;
+        }
         /// <summary>
         /// Gets the handler path kind.
         /// </summary>
@@ -110,7 +120,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
 
             IOperationHandlerProvider provider = Context.OperationHandlerProvider;
-            IOperationHandler operationHandler = provider.GetHandler(Path.Kind, operationType);
+            IOperationHandler operationHandler = provider.GetHandler(Path.Kind, operationType, _document);
             item.AddOperation(operationType, operationHandler.CreateOperation(Context, Path));
         }
 

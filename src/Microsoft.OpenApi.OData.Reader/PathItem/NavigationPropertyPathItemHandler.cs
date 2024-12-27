@@ -22,6 +22,14 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class NavigationPropertyPathItemHandler : PathItemHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NavigationPropertyPathItemHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use for references lookup.</param>
+        public NavigationPropertyPathItemHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         protected override ODataPathKind HandleKind => ODataPathKind.NavigationProperty;
 
