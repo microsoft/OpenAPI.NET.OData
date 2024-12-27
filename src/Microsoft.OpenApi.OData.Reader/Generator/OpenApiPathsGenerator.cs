@@ -22,16 +22,17 @@ namespace Microsoft.OpenApi.OData.Generator
         /// and whose value is a Path Item Object.
         /// </summary>
         /// <param name="context">The OData context.</param>
+        /// <param name="document">The Open API document to use to lookup references.</param>
         /// <returns>The created <see cref="OpenApiPaths"/> object.</returns>
-        public static OpenApiPaths CreatePaths(this ODataContext context)
+        public static OpenApiPaths CreatePaths(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
             // Due to the power and flexibility of OData a full representation of all service capabilities
             // in the Paths Object is typically not feasible, so this mapping only describes the minimum
             // information desired in the Paths Object.
-            OpenApiPaths paths = new();
-            foreach (var item in context.CreatePathItems())
+            OpenApiPaths paths = [];
+            foreach (var item in context.CreatePathItems(document))
             {
                 paths.Add(item.Key, item.Value);
             }

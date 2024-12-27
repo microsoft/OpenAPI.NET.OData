@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.Operation
     internal class OperationHandlerProvider : IOperationHandlerProvider
     {
         /// <inheritdoc/>
-        public IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType)
+        public IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType, OpenApiDocument document)
         {
             return (pathKind, operationType) switch
             {

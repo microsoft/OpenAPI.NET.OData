@@ -22,8 +22,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create a map of <see cref="OpenApiPathItem"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
+        /// <param name="document">The Open API document to use to lookup references.</param>
         /// <returns>The created map of <see cref="OpenApiPathItem"/>.</returns>
-        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this ODataContext context)
+        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
@@ -37,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Generator
             settings.EnableKeyAsSegment = context.KeyAsSegment;
             foreach (ODataPath path in context.AllPaths)
             {
-                IPathItemHandler handler = context.PathItemHandlerProvider.GetHandler(path.Kind);
+                IPathItemHandler handler = context.PathItemHandlerProvider.GetHandler(path.Kind, document);
                 if (handler == null)
                 {
                     continue;
