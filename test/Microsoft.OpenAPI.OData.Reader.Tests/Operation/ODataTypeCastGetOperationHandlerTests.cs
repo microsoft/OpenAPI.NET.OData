@@ -120,7 +120,7 @@ public class ODataTypeCastGetOperationHandlerTests
             Assert.Single(operation.Extensions); //deprecated
 
         Assert.Equal(2, operation.Responses.Count);
-        Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+        Assert.Equal(["200", "default"], operation.Responses.Select(e => e.Key));
 
         if (enableOperationId)
         {
