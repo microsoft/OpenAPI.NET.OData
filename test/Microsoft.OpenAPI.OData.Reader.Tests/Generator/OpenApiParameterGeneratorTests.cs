@@ -57,7 +57,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""explode"": false,
   ""schema"": {
     ""minimum"": 0,
-    ""type"": ""integer""
+    ""type"": ""number"",
+    ""format"": ""int64""
   },
   ""example"": 50
 }";
@@ -75,7 +76,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""explode"": false,
   ""schema"": {
     ""minimum"": 0,
-    ""type"": ""integer""
+    ""type"": ""number"",
+    ""format"": ""int64""
   }
 }";
 
