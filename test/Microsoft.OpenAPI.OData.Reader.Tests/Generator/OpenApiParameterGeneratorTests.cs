@@ -132,7 +132,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Fact]
-        public void CanSeralizeAsYamlFromTheCreatedParameters()
+        public void CanSerializeAsYamlFromTheCreatedParameters()
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -154,7 +154,8 @@ style: form
 explode: false
 schema:
   minimum: 0
-  type: integer
+  type: number
+  format: int64
 ".ChangeLineBreaks(), yaml);
         }
 
