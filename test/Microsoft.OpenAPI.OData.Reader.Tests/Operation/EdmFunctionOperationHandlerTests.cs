@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmFunctionOperationHandlerTests
     {
-        private EdmFunctionOperationHandler _operationHandler = new();
+        private EdmFunctionOperationHandler _operationHandler = new(new());
         #region OperationHandlerTests
         [Fact]
         public void SetsDeprecationInformation()

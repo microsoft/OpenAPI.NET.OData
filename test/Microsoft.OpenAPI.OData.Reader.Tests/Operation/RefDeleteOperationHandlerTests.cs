@@ -13,7 +13,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class RefDeleteOperationHandlerTests
     {
-        private RefDeleteOperationHandler _operationHandler = new RefDeleteOperationHandler();
+        private RefDeleteOperationHandler _operationHandler = new RefDeleteOperationHandler(new());
 
         [Theory]
         [InlineData(true)]

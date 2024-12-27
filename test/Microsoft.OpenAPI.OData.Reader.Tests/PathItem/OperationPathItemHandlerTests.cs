@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class OperationPathItemHandlerTest
     {
-        private OperationPathItemHandler _pathItemHandler = new OperationPathItemHandler();
+        private OperationPathItemHandler _pathItemHandler = new OperationPathItemHandler(new());
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()

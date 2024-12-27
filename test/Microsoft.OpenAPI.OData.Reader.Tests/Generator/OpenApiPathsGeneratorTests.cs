@@ -5,6 +5,7 @@
 
 using System;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -19,10 +20,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         public void CreatePathsThrowArgumentNullContext()
         {
             // Arrange
+            OpenApiDocument openApiDocument = new();
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreatePaths());
+            Assert.Throws<ArgumentNullException>("context", () => context.CreatePaths(openApiDocument));
         }
 
         [Fact]
@@ -30,10 +32,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
+            OpenApiDocument openApiDocument = new();
             ODataContext context = new ODataContext(model);
 
             // Act
-            var paths = context.CreatePaths();
+            var paths = context.CreatePaths(openApiDocument);
 
             // Assert
             Assert.NotNull(paths);
@@ -47,6 +50,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
+            OpenApiDocument openApiDocument = new();
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = true,
@@ -55,7 +59,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var paths = context.CreatePaths();
+            var paths = context.CreatePaths(openApiDocument);
 
             // Assert
             Assert.NotNull(paths);
@@ -106,6 +110,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
+            OpenApiDocument openApiDocument = new();
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = true,
@@ -115,7 +120,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var paths = context.CreatePaths();
+            var paths = context.CreatePaths(openApiDocument);
 
             // Assert
             Assert.NotNull(paths);
@@ -164,6 +169,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.ContractServiceModel;
+            OpenApiDocument openApiDocument = new();
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = true,
@@ -172,7 +178,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var paths = context.CreatePaths();
+            var paths = context.CreatePaths(openApiDocument);
 
             // Assert
             Assert.NotNull(paths);

@@ -19,7 +19,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class SingletonGetOperationHandlerTests
     {
-        private SingletonGetOperationHandler _operationHandler = new SingletonGetOperationHandler();
+        private SingletonGetOperationHandler _operationHandler = new SingletonGetOperationHandler(new());
 
         [Theory]
         [InlineData(true, true)]

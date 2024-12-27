@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmFunctionImportOperationHandlerTests
     {
-        private EdmFunctionImportOperationHandler _operationHandler = new EdmFunctionImportOperationHandler();
+        private EdmFunctionImportOperationHandler _operationHandler = new EdmFunctionImportOperationHandler(new());
 
         [Theory]
         [InlineData(true)]

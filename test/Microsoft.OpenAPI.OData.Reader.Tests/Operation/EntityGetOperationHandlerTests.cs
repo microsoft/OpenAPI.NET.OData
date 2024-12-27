@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntityGetOperationHandlerTests
     {
-        private EntityGetOperationHandler _operationHandler = new EntityGetOperationHandler();
+        private EntityGetOperationHandler _operationHandler = new EntityGetOperationHandler(new());
 
         [Theory]
         [InlineData(true, true)]

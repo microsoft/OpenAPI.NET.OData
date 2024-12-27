@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class NavigationPropertyGetOperationHandlerTests
     {
-        private NavigationPropertyGetOperationHandler _operationHandler = new NavigationPropertyGetOperationHandler();
+        private NavigationPropertyGetOperationHandler _operationHandler = new NavigationPropertyGetOperationHandler(new());
 
         [Theory]
         [InlineData(true, true)]

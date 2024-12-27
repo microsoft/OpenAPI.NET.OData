@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class MediaEntityGetOperationHandlerTests
     {
-        private readonly MediaEntityGetOperationHandler _operationalHandler = new MediaEntityGetOperationHandler();
+        private readonly MediaEntityGetOperationHandler _operationalHandler = new MediaEntityGetOperationHandler(new());
 
         [Theory]
         [InlineData(true, true)]

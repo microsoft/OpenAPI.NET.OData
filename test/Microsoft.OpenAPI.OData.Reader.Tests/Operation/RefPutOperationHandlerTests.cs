@@ -13,7 +13,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class RefPutOperationHandlerTests
     {
-        private RefPutOperationHandler _operationHandler = new RefPutOperationHandler();
+        private RefPutOperationHandler _operationHandler = new RefPutOperationHandler(new());
 
         [Theory]
         [InlineData(true, true)]

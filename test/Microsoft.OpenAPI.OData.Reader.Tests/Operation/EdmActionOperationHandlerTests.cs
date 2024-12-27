@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmActionOperationHandlerTests
     {
-        private EdmActionOperationHandler _operationHandler = new EdmActionOperationHandler();
+        private EdmActionOperationHandler _operationHandler = new EdmActionOperationHandler(new());
 
         [Fact]
         public void CreateOperationForEdmActionReturnsCorrectOperation()

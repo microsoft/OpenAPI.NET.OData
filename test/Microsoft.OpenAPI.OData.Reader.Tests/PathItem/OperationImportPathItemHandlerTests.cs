@@ -20,7 +20,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class OperationImportPathItemHandlerTest
     {
-        private OperationImportPathItemHandler _pathItemHandler = new MyOperationImportPathItemHandler();
+        private OperationImportPathItemHandler _pathItemHandler = new MyOperationImportPathItemHandler(new());
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -187,7 +187,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
     }
 
-    internal class MyOperationImportPathItemHandler : OperationImportPathItemHandler
+    internal class MyOperationImportPathItemHandler(OpenApiDocument document) : OperationImportPathItemHandler(document)
     {
         protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
         {

@@ -19,7 +19,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntitySetPostOperationHandlerTests
     {
-        private EntitySetPostOperationHandler _operationHandler = new EntitySetPostOperationHandler();
+        private EntitySetPostOperationHandler _operationHandler = new EntitySetPostOperationHandler(new());
 
         [Theory]
         [InlineData(true, true, true)]

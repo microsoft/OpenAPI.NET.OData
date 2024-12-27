@@ -12,7 +12,7 @@ using Xunit;
 namespace Microsoft.OpenApi.OData.Operation.Tests;
 public class ODataTypeCastGetOperationHandlerTests
 {
-    private readonly ODataTypeCastGetOperationHandler _operationHandler = new ();
+    private readonly ODataTypeCastGetOperationHandler _operationHandler = new (new());
 
     [Theory]
     [InlineData(true, true, true)]

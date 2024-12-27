@@ -13,7 +13,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class NavigationPropertyDeleteOperationHandlerTests
     {
-        private NavigationPropertyDeleteOperationHandler _operationHandler = new NavigationPropertyDeleteOperationHandler();
+        private NavigationPropertyDeleteOperationHandler _operationHandler = new NavigationPropertyDeleteOperationHandler(new());
 
         [Theory]
         [InlineData(true, false)]

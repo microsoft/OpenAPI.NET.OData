@@ -14,7 +14,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class DollarCountGetOperationHandlerTests
     {
-        private readonly DollarCountGetOperationHandler _operationHandler = new();
+        private readonly DollarCountGetOperationHandler _operationHandler = new(new());
 
         [Theory]
         [InlineData(true, true)]

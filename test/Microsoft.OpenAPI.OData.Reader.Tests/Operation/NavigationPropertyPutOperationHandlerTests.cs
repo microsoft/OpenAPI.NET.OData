@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class NavigationPropertyPutOperationHandlerTests
     {
-        private NavigationPropertyPutOperationHandler _operationHandler = new NavigationPropertyPutOperationHandler();
+        private NavigationPropertyPutOperationHandler _operationHandler = new NavigationPropertyPutOperationHandler(new());
 
         [Theory]
         [InlineData(true, true)]
