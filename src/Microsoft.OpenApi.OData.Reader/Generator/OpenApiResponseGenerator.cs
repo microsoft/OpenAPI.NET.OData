@@ -55,40 +55,41 @@ namespace Microsoft.OpenApi.OData.Generator
         /// that is referenced from all operations of the service.
         /// </summary>
         /// <param name="context">The OData context.</param>
+        /// <param name="document">The OpenApi document to lookup references.</param>
         /// <returns>The name/value pairs for the standard OData error response.</returns>
-        public static IDictionary<string, OpenApiResponse> CreateResponses(this ODataContext context)
+        public static IDictionary<string, OpenApiResponse> CreateResponses(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
             var responses =  new Dictionary<string, OpenApiResponse>
             {
-                { "error", context.CreateErrorResponse() }
+                { "error", context.CreateErrorResponse(document) }
             };
 
             if(context.Settings.EnableDollarCountPath)
             {
-                responses[Constants.DollarCountSchemaName] = CreateCountResponse();
+                responses[Constants.DollarCountSchemaName] = CreateCountResponse(document);
             }
 
             responses = responses.Concat(context.GetAllCollectionEntityTypes()
                                         .Select(x => new KeyValuePair<string, OpenApiResponse>(
                                                             $"{(x is IEdmEntityType eType ? eType.FullName() : x.FullTypeName())}{Constants.CollectionSchemaSuffix}",
-                                                            CreateCollectionResponse(x)))
+                                                            CreateCollectionResponse(x, document)))
                                         .Where(x => !responses.ContainsKey(x.Key)))
                                 .Concat(context.GetAllCollectionComplexTypes()
                                         .Select(x => new KeyValuePair<string, OpenApiResponse>(
                                                             $"{x.FullTypeName()}{Constants.CollectionSchemaSuffix}",
-                                                            CreateCollectionResponse(x)))
+                                                            CreateCollectionResponse(x, document)))
                                         .Where(x => !responses.ContainsKey(x.Key)))
                             .ToDictionary(x => x.Key, x => x.Value);
 
             if(context.HasAnyNonContainedCollections())                                        
-                responses[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionResponse("String");
+                responses[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionResponse("String", document);
 
             foreach (IEdmOperation operation in context.Model.SchemaElements.OfType<IEdmOperation>()
                 .Where(op => context.Model.OperationTargetsMultiplePaths(op)))
             {
-                OpenApiResponse response = context.CreateOperationResponse(operation);
+                OpenApiResponse response = context.CreateOperationResponse(operation, document);
                 if (response != null)
                     responses[$"{operation.Name}Response"] = response;
             }
@@ -101,13 +102,15 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="operationImport">The Edm operation import.</param>
+        /// <param name="document">The OpenApi document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiResponses"/>.</returns>
-        public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperationImport operationImport)
+        public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperationImport operationImport, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(operationImport, nameof(operationImport));
+            Utils.CheckArgumentNull(document, nameof(document));
 
-            return context.CreateResponses(operationImport.Operation);
+            return context.CreateResponses(operationImport.Operation, document);
         }
 
         /// <summary>
@@ -115,8 +118,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="operation">The Edm operation.</param>
+        /// <param name="document">The OpenApi document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiResponses"/>.</returns>
-        public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperation operation)
+        public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperation operation, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(operation, nameof(operation));
@@ -136,7 +140,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
             else
             {
-                OpenApiResponse response = context.CreateOperationResponse(operation);
+                OpenApiResponse response = context.CreateOperationResponse(operation, document);
                 responses.Add(context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200, response);
             }
 
@@ -153,7 +157,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return responses;
         }
 
-        public static OpenApiResponse CreateOperationResponse(this ODataContext context, IEdmOperation operation)
+        public static OpenApiResponse CreateOperationResponse(this ODataContext context, IEdmOperation operation, OpenApiDocument document)
         {
             if (operation.ReturnType == null)
                 return null;
@@ -167,7 +171,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Properties = new Dictionary<string, OpenApiSchema>
                     {
                         {
-                            "value", context.CreateEdmTypeSchema(operation.ReturnType)
+                            "value", context.CreateEdmTypeSchema(operation.ReturnType, document)
                         }
                     }
                 };
@@ -181,7 +185,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         {
                             new OpenApiSchemaReference(operation.IsDeltaFunction() ? Constants.BaseDeltaFunctionResponse  // @odata.nextLink + @odata.deltaLink
                                         : Constants.BaseCollectionPaginationCountResponse // @odata.nextLink + @odata.count)
-                                        ,null),
+                                        ,document),
                             baseSchema
                         }
                     };
@@ -219,14 +223,14 @@ namespace Microsoft.OpenApi.OData.Generator
                     Properties = new Dictionary<string, OpenApiSchema>
                     {
                         {
-                            "value", context.CreateEdmTypeSchema(operation.ReturnType)
+                            "value", context.CreateEdmTypeSchema(operation.ReturnType, document)
                         }
                     }
                 };
             }
             else
             {
-                schema = context.CreateEdmTypeSchema(operation.ReturnType);
+                schema = context.CreateEdmTypeSchema(operation.ReturnType, document);
             }
 
             string mediaType = Constants.ApplicationJsonMediaType;
@@ -259,12 +263,12 @@ namespace Microsoft.OpenApi.OData.Generator
             return response;
         }
 
-        private static OpenApiResponse CreateCollectionResponse(IEdmStructuredType structuredType)
+        private static OpenApiResponse CreateCollectionResponse(IEdmStructuredType structuredType, OpenApiDocument document)
         {
             var entityType = structuredType as IEdmEntityType;
-            return CreateCollectionResponse(entityType?.FullName() ?? structuredType.FullTypeName());
+            return CreateCollectionResponse(entityType?.FullName() ?? structuredType.FullTypeName(), document);
         }
-        private static OpenApiResponse CreateCollectionResponse(string typeName)
+        private static OpenApiResponse CreateCollectionResponse(string typeName, OpenApiDocument document)
         {
             return new OpenApiResponse
             {
@@ -275,16 +279,16 @@ namespace Microsoft.OpenApi.OData.Generator
                         Constants.ApplicationJsonMediaType,
                         new OpenApiMediaType
                         {
-                            Schema = new OpenApiSchemaReference($"{typeName}{Constants.CollectionSchemaSuffix}", null) 
+                            Schema = new OpenApiSchemaReference($"{typeName}{Constants.CollectionSchemaSuffix}", document) 
                         }
                     }
                 }
             };
         }
 
-        private static OpenApiResponse CreateCountResponse()
+        private static OpenApiResponse CreateCountResponse(OpenApiDocument document)
         {
-            OpenApiSchema schema = new OpenApiSchemaReference(Constants.DollarCountSchemaName, null);
+            OpenApiSchema schema = new OpenApiSchemaReference(Constants.DollarCountSchemaName, document);
             return new OpenApiResponse
             {
                 Description = "The count of the resource",
@@ -301,7 +305,7 @@ namespace Microsoft.OpenApi.OData.Generator
             };
         }
 
-        private static OpenApiResponse CreateErrorResponse(this ODataContext context)
+        private static OpenApiResponse CreateErrorResponse(this ODataContext context, OpenApiDocument document)
         {
             var errorNamespaceName = context.GetErrorNamespaceName();
             return new OpenApiResponse
@@ -313,7 +317,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Constants.ApplicationJsonMediaType,
                         new OpenApiMediaType
                         {
-                            Schema = new OpenApiSchemaReference($"{errorNamespaceName}{OpenApiErrorSchemaGenerator.ODataErrorClassName}", null)
+                            Schema = new OpenApiSchemaReference($"{errorNamespaceName}{OpenApiErrorSchemaGenerator.ODataErrorClassName}", document)
                         }
                     }
                 }

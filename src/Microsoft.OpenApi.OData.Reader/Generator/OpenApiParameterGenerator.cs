@@ -51,13 +51,15 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="functionImport">The Edm function import.</param>
+        /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
-        public static IList<OpenApiParameter> CreateParameters(this ODataContext context, IEdmFunctionImport functionImport)
+        public static IList<OpenApiParameter> CreateParameters(this ODataContext context, IEdmFunctionImport functionImport, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(functionImport, nameof(functionImport));
+            Utils.CheckArgumentNull(document, nameof(document));
 
-            return context.CreateParameters(functionImport.Function);
+            return context.CreateParameters(functionImport.Function, document);
         }
 
         /// <summary>
@@ -65,13 +67,16 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="function">The Edm function.</param>
+        /// <param name="document">The Open API document to lookup references.</param>
         /// <param name="parameterNameMapping">The parameter name mapping.</param>
         /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
         public static IList<OpenApiParameter> CreateParameters(this ODataContext context, IEdmFunction function,
+            OpenApiDocument document,
             IDictionary<string, string> parameterNameMapping = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(function, nameof(function));
+            Utils.CheckArgumentNull(document, nameof(document));
 
             IList<OpenApiParameter> parameters = new List<OpenApiParameter>();            
             int skip = function.IsBound ? 1 : 0;
@@ -131,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Name = parameterNameMapping == null ? edmParameter.Name : parameterNameMapping[edmParameter.Name],
                         In = isOptionalParameter ? ParameterLocation.Query : ParameterLocation.Path,
                         Required = !isOptionalParameter,
-                        Schema = context.CreateEdmTypeSchema(edmParameter.Type)
+                        Schema = context.CreateEdmTypeSchema(edmParameter.Type, document)
                     };
                 }
 
@@ -154,16 +159,19 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="keySegment">The key segment.</param>
+        /// <param name="document">The Open API document to lookup references.</param>
         /// <param name="parameterNameMapping">The parameter name mapping.</param>
         /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
         public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, ODataKeySegment keySegment,
+            OpenApiDocument document,
             IDictionary<string, string> parameterNameMapping = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(keySegment, nameof(keySegment));
+            Utils.CheckArgumentNull(document, nameof(document));
             
             if (keySegment.IsAlternateKey)
-                return CreateAlternateKeyParameters(context, keySegment);
+                return CreateAlternateKeyParameters(context, keySegment, document);
 
             IEdmEntityType entityType = keySegment.EntityType;
             IList<IEdmStructuralProperty> keys = entityType.Key().ToList();
@@ -186,7 +194,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     In = ParameterLocation.Path,
                     Required = true,
                     Description = $"The unique identifier of {entityType.Name}",
-                    Schema = context.CreateEdmTypeSchema(keys.First().Type)
+                    Schema = context.CreateEdmTypeSchema(keys[0].Type, document)
                 };
 
                 parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
@@ -205,7 +213,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         In = ParameterLocation.Path,
                         Required = true,
                         Description = $"Property in multi-part unique identifier of {entityType.Name}",
-                        Schema = context.CreateEdmTypeSchema(keyProperty.Type)
+                        Schema = context.CreateEdmTypeSchema(keyProperty.Type, document)
                     };
 
                     if (keySegment.KeyMappings != null)
@@ -227,8 +235,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="keySegment">The key segment.</param>
+        /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>A list of <see cref="OpenApiParameter"/> of alternate key parameters.</returns>
-        private static IList<OpenApiParameter> CreateAlternateKeyParameters(ODataContext context, ODataSegment keySegment)
+        private static IList<OpenApiParameter> CreateAlternateKeyParameters(ODataContext context, ODataSegment keySegment, OpenApiDocument document)
         {
             Debug.Assert(keySegment.Kind == ODataSegmentKind.Key);
             
@@ -248,7 +257,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Name = alternateKey.First().Key,
                             In = ParameterLocation.Path,
                             Description = $"Alternate key of {entityType.Name}",
-                            Schema = context.CreateEdmTypeSchema(alternateKey.First().Value.Type),
+                            Schema = context.CreateEdmTypeSchema(alternateKey.First().Value.Type, document),
                             Required = true
                         }
                      );
@@ -266,7 +275,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Name = compositekey.Key,
                                 In = ParameterLocation.Path,
                                 Description = $"Property in multi-part alternate key of {entityType.Name}",
-                                Schema = context.CreateEdmTypeSchema(compositekey.Value.Type),
+                                Schema = context.CreateEdmTypeSchema(compositekey.Value.Type, document),
                                 Required = true
                             }
                          );
@@ -282,8 +291,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="path">The ODataPath</param>
         /// <param name="context">The OData context.</param>
+        /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The created list of <see cref="OpenApiParameter"/></returns>
-        public static List<OpenApiParameter> CreatePathParameters(this ODataPath path, ODataContext context)
+        public static List<OpenApiParameter> CreatePathParameters(this ODataPath path, ODataContext context, OpenApiDocument document)
         {
             List<OpenApiParameter> pathParameters = [];
             var parameterMappings = path.CalculateParameterMapping(context.Settings);
@@ -291,7 +301,7 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (ODataKeySegment keySegment in path.OfType<ODataKeySegment>())
             {
                 IDictionary<string, string> mapping = parameterMappings[keySegment];
-                pathParameters.AddRange(context.CreateKeyParameters(keySegment, mapping));
+                pathParameters.AddRange(context.CreateKeyParameters(keySegment, document, mapping));
             }
 
             foreach (ODataOperationSegment operationSegment in path.OfType<ODataOperationSegment>())
@@ -303,7 +313,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (operationSegment.ParameterMappings != null)
                 {
-                    IList<OpenApiParameter> parameters = context.CreateParameters(function, operationSegment.ParameterMappings);
+                    IList<OpenApiParameter> parameters = context.CreateParameters(function, document, operationSegment.ParameterMappings);
                     foreach (var parameter in parameters)
                     {
                         pathParameters.AppendParameter(parameter);
@@ -312,7 +322,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 else
                 {
                     IDictionary<string, string> mappings = parameterMappings[operationSegment];
-                    IList<OpenApiParameter> parameters = context.CreateParameters(function, mappings);
+                    IList<OpenApiParameter> parameters = context.CreateParameters(function, document, mappings);
                     pathParameters.AddRange(parameters);                    
                 }
             }

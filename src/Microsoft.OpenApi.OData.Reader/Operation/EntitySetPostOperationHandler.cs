@@ -196,10 +196,10 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
             }
 
-            schema ??= new OpenApiSchemaReference(EntitySet.EntityType.FullName(), null);
+            schema ??= new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
 
             return schema;
         }

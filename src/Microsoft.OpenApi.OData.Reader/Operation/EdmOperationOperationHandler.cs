@@ -203,7 +203,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation) 
         {
-            operation.Responses = Context.CreateResponses(EdmOperation);
+            operation.Responses = Context.CreateResponses(EdmOperation, _document);
             base.SetResponses(operation);
         }
 

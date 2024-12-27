@@ -138,7 +138,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
         return new()
         {
             Type = JsonSchemaType.Array,
-            Items = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), null)
+            Items = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document)
         };
     }
 }

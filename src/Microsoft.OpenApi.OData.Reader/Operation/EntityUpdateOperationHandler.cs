@@ -151,10 +151,10 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                return EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
+                return EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
             }
 
-            return new OpenApiSchemaReference(EntitySet.EntityType.FullName(), null);
+            return new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
         }
     }
 }

@@ -123,10 +123,10 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                return EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model);
+                return EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model, _document);
             }
 
-            return new OpenApiSchemaReference(Singleton.EntityType.FullName(), null);
+            return new OpenApiSchemaReference(Singleton.EntityType.FullName(), _document);
         }
     }
 }

@@ -223,7 +223,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected OpenApiSchema GetOpenApiSchema()
         {
-            return new OpenApiSchemaReference(NavigationProperty.ToEntityType().FullName(), null);
+            return new OpenApiSchemaReference(NavigationProperty.ToEntityType().FullName(), _document);
         }
     }
 }

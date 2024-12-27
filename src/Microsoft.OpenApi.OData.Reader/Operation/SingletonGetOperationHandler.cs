@@ -89,7 +89,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model, _document);
             }
 
             if (Context.Settings.ShowLinks)
@@ -98,7 +98,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         entityKind: Singleton.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
             }
 
-            schema ??= new OpenApiSchemaReference(Singleton.EntityType.FullName(), null);
+            schema ??= new OpenApiSchemaReference(Singleton.EntityType.FullName(), _document);
 
             operation.Responses = new OpenApiResponses
             {

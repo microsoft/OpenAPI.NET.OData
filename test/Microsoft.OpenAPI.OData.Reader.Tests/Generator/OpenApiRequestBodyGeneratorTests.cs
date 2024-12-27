@@ -56,7 +56,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateRequestBody(actionImport: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateRequestBody(actionImport: null, new()));
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("actionImport", () => context.CreateRequestBody(actionImport: null));
+            Assert.Throws<ArgumentNullException>("actionImport", () => context.CreateRequestBody(actionImport: null, new()));
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBody = context.CreateRequestBody(_actionImport);
+            var requestBody = context.CreateRequestBody(_actionImport, new());
 
             // Assert
             Assert.NotNull(requestBody);
@@ -102,7 +102,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBody = context.CreateRequestBody(_actionImport);
+            var requestBody = context.CreateRequestBody(_actionImport, new());
 
             // Assert
             string json = requestBody.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
@@ -133,7 +133,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBody = context.CreateRequestBody(_action);
+            var requestBody = context.CreateRequestBody(_action, new());
 
             // Assert
             Assert.NotNull(requestBody);
@@ -159,7 +159,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBodies = context.CreateRequestBodies();
+            var requestBodies = context.CreateRequestBodies(new());
             requestBodies.TryGetValue(Common.Constants.ReferencePostRequestBodyName, out Models.OpenApiRequestBody refPostBody);
 
             // Assert

@@ -5,6 +5,7 @@
 
 using System;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -18,9 +19,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             ODataContext context = null;
+            OpenApiDocument openApiDocument = new();
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateComponents());
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateComponents(openApiDocument));
         }
 
         [Fact]
@@ -29,9 +31,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
             ODataContext context = new ODataContext(model);
+            OpenApiDocument openApiDocument = new();
 
             // Act
-            var components = context.CreateComponents();
+            var components = context.CreateComponents(openApiDocument);
 
             // Assert
             Assert.NotNull(components);

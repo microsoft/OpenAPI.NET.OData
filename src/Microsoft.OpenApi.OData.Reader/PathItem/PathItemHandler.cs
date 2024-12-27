@@ -130,7 +130,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <param name="item">The <see cref="OpenApiPathItem"/>.</param>
         protected virtual void SetParameters(OpenApiPathItem item)
         {
-            foreach (var parameter in Path.CreatePathParameters(Context))
+            foreach (var parameter in Path.CreatePathParameters(Context, _document))
             {
                 item.Parameters.AppendParameter(parameter);
             }

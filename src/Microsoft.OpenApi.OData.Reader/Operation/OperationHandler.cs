@@ -173,7 +173,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetParameters(OpenApiOperation operation)
         {
-            PathParameters = Path.CreatePathParameters(Context);
+            PathParameters = Path.CreatePathParameters(Context, _document);
             if (!Context.Settings.DeclarePathParametersOnPathItem)
             {
                 foreach (var parameter in PathParameters)

@@ -111,7 +111,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
 
     private OpenApiSchema GetOpenApiSchema()
     {
-        var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), null);
+        var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
 
         if (ComplexPropertySegment.Property.Type.IsCollection())
         {

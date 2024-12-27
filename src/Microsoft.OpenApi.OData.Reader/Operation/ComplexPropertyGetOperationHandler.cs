@@ -158,7 +158,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         }
         else
         {
-            OpenApiSchema schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), null);
+            OpenApiSchema schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
 
             SetSingleResponse(operation, schema);
         }

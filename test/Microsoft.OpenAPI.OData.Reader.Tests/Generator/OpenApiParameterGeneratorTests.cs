@@ -179,7 +179,7 @@ schema:
             ODataKeySegment keySegment = new ODataKeySegment(customer);
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment);
+            var parameters = context.CreateKeyParameters(keySegment, new());
 
             // Assert
             Assert.NotNull(parameters);
@@ -239,7 +239,7 @@ schema:
             ODataKeySegment keySegment = new ODataKeySegment(customer);
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment);
+            var parameters = context.CreateKeyParameters(keySegment, new());
 
             // Assert
             Assert.NotNull(parameters);
@@ -300,7 +300,7 @@ schema:
             };
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment);
+            var parameters = context.CreateKeyParameters(keySegment, new());
             var altParameter = parameters.Last();
 
             // Assert
@@ -346,7 +346,7 @@ schema:
             };
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment);
+            var parameters = context.CreateKeyParameters(keySegment, new());
             var altParameter1 = parameters.First();
             var altParameter2 = parameters.Last();
 
@@ -601,9 +601,9 @@ schema:
             Assert.NotNull(function3);
 
             // Act
-            IList<OpenApiParameter> parameters1 = context.CreateParameters(function1);
-            IList<OpenApiParameter> parameters2 = context.CreateParameters(function2);
-            IList<OpenApiParameter> parameters3 = context.CreateParameters(function3);
+            IList<OpenApiParameter> parameters1 = context.CreateParameters(function1, new());
+            IList<OpenApiParameter> parameters2 = context.CreateParameters(function2, new());
+            IList<OpenApiParameter> parameters3 = context.CreateParameters(function3, new());
 
             // Assert
             Assert.NotNull(parameters1);

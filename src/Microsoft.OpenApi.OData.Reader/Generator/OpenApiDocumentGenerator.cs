@@ -38,14 +38,13 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 Servers = context.CreateServers(),
 
-                Components = context.CreateComponents(),
-
                 SecurityRequirements = null,
 
                 ExternalDocs = null,
                 Tags = context.CreateTags()
             };
 
+            doc.Components = context.CreateComponents(doc);
             doc.Paths = context.CreatePaths(doc);
 
 

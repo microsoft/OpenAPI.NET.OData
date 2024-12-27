@@ -212,12 +212,12 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model, _document);
             }
 
             if (schema == null)
             {
-                schema = new OpenApiSchemaReference(TargetSchemaElement.FullName(), null);
+                schema = new OpenApiSchemaReference(TargetSchemaElement.FullName(), _document);
             }
 
             SetSingleResponse(operation, schema);

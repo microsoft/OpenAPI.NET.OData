@@ -65,7 +65,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document);
             }
 
             operation.RequestBody = new OpenApiRequestBody
@@ -85,7 +85,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document);
             }
 
             operation.Responses = new OpenApiResponses

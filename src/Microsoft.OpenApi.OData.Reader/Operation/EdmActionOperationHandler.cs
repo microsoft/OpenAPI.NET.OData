@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            if (EdmOperation is IEdmAction action && Context.CreateRequestBody(action) is OpenApiRequestBody requestBody)
+            if (EdmOperation is IEdmAction action && Context.CreateRequestBody(action, _document) is OpenApiRequestBody requestBody)
             {               
                 if (Context.Model.OperationTargetsMultiplePaths(action))
                 {

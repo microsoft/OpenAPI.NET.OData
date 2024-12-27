@@ -102,7 +102,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
             }
 
             if (Context.Settings.ShowLinks)
@@ -113,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (schema == null)
             {
-                schema = new OpenApiSchemaReference(EntitySet.EntityType.FullName(), null);
+                schema = new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
             }
 
             operation.Responses = new OpenApiResponses

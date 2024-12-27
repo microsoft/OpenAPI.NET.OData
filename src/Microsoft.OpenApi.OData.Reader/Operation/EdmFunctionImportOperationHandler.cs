@@ -36,7 +36,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (OperationImportSegment.ParameterMappings != null)
             {
-                foreach (var param in Context.CreateParameters(functionImport.Function, OperationImportSegment.ParameterMappings))
+                foreach (var param in Context.CreateParameters(functionImport.Function, _document, OperationImportSegment.ParameterMappings))
                 {
                     operation.Parameters.AppendParameter(param);
                 }
@@ -45,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 //The parameters array contains a Parameter Object for each parameter of the function overload,
                 // and it contains specific Parameter Objects for the allowed system query options.
-                foreach (var param in Context.CreateParameters(functionImport))
+                foreach (var param in Context.CreateParameters(functionImport, _document))
                 {
                     operation.Parameters.AppendParameter(param);
                 }
