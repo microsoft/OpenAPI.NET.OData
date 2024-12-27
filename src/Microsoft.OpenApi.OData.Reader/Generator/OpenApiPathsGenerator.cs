@@ -27,6 +27,7 @@ namespace Microsoft.OpenApi.OData.Generator
         public static OpenApiPaths CreatePaths(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(document, nameof(document));
 
             // Due to the power and flexibility of OData a full representation of all service capabilities
             // in the Paths Object is typically not feasible, so this mapping only describes the minimum
