@@ -95,28 +95,28 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             // $skip
-            parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(EntitySet);
+            parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $search
-            parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(EntitySet);
+            parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $filter
-            parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(EntitySet);
+            parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $count
-            parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(EntitySet);
+            parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);

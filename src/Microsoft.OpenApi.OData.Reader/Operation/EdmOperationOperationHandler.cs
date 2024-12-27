@@ -248,25 +248,25 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
 
                 // $skip
-                if (Context.CreateSkip(function) is OpenApiParameter skipParameter)
+                if (Context.CreateSkip(function, _document) is OpenApiParameter skipParameter)
                 {
                     operation.Parameters.AppendParameter(skipParameter);
                 }
 
                 // $search
-                if (Context.CreateSearch(function) is OpenApiParameter searchParameter)
+                if (Context.CreateSearch(function, _document) is OpenApiParameter searchParameter)
                 {
                     operation.Parameters.AppendParameter(searchParameter);
                 }
 
                 // $filter
-                if (Context.CreateFilter(function) is OpenApiParameter filterParameter)
+                if (Context.CreateFilter(function, _document) is OpenApiParameter filterParameter)
                 {
                     operation.Parameters.AppendParameter(filterParameter);
                 }
 
                 // $count
-                if (Context.CreateCount(function) is OpenApiParameter countParameter)
+                if (Context.CreateCount(function, _document) is OpenApiParameter countParameter)
                 {
                     operation.Parameters.AppendParameter(countParameter);
                 }

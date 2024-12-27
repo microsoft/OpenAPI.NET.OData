@@ -174,25 +174,25 @@ namespace Microsoft.OpenApi.OData.Operation
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(NavigationProperty);
+                parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(NavigationProperty);
+                parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(NavigationProperty);
+                parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(NavigationProperty);
+                parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);

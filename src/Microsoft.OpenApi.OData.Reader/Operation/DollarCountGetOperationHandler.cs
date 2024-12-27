@@ -182,13 +182,13 @@ namespace Microsoft.OpenApi.OData.Operation
 
             OpenApiParameter parameter;
 
-            parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(annotatable);
+            parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(annotatable, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
-            parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(annotatable);
+            parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(annotatable, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);

@@ -346,10 +346,10 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// So, how about for the navigation property.
 		return [
             Context.CreateTop(annotable, _document),
-			Context.CreateSkip(annotable),
-			Context.CreateSearch(annotable),
-			Context.CreateFilter(annotable),
-			Context.CreateCount(annotable),
+			Context.CreateSkip(annotable, _document),
+			Context.CreateSearch(annotable, _document),
+			Context.CreateFilter(annotable, _document),
+			Context.CreateCount(annotable, _document),
 		];
 	}
 

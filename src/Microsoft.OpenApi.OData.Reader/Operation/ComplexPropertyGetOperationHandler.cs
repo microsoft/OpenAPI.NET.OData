@@ -78,28 +78,28 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             }
 
             // $skip
-            parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(ComplexPropertySegment.Property);
+            parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $search
-            parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(ComplexPropertySegment.Property);
+            parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $filter
-            parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(ComplexPropertySegment.Property);
+            parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $count
-            parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(ComplexPropertySegment.Property);
+            parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
