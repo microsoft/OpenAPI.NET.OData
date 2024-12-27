@@ -37,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Generator
             settings.EnableKeyAsSegment = context.KeyAsSegment;
             foreach (ODataPath path in context.AllPaths)
             {
-                IPathItemHandler handler = context.PathItemHanderProvider.GetHandler(path.Kind);
+                IPathItemHandler handler = context.PathItemHandlerProvider.GetHandler(path.Kind);
                 if (handler == null)
                 {
                     continue;

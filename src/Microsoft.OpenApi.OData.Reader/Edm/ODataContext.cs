@@ -49,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Edm
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
 
             OperationHandlerProvider = new OperationHandlerProvider();
-            PathItemHanderProvider = new PathItemHandlerProvider();
+            PathItemHandlerProvider = new PathItemHandlerProvider();
 
             // If no path provider, use the default path provider.
             _pathProvider = settings.PathProvider ?? new ODataPathProvider();
@@ -76,7 +76,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the path item handler provider.
         /// </summary>
-        public IPathItemHandlerProvider PathItemHanderProvider { get; }
+        public IPathItemHandlerProvider PathItemHandlerProvider { get; }
 
         /// <summary>
         /// Gets the operation handler provider.
