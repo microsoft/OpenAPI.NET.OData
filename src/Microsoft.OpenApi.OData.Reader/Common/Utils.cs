@@ -152,11 +152,11 @@ namespace Microsoft.OpenApi.OData.Common
                 return;
             }
 
-            Dictionary<string, string> atrributesValueMap = GetCustomXMLAttributesValueMapping(context.Model, element, context.Settings.CustomXMLAttributesMapping);
+            Dictionary<string, string> attributesValueMap = GetCustomXMLAttributesValueMapping(context.Model, element, context.Settings.CustomXMLAttributesMapping);
 
-            if (atrributesValueMap?.Any() ?? false)
+            if (attributesValueMap?.Any() ?? false)
             {
-                foreach (var item in atrributesValueMap)
+                foreach (var item in attributesValueMap)
                 {
                     extensions.TryAdd(item.Key, new OpenApiAny(item.Value));
                 }
@@ -173,13 +173,13 @@ namespace Microsoft.OpenApi.OData.Common
         /// <returns>A dictionary of extension names mapped to the custom attribute values.</returns>
         private static Dictionary<string, string> GetCustomXMLAttributesValueMapping(IEdmModel model, IEdmElement element, Dictionary<string, string> customXMLAttributesMapping)
         {
-            Dictionary<string, string> atrributesValueMap = new();
+            Dictionary<string, string> attributesValueMap = new();
 
             if ((!customXMLAttributesMapping?.Any() ?? true) ||
                 model == null ||
                 element == null)
             {
-                return atrributesValueMap;
+                return attributesValueMap;
             }
 
             foreach (var item in customXMLAttributesMapping)
@@ -193,11 +193,11 @@ namespace Microsoft.OpenApi.OData.Common
 
                 if (!string.IsNullOrEmpty(attributeValue))
                 {
-                    atrributesValueMap.TryAdd(extensionName, attributeValue);
+                    attributesValueMap.TryAdd(extensionName, attributeValue);
                 }
             }
 
-            return atrributesValueMap;
+            return attributesValueMap;
         }
 
         /// <summary>
