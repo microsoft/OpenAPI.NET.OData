@@ -11,6 +11,7 @@ using Microsoft.OpenApi.OData.Tests;
 using Microsoft.OpenApi.Models;
 using Xunit;
 using Microsoft.OpenApi.OData.Edm;
+using System.Text.Json.Nodes;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {
@@ -108,7 +109,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(response);
             string json = response.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
-            Assert.Equal(@"{
+            var expectedJson = @"{
   ""description"": ""error"",
   ""content"": {
     ""application/json"": {
@@ -117,7 +118,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
       }
     }
   }
-}".ChangeLineBreaks(), json);
+}";
+            var expectedJsonNode = JsonNode.Parse(expectedJson);
+            var actualJsonNode = JsonNode.Parse(json);
+            Assert.True(JsonNode.DeepEquals(expectedJsonNode, actualJsonNode));
         }
 
         [Fact]
@@ -359,7 +363,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotEmpty(responses);
             if (enableOdataAnnotationRef)
             {
-                Assert.Equal(@"{
+                var expectedJson = @"{
   ""200"": {
     ""description"": ""Success"",
     ""content"": {
@@ -390,11 +394,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""default"": {
     ""$ref"": ""#/components/responses/error""
   }
-}".ChangeLineBreaks(), json);
+}";
+                var expectedJsonNode = JsonNode.Parse(expectedJson);
+                var actualJsonNode = JsonNode.Parse(json);
+                Assert.True(JsonNode.DeepEquals(expectedJsonNode, actualJsonNode));
             }
             else
             {
-                Assert.Equal(@"{
+                var expectedJson = @"{
   ""200"": {
     ""description"": ""Success"",
     ""content"": {
@@ -425,7 +432,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""default"": {
     ""$ref"": ""#/components/responses/error""
   }
-}".ChangeLineBreaks(), json);
+}";
+                var expectedJsonNode = JsonNode.Parse(expectedJson);
+                var actualJsonNode = JsonNode.Parse(json);
+                Assert.True(JsonNode.DeepEquals(expectedJsonNode, actualJsonNode));
             }
         }
     }

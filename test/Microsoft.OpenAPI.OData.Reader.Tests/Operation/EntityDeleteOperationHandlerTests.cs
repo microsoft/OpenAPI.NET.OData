@@ -14,7 +14,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntityDeleteOperationHandlerTests
     {
-        private EntityDeleteOperationHandler _operationHandler = new EntityDeleteOperationHandler(new());
+        private readonly EntityDeleteOperationHandler _operationHandler = new EntityDeleteOperationHandler(new());
 
         [Theory]
         [InlineData(true)]

@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -106,8 +107,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             string json = requestBody.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-
-            Assert.Equal(@"{
+            var expectedJson = @"{
   ""description"": ""Action parameters"",
   ""content"": {
     ""application/json"": {
@@ -123,7 +123,12 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
     }
   },
   ""required"": true
-}".ChangeLineBreaks(), json);
+}";
+
+            var actualJsonNode = JsonNode.Parse(json);
+            var expectedJsonNode = JsonNode.Parse(expectedJson);
+
+            Assert.True(JsonNode.DeepEquals(actualJsonNode, expectedJsonNode));
         }
 
         [Fact]
