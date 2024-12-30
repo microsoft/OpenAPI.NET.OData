@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
@@ -48,8 +49,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Collection(parameters,
                 item => // $top
                 {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+                    var json = JsonNode.Parse(item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+                    var expected = JsonNode.Parse(@"{
   ""name"": ""$top"",
   ""in"": ""query"",
   ""description"": ""Show only the first n items"",
@@ -61,14 +62,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
     ""format"": ""int64""
   },
   ""example"": 50
-}";
+}");
 
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
+                    Assert.True(JsonNode.DeepEquals(expected, json));
                 },
                 item => // $skip
                 {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+                    var json = JsonNode.Parse(item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+                    var expected = JsonNode.Parse(@"{
   ""name"": ""$skip"",
   ""in"": ""query"",
   ""description"": ""Skip the first n items"",
@@ -79,14 +80,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
     ""type"": ""number"",
     ""format"": ""int64""
   }
-}";
+}");
 
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
+                    Assert.True(JsonNode.DeepEquals(expected, json));
                 },
                 item => // $count
                 {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+                    var json = JsonNode.Parse(item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+                    var expected = JsonNode.Parse(@"{
   ""name"": ""$count"",
   ""in"": ""query"",
   ""description"": ""Include count of items"",
@@ -95,14 +96,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""schema"": {
     ""type"": ""boolean""
   }
-}";
+}");
 
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
+                    Assert.True(JsonNode.DeepEquals(expected, json));
                 },
                 item => // $filter
                 {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+                    var json = JsonNode.Parse(item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+                    var expected = JsonNode.Parse(@"{
   ""name"": ""$filter"",
   ""in"": ""query"",
   ""description"": ""Filter items by property values"",
@@ -111,14 +112,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""schema"": {
     ""type"": ""string""
   }
-}";
+}");
 
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
+                    Assert.True(JsonNode.DeepEquals(expected, json));
                 },
                 item => // $search
                 {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+                    var json = JsonNode.Parse(item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+                    var expected = JsonNode.Parse(@"{
   ""name"": ""$search"",
   ""in"": ""query"",
   ""description"": ""Search items by search phrases"",
@@ -127,9 +128,9 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""schema"": {
     ""type"": ""string""
   }
-}";
+}");
 
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
+                    Assert.True(JsonNode.DeepEquals(expected, json));
                 });
         }
 
@@ -185,12 +186,12 @@ schema:
             Assert.NotNull(parameters);
             var parameter = Assert.Single(parameters);
 
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expected;
+            var json = JsonNode.Parse(parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            JsonNode expected;
 
             if (prefix)
             {
-                expected = @"{
+                expected = JsonNode.Parse(@"{
   ""name"": ""Customer-Id"",
   ""in"": ""path"",
   ""description"": ""The unique identifier of Customer"",
@@ -200,11 +201,11 @@ schema:
     ""nullable"": true
   },
   ""x-ms-docs-key-type"": ""Customer""
-}";
+}");
             }
             else
             {
-                expected = @"{
+                expected = JsonNode.Parse(@"{
   ""name"": ""Id"",
   ""in"": ""path"",
   ""description"": ""The unique identifier of Customer"",
@@ -214,10 +215,10 @@ schema:
     ""nullable"": true
   },
   ""x-ms-docs-key-type"": ""Customer""
-}";
+}");
             }
 
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+            Assert.True(JsonNode.DeepEquals(expected, json));
         }
 
         [Theory]

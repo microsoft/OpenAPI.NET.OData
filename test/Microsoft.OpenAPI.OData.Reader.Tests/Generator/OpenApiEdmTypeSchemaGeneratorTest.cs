@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -61,26 +62,26 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(context.Settings.OpenApiSpecVersion);
+            var json = JsonNode.Parse(schema.SerializeAsJson(context.Settings.OpenApiSpecVersion));
 
             // & Assert
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""$ref"": ""#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
   }
-}".ChangeLineBreaks(), json);
+}"), json));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""$ref"": ""#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
   }
-}".ChangeLineBreaks(), json);
+}"), json));
             }           
         }
 
@@ -97,15 +98,15 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""$ref"": ""#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
   }
-}".ChangeLineBreaks(), json);
+}"), json));
         }
 
         [Fact]
@@ -120,15 +121,15 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""type"": ""string""
   }
-}".ChangeLineBreaks(), json);
+}"), json));
         }
 
         [Fact]
@@ -143,10 +144,10 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""maximum"": 2147483647,
@@ -155,7 +156,7 @@ namespace Microsoft.OpenApi.OData.Tests
     ""format"": ""int32"",
     ""nullable"": true
   }
-}".ChangeLineBreaks(), json);
+}"), json));
         }
 
         [Theory]
@@ -319,21 +320,21 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             if (isNullable)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""string"",
   ""nullable"": true
-}".ChangeLineBreaks(), json);
+}"), json));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""string""
-}".ChangeLineBreaks(), json);
+}"), json));
             }
         }
 
@@ -350,27 +351,27 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             if (isNullable)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
   ""type"": ""number"",
   ""format"": ""int32"",
   ""nullable"": true
-}".ChangeLineBreaks(), json);
+}"), json));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
   ""type"": ""number"",
   ""format"": ""int32""
-}".ChangeLineBreaks(), json);
+}"), json));
             }
         }
 
@@ -473,25 +474,25 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             if (isNullable)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""pattern"": ""^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"",
   ""type"": ""string"",
   ""format"": ""uuid"",
   ""nullable"": true
-}".ChangeLineBreaks(), json);
+}"), json));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""pattern"": ""^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"",
   ""type"": ""string"",
   ""format"": ""uuid""
-}".ChangeLineBreaks(), json);
+}"), json));
             }
         }
 
