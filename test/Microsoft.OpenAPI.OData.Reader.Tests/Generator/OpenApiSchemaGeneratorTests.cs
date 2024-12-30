@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData.Tests
 {
     public class OpenApiSchemaGeneratorTest
     {
-        private ITestOutputHelper _output;
+        private readonly ITestOutputHelper _output;
         public OpenApiSchemaGeneratorTest(ITestOutputHelper output)
         {
             _output = output;
@@ -32,7 +32,7 @@ namespace Microsoft.OpenApi.OData.Tests
             OpenApiDocument openApiDocument = new();
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateSchemas(openApiDocument));
+            Assert.Throws<ArgumentNullException>("context", () => context.AddSchemasToDocument(openApiDocument));
         }
 
         [Theory]
@@ -54,10 +54,10 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = new(model, settings);
 
             // Act & Assert
-            var schemas = context.CreateSchemas(openApiDocument);
+            context.AddSchemasToDocument(openApiDocument);
 
-            var stringCollectionResponse = schemas["StringCollectionResponse"];
-            var flightCollectionResponse = schemas["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
+            var stringCollectionResponse = openApiDocument.Components.Schemas["StringCollectionResponse"];
+            var flightCollectionResponse = openApiDocument.Components.Schemas["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
 
             if (enablePagination || enableCount)
             {
@@ -97,9 +97,9 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = new(model, settings);
 
             // Act & Assert
-            var schemas = context.CreateSchemas(openApiDocument);
+            context.AddSchemasToDocument(openApiDocument);
 
-            schemas.TryGetValue(Constants.ReferenceCreateSchemaName, out OpenApiSchema refRequestBody);
+            openApiDocument.Components.Schemas.TryGetValue(Constants.ReferenceCreateSchemaName, out OpenApiSchema refRequestBody);
 
             Assert.NotNull(refRequestBody);
             Assert.Equal(JsonSchemaType.Object, refRequestBody.Type);
@@ -126,13 +126,13 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = new(model, settings);
 
             // Act
-            var schemas = context.CreateSchemas(openApiDocument);
+            context.AddSchemasToDocument(openApiDocument);
 
             // Assert
-            Assert.NotNull(schemas);
-            Assert.NotEmpty(schemas);
-            schemas.TryGetValue(Constants.BaseCollectionPaginationCountResponse, out OpenApiSchema refPaginationCount);
-            schemas.TryGetValue(Constants.BaseDeltaFunctionResponse, out OpenApiSchema refDeltaFunc);
+            Assert.NotNull(openApiDocument.Components.Schemas);
+            Assert.NotEmpty(openApiDocument.Components.Schemas);
+            openApiDocument.Components.Schemas.TryGetValue(Constants.BaseCollectionPaginationCountResponse, out OpenApiSchema refPaginationCount);
+            openApiDocument.Components.Schemas.TryGetValue(Constants.BaseDeltaFunctionResponse, out OpenApiSchema refDeltaFunc);
             if (enableOdataAnnotationRef)
             {
                 Assert.NotNull(refPaginationCount);

@@ -5,15 +5,15 @@
 
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests;
 public class ODataTypeCastGetOperationHandlerTests
 {
-    private readonly ODataTypeCastGetOperationHandler _operationHandler = new (new());
-
     [Theory]
     [InlineData(true, true, true)]
     [InlineData(true, false, true)]
@@ -42,8 +42,11 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataTypeCastSegment(employee, model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
 
         // Assert
         Assert.NotNull(operation);
@@ -101,8 +104,12 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataKeySegment(people.EntityType),
                                                                     new ODataTypeCastSegment(employee,model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
+
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
 
         // Assert
         Assert.NotNull(operation);
@@ -154,8 +161,11 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataPath path = new(new ODataNavigationSourceSegment(people),
                                                                     new ODataTypeCastSegment(employee,model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
 
         // Assert
         Assert.NotNull(operation);
@@ -209,8 +219,11 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataKeySegment(people.EntityType),
                                                                     new ODataTypeCastSegment(employee,model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
 
         // Assert
         Assert.NotNull(operation);
@@ -266,8 +279,11 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataTypeCastSegment(employee, model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
 
         // Assert
         Assert.NotNull(operation);
@@ -319,8 +335,11 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataPath path = new(new ODataNavigationSourceSegment(me),
                                                                     new ODataTypeCastSegment(employee, model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
 
         // Assert
         Assert.NotNull(operation);
@@ -367,8 +386,11 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataTypeCastSegment(manager, model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
 
         // Assert
         Assert.NotNull(operation);

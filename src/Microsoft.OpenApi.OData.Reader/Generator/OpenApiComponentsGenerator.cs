@@ -26,42 +26,17 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
-            // "components": {
-            //   "schemas": …,
-            //   "parameters": …,
-            //   "responses": …,
-            //   "requestBodies": … 
-            //  }
-            return new OpenApiComponents
-            {
-                // The value of schemas is a map of Schema Objects.
-                // Each entity type, complex type, enumeration type, and type definition directly
-                // or indirectly used in the paths field is represented as a name/value pair of the schemas map.
-                Schemas = context.CreateSchemas(document),
-
-                // The value of parameters is a map of Parameter Objects.
-                // It allows defining query options and headers that can be reused across operations of the service.
-                Parameters = context.CreateParameters(),
-
-                // The value of responses is a map of Response Objects.
-                // It allows defining responses that can be reused across operations of the service.
-                Responses = context.CreateResponses(document),
-
-                // The value of requestBodies is a map of RequestBody Objects.
-                // It allows refining request bodies that can be reused across operations of the service.
-                RequestBodies = context.CreateRequestBodies(document),
-
-                Examples = context.CreateExamples(),
-
-                SecuritySchemes = context.CreateSecuritySchemes(),
-
-                // Make others as null.
-                Links = null,
-
-                Callbacks = null,
-
-                Extensions = null
-            };
+            context.AddSchemasToDocument(document);
+            //TODO convert all other create methods to add
+            document.Components.Parameters = context.CreateParameters();
+            document.Components.Responses = context.CreateResponses(document);
+            document.Components.RequestBodies = context.CreateRequestBodies(document);
+            document.Components.Examples = context.CreateExamples();
+            document.Components.SecuritySchemes = context.CreateSecuritySchemes();
+            document.Components.Links = null;
+            document.Components.Callbacks = null;
+            document.Components.Extensions = null;
+            return document.Components;
         }
     }
 }
