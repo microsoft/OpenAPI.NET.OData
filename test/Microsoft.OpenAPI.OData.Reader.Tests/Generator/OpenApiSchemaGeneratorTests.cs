@@ -190,12 +190,12 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateStructuredTypeSchema(entity, new());
             var derivedSchema = context.CreateStructuredTypeSchema(derivedEntity, new());
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
             // Assert
             Assert.True(derivedSchema.AllOf.FirstOrDefault(x => derivedType.Equals(x.Title))?.Properties.ContainsKey("@odata.type"));
             Assert.NotNull(json);
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""allOf"": [
     {
       ""$ref"": ""#/components/schemas/microsoft.graph.entity""
@@ -258,7 +258,7 @@ namespace Microsoft.OpenApi.OData.Tests
       }
     }
   ]
-}".ChangeLineBreaks(), json);
+}"), json));
         }
 
         [Theory]
