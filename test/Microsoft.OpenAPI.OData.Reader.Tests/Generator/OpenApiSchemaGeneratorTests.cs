@@ -72,9 +72,9 @@ namespace Microsoft.OpenApi.OData.Tests
                     Assert.Equal(JsonSchemaType.Array, item.Properties["value"].Type);
                 });
 
-                Assert.Equal(JsonSchemaType.Array, flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Type);
-                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight",
-                    flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Items.Reference.Id);
+                Assert.Single(flightCollectionResponse.AllOf?.Where(x => x.Properties.TryGetValue("value", out var valueProp) && 
+                                                                (valueProp.Type & JsonSchemaType.Array) is JsonSchemaType.Array &&
+                                                                "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight".Equals(valueProp.Items.Reference.Id)));
             }
             else
             {
