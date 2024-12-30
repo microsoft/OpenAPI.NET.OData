@@ -137,7 +137,7 @@ public class ODataTypeCastGetOperationHandlerTests
         {
             Assert.Null(operation.OperationId);
         }
-        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
+        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties?.ContainsKey("value") ?? false);
     }
     [Theory]
     [InlineData(true, true)]
