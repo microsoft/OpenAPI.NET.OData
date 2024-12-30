@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -832,7 +833,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             Assert.NotNull(schema.Enum);
             Assert.Equal(2, schema.Enum.Count);
-            Assert.Equal([ "Blue", "White" ], schema.Enum.Select(e => e));
+            Assert.Equal([ "Blue", "White" ], schema.Enum.Select(e => e.ToString()));
 
             // Act
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
@@ -950,28 +951,28 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreatePropertySchema(property, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(specVersion);
+            var json = JsonNode.Parse(schema.SerializeAsJson(specVersion));
 
             // Assert
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""format"": ""duration"",
   ""description"": ""The length of the appointment, denoted in ISO8601 format."",
   ""pattern"": ""^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$"",
   ""type"": ""string"",
   ""readOnly"": true
-}".ChangeLineBreaks(), json);
+}"), json));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""pattern"": ""^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$"",
   ""type"": ""string"",
   ""description"": ""The length of the appointment, denoted in ISO8601 format."",
   ""format"": ""duration"",
   ""readOnly"": true
-}".ChangeLineBreaks(), json);
+}"), json));
             }
         }
         #endregion
