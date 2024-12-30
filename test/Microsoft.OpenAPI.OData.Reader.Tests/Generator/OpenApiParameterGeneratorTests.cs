@@ -248,8 +248,8 @@ schema:
 
             // 1st
             var parameter = parameters.First();
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expected = @"{
+            var json = JsonNode.Parse(parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expected = JsonNode.Parse(@"{
   ""name"": ""firstName"",
   ""in"": ""path"",
   ""description"": ""Property in multi-part unique identifier of Customer"",
@@ -259,13 +259,13 @@ schema:
     ""nullable"": true
   },
   ""x-ms-docs-key-type"": ""Customer""
-}";
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+}");
+            Assert.True(JsonNode.DeepEquals(expected, json));
 
             // 2nd
             parameter = parameters.Last();
-            json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            expected = @"{
+            json = JsonNode.Parse(parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            expected = JsonNode.Parse(@"{
   ""name"": ""lastName"",
   ""in"": ""path"",
   ""description"": ""Property in multi-part unique identifier of Customer"",
@@ -275,8 +275,8 @@ schema:
     ""nullable"": true
   },
   ""x-ms-docs-key-type"": ""Customer""
-}";
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+}");
+            Assert.True(JsonNode.DeepEquals(expected, json));
         }
 
         [Fact]
@@ -307,8 +307,8 @@ schema:
             // Assert
             Assert.NotNull(parameters);
             Assert.Single(parameters);
-            string json = altParameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            var json = JsonNode.Parse(altParameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expected = JsonNode.Parse(@"{
   ""name"": ""AltId1"",
   ""in"": ""path"",
   ""description"": ""Alternate key of Customer"",
@@ -317,7 +317,8 @@ schema:
     ""type"": ""string"",
     ""nullable"": true
   }
-}".ChangeLineBreaks(), json);
+}");
+            Assert.True(JsonNode.DeepEquals(expected, json));
         }
 
         [Fact]
@@ -354,8 +355,8 @@ schema:
             // Assert
             Assert.NotNull(parameters);
             Assert.Equal(2, parameters.Count);
-            string json1 = altParameter1.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            var json1 = JsonNode.Parse(altParameter1.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expected1 = JsonNode.Parse(@"{
   ""name"": ""AltId1"",
   ""in"": ""path"",
   ""description"": ""Property in multi-part alternate key of Customer"",
@@ -364,10 +365,11 @@ schema:
     ""type"": ""string"",
     ""nullable"": true
   }
-}".ChangeLineBreaks(), json1);
+}");
+            Assert.True(JsonNode.DeepEquals(expected1, json1));
 
-            string json2 = altParameter2.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            var json2 = JsonNode.Parse(altParameter2.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expected2 = JsonNode.Parse(@"{
   ""name"": ""AltId2"",
   ""in"": ""path"",
   ""description"": ""Property in multi-part alternate key of Customer"",
@@ -376,7 +378,8 @@ schema:
     ""type"": ""string"",
     ""nullable"": true
   }
-}".ChangeLineBreaks(), json2);
+}");
+            Assert.True(JsonNode.DeepEquals(expected2, json2));
         }
 
         [Theory]
@@ -456,9 +459,8 @@ schema:
             // Assert
             Assert.NotNull(parameter);
 
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-
-            string expected = $@"{{
+            var json = JsonNode.Parse(parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expectedJson = JsonNode.Parse($@"{{
   ""name"": ""$orderby"",
   ""in"": ""query"",
   ""description"": ""Order items by property values"",
@@ -471,9 +473,9 @@ schema:
       {itemsText}
     }}
   }}
-}}";
+}}");
 
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+            Assert.True(JsonNode.DeepEquals(expectedJson, json));
         }
 
         private void VerifyCreateSelectParameter(IEdmElement edmElement, ODataContext context, string selectItemsText = null)
@@ -503,9 +505,8 @@ schema:
             // Assert
             Assert.NotNull(parameter);
 
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-
-            string expected = $@"{{
+            var json = JsonNode.Parse(parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expectedJson = JsonNode.Parse($@"{{
   ""name"": ""$select"",
   ""in"": ""query"",
   ""description"": ""Select properties to be returned"",
@@ -518,9 +519,8 @@ schema:
       {itemsText}
     }}
   }}
-}}";
-
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+}}");
+            Assert.True(JsonNode.DeepEquals(expectedJson, json));
         }
 
         private void VerifyCreateExpandParameter(IEdmElement edmElement, ODataContext context, string expandItemsText)
@@ -545,9 +545,8 @@ schema:
             // Assert
             Assert.NotNull(parameter);
 
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-
-            string expected = expandItemsText == null
+            var json = JsonNode.Parse(parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expectedJson = expandItemsText == null
                 ? 
                 $@"{{
   ""name"": ""$expand"",
@@ -579,8 +578,8 @@ schema:
     }}
   }}
 }}";
-
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+            var expectedJsonNode = JsonNode.Parse(expectedJson);
+            Assert.True(JsonNode.DeepEquals(expectedJsonNode, json));
         }
 
         [Fact]
@@ -608,17 +607,17 @@ schema:
 
             // Assert
             Assert.NotNull(parameters1);
-            OpenApiParameter parameter1 = Assert.Single(parameters1);
+            var parameter1 = Assert.Single(parameters1);
 
             Assert.NotNull(parameters2);
-            OpenApiParameter parameter2 = Assert.Single(parameters2);
+            var parameter2 = Assert.Single(parameters2);
 
             Assert.NotNull(parameters3);
             Assert.Equal(4, parameters3.Count);
-            OpenApiParameter parameter3 = parameters3.First();
+            var parameter3 = parameters3.First();
 
-            string json1 = parameter1.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expectedPayload1 = $@"{{
+            var json1 = JsonNode.Parse(parameter1.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expectedPayload1 = JsonNode.Parse($@"{{
   ""name"": ""ids"",
   ""in"": ""path"",
   ""description"": ""The URL-encoded JSON object"",
@@ -633,10 +632,11 @@ schema:
       }}
     }}
   }}
-}}";
+}}");
+            Assert.True(JsonNode.DeepEquals(expectedPayload1, json1));
 
-            string json2 = parameter2.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expectedPayload2 = $@"{{
+            var json2 = JsonNode.Parse(parameter2.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expectedPayload2 = JsonNode.Parse($@"{{
   ""name"": ""resource"",
   ""in"": ""path"",
   ""required"": true,
@@ -644,21 +644,19 @@ schema:
     ""type"": ""string"",
     ""nullable"": true
   }}
-}}";
+}}");
+            Assert.True(JsonNode.DeepEquals(expectedPayload2, json2));
 
-            string json3 = parameter3.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expectedPayload3 = $@"{{
+            var json3 = JsonNode.Parse(parameter3.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var expectedPayload3 = JsonNode.Parse($@"{{
   ""name"": ""directoryScopeId"",
   ""in"": ""query"",
   ""schema"": {{
     ""type"": ""string"",
     ""nullable"": true
   }}
-}}";
-
-            Assert.Equal(expectedPayload1.ChangeLineBreaks(), json1);
-            Assert.Equal(expectedPayload2.ChangeLineBreaks(), json2);
-            Assert.Equal(expectedPayload3.ChangeLineBreaks(), json3);
+}}");
+            Assert.True(JsonNode.DeepEquals(expectedPayload3, json3));
         }
 
         public static IEdmModel GetEdmModel()
