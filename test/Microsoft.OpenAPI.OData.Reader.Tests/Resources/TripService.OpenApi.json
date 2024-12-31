@@ -35129,8 +35129,8 @@
         }
       },
       "ODataCountResponse": {
-        "type": "integer",
-        "format": "int32"
+        "type": "number",
+        "format": "int64"
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse": {
         "title": "Collection of Person",
@@ -35532,7 +35532,8 @@
         "explode": false,
         "schema": {
           "minimum": 0,
-          "type": "integer"
+          "type": "number",
+          "format": "int64"
         },
         "example": 50
       },
@@ -35544,7 +35545,8 @@
         "explode": false,
         "schema": {
           "minimum": 0,
-          "type": "integer"
+          "type": "number",
+          "format": "int64"
         }
       },
       "count": {

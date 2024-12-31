@@ -50,8 +50,8 @@ definitions:
     description: The structure of this object is service-specific
     type: object
   ODataCountResponse:
-    format: int32
-    type: integer
+    format: int64
+    type: number
   ReferenceUpdate:
     type: object
     properties:
@@ -77,13 +77,15 @@ parameters:
     in: query
     name: $top
     description: Show only the first n items
-    type: integer
+    type: number
+    format: int64
     minimum: 0
   skip:
     in: query
     name: $skip
     description: Skip the first n items
-    type: integer
+    type: number
+    format: int64
     minimum: 0
   count:
     in: query
