@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Linq;
@@ -19,7 +20,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntitySetPostOperationHandlerTests
     {
-        private EntitySetPostOperationHandler _operationHandler = new EntitySetPostOperationHandler(new());
+        public EntitySetPostOperationHandlerTests()
+        {
+          _operationHandler = new EntitySetPostOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private readonly EntitySetPostOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true, true)]
@@ -57,6 +64,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var post = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(post);

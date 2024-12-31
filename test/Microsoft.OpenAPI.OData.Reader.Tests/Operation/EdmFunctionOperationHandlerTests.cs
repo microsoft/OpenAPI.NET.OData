@@ -11,6 +11,7 @@ using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -18,7 +19,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmFunctionOperationHandlerTests
     {
-        private EdmFunctionOperationHandler _operationHandler = new(new());
+        public EdmFunctionOperationHandlerTests()
+        {
+          _operationHandler = new EdmFunctionOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private readonly EdmFunctionOperationHandler _operationHandler;
         #region OperationHandlerTests
         [Fact]
         public void SetsDeprecationInformation()
@@ -94,6 +101,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -131,6 +139,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);

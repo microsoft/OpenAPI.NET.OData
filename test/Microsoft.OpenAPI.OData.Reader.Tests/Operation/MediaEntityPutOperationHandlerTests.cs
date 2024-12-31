@@ -4,8 +4,10 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Linq;
 using Xunit;
@@ -14,7 +16,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class MediaEntityPutOperationHandlerTests
     {
-        private readonly MediaEntityPutOperationHandler _operationalHandler = new MediaEntityPutOperationHandler(new());
+        public MediaEntityPutOperationHandlerTests()
+        {
+          _operationHandler = new (_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly MediaEntityPutOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, false)]
@@ -84,9 +91,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamPropertySegment(sp2.Name));
 
             // Act
-            var putOperation = _operationalHandler.CreateOperation(context, path);
-            var putOperation2 = _operationalHandler.CreateOperation(context, path2);
-            var putOperation3 = _operationalHandler.CreateOperation(context, path3);
+            var putOperation = _operationHandler.CreateOperation(context, path);
+            var putOperation2 = _operationHandler.CreateOperation(context, path2);
+            var putOperation3 = _operationHandler.CreateOperation(context, path3);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(putOperation);
@@ -176,7 +184,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamPropertySegment(property.Name));
 
             // Act
-            var operation = _operationalHandler.CreateOperation(context, path);
+            var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);

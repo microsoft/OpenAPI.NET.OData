@@ -4,7 +4,9 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using System.Linq;
 using Xunit;
@@ -13,7 +15,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class NavigationPropertyDeleteOperationHandlerTests
     {
-        private NavigationPropertyDeleteOperationHandler _operationHandler = new NavigationPropertyDeleteOperationHandler(new());
+        public NavigationPropertyDeleteOperationHandlerTests()
+        {
+          _operationHandler = new (_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly NavigationPropertyDeleteOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, false)]
@@ -39,6 +46,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -81,6 +89,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
+
 
             // Assert
             Assert.NotNull(operation);

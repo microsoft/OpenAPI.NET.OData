@@ -4,7 +4,9 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using System.Linq;
 using Xunit;
@@ -13,7 +15,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class RefPutOperationHandlerTests
     {
-        private RefPutOperationHandler _operationHandler = new RefPutOperationHandler(new());
+        public RefPutOperationHandlerTests()
+        {
+          _operationHandler = new (_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly RefPutOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true)]
@@ -42,6 +49,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);

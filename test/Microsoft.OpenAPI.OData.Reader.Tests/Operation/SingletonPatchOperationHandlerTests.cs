@@ -8,6 +8,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -16,7 +17,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class SingletonPatchOperationHandlerTests
     {
-        private SingletonPatchOperationHandler _operationHandler = new SingletonPatchOperationHandler(new());
+        public SingletonPatchOperationHandlerTests()
+        {
+          _operationHandler = new (_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly SingletonPatchOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true)]
@@ -45,6 +51,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var patch = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(patch);
@@ -197,6 +204,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var patch = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(patch);

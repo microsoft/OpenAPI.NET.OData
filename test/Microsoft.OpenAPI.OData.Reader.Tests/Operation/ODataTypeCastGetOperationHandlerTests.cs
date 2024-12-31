@@ -47,6 +47,8 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
         var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
+
 
         // Assert
         Assert.NotNull(operation);
@@ -110,6 +112,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         // Act
         var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);
@@ -166,6 +169,7 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
         var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);
@@ -224,6 +228,8 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
         var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
+
 
         // Assert
         Assert.NotNull(operation);
@@ -284,6 +290,7 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
         var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);
@@ -340,6 +347,7 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
         var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);
@@ -391,6 +399,7 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
         var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);

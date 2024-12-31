@@ -8,6 +8,7 @@ using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using System.Linq;
 using System.Xml.Linq;
 using Xunit;
@@ -16,7 +17,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class MediaEntityGetOperationHandlerTests
     {
-        private readonly MediaEntityGetOperationHandler _operationalHandler = new MediaEntityGetOperationHandler(new());
+        public MediaEntityGetOperationHandlerTests()
+        {
+          _operationHandler = new (_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private readonly MediaEntityGetOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true)]
@@ -82,8 +89,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamContentSegment());
 
             // Act
-            var getOperation = _operationalHandler.CreateOperation(context, path);
-            var getOperation2 = _operationalHandler.CreateOperation(context, path2);
+            var getOperation = _operationHandler.CreateOperation(context, path);
+            var getOperation2 = _operationHandler.CreateOperation(context, path2);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(getOperation);
@@ -202,7 +210,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamPropertySegment(property.Name));
 
             // Act
-            var operation = _operationalHandler.CreateOperation(context, path);
+            var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);

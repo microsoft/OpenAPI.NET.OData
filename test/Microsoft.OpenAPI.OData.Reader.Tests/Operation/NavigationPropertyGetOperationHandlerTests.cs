@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.PathItem.Tests;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -16,7 +18,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class NavigationPropertyGetOperationHandlerTests
     {
-        private NavigationPropertyGetOperationHandler _operationHandler = new NavigationPropertyGetOperationHandler(new());
+        public NavigationPropertyGetOperationHandlerTests()
+        {
+          _operationHandler = new (_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly NavigationPropertyGetOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true)]
@@ -42,6 +49,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -85,6 +93,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -122,6 +131,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -178,6 +188,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Act
             var operation1 = _operationHandler.CreateOperation(context, path1);
             var operation2 = _operationHandler.CreateOperation(context, path2);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation1);
@@ -284,6 +295,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -362,6 +374,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);

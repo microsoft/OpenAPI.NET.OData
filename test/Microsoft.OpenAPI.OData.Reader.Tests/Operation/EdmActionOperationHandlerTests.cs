@@ -4,11 +4,14 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -16,7 +19,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmActionOperationHandlerTests
     {
-        private EdmActionOperationHandler _operationHandler = new EdmActionOperationHandler(new());
+        public EdmActionOperationHandlerTests()
+        {
+          _operationHandler = new EdmActionOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly EdmActionOperationHandler _operationHandler;
 
         [Fact]
         public void CreateOperationForEdmActionReturnsCorrectOperation()
@@ -33,6 +41,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -73,6 +82,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);

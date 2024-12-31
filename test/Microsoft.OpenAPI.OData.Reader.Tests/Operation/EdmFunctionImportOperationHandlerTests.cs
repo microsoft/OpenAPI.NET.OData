@@ -8,7 +8,9 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -16,7 +18,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmFunctionImportOperationHandlerTests
     {
-        private EdmFunctionImportOperationHandler _operationHandler = new EdmFunctionImportOperationHandler(new());
+        public EdmFunctionImportOperationHandlerTests()
+        {
+          _operationHandler = new EdmFunctionImportOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly EdmFunctionImportOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true)]
@@ -36,6 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);

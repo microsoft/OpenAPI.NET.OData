@@ -141,7 +141,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Append tag.
         /// </summary>
         /// <param name="tagItem">The tag item.</param>
-        public void AppendTag(OpenApiTag tagItem)
+        internal void AppendTag(OpenApiTag tagItem)
         {
             Tags ??= [];
 

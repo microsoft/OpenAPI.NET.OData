@@ -6,7 +6,9 @@
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -14,7 +16,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntityDeleteOperationHandlerTests
     {
-        private readonly EntityDeleteOperationHandler _operationHandler = new EntityDeleteOperationHandler(new());
+        public EntityDeleteOperationHandlerTests()
+        {
+          _operationHandler = new EntityDeleteOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly EntityDeleteOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true)]
@@ -33,6 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var delete = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(delete);

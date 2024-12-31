@@ -5,8 +5,10 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using System.Linq;
 using System.Xml.Linq;
 using Xunit;
@@ -15,7 +17,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class MediaEntityDeleteOperationHandlerTests
     {
-        private readonly MediaEntityDeleteOperationHandler _operationalHandler = new MediaEntityDeleteOperationHandler(new());
+        public MediaEntityDeleteOperationHandlerTests()
+        {
+          _operationHandler = new MediaEntityDeleteOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private readonly MediaEntityDeleteOperationHandler _operationHandler;
 
         [Fact]
         public void CreateMediaEntityPropertyDeleteOperationWithTargetPathAnnotationsReturnsCorrectOperation()
@@ -33,7 +41,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamPropertySegment(property.Name));
 
             // Act
-            var operation = _operationalHandler.CreateOperation(context, path);
+            var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -123,9 +132,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamPropertySegment(structuralProperty2.Name));
 
             // Act
-            var deleteOperation = _operationalHandler.CreateOperation(context, path);
-            var deleteOperation2 = _operationalHandler.CreateOperation(context, path2);
-            var deleteOperation3 = _operationalHandler.CreateOperation(context, path3);
+            var deleteOperation = _operationHandler.CreateOperation(context, path);
+            var deleteOperation2 = _operationHandler.CreateOperation(context, path2);
+            var deleteOperation3 = _operationHandler.CreateOperation(context, path3);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(deleteOperation);

@@ -11,7 +11,9 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -19,7 +21,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class SingletonGetOperationHandlerTests
     {
-        private SingletonGetOperationHandler _operationHandler = new SingletonGetOperationHandler(new());
+        public SingletonGetOperationHandlerTests()
+        {
+          _operationHandler = new (_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly SingletonGetOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true)]
@@ -48,6 +55,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var get = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(get);
@@ -194,6 +202,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -292,6 +301,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var get = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(get);
