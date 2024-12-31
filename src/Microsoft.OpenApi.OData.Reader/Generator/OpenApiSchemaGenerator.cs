@@ -425,7 +425,8 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 OpenApiSchema propertySchema = context.CreatePropertySchema(property, document);
                 propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
-                propertySchema.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                // we always want a new copy because it's a reference
+                propertySchema.Extensions = propertySchema.Extensions is null ? [] : new Dictionary<string, IOpenApiExtension>(propertySchema.Extensions);
                 propertySchema.Extensions.AddCustomAttributesToExtensions(context, property);
                 properties.Add(property.Name, propertySchema);
             }
@@ -435,7 +436,8 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 OpenApiSchema propertySchema = context.CreateEdmTypeSchema(property.Type, document);
                 propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
-                propertySchema.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                // we always want a new copy because it's a reference
+                propertySchema.Extensions = propertySchema.Extensions is null ? [] : new Dictionary<string, IOpenApiExtension>(propertySchema.Extensions);
                 propertySchema.Extensions.AddCustomAttributesToExtensions(context, property);
                 propertySchema.Extensions.Add(Constants.xMsNavigationProperty, new OpenApiAny(true));
                 properties.Add(property.Name, propertySchema);
