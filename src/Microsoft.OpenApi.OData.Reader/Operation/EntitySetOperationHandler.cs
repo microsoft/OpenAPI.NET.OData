@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
@@ -44,16 +45,14 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            OpenApiTag tag = new OpenApiTag
-            {
-                Name = EntitySet.Name + "." + EntitySet.EntityType.Name,
-            };
+            var tagName = EntitySet.Name + "." + EntitySet.EntityType.Name;
 
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
+            operation.Tags.Add(new OpenApiTagReference(tagName, _document));
 
-            operation.Tags.Add(tag);
-
-            Context.AppendTag(tag);
+            Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+			{
+				Name = tagName
+			});
 
             base.SetTags(operation);
         }

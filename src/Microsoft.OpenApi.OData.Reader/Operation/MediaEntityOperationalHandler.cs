@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
@@ -90,17 +91,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 ? EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context)
                 : NavigationSourceSegment.Identifier + "." + NavigationSourceSegment.EntityType.Name;
 
-            OpenApiTag tag = new()
-            {
-                Name = tagIdentifier
-            };
 
-            // Use an extension for TOC (Table of Content)
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
-
-            operation.Tags.Add(tag);
-
-            Context.AppendTag(tag);
+            Context.AddExtensionToTag(tagIdentifier, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+			{
+				Name = tagIdentifier
+			});
+            operation.Tags.Add(new OpenApiTagReference(tagIdentifier, _document));
         }
 
         /// <inheritdoc/>

@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -137,35 +138,27 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            operation.Tags = CreateTags(EdmOperationImport);
-            operation.Tags[0].Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
-            Context.AppendTag(operation.Tags[0]);
+            var tag = CreateTag(EdmOperationImport);
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
+            Context.AppendTag(tag);
+            operation.Tags.Add(new OpenApiTagReference(tag.Name, _document));
 
             base.SetTags(operation);
         }
 
-        private static IList<OpenApiTag> CreateTags(IEdmOperationImport operationImport)
+        private static OpenApiTag CreateTag(IEdmOperationImport operationImport)
         {
-            if (operationImport.EntitySet != null)
+            if (operationImport.EntitySet is IEdmPathExpression pathExpression)
             {
-                var pathExpression = operationImport.EntitySet as IEdmPathExpression;
-                if (pathExpression != null)
+                return new OpenApiTag
                 {
-                    return new List<OpenApiTag>
-                    {
-                        new OpenApiTag
-                        {
-                            Name = PathAsString(pathExpression.PathSegments)
-                        }
-                    };
-                }
+                    Name = PathAsString(pathExpression.PathSegments)
+                };
             }
 
-            return new List<OpenApiTag>{
-                new OpenApiTag
-                {
-                    Name = operationImport.Name
-                }
+            return new OpenApiTag
+            {
+                Name = operationImport.Name
             };
         }
 

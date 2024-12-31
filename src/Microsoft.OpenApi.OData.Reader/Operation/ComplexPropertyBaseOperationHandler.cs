@@ -5,6 +5,7 @@
 
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
@@ -37,15 +38,11 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
 
         if (!string.IsNullOrEmpty(tagName))
         {
-            OpenApiTag tag = new()
-            {
-                Name = tagName
-            };
-
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
-            operation.Tags.Add(tag);
-
-            Context.AppendTag(tag);
+            Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+			{
+				Name = tagName
+			});
+            operation.Tags.Add(new OpenApiTagReference(tagName, _document));
         }
         
         base.SetTags(operation);

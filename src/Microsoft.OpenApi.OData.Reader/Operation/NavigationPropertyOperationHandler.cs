@@ -94,14 +94,11 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetTags(OpenApiOperation operation)
         {
             string name = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
-            OpenApiTag tag = new()
-            {
-                Name = name
-            };
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
-            operation.Tags.Add(tag);
-
-            Context.AppendTag(tag);
+            Context.AddExtensionToTag(name, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+			{
+				Name = name
+			});
+            operation.Tags.Add(new OpenApiTagReference(name, _document));
 
             base.SetTags(operation);
         }

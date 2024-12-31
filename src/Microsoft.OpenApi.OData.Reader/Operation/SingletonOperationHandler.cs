@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
@@ -46,17 +47,14 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // In this SDK, we use "[Singleton Name].[Singleton Entity Type Name]
             // For example: "Me.User"
-            OpenApiTag tag = new OpenApiTag
-            {
-                Name = Singleton.Name + "." + Singleton.EntityType.Name,
-            };
+            var tagName = Singleton.Name + "." + Singleton.EntityType.Name;
 
-            // Use an extension for TOC (Table of Content)
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
+            Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+			{
+				Name = tagName
+			});
 
-            operation.Tags.Add(tag);
-
-            Context.AppendTag(tag);
+            operation.Tags.Add(new OpenApiTagReference(tagName, _document));
 
             // Call base.SetTags() at the end of this method.
             base.SetTags(operation);

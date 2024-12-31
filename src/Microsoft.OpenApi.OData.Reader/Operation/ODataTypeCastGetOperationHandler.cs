@@ -258,17 +258,11 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 		if (tagName != null)
 		{
-			OpenApiTag tag = new()
+			Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
 			{
 				Name = tagName
-			};
-
-			if (!IsSingleElement)
-				tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
-
-			operation.Tags.Add(tag);
-
-			Context.AppendTag(tag);
+			});
+			operation.Tags.Add(new OpenApiTagReference(tagName, _document));
 		}		
 
 		base.SetTags(operation);

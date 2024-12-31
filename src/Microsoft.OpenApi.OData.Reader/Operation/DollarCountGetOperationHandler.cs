@@ -97,17 +97,12 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (tagName != null)
             {
-                OpenApiTag tag = new()
+                Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
                 {
                     Name = tagName
-                };
+                });
 
-                // Use an extension for TOC (Table of Content)
-                tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("page"));
-
-                operation.Tags.Add(tag);
-
-                Context.AppendTag(tag);
+                operation.Tags.Add(new OpenApiTagReference(tagName, _document));
             }
 
             string TagNameFromNavigationSourceSegment(ODataNavigationSourceSegment sourceSegment)
