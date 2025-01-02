@@ -49,12 +49,12 @@ namespace Microsoft.OpenApi.OData.Operation
             base.Initialize(context, path);
 
             // Get the first segment
-            firstSegment = path.Segments.First();
+            firstSegment = path.Segments[0];
 
             // get the last second segment
             pathCount = path.Segments.Count;
             if(pathCount >= SecondLastSegmentIndex)
-                SecondLastSegment = path.Segments.ElementAt(pathCount - SecondLastSegmentIndex);
+                SecondLastSegment = path.Segments[pathCount - SecondLastSegmentIndex];
 
             if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
             {
@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else if (SecondLastSegment is ODataTypeCastSegment)
             {
-                ODataSegment lastThirdSegment = Path.Segments.ElementAt(pathCount - 3);
+                ODataSegment lastThirdSegment = Path.Segments[pathCount - 3];
                 if (lastThirdSegment is ODataNavigationSourceSegment sourceSegment2)
                 {
                     tagName = TagNameFromNavigationSourceSegment(sourceSegment2);
