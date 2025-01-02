@@ -614,7 +614,6 @@ namespace Microsoft.OpenApi.OData.Generator
             // properties
             foreach (var property in structuredType.Properties())
             {
-                // IOpenApiAny item;
                 IEdmTypeReference propertyType = property.Type;
 
                 JsonNode item = GetTypeNameForExample(context, propertyType, document);
@@ -640,57 +639,47 @@ namespace Microsoft.OpenApi.OData.Generator
             return example;
         }
 
+        private static JsonNode GetTypeNameForPrimitive(ODataContext context, IEdmTypeReference edmTypeReference, OpenApiDocument document)
+        {
+            IEdmPrimitiveType primitiveType = edmTypeReference.AsPrimitive().PrimitiveDefinition();
+            OpenApiSchema schema = context.CreateSchema(primitiveType, document);
+
+            if (edmTypeReference.IsBoolean())
+            {
+                return true;
+            }
+            else
+            {
+                if (schema.Reference != null)
+                {
+                    return schema.Reference.Id;
+                }
+                else
+                {
+                    return schema.Type.ToIdentifier() ??
+                        (schema.AnyOf ?? Enumerable.Empty<OpenApiSchema>())
+                        .Union(schema.AllOf ?? Enumerable.Empty<OpenApiSchema>())
+                        .Union(schema.OneOf ?? Enumerable.Empty<OpenApiSchema>())
+                        .FirstOrDefault(static x => !string.IsNullOrEmpty(x.Format))?.Format ?? schema.Format;
+                }
+            }
+        }
+
         private static JsonNode GetTypeNameForExample(ODataContext context, IEdmTypeReference edmTypeReference, OpenApiDocument document)
         {
-            switch (edmTypeReference.TypeKind())
+            return edmTypeReference.TypeKind() switch
             {
-                case EdmTypeKind.Primitive:
-                    IEdmPrimitiveType primitiveType = edmTypeReference.AsPrimitive().PrimitiveDefinition();
-                    OpenApiSchema schema = context.CreateSchema(primitiveType, document);
+                EdmTypeKind.Primitive => GetTypeNameForPrimitive(context, edmTypeReference, document),
 
-                    if (edmTypeReference.IsBoolean())
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        if (schema.Reference != null)
-                        {
-                            return schema.Reference.Id;
-                        }
-                        else
-                        {
-                            return schema.Type.ToIdentifier() ??
-                                (schema.AnyOf ?? Enumerable.Empty<OpenApiSchema>())
-                                .Union(schema.AllOf ?? Enumerable.Empty<OpenApiSchema>())
-                                .Union(schema.OneOf ?? Enumerable.Empty<OpenApiSchema>())
-                                .FirstOrDefault(static x => !string.IsNullOrEmpty(x.Format))?.Format ?? schema.Format;
-                        }
-                    }
-
-                case EdmTypeKind.Entity:
-                case EdmTypeKind.Complex:
-                case EdmTypeKind.Enum:
-                    JsonObject obj = new()
-                    {
+                EdmTypeKind.Entity or EdmTypeKind.Complex or EdmTypeKind.Enum => new JsonObject()
+                    {//TODO this is wrong for enums, and should instead use one of the enum members
                         [Constants.OdataType] = edmTypeReference.FullName()
-                    };
-                    return obj;
+                    },
 
-                case EdmTypeKind.Collection:
-                    JsonArray array = [];
-                    IEdmTypeReference elementType = edmTypeReference.AsCollection().ElementType();
-                    array.Add(GetTypeNameForExample(context, elementType, document));
-                    return array;
-
-                case EdmTypeKind.Untyped:
-                    return new JsonObject();
-
-                case EdmTypeKind.TypeDefinition:
-                case EdmTypeKind.EntityReference:
-                default:
-                    throw new OpenApiException("Not support for the type kind " + edmTypeReference.TypeKind());
-            }
+                EdmTypeKind.Collection => new JsonArray(GetTypeNameForExample(context, edmTypeReference.AsCollection().ElementType(), document)),
+                EdmTypeKind.Untyped => new JsonObject(),
+                _ => throw new OpenApiException("Not support for the type kind " + edmTypeReference.TypeKind()),
+            };
         }
 
         private static JsonNode CreateDefault(this IEdmStructuralProperty property)

@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
@@ -75,33 +76,24 @@ namespace Microsoft.OpenApi.OData.Generator
 
         private static OpenApiExample CreateStructuredTypeExample(IEdmStructuredType structuredType)
         {
-            OpenApiExample example = new OpenApiExample();
+            OpenApiExample example = new();
 
-            JsonObject value = new JsonObject();
-
-            IEdmEntityType entityType = structuredType as IEdmEntityType;
+            JsonObject value = new();
 
             // properties
             foreach (var property in structuredType.DeclaredProperties.OrderBy(static p => p.Name, StringComparer.Ordinal))
             {
-                // IOpenApiAny item;
                 IEdmTypeReference propertyType = property.Type;
 
                 JsonNode item = GetTypeNameForExample(propertyType);
 
-                EdmTypeKind typeKind = propertyType.TypeKind();
-                if (typeKind == EdmTypeKind.Primitive && item is JsonValue jsonValue && jsonValue.TryGetValue(out string stringAny))
+                if (propertyType.TypeKind() == EdmTypeKind.Primitive &&
+                    item is JsonValue jsonValue &&
+                    jsonValue.TryGetValue(out string stringAny) &&
+                    structuredType is IEdmEntityType entityType &&
+                    entityType.Key().Any(k => StringComparer.Ordinal.Equals(k.Name, property.Name)))
                 {
-                    string propertyValue = stringAny;
-                    if (entityType != null && entityType.Key().Any(k => k.Name == property.Name))
-                    {
-                        propertyValue += " (identifier)";
-                    }
-                    if (propertyType.IsDateTimeOffset() || propertyType.IsDate() || propertyType.IsTimeOfDay())
-                    {
-                        propertyValue += " (timestamp)";
-                    }
-                    item = propertyValue;
+                    item = $"{stringAny} (identifier)";
                 }
 
                 value.Add(property.Name, item);
@@ -112,81 +104,33 @@ namespace Microsoft.OpenApi.OData.Generator
 
         private static JsonNode GetTypeNameForExample(IEdmTypeReference edmTypeReference)
         {
-            switch (edmTypeReference.TypeKind())
+            return edmTypeReference.TypeKind() switch
             {
-                case EdmTypeKind.Primitive:
-                    if (edmTypeReference.IsBinary())
-                    {
-                        // return new OpenApiBinary(new byte[] { 0x00 }); issue on binary writing
-                        return Convert.ToBase64String(new byte[] { 0x00 });
-                    }
-                    else if (edmTypeReference.IsBoolean())
-                    {
-                        return true;
-                    }
-                    else if (edmTypeReference.IsByte())
-                    {
-                        return 0x00;
-                    }
-                    else if (edmTypeReference.IsDate())
-                    {
-                        return DateTime.MinValue;
-                    }
-                    else if (edmTypeReference.IsDateTimeOffset())
-                    {
-                        return DateTimeOffset.MinValue;
-                    }
-                    else if (edmTypeReference.IsDecimal() || edmTypeReference.IsDouble())
-                    {
-                        return 0D;
-                    }
-                    else if (edmTypeReference.IsFloating())
-                    {
-                        return 0F;
-                    }
-                    else if (edmTypeReference.IsGuid())
-                    {
-                        return Guid.Empty.ToString();
-                    }
-                    else if (edmTypeReference.IsInt16() || edmTypeReference.IsInt32())
-                    {
-                        return 0;
-                    }
-                    else if (edmTypeReference.IsInt64())
-                    {
-                        return 0L;
-                    }
-                    else
-                    {
-                        return edmTypeReference.AsPrimitive().PrimitiveDefinition().Name;
-                    }
+                // return new OpenApiBinary(new byte[] { 0x00 }); issue on binary writing
+                EdmTypeKind.Primitive when edmTypeReference.IsBinary() => Convert.ToBase64String(new byte[] { 0x00 }),
+                EdmTypeKind.Primitive when edmTypeReference.IsBoolean() => true,
+                EdmTypeKind.Primitive when edmTypeReference.IsByte() => 0x00,
+                EdmTypeKind.Primitive when edmTypeReference.IsDate() => DateTime.MinValue,
+                EdmTypeKind.Primitive when edmTypeReference.IsDateTimeOffset() => DateTimeOffset.MinValue,
+                EdmTypeKind.Primitive when edmTypeReference.IsDecimal() || edmTypeReference.IsDouble() => 0D,
+                EdmTypeKind.Primitive when edmTypeReference.IsFloating() => 0F,
+                EdmTypeKind.Primitive when edmTypeReference.IsGuid() => Guid.Empty.ToString(),
+                EdmTypeKind.Primitive when edmTypeReference.IsInt16() || edmTypeReference.IsInt32() => 0,
+                EdmTypeKind.Primitive when edmTypeReference.IsInt64() => 0L,
+                EdmTypeKind.Primitive => edmTypeReference.AsPrimitive().PrimitiveDefinition().Name,
+                EdmTypeKind.Entity or EdmTypeKind.Complex or EdmTypeKind.Enum => new JsonObject()
+                    {//TODO this is wrong for enums, and should instead use one of the enum members
+                        [Constants.OdataType] = edmTypeReference.FullName()
+                    },
 
-                case EdmTypeKind.Entity:
-                case EdmTypeKind.Complex:
-                case EdmTypeKind.Enum:
-                    JsonObject obj = new()
-                    {
-                        ["@odata.type"] = edmTypeReference.FullName()
-                    };
-                    return obj;
+                EdmTypeKind.Collection => new JsonArray(GetTypeNameForExample(edmTypeReference.AsCollection().ElementType())),
 
-                case EdmTypeKind.Collection:
-                    JsonArray array = [];
-                    IEdmTypeReference elementType = edmTypeReference.AsCollection().ElementType();
-                    array.Add(GetTypeNameForExample(elementType));
-                    return array;
+                EdmTypeKind.TypeDefinition => GetTypeNameForExample(new EdmPrimitiveTypeReference(edmTypeReference.AsTypeDefinition().TypeDefinition().UnderlyingType, edmTypeReference.IsNullable)),
 
-                case EdmTypeKind.TypeDefinition:
-                    var typedef = edmTypeReference.AsTypeDefinition().TypeDefinition();
-                    return GetTypeNameForExample(new EdmPrimitiveTypeReference(typedef.UnderlyingType, edmTypeReference.IsNullable));
+                EdmTypeKind.Untyped => new JsonObject(),
 
-                case EdmTypeKind.Untyped:
-                    return new JsonObject();
-
-                case EdmTypeKind.EntityReference:
-                default:
-                    throw new OpenApiException("Not support for the type kind " + edmTypeReference.TypeKind());
-            }
+                _ => throw new OpenApiException("Not support for the type kind " + edmTypeReference.TypeKind()),
+            };
         }
     }
 }
