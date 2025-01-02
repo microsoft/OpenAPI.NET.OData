@@ -138,10 +138,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            string value = EdmOperation.IsAction() ? "Actions" : "Functions";
-            OpenApiTag tag = new OpenApiTag
+            GenerateTagName(out string tagName);
+            OpenApiTag tag = new()
             {
-                Name = NavigationSource.Name + "." + value,
+                Name = tagName,
             };
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("container"));
             operation.Tags.Add(tag);
@@ -149,6 +149,34 @@ namespace Microsoft.OpenApi.OData.Operation
             Context.AppendTag(tag);
 
             base.SetTags(operation);
+        }
+
+        /// <summary>
+        /// Genrates the tag name for the operation.
+        /// </summary>
+        /// <param name="tagName">The generated tag name.</param>
+        /// <param name="skip">The number of segments to skip.</param>
+        private void GenerateTagName(out string tagName, int skip = 1)
+        {            
+            var targetSegment = Path.Segments.Reverse().Skip(skip).FirstOrDefault();
+
+            switch (targetSegment)
+            {
+                case ODataNavigationPropertySegment:
+                    tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
+                    break;
+                case ODataOperationSegment:
+                case ODataOperationImportSegment:
+                // Previous segmment could be a navigation property or a navigation source segment
+                case ODataKeySegment:
+                    skip += 1;
+                    GenerateTagName(out tagName, skip);
+                    break;
+                // ODataNavigationSourceSegment
+                default:
+                    tagName = NavigationSource.Name + "." + NavigationSource.EntityType().Name;
+                    break;
+            }
         }
 
         /// <inheritdoc/>

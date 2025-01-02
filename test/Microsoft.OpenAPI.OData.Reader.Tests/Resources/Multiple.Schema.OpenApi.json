@@ -663,7 +663,7 @@
       "description": "Provides operations to call the Upload method.",
       "post": {
         "tags": [
-          "Documents.Actions"
+          "Documents.DocumentDto"
         ],
         "summary": "Invoke action Upload",
         "operationId": "Documents.DocumentDto.Upload",
@@ -3940,7 +3940,7 @@
       "description": "Provides operations to call the Upload method.",
       "post": {
         "tags": [
-          "Tasks.Actions"
+          "Tasks.DocumentDto"
         ],
         "summary": "Invoke action Upload",
         "operationId": "Tasks.DocumentDto.Upload",
@@ -7480,10 +7480,6 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Documents.Actions",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
       "name": "Documents.RevisionDto",
       "x-ms-docs-toc-type": "page"
     },
@@ -7522,10 +7518,6 @@
     {
       "name": "Tasks.DocumentDto",
       "x-ms-docs-toc-type": "page"
-    },
-    {
-      "name": "Tasks.Actions",
-      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "Tasks.RevisionDto",

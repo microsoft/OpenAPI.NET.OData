@@ -100,7 +100,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Invoke function GetFavoriteAirline", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People.Functions", tag.Name);
+            Assert.Equal("People.Person", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Single(operation.Parameters);
@@ -138,7 +138,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Collection of contract attachments.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal($"{entitySetName}.Functions", tag.Name);
+            Assert.Equal($"{entitySetName}.AccountApiModel", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Equal(6, operation.Parameters.Count); // id, top, skip, count, search, filter
