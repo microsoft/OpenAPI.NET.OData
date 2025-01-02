@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -296,6 +296,99 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             else
             {
                 Assert.Null(operation.OperationId);
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForComposableOverloadEdmFunctionReturnsCorrectOperationId(bool enableOperationId)
+        {
+            // Arrange
+            EdmModel model = new();
+            EdmEntityType customer = new("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+
+            // Overloaded function 1 
+            EdmFunction function1 = new("NS", "MyFunction1", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function1.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            model.AddElement(function1);
+
+            // Overloaded function 1
+            EdmFunction function2 = new("NS", "MyFunction1", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function2.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function2.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+
+            model.AddElement(function2);
+
+            // Overloaded function 2
+            EdmFunction function3 = new("NS", "MyFunction2", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function3.AddParameter("entity2", new EdmEntityTypeReference(customer, false));
+            model.AddElement(function3);
+
+            // Overloaded function 2
+            EdmFunction function4 = new("NS", "MyFunction2", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function4.AddParameter("entity2", new EdmEntityTypeReference(customer, false));
+            function4.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function4);
+
+            EdmEntityContainer container = new("NS", "Default");
+            EdmEntitySet customers = new(container, "Customers", customer);
+            model.AddElement(container);
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableOperationId = enableOperationId,
+                AddSingleQuotesForStringParameters = true,
+            };
+            ODataContext context = new(model, settings);
+
+            ODataPath path1 = new(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function1),
+                new ODataOperationSegment(function3));
+
+            ODataPath path2 = new(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function1),
+                new ODataOperationSegment(function4));
+
+            ODataPath path3 = new(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function2),
+                new ODataOperationSegment(function3));
+
+            ODataPath path4 = new(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function2),
+                new ODataOperationSegment(function4));
+
+            // Act
+            var operation1 = _operationHandler.CreateOperation(context, path1);
+            var operation2 = _operationHandler.CreateOperation(context, path2);
+            var operation3 = _operationHandler.CreateOperation(context, path3);
+            var operation4 = _operationHandler.CreateOperation(context, path4);
+
+            // Assert
+            Assert.NotNull(operation1);
+            Assert.NotNull(operation2);
+            Assert.NotNull(operation3);
+            Assert.NotNull(operation4);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-c53d", operation1.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-4d93", operation2.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-a2b2", operation3.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-7bea", operation4.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation1.OperationId);
+                Assert.Null(operation2.OperationId);
+                Assert.Null(operation3.OperationId);
+                Assert.Null(operation4.OperationId);
             }
         }
 
