@@ -20,6 +20,7 @@ using System.Text.Json.Nodes;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models.References;
+using System.Globalization;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -667,13 +668,15 @@ namespace Microsoft.OpenApi.OData.Generator
                 EdmTypeKind.Primitive when edmTypeReference.IsBinary() => Convert.ToBase64String(new byte[] { 0x00 }),
                 EdmTypeKind.Primitive when edmTypeReference.IsBoolean() => true,
                 EdmTypeKind.Primitive when edmTypeReference.IsByte() => 0x00,
-                EdmTypeKind.Primitive when edmTypeReference.IsDate() => DateTime.MinValue,
-                EdmTypeKind.Primitive when edmTypeReference.IsDateTimeOffset() => DateTimeOffset.MinValue,
-                EdmTypeKind.Primitive when edmTypeReference.IsDecimal() || edmTypeReference.IsDouble() => 0D,
-                EdmTypeKind.Primitive when edmTypeReference.IsFloating() => 0F,
-                EdmTypeKind.Primitive when edmTypeReference.IsGuid() => Guid.Empty.ToString(),
-                EdmTypeKind.Primitive when edmTypeReference.IsInt16() || edmTypeReference.IsInt32() => 0,
-                EdmTypeKind.Primitive when edmTypeReference.IsInt64() => 0L,
+                EdmTypeKind.Primitive when edmTypeReference.IsDate() => DateTime.MinValue.ToString("o", CultureInfo.InvariantCulture),
+                EdmTypeKind.Primitive when edmTypeReference.IsDateTimeOffset() => DateTimeOffset.MinValue.ToString("o", CultureInfo.InvariantCulture),
+                EdmTypeKind.Primitive when edmTypeReference.IsGuid() => Guid.Empty.ToString("D", CultureInfo.InvariantCulture),
+                EdmTypeKind.Primitive when edmTypeReference.IsInt16() ||
+                                            edmTypeReference.IsInt32() ||
+                                            edmTypeReference.IsDecimal() ||
+                                            edmTypeReference.IsInt64() ||
+                                            edmTypeReference.IsFloating() ||
+                                            edmTypeReference.IsDouble() => 0,
                 EdmTypeKind.Primitive => GetTypeNameForPrimitive(context, edmTypeReference, document),
 
                 EdmTypeKind.Entity or EdmTypeKind.Complex or EdmTypeKind.Enum => new JsonObject()
