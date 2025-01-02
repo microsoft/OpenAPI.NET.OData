@@ -1084,7 +1084,7 @@
           }
         },
         "example": {
-          "Id": "number",
+          "Id": 0,
           "City": {
             "@odata.type": "DefaultNs.City"
           }
@@ -1106,7 +1106,7 @@
           }
         ],
         "example": {
-          "Id": "number",
+          "Id": 0,
           "City": {
             "@odata.type": "DefaultNs.City"
           },
@@ -1393,7 +1393,7 @@
           "HomeAddress": {
             "@odata.type": "DefaultNs.Address"
           },
-          "UserName": "String (identifier)",
+          "UserName": "string (identifier)",
           "WorkAddress": {
             "@odata.type": "DefaultNs.Address"
           }
@@ -1401,12 +1401,12 @@
       },
       "DefaultNs.City": {
         "value": {
-          "Name": "String (identifier)"
+          "Name": "string (identifier)"
         }
       },
       "DefaultNs.CountryOrRegion": {
         "value": {
-          "Name": "String (identifier)"
+          "Name": "string (identifier)"
         }
       },
       "DefaultNs.Address": {
@@ -1419,9 +1419,13 @@
       },
       "DefaultNs.WorkAddress": {
         "value": {
+          "City": {
+            "@odata.type": "DefaultNs.City"
+          },
           "CountryOrRegion": {
             "@odata.type": "DefaultNs.CountryOrRegion"
-          }
+          },
+          "Id": 0
         }
       }
     },
