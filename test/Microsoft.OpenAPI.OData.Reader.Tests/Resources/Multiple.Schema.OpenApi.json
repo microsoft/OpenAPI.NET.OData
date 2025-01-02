@@ -4728,14 +4728,14 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Description": "string",
           "Filename": "string",
           "NumberOfRevisions": "string",
           "Suffix": "string",
           "DomainId": "number",
-          "ModificationDate": "string (timestamp)",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": "number",
           "Tags": [
             {
@@ -4841,7 +4841,7 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Number": "string",
           "Description": "string",
@@ -4853,9 +4853,9 @@
           "TypeId": "number",
           "DomainId": "number",
           "CreatedBy": "number",
-          "CreationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": "number",
-          "ModificationDate": "string (timestamp)",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentDto"
@@ -4973,22 +4973,22 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Number": "number",
           "DocumentId": "number",
           "DocumentName": "string",
           "DocumentDescription": "string",
-          "CreationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
           "CreatedBy": "number",
           "IsReviewed": true,
           "ReviewedBy": "number",
-          "ReviewedDate": "string (timestamp)",
+          "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00",
           "IsApproved": true,
           "ApprovedBy": "number",
-          "ApprovedDate": "string (timestamp)",
+          "ApprovedDate": "0001-01-01T00:00:00.0000000+00:00",
           "IsRejected": true,
           "RejectedBy": "number",
-          "RejectedDate": "string (timestamp)",
+          "RejectedDate": "0001-01-01T00:00:00.0000000+00:00",
           "DomainId": "number",
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -5031,12 +5031,12 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Description": "string",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
-          "DomainId": "number"
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "DomainId": 0
         }
       },
       "Siterra.Documents.App.DTO.DocumentTagRelDto": {
@@ -5360,26 +5360,26 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Description": "string",
           "StatusId": "number",
           "TypeId": "number",
           "Keywords": "string",
-          "CreationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
           "CreatedBy": "number",
-          "ModificationDate": "string (timestamp)",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": "number",
           "DomainId": "number",
           "LibraryId": "number",
           "OwnerUserId": "number",
-          "StatusDate": "string (timestamp)",
+          "StatusDate": "0001-01-01T00:00:00.0000000+00:00",
           "LastRevisionId": "number",
-          "CheckoutDate": "string (timestamp)",
+          "CheckoutDate": "0001-01-01T00:00:00.0000000+00:00",
           "CheckoutPath": "string",
           "CheckoutUserId": "number",
           "Number": "string",
-          "OriginalDate": "string (timestamp)",
+          "OriginalDate": "0001-01-01T00:00:00.0000000+00:00",
           "FileSized": "number",
           "FileClientPath": "string",
           "LastRevisionFileId": "number",
@@ -5394,7 +5394,7 @@
           "ReviewDescription": "string",
           "SourceDocumentId": "number",
           "ScraperMapId": "number",
-          "LastDownloadedDate": "string (timestamp)",
+          "LastDownloadedDate": "0001-01-01T00:00:00.0000000+00:00",
           "SmsId": "number",
           "IsApprovedOld": "number",
           "Suffix": "string",
@@ -5500,9 +5500,9 @@
           "ClassId": "number",
           "DocumentId": "number",
           "CreatedBy": "number",
-          "CreationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": "number",
-          "ModificationDate": "string (timestamp)",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "IsPrimary": true,
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -5584,8 +5584,8 @@
           "DomainId": "number",
           "CreatedBy": "number",
           "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           },
@@ -5873,7 +5873,7 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "DomainId": "number",
           "Name": "string",
           "ParentFolderId": "number",
@@ -5883,8 +5883,8 @@
           "TotalSize": "number",
           "FilesCounter": "number",
           "FoldersCounter": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": "number",
           "CreatedBy": "number",
           "ProjectId": "number",
@@ -6057,12 +6057,12 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "ModifiedBy": "number",
           "CreatedBy": "number",
-          "ModificationDate": "string (timestamp)",
-          "CreationDate": "string (timestamp)",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
           "DomainId": "number",
           "Description": "string",
           "XmlName": "string",
@@ -6193,13 +6193,13 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Path": "string",
           "ModifiedBy": "number",
           "CreatedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Sized": "number",
           "ActualName": "string",
           "DomainId": "number",
@@ -6265,14 +6265,14 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
-          "DomainId": "number",
+          "Id": 0,
+          "DomainId": 0,
           "Name": "string",
           "Description": "string",
-          "CreatedBy": "number",
-          "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)"
+          "CreatedBy": 0,
+          "ModifiedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag": {
@@ -6294,14 +6294,14 @@
           }
         ],
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "DomainId": "number",
           "Name": "string",
           "Description": "string",
           "CreatedBy": "number",
           "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
@@ -6329,14 +6329,14 @@
           }
         ],
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "DomainId": "number",
           "Name": "string",
           "Description": "string",
           "CreatedBy": "number",
           "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -6364,14 +6364,14 @@
           }
         ],
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "DomainId": "number",
           "Name": "string",
           "Description": "string",
           "CreatedBy": "number",
           "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -6559,18 +6559,18 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Number": "number",
           "DocumentId": "number",
-          "ModificationDate": "string (timestamp)",
-          "CreationDate": "string (timestamp)",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": "number",
           "CreatedBy": "number",
           "Remarks": "string",
           "FileId": "number",
           "DocumentOwnerContact": "number",
           "DocumentDescription": "string",
-          "DocumentStatusDate": "string (timestamp)",
+          "DocumentStatusDate": "0001-01-01T00:00:00.0000000+00:00",
           "DocumentFolder": "string",
           "DocumentKeywords": "string",
           "DocumentStatus": "string",
@@ -6588,9 +6588,9 @@
           "RejectedBy": "number",
           "IsApproved": true,
           "ApprovedBy": "number",
-          "ReviewedDate": "string (timestamp)",
-          "RejectedDate": "string (timestamp)",
-          "ApprovedDate": "string (timestamp)",
+          "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "RejectedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ApprovedDate": "0001-01-01T00:00:00.0000000+00:00",
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           }
@@ -7052,20 +7052,20 @@
     "examples": {
       "Siterra.Documents.App.DTO.DocumentDto": {
         "value": {
-          "Description": "String",
+          "Description": "string",
           "DomainId": 0,
-          "Filename": "String",
+          "Filename": "string",
           "Id": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
-          "NumberOfRevisions": "String",
+          "Name": "string",
+          "NumberOfRevisions": "string",
           "Revisions": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.RevisionDto"
             }
           ],
-          "Suffix": "String",
+          "Suffix": "string",
           "Tags": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentTagRelDto"
@@ -7079,7 +7079,7 @@
           "AutoCreate": true,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentDto"
@@ -7090,8 +7090,8 @@
           "LibraryTemplateId": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
-          "Number": "String",
+          "Name": "string",
+          "Number": "string",
           "ParentId": 0,
           "ParentTypeId": 0,
           "TypeId": 0
@@ -7106,9 +7106,9 @@
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           },
-          "DocumentDescription": "String",
+          "DocumentDescription": "string",
           "DocumentId": 0,
-          "DocumentName": "String",
+          "DocumentName": "string",
           "DomainId": 0,
           "Id": 0,
           "IsApproved": true,
@@ -7124,34 +7124,34 @@
       "Siterra.Documents.App.DTO.CategoryDto": {
         "value": {
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "DomainId": 0,
           "Id": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Name": "String"
+          "Name": "string"
         }
       },
       "Siterra.Documents.App.DTO.DocumentTagRelDto": {
         "value": {
-          "Name": "String"
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Document.Document": {
         "value": {
           "CategoryId": 0,
           "CheckoutDate": "0001-01-01T00:00:00.0000000+00:00",
-          "CheckoutPath": "String",
+          "CheckoutPath": "string",
           "CheckoutUserId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "DocumentClasses": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
             }
           ],
           "DomainId": 0,
-          "FileClientPath": "String",
+          "FileClientPath": "string",
           "FileSized": 0,
           "Id": 0,
           "IsApproved": 0,
@@ -7160,9 +7160,9 @@
           "IsNa": 0,
           "IsRejected": 0,
           "IsReviewed": 0,
-          "Keywords": "String",
+          "Keywords": "string",
           "LastDownloadedDate": "0001-01-01T00:00:00.0000000+00:00",
-          "LastFileName": "String",
+          "LastFileName": "string",
           "LastRevisionFile": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile"
           },
@@ -7174,15 +7174,15 @@
           "LibraryId": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "NaDescription": "String",
-          "Name": "String",
-          "NaReason": "String",
-          "Number": "String",
+          "NaDescription": "string",
+          "Name": "string",
+          "NaReason": "string",
+          "Number": "string",
           "OriginalDate": "0001-01-01T00:00:00.0000000+00:00",
           "OwnerUserId": 0,
-          "RejectedDescription": "String",
-          "RejectedReason": "String",
-          "ReviewDescription": "String",
+          "RejectedDescription": "string",
+          "RejectedReason": "string",
+          "ReviewDescription": "string",
           "Revisions": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Revision.Revision"
@@ -7203,7 +7203,7 @@
           "SourceDocumentId": 0,
           "StatusDate": "0001-01-01T00:00:00.0000000+00:00",
           "StatusId": 0,
-          "Suffix": "String",
+          "Suffix": "string",
           "Tags": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
@@ -7255,7 +7255,7 @@
           "ContractId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -7280,8 +7280,8 @@
           },
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
-          "Number": "String",
+          "Name": "string",
+          "Number": "string",
           "OrganizationUnitId": 0,
           "OwnerUserId": 0,
           "ParentFolderId": 0,
@@ -7320,7 +7320,7 @@
           "ClassId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "DomainId": 0,
           "HasChanged": true,
           "Id": 0,
@@ -7335,19 +7335,19 @@
           ],
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
+          "Name": "string",
           "Number": 0,
           "ParentId": 0,
           "ParentLibraryTypes": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
           },
-          "XmlName": "String"
+          "XmlName": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile": {
         "value": {
-          "ActualName": "String",
-          "ClientPath": "String",
+          "ActualName": "string",
+          "ClientPath": "string",
           "ContentTypeId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
@@ -7363,8 +7363,8 @@
           "Longitude": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
-          "Path": "String",
+          "Name": "string",
+          "Path": "string",
           "Sized": 0,
           "SmsId": 0,
           "SourceClassId": 0
@@ -7374,39 +7374,63 @@
         "value": {
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "DomainId": 0,
           "Id": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String"
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag": {
         "value": {
+          "CreatedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
             }
-          ]
+          ],
+          "DomainId": 0,
+          "Id": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.Section": {
         "value": {
+          "CreatedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
             }
-          ]
+          ],
+          "DomainId": 0,
+          "Id": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.Category": {
         "value": {
+          "CreatedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
             }
-          ]
+          ],
+          "DomainId": 0,
+          "Id": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Revision.Revision": {
@@ -7418,16 +7442,16 @@
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           },
-          "DocumentDescription": "String",
-          "DocumentFolder": "String",
+          "DocumentDescription": "string",
+          "DocumentFolder": "string",
           "DocumentId": 0,
-          "DocumentKeywords": "String",
-          "DocumentName": "String",
-          "DocumentNumber": "String",
+          "DocumentKeywords": "string",
+          "DocumentName": "string",
+          "DocumentNumber": "string",
           "DocumentOwnerContact": 0,
-          "DocumentStatus": "String",
+          "DocumentStatus": "string",
           "DocumentStatusDate": "0001-01-01T00:00:00.0000000+00:00",
-          "DocumentType": "String",
+          "DocumentType": "string",
           "DomainId": 0,
           "FileId": 0,
           "Id": 0,
@@ -7440,10 +7464,10 @@
           "Number": 0,
           "RejectedBy": 0,
           "RejectedDate": "0001-01-01T00:00:00.0000000+00:00",
-          "RejectedDescription": "String",
-          "RejectedReason": "String",
-          "Remarks": "String",
-          "ReviewDescription": "String",
+          "RejectedDescription": "string",
+          "RejectedReason": "string",
+          "Remarks": "string",
+          "ReviewDescription": "string",
           "ReviewedBy": 0,
           "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00"
         }
