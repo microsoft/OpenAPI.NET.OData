@@ -6066,7 +6066,7 @@
           "DomainId": 0,
           "Description": "string",
           "XmlName": "string",
-          "MasterId": "number",
+          "MasterId": 0,
           "Number": 0,
           "ClassId": 0,
           "ParentId": 0,
