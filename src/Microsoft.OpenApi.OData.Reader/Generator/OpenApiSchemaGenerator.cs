@@ -121,12 +121,14 @@ namespace Microsoft.OpenApi.OData.Generator
 
             schemas[Constants.ReferenceNumericName] = new()
             {
-                Enum = new List<IOpenApiAny>
-                {
+                Type = Constants.StringType,
+                Nullable = true,
+                Enum =
+                [
                     new OpenApiString("-INF"),
                     new OpenApiString("INF"),
                     new OpenApiString("NaN")
-                }
+                ]
             };
 
             if (context.Settings.EnableODataAnnotationReferencesForResponses)
