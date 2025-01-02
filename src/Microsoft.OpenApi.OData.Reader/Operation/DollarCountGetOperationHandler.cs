@@ -170,20 +170,15 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
-            if (annotatable == null)
-            {
-                return;
-            }
-
             OpenApiParameter parameter;
 
-            parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(annotatable, _document);
+            parameter = Context.CreateSearch(TargetPath, _document) ?? (annotatable is null ? null : Context.CreateSearch(annotatable, _document));
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
-            parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(annotatable, _document);
+            parameter = Context.CreateFilter(TargetPath, _document) ?? (annotatable is null ? null : Context.CreateFilter(annotatable, _document));
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
