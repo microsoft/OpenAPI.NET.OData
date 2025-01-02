@@ -82,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Generator
             IEdmEntityType entityType = structuredType as IEdmEntityType;
 
             // properties
-            foreach (var property in structuredType.DeclaredProperties.OrderBy(p => p.Name))
+            foreach (var property in structuredType.DeclaredProperties.OrderBy(static p => p.Name, StringComparer.Ordinal))
             {
                 // IOpenApiAny item;
                 IEdmTypeReference propertyType = property.Type;
