@@ -6,11 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -26,10 +22,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create the dictionary of <see cref="OpenApiExample"/> object.
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
+        /// <param name="document">The Open API document.</param>
         /// <returns>The created <see cref="OpenApiExample"/> dictionary.</returns>
-        public static IDictionary<string, OpenApiExample> CreateExamples(this ODataContext context)
+        public static IDictionary<string, OpenApiExample> CreateExamples(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(document, nameof(document));
 
             IDictionary<string, OpenApiExample> examples = new Dictionary<string, OpenApiExample>();
 
@@ -43,10 +41,9 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 switch (element.SchemaElementKind)
                 {
-                    case EdmSchemaElementKind.TypeDefinition: // Type definition
+                    case EdmSchemaElementKind.TypeDefinition when element is IEdmType reference: // Type definition
                         {
-                            IEdmType reference = (IEdmType)element;
-                            OpenApiExample example = context.CreateExample(reference);
+                            OpenApiExample example = context.CreateExample(reference, document);
                             if (example != null)
                             {
                                 examples.Add(reference.FullTypeName(), example);
@@ -59,77 +56,19 @@ namespace Microsoft.OpenApi.OData.Generator
             return examples;
         }
 
-        private static OpenApiExample CreateExample(this ODataContext context, IEdmType edmType)
+        private static OpenApiExample CreateExample(this ODataContext context, IEdmType edmType, OpenApiDocument document)
         {
             Debug.Assert(context != null);
             Debug.Assert(edmType != null);
 
-            switch (edmType.TypeKind)
+            return edmType.TypeKind switch
             {
-                case EdmTypeKind.Complex: // complex type
-                case EdmTypeKind.Entity: // entity type
-                    return CreateStructuredTypeExample((IEdmStructuredType)edmType);
-            }
-
-            return null;
-        }
-
-        private static OpenApiExample CreateStructuredTypeExample(IEdmStructuredType structuredType)
-        {
-            OpenApiExample example = new();
-
-            JsonObject value = new();
-
-            // properties
-            foreach (var property in structuredType.DeclaredProperties.OrderBy(static p => p.Name, StringComparer.Ordinal))
-            {
-                IEdmTypeReference propertyType = property.Type;
-
-                JsonNode item = GetTypeNameForExample(propertyType);
-
-                if (propertyType.TypeKind() == EdmTypeKind.Primitive &&
-                    item is JsonValue jsonValue &&
-                    jsonValue.TryGetValue(out string stringAny) &&
-                    structuredType is IEdmEntityType entityType &&
-                    entityType.Key().Any(k => StringComparer.Ordinal.Equals(k.Name, property.Name)))
+                // complex type
+                EdmTypeKind.Complex or EdmTypeKind.Entity when edmType is IEdmStructuredType edmStructuredType => new()
                 {
-                    item = $"{stringAny} (identifier)";
-                }
-
-                value.Add(property.Name, item);
-            }
-            example.Value = value;
-            return example;
-        }
-
-        private static JsonNode GetTypeNameForExample(IEdmTypeReference edmTypeReference)
-        {
-            return edmTypeReference.TypeKind() switch
-            {
-                // return new OpenApiBinary(new byte[] { 0x00 }); issue on binary writing
-                EdmTypeKind.Primitive when edmTypeReference.IsBinary() => Convert.ToBase64String(new byte[] { 0x00 }),
-                EdmTypeKind.Primitive when edmTypeReference.IsBoolean() => true,
-                EdmTypeKind.Primitive when edmTypeReference.IsByte() => 0x00,
-                EdmTypeKind.Primitive when edmTypeReference.IsDate() => DateTime.MinValue,
-                EdmTypeKind.Primitive when edmTypeReference.IsDateTimeOffset() => DateTimeOffset.MinValue,
-                EdmTypeKind.Primitive when edmTypeReference.IsDecimal() || edmTypeReference.IsDouble() => 0D,
-                EdmTypeKind.Primitive when edmTypeReference.IsFloating() => 0F,
-                EdmTypeKind.Primitive when edmTypeReference.IsGuid() => Guid.Empty.ToString(),
-                EdmTypeKind.Primitive when edmTypeReference.IsInt16() || edmTypeReference.IsInt32() => 0,
-                EdmTypeKind.Primitive when edmTypeReference.IsInt64() => 0L,
-                EdmTypeKind.Primitive => edmTypeReference.AsPrimitive().PrimitiveDefinition().Name,
-                EdmTypeKind.Entity or EdmTypeKind.Complex or EdmTypeKind.Enum => new JsonObject()
-                    {//TODO this is wrong for enums, and should instead use one of the enum members
-                        [Constants.OdataType] = edmTypeReference.FullName()
-                    },
-
-                EdmTypeKind.Collection => new JsonArray(GetTypeNameForExample(edmTypeReference.AsCollection().ElementType())),
-
-                EdmTypeKind.TypeDefinition => GetTypeNameForExample(new EdmPrimitiveTypeReference(edmTypeReference.AsTypeDefinition().TypeDefinition().UnderlyingType, edmTypeReference.IsNullable)),
-
-                EdmTypeKind.Untyped => new JsonObject(),
-
-                _ => throw new OpenApiException("Not support for the type kind " + edmTypeReference.TypeKind()),
+                    Value = OpenApiSchemaGenerator.CreateStructuredTypePropertiesExample(context, edmStructuredType, document),
+                },
+                _ => null,
             };
         }
     }

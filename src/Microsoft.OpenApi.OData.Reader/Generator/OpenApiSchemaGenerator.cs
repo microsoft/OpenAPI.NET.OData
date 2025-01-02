@@ -607,7 +607,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static JsonObject CreateStructuredTypePropertiesExample(ODataContext context, IEdmStructuredType structuredType, OpenApiDocument document)
+        internal static JsonObject CreateStructuredTypePropertiesExample(ODataContext context, IEdmStructuredType structuredType, OpenApiDocument document)
         {
             JsonObject example = [];
 
@@ -618,19 +618,13 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 JsonNode item = GetTypeNameForExample(context, propertyType, document);
 
-                EdmTypeKind typeKind = propertyType.TypeKind();
-                if (typeKind == EdmTypeKind.Primitive && item is JsonValue jsonValue && jsonValue.TryGetValue(out string stringAny))
+                if (propertyType.TypeKind() == EdmTypeKind.Primitive &&
+                    item is JsonValue jsonValue &&
+                    jsonValue.TryGetValue(out string stringAny) &&
+                    structuredType is IEdmEntityType entityType &&
+                    entityType.Key().Any(k => StringComparer.Ordinal.Equals(k.Name, property.Name)))
                 {
-                    string value = stringAny;
-                    if (structuredType is IEdmEntityType entityType && entityType.Key().Any(k => k.Name == property.Name))
-                    {
-                        value += " (identifier)";
-                    }
-                    if (propertyType.IsDateTimeOffset() || propertyType.IsDate() || propertyType.IsTimeOfDay())
-                    {
-                        value += " (timestamp)";
-                    }
-                    item = value;
+                    item = $"{stringAny} (identifier)";
                 }
 
                 example.Add(property.Name, item);
@@ -669,6 +663,17 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return edmTypeReference.TypeKind() switch
             {
+                // return new OpenApiBinary(new byte[] { 0x00 }); issue on binary writing
+                EdmTypeKind.Primitive when edmTypeReference.IsBinary() => Convert.ToBase64String(new byte[] { 0x00 }),
+                EdmTypeKind.Primitive when edmTypeReference.IsBoolean() => true,
+                EdmTypeKind.Primitive when edmTypeReference.IsByte() => 0x00,
+                EdmTypeKind.Primitive when edmTypeReference.IsDate() => DateTime.MinValue,
+                EdmTypeKind.Primitive when edmTypeReference.IsDateTimeOffset() => DateTimeOffset.MinValue,
+                EdmTypeKind.Primitive when edmTypeReference.IsDecimal() || edmTypeReference.IsDouble() => 0D,
+                EdmTypeKind.Primitive when edmTypeReference.IsFloating() => 0F,
+                EdmTypeKind.Primitive when edmTypeReference.IsGuid() => Guid.Empty.ToString(),
+                EdmTypeKind.Primitive when edmTypeReference.IsInt16() || edmTypeReference.IsInt32() => 0,
+                EdmTypeKind.Primitive when edmTypeReference.IsInt64() => 0L,
                 EdmTypeKind.Primitive => GetTypeNameForPrimitive(context, edmTypeReference, document),
 
                 EdmTypeKind.Entity or EdmTypeKind.Complex or EdmTypeKind.Enum => new JsonObject()
@@ -677,6 +682,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     },
 
                 EdmTypeKind.Collection => new JsonArray(GetTypeNameForExample(context, edmTypeReference.AsCollection().ElementType(), document)),
+                EdmTypeKind.TypeDefinition => GetTypeNameForExample(context, new EdmPrimitiveTypeReference(edmTypeReference.AsTypeDefinition().TypeDefinition().UnderlyingType, edmTypeReference.IsNullable), document),
                 EdmTypeKind.Untyped => new JsonObject(),
                 _ => throw new OpenApiException("Not support for the type kind " + edmTypeReference.TypeKind()),
             };

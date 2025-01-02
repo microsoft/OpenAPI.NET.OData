@@ -542,7 +542,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(json);
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""allOf"": [
     {
       ""$ref"": ""#/components/schemas/NS.LandPlant""
@@ -576,10 +576,9 @@ namespace Microsoft.OpenApi.OData.Tests
       ""@odata.type"": ""NS.Continent""
     },
     ""Name"": ""string"",
-    ""Price"": ""decimal""
+    ""Price"": 0
   }
-}"
-.ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
         }
 
         [Fact]
@@ -613,7 +612,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(json);
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""title"": ""Zoo"",
   ""type"": ""object"",
   ""properties"": {
@@ -633,14 +632,14 @@ namespace Microsoft.OpenApi.OData.Tests
   },
   ""description"": ""Entity type 'Zoo' description."",
   ""example"": {
-    ""Id"": ""number (identifier)"",
+    ""Id"": 0,
     ""Creatures"": [
       {
         ""@odata.type"": ""NS.Creature""
       }
     ]
   }
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
         }
 
         [Fact]
@@ -694,7 +693,7 @@ namespace Microsoft.OpenApi.OData.Tests
             _output.WriteLine(json);
             // Assert
             Assert.NotNull(json);
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""allOf"": [
     {
       ""$ref"": ""#/components/schemas/NS.Animal""
@@ -711,12 +710,11 @@ namespace Microsoft.OpenApi.OData.Tests
     }
   ],
   ""example"": {
-    ""Id"": ""number (identifier)"",
-    ""Age"": ""number"",
+    ""Id"": 0,
+    ""Age"": 0,
     ""Name"": ""string""
   }
-}"
-.ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
         }
 
         [Fact]
@@ -736,7 +734,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.True(String.IsNullOrEmpty(schema.Type.ToIdentifier()));
+            Assert.True(string.IsNullOrEmpty(schema.Type.ToIdentifier()));
 
             Assert.NotNull(schema.AllOf);
             Assert.Null(schema.AnyOf);
@@ -840,7 +838,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(json);
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""title"": ""Color"",
   ""enum"": [
     ""Blue"",
@@ -848,7 +846,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ],
   ""type"": ""string"",
   ""description"": ""Enum type 'Color' description.""
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
         }
         #endregion
 
@@ -877,15 +875,15 @@ namespace Microsoft.OpenApi.OData.Tests
 
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""$ref"": ""#/definitions/DefaultNs.Color""
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""$ref"": ""#/components/schemas/DefaultNs.Color""
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
             }
         }
 
@@ -913,13 +911,13 @@ namespace Microsoft.OpenApi.OData.Tests
             // Assert
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""$ref"": ""#/definitions/DefaultNs.Color""
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""anyOf"": [
     {
       ""$ref"": ""#/components/schemas/DefaultNs.Color""
@@ -930,7 +928,7 @@ namespace Microsoft.OpenApi.OData.Tests
     }
   ],
   ""default"": ""yellow""
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
             }
         }
 
@@ -1032,10 +1030,10 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal(JsonSchemaType.Boolean, schema.Type);
 
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""boolean"",
   ""default"": false
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
         }
 
         [Fact]
@@ -1057,12 +1055,12 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal(JsonSchemaType.String, schema.Type);
 
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""maxLength"": 44,
   ""type"": ""string"",
   ""format"": ""base64url"",
   ""default"": ""T0RhdGE""
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
         }
 
         [Fact]
@@ -1082,13 +1080,13 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal(JsonSchemaType.Number, schema.Type);
 
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
   ""type"": ""number"",
   ""format"": ""int32"",
   ""default"": -128
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
         }
 
         [Fact]
@@ -1109,7 +1107,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""oneOf"": [
     {
       ""type"": ""number"",
@@ -1125,7 +1123,7 @@ namespace Microsoft.OpenApi.OData.Tests
     }
   ],
   ""default"": ""3.1415926535897931""
-}".ChangeLineBreaks(), json);
+}"), JsonNode.Parse(json)));
         }
 
 
@@ -1138,9 +1136,9 @@ namespace Microsoft.OpenApi.OData.Tests
                 { 
                     ShowSchemaExamples = true
                 });
-            EdmEntityType entitType = new EdmEntityType("NS", "Entity");
+            EdmEntityType entityType = new EdmEntityType("NS", "Entity");
             IEdmStructuralProperty property = new EdmStructuralProperty(
-                entitType, "UntypedProperty", EdmCoreModel.Instance.GetUntyped());
+                entityType, "UntypedProperty", EdmCoreModel.Instance.GetUntyped());
 
             // Act
             var schema = context.CreatePropertySchema(property, new());

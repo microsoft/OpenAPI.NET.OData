@@ -31,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Generator
             document.Components.Parameters = context.CreateParameters();
             document.Components.Responses = context.CreateResponses(document);
             document.Components.RequestBodies = context.CreateRequestBodies(document);
-            document.Components.Examples = context.CreateExamples();
+            document.Components.Examples = context.CreateExamples(document);
             document.Components.SecuritySchemes = context.CreateSecuritySchemes();
             document.Components.Links = null;
             document.Components.Callbacks = null;
