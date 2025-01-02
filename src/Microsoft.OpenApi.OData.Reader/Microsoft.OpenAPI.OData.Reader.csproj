@@ -23,7 +23,7 @@
     <PackageReleaseNotes>
     - Updates tag names for actions/functions operations #627
     - Adds nullable to double schema conversion #628
-		- Updates PUT operation ID prefix from Update to Set #629
+	- Updates PUT operation ID prefix from Update to Set #629
     - Ensures unique operation IDs for composable functions #630
 	  </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
