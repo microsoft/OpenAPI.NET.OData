@@ -15,23 +15,31 @@
   <ItemGroup>
     <None Remove="Resources\Basic.OpenApi.json" />
     <None Remove="Resources\Basic.OpenApi.V2.json" />
+    <None Remove="Resources\Basic.OpenApi.V3.1.json" />
     <None Remove="Resources\Basic.OpenApi.yaml" />
     <None Remove="Resources\Basic.OpenApi.V2.yaml" />
+    <None Remove="Resources\Basic.OpenApi.V3.1.yaml" />
     <None Remove="Resources\ComposableFunctions.OData.xml" />
     <None Remove="Resources\Empty.OpenApi.json" />
     <None Remove="Resources\Empty.OpenApi.V2.json" />
+    <None Remove="Resources\Empty.OpenApi.V3.1.json" />
     <None Remove="Resources\Empty.OpenApi.yaml" />
     <None Remove="Resources\Empty.OpenApi.V2.yaml" />
+    <None Remove="Resources\Empty.OpenApi.V3.1.yaml" />
     <None Remove="Resources\Graph.Beta.OData.xml" />
     <None Remove="Resources\Multiple.Schema.OData.xml" />
     <None Remove="Resources\Multiple.Schema.OpenApi.json" />
     <None Remove="Resources\Multiple.Schema.OpenApi.V2.json" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.V3.1.json" />
     <None Remove="Resources\Multiple.Schema.OpenApi.yaml" />
     <None Remove="Resources\Multiple.Schema.OpenApi.V2.yaml" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.V3.1.yaml" />
     <None Remove="Resources\TripService.OpenApi.json" />
     <None Remove="Resources\TripService.OpenApi.V2.json" />
+    <None Remove="Resources\TripService.OpenApi.V3.1.json" />
     <None Remove="Resources\TripService.OpenApi.yaml" />
     <None Remove="Resources\TripService.OpenApi.V2.yaml" />
+    <None Remove="Resources\TripService.OpenApi.V3.1.yaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,22 +50,30 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Basic.OpenApi.json" />
     <EmbeddedResource Include="Resources\Basic.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\Basic.OpenApi.V3.1.json" />
     <EmbeddedResource Include="Resources\Basic.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\Basic.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\Basic.OpenApi.V3.1.yaml" />
     <EmbeddedResource Include="Resources\Empty.OpenApi.json" />
     <EmbeddedResource Include="Resources\Empty.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.V3.1.json" />
     <EmbeddedResource Include="Resources\Empty.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\Empty.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.V3.1.yaml" />
     <EmbeddedResource Include="Resources\Graph.Beta.OData.xml" />
     <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.json" />
     <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V3.1.json" />
     <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V3.1.yaml" />
     <EmbeddedResource Include="Resources\TripService.OData.xml" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.json" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.V3.1.json" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.V3.1.yaml" />
     <EmbeddedResource Include="Resources\YamlWriterTest.yaml.txt" />
     <EmbeddedResource Include="Resources\JsonWriterTest.json.txt" />
     <EmbeddedResource Include="Resources\Contract.OData.xml" />
@@ -79,10 +95,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj" />
   </ItemGroup>
 
 </Project>

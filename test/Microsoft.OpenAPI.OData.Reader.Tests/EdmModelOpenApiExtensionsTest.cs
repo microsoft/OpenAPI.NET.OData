@@ -29,8 +29,10 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     [Theory]
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Json)]
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
     public void EmptyEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
     {
         // Arrange
@@ -52,8 +54,10 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     [Theory]
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Json)]
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
     public void BasicEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
     {
         // Arrange
@@ -77,8 +81,10 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     [Theory]
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Json)]
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
     public void MultipleSchemasEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
     {
         // Arrange
@@ -104,8 +110,10 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     [Theory]
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Json)]
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
     public void TripServiceMetadataToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
     {
         // Arrange
@@ -156,6 +164,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     version switch {
         OpenApiSpecVersion.OpenApi2_0 => "V2.",
         OpenApiSpecVersion.OpenApi3_0 => string.Empty,
+        OpenApiSpecVersion.OpenApi3_1 => "V3.1.",
         _ => throw new NotImplementedException()
     };
 
