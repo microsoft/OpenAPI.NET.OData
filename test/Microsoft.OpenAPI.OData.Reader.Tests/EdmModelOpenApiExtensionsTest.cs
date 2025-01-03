@@ -33,9 +33,11 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void EmptyEdmModelToOpenApiJsonWorks(OpenApiSpecVersion specVersion)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
+        [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
+        public void EmptyEdmModelToOpenApiJsonWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
@@ -46,50 +48,19 @@ namespace Microsoft.OpenApi.OData.Tests
             };
 
             // Act
-            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
-            _output.WriteLine(json);
-            var parsedJson = JsonNode.Parse(json);
-            var fileName = specVersion switch {
-                OpenApiSpecVersion.OpenApi2_0 => "Empty.OpenApi.V2.json",
-                OpenApiSpecVersion.OpenApi3_0 => "Empty.OpenApi.json",
-                _ => throw new NotImplementedException()
-            };
+            string result = WriteEdmModelAsOpenApi(model, format, openApiConvertSettings);
+            var fileName = $"Empty.OpenApi.{GetVersion(specVersion)}{GetFormatExt(format)}";
 
             // Assert
-            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(Resources.GetString(fileName)), parsedJson));
+            AssertDocumentsAreEqual(result, fileName, format);
         }
 
         [Theory]
-        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void EmptyEdmModelToOpenApiYamlWorks(OpenApiSpecVersion specVersion)
-        {
-            // Arrange
-            IEdmModel model = EdmModelHelper.EmptyModel;
-            var openApiConvertSettings = new OpenApiConvertSettings
-            {
-                OpenApiSpecVersion = specVersion,
-                IncludeAssemblyInfo = false
-            };
-
-            // Act
-            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);
-            _output.WriteLine(yaml);
-
-            var fileName = specVersion switch {
-                OpenApiSpecVersion.OpenApi2_0 => "Empty.OpenApi.V2.yaml",
-                OpenApiSpecVersion.OpenApi3_0 => "Empty.OpenApi.yaml",
-                _ => throw new NotImplementedException()
-            };
-
-            // Assert
-            Assert.Equal(Resources.GetString(fileName).ChangeLineBreaks(), yaml);
-        }
-
-        [Theory]
-        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void BasicEdmModelToOpenApiJsonWorks(OpenApiSpecVersion specVersion)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
+        [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
+        public void BasicEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
@@ -102,52 +73,19 @@ namespace Microsoft.OpenApi.OData.Tests
             };
 
             // Act
-            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
-            _output.WriteLine(json);
-            var parsedJson = JsonNode.Parse(json);
-            var fileName = specVersion switch {
-                OpenApiSpecVersion.OpenApi2_0 => "Basic.OpenApi.V2.json",
-                OpenApiSpecVersion.OpenApi3_0 => "Basic.OpenApi.json",
-                _ => throw new NotImplementedException()
-            };
+            string result = WriteEdmModelAsOpenApi(model, format, openApiConvertSettings);
+            var fileName = $"Basic.OpenApi.{GetVersion(specVersion)}{GetFormatExt(format)}";
 
             // Assert
-            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(Resources.GetString(fileName)), parsedJson));
+            AssertDocumentsAreEqual(result, fileName, format);
         }
 
         [Theory]
-        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void BasicEdmModelToOpenApiYamlWorks(OpenApiSpecVersion specVersion)
-        {
-            // Arrange
-            IEdmModel model = EdmModelHelper.BasicEdmModel;
-            var openApiConvertSettings = new OpenApiConvertSettings
-            {
-                OpenApiSpecVersion = specVersion,
-                ShowSchemaExamples = true,
-                IncludeAssemblyInfo = false,
-                UseStringArrayForQueryOptionsSchema = false
-            };
-
-            // Act
-            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);
-            _output.WriteLine(yaml);
-
-            var fileName = specVersion switch {
-                OpenApiSpecVersion.OpenApi2_0 => "Basic.OpenApi.V2.yaml",
-                OpenApiSpecVersion.OpenApi3_0 => "Basic.OpenApi.yaml",
-                _ => throw new NotImplementedException()
-            };
-
-            // Assert
-            Assert.Equal(Resources.GetString(fileName).ChangeLineBreaks(), yaml);
-        }
-
-        [Theory]
-        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void MultipleSchemasEdmModelToOpenApiJsonWorks(OpenApiSpecVersion specVersion)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
+        [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
+        public void MultipleSchemasEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
@@ -161,54 +99,20 @@ namespace Microsoft.OpenApi.OData.Tests
             };
 
             // Act
-            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
-            _output.WriteLine(json);
+            string result = WriteEdmModelAsOpenApi(model, format, openApiConvertSettings);
 
-            var parsedJson = JsonNode.Parse(json);
-            var fileName = specVersion switch {
-                OpenApiSpecVersion.OpenApi2_0 => "Multiple.Schema.OpenApi.V2.json",
-                OpenApiSpecVersion.OpenApi3_0 => "Multiple.Schema.OpenApi.json",
-                _ => throw new NotImplementedException()
-            };
+            var fileName = $"Multiple.Schema.OpenApi.{GetVersion(specVersion)}{GetFormatExt(format)}";
 
             // Assert
-            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(Resources.GetString(fileName)), parsedJson));
+            AssertDocumentsAreEqual(result, fileName, format);
         }
 
         [Theory]
-        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void MultipleSchemasEdmModelToOpenApiYamlWorks(OpenApiSpecVersion specVersion)
-        {
-            // Arrange
-            IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
-            var openApiConvertSettings = new OpenApiConvertSettings
-            {
-                OpenApiSpecVersion = specVersion,
-                ShowLinks = true, // test Links
-                ShowSchemaExamples = true,
-                IncludeAssemblyInfo = false,
-                UseStringArrayForQueryOptionsSchema = false
-            };
-
-            // Act
-            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);
-            _output.WriteLine(yaml);
-
-            var fileName = specVersion switch {
-                OpenApiSpecVersion.OpenApi2_0 => "Multiple.Schema.OpenApi.V2.yaml",
-                OpenApiSpecVersion.OpenApi3_0 => "Multiple.Schema.OpenApi.yaml",
-                _ => throw new NotImplementedException()
-            };
-
-            // Assert
-            Assert.Equal(Resources.GetString(fileName).ChangeLineBreaks(), yaml);
-        }
-
-        [Theory]
-        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void TripServiceMetadataToOpenApiJsonWorks(OpenApiSpecVersion specVersion)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
+        [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
+        public void TripServiceMetadataToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -225,54 +129,41 @@ namespace Microsoft.OpenApi.OData.Tests
                 IncludeAssemblyInfo = false
             };
             // Act
-            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, settings);
-            _output.WriteLine(json);
-            var parsedJson = JsonNode.Parse(json);
+            string result = WriteEdmModelAsOpenApi(model, format, settings);
 
-            var fileName = specVersion switch {
-                OpenApiSpecVersion.OpenApi2_0 => "TripService.OpenApi.V2.json",
-                OpenApiSpecVersion.OpenApi3_0 => "TripService.OpenApi.json",
-                _ => throw new NotImplementedException()
-            };
+            var fileName = $"TripService.OpenApi.{GetVersion(specVersion)}{GetFormatExt(format)}";
 
             // Assert
-            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(Resources.GetString(fileName)), parsedJson));
+            AssertDocumentsAreEqual(result, fileName, format);
         }
 
-        [Theory]
-        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void TripServiceMetadataToOpenApiYamlWorks(OpenApiSpecVersion specVersion)
+        private void AssertDocumentsAreEqual(string result, string fileName, OpenApiFormat format)
         {
-            // Arrange
-            IEdmModel model = EdmModelHelper.TripServiceModel;
-
-            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            _output.WriteLine(result);
+            if (format is OpenApiFormat.Json)
             {
-                EnableKeyAsSegment = true,
-                SemVerVersion = "1.2.3",
-                ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
-                IEEE754Compatible = true,
-                OpenApiSpecVersion = specVersion,
-                AddSingleQuotesForStringParameters = true,
-                AddEnumDescriptionExtension = true,
-                AppendBoundOperationsOnDerivedTypeCastSegments = true,
-                IncludeAssemblyInfo = false
-            };
-
-            // Act
-            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, settings);
-            _output.WriteLine(yaml);
-
-            var fileName = specVersion switch {
-                OpenApiSpecVersion.OpenApi2_0 => "TripService.OpenApi.V2.yaml",
-                OpenApiSpecVersion.OpenApi3_0 => "TripService.OpenApi.yaml",
-                _ => throw new NotImplementedException()
-            };
-
-            // Assert
-            Assert.Equal(Resources.GetString(fileName).ChangeLineBreaks(), yaml);
+                var parsedJson = JsonNode.Parse(result);
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(Resources.GetString(fileName)), parsedJson));
+            }
+            else
+            {
+                Assert.Equal(Resources.GetString(fileName).ChangeLineBreaks(), result);
+            }
         }
+
+        private static string GetFormatExt(OpenApiFormat format) =>
+        format switch {
+            OpenApiFormat.Json => "json",
+            OpenApiFormat.Yaml => "yaml",
+            _ => throw new NotImplementedException()
+        };
+
+        private static string GetVersion(OpenApiSpecVersion version) =>
+        version switch {
+            OpenApiSpecVersion.OpenApi2_0 => "V2.",
+            OpenApiSpecVersion.OpenApi3_0 => string.Empty,
+            _ => throw new NotImplementedException()
+        };
 
         private static string WriteEdmModelAsOpenApi(IEdmModel model, OpenApiFormat target,
             OpenApiConvertSettings settings = null)

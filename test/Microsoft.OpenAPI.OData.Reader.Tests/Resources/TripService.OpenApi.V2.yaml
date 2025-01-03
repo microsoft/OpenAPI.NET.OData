@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: OData Service for namespace Microsoft.OData.Service.Sample.TrippinInMemory.Models
   description: This OData service is located at http://services.odata.org/TrippinRESTierService
-  version: '1.2.3'
+  version: 1.0.1
 host: services.odata.org
 basePath: /TrippinRESTierService
 schemes:
