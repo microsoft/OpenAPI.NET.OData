@@ -981,7 +981,7 @@
         }
       },
       "example": {
-        "Id": "number",
+        "Id": 0,
         "City": {
           "@odata.type": "DefaultNs.City"
         }
@@ -1003,7 +1003,7 @@
         }
       ],
       "example": {
-        "Id": "number",
+        "Id": 0,
         "City": {
           "@odata.type": "DefaultNs.City"
         },
@@ -1074,8 +1074,8 @@
       "type": "object"
     },
     "ODataCountResponse": {
-      "format": "int32",
-      "type": "integer"
+      "format": "int64",
+      "type": "number"
     },
     "DefaultNs.PersonCollectionResponse": {
       "title": "Collection of Person",
@@ -1161,14 +1161,16 @@
       "in": "query",
       "name": "$top",
       "description": "Show only the first n items",
-      "type": "integer",
+      "type": "number",
+      "format": "int64",
       "minimum": 0
     },
     "skip": {
       "in": "query",
       "name": "$skip",
       "description": "Skip the first n items",
-      "type": "integer",
+      "type": "number",
+      "format": "int64",
       "minimum": 0
     },
     "count": {
