@@ -739,8 +739,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
     put:
@@ -762,8 +762,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -1537,8 +1537,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1560,8 +1560,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -2098,8 +2098,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2127,8 +2127,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -2666,14 +2666,6 @@ paths:
       summary: Get the number of the resource
       operationId: Me.AsEmployee.AddressInfo.GetCount-8488
       parameters:
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -2715,14 +2707,6 @@ paths:
       summary: Get the number of the resource
       operationId: Me.AddressInfo.GetCount.AsEventLocation-9375
       parameters:
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -2979,14 +2963,6 @@ paths:
       summary: Get the number of the resource
       operationId: Me.AsEmployee.BestFriend.AddressInfo.GetCount-81de
       parameters:
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -3028,14 +3004,6 @@ paths:
       summary: Get the number of the resource
       operationId: Me.BestFriend.AddressInfo.GetCount.AsEventLocation-842c
       parameters:
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -3178,8 +3146,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -3201,8 +3169,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -3454,14 +3422,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -3516,14 +3476,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -3706,8 +3658,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -3735,8 +3687,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -4257,14 +4209,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -4319,14 +4263,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -4460,8 +4396,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -4489,8 +4425,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -4891,8 +4827,8 @@ paths:
         '200':
           description: Success
           schema:
-            title: Collection of Person
             type: object
+            title: Collection of Person
             properties:
               value:
                 type: array
@@ -5403,14 +5339,6 @@ paths:
       summary: Get the number of the resource
       operationId: Me.AsManager.AddressInfo.GetCount-75da
       parameters:
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -5452,14 +5380,6 @@ paths:
       summary: Get the number of the resource
       operationId: Me.AddressInfo.GetCount.AsEventLocation-f67e
       parameters:
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -5716,14 +5636,6 @@ paths:
       summary: Get the number of the resource
       operationId: Me.AsManager.BestFriend.AddressInfo.GetCount-6ea6
       parameters:
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -5765,14 +5677,6 @@ paths:
       summary: Get the number of the resource
       operationId: Me.BestFriend.AddressInfo.GetCount.AsEventLocation-692e
       parameters:
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -5915,8 +5819,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -5938,8 +5842,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -6179,14 +6083,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -6241,14 +6137,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -6382,8 +6270,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -6411,8 +6299,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -7004,8 +6892,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7033,8 +6921,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -7644,8 +7532,8 @@ paths:
         '200':
           description: Success
           schema:
-            title: Collection of Person
             type: object
+            title: Collection of Person
             properties:
               value:
                 type: array
@@ -7983,8 +7871,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8006,8 +7894,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -8304,8 +8192,8 @@ paths:
         '200':
           description: Success
           schema:
-            title: Collection of Person
             type: object
+            title: Collection of Person
             properties:
               value:
                 type: array
@@ -8843,14 +8731,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -8893,14 +8773,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -9203,14 +9075,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -9265,14 +9129,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -9488,8 +9344,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -9517,8 +9373,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -9779,14 +9635,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -9841,14 +9689,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -10080,8 +9920,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
     put:
@@ -10109,8 +9949,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -10692,8 +10532,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
     put:
@@ -10715,8 +10555,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -11007,8 +10847,8 @@ paths:
         '200':
           description: Success
           schema:
-            title: Collection of Person
             type: object
+            title: Collection of Person
             properties:
               value:
                 type: array
@@ -12251,8 +12091,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -12280,8 +12120,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -12915,8 +12755,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -12950,8 +12790,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -13612,14 +13452,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -13674,14 +13506,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -13993,14 +13817,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -14055,14 +13871,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -14237,8 +14045,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -14266,8 +14074,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -14561,14 +14369,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -14635,14 +14435,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -14855,8 +14647,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -14890,8 +14682,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -15509,14 +15301,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -15583,14 +15367,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -15748,8 +15524,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -15783,8 +15559,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -16251,8 +16027,8 @@ paths:
         '200':
           description: Success
           schema:
-            title: Collection of Person
             type: object
+            title: Collection of Person
             properties:
               value:
                 type: array
@@ -16862,14 +16638,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -16924,14 +16692,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -17243,14 +17003,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -17305,14 +17057,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -17487,8 +17231,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -17516,8 +17260,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -17799,14 +17543,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -17873,14 +17609,6 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
-        - in: header
-          name: ConsistencyLevel
-          description: 'Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries'
-          type: string
-          x-examples:
-            example-1:
-              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
-              value: eventual
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
       responses:
@@ -18038,8 +17766,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -18073,8 +17801,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -18774,8 +18502,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -18809,8 +18537,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -19523,8 +19251,8 @@ paths:
         '200':
           description: Success
           schema:
-            title: Collection of Person
             type: object
+            title: Collection of Person
             properties:
               value:
                 type: array
@@ -19927,8 +19655,8 @@ paths:
         '200':
           description: Retrieved media content
           schema:
-            format: binary
             type: string
+            format: binary
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -19960,8 +19688,8 @@ paths:
           description: New media content.
           required: true
           schema:
-            format: binary
             type: string
+            format: binary
       responses:
         '204':
           description: Success
@@ -20304,8 +20032,8 @@ paths:
         '200':
           description: Success
           schema:
-            title: Collection of Person
             type: object
+            title: Collection of Person
             properties:
               value:
                 type: array
@@ -20828,277 +20556,6 @@ paths:
       x-ms-docs-operation-type: actionImport
     x-description: Provides operations to call the ResetDataSource method.
 definitions:
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person:
-    title: Person
-    type: object
-    properties:
-      UserName:
-        type: string
-      FirstName:
-        type: string
-      LastName:
-        type: string
-      MiddleName:
-        type: string
-      Gender:
-        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
-      Age:
-        format: int64
-        allOf:
-          - format: int64
-            type: number
-      Emails:
-        type: array
-        items:
-          type: string
-      AddressInfo:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-      HomeAddress:
-        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-      FavoriteFeature:
-        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
-      Features:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
-      Photo:
-        format: base64url
-        type: string
-      Friends:
-        description: Friends of person
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        x-ms-navigationProperty: true
-      BestFriend:
-        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-      Trips:
-        description: Collection of trips.
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-        x-ms-navigationProperty: true
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline:
-    title: Airline
-    type: object
-    properties:
-      AirlineCode:
-        type: string
-      Name:
-        type: string
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport:
-    title: Airport
-    type: object
-    properties:
-      Name:
-        type: string
-      IcaoCode:
-        type: string
-      IataCode:
-        type: string
-      Location:
-        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location:
-    title: Location
-    type: object
-    properties:
-      Address:
-        type: string
-      City:
-        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.City:
-    title: City
-    type: object
-    properties:
-      Name:
-        type: string
-      CountryRegion:
-        type: string
-      Region:
-        type: string
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation:
-    allOf:
-      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-      - title: AirportLocation
-        type: object
-        properties:
-          Loc:
-            $ref: '#/definitions/Edm.GeographyPoint'
-          EmergencyAuthority:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
-    allOf:
-      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-      - title: EventLocation
-        type: object
-        properties:
-          BuildingInfo:
-            type: string
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip:
-    title: Trip
-    type: object
-    properties:
-      TripId:
-        format: int32
-        maximum: 2147483647
-        minimum: -2147483648
-        type: number
-      ShareId:
-        format: uuid
-        pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
-        type: string
-      Name:
-        type: string
-      Budget:
-        format: float
-        allOf:
-          - format: float
-            type: number
-      Description:
-        type: string
-      Tags:
-        type: array
-        items:
-          type: string
-      TripData: { }
-      DestinationInfo:
-        type: array
-        items: { }
-      StartsAt:
-        format: date-time
-        pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
-      EndsAt:
-        format: date-time
-        pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
-      PlanItems:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
-        x-ms-navigationProperty: true
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem:
-    title: PlanItem
-    type: object
-    properties:
-      PlanItemId:
-        format: int32
-        maximum: 2147483647
-        minimum: -2147483648
-        type: number
-      ConfirmationCode:
-        type: string
-      StartsAt:
-        format: date-time
-        pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
-      EndsAt:
-        format: date-time
-        pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
-      Duration:
-        format: duration
-        pattern: '^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$'
-        type: string
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event:
-    allOf:
-      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
-      - title: Event
-        type: object
-        properties:
-          OccursAt:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
-          Description:
-            type: string
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation:
-    allOf:
-      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
-      - title: PublicTransportation
-        type: object
-        properties:
-          SeatNumber:
-            type: string
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight:
-    allOf:
-      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation'
-      - title: Flight
-        type: object
-        properties:
-          FlightNumber:
-            type: string
-          Airline:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
-          From:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
-          To:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
-    allOf:
-      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-      - title: Employee
-        type: object
-        properties:
-          Cost:
-            format: int64
-            allOf:
-              - format: int64
-                type: number
-          Peers:
-            type: array
-            items:
-              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-            x-ms-navigationProperty: true
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
-    allOf:
-      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-      - title: Manager
-        type: object
-        properties:
-          Budget:
-            format: int64
-            allOf:
-              - format: int64
-                type: number
-          BossOffice:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-          DirectReports:
-            type: array
-            items:
-              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-            x-ms-navigationProperty: true
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender:
-    title: PersonGender
-    description: Gender of the person.
-    enum:
-      - Male
-      - Female
-      - Unknow
-    type: string
-    x-ms-enum:
-      name: PersonGender
-      modelAsString: false
-      values:
-        - value: Male
-          description: The Male gender.
-          name: Male
-        - value: Female
-          description: The Female gender.
-          name: Female
-        - value: Unknow
-          description: Unknown gender or prefers not to say.
-          name: Unknow
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature:
-    title: Feature
-    enum:
-      - Feature1
-      - Feature2
-      - Feature3
-      - Feature4
-    type: string
-    x-ms-enum-flags:
-      isFlags: true
   Edm.Geography:
     $ref: '#/definitions/Edm.Geometry'
   Edm.GeographyPoint:
@@ -21120,53 +20577,53 @@ definitions:
     allOf:
       - $ref: '#/definitions/Edm.GeometryPoint'
   Edm.GeometryPoint:
+    type: object
     required:
       - type
       - coordinates
-    type: object
     properties:
       type:
+        type: string
         default: Point
         enum:
           - Point
-        type: string
       coordinates:
         $ref: '#/definitions/GeoJSON.position'
   Edm.GeometryLineString:
+    type: object
     required:
       - type
       - coordinates
-    type: object
     properties:
       type:
         enum:
           - LineString
       coordinates:
-        minItems: 2
         type: array
+        minItems: 2
         items:
           $ref: '#/definitions/GeoJSON.position'
   Edm.GeometryPolygon:
+    type: object
     required:
       - type
       - coordinates
-    type: object
     properties:
       type:
         enum:
           - Polygon
       coordinates:
-        minItems: 4
         type: array
+        minItems: 4
         items:
           type: array
           items:
             $ref: '#/definitions/GeoJSON.position'
   Edm.GeometryMultiPoint:
+    type: object
     required:
       - type
       - coordinates
-    type: object
     properties:
       type:
         enum:
@@ -21176,33 +20633,33 @@ definitions:
         items:
           $ref: '#/definitions/GeoJSON.position'
   Edm.GeometryMultiLineString:
+    type: object
     required:
       - type
       - coordinates
-    type: object
     properties:
       type:
         enum:
           - MultiLineString
       coordinates:
-        minItems: 2
         type: array
+        minItems: 2
         items:
           type: array
           items:
             $ref: '#/definitions/GeoJSON.position'
   Edm.GeometryMultiPolygon:
+    type: object
     required:
       - type
       - coordinates
-    type: object
     properties:
       type:
         enum:
           - MultiPolygon
       coordinates:
-        minItems: 4
         type: array
+        minItems: 4
         items:
           type: array
           items:
@@ -21210,10 +20667,10 @@ definitions:
             items:
               $ref: '#/definitions/GeoJSON.position'
   Edm.GeometryCollection:
+    type: object
     required:
       - type
       - coordinates
-    type: object
     properties:
       type:
         enum:
@@ -21223,22 +20680,22 @@ definitions:
         items:
           $ref: '#/definitions/Edm.Geometry'
   GeoJSON.position:
-    minItems: 2
     type: array
+    minItems: 2
     items:
       type: number
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ODataError:
+    type: object
     required:
       - error
-    type: object
     properties:
       error:
         $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError'
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError:
+    type: object
     required:
       - code
       - message
-    type: object
     properties:
       code:
         type: string
@@ -21254,10 +20711,10 @@ definitions:
       innerError:
         $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError'
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails:
+    type: object
     required:
       - code
       - message
-    type: object
     properties:
       code:
         type: string
@@ -21266,109 +20723,21 @@ definitions:
       target:
         type: string
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError:
-    title: InnerError
     type: object
+    title: InnerError
     properties:
       Date:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       RequestId:
         type: string
   ODataCountResponse:
-    format: int64
     type: number
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse:
-    title: Collection of Person
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse:
-    title: Collection of Airline
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse:
-    title: Collection of Airport
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse:
-    title: Collection of Trip
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse:
-    title: Collection of PlanItem
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse:
-    title: Collection of Employee
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse:
-    title: Collection of Manager
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse:
-    title: Collection of Event
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse:
-    title: Collection of PublicTransportation
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse:
-    title: Collection of Flight
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight'
-  Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse:
-    title: Collection of Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+    format: int64
   StringCollectionResponse:
-    title: Collection of string
     type: object
+    title: Collection of string
     properties:
       value:
         type: array
@@ -21389,11 +20758,370 @@ definitions:
     additionalProperties:
       type: object
   ReferenceNumeric:
+    type: string
     enum:
       - '-INF'
       - INF
       - NaN
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person:
+    type: object
+    title: Person
+    properties:
+      UserName:
+        type: string
+      FirstName:
+        type: string
+      LastName:
+        type: string
+      MiddleName:
+        type: string
+      Gender:
+        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
+      Age:
+        format: int64
+        allOf:
+          - type: number
+            format: int64
+      Emails:
+        type: array
+        items:
+          type: string
+      AddressInfo:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      HomeAddress:
+        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      FavoriteFeature:
+        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
+      Features:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
+      Photo:
+        type: string
+        format: base64url
+      Friends:
+        type: array
+        description: Friends of person
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        x-ms-navigationProperty: true
+      BestFriend:
+        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+      Trips:
+        type: array
+        description: Collection of trips.
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        x-ms-navigationProperty: true
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline:
+    type: object
+    title: Airline
+    properties:
+      AirlineCode:
+        type: string
+      Name:
+        type: string
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport:
+    type: object
+    title: Airport
+    properties:
+      Name:
+        type: string
+      IcaoCode:
+        type: string
+      IataCode:
+        type: string
+      Location:
+        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location:
+    type: object
+    title: Location
+    properties:
+      Address:
+        type: string
+      City:
+        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.City:
+    type: object
+    title: City
+    properties:
+      Name:
+        type: string
+      CountryRegion:
+        type: string
+      Region:
+        type: string
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation:
+    allOf:
+      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      - type: object
+        title: AirportLocation
+        properties:
+          Loc:
+            $ref: '#/definitions/Edm.GeographyPoint'
+          EmergencyAuthority:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
+    allOf:
+      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+      - type: object
+        title: EventLocation
+        properties:
+          BuildingInfo:
+            type: string
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip:
+    type: object
+    title: Trip
+    properties:
+      TripId:
+        type: number
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+      ShareId:
+        type: string
+        format: uuid
+        pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+      Name:
+        type: string
+      Budget:
+        format: float
+        allOf:
+          - type: number
+            format: float
+      Description:
+        type: string
+      Tags:
+        type: array
+        items:
+          type: string
+      TripData: { }
+      DestinationInfo:
+        type: array
+        items: { }
+      StartsAt:
+        type: string
+        format: date-time
+        pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+      EndsAt:
+        type: string
+        format: date-time
+        pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+      PlanItems:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+        x-ms-navigationProperty: true
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem:
+    type: object
+    title: PlanItem
+    properties:
+      PlanItemId:
+        type: number
+        format: int32
+        maximum: 2147483647
+        minimum: -2147483648
+      ConfirmationCode:
+        type: string
+      StartsAt:
+        type: string
+        format: date-time
+        pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+      EndsAt:
+        type: string
+        format: date-time
+        pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+      Duration:
+        type: string
+        format: duration
+        pattern: '^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event:
+    allOf:
+      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+      - type: object
+        title: Event
+        properties:
+          OccursAt:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
+          Description:
+            type: string
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation:
+    allOf:
+      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+      - type: object
+        title: PublicTransportation
+        properties:
+          SeatNumber:
+            type: string
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight:
+    allOf:
+      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation'
+      - type: object
+        title: Flight
+        properties:
+          FlightNumber:
+            type: string
+          Airline:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+          From:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+          To:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
+    allOf:
+      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+      - type: object
+        title: Employee
+        properties:
+          Cost:
+            format: int64
+            allOf:
+              - type: number
+                format: int64
+          Peers:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            x-ms-navigationProperty: true
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
+    allOf:
+      - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+      - type: object
+        title: Manager
+        properties:
+          Budget:
+            format: int64
+            allOf:
+              - type: number
+                format: int64
+          BossOffice:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+          DirectReports:
+            type: array
+            items:
+              $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            x-ms-navigationProperty: true
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender:
     type: string
+    description: Gender of the person.
+    title: PersonGender
+    enum:
+      - Male
+      - Female
+      - Unknow
+    x-ms-enum:
+      name: PersonGender
+      modelAsString: false
+      values:
+        - value: Male
+          description: The Male gender.
+          name: Male
+        - value: Female
+          description: The Female gender.
+          name: Female
+        - value: Unknow
+          description: Unknown gender or prefers not to say.
+          name: Unknow
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature:
+    type: string
+    title: Feature
+    enum:
+      - Feature1
+      - Feature2
+      - Feature3
+      - Feature4
+    x-ms-enum-flags:
+      isFlags: true
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse:
+    type: object
+    title: Collection of Person
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse:
+    type: object
+    title: Collection of Airline
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse:
+    type: object
+    title: Collection of Airport
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse:
+    type: object
+    title: Collection of Trip
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse:
+    type: object
+    title: Collection of PlanItem
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse:
+    type: object
+    title: Collection of Employee
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse:
+    type: object
+    title: Collection of Manager
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse:
+    type: object
+    title: Collection of Event
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse:
+    type: object
+    title: Collection of PublicTransportation
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse:
+    type: object
+    title: Collection of Flight
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse:
+    type: object
+    title: Collection of Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
 parameters:
   top:
     in: query
@@ -21449,10 +21177,10 @@ parameters:
         userName:
           type: string
         tripId:
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
-          type: number
   GetPeersForTripRequestBody:
     in: body
     name: body
@@ -21464,10 +21192,10 @@ parameters:
         userName:
           type: string
         tripId:
+          type: number
           format: int32
           maximum: 2147483647
           minimum: -2147483648
-          type: number
 responses:
   error:
     description: error
@@ -21532,8 +21260,8 @@ responses:
   GetFriendsTripsResponse:
     description: Success
     schema:
-      title: Collection of Trip
       type: object
+      title: Collection of Trip
       properties:
         value:
           type: array
@@ -21545,13 +21273,13 @@ responses:
       type: object
       properties:
         value:
-          default: false
           type: boolean
+          default: false
   GetPeersForTripResponse:
     description: Success
     schema:
-      title: Collection of Person
       type: object
+      title: Collection of Person
       properties:
         value:
           type: array
