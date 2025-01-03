@@ -4456,20 +4456,6 @@
         "operationId": "Me.AsEmployee.AddressInfo.GetCount-8488",
         "parameters": [
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -4531,20 +4517,6 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.AddressInfo.GetCount.AsEventLocation-9375",
         "parameters": [
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -4946,20 +4918,6 @@
         "operationId": "Me.AsEmployee.BestFriend.AddressInfo.GetCount-81de",
         "parameters": [
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -5021,20 +4979,6 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.BestFriend.AddressInfo.GetCount.AsEventLocation-842c",
         "parameters": [
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -5718,20 +5662,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -5814,20 +5744,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -7043,20 +6959,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -7139,20 +7041,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -8905,20 +8793,6 @@
         "operationId": "Me.AsManager.AddressInfo.GetCount-75da",
         "parameters": [
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -8980,20 +8854,6 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.AddressInfo.GetCount.AsEventLocation-f67e",
         "parameters": [
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -9395,20 +9255,6 @@
         "operationId": "Me.AsManager.BestFriend.AddressInfo.GetCount-6ea6",
         "parameters": [
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -9470,20 +9316,6 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.BestFriend.AddressInfo.GetCount.AsEventLocation-692e",
         "parameters": [
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
           {
             "$ref": "#/components/parameters/search"
           },
@@ -10148,20 +9980,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -10244,20 +10062,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -14490,20 +14294,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -14572,20 +14362,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -15075,20 +14851,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -15171,20 +14933,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -16040,20 +15788,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -16142,20 +15876,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -22476,20 +22196,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -22572,20 +22278,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -23086,20 +22778,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -23182,20 +22860,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -24018,20 +23682,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -24134,20 +23784,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -25589,20 +25225,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -25705,20 +25327,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -27805,20 +27413,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -27901,20 +27495,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -28415,20 +27995,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -28511,20 +28077,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -29328,20 +28880,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -29444,20 +28982,6 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "ConsistencyLevel",
-            "in": "header",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "schema": {
-              "type": "string"
-            },
-            "examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/components/parameters/search"
@@ -34292,6 +33816,341 @@
   },
   "components": {
     "schemas": {
+      "Edm.Geography": {
+        "$ref": "#/components/schemas/Edm.Geometry"
+      },
+      "Edm.GeographyPoint": {
+        "$ref": "#/components/schemas/Edm.GeometryPoint"
+      },
+      "Edm.GeographyLineString": {
+        "$ref": "#/components/schemas/Edm.GeometryLineString"
+      },
+      "Edm.GeographyPolygon": {
+        "$ref": "#/components/schemas/Edm.GeometryPolygon"
+      },
+      "Edm.GeographyMultiPoint": {
+        "$ref": "#/components/schemas/Edm.GeometryMultiPoint"
+      },
+      "Edm.GeographyMultiLineString": {
+        "$ref": "#/components/schemas/Edm.GeometryMultiLineString"
+      },
+      "Edm.GeographyMultiPolygon": {
+        "$ref": "#/components/schemas/Edm.GeometryMultiPolygon"
+      },
+      "Edm.GeographyCollection": {
+        "$ref": "#/components/schemas/Edm.GeometryCollection"
+      },
+      "Edm.Geometry": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Edm.GeometryPoint"
+          },
+          {
+            "$ref": "#/components/schemas/Edm.GeometryLineString"
+          },
+          {
+            "$ref": "#/components/schemas/Edm.GeometryPolygon"
+          },
+          {
+            "$ref": "#/components/schemas/Edm.GeometryMultiPoint"
+          },
+          {
+            "$ref": "#/components/schemas/Edm.GeometryMultiLineString"
+          },
+          {
+            "$ref": "#/components/schemas/Edm.GeometryMultiPolygon"
+          },
+          {
+            "$ref": "#/components/schemas/Edm.GeometryCollection"
+          }
+        ]
+      },
+      "Edm.GeometryPoint": {
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "Point"
+            ],
+            "type": "string",
+            "default": "Point"
+          },
+          "coordinates": {
+            "$ref": "#/components/schemas/GeoJSON.position"
+          }
+        }
+      },
+      "Edm.GeometryLineString": {
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "LineString"
+            ]
+          },
+          "coordinates": {
+            "minItems": 2,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeoJSON.position"
+            }
+          }
+        }
+      },
+      "Edm.GeometryPolygon": {
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "Polygon"
+            ]
+          },
+          "coordinates": {
+            "minItems": 4,
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/GeoJSON.position"
+              }
+            }
+          }
+        }
+      },
+      "Edm.GeometryMultiPoint": {
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "MultiPoint"
+            ]
+          },
+          "coordinates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeoJSON.position"
+            }
+          }
+        }
+      },
+      "Edm.GeometryMultiLineString": {
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "MultiLineString"
+            ]
+          },
+          "coordinates": {
+            "minItems": 2,
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/GeoJSON.position"
+              }
+            }
+          }
+        }
+      },
+      "Edm.GeometryMultiPolygon": {
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "MultiPolygon"
+            ]
+          },
+          "coordinates": {
+            "minItems": 4,
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/GeoJSON.position"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Edm.GeometryCollection": {
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "GeometryCollection"
+            ]
+          },
+          "coordinates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Edm.Geometry"
+            }
+          }
+        }
+      },
+      "GeoJSON.position": {
+        "minItems": 2,
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ODataError": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError"
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string",
+            "x-ms-primary-error-message": true
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails"
+            }
+          },
+          "innerError": {
+            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError"
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError": {
+        "title": "InnerError",
+        "type": "object",
+        "properties": {
+          "Date": {
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "RequestId": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ODataCountResponse": {
+        "type": "number",
+        "format": "int64"
+      },
+      "StringCollectionResponse": {
+        "title": "Collection of string",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ReferenceUpdate": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          },
+          "@odata.type": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ReferenceCreate": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {
+          "type": "object"
+        }
+      },
+      "ReferenceNumeric": {
+        "enum": [
+          "-INF",
+          "INF",
+          "NaN"
+        ],
+        "type": "string",
+        "nullable": true
+      },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person": {
         "title": "Person",
         "type": "object",
@@ -34841,297 +34700,6 @@
           "isFlags": true
         }
       },
-      "Edm.Geography": {
-        "$ref": "#/components/schemas/Edm.Geometry"
-      },
-      "Edm.GeographyPoint": {
-        "$ref": "#/components/schemas/Edm.GeometryPoint"
-      },
-      "Edm.GeographyLineString": {
-        "$ref": "#/components/schemas/Edm.GeometryLineString"
-      },
-      "Edm.GeographyPolygon": {
-        "$ref": "#/components/schemas/Edm.GeometryPolygon"
-      },
-      "Edm.GeographyMultiPoint": {
-        "$ref": "#/components/schemas/Edm.GeometryMultiPoint"
-      },
-      "Edm.GeographyMultiLineString": {
-        "$ref": "#/components/schemas/Edm.GeometryMultiLineString"
-      },
-      "Edm.GeographyMultiPolygon": {
-        "$ref": "#/components/schemas/Edm.GeometryMultiPolygon"
-      },
-      "Edm.GeographyCollection": {
-        "$ref": "#/components/schemas/Edm.GeometryCollection"
-      },
-      "Edm.Geometry": {
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/Edm.GeometryPoint"
-          },
-          {
-            "$ref": "#/components/schemas/Edm.GeometryLineString"
-          },
-          {
-            "$ref": "#/components/schemas/Edm.GeometryPolygon"
-          },
-          {
-            "$ref": "#/components/schemas/Edm.GeometryMultiPoint"
-          },
-          {
-            "$ref": "#/components/schemas/Edm.GeometryMultiLineString"
-          },
-          {
-            "$ref": "#/components/schemas/Edm.GeometryMultiPolygon"
-          },
-          {
-            "$ref": "#/components/schemas/Edm.GeometryCollection"
-          }
-        ]
-      },
-      "Edm.GeometryPoint": {
-        "required": [
-          "type",
-          "coordinates"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "Point"
-            ],
-            "type": "string",
-            "default": "Point"
-          },
-          "coordinates": {
-            "$ref": "#/components/schemas/GeoJSON.position"
-          }
-        }
-      },
-      "Edm.GeometryLineString": {
-        "required": [
-          "type",
-          "coordinates"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "LineString"
-            ]
-          },
-          "coordinates": {
-            "minItems": 2,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GeoJSON.position"
-            }
-          }
-        }
-      },
-      "Edm.GeometryPolygon": {
-        "required": [
-          "type",
-          "coordinates"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "Polygon"
-            ]
-          },
-          "coordinates": {
-            "minItems": 4,
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/GeoJSON.position"
-              }
-            }
-          }
-        }
-      },
-      "Edm.GeometryMultiPoint": {
-        "required": [
-          "type",
-          "coordinates"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "MultiPoint"
-            ]
-          },
-          "coordinates": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GeoJSON.position"
-            }
-          }
-        }
-      },
-      "Edm.GeometryMultiLineString": {
-        "required": [
-          "type",
-          "coordinates"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "MultiLineString"
-            ]
-          },
-          "coordinates": {
-            "minItems": 2,
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/GeoJSON.position"
-              }
-            }
-          }
-        }
-      },
-      "Edm.GeometryMultiPolygon": {
-        "required": [
-          "type",
-          "coordinates"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "MultiPolygon"
-            ]
-          },
-          "coordinates": {
-            "minItems": 4,
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/GeoJSON.position"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Edm.GeometryCollection": {
-        "required": [
-          "type",
-          "coordinates"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "GeometryCollection"
-            ]
-          },
-          "coordinates": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Edm.Geometry"
-            }
-          }
-        }
-      },
-      "GeoJSON.position": {
-        "minItems": 2,
-        "type": "array",
-        "items": {
-          "type": "number"
-        }
-      },
-      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ODataError": {
-        "required": [
-          "error"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError"
-          }
-        }
-      },
-      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string",
-            "x-ms-primary-error-message": true
-          },
-          "target": {
-            "type": "string",
-            "nullable": true
-          },
-          "details": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails"
-            }
-          },
-          "innerError": {
-            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError"
-          }
-        }
-      },
-      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          },
-          "target": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError": {
-        "title": "InnerError",
-        "type": "object",
-        "properties": {
-          "Date": {
-            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "RequestId": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ODataCountResponse": {
-        "type": "number",
-        "format": "int64"
-      },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse": {
         "title": "Collection of Person",
         "type": "object",
@@ -35263,50 +34831,6 @@
             }
           }
         }
-      },
-      "StringCollectionResponse": {
-        "title": "Collection of string",
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "ReferenceUpdate": {
-        "type": "object",
-        "properties": {
-          "@odata.id": {
-            "type": "string"
-          },
-          "@odata.type": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ReferenceCreate": {
-        "type": "object",
-        "properties": {
-          "@odata.id": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": {
-          "type": "object"
-        }
-      },
-      "ReferenceNumeric": {
-        "enum": [
-          "-INF",
-          "INF",
-          "NaN"
-        ],
-        "type": "string",
-        "nullable": true
       }
     },
     "responses": {
@@ -35584,23 +35108,30 @@
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.InnerError": {
         "value": {
           "Date": "0001-01-01T00:00:00.0000000+00:00",
-          "RequestId": "String"
+          "RequestId": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person": {
         "value": {
+          "UserName": "string (identifier)",
+          "FirstName": "string",
+          "LastName": "string",
+          "MiddleName": "string",
+          "Gender": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
+          },
+          "Age": 0,
+          "Emails": [
+            "string"
+          ],
           "AddressInfo": [
             {
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
           ],
-          "Age": 0,
-          "BestFriend": {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          "HomeAddress": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
           },
-          "Emails": [
-            "String"
-          ],
           "FavoriteFeature": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
           },
@@ -35609,48 +35140,41 @@
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
             }
           ],
-          "FirstName": "String",
+          "Photo": "string",
           "Friends": [
             {
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
           ],
-          "Gender": {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
+          "BestFriend": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
           },
-          "HomeAddress": {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-          },
-          "LastName": "String",
-          "MiddleName": "String",
-          "Photo": "Stream",
           "Trips": [
             {
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
             }
-          ],
-          "UserName": "String (identifier)"
+          ]
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline": {
         "value": {
-          "AirlineCode": "String (identifier)",
-          "Name": "String"
+          "AirlineCode": "string (identifier)",
+          "Name": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport": {
         "value": {
-          "IataCode": "String",
-          "IcaoCode": "String (identifier)",
+          "Name": "string",
+          "IcaoCode": "string (identifier)",
+          "IataCode": "string",
           "Location": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
-          },
-          "Name": "String"
+          }
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location": {
         "value": {
-          "Address": "String",
+          "Address": "string",
           "City": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
           }
@@ -35658,75 +35182,99 @@
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City": {
         "value": {
-          "CountryRegion": "String",
-          "Name": "String",
-          "Region": "String"
+          "Name": "string",
+          "CountryRegion": "string",
+          "Region": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation": {
         "value": {
+          "Address": "string",
+          "City": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
+          },
+          "Loc": "Edm.GeographyPoint",
           "EmergencyAuthority": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-          },
-          "Loc": "GeographyPoint"
+          }
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
         "value": {
-          "BuildingInfo": "String"
+          "Address": "string",
+          "City": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
+          },
+          "BuildingInfo": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip": {
         "value": {
+          "TripId": 0,
+          "ShareId": "00000000-0000-0000-0000-000000000000",
+          "Name": "string",
           "Budget": 0,
-          "Description": "String",
+          "Description": "string",
+          "Tags": [
+            "string"
+          ],
+          "TripData": { },
           "DestinationInfo": [
             { }
           ],
+          "StartsAt": "0001-01-01T00:00:00.0000000+00:00",
           "EndsAt": "0001-01-01T00:00:00.0000000+00:00",
-          "Name": "String",
           "PlanItems": [
             {
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
             }
-          ],
-          "ShareId": "00000000-0000-0000-0000-000000000000",
-          "StartsAt": "0001-01-01T00:00:00.0000000+00:00",
-          "Tags": [
-            "String"
-          ],
-          "TripData": { },
-          "TripId": 0
+          ]
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem": {
         "value": {
-          "ConfirmationCode": "String",
-          "Duration": "Duration",
-          "EndsAt": "0001-01-01T00:00:00.0000000+00:00",
           "PlanItemId": 0,
-          "StartsAt": "0001-01-01T00:00:00.0000000+00:00"
+          "ConfirmationCode": "string",
+          "StartsAt": "0001-01-01T00:00:00.0000000+00:00",
+          "EndsAt": "0001-01-01T00:00:00.0000000+00:00",
+          "Duration": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event": {
         "value": {
-          "Description": "String",
+          "PlanItemId": 0,
+          "ConfirmationCode": "string",
+          "StartsAt": "0001-01-01T00:00:00.0000000+00:00",
+          "EndsAt": "0001-01-01T00:00:00.0000000+00:00",
+          "Duration": "string",
           "OccursAt": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
-          }
+          },
+          "Description": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation": {
         "value": {
-          "SeatNumber": "String"
+          "PlanItemId": 0,
+          "ConfirmationCode": "string",
+          "StartsAt": "0001-01-01T00:00:00.0000000+00:00",
+          "EndsAt": "0001-01-01T00:00:00.0000000+00:00",
+          "Duration": "string",
+          "SeatNumber": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight": {
         "value": {
+          "PlanItemId": 0,
+          "ConfirmationCode": "string",
+          "StartsAt": "0001-01-01T00:00:00.0000000+00:00",
+          "EndsAt": "0001-01-01T00:00:00.0000000+00:00",
+          "Duration": "string",
+          "SeatNumber": "string",
+          "FlightNumber": "string",
           "Airline": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
           },
-          "FlightNumber": "String",
           "From": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
           },
@@ -35737,6 +35285,47 @@
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee": {
         "value": {
+          "UserName": "string (identifier)",
+          "FirstName": "string",
+          "LastName": "string",
+          "MiddleName": "string",
+          "Gender": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
+          },
+          "Age": 0,
+          "Emails": [
+            "string"
+          ],
+          "AddressInfo": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+            }
+          ],
+          "HomeAddress": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+          },
+          "FavoriteFeature": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+          },
+          "Features": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+            }
+          ],
+          "Photo": "string",
+          "Friends": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+            }
+          ],
+          "BestFriend": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          },
+          "Trips": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+            }
+          ],
           "Cost": 0,
           "Peers": [
             {
@@ -35747,10 +35336,51 @@
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
         "value": {
+          "UserName": "string (identifier)",
+          "FirstName": "string",
+          "LastName": "string",
+          "MiddleName": "string",
+          "Gender": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
+          },
+          "Age": 0,
+          "Emails": [
+            "string"
+          ],
+          "AddressInfo": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+            }
+          ],
+          "HomeAddress": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+          },
+          "FavoriteFeature": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+          },
+          "Features": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+            }
+          ],
+          "Photo": "string",
+          "Friends": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+            }
+          ],
+          "BestFriend": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          },
+          "Trips": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+            }
+          ],
+          "Budget": 0,
           "BossOffice": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
           },
-          "Budget": 0,
           "DirectReports": [
             {
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
