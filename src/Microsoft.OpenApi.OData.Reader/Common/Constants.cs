@@ -168,12 +168,6 @@ namespace Microsoft.OpenApi.OData.Common
         public const string StringType = "string";
 
         /// <summary>
-        /// integer type
-        /// </summary>
-        [Obsolete("integer is not a valid OpenAPI type. Use number instead.")]
-        public const string IntegerType = "integer";
-
-        /// <summary>
         /// number type
         /// </summary>
         public const string NumberType = "number";
