@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {               
                 if (Context.Model.OperationTargetsMultiplePaths(action))
                 {
-                    operation.RequestBody = new OpenApiRequestBodyReference($"{action.Name}RequestBody", null);
+                    operation.RequestBody = new OpenApiRequestBodyReference($"{action.Name}RequestBody", _document);
                 }
                 else
                 {

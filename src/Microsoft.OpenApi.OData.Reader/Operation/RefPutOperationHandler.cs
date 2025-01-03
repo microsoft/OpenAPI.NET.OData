@@ -56,7 +56,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            operation.RequestBody = new OpenApiRequestBodyReference(Constants.ReferencePutRequestBodyName, null);
+            operation.RequestBody = new OpenApiRequestBodyReference(Constants.ReferencePutRequestBodyName, _document);
 
             base.SetRequestBody(operation);
         }
