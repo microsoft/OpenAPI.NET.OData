@@ -31,7 +31,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
-    public void EmptyEdmModelToOpenApiJsonWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
+    public void EmptyEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
     {
         // Arrange
         IEdmModel model = EdmModelHelper.EmptyModel;
