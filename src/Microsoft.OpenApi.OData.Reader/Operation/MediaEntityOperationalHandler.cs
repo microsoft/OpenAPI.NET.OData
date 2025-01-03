@@ -116,7 +116,7 @@ namespace Microsoft.OpenApi.OData.Operation
             Utils.CheckArgumentNullOrEmpty(prefix, nameof(prefix));
             Utils.CheckArgumentNullOrEmpty(identifier, nameof(identifier));
 
-            IList<string> items = new List<string>
+            var items = new List<string>
             {
                 NavigationSourceSegment.Identifier
             };
