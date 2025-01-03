@@ -9,17 +9,17 @@ schemes:
 paths: { }
 definitions:
   ODataErrors.ODataError:
+    type: object
     required:
       - error
-    type: object
     properties:
       error:
         $ref: '#/definitions/ODataErrors.MainError'
   ODataErrors.MainError:
+    type: object
     required:
       - code
       - message
-    type: object
     properties:
       code:
         type: string
@@ -35,10 +35,10 @@ definitions:
       innerError:
         $ref: '#/definitions/ODataErrors.InnerError'
   ODataErrors.ErrorDetails:
+    type: object
     required:
       - code
       - message
-    type: object
     properties:
       code:
         type: string
@@ -47,11 +47,11 @@ definitions:
       target:
         type: string
   ODataErrors.InnerError:
-    description: The structure of this object is service-specific
     type: object
+    description: The structure of this object is service-specific
   ODataCountResponse:
-    format: int64
     type: number
+    format: int64
   ReferenceUpdate:
     type: object
     properties:
@@ -67,11 +67,11 @@ definitions:
     additionalProperties:
       type: object
   ReferenceNumeric:
+    type: string
     enum:
       - '-INF'
       - INF
       - NaN
-    type: string
 parameters:
   top:
     in: query
