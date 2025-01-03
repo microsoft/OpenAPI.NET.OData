@@ -24,6 +24,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -37,12 +38,12 @@ paths:
               - ModificationDate desc
               - DomainId
               - DomainId desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -50,15 +51,14 @@ paths:
               - CreationDate
               - ModificationDate
               - DomainId
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse'
@@ -112,6 +112,7 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -119,15 +120,14 @@ paths:
               - CreationDate
               - ModificationDate
               - DomainId
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entity
@@ -223,6 +223,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -244,12 +245,12 @@ paths:
               - ModifiedBy desc
               - Tags
               - Tags desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -262,16 +263,15 @@ paths:
               - ModifiedBy
               - Tags
               - Revisions
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Revisions
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
@@ -325,6 +325,7 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -337,16 +338,15 @@ paths:
               - ModifiedBy
               - Tags
               - Revisions
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Revisions
-            type: string
       responses:
         '200':
           description: Retrieved entity
@@ -459,6 +459,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -494,12 +495,12 @@ paths:
               - RejectedDate desc
               - DomainId
               - DomainId desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Number
@@ -519,16 +520,15 @@ paths:
               - RejectedDate
               - DomainId
               - Document
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Document
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
@@ -622,6 +622,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -657,7 +658,6 @@ paths:
               - RejectedDate desc
               - DomainId
               - DomainId desc
-            type: string
       responses:
         '200':
           $ref: '#/responses/StringCollectionResponse'
@@ -743,26 +743,26 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Name
               - Name desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Name
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
@@ -891,6 +891,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -922,12 +923,12 @@ paths:
               - ModifiedBy desc
               - ModificationDate
               - ModificationDate desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -945,16 +946,15 @@ paths:
               - ModifiedBy
               - ModificationDate
               - Documents
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Documents
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse'
@@ -1008,6 +1008,7 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -1025,16 +1026,15 @@ paths:
               - ModifiedBy
               - ModificationDate
               - Documents
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Documents
-            type: string
       responses:
         '200':
           description: Retrieved entity
@@ -1124,6 +1124,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -1145,12 +1146,12 @@ paths:
               - ModifiedBy desc
               - Tags
               - Tags desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -1163,16 +1164,15 @@ paths:
               - ModifiedBy
               - Tags
               - Revisions
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Revisions
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
@@ -1251,26 +1251,26 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Name
               - Name desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Name
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
@@ -1444,6 +1444,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -1465,7 +1466,6 @@ paths:
               - ModifiedBy desc
               - Tags
               - Tags desc
-            type: string
       responses:
         '200':
           $ref: '#/responses/StringCollectionResponse'
@@ -1557,6 +1557,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -1592,12 +1593,12 @@ paths:
               - RejectedDate desc
               - DomainId
               - DomainId desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Number
@@ -1617,16 +1618,15 @@ paths:
               - RejectedDate
               - DomainId
               - Document
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Document
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
@@ -1680,6 +1680,7 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Number
@@ -1699,16 +1700,15 @@ paths:
               - RejectedDate
               - DomainId
               - Document
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Document
-            type: string
       responses:
         '200':
           description: Retrieved entity
@@ -1795,6 +1795,7 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -1847,12 +1848,12 @@ paths:
               - SourceDocument
               - SourceDocumentChildren
               - Revisions
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Library
@@ -1860,7 +1861,6 @@ paths:
               - SourceDocument
               - SourceDocumentChildren
               - Revisions
-            type: string
       responses:
         '200':
           description: Retrieved navigation property
@@ -1970,6 +1970,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - ClassInstance
               - ClassInstance desc
@@ -1987,12 +1988,12 @@ paths:
               - ModificationDate desc
               - IsPrimary
               - IsPrimary desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - ClassInstance
               - ClassId
@@ -2003,16 +2004,15 @@ paths:
               - ModificationDate
               - IsPrimary
               - Document
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Document
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse'
@@ -2135,6 +2135,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - DocumentId
               - DocumentId desc
@@ -2150,12 +2151,12 @@ paths:
               - CreationDate desc
               - ModificationDate
               - ModificationDate desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - DocumentId
               - TagId
@@ -2166,17 +2167,16 @@ paths:
               - ModificationDate
               - Document
               - Tag
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Document
               - Tag
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse'
@@ -2305,6 +2305,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -2326,12 +2327,12 @@ paths:
               - ModifiedBy desc
               - Tags
               - Tags desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -2344,16 +2345,15 @@ paths:
               - ModifiedBy
               - Tags
               - Revisions
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Revisions
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
@@ -2407,6 +2407,7 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Name
@@ -2419,16 +2420,15 @@ paths:
               - ModifiedBy
               - Tags
               - Revisions
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Revisions
-            type: string
       responses:
         '200':
           description: Retrieved entity
@@ -2541,6 +2541,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -2576,12 +2577,12 @@ paths:
               - RejectedDate desc
               - DomainId
               - DomainId desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Id
               - Number
@@ -2601,16 +2602,15 @@ paths:
               - RejectedDate
               - DomainId
               - Document
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
               - Document
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
@@ -2704,6 +2704,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Id
               - Id desc
@@ -2739,7 +2740,6 @@ paths:
               - RejectedDate desc
               - DomainId
               - DomainId desc
-            type: string
       responses:
         '200':
           $ref: '#/responses/StringCollectionResponse'
@@ -2825,26 +2825,26 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Name
               - Name desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Name
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           $ref: '#/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
@@ -2957,15 +2957,87 @@ paths:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
 definitions:
-  Siterra.Documents.App.DTO.DocumentDto:
-    title: DocumentDto
+  Default.ODataErrors.ODataError:
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        $ref: '#/definitions/Default.ODataErrors.MainError'
+  Default.ODataErrors.MainError:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+        x-ms-primary-error-message: true
+      target:
+        type: string
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/Default.ODataErrors.ErrorDetails'
+      innerError:
+        $ref: '#/definitions/Default.ODataErrors.InnerError'
+  Default.ODataErrors.ErrorDetails:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      target:
+        type: string
+  Default.ODataErrors.InnerError:
+    type: object
+    description: The structure of this object is service-specific
+  ODataCountResponse:
+    type: number
+    format: int64
+  StringCollectionResponse:
+    type: object
+    title: Collection of string
+    properties:
+      value:
+        type: array
+        items:
+          type: string
+  ReferenceUpdate:
     type: object
     properties:
+      '@odata.id':
+        type: string
+      '@odata.type':
+        type: string
+  ReferenceCreate:
+    type: object
+    properties:
+      '@odata.id':
+        type: string
+    additionalProperties:
+      type: object
+  ReferenceNumeric:
+    type: string
+    enum:
+      - '-INF'
+      - INF
+      - NaN
+  Siterra.Documents.App.DTO.DocumentDto:
+    type: object
+    title: DocumentDto
+    properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Name:
         type: string
       Description:
@@ -2977,19 +3049,19 @@ definitions:
       Suffix:
         type: string
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Tags:
         type: array
         items:
@@ -3000,28 +3072,28 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         x-ms-navigationProperty: true
     example:
-      Id: number (identifier)
+      Id: 0
       Name: string
       Description: string
       Filename: string
       NumberOfRevisions: string
       Suffix: string
-      DomainId: number
-      ModificationDate: string (timestamp)
-      ModifiedBy: number
+      DomainId: 0
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModifiedBy: 0
       Tags:
         - '@odata.type': Siterra.Documents.App.DTO.DocumentTagRelDto
       Revisions:
         - '@odata.type': Siterra.Documents.App.DTO.RevisionDto
   Siterra.Documents.App.DTO.LibraryDto:
-    title: LibraryDto
     type: object
+    title: LibraryDto
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Name:
         type: string
       Number:
@@ -3029,316 +3101,316 @@ definitions:
       Description:
         type: string
       LibraryTemplateId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ParentTypeId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ParentId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       AllowMultiple:
         type: boolean
       AutoCreate:
         type: boolean
       TypeId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       Documents:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
         x-ms-navigationProperty: true
     example:
-      Id: number (identifier)
+      Id: 0
       Name: string
       Number: string
       Description: string
-      LibraryTemplateId: number
-      ParentTypeId: number
-      ParentId: number
+      LibraryTemplateId: 0
+      ParentTypeId: 0
+      ParentId: 0
       AllowMultiple: true
       AutoCreate: true
-      TypeId: number
-      DomainId: number
-      CreatedBy: number
-      CreationDate: string (timestamp)
-      ModifiedBy: number
-      ModificationDate: string (timestamp)
+      TypeId: 0
+      DomainId: 0
+      CreatedBy: 0
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModifiedBy: 0
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
       Documents:
         - '@odata.type': Siterra.Documents.App.DTO.DocumentDto
   Siterra.Documents.App.DTO.RevisionDto:
-    title: RevisionDto
     type: object
+    title: RevisionDto
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Number:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DocumentId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DocumentName:
         type: string
       DocumentDescription:
         type: string
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsReviewed:
         type: boolean
       ReviewedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ReviewedDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       IsApproved:
         type: boolean
       ApprovedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ApprovedDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       IsRejected:
         type: boolean
       RejectedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       RejectedDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Document:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
     example:
-      Id: number (identifier)
-      Number: number
-      DocumentId: number
+      Id: 0
+      Number: 0
+      DocumentId: 0
       DocumentName: string
       DocumentDescription: string
-      CreationDate: string (timestamp)
-      CreatedBy: number
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      CreatedBy: 0
       IsReviewed: true
-      ReviewedBy: number
-      ReviewedDate: string (timestamp)
+      ReviewedBy: 0
+      ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
       IsApproved: true
-      ApprovedBy: number
-      ApprovedDate: string (timestamp)
+      ApprovedBy: 0
+      ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
       IsRejected: true
-      RejectedBy: number
-      RejectedDate: string (timestamp)
-      DomainId: number
+      RejectedBy: 0
+      RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+      DomainId: 0
       Document:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
   Siterra.Documents.App.DTO.CategoryDto:
-    title: CategoryDto
     type: object
+    title: CategoryDto
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Name:
         type: string
       Description:
         type: string
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
     example:
-      Id: number (identifier)
+      Id: 0
       Name: string
       Description: string
-      CreationDate: string (timestamp)
-      ModificationDate: string (timestamp)
-      DomainId: number
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+      DomainId: 0
   Siterra.Documents.App.DTO.DocumentTagRelDto:
-    title: DocumentTagRelDto
     type: object
+    title: DocumentTagRelDto
     properties:
       Name:
         type: string
     example:
       Name: string
   Siterra.Documents.BusinessLogic.Entities.Document.Document:
-    title: Document
     type: object
+    title: Document
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Name:
         type: string
       Description:
         type: string
       StatusId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       TypeId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Keywords:
         type: string
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       LibraryId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       OwnerUserId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       StatusDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       LastRevisionId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CheckoutDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       CheckoutPath:
         type: string
       CheckoutUserId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Number:
         type: string
       OriginalDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       FileSized:
-        format: decimal
         type: number
+        format: decimal
       FileClientPath:
         type: string
       LastRevisionFileId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsDeleted:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsNa:
-        format: decimal
         type: number
+        format: decimal
       IsRejected:
-        format: decimal
         type: number
+        format: decimal
       IsReviewed:
-        format: decimal
         type: number
+        format: decimal
       NaDescription:
         type: string
       NaReason:
@@ -3350,54 +3422,54 @@ definitions:
       ReviewDescription:
         type: string
       SourceDocumentId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ScraperMapId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       LastDownloadedDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       SmsId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsApprovedOld:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Suffix:
         type: string
       ScrapeResultId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsApproved:
+        type: number
         format: decimal
-        type: number
       CategoryId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       SectionId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       VersionCount:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       LastFileName:
         type: string
       DocumentClasses:
@@ -3425,49 +3497,49 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
         x-ms-navigationProperty: true
     example:
-      Id: number (identifier)
+      Id: 0
       Name: string
       Description: string
-      StatusId: number
-      TypeId: number
+      StatusId: 0
+      TypeId: 0
       Keywords: string
-      CreationDate: string (timestamp)
-      CreatedBy: number
-      ModificationDate: string (timestamp)
-      ModifiedBy: number
-      DomainId: number
-      LibraryId: number
-      OwnerUserId: number
-      StatusDate: string (timestamp)
-      LastRevisionId: number
-      CheckoutDate: string (timestamp)
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      CreatedBy: 0
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModifiedBy: 0
+      DomainId: 0
+      LibraryId: 0
+      OwnerUserId: 0
+      StatusDate: '0001-01-01T00:00:00.0000000+00:00'
+      LastRevisionId: 0
+      CheckoutDate: '0001-01-01T00:00:00.0000000+00:00'
       CheckoutPath: string
-      CheckoutUserId: number
+      CheckoutUserId: 0
       Number: string
-      OriginalDate: string (timestamp)
-      FileSized: number
+      OriginalDate: '0001-01-01T00:00:00.0000000+00:00'
+      FileSized: 0
       FileClientPath: string
-      LastRevisionFileId: number
-      IsDeleted: number
-      IsNa: number
-      IsRejected: number
-      IsReviewed: number
+      LastRevisionFileId: 0
+      IsDeleted: 0
+      IsNa: 0
+      IsRejected: 0
+      IsReviewed: 0
       NaDescription: string
       NaReason: string
       RejectedDescription: string
       RejectedReason: string
       ReviewDescription: string
-      SourceDocumentId: number
-      ScraperMapId: number
-      LastDownloadedDate: string (timestamp)
-      SmsId: number
-      IsApprovedOld: number
+      SourceDocumentId: 0
+      ScraperMapId: 0
+      LastDownloadedDate: '0001-01-01T00:00:00.0000000+00:00'
+      SmsId: 0
+      IsApprovedOld: 0
       Suffix: string
-      ScrapeResultId: number
-      IsApproved: number
-      CategoryId: number
-      SectionId: number
-      VersionCount: number
+      ScrapeResultId: 0
+      IsApproved: 0
+      CategoryId: 0
+      SectionId: 0
+      VersionCount: 0
       LastFileName: string
       DocumentClasses:
         - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
@@ -3484,194 +3556,194 @@ definitions:
       Revisions:
         - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Revision.Revision
   Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass:
-    title: DocumentClass
     type: object
+    title: DocumentClass
     properties:
       ClassInstance:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ClassId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DocumentId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       IsPrimary:
         type: boolean
       Document:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
     example:
-      ClassInstance: number
-      ClassId: number
-      DocumentId: number
-      CreatedBy: number
-      CreationDate: string (timestamp)
-      ModifiedBy: number
-      ModificationDate: string (timestamp)
+      ClassInstance: 0
+      ClassId: 0
+      DocumentId: 0
+      CreatedBy: 0
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModifiedBy: 0
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
       IsPrimary: true
       Document:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
   Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel:
-    title: DocumentTagRel
     type: object
+    title: DocumentTagRel
     properties:
       DocumentId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       TagId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       Document:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
       Tag:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
     example:
-      DocumentId: number
-      TagId: number
-      DomainId: number
-      CreatedBy: number
-      ModifiedBy: number
-      CreationDate: string (timestamp)
-      ModificationDate: string (timestamp)
+      DocumentId: 0
+      TagId: 0
+      DomainId: 0
+      CreatedBy: 0
+      ModifiedBy: 0
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
       Document:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
       Tag:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Tags.Tag
   Siterra.Documents.BusinessLogic.Entities.Library.Library:
-    title: Library
     type: object
+    title: Library
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Name:
         type: string
       ParentFolderId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Number:
         type: string
       TypeId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       OwnerUserId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       TotalSize:
+        type: number
         format: decimal
-        type: number
       FilesCounter:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       FoldersCounter:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ProjectId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       SearchRingId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       SiteId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       AssetId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       AllowMultiple:
         type: boolean
       AutoCreate:
@@ -3681,77 +3753,77 @@ definitions:
       IsTemplate:
         type: boolean
       ProgramId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       SourceFolderId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       TemplateClassId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       TemplateSubType:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsHidden:
         type: boolean
       IsDeleted:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       StatusId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       SmsId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ContractId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       VendorId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       OrganizationUnitId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IncidentId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       EventId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ClassInstance:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ClassId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       LibraryParent:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library'
       Type:
@@ -3774,43 +3846,43 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library'
         x-ms-navigationProperty: true
     example:
-      Id: number (identifier)
-      DomainId: number
+      Id: 0
+      DomainId: 0
       Name: string
-      ParentFolderId: number
+      ParentFolderId: 0
       Number: string
-      TypeId: number
-      OwnerUserId: number
-      TotalSize: number
-      FilesCounter: number
-      FoldersCounter: number
-      CreationDate: string (timestamp)
-      ModificationDate: string (timestamp)
-      ModifiedBy: number
-      CreatedBy: number
-      ProjectId: number
-      SearchRingId: number
-      SiteId: number
-      AssetId: number
+      TypeId: 0
+      OwnerUserId: 0
+      TotalSize: 0
+      FilesCounter: 0
+      FoldersCounter: 0
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModifiedBy: 0
+      CreatedBy: 0
+      ProjectId: 0
+      SearchRingId: 0
+      SiteId: 0
+      AssetId: 0
       AllowMultiple: true
       AutoCreate: true
       Description: string
       IsTemplate: true
-      ProgramId: number
-      SourceFolderId: number
-      TemplateClassId: number
-      TemplateSubType: number
+      ProgramId: 0
+      SourceFolderId: 0
+      TemplateClassId: 0
+      TemplateSubType: 0
       IsHidden: true
-      IsDeleted: number
-      StatusId: number
-      SmsId: number
-      ContractId: number
-      VendorId: number
-      OrganizationUnitId: number
-      IncidentId: number
-      EventId: number
-      ClassInstance: number
-      ClassId: number
+      IsDeleted: 0
+      StatusId: 0
+      SmsId: 0
+      ContractId: 0
+      VendorId: 0
+      OrganizationUnitId: 0
+      IncidentId: 0
+      EventId: 0
+      ClassInstance: 0
+      ClassId: 0
       LibraryParent:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
       Type:
@@ -3824,63 +3896,63 @@ definitions:
       SourceLibraryChildren:
         - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
   Siterra.Documents.BusinessLogic.Entities.Library.LibraryType:
-    title: LibraryType
     type: object
+    title: LibraryType
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Name:
         type: string
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Description:
         type: string
       XmlName:
         type: string
       MasterId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Number:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ClassId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ParentId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       HasChanged:
         type: boolean
       MasterLibraryType:
@@ -3898,19 +3970,19 @@ definitions:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
         x-ms-navigationProperty: true
     example:
-      Id: number (identifier)
+      Id: 0
       Name: string
-      ModifiedBy: number
-      CreatedBy: number
-      ModificationDate: string (timestamp)
-      CreationDate: string (timestamp)
-      DomainId: number
+      ModifiedBy: 0
+      CreatedBy: 0
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      DomainId: 0
       Description: string
       XmlName: string
-      MasterId: number
-      Number: number
-      ClassId: number
-      ParentId: number
+      MasterId: 0
+      Number: 0
+      ClassId: 0
+      ParentId: 0
       HasChanged: true
       MasterLibraryType:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
@@ -3921,170 +3993,170 @@ definitions:
       ChildrenLibraryTypes:
         - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
   Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile:
-    title: DocumentFile
     type: object
+    title: DocumentFile
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Name:
         type: string
       Path:
         type: string
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       Sized:
-        format: decimal
         type: number
+        format: decimal
       ActualName:
         type: string
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       SourceClassId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ContentTypeId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ClientPath:
         type: string
       IsSelfHosted:
+        type: number
         format: int16
         maximum: 32767
         minimum: -32768
-        type: number
       SmsId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Latitude:
-        format: decimal
         type: number
+        format: decimal
       Longitude:
-        format: decimal
         type: number
+        format: decimal
       Documents:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
         x-ms-navigationProperty: true
     example:
-      Id: number (identifier)
+      Id: 0
       Name: string
       Path: string
-      ModifiedBy: number
-      CreatedBy: number
-      CreationDate: string (timestamp)
-      ModificationDate: string (timestamp)
-      Sized: number
+      ModifiedBy: 0
+      CreatedBy: 0
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+      Sized: 0
       ActualName: string
-      DomainId: number
-      SourceClassId: number
-      ContentTypeId: number
+      DomainId: 0
+      SourceClassId: 0
+      ContentTypeId: 0
       ClientPath: string
-      IsSelfHosted: number
-      SmsId: number
-      Latitude: number
-      Longitude: number
+      IsSelfHosted: 0
+      SmsId: 0
+      Latitude: 0
+      Longitude: 0
       Documents:
         - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
   Siterra.Documents.BusinessLogic.Entities.Tags.Tag:
-    title: Tag
     type: object
+    title: Tag
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Name:
         type: string
       Description:
         type: string
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
     example:
-      Id: number (identifier)
-      DomainId: number
+      Id: 0
+      DomainId: 0
       Name: string
       Description: string
-      CreatedBy: number
-      ModifiedBy: number
-      CreationDate: string (timestamp)
-      ModificationDate: string (timestamp)
+      CreatedBy: 0
+      ModifiedBy: 0
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
   Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag:
     allOf:
       - $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
-      - title: UserDefinedTag
-        type: object
+      - type: object
+        title: UserDefinedTag
         properties:
           Documents:
             type: array
             items:
               $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
     example:
-      Id: number (identifier)
-      DomainId: number
+      Id: 0
+      DomainId: 0
       Name: string
       Description: string
-      CreatedBy: number
-      ModifiedBy: number
-      CreationDate: string (timestamp)
-      ModificationDate: string (timestamp)
+      CreatedBy: 0
+      ModifiedBy: 0
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
       Documents:
         - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
   Siterra.Documents.BusinessLogic.Entities.Tags.Section:
     allOf:
       - $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
-      - title: Section
-        type: object
+      - type: object
+        title: Section
         properties:
           Documents:
             type: array
@@ -4092,21 +4164,21 @@ definitions:
               $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             x-ms-navigationProperty: true
     example:
-      Id: number (identifier)
-      DomainId: number
+      Id: 0
+      DomainId: 0
       Name: string
       Description: string
-      CreatedBy: number
-      ModifiedBy: number
-      CreationDate: string (timestamp)
-      ModificationDate: string (timestamp)
+      CreatedBy: 0
+      ModifiedBy: 0
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
       Documents:
         - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
   Siterra.Documents.BusinessLogic.Entities.Tags.Category:
     allOf:
       - $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
-      - title: Category
-        type: object
+      - type: object
+        title: Category
         properties:
           Documents:
             type: array
@@ -4114,71 +4186,71 @@ definitions:
               $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             x-ms-navigationProperty: true
     example:
-      Id: number (identifier)
-      DomainId: number
+      Id: 0
+      DomainId: 0
       Name: string
       Description: string
-      CreatedBy: number
-      ModifiedBy: number
-      CreationDate: string (timestamp)
-      ModificationDate: string (timestamp)
+      CreatedBy: 0
+      ModifiedBy: 0
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
       Documents:
         - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
   Siterra.Documents.BusinessLogic.Entities.Revision.Revision:
-    title: Revision
     type: object
+    title: Revision
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Number:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DocumentId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ModificationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       CreationDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ModifiedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       CreatedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       Remarks:
         type: string
       FileId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DocumentOwnerContact:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       DocumentDescription:
         type: string
       DocumentStatusDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       DocumentFolder:
         type: string
       DocumentKeywords:
@@ -4192,24 +4264,24 @@ definitions:
       DocumentNumber:
         type: string
       DomainId:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsDeleted:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsReviewed:
         type: boolean
       ReviewDescription:
         type: string
       ReviewedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsRejected:
         type: boolean
       RejectedReason:
@@ -4217,226 +4289,154 @@ definitions:
       RejectedDescription:
         type: string
       RejectedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       IsApproved:
         type: boolean
       ApprovedBy:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       ReviewedDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       RejectedDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       ApprovedDate:
+        type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-        type: string
       Document:
         $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
     example:
-      Id: number (identifier)
-      Number: number
-      DocumentId: number
-      ModificationDate: string (timestamp)
-      CreationDate: string (timestamp)
-      ModifiedBy: number
-      CreatedBy: number
+      Id: 0
+      Number: 0
+      DocumentId: 0
+      ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+      CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+      ModifiedBy: 0
+      CreatedBy: 0
       Remarks: string
-      FileId: number
-      DocumentOwnerContact: number
+      FileId: 0
+      DocumentOwnerContact: 0
       DocumentDescription: string
-      DocumentStatusDate: string (timestamp)
+      DocumentStatusDate: '0001-01-01T00:00:00.0000000+00:00'
       DocumentFolder: string
       DocumentKeywords: string
       DocumentStatus: string
       DocumentType: string
       DocumentName: string
       DocumentNumber: string
-      DomainId: number
-      IsDeleted: number
+      DomainId: 0
+      IsDeleted: 0
       IsReviewed: true
       ReviewDescription: string
-      ReviewedBy: number
+      ReviewedBy: 0
       IsRejected: true
       RejectedReason: string
       RejectedDescription: string
-      RejectedBy: number
+      RejectedBy: 0
       IsApproved: true
-      ApprovedBy: number
-      ReviewedDate: string (timestamp)
-      RejectedDate: string (timestamp)
-      ApprovedDate: string (timestamp)
+      ApprovedBy: 0
+      ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
+      RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+      ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
       Document:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
-  Default.ODataErrors.ODataError:
-    required:
-      - error
-    type: object
-    properties:
-      error:
-        $ref: '#/definitions/Default.ODataErrors.MainError'
-  Default.ODataErrors.MainError:
-    required:
-      - code
-      - message
-    type: object
-    properties:
-      code:
-        type: string
-      message:
-        type: string
-        x-ms-primary-error-message: true
-      target:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/Default.ODataErrors.ErrorDetails'
-      innerError:
-        $ref: '#/definitions/Default.ODataErrors.InnerError'
-  Default.ODataErrors.ErrorDetails:
-    required:
-      - code
-      - message
-    type: object
-    properties:
-      code:
-        type: string
-      message:
-        type: string
-      target:
-        type: string
-  Default.ODataErrors.InnerError:
-    description: The structure of this object is service-specific
-    type: object
-  ODataCountResponse:
-    format: int64
-    type: number
   Siterra.Documents.App.DTO.DocumentDtoCollectionResponse:
-    title: Collection of DocumentDto
     type: object
+    title: Collection of DocumentDto
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
   Siterra.Documents.App.DTO.LibraryDtoCollectionResponse:
-    title: Collection of LibraryDto
     type: object
+    title: Collection of LibraryDto
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.App.DTO.LibraryDto'
   Siterra.Documents.App.DTO.RevisionDtoCollectionResponse:
-    title: Collection of RevisionDto
     type: object
+    title: Collection of RevisionDto
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
   Siterra.Documents.App.DTO.CategoryDtoCollectionResponse:
-    title: Collection of CategoryDto
     type: object
+    title: Collection of CategoryDto
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.App.DTO.CategoryDto'
   Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse:
-    title: Collection of Document
     type: object
+    title: Collection of Document
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
   Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse:
-    title: Collection of Revision
     type: object
+    title: Collection of Revision
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
   Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse:
-    title: Collection of Library
     type: object
+    title: Collection of Library
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library'
   Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse:
-    title: Collection of LibraryType
     type: object
+    title: Collection of LibraryType
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
   Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse:
-    title: Collection of Siterra.Documents.App.DTO.DocumentTagRelDto
     type: object
+    title: Collection of Siterra.Documents.App.DTO.DocumentTagRelDto
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto'
   Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse:
-    title: Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
     type: object
+    title: Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
   Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse:
-    title: Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
     type: object
+    title: Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
-  StringCollectionResponse:
-    title: Collection of string
-    type: object
-    properties:
-      value:
-        type: array
-        items:
-          type: string
-  ReferenceUpdate:
-    type: object
-    properties:
-      '@odata.id':
-        type: string
-      '@odata.type':
-        type: string
-  ReferenceCreate:
-    type: object
-    properties:
-      '@odata.id':
-        type: string
-    additionalProperties:
-      type: object
-  ReferenceNumeric:
-    enum:
-      - '-INF'
-      - INF
-      - NaN
-    type: string
 parameters:
   top:
     in: query
