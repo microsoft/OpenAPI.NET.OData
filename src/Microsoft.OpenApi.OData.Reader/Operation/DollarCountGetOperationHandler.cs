@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
@@ -41,7 +42,7 @@ namespace Microsoft.OpenApi.OData.Operation
         private ODataSegment firstSegment;
         private int pathCount;        
         private const int SecondLastSegmentIndex = 2;
-        private IEdmVocabularyAnnotatable annotatable;
+        private readonly List<IEdmVocabularyAnnotatable> annotatables = [];
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -56,13 +57,25 @@ namespace Microsoft.OpenApi.OData.Operation
             if(pathCount >= SecondLastSegmentIndex)
                 SecondLastSegment = path.Segments[pathCount - SecondLastSegmentIndex];
 
-            if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
+            AddODataSegmentToAnnotables(SecondLastSegment, path.Segments.Count > SecondLastSegmentIndex ? path.Segments.SkipLast(SecondLastSegmentIndex).ToArray() : []);
+        }
+        private void AddODataSegmentToAnnotables(ODataSegment oDataSegment, ODataSegment[] oDataSegments)
+        {
+            if (oDataSegment is ODataNavigationSourceSegment sourceSegment)
             {
-                annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
+                annotatables.Add(sourceSegment.NavigationSource as IEdmEntitySet);
             }
-            else if (SecondLastSegment is ODataNavigationPropertySegment navigationPropertySegment)
+            else if (oDataSegment is ODataNavigationPropertySegment navigationPropertySegment)
             {
-                annotatable = navigationPropertySegment.NavigationProperty;
+                annotatables.Add(navigationPropertySegment.NavigationProperty);
+            }
+            else if (oDataSegment is ODataTypeCastSegment odataTypeCastSegment)
+            {
+                annotatables.Add(odataTypeCastSegment.StructuredType as IEdmVocabularyAnnotatable);
+                if (annotatables.Count == 1 && oDataSegments.Length > 0)
+                {// we want to look at the parent navigation property or entity set
+                    AddODataSegmentToAnnotables(oDataSegments[oDataSegments.Length - 1], oDataSegments.SkipLast(1).ToArray());
+                }
             }
         }
 
@@ -172,13 +185,13 @@ namespace Microsoft.OpenApi.OData.Operation
 
             OpenApiParameter parameter;
 
-            parameter = Context.CreateSearch(TargetPath, _document) ?? (annotatable is null ? null : Context.CreateSearch(annotatable, _document));
+            parameter = Context.CreateSearch(TargetPath, _document) ?? (annotatables.Count == 0 ? null : annotatables.Select(x => Context.CreateSearch(x, _document)).FirstOrDefault(static x => x is not null));
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
-            parameter = Context.CreateFilter(TargetPath, _document) ?? (annotatable is null ? null : Context.CreateFilter(annotatable, _document));
+            parameter = Context.CreateFilter(TargetPath, _document) ?? (annotatables.Count == 0 ? null : annotatables.Select(x => Context.CreateFilter(x, _document)).FirstOrDefault(static x => x is not null));
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -187,15 +200,13 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            if (annotatable == null)
-            {
-                return;
-            }
-
             ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            ReadRestrictionsType annotatableReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
-            readRestrictions?.MergePropertiesIfNull(annotatableReadRestrictions);
-            readRestrictions ??= annotatableReadRestrictions;
+            if (annotatables.Count > 0)
+            {
+                ReadRestrictionsType annotatableReadRestrictions = annotatables.Select(x => Context.Model.GetRecord<ReadRestrictionsType>(x, CapabilitiesConstants.ReadRestrictions)).FirstOrDefault(static x => x is not null);
+                readRestrictions?.MergePropertiesIfNull(annotatableReadRestrictions);
+                readRestrictions ??= annotatableReadRestrictions;
+            }
             
             if (readRestrictions == null)
             {
