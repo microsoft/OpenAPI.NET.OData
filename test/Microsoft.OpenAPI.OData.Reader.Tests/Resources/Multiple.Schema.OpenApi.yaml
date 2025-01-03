@@ -3276,6 +3276,82 @@ paths:
           $ref: '#/components/responses/error'
 components:
   schemas:
+    Default.ODataErrors.ODataError:
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/Default.ODataErrors.MainError'
+    Default.ODataErrors.MainError:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+          x-ms-primary-error-message: true
+        target:
+          type: string
+          nullable: true
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/Default.ODataErrors.ErrorDetails'
+        innerError:
+          $ref: '#/components/schemas/Default.ODataErrors.InnerError'
+    Default.ODataErrors.ErrorDetails:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+          nullable: true
+    Default.ODataErrors.InnerError:
+      type: object
+      description: The structure of this object is service-specific
+    ODataCountResponse:
+      type: number
+      format: int64
+    StringCollectionResponse:
+      title: Collection of string
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: string
+    ReferenceUpdate:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+        '@odata.type':
+          type: string
+          nullable: true
+    ReferenceCreate:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+      additionalProperties:
+        type: object
+    ReferenceNumeric:
+      enum:
+        - '-INF'
+        - INF
+        - NaN
+      type: string
+      nullable: true
     Siterra.Documents.App.DTO.DocumentDto:
       title: DocumentDto
       type: object
@@ -3326,15 +3402,15 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
           x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
+        Id: 0
         Name: string
         Description: string
         Filename: string
         NumberOfRevisions: string
         Suffix: string
-        DomainId: number
-        ModificationDate: string (timestamp)
-        ModifiedBy: number
+        DomainId: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
         Tags:
           - '@odata.type': Siterra.Documents.App.DTO.DocumentTagRelDto
         Revisions:
@@ -3413,21 +3489,21 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
           x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
+        Id: 0
         Name: string
         Number: string
         Description: string
-        LibraryTemplateId: number
-        ParentTypeId: number
-        ParentId: number
+        LibraryTemplateId: 0
+        ParentTypeId: 0
+        ParentId: 0
         AllowMultiple: true
         AutoCreate: true
-        TypeId: number
-        DomainId: number
-        CreatedBy: number
-        CreationDate: string (timestamp)
-        ModifiedBy: number
-        ModificationDate: string (timestamp)
+        TypeId: 0
+        DomainId: 0
+        CreatedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Documents:
           - '@odata.type': Siterra.Documents.App.DTO.DocumentDto
     Siterra.Documents.App.DTO.RevisionDto:
@@ -3516,23 +3592,23 @@ components:
               nullable: true
           x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
-        Number: number
-        DocumentId: number
+        Id: 0
+        Number: 0
+        DocumentId: 0
         DocumentName: string
         DocumentDescription: string
-        CreationDate: string (timestamp)
-        CreatedBy: number
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreatedBy: 0
         IsReviewed: true
-        ReviewedBy: number
-        ReviewedDate: string (timestamp)
+        ReviewedBy: 0
+        ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
         IsApproved: true
-        ApprovedBy: number
-        ApprovedDate: string (timestamp)
+        ApprovedBy: 0
+        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
         IsRejected: true
-        RejectedBy: number
-        RejectedDate: string (timestamp)
-        DomainId: number
+        RejectedBy: 0
+        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
         Document:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
     Siterra.Documents.App.DTO.CategoryDto:
@@ -3564,12 +3640,12 @@ components:
           type: number
           format: int32
       example:
-        Id: number (identifier)
+        Id: 0
         Name: string
         Description: string
-        CreationDate: string (timestamp)
-        ModificationDate: string (timestamp)
-        DomainId: number
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
     Siterra.Documents.App.DTO.DocumentTagRelDto:
       title: DocumentTagRelDto
       type: object
@@ -3816,49 +3892,49 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
           x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
+        Id: 0
         Name: string
         Description: string
-        StatusId: number
-        TypeId: number
+        StatusId: 0
+        TypeId: 0
         Keywords: string
-        CreationDate: string (timestamp)
-        CreatedBy: number
-        ModificationDate: string (timestamp)
-        ModifiedBy: number
-        DomainId: number
-        LibraryId: number
-        OwnerUserId: number
-        StatusDate: string (timestamp)
-        LastRevisionId: number
-        CheckoutDate: string (timestamp)
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreatedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        DomainId: 0
+        LibraryId: 0
+        OwnerUserId: 0
+        StatusDate: '0001-01-01T00:00:00.0000000+00:00'
+        LastRevisionId: 0
+        CheckoutDate: '0001-01-01T00:00:00.0000000+00:00'
         CheckoutPath: string
-        CheckoutUserId: number
+        CheckoutUserId: 0
         Number: string
-        OriginalDate: string (timestamp)
-        FileSized: number
+        OriginalDate: '0001-01-01T00:00:00.0000000+00:00'
+        FileSized: 0
         FileClientPath: string
-        LastRevisionFileId: number
-        IsDeleted: number
-        IsNa: number
-        IsRejected: number
-        IsReviewed: number
+        LastRevisionFileId: 0
+        IsDeleted: 0
+        IsNa: 0
+        IsRejected: 0
+        IsReviewed: 0
         NaDescription: string
         NaReason: string
         RejectedDescription: string
         RejectedReason: string
         ReviewDescription: string
-        SourceDocumentId: number
-        ScraperMapId: number
-        LastDownloadedDate: string (timestamp)
-        SmsId: number
-        IsApprovedOld: number
+        SourceDocumentId: 0
+        ScraperMapId: 0
+        LastDownloadedDate: '0001-01-01T00:00:00.0000000+00:00'
+        SmsId: 0
+        IsApprovedOld: 0
         Suffix: string
-        ScrapeResultId: number
-        IsApproved: number
-        CategoryId: number
-        SectionId: number
-        VersionCount: number
+        ScrapeResultId: 0
+        IsApproved: 0
+        CategoryId: 0
+        SectionId: 0
+        VersionCount: 0
         LastFileName: string
         DocumentClasses:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
@@ -3920,13 +3996,13 @@ components:
               nullable: true
           x-ms-navigationProperty: true
       example:
-        ClassInstance: number
-        ClassId: number
-        DocumentId: number
-        CreatedBy: number
-        CreationDate: string (timestamp)
-        ModifiedBy: number
-        ModificationDate: string (timestamp)
+        ClassInstance: 0
+        ClassId: 0
+        DocumentId: 0
+        CreatedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         IsPrimary: true
         Document:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
@@ -3980,13 +4056,13 @@ components:
               nullable: true
           x-ms-navigationProperty: true
       example:
-        DocumentId: number
-        TagId: number
-        DomainId: number
-        CreatedBy: number
-        ModifiedBy: number
-        CreationDate: string (timestamp)
-        ModificationDate: string (timestamp)
+        DocumentId: 0
+        TagId: 0
+        DomainId: 0
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Document:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
         Tag:
@@ -4208,43 +4284,43 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
           x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
-        DomainId: number
+        Id: 0
+        DomainId: 0
         Name: string
-        ParentFolderId: number
+        ParentFolderId: 0
         Number: string
-        TypeId: number
-        OwnerUserId: number
-        TotalSize: number
-        FilesCounter: number
-        FoldersCounter: number
-        CreationDate: string (timestamp)
-        ModificationDate: string (timestamp)
-        ModifiedBy: number
-        CreatedBy: number
-        ProjectId: number
-        SearchRingId: number
-        SiteId: number
-        AssetId: number
+        TypeId: 0
+        OwnerUserId: 0
+        TotalSize: 0
+        FilesCounter: 0
+        FoldersCounter: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        CreatedBy: 0
+        ProjectId: 0
+        SearchRingId: 0
+        SiteId: 0
+        AssetId: 0
         AllowMultiple: true
         AutoCreate: true
         Description: string
         IsTemplate: true
-        ProgramId: number
-        SourceFolderId: number
-        TemplateClassId: number
-        TemplateSubType: number
+        ProgramId: 0
+        SourceFolderId: 0
+        TemplateClassId: 0
+        TemplateSubType: 0
         IsHidden: true
-        IsDeleted: number
-        StatusId: number
-        SmsId: number
-        ContractId: number
-        VendorId: number
-        OrganizationUnitId: number
-        IncidentId: number
-        EventId: number
-        ClassInstance: number
-        ClassId: number
+        IsDeleted: 0
+        StatusId: 0
+        SmsId: 0
+        ContractId: 0
+        VendorId: 0
+        OrganizationUnitId: 0
+        IncidentId: 0
+        EventId: 0
+        ClassInstance: 0
+        ClassId: 0
         LibraryParent:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
         Type:
@@ -4347,19 +4423,19 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
           x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
+        Id: 0
         Name: string
-        ModifiedBy: number
-        CreatedBy: number
-        ModificationDate: string (timestamp)
-        CreationDate: string (timestamp)
-        DomainId: number
+        ModifiedBy: 0
+        CreatedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
         Description: string
         XmlName: string
-        MasterId: number
-        Number: number
-        ClassId: number
-        ParentId: number
+        MasterId: 0
+        Number: 0
+        ClassId: 0
+        ParentId: 0
         HasChanged: true
         MasterLibraryType:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
@@ -4453,23 +4529,23 @@ components:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
           x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
+        Id: 0
         Name: string
         Path: string
-        ModifiedBy: number
-        CreatedBy: number
-        CreationDate: string (timestamp)
-        ModificationDate: string (timestamp)
-        Sized: number
+        ModifiedBy: 0
+        CreatedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Sized: 0
         ActualName: string
-        DomainId: number
-        SourceClassId: number
-        ContentTypeId: number
+        DomainId: 0
+        SourceClassId: 0
+        ContentTypeId: 0
         ClientPath: string
-        IsSelfHosted: number
-        SmsId: number
-        Latitude: number
-        Longitude: number
+        IsSelfHosted: 0
+        SmsId: 0
+        Latitude: 0
+        Longitude: 0
         Documents:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
     Siterra.Documents.BusinessLogic.Entities.Tags.Tag:
@@ -4511,14 +4587,14 @@ components:
           type: string
           format: date-time
       example:
-        Id: number (identifier)
-        DomainId: number
+        Id: 0
+        DomainId: 0
         Name: string
         Description: string
-        CreatedBy: number
-        ModifiedBy: number
-        CreationDate: string (timestamp)
-        ModificationDate: string (timestamp)
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
     Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag:
       allOf:
         - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
@@ -4530,14 +4606,14 @@ components:
               items:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
       example:
-        Id: number (identifier)
-        DomainId: number
+        Id: 0
+        DomainId: 0
         Name: string
         Description: string
-        CreatedBy: number
-        ModifiedBy: number
-        CreationDate: string (timestamp)
-        ModificationDate: string (timestamp)
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Documents:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
     Siterra.Documents.BusinessLogic.Entities.Tags.Section:
@@ -4552,14 +4628,14 @@ components:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
               x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
-        DomainId: number
+        Id: 0
+        DomainId: 0
         Name: string
         Description: string
-        CreatedBy: number
-        ModifiedBy: number
-        CreationDate: string (timestamp)
-        ModificationDate: string (timestamp)
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Documents:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
     Siterra.Documents.BusinessLogic.Entities.Tags.Category:
@@ -4574,14 +4650,14 @@ components:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
               x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
-        DomainId: number
+        Id: 0
+        DomainId: 0
         Name: string
         Description: string
-        CreatedBy: number
-        ModifiedBy: number
-        CreationDate: string (timestamp)
-        ModificationDate: string (timestamp)
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Documents:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
     Siterra.Documents.BusinessLogic.Entities.Revision.Revision:
@@ -4725,86 +4801,40 @@ components:
               nullable: true
           x-ms-navigationProperty: true
       example:
-        Id: number (identifier)
-        Number: number
-        DocumentId: number
-        ModificationDate: string (timestamp)
-        CreationDate: string (timestamp)
-        ModifiedBy: number
-        CreatedBy: number
+        Id: 0
+        Number: 0
+        DocumentId: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        CreatedBy: 0
         Remarks: string
-        FileId: number
-        DocumentOwnerContact: number
+        FileId: 0
+        DocumentOwnerContact: 0
         DocumentDescription: string
-        DocumentStatusDate: string (timestamp)
+        DocumentStatusDate: '0001-01-01T00:00:00.0000000+00:00'
         DocumentFolder: string
         DocumentKeywords: string
         DocumentStatus: string
         DocumentType: string
         DocumentName: string
         DocumentNumber: string
-        DomainId: number
-        IsDeleted: number
+        DomainId: 0
+        IsDeleted: 0
         IsReviewed: true
         ReviewDescription: string
-        ReviewedBy: number
+        ReviewedBy: 0
         IsRejected: true
         RejectedReason: string
         RejectedDescription: string
-        RejectedBy: number
+        RejectedBy: 0
         IsApproved: true
-        ApprovedBy: number
-        ReviewedDate: string (timestamp)
-        RejectedDate: string (timestamp)
-        ApprovedDate: string (timestamp)
+        ApprovedBy: 0
+        ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
+        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
         Document:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
-    Default.ODataErrors.ODataError:
-      required:
-        - error
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/Default.ODataErrors.MainError'
-    Default.ODataErrors.MainError:
-      required:
-        - code
-        - message
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-          x-ms-primary-error-message: true
-        target:
-          type: string
-          nullable: true
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/Default.ODataErrors.ErrorDetails'
-        innerError:
-          $ref: '#/components/schemas/Default.ODataErrors.InnerError'
-    Default.ODataErrors.ErrorDetails:
-      required:
-        - code
-        - message
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        target:
-          type: string
-          nullable: true
-    Default.ODataErrors.InnerError:
-      type: object
-      description: The structure of this object is service-specific
-    ODataCountResponse:
-      type: number
-      format: int64
     Siterra.Documents.App.DTO.DocumentDtoCollectionResponse:
       title: Collection of DocumentDto
       type: object
@@ -4893,36 +4923,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
-    StringCollectionResponse:
-      title: Collection of string
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            type: string
-    ReferenceUpdate:
-      type: object
-      properties:
-        '@odata.id':
-          type: string
-        '@odata.type':
-          type: string
-          nullable: true
-    ReferenceCreate:
-      type: object
-      properties:
-        '@odata.id':
-          type: string
-      additionalProperties:
-        type: object
-    ReferenceNumeric:
-      enum:
-        - '-INF'
-        - INF
-        - NaN
-      type: string
-      nullable: true
   responses:
     error:
       description: error
@@ -5063,309 +5063,333 @@ components:
   examples:
     Siterra.Documents.App.DTO.DocumentDto:
       value:
-        Description: String
-        DomainId: 0
-        Filename: String
         Id: 0
+        Name: string
+        Description: string
+        Filename: string
+        NumberOfRevisions: string
+        Suffix: string
+        DomainId: 0
         ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         ModifiedBy: 0
-        Name: String
-        NumberOfRevisions: String
-        Revisions:
-          - '@odata.type': Siterra.Documents.App.DTO.RevisionDto
-        Suffix: String
         Tags:
           - '@odata.type': Siterra.Documents.App.DTO.DocumentTagRelDto
+        Revisions:
+          - '@odata.type': Siterra.Documents.App.DTO.RevisionDto
     Siterra.Documents.App.DTO.LibraryDto:
       value:
+        Id: 0
+        Name: string
+        Number: string
+        Description: string
+        LibraryTemplateId: 0
+        ParentTypeId: 0
+        ParentId: 0
         AllowMultiple: true
         AutoCreate: true
+        TypeId: 0
+        DomainId: 0
         CreatedBy: 0
         CreationDate: '0001-01-01T00:00:00.0000000+00:00'
-        Description: String
+        ModifiedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Documents:
           - '@odata.type': Siterra.Documents.App.DTO.DocumentDto
-        DomainId: 0
-        Id: 0
-        LibraryTemplateId: 0
-        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
-        ModifiedBy: 0
-        Name: String
-        Number: String
-        ParentId: 0
-        ParentTypeId: 0
-        TypeId: 0
     Siterra.Documents.App.DTO.RevisionDto:
       value:
-        ApprovedBy: 0
-        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
-        CreatedBy: 0
-        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
-        Document:
-          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
-        DocumentDescription: String
-        DocumentId: 0
-        DocumentName: String
-        DomainId: 0
         Id: 0
-        IsApproved: true
-        IsRejected: true
-        IsReviewed: true
         Number: 0
-        RejectedBy: 0
-        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+        DocumentId: 0
+        DocumentName: string
+        DocumentDescription: string
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreatedBy: 0
+        IsReviewed: true
         ReviewedBy: 0
         ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
+        IsApproved: true
+        ApprovedBy: 0
+        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
+        IsRejected: true
+        RejectedBy: 0
+        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
+        Document:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
     Siterra.Documents.App.DTO.CategoryDto:
       value:
-        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
-        Description: String
-        DomainId: 0
         Id: 0
+        Name: string
+        Description: string
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
         ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
-        Name: String
+        DomainId: 0
     Siterra.Documents.App.DTO.DocumentTagRelDto:
       value:
-        Name: String
+        Name: string
     Siterra.Documents.BusinessLogic.Entities.Document.Document:
       value:
-        CategoryId: 0
-        CheckoutDate: '0001-01-01T00:00:00.0000000+00:00'
-        CheckoutPath: String
-        CheckoutUserId: 0
-        CreatedBy: 0
-        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
-        Description: String
-        DocumentClasses:
-          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
-        DomainId: 0
-        FileClientPath: String
-        FileSized: 0
         Id: 0
-        IsApproved: 0
-        IsApprovedOld: 0
+        Name: string
+        Description: string
+        StatusId: 0
+        TypeId: 0
+        Keywords: string
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreatedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        DomainId: 0
+        LibraryId: 0
+        OwnerUserId: 0
+        StatusDate: '0001-01-01T00:00:00.0000000+00:00'
+        LastRevisionId: 0
+        CheckoutDate: '0001-01-01T00:00:00.0000000+00:00'
+        CheckoutPath: string
+        CheckoutUserId: 0
+        Number: string
+        OriginalDate: '0001-01-01T00:00:00.0000000+00:00'
+        FileSized: 0
+        FileClientPath: string
+        LastRevisionFileId: 0
         IsDeleted: 0
         IsNa: 0
         IsRejected: 0
         IsReviewed: 0
-        Keywords: String
+        NaDescription: string
+        NaReason: string
+        RejectedDescription: string
+        RejectedReason: string
+        ReviewDescription: string
+        SourceDocumentId: 0
+        ScraperMapId: 0
         LastDownloadedDate: '0001-01-01T00:00:00.0000000+00:00'
-        LastFileName: String
-        LastRevisionFile:
-          '@odata.type': Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile
-        LastRevisionFileId: 0
-        LastRevisionId: 0
+        SmsId: 0
+        IsApprovedOld: 0
+        Suffix: string
+        ScrapeResultId: 0
+        IsApproved: 0
+        CategoryId: 0
+        SectionId: 0
+        VersionCount: 0
+        LastFileName: string
+        DocumentClasses:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
+        Tags:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
         Library:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
-        LibraryId: 0
-        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
-        ModifiedBy: 0
-        NaDescription: String
-        Name: String
-        NaReason: String
-        Number: String
-        OriginalDate: '0001-01-01T00:00:00.0000000+00:00'
-        OwnerUserId: 0
-        RejectedDescription: String
-        RejectedReason: String
-        ReviewDescription: String
-        Revisions:
-          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Revision.Revision
-        ScrapeResultId: 0
-        ScraperMapId: 0
-        SectionId: 0
-        SmsId: 0
+        LastRevisionFile:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile
         SourceDocument:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
         SourceDocumentChildren:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
-        SourceDocumentId: 0
-        StatusDate: '0001-01-01T00:00:00.0000000+00:00'
-        StatusId: 0
-        Suffix: String
-        Tags:
-          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
-        TypeId: 0
-        VersionCount: 0
+        Revisions:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Revision.Revision
     Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass:
       value:
-        ClassId: 0
         ClassInstance: 0
+        ClassId: 0
+        DocumentId: 0
         CreatedBy: 0
         CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        IsPrimary: true
         Document:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
-        DocumentId: 0
-        IsPrimary: true
-        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
-        ModifiedBy: 0
     Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel:
       value:
+        DocumentId: 0
+        TagId: 0
+        DomainId: 0
         CreatedBy: 0
+        ModifiedBy: 0
         CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Document:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
-        DocumentId: 0
-        DomainId: 0
-        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
-        ModifiedBy: 0
         Tag:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Tags.Tag
-        TagId: 0
     Siterra.Documents.BusinessLogic.Entities.Library.Library:
       value:
-        AllowMultiple: true
-        AssetId: 0
-        AutoCreate: true
-        ClassId: 0
-        ClassInstance: 0
-        ContractId: 0
-        CreatedBy: 0
-        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
-        Description: String
-        Documents:
-          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        Id: 0
         DomainId: 0
-        EventId: 0
+        Name: string
+        ParentFolderId: 0
+        Number: string
+        TypeId: 0
+        OwnerUserId: 0
+        TotalSize: 0
         FilesCounter: 0
         FoldersCounter: 0
-        Id: 0
-        IncidentId: 0
-        IsDeleted: 0
-        IsHidden: true
-        IsTemplate: true
-        LibraryChildren:
-          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
-        LibraryParent:
-          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
         ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         ModifiedBy: 0
-        Name: String
-        Number: String
-        OrganizationUnitId: 0
-        OwnerUserId: 0
-        ParentFolderId: 0
-        ProgramId: 0
+        CreatedBy: 0
         ProjectId: 0
         SearchRingId: 0
         SiteId: 0
-        SmsId: 0
-        SourceFolder:
-          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        AssetId: 0
+        AllowMultiple: true
+        AutoCreate: true
+        Description: string
+        IsTemplate: true
+        ProgramId: 0
         SourceFolderId: 0
-        SourceLibraryChildren:
-          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
-        StatusId: 0
         TemplateClassId: 0
         TemplateSubType: 0
-        TotalSize: 0
+        IsHidden: true
+        IsDeleted: 0
+        StatusId: 0
+        SmsId: 0
+        ContractId: 0
+        VendorId: 0
+        OrganizationUnitId: 0
+        IncidentId: 0
+        EventId: 0
+        ClassInstance: 0
+        ClassId: 0
+        LibraryParent:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
         Type:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
-        TypeId: 0
-        VendorId: 0
+        SourceFolder:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        LibraryChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        SourceLibraryChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
     Siterra.Documents.BusinessLogic.Entities.Library.LibraryType:
       value:
-        ChildrenLibraryTypes:
-          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
-        ClassId: 0
-        CreatedBy: 0
-        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
-        Description: String
-        DomainId: 0
-        HasChanged: true
         Id: 0
+        Name: string
+        ModifiedBy: 0
+        CreatedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
+        Description: string
+        XmlName: string
         MasterId: 0
+        Number: 0
+        ClassId: 0
+        ParentId: 0
+        HasChanged: true
         MasterLibraryType:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+        ParentLibraryTypes:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
         MasterLibraryTypeChildren:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
-        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
-        ModifiedBy: 0
-        Name: String
-        Number: 0
-        ParentId: 0
-        ParentLibraryTypes:
-          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
-        XmlName: String
+        ChildrenLibraryTypes:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
     Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile:
       value:
-        ActualName: String
-        ClientPath: String
-        ContentTypeId: 0
+        Id: 0
+        Name: string
+        Path: string
+        ModifiedBy: 0
         CreatedBy: 0
         CreationDate: '0001-01-01T00:00:00.0000000+00:00'
-        Documents:
-          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Sized: 0
+        ActualName: string
         DomainId: 0
-        Id: 0
+        SourceClassId: 0
+        ContentTypeId: 0
+        ClientPath: string
         IsSelfHosted: 0
+        SmsId: 0
         Latitude: 0
         Longitude: 0
-        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
-        ModifiedBy: 0
-        Name: String
-        Path: String
-        Sized: 0
-        SmsId: 0
-        SourceClassId: 0
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
     Siterra.Documents.BusinessLogic.Entities.Tags.Tag:
       value:
-        CreatedBy: 0
-        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
-        Description: String
-        DomainId: 0
         Id: 0
-        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
         ModifiedBy: 0
-        Name: String
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
     Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag:
       value:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Documents:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
     Siterra.Documents.BusinessLogic.Entities.Tags.Section:
       value:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Documents:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
     Siterra.Documents.BusinessLogic.Entities.Tags.Category:
       value:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         Documents:
           - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
     Siterra.Documents.BusinessLogic.Entities.Revision.Revision:
       value:
-        ApprovedBy: 0
-        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
-        CreatedBy: 0
+        Id: 0
+        Number: 0
+        DocumentId: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
         CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        CreatedBy: 0
+        Remarks: string
+        FileId: 0
+        DocumentOwnerContact: 0
+        DocumentDescription: string
+        DocumentStatusDate: '0001-01-01T00:00:00.0000000+00:00'
+        DocumentFolder: string
+        DocumentKeywords: string
+        DocumentStatus: string
+        DocumentType: string
+        DocumentName: string
+        DocumentNumber: string
+        DomainId: 0
+        IsDeleted: 0
+        IsReviewed: true
+        ReviewDescription: string
+        ReviewedBy: 0
+        IsRejected: true
+        RejectedReason: string
+        RejectedDescription: string
+        RejectedBy: 0
+        IsApproved: true
+        ApprovedBy: 0
+        ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
+        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
         Document:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
-        DocumentDescription: String
-        DocumentFolder: String
-        DocumentId: 0
-        DocumentKeywords: String
-        DocumentName: String
-        DocumentNumber: String
-        DocumentOwnerContact: 0
-        DocumentStatus: String
-        DocumentStatusDate: '0001-01-01T00:00:00.0000000+00:00'
-        DocumentType: String
-        DomainId: 0
-        FileId: 0
-        Id: 0
-        IsApproved: true
-        IsDeleted: 0
-        IsRejected: true
-        IsReviewed: true
-        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
-        ModifiedBy: 0
-        Number: 0
-        RejectedBy: 0
-        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
-        RejectedDescription: String
-        RejectedReason: String
-        Remarks: String
-        ReviewDescription: String
-        ReviewedBy: 0
-        ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
   requestBodies:
     refPostBody:
       description: New navigation property ref value
