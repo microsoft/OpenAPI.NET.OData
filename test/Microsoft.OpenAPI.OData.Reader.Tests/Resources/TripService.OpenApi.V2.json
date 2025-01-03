@@ -918,7 +918,7 @@
           "Airports.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Airports.EmergencyAuthority.ListAddressInfo.AsEventLocation",
+        "operationId": "Airports.EmergencyAuthority.ListAddressInfo.AsEventLocation-fbf9",
         "produces": [
           "application/json"
         ],
@@ -1071,7 +1071,7 @@
           "Airports.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Airports.EmergencyAuthority.GetHomeAddress.AsEventLocation",
+        "operationId": "Airports.EmergencyAuthority.GetHomeAddress.AsEventLocation-0bb9",
         "produces": [
           "application/json"
         ],
@@ -1105,7 +1105,7 @@
           "Airports.Person"
         ],
         "summary": "Get Photo for the navigation property EmergencyAuthority from Airports",
-        "operationId": "Airports.GetEmergencyAuthorityPhoto",
+        "operationId": "Airports.GetEmergencyAuthorityPhoto-13fb",
         "produces": [
           "application/octet-stream"
         ],
@@ -1137,7 +1137,7 @@
           "Airports.Person"
         ],
         "summary": "Update Photo for the navigation property EmergencyAuthority in Airports",
-        "operationId": "Airports.UpdateEmergencyAuthorityPhoto",
+        "operationId": "Airports.UpdateEmergencyAuthorityPhoto-13fb",
         "consumes": [
           "application/octet-stream"
         ],
@@ -1175,7 +1175,7 @@
           "Airports.Person"
         ],
         "summary": "Delete Photo for the navigation property EmergencyAuthority in Airports",
-        "operationId": "Airports.DeleteEmergencyAuthorityPhoto",
+        "operationId": "Airports.DeleteEmergencyAuthorityPhoto-13fb",
         "parameters": [
           {
             "in": "path",
@@ -1580,7 +1580,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.ListAddressInfo.AsEventLocation-b1a4",
         "produces": [
           "application/json"
         ],
@@ -2019,7 +2019,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation-2154",
         "produces": [
           "application/json"
         ],
@@ -2166,7 +2166,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation-a28d",
         "produces": [
           "application/json"
         ],
@@ -2197,7 +2197,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.GetBestFriend.AsEmployee",
+        "operationId": "Me.GetBestFriend.AsEmployee-dcf6",
         "produces": [
           "application/json"
         ],
@@ -2248,7 +2248,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.GetBestFriend.AsManager",
+        "operationId": "Me.GetBestFriend.AsManager-09a9",
         "produces": [
           "application/json"
         ],
@@ -2299,7 +2299,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from Me",
-        "operationId": "Me.GetBestFriendPhoto",
+        "operationId": "Me.GetBestFriendPhoto-8333",
         "produces": [
           "application/octet-stream"
         ],
@@ -2328,7 +2328,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.UpdateBestFriendPhoto",
+        "operationId": "Me.UpdateBestFriendPhoto-8333",
         "consumes": [
           "application/octet-stream"
         ],
@@ -2365,7 +2365,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.DeleteBestFriendPhoto",
+        "operationId": "Me.DeleteBestFriendPhoto-8333",
         "parameters": [
           {
             "in": "header",
@@ -2749,7 +2749,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation-f440",
         "produces": [
           "application/json"
         ],
@@ -2930,7 +2930,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation-15cc",
         "produces": [
           "application/json"
         ],
@@ -2971,7 +2971,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.GetFriends.AsEmployee",
+        "operationId": "Me.GetFriends.AsEmployee-3dc7",
         "produces": [
           "application/json"
         ],
@@ -3042,7 +3042,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.GetFriends.AsManager",
+        "operationId": "Me.GetFriends.AsManager-ddec",
         "produces": [
           "application/json"
         ],
@@ -3113,7 +3113,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from Me",
-        "operationId": "Me.GetFriendsPhoto",
+        "operationId": "Me.GetFriendsPhoto-287d",
         "produces": [
           "application/octet-stream"
         ],
@@ -3152,7 +3152,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in Me",
-        "operationId": "Me.UpdateFriendsPhoto",
+        "operationId": "Me.UpdateFriendsPhoto-287d",
         "consumes": [
           "application/octet-stream"
         ],
@@ -3197,7 +3197,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in Me",
-        "operationId": "Me.DeleteFriendsPhoto",
+        "operationId": "Me.DeleteFriendsPhoto-287d",
         "parameters": [
           {
             "in": "path",
@@ -3414,7 +3414,7 @@
           "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Me.ListFriends.AsEmployee",
+        "operationId": "Me.ListFriends.AsEmployee-f4a5",
         "parameters": [
           {
             "in": "header",
@@ -3540,7 +3540,7 @@
           "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Me.ListFriends.AsManager",
+        "operationId": "Me.ListFriends.AsManager-98ae",
         "parameters": [
           {
             "in": "header",
@@ -3752,7 +3752,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.GetHomeAddress.AsEventLocation-ba49",
         "produces": [
           "application/json"
         ],
@@ -3783,7 +3783,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.Person.GetPerson.AsEmployee",
+        "operationId": "Me.Person.GetPerson.AsEmployee-bd18",
         "produces": [
           "application/json"
         ],
@@ -4024,7 +4024,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.ListAddressInfo.AsEventLocation-989f",
         "produces": [
           "application/json"
         ],
@@ -4463,7 +4463,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation-1d72",
         "produces": [
           "application/json"
         ],
@@ -4610,7 +4610,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation-19b8",
         "produces": [
           "application/json"
         ],
@@ -4641,7 +4641,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.GetBestFriend.AsManager",
+        "operationId": "Me.GetBestFriend.AsManager-c104",
         "produces": [
           "application/json"
         ],
@@ -4692,7 +4692,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from Me",
-        "operationId": "Me.GetBestFriendPhoto",
+        "operationId": "Me.GetBestFriendPhoto-4dc7",
         "produces": [
           "application/octet-stream"
         ],
@@ -4721,7 +4721,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.UpdateBestFriendPhoto",
+        "operationId": "Me.UpdateBestFriendPhoto-4dc7",
         "consumes": [
           "application/octet-stream"
         ],
@@ -4758,7 +4758,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.DeleteBestFriendPhoto",
+        "operationId": "Me.DeleteBestFriendPhoto-4dc7",
         "parameters": [
           {
             "in": "header",
@@ -5142,7 +5142,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation-7b1e",
         "produces": [
           "application/json"
         ],
@@ -5323,7 +5323,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation-600f",
         "produces": [
           "application/json"
         ],
@@ -5364,7 +5364,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.GetFriends.AsManager",
+        "operationId": "Me.GetFriends.AsManager-aa0c",
         "produces": [
           "application/json"
         ],
@@ -5435,7 +5435,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from Me",
-        "operationId": "Me.GetFriendsPhoto",
+        "operationId": "Me.GetFriendsPhoto-6e41",
         "produces": [
           "application/octet-stream"
         ],
@@ -5474,7 +5474,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in Me",
-        "operationId": "Me.UpdateFriendsPhoto",
+        "operationId": "Me.UpdateFriendsPhoto-6e41",
         "consumes": [
           "application/octet-stream"
         ],
@@ -5519,7 +5519,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in Me",
-        "operationId": "Me.DeleteFriendsPhoto",
+        "operationId": "Me.DeleteFriendsPhoto-6e41",
         "parameters": [
           {
             "in": "path",
@@ -5736,7 +5736,7 @@
           "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Me.ListFriends.AsManager",
+        "operationId": "Me.ListFriends.AsManager-f993",
         "parameters": [
           {
             "in": "header",
@@ -5948,7 +5948,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.GetHomeAddress.AsEventLocation-6fc5",
         "produces": [
           "application/json"
         ],
@@ -6313,7 +6313,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Peers.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.Peers.ListAddressInfo.AsEventLocation-1e59",
         "produces": [
           "application/json"
         ],
@@ -6494,7 +6494,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Peers.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.Peers.GetHomeAddress.AsEventLocation-dc11",
         "produces": [
           "application/json"
         ],
@@ -6535,7 +6535,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property Peers from Me",
-        "operationId": "Me.GetPeersPhoto",
+        "operationId": "Me.GetPeersPhoto-4c48",
         "produces": [
           "application/octet-stream"
         ],
@@ -6574,7 +6574,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property Peers in Me",
-        "operationId": "Me.UpdatePeersPhoto",
+        "operationId": "Me.UpdatePeersPhoto-4c48",
         "consumes": [
           "application/octet-stream"
         ],
@@ -6619,7 +6619,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property Peers in Me",
-        "operationId": "Me.DeletePeersPhoto",
+        "operationId": "Me.DeletePeersPhoto-4c48",
         "parameters": [
           {
             "in": "path",
@@ -7737,7 +7737,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.Person.GetPerson.AsManager",
+        "operationId": "Me.Person.GetPerson.AsManager-16dc",
         "produces": [
           "application/json"
         ],
@@ -7978,7 +7978,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.ListAddressInfo.AsEventLocation-55be",
         "produces": [
           "application/json"
         ],
@@ -8417,7 +8417,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation-987a",
         "produces": [
           "application/json"
         ],
@@ -8564,7 +8564,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation-15c5",
         "produces": [
           "application/json"
         ],
@@ -8595,7 +8595,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.GetBestFriend.AsEmployee",
+        "operationId": "Me.GetBestFriend.AsEmployee-7bbe",
         "produces": [
           "application/json"
         ],
@@ -8646,7 +8646,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from Me",
-        "operationId": "Me.GetBestFriendPhoto",
+        "operationId": "Me.GetBestFriendPhoto-bac8",
         "produces": [
           "application/octet-stream"
         ],
@@ -8675,7 +8675,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.UpdateBestFriendPhoto",
+        "operationId": "Me.UpdateBestFriendPhoto-bac8",
         "consumes": [
           "application/octet-stream"
         ],
@@ -8712,7 +8712,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.DeleteBestFriendPhoto",
+        "operationId": "Me.DeleteBestFriendPhoto-bac8",
         "parameters": [
           {
             "in": "header",
@@ -9079,7 +9079,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.DirectReports.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.DirectReports.ListAddressInfo.AsEventLocation-660b",
         "produces": [
           "application/json"
         ],
@@ -9260,7 +9260,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.DirectReports.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.DirectReports.GetHomeAddress.AsEventLocation-5e6e",
         "produces": [
           "application/json"
         ],
@@ -9301,7 +9301,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property DirectReports from Me",
-        "operationId": "Me.GetDirectReportsPhoto",
+        "operationId": "Me.GetDirectReportsPhoto-e60c",
         "produces": [
           "application/octet-stream"
         ],
@@ -9340,7 +9340,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property DirectReports in Me",
-        "operationId": "Me.UpdateDirectReportsPhoto",
+        "operationId": "Me.UpdateDirectReportsPhoto-e60c",
         "consumes": [
           "application/octet-stream"
         ],
@@ -9385,7 +9385,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property DirectReports in Me",
-        "operationId": "Me.DeleteDirectReportsPhoto",
+        "operationId": "Me.DeleteDirectReportsPhoto-e60c",
         "parameters": [
           {
             "in": "path",
@@ -9928,7 +9928,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation-1ad9",
         "produces": [
           "application/json"
         ],
@@ -10109,7 +10109,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation-1e07",
         "produces": [
           "application/json"
         ],
@@ -10150,7 +10150,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.GetFriends.AsEmployee",
+        "operationId": "Me.GetFriends.AsEmployee-5b5f",
         "produces": [
           "application/json"
         ],
@@ -10221,7 +10221,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from Me",
-        "operationId": "Me.GetFriendsPhoto",
+        "operationId": "Me.GetFriendsPhoto-64bd",
         "produces": [
           "application/octet-stream"
         ],
@@ -10260,7 +10260,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in Me",
-        "operationId": "Me.UpdateFriendsPhoto",
+        "operationId": "Me.UpdateFriendsPhoto-64bd",
         "consumes": [
           "application/octet-stream"
         ],
@@ -10305,7 +10305,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in Me",
-        "operationId": "Me.DeleteFriendsPhoto",
+        "operationId": "Me.DeleteFriendsPhoto-64bd",
         "parameters": [
           {
             "in": "path",
@@ -10522,7 +10522,7 @@
           "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Me.ListFriends.AsEmployee",
+        "operationId": "Me.ListFriends.AsEmployee-fe32",
         "parameters": [
           {
             "in": "header",
@@ -10734,7 +10734,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.GetHomeAddress.AsEventLocation-5d95",
         "produces": [
           "application/json"
         ],
@@ -11670,7 +11670,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for Person from Me",
-        "operationId": "Me.Person.GetPhoto",
+        "operationId": "Me.Person.GetPhoto-ab7e",
         "produces": [
           "application/octet-stream"
         ],
@@ -11699,7 +11699,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for Person in Me",
-        "operationId": "Me.Person.UpdatePhoto",
+        "operationId": "Me.Person.UpdatePhoto-ab7e",
         "consumes": [
           "application/octet-stream"
         ],
@@ -11736,7 +11736,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for Person in Me",
-        "operationId": "Me.Person.DeletePhoto",
+        "operationId": "Me.Person.DeletePhoto-ab7e",
         "parameters": [
           {
             "in": "header",
@@ -12976,7 +12976,7 @@
           "NewComePeople.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.ListAddressInfo.AsEventLocation",
+        "operationId": "NewComePeople.ListAddressInfo.AsEventLocation-d026",
         "produces": [
           "application/json"
         ],
@@ -13489,7 +13489,7 @@
           "NewComePeople.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "NewComePeople.BestFriend.ListAddressInfo.AsEventLocation-73fa",
         "produces": [
           "application/json"
         ],
@@ -13670,7 +13670,7 @@
           "NewComePeople.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "NewComePeople.BestFriend.GetHomeAddress.AsEventLocation-8ebe",
         "produces": [
           "application/json"
         ],
@@ -13711,7 +13711,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "NewComePeople.GetBestFriend.AsEmployee",
+        "operationId": "NewComePeople.GetBestFriend.AsEmployee-7b75",
         "produces": [
           "application/json"
         ],
@@ -13770,7 +13770,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "NewComePeople.GetBestFriend.AsManager",
+        "operationId": "NewComePeople.GetBestFriend.AsManager-61ce",
         "produces": [
           "application/json"
         ],
@@ -13829,7 +13829,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from NewComePeople",
-        "operationId": "NewComePeople.GetBestFriendPhoto",
+        "operationId": "NewComePeople.GetBestFriendPhoto-4f67",
         "produces": [
           "application/octet-stream"
         ],
@@ -13868,7 +13868,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in NewComePeople",
-        "operationId": "NewComePeople.UpdateBestFriendPhoto",
+        "operationId": "NewComePeople.UpdateBestFriendPhoto-4f67",
         "consumes": [
           "application/octet-stream"
         ],
@@ -13913,7 +13913,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in NewComePeople",
-        "operationId": "NewComePeople.DeleteBestFriendPhoto",
+        "operationId": "NewComePeople.DeleteBestFriendPhoto-4f67",
         "parameters": [
           {
             "in": "path",
@@ -14307,7 +14307,7 @@
           "NewComePeople.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "NewComePeople.Friends.ListAddressInfo.AsEventLocation-eeb4",
         "produces": [
           "application/json"
         ],
@@ -14492,7 +14492,7 @@
           "NewComePeople.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "NewComePeople.Friends.GetHomeAddress.AsEventLocation-f4d9",
         "produces": [
           "application/json"
         ],
@@ -14534,7 +14534,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "NewComePeople.GetFriends.AsEmployee",
+        "operationId": "NewComePeople.GetFriends.AsEmployee-2969",
         "produces": [
           "application/json"
         ],
@@ -14606,7 +14606,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "NewComePeople.GetFriends.AsManager",
+        "operationId": "NewComePeople.GetFriends.AsManager-708f",
         "produces": [
           "application/json"
         ],
@@ -14678,7 +14678,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from NewComePeople",
-        "operationId": "NewComePeople.GetFriendsPhoto",
+        "operationId": "NewComePeople.GetFriendsPhoto-e9fc",
         "produces": [
           "application/octet-stream"
         ],
@@ -14718,7 +14718,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in NewComePeople",
-        "operationId": "NewComePeople.UpdateFriendsPhoto",
+        "operationId": "NewComePeople.UpdateFriendsPhoto-e9fc",
         "consumes": [
           "application/octet-stream"
         ],
@@ -14764,7 +14764,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in NewComePeople",
-        "operationId": "NewComePeople.DeleteFriendsPhoto",
+        "operationId": "NewComePeople.DeleteFriendsPhoto-e9fc",
         "parameters": [
           {
             "in": "path",
@@ -14986,7 +14986,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "NewComePeople.ListFriends.AsEmployee",
+        "operationId": "NewComePeople.ListFriends.AsEmployee-2969",
         "parameters": [
           {
             "in": "path",
@@ -15114,7 +15114,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "NewComePeople.ListFriends.AsManager",
+        "operationId": "NewComePeople.ListFriends.AsManager-708f",
         "parameters": [
           {
             "in": "path",
@@ -15330,7 +15330,7 @@
           "NewComePeople.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.GetHomeAddress.AsEventLocation",
+        "operationId": "NewComePeople.GetHomeAddress.AsEventLocation-3fd9",
         "produces": [
           "application/json"
         ],
@@ -15626,7 +15626,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get Photo for Person from NewComePeople",
-        "operationId": "NewComePeople.Person.GetPhoto",
+        "operationId": "NewComePeople.Person.GetPhoto-74be",
         "produces": [
           "application/octet-stream"
         ],
@@ -15658,7 +15658,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Update Photo for Person in NewComePeople",
-        "operationId": "NewComePeople.Person.UpdatePhoto",
+        "operationId": "NewComePeople.Person.UpdatePhoto-74be",
         "consumes": [
           "application/octet-stream"
         ],
@@ -15696,7 +15696,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete Photo for Person in NewComePeople",
-        "operationId": "NewComePeople.Person.DeletePhoto",
+        "operationId": "NewComePeople.Person.DeletePhoto-74be",
         "parameters": [
           {
             "in": "path",
@@ -17047,7 +17047,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.ListAddressInfo.AsEventLocation",
+        "operationId": "People.ListAddressInfo.AsEventLocation-e5b8",
         "produces": [
           "application/json"
         ],
@@ -17578,7 +17578,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation-c332",
         "produces": [
           "application/json"
         ],
@@ -17759,7 +17759,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation-53c4",
         "produces": [
           "application/json"
         ],
@@ -17800,7 +17800,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.GetBestFriend.AsEmployee",
+        "operationId": "People.GetBestFriend.AsEmployee-7188",
         "produces": [
           "application/json"
         ],
@@ -17864,7 +17864,7 @@
           "description": "Find more info here",
           "url": "https://learn.microsoft.com/graph/api/person-get-friend-manager?view=graph-rest-1.0"
         },
-        "operationId": "People.GetBestFriend.AsManager",
+        "operationId": "People.GetBestFriend.AsManager-5f08",
         "produces": [
           "application/json"
         ],
@@ -17923,7 +17923,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from People",
-        "operationId": "People.GetBestFriendPhoto",
+        "operationId": "People.GetBestFriendPhoto-c3ac",
         "produces": [
           "application/octet-stream"
         ],
@@ -17962,7 +17962,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in People",
-        "operationId": "People.UpdateBestFriendPhoto",
+        "operationId": "People.UpdateBestFriendPhoto-c3ac",
         "consumes": [
           "application/octet-stream"
         ],
@@ -18007,7 +18007,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in People",
-        "operationId": "People.DeleteBestFriendPhoto",
+        "operationId": "People.DeleteBestFriendPhoto-c3ac",
         "parameters": [
           {
             "in": "path",
@@ -18456,7 +18456,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "People.Friends.ListAddressInfo.AsEventLocation-a5f6",
         "produces": [
           "application/json"
         ],
@@ -18669,7 +18669,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "People.Friends.GetHomeAddress.AsEventLocation-da5e",
         "produces": [
           "application/json"
         ],
@@ -18718,7 +18718,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.GetFriends.AsEmployee",
+        "operationId": "People.GetFriends.AsEmployee-11bf",
         "produces": [
           "application/json"
         ],
@@ -18797,7 +18797,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "People.GetFriends.AsManager",
+        "operationId": "People.GetFriends.AsManager-1cfb",
         "produces": [
           "application/json"
         ],
@@ -18876,7 +18876,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from People",
-        "operationId": "People.GetFriendsPhoto",
+        "operationId": "People.GetFriendsPhoto-12fc",
         "produces": [
           "application/octet-stream"
         ],
@@ -18923,7 +18923,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in People",
-        "operationId": "People.UpdateFriendsPhoto",
+        "operationId": "People.UpdateFriendsPhoto-12fc",
         "consumes": [
           "application/octet-stream"
         ],
@@ -18976,7 +18976,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in People",
-        "operationId": "People.DeleteFriendsPhoto",
+        "operationId": "People.DeleteFriendsPhoto-12fc",
         "parameters": [
           {
             "in": "path",
@@ -19247,7 +19247,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.ListFriends.AsEmployee",
+        "operationId": "People.ListFriends.AsEmployee-11bf",
         "parameters": [
           {
             "in": "path",
@@ -19389,7 +19389,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.ListFriends.AsManager",
+        "operationId": "People.ListFriends.AsManager-1cfb",
         "parameters": [
           {
             "in": "path",
@@ -19634,7 +19634,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.GetHomeAddress.AsEventLocation",
+        "operationId": "People.GetHomeAddress.AsEventLocation-d0cf",
         "produces": [
           "application/json"
         ],
@@ -19675,7 +19675,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.Person.GetPerson.AsEmployee",
+        "operationId": "People.Person.GetPerson.AsEmployee-317b",
         "produces": [
           "application/json"
         ],
@@ -19968,7 +19968,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.ListAddressInfo.AsEventLocation",
+        "operationId": "People.ListAddressInfo.AsEventLocation-1342",
         "produces": [
           "application/json"
         ],
@@ -20499,7 +20499,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation-7cd9",
         "produces": [
           "application/json"
         ],
@@ -20680,7 +20680,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation-7db9",
         "produces": [
           "application/json"
         ],
@@ -20721,7 +20721,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "People.GetBestFriend.AsManager",
+        "operationId": "People.GetBestFriend.AsManager-7b70",
         "produces": [
           "application/json"
         ],
@@ -20780,7 +20780,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from People",
-        "operationId": "People.GetBestFriendPhoto",
+        "operationId": "People.GetBestFriendPhoto-a839",
         "produces": [
           "application/octet-stream"
         ],
@@ -20819,7 +20819,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in People",
-        "operationId": "People.UpdateBestFriendPhoto",
+        "operationId": "People.UpdateBestFriendPhoto-a839",
         "consumes": [
           "application/octet-stream"
         ],
@@ -20864,7 +20864,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in People",
-        "operationId": "People.DeleteBestFriendPhoto",
+        "operationId": "People.DeleteBestFriendPhoto-a839",
         "parameters": [
           {
             "in": "path",
@@ -21304,7 +21304,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "People.Friends.ListAddressInfo.AsEventLocation-d49e",
         "produces": [
           "application/json"
         ],
@@ -21517,7 +21517,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "People.Friends.GetHomeAddress.AsEventLocation-d77d",
         "produces": [
           "application/json"
         ],
@@ -21566,7 +21566,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "People.GetFriends.AsManager",
+        "operationId": "People.GetFriends.AsManager-3e3c",
         "produces": [
           "application/json"
         ],
@@ -21645,7 +21645,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from People",
-        "operationId": "People.GetFriendsPhoto",
+        "operationId": "People.GetFriendsPhoto-1a66",
         "produces": [
           "application/octet-stream"
         ],
@@ -21692,7 +21692,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in People",
-        "operationId": "People.UpdateFriendsPhoto",
+        "operationId": "People.UpdateFriendsPhoto-1a66",
         "consumes": [
           "application/octet-stream"
         ],
@@ -21745,7 +21745,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in People",
-        "operationId": "People.DeleteFriendsPhoto",
+        "operationId": "People.DeleteFriendsPhoto-1a66",
         "parameters": [
           {
             "in": "path",
@@ -22002,7 +22002,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.ListFriends.AsManager",
+        "operationId": "People.ListFriends.AsManager-3e3c",
         "parameters": [
           {
             "in": "path",
@@ -22246,7 +22246,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.GetHomeAddress.AsEventLocation",
+        "operationId": "People.GetHomeAddress.AsEventLocation-90e5",
         "produces": [
           "application/json"
         ],
@@ -22669,7 +22669,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Peers.ListAddressInfo.AsEventLocation",
+        "operationId": "People.Peers.ListAddressInfo.AsEventLocation-b918",
         "produces": [
           "application/json"
         ],
@@ -22882,7 +22882,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Peers.GetHomeAddress.AsEventLocation",
+        "operationId": "People.Peers.GetHomeAddress.AsEventLocation-311b",
         "produces": [
           "application/json"
         ],
@@ -22931,7 +22931,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property Peers from People",
-        "operationId": "People.GetPeersPhoto",
+        "operationId": "People.GetPeersPhoto-ecda",
         "produces": [
           "application/octet-stream"
         ],
@@ -22978,7 +22978,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property Peers in People",
-        "operationId": "People.UpdatePeersPhoto",
+        "operationId": "People.UpdatePeersPhoto-ecda",
         "consumes": [
           "application/octet-stream"
         ],
@@ -23031,7 +23031,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property Peers in People",
-        "operationId": "People.DeletePeersPhoto",
+        "operationId": "People.DeletePeersPhoto-ecda",
         "parameters": [
           {
             "in": "path",
@@ -24319,7 +24319,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "People.Person.GetPerson.AsManager",
+        "operationId": "People.Person.GetPerson.AsManager-d051",
         "produces": [
           "application/json"
         ],
@@ -24612,7 +24612,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.ListAddressInfo.AsEventLocation",
+        "operationId": "People.ListAddressInfo.AsEventLocation-7526",
         "produces": [
           "application/json"
         ],
@@ -25143,7 +25143,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation-897f",
         "produces": [
           "application/json"
         ],
@@ -25324,7 +25324,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation-545d",
         "produces": [
           "application/json"
         ],
@@ -25365,7 +25365,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.GetBestFriend.AsEmployee",
+        "operationId": "People.GetBestFriend.AsEmployee-0445",
         "produces": [
           "application/json"
         ],
@@ -25424,7 +25424,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from People",
-        "operationId": "People.GetBestFriendPhoto",
+        "operationId": "People.GetBestFriendPhoto-f05d",
         "produces": [
           "application/octet-stream"
         ],
@@ -25463,7 +25463,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in People",
-        "operationId": "People.UpdateBestFriendPhoto",
+        "operationId": "People.UpdateBestFriendPhoto-f05d",
         "consumes": [
           "application/octet-stream"
         ],
@@ -25508,7 +25508,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in People",
-        "operationId": "People.DeleteBestFriendPhoto",
+        "operationId": "People.DeleteBestFriendPhoto-f05d",
         "parameters": [
           {
             "in": "path",
@@ -25931,7 +25931,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.DirectReports.ListAddressInfo.AsEventLocation",
+        "operationId": "People.DirectReports.ListAddressInfo.AsEventLocation-1252",
         "produces": [
           "application/json"
         ],
@@ -26144,7 +26144,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.DirectReports.GetHomeAddress.AsEventLocation",
+        "operationId": "People.DirectReports.GetHomeAddress.AsEventLocation-cf8d",
         "produces": [
           "application/json"
         ],
@@ -26193,7 +26193,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property DirectReports from People",
-        "operationId": "People.GetDirectReportsPhoto",
+        "operationId": "People.GetDirectReportsPhoto-7149",
         "produces": [
           "application/octet-stream"
         ],
@@ -26240,7 +26240,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property DirectReports in People",
-        "operationId": "People.UpdateDirectReportsPhoto",
+        "operationId": "People.UpdateDirectReportsPhoto-7149",
         "consumes": [
           "application/octet-stream"
         ],
@@ -26293,7 +26293,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property DirectReports in People",
-        "operationId": "People.DeleteDirectReportsPhoto",
+        "operationId": "People.DeleteDirectReportsPhoto-7149",
         "parameters": [
           {
             "in": "path",
@@ -26924,7 +26924,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "People.Friends.ListAddressInfo.AsEventLocation-f8c9",
         "produces": [
           "application/json"
         ],
@@ -27137,7 +27137,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "People.Friends.GetHomeAddress.AsEventLocation-eb71",
         "produces": [
           "application/json"
         ],
@@ -27186,7 +27186,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.GetFriends.AsEmployee",
+        "operationId": "People.GetFriends.AsEmployee-161e",
         "produces": [
           "application/json"
         ],
@@ -27265,7 +27265,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from People",
-        "operationId": "People.GetFriendsPhoto",
+        "operationId": "People.GetFriendsPhoto-b97d",
         "produces": [
           "application/octet-stream"
         ],
@@ -27312,7 +27312,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in People",
-        "operationId": "People.UpdateFriendsPhoto",
+        "operationId": "People.UpdateFriendsPhoto-b97d",
         "consumes": [
           "application/octet-stream"
         ],
@@ -27365,7 +27365,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in People",
-        "operationId": "People.DeleteFriendsPhoto",
+        "operationId": "People.DeleteFriendsPhoto-b97d",
         "parameters": [
           {
             "in": "path",
@@ -27622,7 +27622,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.ListFriends.AsEmployee",
+        "operationId": "People.ListFriends.AsEmployee-161e",
         "parameters": [
           {
             "in": "path",
@@ -27866,7 +27866,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.GetHomeAddress.AsEventLocation",
+        "operationId": "People.GetHomeAddress.AsEventLocation-e3dc",
         "produces": [
           "application/json"
         ],
@@ -28945,7 +28945,7 @@
           "description": "Find more info here",
           "url": "https://learn.microsoft.com/graph/api/person-get-photo?view=graph-rest-1.0"
         },
-        "operationId": "People.Person.GetPhoto",
+        "operationId": "People.Person.GetPhoto-883f",
         "produces": [
           "application/octet-stream"
         ],
@@ -28989,7 +28989,7 @@
           "description": "Find more info here",
           "url": "https://learn.microsoft.com/graph/api/person-update-photo?view=graph-rest-1.0"
         },
-        "operationId": "People.Person.UpdatePhoto",
+        "operationId": "People.Person.UpdatePhoto-883f",
         "consumes": [
           "application/octet-stream"
         ],
@@ -29039,7 +29039,7 @@
           "description": "Find more info here",
           "url": "https://learn.microsoft.com/graph/api/person-delete-photo?view=graph-rest-1.0"
         },
-        "operationId": "People.Person.DeletePhoto",
+        "operationId": "People.Person.DeletePhoto-883f",
         "parameters": [
           {
             "in": "path",
@@ -30021,7 +30021,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.Person.ListPerson.AsEmployee",
+        "operationId": "People.Person.ListPerson.AsEmployee-013a",
         "parameters": [
           {
             "in": "header",
@@ -30147,7 +30147,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.Person.ListPerson.AsManager",
+        "operationId": "People.Person.ListPerson.AsManager-3e14",
         "parameters": [
           {
             "in": "header",

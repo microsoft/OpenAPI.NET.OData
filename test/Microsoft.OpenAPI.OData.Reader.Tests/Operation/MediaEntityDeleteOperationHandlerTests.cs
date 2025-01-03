@@ -65,7 +65,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
 
-            Assert.Equal("People.Person.DeletePhoto", operation.OperationId);
+            Assert.Equal("People.Person.DeletePhoto-883f", operation.OperationId);
         }
 
         [Theory]
@@ -180,8 +180,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Todos.Todo.DeleteLogo", deleteOperation.OperationId);
-                Assert.Equal("me.DeletePhotoContent", deleteOperation2.OperationId);
+                Assert.Equal("Todos.Todo.DeleteLogo-9540", deleteOperation.OperationId);
+                Assert.Equal("me.DeletePhotoContent-797b", deleteOperation2.OperationId);
             }
             else
             {

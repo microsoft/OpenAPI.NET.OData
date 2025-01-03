@@ -72,7 +72,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
     /// <inheritdoc/>
     protected override void Initialize(ODataContext context, ODataPath path)
 	{
-		// reseting the fields as we're reusing the handler
+		// resetting the fields as we're reusing the handler
 		singleton = null;
 		isKeySegment = false;
 		secondLastSegmentIsComplexProperty = false;
@@ -198,7 +198,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
         // OperationId
         if (Context.Settings.EnableOperationId)
-			operation.OperationId = EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path, Context) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}";
+			operation.OperationId = EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path, Context) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}-{Path.GetPathHash(Context.Settings)}";
 
         base.SetBasicInfo(operation);
 	}
@@ -244,12 +244,11 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		else if ((SecondLastSegment is ODataKeySegment && !isIndexedCollValuedNavProp)
 				|| (SecondLastSegment is ODataNavigationSourceSegment))
 		{
-            var entitySet = navigationSource as IEdmEntitySet;
-            var singleton = navigationSource as IEdmSingleton;
+            var singletonNavigationSource = navigationSource as IEdmSingleton;
 
-			tagName = entitySet != null
-                ? entitySet.Name + "." + entitySet.EntityType.Name
-                : singleton.Name + "." + singleton.EntityType.Name;
+            tagName = navigationSource is IEdmEntitySet entitySetNavigationSource
+                ? entitySetNavigationSource.Name + "." + entitySetNavigationSource.EntityType.Name
+                : singletonNavigationSource.Name + "." + singletonNavigationSource.EntityType.Name;
         }
 		else if (SecondLastSegment is ODataComplexPropertySegment)
 		{

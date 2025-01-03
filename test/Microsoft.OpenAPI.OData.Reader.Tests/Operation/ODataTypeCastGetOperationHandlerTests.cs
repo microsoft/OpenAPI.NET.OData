@@ -71,7 +71,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("People.ListFriends.AsEmployee", operation.OperationId);
+            Assert.Equal("People.ListFriends.AsEmployee-11bf", operation.OperationId);
         }
         else
         {
@@ -134,7 +134,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("People.GetFriends.AsEmployee", operation.OperationId);
+            Assert.Equal("People.GetFriends.AsEmployee-11bf", operation.OperationId);
         }
         else
         {
@@ -191,7 +191,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("People.Person.ListPerson.AsEmployee", operation.OperationId);
+            Assert.Equal("People.Person.ListPerson.AsEmployee-013a", operation.OperationId);
         }
         else
         {
@@ -251,7 +251,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("People.Person.GetPerson.AsEmployee", operation.OperationId);
+            Assert.Equal("People.Person.GetPerson.AsEmployee-317b", operation.OperationId);
         }
         else
         {
@@ -312,7 +312,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("People.GetBestFriend.AsEmployee", operation.OperationId);
+            Assert.Equal("People.GetBestFriend.AsEmployee-7188", operation.OperationId);
         }
         else
         {
@@ -369,7 +369,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("Me.Person.GetPerson.AsEmployee", operation.OperationId);
+            Assert.Equal("Me.Person.GetPerson.AsEmployee-bd18", operation.OperationId);
         }
         else
         {

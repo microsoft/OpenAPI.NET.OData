@@ -150,7 +150,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             }
 
-            return string.Join(".", items);
+            return $"{string.Join(".", items)}-{Path.GetPathHash(Context.Settings)}";
         }
 
         /// <summary>
