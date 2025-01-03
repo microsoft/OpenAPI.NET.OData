@@ -11,6 +11,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -21,6 +22,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntityGetOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntityGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EntityGetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -93,7 +102,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
             }
 
             if (Context.Settings.ShowLinks)
@@ -104,15 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (schema == null)
             {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = EntitySet.EntityType.FullName()
-                    }
-                };
+                schema = new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
             }
 
             operation.Responses = new OpenApiResponses

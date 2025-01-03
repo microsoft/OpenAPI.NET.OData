@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -17,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperationHandler
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="ComplexPropertyPostOperationHandler"/> class.
+    /// </summary>
+    /// <param name="document">The document to use to lookup references.</param>
+    public ComplexPropertyPostOperationHandler(OpenApiDocument document):base(document)
+    {
+        
+    }
     /// <inheritdoc/>
     protected override void Initialize(ODataContext context, ODataPath path)
     {
@@ -65,7 +74,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             Description = "ETag",
             Schema = new OpenApiSchema
             {
-                Type = "string"
+                Type = JsonSchemaType.String
             }
         });
     }
@@ -128,16 +137,8 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     {
         return new()
         {
-            Type = "array",
-            Items = new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = ComplexPropertySegment.ComplexType.FullName()
-                }
-            }
+            Type = JsonSchemaType.Array,
+            Items = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document)
         };
     }
 }

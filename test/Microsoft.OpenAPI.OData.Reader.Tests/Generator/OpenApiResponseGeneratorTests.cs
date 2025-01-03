@@ -11,6 +11,7 @@ using Microsoft.OpenApi.OData.Tests;
 using Microsoft.OpenApi.Models;
 using Xunit;
 using Microsoft.OpenApi.OData.Edm;
+using System.Text.Json.Nodes;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {
@@ -48,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses());
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(new()));
         }
 
         [Fact]
@@ -64,7 +65,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new(model, settings);
 
             // Act & Assert
-            var responses = context.CreateResponses();
+            var responses = context.CreateResponses(new());
 
             var flightCollectionResponse = responses["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
             var stringCollectionResponse = responses["StringCollectionResponse"];
@@ -81,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model);
 
             // Act
-            var responses = context.CreateResponses();
+            var responses = context.CreateResponses(new());
 
             // Assert
             Assert.NotNull(responses);
@@ -101,14 +102,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model);
 
             // Act
-            var responses = context.CreateResponses();
+            var responses = context.CreateResponses(new());
 
             // Assert
             var response = responses["error"];
             Assert.NotNull(response);
             string json = response.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
-            Assert.Equal(@"{
+            var expectedJson = @"{
   ""description"": ""error"",
   ""content"": {
     ""application/json"": {
@@ -117,7 +118,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
       }
     }
   }
-}".ChangeLineBreaks(), json);
+}";
+            var expectedJsonNode = JsonNode.Parse(expectedJson);
+            var actualJsonNode = JsonNode.Parse(json);
+            Assert.True(JsonNode.DeepEquals(expectedJsonNode, actualJsonNode));
         }
 
         [Fact]
@@ -127,7 +131,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operationImport: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operationImport: null, new()));
         }
 
         [Fact]
@@ -137,7 +141,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(EdmCoreModel.Instance);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("operationImport", () => context.CreateResponses(operationImport: null));
+            Assert.Throws<ArgumentNullException>("operationImport", () => context.CreateResponses(operationImport: null, new()));
         }
 
         [Fact]
@@ -147,7 +151,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operation: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operation: null, new()));
         }
 
         [Fact]
@@ -157,7 +161,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(EdmCoreModel.Instance);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("operation", () => context.CreateResponses(operation: null));
+            Assert.Throws<ArgumentNullException>("operation", () => context.CreateResponses(operation: null, new()));
         }
 
         [Theory]
@@ -181,14 +185,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 IEdmOperationImport operationImport = model.EntityContainer.OperationImports().First(o => o.Name == operationName);
                 Assert.NotNull(operationImport); // guard
                 ODataPath path = new ODataPath(new ODataOperationImportSegment(operationImport));
-                responses = context.CreateResponses(operationImport);
+                responses = context.CreateResponses(operationImport, new());
             }
             else
             {
                 IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == operationName);
                 Assert.NotNull(operation); // guard
                 ODataPath path = new ODataPath(new ODataOperationSegment(operation));
-                responses = context.CreateResponses(operation);
+                responses = context.CreateResponses(operation, new());
             }
 
             // Assert
@@ -221,9 +225,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOfRef.Reference.Id);
                 var anyOfNull = mediaType.Schema.AnyOf.Skip(1).FirstOrDefault();
                 Assert.NotNull(anyOfNull.Type);
-                Assert.Equal("object", anyOfNull.Type);
+                Assert.Equal(JsonSchemaType.Object, anyOfNull.Type);
                 Assert.True(anyOfNull.Nullable);
-
             }
         }
 
@@ -243,8 +246,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(operation2);
             ODataPath path1 = new(new ODataOperationSegment(operation1));
             ODataPath path2 = new(new ODataOperationSegment(operation2));
-            OpenApiResponses responses1 = context.CreateResponses(operation1);
-            OpenApiResponses responses2 = context.CreateResponses(operation2);
+            OpenApiResponses responses1 = context.CreateResponses(operation1, new());
+            OpenApiResponses responses2 = context.CreateResponses(operation2, new());
 
             // Assert for operation1 --> getMailboxUsageStorage
             Assert.NotNull(responses1);
@@ -284,14 +287,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 IEdmOperationImport operationImport = model.EntityContainer.OperationImports().First(o => o.Name == actionName);
                 Assert.NotNull(operationImport); // guard
                 ODataPath path = new ODataPath(new ODataOperationImportSegment(operationImport));
-                responses = context.CreateResponses(operationImport);
+                responses = context.CreateResponses(operationImport, new());
             }
             else
             {
                 IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == actionName);
                 Assert.NotNull(operation); // guard
                 ODataPath path = new ODataPath(new ODataOperationSegment(operation));
-                responses = context.CreateResponses(operation);
+                responses = context.CreateResponses(operation, new());
             }
 
             // Assert
@@ -320,7 +323,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == actionName);
             Assert.NotNull(operation); // guard
             ODataPath path = new(new ODataOperationSegment(operation));
-            responses = context.CreateResponses(operation);
+            responses = context.CreateResponses(operation, new());
 
             // Assert
             Assert.NotNull(responses);
@@ -352,7 +355,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmFunction operation = model.SchemaElements.OfType<IEdmFunction>().First(o => o.Name == "delta" &&
                    o.Parameters.First().Type.FullName() == "Collection(microsoft.graph.application)");
             Assert.NotNull(operation); // guard
-            OpenApiResponses responses = context.CreateResponses(operation);
+            OpenApiResponses responses = context.CreateResponses(operation, new());
             string json = responses.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
@@ -360,7 +363,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotEmpty(responses);
             if (enableOdataAnnotationRef)
             {
-                Assert.Equal(@"{
+                var expectedJson = @"{
   ""200"": {
     ""description"": ""Success"",
     ""content"": {
@@ -391,11 +394,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""default"": {
     ""$ref"": ""#/components/responses/error""
   }
-}".ChangeLineBreaks(), json);
+}";
+                var expectedJsonNode = JsonNode.Parse(expectedJson);
+                var actualJsonNode = JsonNode.Parse(json);
+                Assert.True(JsonNode.DeepEquals(expectedJsonNode, actualJsonNode));
             }
             else
             {
-                Assert.Equal(@"{
+                var expectedJson = @"{
   ""200"": {
     ""description"": ""Success"",
     ""content"": {
@@ -426,7 +432,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""default"": {
     ""$ref"": ""#/components/responses/error""
   }
-}".ChangeLineBreaks(), json);
+}";
+                var expectedJsonNode = JsonNode.Parse(expectedJson);
+                var actualJsonNode = JsonNode.Parse(json);
+                Assert.True(JsonNode.DeepEquals(expectedJsonNode, actualJsonNode));
             }
         }
     }

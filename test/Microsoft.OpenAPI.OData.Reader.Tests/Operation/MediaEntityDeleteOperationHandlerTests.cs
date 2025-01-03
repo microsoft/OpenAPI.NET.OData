@@ -5,8 +5,10 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using System.Linq;
 using System.Xml.Linq;
 using Xunit;
@@ -15,7 +17,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class MediaEntityDeleteOperationHandlerTests
     {
-        private readonly MediaEntityDeleteOperationHandler _operationalHandler = new MediaEntityDeleteOperationHandler();
+        public MediaEntityDeleteOperationHandlerTests()
+        {
+          _operationHandler = new MediaEntityDeleteOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private readonly MediaEntityDeleteOperationHandler _operationHandler;
 
         [Fact]
         public void CreateMediaEntityPropertyDeleteOperationWithTargetPathAnnotationsReturnsCorrectOperation()
@@ -33,7 +41,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamPropertySegment(property.Name));
 
             // Act
-            var operation = _operationalHandler.CreateOperation(context, path);
+            var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -56,7 +65,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
 
-            Assert.Equal("People.Person.DeletePhoto", operation.OperationId);
+            Assert.Equal("People.Person.DeletePhoto-883f", operation.OperationId);
         }
 
         [Theory]
@@ -123,9 +132,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamPropertySegment(structuralProperty2.Name));
 
             // Act
-            var deleteOperation = _operationalHandler.CreateOperation(context, path);
-            var deleteOperation2 = _operationalHandler.CreateOperation(context, path2);
-            var deleteOperation3 = _operationalHandler.CreateOperation(context, path3);
+            var deleteOperation = _operationHandler.CreateOperation(context, path);
+            var deleteOperation2 = _operationHandler.CreateOperation(context, path2);
+            var deleteOperation3 = _operationHandler.CreateOperation(context, path3);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(deleteOperation);
@@ -170,8 +180,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Todos.Todo.DeleteLogo", deleteOperation.OperationId);
-                Assert.Equal("me.DeletePhotoContent", deleteOperation2.OperationId);
+                Assert.Equal("Todos.Todo.DeleteLogo-9540", deleteOperation.OperationId);
+                Assert.Equal("me.DeletePhotoContent-797b", deleteOperation2.OperationId);
             }
             else
             {

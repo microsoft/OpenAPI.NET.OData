@@ -22,7 +22,7 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateSpatialSchemas());
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateSpatialSchemas(new()));
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = new ODataContext(EdmCoreModel.Instance);
 
             // Act
-            var schemas = context.CreateSpatialSchemas();
+            var schemas = context.CreateSpatialSchemas(new());
 
             // Assert
             Assert.NotNull(schemas);
@@ -51,7 +51,7 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = new ODataContext(model);
 
             // Act
-            var schemas = context.CreateSpatialSchemas();
+            var schemas = context.CreateSpatialSchemas(new());
 
             // Assert
             Assert.NotNull(schemas);
@@ -85,7 +85,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeographySchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographySchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographySchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -101,7 +101,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeographyPointSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyPointSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyPointSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -117,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeographyLineStringSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyLineStringSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyLineStringSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -133,7 +133,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeographyPolygonSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyPolygonSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyPolygonSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -149,7 +149,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeographyMultiPointSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyMultiPointSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyMultiPointSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -165,7 +165,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeographyMultiLineStringSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyMultiLineStringSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyMultiLineStringSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -181,7 +181,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeographyMultiPolygonSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyMultiPolygonSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyMultiPolygonSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -197,7 +197,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeographyCollectionSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyCollectionSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyCollectionSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -213,7 +213,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeometrySchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometrySchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometrySchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -252,7 +252,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEdmGeometryPointSchemaSerializeAsYamlWorks() // test yaml
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryPointSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryPointSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -278,7 +278,7 @@ properties:
         public void CreateEdmGeometryLineStringSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryLineStringSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryLineStringSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -312,7 +312,7 @@ properties:
         public void CreateEdmGeometryPolygonSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryPolygonSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryPolygonSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -349,7 +349,7 @@ properties:
         public void CreateEdmGeometryMultiPointSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryMultiPointSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryMultiPointSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -382,7 +382,7 @@ properties:
         public void CreateEdmGeometryMultiLineStringSchemaSerializeAsYamlWorks() // Test yaml
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryMultiLineStringSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryMultiLineStringSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -410,7 +410,7 @@ properties:
         public void CreateEdmGeometryMultiPolygonSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryMultiPolygonSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryMultiPolygonSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
@@ -450,7 +450,7 @@ properties:
         public void CreateEdmGeometryCollectionSchemaSerializeAsJsonWorks()
         {
             // Arrange
-            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryCollectionSchema();
+            var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryCollectionSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act

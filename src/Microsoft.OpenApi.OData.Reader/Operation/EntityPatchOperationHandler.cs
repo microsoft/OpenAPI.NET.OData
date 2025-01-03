@@ -14,6 +14,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntityPatchOperationHandler : EntityUpdateOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntityPatchOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EntityPatchOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
     }

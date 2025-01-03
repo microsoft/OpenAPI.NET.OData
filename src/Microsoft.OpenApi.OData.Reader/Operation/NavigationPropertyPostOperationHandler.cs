@@ -20,6 +20,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class NavigationPropertyPostOperationHandler : NavigationPropertyOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="NavigationPropertyPostOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public NavigationPropertyPostOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
 
@@ -57,7 +65,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document);
             }
 
             operation.RequestBody = new OpenApiRequestBody
@@ -77,7 +85,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document);
             }
 
             operation.Responses = new OpenApiResponses

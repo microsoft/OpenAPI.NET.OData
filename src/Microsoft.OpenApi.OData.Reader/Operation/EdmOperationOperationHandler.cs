@@ -5,9 +5,11 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -21,6 +23,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EdmOperationOperationHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EdmOperationOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected EdmOperationOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         private OperationRestrictionsType _operationRestriction;
 
         /// <summary>
@@ -143,8 +153,8 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Name = tagName,
             };
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("container"));
-            operation.Tags.Add(tag);
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
+            operation.Tags.Add(new OpenApiTagReference(tag.Name, _document));
 
             Context.AppendTag(tag);
 
@@ -194,7 +204,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation) 
         {
-            operation.Responses = Context.CreateResponses(EdmOperation);
+            operation.Responses = Context.CreateResponses(EdmOperation, _document);
             base.SetResponses(operation);
         }
 
@@ -233,31 +243,31 @@ namespace Microsoft.OpenApi.OData.Operation
             if (function.ReturnType.IsCollection())
             {
                 // $top
-                if (Context.CreateTop(function) is OpenApiParameter topParameter)
+                if (Context.CreateTop(function, _document) is OpenApiParameter topParameter)
                 {
                     operation.Parameters.AppendParameter(topParameter);
                 }
 
                 // $skip
-                if (Context.CreateSkip(function) is OpenApiParameter skipParameter)
+                if (Context.CreateSkip(function, _document) is OpenApiParameter skipParameter)
                 {
                     operation.Parameters.AppendParameter(skipParameter);
                 }
 
                 // $search
-                if (Context.CreateSearch(function) is OpenApiParameter searchParameter)
+                if (Context.CreateSearch(function, _document) is OpenApiParameter searchParameter)
                 {
                     operation.Parameters.AppendParameter(searchParameter);
                 }
 
                 // $filter
-                if (Context.CreateFilter(function) is OpenApiParameter filterParameter)
+                if (Context.CreateFilter(function, _document) is OpenApiParameter filterParameter)
                 {
                     operation.Parameters.AppendParameter(filterParameter);
                 }
 
                 // $count
-                if (Context.CreateCount(function) is OpenApiParameter countParameter)
+                if (Context.CreateCount(function, _document) is OpenApiParameter countParameter)
                 {
                     operation.Parameters.AppendParameter(countParameter);
                 }
@@ -320,13 +330,13 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.EnablePagination && EdmOperation.ReturnType?.TypeKind() == EdmTypeKind.Collection)
             {
-                OpenApiObject extension = new OpenApiObject
+                JsonObject extension = new JsonObject
                 {
-                    { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                    { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+                    { "nextLinkName", "@odata.nextLink"},
+                    { "operationName", Context.Settings.PageableOperationName}
                 };
 
-                operation.Extensions.Add(Constants.xMsPageable, extension);
+                operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
             }
             base.SetExtensions(operation);
         }

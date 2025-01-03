@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -16,6 +17,14 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyBaseOperationHandler
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="ComplexPropertyUpdateOperationHandler"/> class.
+    /// </summary>
+    /// <param name="document">The document to use to lookup references.</param>
+    protected ComplexPropertyUpdateOperationHandler(OpenApiDocument document) : base(document)
+    {
+        
+    }
     
     private UpdateRestrictionsType _updateRestrictions;
 
@@ -102,28 +111,20 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
 
     private OpenApiSchema GetOpenApiSchema()
     {
-        var schema = new OpenApiSchema
-        {
-            UnresolvedReference = true,
-            Reference = new OpenApiReference
-            {
-                Type = ReferenceType.Schema,
-                Id = ComplexPropertySegment.ComplexType.FullName()
-            }
-        };
+        var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
 
         if (ComplexPropertySegment.Property.Type.IsCollection())
         {
             return new OpenApiSchema
             {
-                Type = Constants.ObjectType,
+                Type = JsonSchemaType.Object,
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
                         "value",
                         new OpenApiSchema
                         {
-                            Type = "array",
+                            Type = JsonSchemaType.Array,
                             Items = schema
                         }
                     }

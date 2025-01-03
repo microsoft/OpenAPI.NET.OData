@@ -21,7 +21,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class NavigationPropertyPathItemHandlerTest
     {
-        private NavigationPropertyPathItemHandler _pathItemHandler = new NavigationPropertyPathItemHandler();
+        private NavigationPropertyPathItemHandler _pathItemHandler = new NavigationPropertyPathItemHandler(new());
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -597,7 +597,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Extensions);
 
             pathItem.Extensions.TryGetValue("x-ms-isHidden", out var value);
-            string isHiddenValue = (value as OpenApiString)?.Value;
+            string isHiddenValue = (value as OpenApiAny).Node.GetValue<string>();
             Assert.Equal("true", isHiddenValue);
         }
 

@@ -16,6 +16,14 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class SingletonPathItemHandler : PathItemHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SingletonPathItemHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use for references lookup.</param>
+        public SingletonPathItemHandler(OpenApiDocument document): base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         protected override ODataPathKind HandleKind => ODataPathKind.Singleton;
 

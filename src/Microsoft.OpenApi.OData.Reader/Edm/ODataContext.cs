@@ -3,10 +3,12 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Generator;
@@ -23,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Edm
     internal class ODataContext
     {
         private IEnumerable<ODataPath> _allPaths;
-        private IODataPathProvider _pathProvider;
+        private readonly IODataPathProvider _pathProvider;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataContext"/> class.
@@ -48,8 +50,8 @@ namespace Microsoft.OpenApi.OData.Edm
             visitor.Visit(model);
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
 
-            OperationHanderProvider = new OperationHandlerProvider();
-            PathItemHanderProvider = new PathItemHandlerProvider();
+            OperationHandlerProvider = new OperationHandlerProvider();
+            PathItemHandlerProvider = new PathItemHandlerProvider();
 
             // If no path provider, use the default path provider.
             _pathProvider = settings.PathProvider ?? new ODataPathProvider();
@@ -76,12 +78,12 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the path item handler provider.
         /// </summary>
-        public IPathItemHandlerProvider PathItemHanderProvider { get; }
+        public IPathItemHandlerProvider PathItemHandlerProvider { get; }
 
         /// <summary>
         /// Gets the operation handler provider.
         /// </summary>
-        public IOperationHandlerProvider OperationHanderProvider { get; }
+        public IOperationHandlerProvider OperationHandlerProvider { get; }
 
         /// <summary>
         /// Gets the Edm model.
@@ -139,19 +141,53 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Append tag.
         /// </summary>
         /// <param name="tagItem">The tag item.</param>
-        public void AppendTag(OpenApiTag tagItem)
+        internal void AppendTag(OpenApiTag tagItem)
         {
-            if (Tags == null)
-            {
-                Tags = new List<OpenApiTag>();
-            }
+            Tags ??= [];
 
-            if (Tags.Any(c => c.Name == tagItem.Name))
+            if (FindTagByName(tagItem.Name) is not null)
             {
                 return;
             }
 
             Tags.Add(tagItem);
+        }
+
+        /// <summary>
+        /// Find tag by name.
+        /// </summary>
+        /// <param name="name">The name to lookup the tag.</param>
+        /// <returns></returns>
+        internal OpenApiTag FindTagByName(string name)
+        {
+            Utils.CheckArgumentNullOrEmpty(name, nameof(name));
+            return Tags?.FirstOrDefault(t => StringComparer.Ordinal.Equals(t.Name, name));
+        }
+
+        /// <summary>
+        /// Sets the extension for the existing tag, or create a new tag with the extension.
+        /// </summary>
+        /// <param name="tagName">The tag name to lookup.</param>
+        /// <param name="extensionName">The extension name.</param>
+        /// <param name="extensionValue">The extension value to set.</param>
+        /// <param name="initialValueFactory">The tag default value factory.</param>
+        internal void AddExtensionToTag(string tagName, string extensionName, OpenApiAny extensionValue, Func<OpenApiTag> initialValueFactory)
+        {
+            Utils.CheckArgumentNullOrEmpty(tagName, nameof(tagName));
+            Utils.CheckArgumentNullOrEmpty(extensionName, nameof(extensionName));
+            Utils.CheckArgumentNull(extensionValue, nameof(extensionValue));
+            Utils.CheckArgumentNull(initialValueFactory, nameof(initialValueFactory));
+
+            if (FindTagByName(tagName) is {} foundTag)
+            {
+                foundTag.Extensions.TryAdd(extensionName, extensionValue);
+            }
+            else
+            {
+                var tag = initialValueFactory();
+                tag.Extensions.TryAdd(extensionName, extensionValue);
+                AppendTag(tag);
+            }
         }
 
         /// <summary>

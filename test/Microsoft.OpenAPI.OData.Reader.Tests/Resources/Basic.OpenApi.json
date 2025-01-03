@@ -1084,7 +1084,7 @@
           }
         },
         "example": {
-          "Id": "number",
+          "Id": 0,
           "City": {
             "@odata.type": "DefaultNs.City"
           }
@@ -1106,7 +1106,7 @@
           }
         ],
         "example": {
-          "Id": "number",
+          "Id": 0,
           "City": {
             "@odata.type": "DefaultNs.City"
           },
@@ -1179,8 +1179,8 @@
         "description": "The structure of this object is service-specific"
       },
       "ODataCountResponse": {
-        "type": "integer",
-        "format": "int32"
+        "type": "number",
+        "format": "int64"
       },
       "DefaultNs.PersonCollectionResponse": {
         "title": "Collection of Person",
@@ -1334,7 +1334,8 @@
         "explode": false,
         "schema": {
           "minimum": 0,
-          "type": "integer"
+          "type": "number",
+          "format": "int64"
         },
         "example": 50
       },
@@ -1346,7 +1347,8 @@
         "explode": false,
         "schema": {
           "minimum": 0,
-          "type": "integer"
+          "type": "number",
+          "format": "int64"
         }
       },
       "count": {
@@ -1391,7 +1393,7 @@
           "HomeAddress": {
             "@odata.type": "DefaultNs.Address"
           },
-          "UserName": "String (identifier)",
+          "UserName": "string (identifier)",
           "WorkAddress": {
             "@odata.type": "DefaultNs.Address"
           }
@@ -1399,12 +1401,12 @@
       },
       "DefaultNs.City": {
         "value": {
-          "Name": "String (identifier)"
+          "Name": "string (identifier)"
         }
       },
       "DefaultNs.CountryOrRegion": {
         "value": {
-          "Name": "String (identifier)"
+          "Name": "string (identifier)"
         }
       },
       "DefaultNs.Address": {
@@ -1417,9 +1419,13 @@
       },
       "DefaultNs.WorkAddress": {
         "value": {
+          "City": {
+            "@odata.type": "DefaultNs.City"
+          },
           "CountryOrRegion": {
             "@odata.type": "DefaultNs.CountryOrRegion"
-          }
+          },
+          "Id": 0
         }
       }
     },

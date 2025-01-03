@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Xunit;
 
@@ -27,9 +28,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             // Arrange
             PathItemHandlerProvider provider = new PathItemHandlerProvider();
+            OpenApiDocument openApiDocument = new OpenApiDocument();
 
             // Act
-            IPathItemHandler hander = provider.GetHandler(pathKind);
+            IPathItemHandler hander = provider.GetHandler(pathKind, openApiDocument);
 
             // Assert
             Assert.Same(handlerType, hander.GetType());
@@ -40,9 +42,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             // Arrange
             PathItemHandlerProvider provider = new PathItemHandlerProvider();
+            OpenApiDocument openApiDocument = new OpenApiDocument();
 
             // Act
-            IPathItemHandler hander = provider.GetHandler(ODataPathKind.Unknown);
+            IPathItemHandler hander = provider.GetHandler(ODataPathKind.Unknown, openApiDocument);
 
             // Assert
             Assert.Null(hander);

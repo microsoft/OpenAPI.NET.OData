@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -19,6 +20,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EntityUpdateOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntityUpdateOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected EntityUpdateOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         private UpdateRestrictionsType _updateRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -142,18 +151,10 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                return EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
+                return EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
             }
 
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = EntitySet.EntityType.FullName()
-                }
-            };
+            return new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
         }
     }
 }

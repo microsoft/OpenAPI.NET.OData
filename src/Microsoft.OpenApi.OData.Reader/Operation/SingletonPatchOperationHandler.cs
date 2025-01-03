@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -21,6 +22,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class SingletonPatchOperationHandler : SingletonOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="SingletonPatchOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public SingletonPatchOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
 
@@ -114,18 +123,10 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                return EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model);
+                return EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model, _document);
             }
 
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = Singleton.EntityType.FullName()
-                }
-            };
+            return new OpenApiSchemaReference(Singleton.EntityType.FullName(), _document);
         }
     }
 }

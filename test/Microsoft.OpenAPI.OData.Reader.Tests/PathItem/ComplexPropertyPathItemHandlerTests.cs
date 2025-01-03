@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests;
 
 public class ComplexPropertyPathItemHandlerTests
 {
-	private readonly ComplexPropertyItemHandler _pathItemHandler = new();
+	private readonly ComplexPropertyItemHandler _pathItemHandler = new(new());
 
 	[Fact]
 	public void CreatePathItemThrowsForNullContext()
@@ -204,8 +204,8 @@ public class ComplexPropertyPathItemHandlerTests
 		Assert.NotNull(pathItem.Extensions);
 
 		pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
-		string isHiddenValue = (isHiddenExtension as OpenApiString)?.Value;
-		Assert.Equal("true", isHiddenValue);
+		string isHiddenValue = (isHiddenExtension as OpenApiAny).Node.GetValue<string>();
+        Assert.Equal("true", isHiddenValue);
 	}
 
 	[Theory]
