@@ -42,27 +42,27 @@ namespace Microsoft.OpenApi.OData.Generator
             // append the Edm.Spatial
             foreach(var schema in context.CreateSpatialSchemas(document))
             {
-                document.AddComponentSchema(schema.Key, schema.Value);
+                document.AddComponent(schema.Key, schema.Value);
             }
 
             // append the OData errors
             foreach(var schema in context.CreateODataErrorSchemas(document))
             {
-                document.AddComponentSchema(schema.Key, schema.Value);
+                document.AddComponent(schema.Key, schema.Value);
             }
 
             if(context.Settings.EnableDollarCountPath)
-                document.AddComponentSchema(Constants.DollarCountSchemaName, new OpenApiSchema {
+                document.AddComponent(Constants.DollarCountSchemaName, new OpenApiSchema {
                     Type = JsonSchemaType.Number,
                     Format = "int64"
                 });
 
             if(context.HasAnyNonContainedCollections())                                        
             {
-                document.AddComponentSchema($"String{Constants.CollectionSchemaSuffix}", CreateCollectionSchema(context, new OpenApiSchema { Type = JsonSchemaType.String }, Constants.StringType, document));
+                document.AddComponent($"String{Constants.CollectionSchemaSuffix}", CreateCollectionSchema(context, new OpenApiSchema { Type = JsonSchemaType.String }, Constants.StringType, document));
             }
 
-            document.AddComponentSchema(Constants.ReferenceUpdateSchemaName, new()
+            document.AddComponent(Constants.ReferenceUpdateSchemaName, new OpenApiSchema()
             {
                 Type = JsonSchemaType.Object,
                 Properties = new Dictionary<string, OpenApiSchema>
@@ -72,7 +72,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
             });
 
-            document.AddComponentSchema(Constants.ReferenceCreateSchemaName, new()
+            document.AddComponent(Constants.ReferenceCreateSchemaName, new OpenApiSchema()
             {
                 Type = JsonSchemaType.Object,
                 Properties = new Dictionary<string, OpenApiSchema>
@@ -82,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 AdditionalProperties = new OpenApiSchema { Type = JsonSchemaType.Object }
             });
 
-            document.AddComponentSchema(Constants.ReferenceNumericName, new()
+            document.AddComponent(Constants.ReferenceNumericName, new OpenApiSchema()
             {
                 Type = JsonSchemaType.String,
                 Nullable = true,
@@ -104,7 +104,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Title = "Base collection pagination and count responses",
                         Type = JsonSchemaType.Object,
                     };
-                    document.AddComponentSchema(Constants.BaseCollectionPaginationCountResponse, responseSchema);
+                    document.AddComponent(Constants.BaseCollectionPaginationCountResponse, responseSchema);
 
                     if (context.Settings.EnableCount)
                         responseSchema.Properties.Add(ODataConstants.OdataCount);
@@ -115,7 +115,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 // @odata.nextLink + @odata.deltaLink
                 if (context.Model.SchemaElements.OfType<IEdmFunction>().Any(static x => x.IsDeltaFunction()))
                 {
-                    document.AddComponentSchema(Constants.BaseDeltaFunctionResponse, new()
+                    document.AddComponent(Constants.BaseDeltaFunctionResponse, new OpenApiSchema()
                     {
                         Title = "Base delta function response",
                         Type = JsonSchemaType.Object,
@@ -148,7 +148,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                             .Equals(context.Settings.InnerErrorComplexTypeName, StringComparison.Ordinal))
                                 continue;
                             
-                            document.AddComponentSchema(fullTypeName, context.CreateSchemaTypeSchema(reference, document));
+                            document.AddComponent(fullTypeName, context.CreateSchemaTypeSchema(reference, document));
                         }
                         break;
                 }
@@ -164,7 +164,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                                             CreateCollectionSchema(context, x, document))))
                             .ToArray())
             {
-                document.AddComponentSchema(collectionEntry.Key, collectionEntry.Value);
+                document.AddComponent(collectionEntry.Key, collectionEntry.Value);
             }
         }
         internal static bool HasAnyNonContainedCollections(this ODataContext context)
