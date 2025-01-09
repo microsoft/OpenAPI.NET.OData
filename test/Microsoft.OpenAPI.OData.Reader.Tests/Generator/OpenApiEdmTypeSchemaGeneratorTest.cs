@@ -6,6 +6,7 @@
 using System;
 using System.Linq;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -47,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void CreateEdmTypeSchemaReturnSchemaForNullableCollectionComplexType(OpenApiSpecVersion specVersion)
+        public async Task CreateEdmTypeSchemaReturnSchemaForNullableCollectionComplexType(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -62,7 +63,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            var json = JsonNode.Parse(schema.SerializeAsJson(context.Settings.OpenApiSpecVersion));
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(context.Settings.OpenApiSpecVersion));
 
             // & Assert
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
@@ -86,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmTypeSchemaReturnSchemaForNonNullableCollectionComplexType()
+        public async Task CreateEdmTypeSchemaReturnSchemaForNonNullableCollectionComplexType()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -98,7 +99,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
@@ -110,7 +111,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmTypeSchemaReturnSchemaForNonNullableCollectionPrimitiveType()
+        public async Task CreateEdmTypeSchemaReturnSchemaForNonNullableCollectionPrimitiveType()
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -121,7 +122,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
@@ -133,7 +134,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmTypeSchemaReturnSchemaForNullableCollectionPrimitiveType()
+        public async Task CreateEdmTypeSchemaReturnSchemaForNullableCollectionPrimitiveType()
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -144,7 +145,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
@@ -310,7 +311,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEdmTypeSchemaReturnSchemaForString(bool isNullable)
+        public async Task CreateEdmTypeSchemaReturnSchemaForString(bool isNullable)
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -320,7 +321,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
-            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             if (isNullable)
@@ -341,7 +342,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEdmTypeSchemaReturnSchemaForInt32(bool isNullable)
+        public async Task CreateEdmTypeSchemaReturnSchemaForInt32(bool isNullable)
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -351,7 +352,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
-            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             if (isNullable)
@@ -464,7 +465,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEdmTypeSchemaReturnSchemaForGuid(bool isNullable)
+        public async Task CreateEdmTypeSchemaReturnSchemaForGuid(bool isNullable)
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -474,7 +475,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
-            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             if (isNullable)

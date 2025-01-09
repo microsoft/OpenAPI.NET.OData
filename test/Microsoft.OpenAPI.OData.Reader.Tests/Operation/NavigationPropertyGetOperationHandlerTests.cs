@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -209,7 +210,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateNavigationGetOperationReturnsSecurityForReadRestrictions(bool enableAnnotation)
+        public async Task CreateNavigationGetOperationReturnsSecurityForReadRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
   <Record>
@@ -305,7 +306,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, operation.Security.Count);
 
-                string json = operation.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await operation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

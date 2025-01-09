@@ -6,6 +6,7 @@
 using System;
 using System.IO;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Xunit;
@@ -33,7 +34,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
-    public void EmptyEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
+    public async Task EmptyEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
     {
         // Arrange
         IEdmModel model = EdmModelHelper.EmptyModel;
@@ -44,7 +45,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
         };
 
         // Act
-        string result = WriteEdmModelAsOpenApi(model, format, openApiConvertSettings);
+        string result = await WriteEdmModelAsOpenApi(model, format, openApiConvertSettings);
         var fileName = $"Empty.OpenApi.{GetVersion(specVersion)}{GetFormatExt(format)}";
 
         // Assert
@@ -58,7 +59,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
-    public void BasicEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
+    public async Task BasicEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
     {
         // Arrange
         IEdmModel model = EdmModelHelper.BasicEdmModel;
@@ -71,7 +72,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
         };
 
         // Act
-        string result = WriteEdmModelAsOpenApi(model, format, openApiConvertSettings);
+        string result = await WriteEdmModelAsOpenApi(model, format, openApiConvertSettings);
         var fileName = $"Basic.OpenApi.{GetVersion(specVersion)}{GetFormatExt(format)}";
 
         // Assert
@@ -85,7 +86,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
-    public void MultipleSchemasEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
+    public async Task MultipleSchemasEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
     {
         // Arrange
         IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
@@ -99,7 +100,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
         };
 
         // Act
-        string result = WriteEdmModelAsOpenApi(model, format, openApiConvertSettings);
+        string result = await WriteEdmModelAsOpenApi(model, format, openApiConvertSettings);
 
         var fileName = $"Multiple.Schema.OpenApi.{GetVersion(specVersion)}{GetFormatExt(format)}";
 
@@ -114,7 +115,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
     [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
-    public void TripServiceMetadataToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
+    public async Task TripServiceMetadataToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
     {
         // Arrange
         IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -131,7 +132,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
             IncludeAssemblyInfo = false
         };
         // Act
-        string result = WriteEdmModelAsOpenApi(model, format, settings);
+        string result = await WriteEdmModelAsOpenApi(model, format, settings);
 
         var fileName = $"TripService.OpenApi.{GetVersion(specVersion)}{GetFormatExt(format)}";
 
@@ -168,7 +169,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
         _ => throw new NotImplementedException()
     };
 
-    private static string WriteEdmModelAsOpenApi(IEdmModel model, OpenApiFormat target,
+    private static async Task<string> WriteEdmModelAsOpenApi(IEdmModel model, OpenApiFormat target,
         OpenApiConvertSettings settings = null)
     {
         settings ??= new OpenApiConvertSettings();
@@ -176,9 +177,9 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
         Assert.NotNull(document); // guard
 
         MemoryStream stream = new();
-        document.Serialize(stream, settings.OpenApiSpecVersion, target);
-        stream.Flush();
+        await document.SerializeAsync(stream, settings.OpenApiSpecVersion, target);
+        await stream.FlushAsync();
         stream.Position = 0;
-        return new StreamReader(stream).ReadToEnd();
+        return await new StreamReader(stream).ReadToEndAsync();
     }
 }

@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
@@ -130,7 +131,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void ReadRestrictionsTermWorksToCreateOperationForSingletonGetOperation(bool enableAnnotation)
+        public async Task ReadRestrictionsTermWorksToCreateOperationForSingletonGetOperation(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
   <Record>
@@ -212,7 +213,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, operation.Security.Count);
 
-                string json = operation.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await operation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

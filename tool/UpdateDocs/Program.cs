@@ -10,15 +10,15 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData;
 using Microsoft.OpenApi.Extensions;
+using System.Threading.Tasks;
 
 namespace UpdateDocs
 {
     class Program
     {
-        static int Main(string[] args)
+        static async Task<int> Main(string[] args)
         {
             // we assume the path are existed for simplicity.
             string path = Directory.GetCurrentDirectory();
@@ -30,7 +30,7 @@ namespace UpdateDocs
             {
                 Console.WriteLine(filePath);
 
-                IEdmModel model = LoadEdmModel(filePath);
+                IEdmModel model = await LoadEdmModelAsync(filePath);
                 if (model == null)
                 {
                     continue;
@@ -51,28 +51,14 @@ namespace UpdateDocs
                     settings.ServiceRoot = new Uri("https://graph.microsoft.com/v1.0");
                 }
 
-                OpenApiDocument document = model.ConvertToOpenApi(settings);
-
-                string output;/* = oas20 + "/" + fileName + ".yaml";
-                File.WriteAllText(output, document.SerializeAsYaml(OpenApiSpecVersion.OpenApi2_0));
-
-                output = oas20 + "/" + fileName + ".json";
-                File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi2_0));
-
-                output = oas30 + "/" + fileName + ".yaml";
-                File.WriteAllText(output, document.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0));
-
-                output = oas30 + "/" + fileName + ".json";
-                File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
-                */
                 settings.EnableKeyAsSegment = true;
                 settings.EnableUnqualifiedCall = true;
-                output = oas30 + "/" + fileName + ".json";
-                document = model.ConvertToOpenApi(settings);
-                File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+                var output = oas30 + "/" + fileName + ".json";
+                var document = model.ConvertToOpenApi(settings);
+                await File.WriteAllTextAsync(output, await document.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
                 output = oas20 + "/" + fileName + ".json";
-                File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi2_0));
+                await File.WriteAllTextAsync(output, await document.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi2_0));
 
                 Console.WriteLine("Output [ " + fileName + " ] Successful!");
             }
@@ -81,11 +67,11 @@ namespace UpdateDocs
             return 0;
         }
 
-        public static IEdmModel LoadEdmModel(string file)
+        private static async Task<IEdmModel> LoadEdmModelAsync(string file)
         {
             try
             {
-                string csdl = File.ReadAllText(file);
+                string csdl = await File.ReadAllTextAsync(file);
                 return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
             }
             catch

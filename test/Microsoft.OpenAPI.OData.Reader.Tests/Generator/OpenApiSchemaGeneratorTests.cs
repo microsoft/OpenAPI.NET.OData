@@ -6,6 +6,7 @@
 using System;
 using System.Linq;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -172,7 +173,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateStructuredTypeSchemaForEntityTypeWithDiscriminatorValueEnabledReturnsCorrectSchema()
+        public async Task CreateStructuredTypeSchemaForEntityTypeWithDiscriminatorValueEnabledReturnsCorrectSchema()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
@@ -190,7 +191,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateStructuredTypeSchema(entity, new());
             var derivedSchema = context.CreateStructuredTypeSchema(derivedEntity, new());
-            var json = JsonNode.Parse(schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // Assert
             Assert.True(derivedSchema.AllOf.FirstOrDefault(x => derivedType.Equals(x.Title))?.Properties.ContainsKey("@odata.type"));
@@ -264,7 +265,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateStructuredTypeSchemaForComplexTypeWithDiscriminatorValueEnabledReturnsCorrectSchema(bool enableTypeDisambiguationForOdataTypePropertyDefaultValue)
+        public async Task CreateStructuredTypeSchemaForComplexTypeWithDiscriminatorValueEnabledReturnsCorrectSchema(bool enableTypeDisambiguationForOdataTypePropertyDefaultValue)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
@@ -279,7 +280,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Act
             var schema = context.CreateStructuredTypeSchema(complex, new());
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -347,7 +348,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateStructuredTypePropertiesSchemaWithCustomAttributeReturnsCorrectSchema()
+        public async Task CreateStructuredTypePropertiesSchemaWithCustomAttributeReturnsCorrectSchema()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
@@ -358,7 +359,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Act
             OpenApiSchema schema = context.CreateStructuredTypeSchema(entity, new());
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -438,7 +439,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateComplexTypeWithoutBaseSchemaReturnCorrectSchema()
+        public async Task CreateComplexTypeWithoutBaseSchemaReturnCorrectSchema()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
@@ -464,7 +465,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Address", schema.Title);
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -490,7 +491,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateComplexTypeWithBaseSchemaReturnCorrectSchema()
+        public async Task CreateComplexTypeWithBaseSchemaReturnCorrectSchema()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
@@ -538,7 +539,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Tree", declaredSchema.Title);
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -582,7 +583,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEntityTypeWithoutBaseSchemaReturnCorrectSchema()
+        public async Task CreateEntityTypeWithoutBaseSchemaReturnCorrectSchema()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
@@ -608,7 +609,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Zoo", schema.Title);
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -643,7 +644,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEntityTypeWithBaseSchemaReturnCorrectSchema()
+        public async Task CreateEntityTypeWithBaseSchemaReturnCorrectSchema()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
@@ -689,7 +690,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Human", declaredSchema.Title);
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
             _output.WriteLine(json);
             // Assert
             Assert.NotNull(json);
@@ -766,7 +767,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateStructuredTypeSchemaForEntityTypeWithDefaultValueForOdataTypePropertyEnabledOrDisabledReturnsCorrectSchema(bool enableTypeDisambiguationForOdataTypePropertyDefaultValue)
+        public async Task CreateStructuredTypeSchemaForEntityTypeWithDefaultValueForOdataTypePropertyEnabledOrDisabledReturnsCorrectSchema(bool enableTypeDisambiguationForOdataTypePropertyDefaultValue)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
@@ -781,7 +782,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Act
             var schema = context.CreateStructuredTypeSchema(entityType, new());
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -812,7 +813,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEnumTypeSchemaReturnCorrectSchema()
+        public async Task CreateEnumTypeSchemaReturnCorrectSchema()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
@@ -834,7 +835,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal([ "Blue", "White" ], schema.Enum.Select(e => e.ToString()));
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -854,7 +855,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void CreatePropertySchemaForNonNullableEnumPropertyReturnSchema(OpenApiSpecVersion specVersion)
+        public async Task CreatePropertySchemaForNonNullableEnumPropertyReturnSchema(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
@@ -869,7 +870,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreatePropertySchema(property, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(specVersion);
+            string json = await schema.SerializeAsJsonAsync(specVersion);
 
             // Assert
 
@@ -890,7 +891,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(OpenApiSpecVersion.OpenApi3_0)]
         [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        public void CreatePropertySchemaForNullableEnumPropertyReturnSchema(OpenApiSpecVersion specVersion)
+        public async Task CreatePropertySchemaForNullableEnumPropertyReturnSchema(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
@@ -899,13 +900,13 @@ namespace Microsoft.OpenApi.OData.Tests
             context.Settings.OpenApiSpecVersion = specVersion;
 
             IEdmEnumType enumType = model.SchemaElements.OfType<IEdmEnumType>().First(e => e.Name == "Color");
-            EdmEntityType entitType = new EdmEntityType("NS", "Entity");
-            IEdmProperty property = new EdmStructuralProperty(entitType, "ColorEnumValue", new EdmEnumTypeReference(enumType, true), "yellow");
+            EdmEntityType entityType = new EdmEntityType("NS", "Entity");
+            IEdmProperty property = new EdmStructuralProperty(entityType, "ColorEnumValue", new EdmEnumTypeReference(enumType, true), "yellow");
 
             // Act
             var schema = context.CreatePropertySchema(property, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(specVersion);
+            string json = await schema.SerializeAsJsonAsync(specVersion);
             _output.WriteLine(json);
 
             // Assert
@@ -935,7 +936,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(OpenApiSpecVersion.OpenApi3_0)]
         [InlineData(OpenApiSpecVersion.OpenApi2_0)]
-        public void CreatePropertySchemaWithComputedAnnotationReturnsCorrectSchema(OpenApiSpecVersion specVersion)
+        public async Task CreatePropertySchemaWithComputedAnnotationReturnsCorrectSchema(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
@@ -949,7 +950,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreatePropertySchema(property, new());
             Assert.NotNull(schema);
-            var json = JsonNode.Parse(schema.SerializeAsJson(specVersion));
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(specVersion));
 
             // Assert
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
@@ -1014,7 +1015,7 @@ namespace Microsoft.OpenApi.OData.Tests
         #endregion
 
         [Fact]
-        public void NonNullableBooleanPropertyWithDefaultValueWorks()
+        public async Task NonNullableBooleanPropertyWithDefaultValueWorks()
         {
             // Arrange
             ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
@@ -1029,7 +1030,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Equal(JsonSchemaType.Boolean, schema.Type);
 
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
             Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""boolean"",
   ""default"": false
@@ -1037,7 +1038,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void NonNullableBinaryPropertyWithBothMaxLengthAndDefaultValueWorks()
+        public async Task NonNullableBinaryPropertyWithBothMaxLengthAndDefaultValueWorks()
         {
             // Arrange
             ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
@@ -1054,7 +1055,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Equal(JsonSchemaType.String, schema.Type);
 
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
             Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""maxLength"": 44,
   ""type"": ""string"",
@@ -1064,7 +1065,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void NonNullableIntegerPropertyWithDefaultValueWorks()
+        public async Task NonNullableIntegerPropertyWithDefaultValueWorks()
         {
             // Arrange
             ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
@@ -1079,7 +1080,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Equal(JsonSchemaType.Number, schema.Type);
 
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
             Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
@@ -1090,7 +1091,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void NonNullableDoublePropertyWithDefaultStringWorks()
+        public async Task NonNullableDoublePropertyWithDefaultStringWorks()
         {
             // Arrange
             ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
@@ -1105,7 +1106,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Null(schema.Type);
 
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""oneOf"": [
@@ -1128,7 +1129,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
 
         [Fact]
-        public void NonNullableUntypedPropertyWorks()
+        public async Task NonNullableUntypedPropertyWorks()
         {
             ODataContext context = new ODataContext(
                 EdmModelHelper.BasicEdmModel,
@@ -1147,7 +1148,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Null(schema.Type);
 
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             Assert.Equal("{ }", json);
         }

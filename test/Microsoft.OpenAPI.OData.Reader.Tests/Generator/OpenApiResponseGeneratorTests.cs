@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using Xunit;
 using Microsoft.OpenApi.OData.Edm;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {
@@ -95,7 +96,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Fact]
-        public void CanSerializeAsJsonFromTheCreatedResponses()
+        public async Task CanSerializeAsJsonFromTheCreatedResponses()
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -107,7 +108,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Assert
             var response = responses["error"];
             Assert.NotNull(response);
-            string json = response.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await response.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             var expectedJson = @"{
   ""description"": ""error"",
@@ -341,7 +342,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateResponseForDeltaEdmFunctionReturnCorrectResponses(bool enableOdataAnnotationRef)
+        public async Task CreateResponseForDeltaEdmFunctionReturnCorrectResponses(bool enableOdataAnnotationRef)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
@@ -356,7 +357,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                    o.Parameters.First().Type.FullName() == "Collection(microsoft.graph.application)");
             Assert.NotNull(operation); // guard
             OpenApiResponses responses = context.CreateResponses(operation, new());
-            string json = responses.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await responses.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(responses);

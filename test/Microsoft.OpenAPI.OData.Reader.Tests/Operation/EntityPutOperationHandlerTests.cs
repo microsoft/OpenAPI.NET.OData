@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -86,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEntityPutReturnsSecurityForUpdateRestrictions(bool enableAnnotation)
+        public async Task CreateEntityPutReturnsSecurityForUpdateRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
   <Record>
@@ -162,7 +163,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, putOperation.Security.Count);
 
-                string json = putOperation.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await putOperation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

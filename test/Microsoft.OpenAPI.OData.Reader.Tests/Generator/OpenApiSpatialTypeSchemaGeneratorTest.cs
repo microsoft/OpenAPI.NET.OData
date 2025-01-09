@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData.Edm;
@@ -82,14 +83,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeographySchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeographySchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographySchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -98,14 +99,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeographyPointSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeographyPointSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyPointSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -114,14 +115,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeographyLineStringSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeographyLineStringSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyLineStringSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -130,14 +131,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeographyPolygonSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeographyPolygonSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyPolygonSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -146,14 +147,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeographyMultiPointSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeographyMultiPointSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyMultiPointSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -162,14 +163,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeographyMultiLineStringSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeographyMultiLineStringSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyMultiLineStringSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -178,14 +179,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeographyMultiPolygonSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeographyMultiPolygonSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyMultiPolygonSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -194,14 +195,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeographyCollectionSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeographyCollectionSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeographyCollectionSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -210,14 +211,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeometrySchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeometrySchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometrySchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -249,14 +250,14 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEdmGeometryPointSchemaSerializeAsYamlWorks() // test yaml
+        public async Task CreateEdmGeometryPointSchemaSerializeAsYamlWorks() // test yaml
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryPointSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string yaml = schema.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
+            string yaml = await schema.SerializeAsYamlAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(
@@ -275,14 +276,14 @@ properties:
         }
 
         [Fact]
-        public void CreateEdmGeometryLineStringSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeometryLineStringSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryLineStringSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -309,14 +310,14 @@ properties:
         }
 
         [Fact]
-        public void CreateEdmGeometryPolygonSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeometryPolygonSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryPolygonSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -346,14 +347,14 @@ properties:
         }
 
         [Fact]
-        public void CreateEdmGeometryMultiPointSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeometryMultiPointSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryMultiPointSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -379,14 +380,14 @@ properties:
         }
 
         [Fact]
-        public void CreateEdmGeometryMultiLineStringSchemaSerializeAsYamlWorks() // Test yaml
+        public async Task CreateEdmGeometryMultiLineStringSchemaSerializeAsYamlWorks() // Test yaml
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryMultiLineStringSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string yaml = schema.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
+            string yaml = await schema.SerializeAsYamlAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"required:
@@ -407,14 +408,14 @@ properties:
         }
 
         [Fact]
-        public void CreateEdmGeometryMultiPolygonSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeometryMultiPolygonSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryMultiPolygonSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -447,14 +448,14 @@ properties:
         }
 
         [Fact]
-        public void CreateEdmGeometryCollectionSchemaSerializeAsJsonWorks()
+        public async Task CreateEdmGeometryCollectionSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateEdmGeometryCollectionSchema(new());
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -480,14 +481,14 @@ properties:
         }
 
         [Fact]
-        public void CreateGeoJSON_PositionSchemaSerializeAsJsonWorks()
+        public async Task CreateGeoJSON_PositionSchemaSerializeAsJsonWorks()
         {
             // Arrange
             var schema = OpenApiSpatialTypeSchemaGenerator.CreateGeoJsonPointSchema();
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{

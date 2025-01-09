@@ -13,6 +13,7 @@ using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Xunit;
 
@@ -131,7 +132,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEntitySetPostReturnsSecurityForInsertRestrictions(bool enableAnnotation)
+        public async Task CreateEntitySetPostReturnsSecurityForInsertRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
   <Record>
@@ -207,7 +208,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, post.Security.Count);
 
-                string json = post.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await post.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

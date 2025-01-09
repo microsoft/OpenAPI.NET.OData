@@ -6,6 +6,7 @@
 using System;
 using System.Linq;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -97,7 +98,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Fact]
-        public void CanSerializeAsJsonFromTheCreatedRequestBody()
+        public async Task CanSerializeAsJsonFromTheCreatedRequestBody()
         {
             // Arrange
             ODataContext context = new ODataContext(_model);
@@ -106,7 +107,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var requestBody = context.CreateRequestBody(_actionImport, new());
 
             // Assert
-            string json = requestBody.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = await requestBody.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
             var expectedJson = @"{
   ""description"": ""Action parameters"",
   ""content"": {

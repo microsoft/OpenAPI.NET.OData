@@ -11,6 +11,7 @@ using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.PathItem.Tests;
 using Microsoft.OpenApi.OData.Tests;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -112,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateNavigationPatchOperationReturnsSecurityForUpdateRestrictions(bool enableAnnotation)
+        public async Task CreateNavigationPatchOperationReturnsSecurityForUpdateRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
   <Record>
@@ -210,7 +211,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, operation.Security.Count);
 
-                string json = operation.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await operation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

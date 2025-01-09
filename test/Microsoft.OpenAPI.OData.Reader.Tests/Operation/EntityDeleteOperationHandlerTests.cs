@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -72,7 +73,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEntityDeleteReturnsSecurityForDeleteRestrictions(bool enableAnnotation)
+        public async Task CreateEntityDeleteReturnsSecurityForDeleteRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.DeleteRestrictions"">
   <Record>
@@ -148,7 +149,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, delete.Security.Count);
 
-                string json = delete.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await delete.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {
