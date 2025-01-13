@@ -13,6 +13,14 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class MetadataPathItemHandler : PathItemHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MetadataPathItemHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use for references lookup.</param>
+        public MetadataPathItemHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         protected override ODataPathKind HandleKind => ODataPathKind.Metadata;
 

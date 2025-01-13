@@ -13,7 +13,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests;
 
 public class ComplexPropertyPatchOperationHandlerTests
 {
-	private readonly ComplexPropertyPatchOperationHandler _operationHandler = new();
+	private readonly ComplexPropertyPatchOperationHandler _operationHandler = new(new());
 
 	[Theory]
 	[InlineData(true)]

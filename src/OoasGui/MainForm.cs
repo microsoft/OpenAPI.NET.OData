@@ -202,15 +202,12 @@ namespace OoasGui
             }
 
             string openApi = null;
-            await Task.Run(() =>
-            {
-                _document = EdmModel.ConvertToOpenApi(Settings);
-                MemoryStream stream = new MemoryStream();
-                _document.Serialize(stream, Version, Format);
-                stream.Flush();
-                stream.Position = 0;
-                openApi = new StreamReader(stream).ReadToEnd();
-            });
+            _document = EdmModel.ConvertToOpenApi(Settings);
+            MemoryStream stream = new MemoryStream();
+            await _document.SerializeAsync(stream, Version, Format);
+            await stream.FlushAsync();
+            stream.Position = 0;
+            openApi = await new StreamReader(stream).ReadToEndAsync();
 
             oasRichTextBox.Text = openApi;
             saveBtn.Enabled = true;
@@ -252,14 +249,9 @@ namespace OoasGui
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string output = saveFileDialog.FileName;
-                using (FileStream fs = File.Create(output))
-                {
-                    await Task.Run(() =>
-                    {
-                        _document?.Serialize(fs, Version, Format);
-                        fs.Flush();
-                    });
-                }
+                using FileStream fs = File.Create(output);
+                await _document?.SerializeAsync(fs, Version, Format);
+                await fs.FlushAsync();
 
                 MessageBox.Show("Saved successfully!");
             }

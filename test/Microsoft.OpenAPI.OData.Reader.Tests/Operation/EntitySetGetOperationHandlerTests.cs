@@ -5,12 +5,15 @@
 
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -18,7 +21,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntitySetGetOperationHandlerTests
     {
-        private EntitySetGetOperationHandler _operationHandler = new EntitySetGetOperationHandler();
+        public EntitySetGetOperationHandlerTests()
+        {
+          _operationHandler = new EntitySetGetOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private readonly EntitySetGetOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true, true)]
@@ -41,6 +50,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var get = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(get);
@@ -227,7 +237,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEntitySetGetOperationReturnsSecurityForReadRestrictions(bool enableAnnotation)
+        public async Task CreateEntitySetGetOperationReturnsSecurityForReadRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
   <Record>
@@ -303,7 +313,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, get.Security.Count);
 
-                string json = get.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await get.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

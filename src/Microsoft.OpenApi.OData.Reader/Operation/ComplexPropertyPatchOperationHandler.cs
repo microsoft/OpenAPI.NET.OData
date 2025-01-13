@@ -9,6 +9,14 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal class ComplexPropertyPatchOperationHandler : ComplexPropertyUpdateOperationHandler
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="ComplexPropertyPatchOperationHandler"/> class.
+    /// </summary>
+    /// <param name="document">The document to use to lookup references.</param>
+    public ComplexPropertyPatchOperationHandler(OpenApiDocument document):base(document)
+    {
+        
+    }
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Patch;
 }

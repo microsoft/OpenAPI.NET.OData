@@ -918,7 +918,7 @@
           "Airports.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Airports.EmergencyAuthority.ListAddressInfo.AsEventLocation",
+        "operationId": "Airports.EmergencyAuthority.ListAddressInfo.AsEventLocation-fbf9",
         "produces": [
           "application/json"
         ],
@@ -1071,7 +1071,7 @@
           "Airports.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Airports.EmergencyAuthority.GetHomeAddress.AsEventLocation",
+        "operationId": "Airports.EmergencyAuthority.GetHomeAddress.AsEventLocation-0bb9",
         "produces": [
           "application/json"
         ],
@@ -1105,7 +1105,7 @@
           "Airports.Person"
         ],
         "summary": "Get Photo for the navigation property EmergencyAuthority from Airports",
-        "operationId": "Airports.GetEmergencyAuthorityPhoto",
+        "operationId": "Airports.GetEmergencyAuthorityPhoto-13fb",
         "produces": [
           "application/octet-stream"
         ],
@@ -1123,8 +1123,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -1137,7 +1137,7 @@
           "Airports.Person"
         ],
         "summary": "Update Photo for the navigation property EmergencyAuthority in Airports",
-        "operationId": "Airports.UpdateEmergencyAuthorityPhoto",
+        "operationId": "Airports.UpdateEmergencyAuthorityPhoto-13fb",
         "consumes": [
           "application/octet-stream"
         ],
@@ -1156,8 +1156,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -1175,7 +1175,7 @@
           "Airports.Person"
         ],
         "summary": "Delete Photo for the navigation property EmergencyAuthority in Airports",
-        "operationId": "Airports.DeleteEmergencyAuthorityPhoto",
+        "operationId": "Airports.DeleteEmergencyAuthorityPhoto-13fb",
         "parameters": [
           {
             "in": "path",
@@ -1580,7 +1580,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.ListAddressInfo.AsEventLocation-b1a4",
         "produces": [
           "application/json"
         ],
@@ -2019,7 +2019,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation-2154",
         "produces": [
           "application/json"
         ],
@@ -2166,7 +2166,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation-a28d",
         "produces": [
           "application/json"
         ],
@@ -2197,7 +2197,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.GetBestFriend.AsEmployee",
+        "operationId": "Me.GetBestFriend.AsEmployee-dcf6",
         "produces": [
           "application/json"
         ],
@@ -2248,7 +2248,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.GetBestFriend.AsManager",
+        "operationId": "Me.GetBestFriend.AsManager-09a9",
         "produces": [
           "application/json"
         ],
@@ -2299,7 +2299,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from Me",
-        "operationId": "Me.GetBestFriendPhoto",
+        "operationId": "Me.GetBestFriendPhoto-8333",
         "produces": [
           "application/octet-stream"
         ],
@@ -2307,8 +2307,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -2328,7 +2328,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.UpdateBestFriendPhoto",
+        "operationId": "Me.UpdateBestFriendPhoto-8333",
         "consumes": [
           "application/octet-stream"
         ],
@@ -2339,8 +2339,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -2365,7 +2365,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.DeleteBestFriendPhoto",
+        "operationId": "Me.DeleteBestFriendPhoto-8333",
         "parameters": [
           {
             "in": "header",
@@ -2749,7 +2749,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation-f440",
         "produces": [
           "application/json"
         ],
@@ -2930,7 +2930,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation-15cc",
         "produces": [
           "application/json"
         ],
@@ -2971,7 +2971,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.GetFriends.AsEmployee",
+        "operationId": "Me.GetFriends.AsEmployee-3dc7",
         "produces": [
           "application/json"
         ],
@@ -3042,7 +3042,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.GetFriends.AsManager",
+        "operationId": "Me.GetFriends.AsManager-ddec",
         "produces": [
           "application/json"
         ],
@@ -3113,7 +3113,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from Me",
-        "operationId": "Me.GetFriendsPhoto",
+        "operationId": "Me.GetFriendsPhoto-287d",
         "produces": [
           "application/octet-stream"
         ],
@@ -3131,8 +3131,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -3152,7 +3152,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in Me",
-        "operationId": "Me.UpdateFriendsPhoto",
+        "operationId": "Me.UpdateFriendsPhoto-287d",
         "consumes": [
           "application/octet-stream"
         ],
@@ -3171,8 +3171,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -3197,7 +3197,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in Me",
-        "operationId": "Me.DeleteFriendsPhoto",
+        "operationId": "Me.DeleteFriendsPhoto-287d",
         "parameters": [
           {
             "in": "path",
@@ -3414,7 +3414,7 @@
           "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Me.ListFriends.AsEmployee",
+        "operationId": "Me.ListFriends.AsEmployee-f4a5",
         "parameters": [
           {
             "in": "header",
@@ -3540,7 +3540,7 @@
           "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Me.ListFriends.AsManager",
+        "operationId": "Me.ListFriends.AsManager-98ae",
         "parameters": [
           {
             "in": "header",
@@ -3752,7 +3752,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.GetHomeAddress.AsEventLocation-ba49",
         "produces": [
           "application/json"
         ],
@@ -3783,7 +3783,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.Person.GetPerson.AsEmployee",
+        "operationId": "Me.Person.GetPerson.AsEmployee-bd18",
         "produces": [
           "application/json"
         ],
@@ -3994,18 +3994,6 @@
         "operationId": "Me.AsEmployee.AddressInfo.GetCount-8488",
         "parameters": [
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -4036,7 +4024,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.ListAddressInfo.AsEventLocation-989f",
         "produces": [
           "application/json"
         ],
@@ -4066,18 +4054,6 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.AddressInfo.GetCount.AsEventLocation-9375",
         "parameters": [
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
           {
             "$ref": "#/parameters/search"
           },
@@ -4457,18 +4433,6 @@
         "operationId": "Me.AsEmployee.BestFriend.AddressInfo.GetCount-81de",
         "parameters": [
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -4499,7 +4463,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation-1d72",
         "produces": [
           "application/json"
         ],
@@ -4529,18 +4493,6 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.BestFriend.AddressInfo.GetCount.AsEventLocation-842c",
         "parameters": [
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
           {
             "$ref": "#/parameters/search"
           },
@@ -4658,7 +4610,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation-19b8",
         "produces": [
           "application/json"
         ],
@@ -4689,7 +4641,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.GetBestFriend.AsManager",
+        "operationId": "Me.GetBestFriend.AsManager-c104",
         "produces": [
           "application/json"
         ],
@@ -4740,7 +4692,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from Me",
-        "operationId": "Me.GetBestFriendPhoto",
+        "operationId": "Me.GetBestFriendPhoto-4dc7",
         "produces": [
           "application/octet-stream"
         ],
@@ -4748,8 +4700,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -4769,7 +4721,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.UpdateBestFriendPhoto",
+        "operationId": "Me.UpdateBestFriendPhoto-4dc7",
         "consumes": [
           "application/octet-stream"
         ],
@@ -4780,8 +4732,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -4806,7 +4758,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.DeleteBestFriendPhoto",
+        "operationId": "Me.DeleteBestFriendPhoto-4dc7",
         "parameters": [
           {
             "in": "header",
@@ -5160,18 +5112,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -5202,7 +5142,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation-7b1e",
         "produces": [
           "application/json"
         ],
@@ -5249,18 +5189,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -5395,7 +5323,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation-600f",
         "produces": [
           "application/json"
         ],
@@ -5436,7 +5364,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.GetFriends.AsManager",
+        "operationId": "Me.GetFriends.AsManager-aa0c",
         "produces": [
           "application/json"
         ],
@@ -5507,7 +5435,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from Me",
-        "operationId": "Me.GetFriendsPhoto",
+        "operationId": "Me.GetFriendsPhoto-6e41",
         "produces": [
           "application/octet-stream"
         ],
@@ -5525,8 +5453,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -5546,7 +5474,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in Me",
-        "operationId": "Me.UpdateFriendsPhoto",
+        "operationId": "Me.UpdateFriendsPhoto-6e41",
         "consumes": [
           "application/octet-stream"
         ],
@@ -5565,8 +5493,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -5591,7 +5519,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in Me",
-        "operationId": "Me.DeleteFriendsPhoto",
+        "operationId": "Me.DeleteFriendsPhoto-6e41",
         "parameters": [
           {
             "in": "path",
@@ -5808,7 +5736,7 @@
           "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Me.ListFriends.AsManager",
+        "operationId": "Me.ListFriends.AsManager-f993",
         "parameters": [
           {
             "in": "header",
@@ -6020,7 +5948,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.GetHomeAddress.AsEventLocation-6fc5",
         "produces": [
           "application/json"
         ],
@@ -6355,18 +6283,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -6397,7 +6313,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Peers.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.Peers.ListAddressInfo.AsEventLocation-1e59",
         "produces": [
           "application/json"
         ],
@@ -6444,18 +6360,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -6590,7 +6494,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Peers.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.Peers.GetHomeAddress.AsEventLocation-dc11",
         "produces": [
           "application/json"
         ],
@@ -6631,7 +6535,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property Peers from Me",
-        "operationId": "Me.GetPeersPhoto",
+        "operationId": "Me.GetPeersPhoto-4c48",
         "produces": [
           "application/octet-stream"
         ],
@@ -6649,8 +6553,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -6670,7 +6574,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property Peers in Me",
-        "operationId": "Me.UpdatePeersPhoto",
+        "operationId": "Me.UpdatePeersPhoto-4c48",
         "consumes": [
           "application/octet-stream"
         ],
@@ -6689,8 +6593,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -6715,7 +6619,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property Peers in Me",
-        "operationId": "Me.DeletePeersPhoto",
+        "operationId": "Me.DeletePeersPhoto-4c48",
         "parameters": [
           {
             "in": "path",
@@ -7281,8 +7185,8 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "Collection of Person",
               "type": "object",
+              "title": "Collection of Person",
               "properties": {
                 "value": {
                   "type": "array",
@@ -7833,7 +7737,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Me.Person.GetPerson.AsManager",
+        "operationId": "Me.Person.GetPerson.AsManager-16dc",
         "produces": [
           "application/json"
         ],
@@ -8044,18 +7948,6 @@
         "operationId": "Me.AsManager.AddressInfo.GetCount-75da",
         "parameters": [
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -8086,7 +7978,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.ListAddressInfo.AsEventLocation-55be",
         "produces": [
           "application/json"
         ],
@@ -8116,18 +8008,6 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.AddressInfo.GetCount.AsEventLocation-f67e",
         "parameters": [
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
           {
             "$ref": "#/parameters/search"
           },
@@ -8507,18 +8387,6 @@
         "operationId": "Me.AsManager.BestFriend.AddressInfo.GetCount-6ea6",
         "parameters": [
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -8549,7 +8417,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.BestFriend.ListAddressInfo.AsEventLocation-987a",
         "produces": [
           "application/json"
         ],
@@ -8579,18 +8447,6 @@
         "summary": "Get the number of the resource",
         "operationId": "Me.BestFriend.AddressInfo.GetCount.AsEventLocation-692e",
         "parameters": [
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
           {
             "$ref": "#/parameters/search"
           },
@@ -8708,7 +8564,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.BestFriend.GetHomeAddress.AsEventLocation-15c5",
         "produces": [
           "application/json"
         ],
@@ -8739,7 +8595,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.GetBestFriend.AsEmployee",
+        "operationId": "Me.GetBestFriend.AsEmployee-7bbe",
         "produces": [
           "application/json"
         ],
@@ -8790,7 +8646,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from Me",
-        "operationId": "Me.GetBestFriendPhoto",
+        "operationId": "Me.GetBestFriendPhoto-bac8",
         "produces": [
           "application/octet-stream"
         ],
@@ -8798,8 +8654,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -8819,7 +8675,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.UpdateBestFriendPhoto",
+        "operationId": "Me.UpdateBestFriendPhoto-bac8",
         "consumes": [
           "application/octet-stream"
         ],
@@ -8830,8 +8686,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -8856,7 +8712,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in Me",
-        "operationId": "Me.DeleteBestFriendPhoto",
+        "operationId": "Me.DeleteBestFriendPhoto-bac8",
         "parameters": [
           {
             "in": "header",
@@ -9193,18 +9049,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -9235,7 +9079,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.DirectReports.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.DirectReports.ListAddressInfo.AsEventLocation-660b",
         "produces": [
           "application/json"
         ],
@@ -9282,18 +9126,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -9428,7 +9260,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.DirectReports.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.DirectReports.GetHomeAddress.AsEventLocation-5e6e",
         "produces": [
           "application/json"
         ],
@@ -9469,7 +9301,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property DirectReports from Me",
-        "operationId": "Me.GetDirectReportsPhoto",
+        "operationId": "Me.GetDirectReportsPhoto-e60c",
         "produces": [
           "application/octet-stream"
         ],
@@ -9487,8 +9319,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -9508,7 +9340,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property DirectReports in Me",
-        "operationId": "Me.UpdateDirectReportsPhoto",
+        "operationId": "Me.UpdateDirectReportsPhoto-e60c",
         "consumes": [
           "application/octet-stream"
         ],
@@ -9527,8 +9359,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -9553,7 +9385,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property DirectReports in Me",
-        "operationId": "Me.DeleteDirectReportsPhoto",
+        "operationId": "Me.DeleteDirectReportsPhoto-e60c",
         "parameters": [
           {
             "in": "path",
@@ -10096,7 +9928,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "Me.Friends.ListAddressInfo.AsEventLocation-1ad9",
         "produces": [
           "application/json"
         ],
@@ -10277,7 +10109,7 @@
           "Me.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.Friends.GetHomeAddress.AsEventLocation-1e07",
         "produces": [
           "application/json"
         ],
@@ -10318,7 +10150,7 @@
           "Me.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Me.GetFriends.AsEmployee",
+        "operationId": "Me.GetFriends.AsEmployee-5b5f",
         "produces": [
           "application/json"
         ],
@@ -10389,7 +10221,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from Me",
-        "operationId": "Me.GetFriendsPhoto",
+        "operationId": "Me.GetFriendsPhoto-64bd",
         "produces": [
           "application/octet-stream"
         ],
@@ -10407,8 +10239,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -10428,7 +10260,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in Me",
-        "operationId": "Me.UpdateFriendsPhoto",
+        "operationId": "Me.UpdateFriendsPhoto-64bd",
         "consumes": [
           "application/octet-stream"
         ],
@@ -10447,8 +10279,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -10473,7 +10305,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in Me",
-        "operationId": "Me.DeleteFriendsPhoto",
+        "operationId": "Me.DeleteFriendsPhoto-64bd",
         "parameters": [
           {
             "in": "path",
@@ -10690,7 +10522,7 @@
           "Me.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "Me.ListFriends.AsEmployee",
+        "operationId": "Me.ListFriends.AsEmployee-fe32",
         "parameters": [
           {
             "in": "header",
@@ -10902,7 +10734,7 @@
           "Me.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "Me.GetHomeAddress.AsEventLocation",
+        "operationId": "Me.GetHomeAddress.AsEventLocation-5d95",
         "produces": [
           "application/json"
         ],
@@ -11353,8 +11185,8 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "Collection of Person",
               "type": "object",
+              "title": "Collection of Person",
               "properties": {
                 "value": {
                   "type": "array",
@@ -11838,7 +11670,7 @@
           "Me.Person"
         ],
         "summary": "Get Photo for Person from Me",
-        "operationId": "Me.Person.GetPhoto",
+        "operationId": "Me.Person.GetPhoto-ab7e",
         "produces": [
           "application/octet-stream"
         ],
@@ -11846,8 +11678,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -11867,7 +11699,7 @@
           "Me.Person"
         ],
         "summary": "Update Photo for Person in Me",
-        "operationId": "Me.Person.UpdatePhoto",
+        "operationId": "Me.Person.UpdatePhoto-ab7e",
         "consumes": [
           "application/octet-stream"
         ],
@@ -11878,8 +11710,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -11904,7 +11736,7 @@
           "Me.Person"
         ],
         "summary": "Delete Photo for Person in Me",
-        "operationId": "Me.Person.DeletePhoto",
+        "operationId": "Me.Person.DeletePhoto-ab7e",
         "parameters": [
           {
             "in": "header",
@@ -12311,8 +12143,8 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "Collection of Person",
               "type": "object",
+              "title": "Collection of Person",
               "properties": {
                 "value": {
                   "type": "array",
@@ -13121,18 +12953,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -13156,7 +12976,7 @@
           "NewComePeople.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.ListAddressInfo.AsEventLocation",
+        "operationId": "NewComePeople.ListAddressInfo.AsEventLocation-d026",
         "produces": [
           "application/json"
         ],
@@ -13196,18 +13016,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -13651,18 +13459,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -13693,7 +13489,7 @@
           "NewComePeople.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "NewComePeople.BestFriend.ListAddressInfo.AsEventLocation-73fa",
         "produces": [
           "application/json"
         ],
@@ -13740,18 +13536,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -13886,7 +13670,7 @@
           "NewComePeople.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "NewComePeople.BestFriend.GetHomeAddress.AsEventLocation-8ebe",
         "produces": [
           "application/json"
         ],
@@ -13927,7 +13711,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "NewComePeople.GetBestFriend.AsEmployee",
+        "operationId": "NewComePeople.GetBestFriend.AsEmployee-7b75",
         "produces": [
           "application/json"
         ],
@@ -13986,7 +13770,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "NewComePeople.GetBestFriend.AsManager",
+        "operationId": "NewComePeople.GetBestFriend.AsManager-61ce",
         "produces": [
           "application/json"
         ],
@@ -14045,7 +13829,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from NewComePeople",
-        "operationId": "NewComePeople.GetBestFriendPhoto",
+        "operationId": "NewComePeople.GetBestFriendPhoto-4f67",
         "produces": [
           "application/octet-stream"
         ],
@@ -14063,8 +13847,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -14084,7 +13868,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in NewComePeople",
-        "operationId": "NewComePeople.UpdateBestFriendPhoto",
+        "operationId": "NewComePeople.UpdateBestFriendPhoto-4f67",
         "consumes": [
           "application/octet-stream"
         ],
@@ -14103,8 +13887,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -14129,7 +13913,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in NewComePeople",
-        "operationId": "NewComePeople.DeleteBestFriendPhoto",
+        "operationId": "NewComePeople.DeleteBestFriendPhoto-4f67",
         "parameters": [
           {
             "in": "path",
@@ -14500,18 +14284,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -14535,7 +14307,7 @@
           "NewComePeople.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "NewComePeople.Friends.ListAddressInfo.AsEventLocation-eeb4",
         "produces": [
           "application/json"
         ],
@@ -14591,18 +14363,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -14732,7 +14492,7 @@
           "NewComePeople.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "NewComePeople.Friends.GetHomeAddress.AsEventLocation-f4d9",
         "produces": [
           "application/json"
         ],
@@ -14774,7 +14534,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "NewComePeople.GetFriends.AsEmployee",
+        "operationId": "NewComePeople.GetFriends.AsEmployee-2969",
         "produces": [
           "application/json"
         ],
@@ -14846,7 +14606,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "NewComePeople.GetFriends.AsManager",
+        "operationId": "NewComePeople.GetFriends.AsManager-708f",
         "produces": [
           "application/json"
         ],
@@ -14918,7 +14678,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from NewComePeople",
-        "operationId": "NewComePeople.GetFriendsPhoto",
+        "operationId": "NewComePeople.GetFriendsPhoto-e9fc",
         "produces": [
           "application/octet-stream"
         ],
@@ -14944,8 +14704,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -14958,7 +14718,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in NewComePeople",
-        "operationId": "NewComePeople.UpdateFriendsPhoto",
+        "operationId": "NewComePeople.UpdateFriendsPhoto-e9fc",
         "consumes": [
           "application/octet-stream"
         ],
@@ -14985,8 +14745,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -15004,7 +14764,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in NewComePeople",
-        "operationId": "NewComePeople.DeleteFriendsPhoto",
+        "operationId": "NewComePeople.DeleteFriendsPhoto-e9fc",
         "parameters": [
           {
             "in": "path",
@@ -15226,7 +14986,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "NewComePeople.ListFriends.AsEmployee",
+        "operationId": "NewComePeople.ListFriends.AsEmployee-2969",
         "parameters": [
           {
             "in": "path",
@@ -15354,7 +15114,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "NewComePeople.ListFriends.AsManager",
+        "operationId": "NewComePeople.ListFriends.AsManager-708f",
         "parameters": [
           {
             "in": "path",
@@ -15570,7 +15330,7 @@
           "NewComePeople.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "NewComePeople.GetHomeAddress.AsEventLocation",
+        "operationId": "NewComePeople.GetHomeAddress.AsEventLocation-3fd9",
         "produces": [
           "application/json"
         ],
@@ -15866,7 +15626,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get Photo for Person from NewComePeople",
-        "operationId": "NewComePeople.Person.GetPhoto",
+        "operationId": "NewComePeople.Person.GetPhoto-74be",
         "produces": [
           "application/octet-stream"
         ],
@@ -15884,8 +15644,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -15898,7 +15658,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Update Photo for Person in NewComePeople",
-        "operationId": "NewComePeople.Person.UpdatePhoto",
+        "operationId": "NewComePeople.Person.UpdatePhoto-74be",
         "consumes": [
           "application/octet-stream"
         ],
@@ -15917,8 +15677,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -15936,7 +15696,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete Photo for Person in NewComePeople",
-        "operationId": "NewComePeople.Person.DeletePhoto",
+        "operationId": "NewComePeople.Person.DeletePhoto-74be",
         "parameters": [
           {
             "in": "path",
@@ -16349,8 +16109,8 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "Collection of Person",
               "type": "object",
+              "title": "Collection of Person",
               "properties": {
                 "value": {
                   "type": "array",
@@ -17287,7 +17047,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.ListAddressInfo.AsEventLocation",
+        "operationId": "People.ListAddressInfo.AsEventLocation-e5b8",
         "produces": [
           "application/json"
         ],
@@ -17818,7 +17578,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation-c332",
         "produces": [
           "application/json"
         ],
@@ -17999,7 +17759,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation-53c4",
         "produces": [
           "application/json"
         ],
@@ -18040,7 +17800,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.GetBestFriend.AsEmployee",
+        "operationId": "People.GetBestFriend.AsEmployee-7188",
         "produces": [
           "application/json"
         ],
@@ -18104,7 +17864,7 @@
           "description": "Find more info here",
           "url": "https://learn.microsoft.com/graph/api/person-get-friend-manager?view=graph-rest-1.0"
         },
-        "operationId": "People.GetBestFriend.AsManager",
+        "operationId": "People.GetBestFriend.AsManager-5f08",
         "produces": [
           "application/json"
         ],
@@ -18163,7 +17923,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from People",
-        "operationId": "People.GetBestFriendPhoto",
+        "operationId": "People.GetBestFriendPhoto-c3ac",
         "produces": [
           "application/octet-stream"
         ],
@@ -18181,8 +17941,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -18202,7 +17962,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in People",
-        "operationId": "People.UpdateBestFriendPhoto",
+        "operationId": "People.UpdateBestFriendPhoto-c3ac",
         "consumes": [
           "application/octet-stream"
         ],
@@ -18221,8 +17981,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -18247,7 +18007,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in People",
-        "operationId": "People.DeleteBestFriendPhoto",
+        "operationId": "People.DeleteBestFriendPhoto-c3ac",
         "parameters": [
           {
             "in": "path",
@@ -18696,7 +18456,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "People.Friends.ListAddressInfo.AsEventLocation-a5f6",
         "produces": [
           "application/json"
         ],
@@ -18909,7 +18669,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "People.Friends.GetHomeAddress.AsEventLocation-da5e",
         "produces": [
           "application/json"
         ],
@@ -18958,7 +18718,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.GetFriends.AsEmployee",
+        "operationId": "People.GetFriends.AsEmployee-11bf",
         "produces": [
           "application/json"
         ],
@@ -19037,7 +18797,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "People.GetFriends.AsManager",
+        "operationId": "People.GetFriends.AsManager-1cfb",
         "produces": [
           "application/json"
         ],
@@ -19116,7 +18876,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from People",
-        "operationId": "People.GetFriendsPhoto",
+        "operationId": "People.GetFriendsPhoto-12fc",
         "produces": [
           "application/octet-stream"
         ],
@@ -19142,8 +18902,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -19163,7 +18923,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in People",
-        "operationId": "People.UpdateFriendsPhoto",
+        "operationId": "People.UpdateFriendsPhoto-12fc",
         "consumes": [
           "application/octet-stream"
         ],
@@ -19190,8 +18950,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -19216,7 +18976,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in People",
-        "operationId": "People.DeleteFriendsPhoto",
+        "operationId": "People.DeleteFriendsPhoto-12fc",
         "parameters": [
           {
             "in": "path",
@@ -19487,7 +19247,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.ListFriends.AsEmployee",
+        "operationId": "People.ListFriends.AsEmployee-11bf",
         "parameters": [
           {
             "in": "path",
@@ -19629,7 +19389,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.ListFriends.AsManager",
+        "operationId": "People.ListFriends.AsManager-1cfb",
         "parameters": [
           {
             "in": "path",
@@ -19874,7 +19634,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.GetHomeAddress.AsEventLocation",
+        "operationId": "People.GetHomeAddress.AsEventLocation-d0cf",
         "produces": [
           "application/json"
         ],
@@ -19915,7 +19675,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.Person.GetPerson.AsEmployee",
+        "operationId": "People.Person.GetPerson.AsEmployee-317b",
         "produces": [
           "application/json"
         ],
@@ -20178,18 +19938,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -20220,7 +19968,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.ListAddressInfo.AsEventLocation",
+        "operationId": "People.ListAddressInfo.AsEventLocation-1342",
         "produces": [
           "application/json"
         ],
@@ -20267,18 +20015,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -20733,18 +20469,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -20775,7 +20499,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation-7cd9",
         "produces": [
           "application/json"
         ],
@@ -20822,18 +20546,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -20968,7 +20680,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation-7db9",
         "produces": [
           "application/json"
         ],
@@ -21009,7 +20721,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "People.GetBestFriend.AsManager",
+        "operationId": "People.GetBestFriend.AsManager-7b70",
         "produces": [
           "application/json"
         ],
@@ -21068,7 +20780,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from People",
-        "operationId": "People.GetBestFriendPhoto",
+        "operationId": "People.GetBestFriendPhoto-a839",
         "produces": [
           "application/octet-stream"
         ],
@@ -21086,8 +20798,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -21107,7 +20819,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in People",
-        "operationId": "People.UpdateBestFriendPhoto",
+        "operationId": "People.UpdateBestFriendPhoto-a839",
         "consumes": [
           "application/octet-stream"
         ],
@@ -21126,8 +20838,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -21152,7 +20864,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in People",
-        "operationId": "People.DeleteBestFriendPhoto",
+        "operationId": "People.DeleteBestFriendPhoto-a839",
         "parameters": [
           {
             "in": "path",
@@ -21562,18 +21274,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -21604,7 +21304,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "People.Friends.ListAddressInfo.AsEventLocation-d49e",
         "produces": [
           "application/json"
         ],
@@ -21667,18 +21367,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -21829,7 +21517,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "People.Friends.GetHomeAddress.AsEventLocation-d77d",
         "produces": [
           "application/json"
         ],
@@ -21878,7 +21566,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "People.GetFriends.AsManager",
+        "operationId": "People.GetFriends.AsManager-3e3c",
         "produces": [
           "application/json"
         ],
@@ -21957,7 +21645,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from People",
-        "operationId": "People.GetFriendsPhoto",
+        "operationId": "People.GetFriendsPhoto-1a66",
         "produces": [
           "application/octet-stream"
         ],
@@ -21983,8 +21671,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -22004,7 +21692,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in People",
-        "operationId": "People.UpdateFriendsPhoto",
+        "operationId": "People.UpdateFriendsPhoto-1a66",
         "consumes": [
           "application/octet-stream"
         ],
@@ -22031,8 +21719,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -22057,7 +21745,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in People",
-        "operationId": "People.DeleteFriendsPhoto",
+        "operationId": "People.DeleteFriendsPhoto-1a66",
         "parameters": [
           {
             "in": "path",
@@ -22314,7 +22002,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.ListFriends.AsManager",
+        "operationId": "People.ListFriends.AsManager-3e3c",
         "parameters": [
           {
             "in": "path",
@@ -22558,7 +22246,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.GetHomeAddress.AsEventLocation",
+        "operationId": "People.GetHomeAddress.AsEventLocation-90e5",
         "produces": [
           "application/json"
         ],
@@ -22951,18 +22639,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -22993,7 +22669,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Peers.ListAddressInfo.AsEventLocation",
+        "operationId": "People.Peers.ListAddressInfo.AsEventLocation-b918",
         "produces": [
           "application/json"
         ],
@@ -23056,18 +22732,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.microsoft.com/graph/aad-advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -23218,7 +22882,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Peers.GetHomeAddress.AsEventLocation",
+        "operationId": "People.Peers.GetHomeAddress.AsEventLocation-311b",
         "produces": [
           "application/json"
         ],
@@ -23267,7 +22931,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property Peers from People",
-        "operationId": "People.GetPeersPhoto",
+        "operationId": "People.GetPeersPhoto-ecda",
         "produces": [
           "application/octet-stream"
         ],
@@ -23293,8 +22957,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -23314,7 +22978,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property Peers in People",
-        "operationId": "People.UpdatePeersPhoto",
+        "operationId": "People.UpdatePeersPhoto-ecda",
         "consumes": [
           "application/octet-stream"
         ],
@@ -23341,8 +23005,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -23367,7 +23031,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property Peers in People",
-        "operationId": "People.DeletePeersPhoto",
+        "operationId": "People.DeletePeersPhoto-ecda",
         "parameters": [
           {
             "in": "path",
@@ -24021,8 +23685,8 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "Collection of Person",
               "type": "object",
+              "title": "Collection of Person",
               "properties": {
                 "value": {
                   "type": "array",
@@ -24655,7 +24319,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "People.Person.GetPerson.AsManager",
+        "operationId": "People.Person.GetPerson.AsManager-d051",
         "produces": [
           "application/json"
         ],
@@ -24918,18 +24582,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -24960,7 +24612,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.ListAddressInfo.AsEventLocation",
+        "operationId": "People.ListAddressInfo.AsEventLocation-7526",
         "produces": [
           "application/json"
         ],
@@ -25007,18 +24659,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -25473,18 +25113,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -25515,7 +25143,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation",
+        "operationId": "People.BestFriend.ListAddressInfo.AsEventLocation-897f",
         "produces": [
           "application/json"
         ],
@@ -25562,18 +25190,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -25708,7 +25324,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation",
+        "operationId": "People.BestFriend.GetHomeAddress.AsEventLocation-545d",
         "produces": [
           "application/json"
         ],
@@ -25749,7 +25365,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.GetBestFriend.AsEmployee",
+        "operationId": "People.GetBestFriend.AsEmployee-0445",
         "produces": [
           "application/json"
         ],
@@ -25808,7 +25424,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property BestFriend from People",
-        "operationId": "People.GetBestFriendPhoto",
+        "operationId": "People.GetBestFriendPhoto-f05d",
         "produces": [
           "application/octet-stream"
         ],
@@ -25826,8 +25442,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -25847,7 +25463,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property BestFriend in People",
-        "operationId": "People.UpdateBestFriendPhoto",
+        "operationId": "People.UpdateBestFriendPhoto-f05d",
         "consumes": [
           "application/octet-stream"
         ],
@@ -25866,8 +25482,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -25892,7 +25508,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property BestFriend in People",
-        "operationId": "People.DeleteBestFriendPhoto",
+        "operationId": "People.DeleteBestFriendPhoto-f05d",
         "parameters": [
           {
             "in": "path",
@@ -26285,18 +25901,6 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
-          },
-          {
             "$ref": "#/parameters/search"
           },
           {
@@ -26327,7 +25931,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.DirectReports.ListAddressInfo.AsEventLocation",
+        "operationId": "People.DirectReports.ListAddressInfo.AsEventLocation-1252",
         "produces": [
           "application/json"
         ],
@@ -26390,18 +25994,6 @@
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "ConsistencyLevel",
-            "description": "Indicates the requested consistency level. Documentation URL: https://docs.tripservice.com/advanced-queries",
-            "type": "string",
-            "x-examples": {
-              "example-1": {
-                "description": "$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.",
-                "value": "eventual"
-              }
-            }
           },
           {
             "$ref": "#/parameters/search"
@@ -26552,7 +26144,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.DirectReports.GetHomeAddress.AsEventLocation",
+        "operationId": "People.DirectReports.GetHomeAddress.AsEventLocation-cf8d",
         "produces": [
           "application/json"
         ],
@@ -26601,7 +26193,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property DirectReports from People",
-        "operationId": "People.GetDirectReportsPhoto",
+        "operationId": "People.GetDirectReportsPhoto-7149",
         "produces": [
           "application/octet-stream"
         ],
@@ -26627,8 +26219,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -26648,7 +26240,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property DirectReports in People",
-        "operationId": "People.UpdateDirectReportsPhoto",
+        "operationId": "People.UpdateDirectReportsPhoto-7149",
         "consumes": [
           "application/octet-stream"
         ],
@@ -26675,8 +26267,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -26701,7 +26293,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property DirectReports in People",
-        "operationId": "People.DeleteDirectReportsPhoto",
+        "operationId": "People.DeleteDirectReportsPhoto-7149",
         "parameters": [
           {
             "in": "path",
@@ -27332,7 +26924,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.ListAddressInfo.AsEventLocation",
+        "operationId": "People.Friends.ListAddressInfo.AsEventLocation-f8c9",
         "produces": [
           "application/json"
         ],
@@ -27545,7 +27137,7 @@
           "People.Person.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.Friends.GetHomeAddress.AsEventLocation",
+        "operationId": "People.Friends.GetHomeAddress.AsEventLocation-eb71",
         "produces": [
           "application/json"
         ],
@@ -27594,7 +27186,7 @@
           "People.Person"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "People.GetFriends.AsEmployee",
+        "operationId": "People.GetFriends.AsEmployee-161e",
         "produces": [
           "application/json"
         ],
@@ -27673,7 +27265,7 @@
           "People.Person"
         ],
         "summary": "Get Photo for the navigation property Friends from People",
-        "operationId": "People.GetFriendsPhoto",
+        "operationId": "People.GetFriendsPhoto-b97d",
         "produces": [
           "application/octet-stream"
         ],
@@ -27699,8 +27291,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -27720,7 +27312,7 @@
           "People.Person"
         ],
         "summary": "Update Photo for the navigation property Friends in People",
-        "operationId": "People.UpdateFriendsPhoto",
+        "operationId": "People.UpdateFriendsPhoto-b97d",
         "consumes": [
           "application/octet-stream"
         ],
@@ -27747,8 +27339,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -27773,7 +27365,7 @@
           "People.Person"
         ],
         "summary": "Delete Photo for the navigation property Friends in People",
-        "operationId": "People.DeleteFriendsPhoto",
+        "operationId": "People.DeleteFriendsPhoto-b97d",
         "parameters": [
           {
             "in": "path",
@@ -28030,7 +27622,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.ListFriends.AsEmployee",
+        "operationId": "People.ListFriends.AsEmployee-161e",
         "parameters": [
           {
             "in": "path",
@@ -28274,7 +27866,7 @@
           "People.Location"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location as Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation",
-        "operationId": "People.GetHomeAddress.AsEventLocation",
+        "operationId": "People.GetHomeAddress.AsEventLocation-e3dc",
         "produces": [
           "application/json"
         ],
@@ -28791,8 +28383,8 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "Collection of Person",
               "type": "object",
+              "title": "Collection of Person",
               "properties": {
                 "value": {
                   "type": "array",
@@ -29353,7 +28945,7 @@
           "description": "Find more info here",
           "url": "https://learn.microsoft.com/graph/api/person-get-photo?view=graph-rest-1.0"
         },
-        "operationId": "People.Person.GetPhoto",
+        "operationId": "People.Person.GetPhoto-883f",
         "produces": [
           "application/octet-stream"
         ],
@@ -29371,8 +28963,8 @@
           "200": {
             "description": "Retrieved media content",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           },
           "default": {
@@ -29397,7 +28989,7 @@
           "description": "Find more info here",
           "url": "https://learn.microsoft.com/graph/api/person-update-photo?view=graph-rest-1.0"
         },
-        "operationId": "People.Person.UpdatePhoto",
+        "operationId": "People.Person.UpdatePhoto-883f",
         "consumes": [
           "application/octet-stream"
         ],
@@ -29416,8 +29008,8 @@
             "description": "New media content.",
             "required": true,
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "type": "string",
+              "format": "binary"
             }
           }
         ],
@@ -29447,7 +29039,7 @@
           "description": "Find more info here",
           "url": "https://learn.microsoft.com/graph/api/person-delete-photo?view=graph-rest-1.0"
         },
-        "operationId": "People.Person.DeletePhoto",
+        "operationId": "People.Person.DeletePhoto-883f",
         "parameters": [
           {
             "in": "path",
@@ -29910,8 +29502,8 @@
           "200": {
             "description": "Success",
             "schema": {
-              "title": "Collection of Person",
               "type": "object",
+              "title": "Collection of Person",
               "properties": {
                 "value": {
                   "type": "array",
@@ -30429,7 +30021,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.Person.ListPerson.AsEmployee",
+        "operationId": "People.Person.ListPerson.AsEmployee-013a",
         "parameters": [
           {
             "in": "header",
@@ -30555,7 +30147,7 @@
           "People.Person"
         ],
         "summary": "Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection",
-        "operationId": "People.Person.ListPerson.AsManager",
+        "operationId": "People.Person.ListPerson.AsManager-3e14",
         "parameters": [
           {
             "in": "header",
@@ -30697,430 +30289,6 @@
     }
   },
   "definitions": {
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person": {
-      "title": "Person",
-      "type": "object",
-      "properties": {
-        "UserName": {
-          "type": "string"
-        },
-        "FirstName": {
-          "type": "string"
-        },
-        "LastName": {
-          "type": "string"
-        },
-        "MiddleName": {
-          "type": "string"
-        },
-        "Gender": {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
-        },
-        "Age": {
-          "format": "int64",
-          "allOf": [
-            {
-              "format": "int64",
-              "type": "number"
-            }
-          ]
-        },
-        "Emails": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "AddressInfo": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-          }
-        },
-        "HomeAddress": {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-        },
-        "FavoriteFeature": {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-        },
-        "Features": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-          }
-        },
-        "Photo": {
-          "format": "base64url",
-          "type": "string"
-        },
-        "Friends": {
-          "description": "Friends of person",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-          },
-          "x-ms-navigationProperty": true
-        },
-        "BestFriend": {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-        },
-        "Trips": {
-          "description": "Collection of trips.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-          },
-          "x-ms-navigationProperty": true
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline": {
-      "title": "Airline",
-      "type": "object",
-      "properties": {
-        "AirlineCode": {
-          "type": "string"
-        },
-        "Name": {
-          "type": "string"
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport": {
-      "title": "Airport",
-      "type": "object",
-      "properties": {
-        "Name": {
-          "type": "string"
-        },
-        "IcaoCode": {
-          "type": "string"
-        },
-        "IataCode": {
-          "type": "string"
-        },
-        "Location": {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location": {
-      "title": "Location",
-      "type": "object",
-      "properties": {
-        "Address": {
-          "type": "string"
-        },
-        "City": {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City": {
-      "title": "City",
-      "type": "object",
-      "properties": {
-        "Name": {
-          "type": "string"
-        },
-        "CountryRegion": {
-          "type": "string"
-        },
-        "Region": {
-          "type": "string"
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-        },
-        {
-          "title": "AirportLocation",
-          "type": "object",
-          "properties": {
-            "Loc": {
-              "$ref": "#/definitions/Edm.GeographyPoint"
-            },
-            "EmergencyAuthority": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          }
-        }
-      ]
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-        },
-        {
-          "title": "EventLocation",
-          "type": "object",
-          "properties": {
-            "BuildingInfo": {
-              "type": "string"
-            }
-          }
-        }
-      ]
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip": {
-      "title": "Trip",
-      "type": "object",
-      "properties": {
-        "TripId": {
-          "format": "int32",
-          "maximum": 2147483647,
-          "minimum": -2147483648,
-          "type": "number"
-        },
-        "ShareId": {
-          "format": "uuid",
-          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
-          "type": "string"
-        },
-        "Name": {
-          "type": "string"
-        },
-        "Budget": {
-          "format": "float",
-          "allOf": [
-            {
-              "format": "float",
-              "type": "number"
-            }
-          ]
-        },
-        "Description": {
-          "type": "string"
-        },
-        "Tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "TripData": { },
-        "DestinationInfo": {
-          "type": "array",
-          "items": { }
-        },
-        "StartsAt": {
-          "format": "date-time",
-          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
-          "type": "string"
-        },
-        "EndsAt": {
-          "format": "date-time",
-          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
-          "type": "string"
-        },
-        "PlanItems": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
-          },
-          "x-ms-navigationProperty": true
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem": {
-      "title": "PlanItem",
-      "type": "object",
-      "properties": {
-        "PlanItemId": {
-          "format": "int32",
-          "maximum": 2147483647,
-          "minimum": -2147483648,
-          "type": "number"
-        },
-        "ConfirmationCode": {
-          "type": "string"
-        },
-        "StartsAt": {
-          "format": "date-time",
-          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
-          "type": "string"
-        },
-        "EndsAt": {
-          "format": "date-time",
-          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
-          "type": "string"
-        },
-        "Duration": {
-          "format": "duration",
-          "pattern": "^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$",
-          "type": "string"
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
-        },
-        {
-          "title": "Event",
-          "type": "object",
-          "properties": {
-            "OccursAt": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
-            },
-            "Description": {
-              "type": "string"
-            }
-          }
-        }
-      ]
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
-        },
-        {
-          "title": "PublicTransportation",
-          "type": "object",
-          "properties": {
-            "SeatNumber": {
-              "type": "string"
-            }
-          }
-        }
-      ]
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation"
-        },
-        {
-          "title": "Flight",
-          "type": "object",
-          "properties": {
-            "FlightNumber": {
-              "type": "string"
-            },
-            "Airline": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
-            },
-            "From": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
-            },
-            "To": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
-            }
-          }
-        }
-      ]
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-        },
-        {
-          "title": "Employee",
-          "type": "object",
-          "properties": {
-            "Cost": {
-              "format": "int64",
-              "allOf": [
-                {
-                  "format": "int64",
-                  "type": "number"
-                }
-              ]
-            },
-            "Peers": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-              },
-              "x-ms-navigationProperty": true
-            }
-          }
-        }
-      ]
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-        },
-        {
-          "title": "Manager",
-          "type": "object",
-          "properties": {
-            "Budget": {
-              "format": "int64",
-              "allOf": [
-                {
-                  "format": "int64",
-                  "type": "number"
-                }
-              ]
-            },
-            "BossOffice": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-            },
-            "DirectReports": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-              },
-              "x-ms-navigationProperty": true
-            }
-          }
-        }
-      ]
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender": {
-      "title": "PersonGender",
-      "description": "Gender of the person.",
-      "enum": [
-        "Male",
-        "Female",
-        "Unknow"
-      ],
-      "type": "string",
-      "x-ms-enum": {
-        "name": "PersonGender",
-        "modelAsString": false,
-        "values": [
-          {
-            "value": "Male",
-            "description": "The Male gender.",
-            "name": "Male"
-          },
-          {
-            "value": "Female",
-            "description": "The Female gender.",
-            "name": "Female"
-          },
-          {
-            "value": "Unknow",
-            "description": "Unknown gender or prefers not to say.",
-            "name": "Unknow"
-          }
-        ]
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature": {
-      "title": "Feature",
-      "enum": [
-        "Feature1",
-        "Feature2",
-        "Feature3",
-        "Feature4"
-      ],
-      "type": "string",
-      "x-ms-enum-flags": {
-        "isFlags": true
-      }
-    },
     "Edm.Geography": {
       "$ref": "#/definitions/Edm.Geometry"
     },
@@ -31154,18 +30322,18 @@
       ]
     },
     "Edm.GeometryPoint": {
+      "type": "object",
       "required": [
         "type",
         "coordinates"
       ],
-      "type": "object",
       "properties": {
         "type": {
+          "type": "string",
           "default": "Point",
           "enum": [
             "Point"
-          ],
-          "type": "string"
+          ]
         },
         "coordinates": {
           "$ref": "#/definitions/GeoJSON.position"
@@ -31173,11 +30341,11 @@
       }
     },
     "Edm.GeometryLineString": {
+      "type": "object",
       "required": [
         "type",
         "coordinates"
       ],
-      "type": "object",
       "properties": {
         "type": {
           "enum": [
@@ -31185,8 +30353,8 @@
           ]
         },
         "coordinates": {
-          "minItems": 2,
           "type": "array",
+          "minItems": 2,
           "items": {
             "$ref": "#/definitions/GeoJSON.position"
           }
@@ -31194,11 +30362,11 @@
       }
     },
     "Edm.GeometryPolygon": {
+      "type": "object",
       "required": [
         "type",
         "coordinates"
       ],
-      "type": "object",
       "properties": {
         "type": {
           "enum": [
@@ -31206,8 +30374,8 @@
           ]
         },
         "coordinates": {
-          "minItems": 4,
           "type": "array",
+          "minItems": 4,
           "items": {
             "type": "array",
             "items": {
@@ -31218,11 +30386,11 @@
       }
     },
     "Edm.GeometryMultiPoint": {
+      "type": "object",
       "required": [
         "type",
         "coordinates"
       ],
-      "type": "object",
       "properties": {
         "type": {
           "enum": [
@@ -31238,11 +30406,11 @@
       }
     },
     "Edm.GeometryMultiLineString": {
+      "type": "object",
       "required": [
         "type",
         "coordinates"
       ],
-      "type": "object",
       "properties": {
         "type": {
           "enum": [
@@ -31250,8 +30418,8 @@
           ]
         },
         "coordinates": {
-          "minItems": 2,
           "type": "array",
+          "minItems": 2,
           "items": {
             "type": "array",
             "items": {
@@ -31262,11 +30430,11 @@
       }
     },
     "Edm.GeometryMultiPolygon": {
+      "type": "object",
       "required": [
         "type",
         "coordinates"
       ],
-      "type": "object",
       "properties": {
         "type": {
           "enum": [
@@ -31274,8 +30442,8 @@
           ]
         },
         "coordinates": {
-          "minItems": 4,
           "type": "array",
+          "minItems": 4,
           "items": {
             "type": "array",
             "items": {
@@ -31289,11 +30457,11 @@
       }
     },
     "Edm.GeometryCollection": {
+      "type": "object",
       "required": [
         "type",
         "coordinates"
       ],
-      "type": "object",
       "properties": {
         "type": {
           "enum": [
@@ -31309,17 +30477,17 @@
       }
     },
     "GeoJSON.position": {
-      "minItems": 2,
       "type": "array",
+      "minItems": 2,
       "items": {
         "type": "number"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ODataError": {
+      "type": "object",
       "required": [
         "error"
       ],
-      "type": "object",
       "properties": {
         "error": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError"
@@ -31327,11 +30495,11 @@
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError": {
+      "type": "object",
       "required": [
         "code",
         "message"
       ],
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -31355,11 +30523,11 @@
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails": {
+      "type": "object",
       "required": [
         "code",
         "message"
       ],
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -31373,13 +30541,13 @@
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError": {
-      "title": "InnerError",
       "type": "object",
+      "title": "InnerError",
       "properties": {
         "Date": {
+          "type": "string",
           "format": "date-time",
-          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
-          "type": "string"
+          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"
         },
         "RequestId": {
           "type": "string"
@@ -31387,144 +30555,12 @@
       }
     },
     "ODataCountResponse": {
-      "format": "int32",
-      "type": "integer"
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse": {
-      "title": "Collection of Person",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse": {
-      "title": "Collection of Airline",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse": {
-      "title": "Collection of Airport",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse": {
-      "title": "Collection of Trip",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse": {
-      "title": "Collection of PlanItem",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse": {
-      "title": "Collection of Employee",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse": {
-      "title": "Collection of Manager",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse": {
-      "title": "Collection of Event",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse": {
-      "title": "Collection of PublicTransportation",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse": {
-      "title": "Collection of Flight",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight"
-          }
-        }
-      }
-    },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse": {
-      "title": "Collection of Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location",
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-          }
-        }
-      }
+      "type": "number",
+      "format": "int64"
     },
     "StringCollectionResponse": {
-      "title": "Collection of string",
       "type": "object",
+      "title": "Collection of string",
       "properties": {
         "value": {
           "type": "array",
@@ -31557,12 +30593,568 @@
       }
     },
     "ReferenceNumeric": {
+      "type": "string",
       "enum": [
         "-INF",
         "INF",
         "NaN"
+      ]
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person": {
+      "type": "object",
+      "title": "Person",
+      "properties": {
+        "UserName": {
+          "type": "string"
+        },
+        "FirstName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "MiddleName": {
+          "type": "string"
+        },
+        "Gender": {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
+        },
+        "Age": {
+          "format": "int64",
+          "allOf": [
+            {
+              "type": "number",
+              "format": "int64"
+            }
+          ]
+        },
+        "Emails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AddressInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+          }
+        },
+        "HomeAddress": {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+        },
+        "FavoriteFeature": {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+        },
+        "Features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+          }
+        },
+        "Photo": {
+          "type": "string",
+          "format": "base64url"
+        },
+        "Friends": {
+          "type": "array",
+          "description": "Friends of person",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          },
+          "x-ms-navigationProperty": true
+        },
+        "BestFriend": {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+        },
+        "Trips": {
+          "type": "array",
+          "description": "Collection of trips.",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+          },
+          "x-ms-navigationProperty": true
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline": {
+      "type": "object",
+      "title": "Airline",
+      "properties": {
+        "AirlineCode": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport": {
+      "type": "object",
+      "title": "Airport",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "IcaoCode": {
+          "type": "string"
+        },
+        "IataCode": {
+          "type": "string"
+        },
+        "Location": {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location": {
+      "type": "object",
+      "title": "Location",
+      "properties": {
+        "Address": {
+          "type": "string"
+        },
+        "City": {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City": {
+      "type": "object",
+      "title": "City",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "CountryRegion": {
+          "type": "string"
+        },
+        "Region": {
+          "type": "string"
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+        },
+        {
+          "type": "object",
+          "title": "AirportLocation",
+          "properties": {
+            "Loc": {
+              "$ref": "#/definitions/Edm.GeographyPoint"
+            },
+            "EmergencyAuthority": {
+              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+            }
+          }
+        }
+      ]
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+        },
+        {
+          "type": "object",
+          "title": "EventLocation",
+          "properties": {
+            "BuildingInfo": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip": {
+      "type": "object",
+      "title": "Trip",
+      "properties": {
+        "TripId": {
+          "type": "number",
+          "format": "int32",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "ShareId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Budget": {
+          "format": "float",
+          "allOf": [
+            {
+              "type": "number",
+              "format": "float"
+            }
+          ]
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "TripData": { },
+        "DestinationInfo": {
+          "type": "array",
+          "items": { }
+        },
+        "StartsAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"
+        },
+        "EndsAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"
+        },
+        "PlanItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
+          },
+          "x-ms-navigationProperty": true
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem": {
+      "type": "object",
+      "title": "PlanItem",
+      "properties": {
+        "PlanItemId": {
+          "type": "number",
+          "format": "int32",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "ConfirmationCode": {
+          "type": "string"
+        },
+        "StartsAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"
+        },
+        "EndsAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"
+        },
+        "Duration": {
+          "type": "string",
+          "format": "duration",
+          "pattern": "^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$"
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
+        },
+        {
+          "type": "object",
+          "title": "Event",
+          "properties": {
+            "OccursAt": {
+              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+            },
+            "Description": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
+        },
+        {
+          "type": "object",
+          "title": "PublicTransportation",
+          "properties": {
+            "SeatNumber": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation"
+        },
+        {
+          "type": "object",
+          "title": "Flight",
+          "properties": {
+            "FlightNumber": {
+              "type": "string"
+            },
+            "Airline": {
+              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+            },
+            "From": {
+              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+            },
+            "To": {
+              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+            }
+          }
+        }
+      ]
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+        },
+        {
+          "type": "object",
+          "title": "Employee",
+          "properties": {
+            "Cost": {
+              "format": "int64",
+              "allOf": [
+                {
+                  "type": "number",
+                  "format": "int64"
+                }
+              ]
+            },
+            "Peers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              },
+              "x-ms-navigationProperty": true
+            }
+          }
+        }
+      ]
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+        },
+        {
+          "type": "object",
+          "title": "Manager",
+          "properties": {
+            "Budget": {
+              "format": "int64",
+              "allOf": [
+                {
+                  "type": "number",
+                  "format": "int64"
+                }
+              ]
+            },
+            "BossOffice": {
+              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+            },
+            "DirectReports": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              },
+              "x-ms-navigationProperty": true
+            }
+          }
+        }
+      ]
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender": {
+      "type": "string",
+      "description": "Gender of the person.",
+      "title": "PersonGender",
+      "enum": [
+        "Male",
+        "Female",
+        "Unknow"
       ],
-      "type": "string"
+      "x-ms-enum": {
+        "name": "PersonGender",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "Male",
+            "description": "The Male gender.",
+            "name": "Male"
+          },
+          {
+            "value": "Female",
+            "description": "The Female gender.",
+            "name": "Female"
+          },
+          {
+            "value": "Unknow",
+            "description": "Unknown gender or prefers not to say.",
+            "name": "Unknow"
+          }
+        ]
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature": {
+      "type": "string",
+      "title": "Feature",
+      "enum": [
+        "Feature1",
+        "Feature2",
+        "Feature3",
+        "Feature4"
+      ],
+      "x-ms-enum-flags": {
+        "isFlags": true
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse": {
+      "type": "object",
+      "title": "Collection of Person",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse": {
+      "type": "object",
+      "title": "Collection of Airline",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse": {
+      "type": "object",
+      "title": "Collection of Airport",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse": {
+      "type": "object",
+      "title": "Collection of Trip",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse": {
+      "type": "object",
+      "title": "Collection of PlanItem",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse": {
+      "type": "object",
+      "title": "Collection of Employee",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse": {
+      "type": "object",
+      "title": "Collection of Manager",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse": {
+      "type": "object",
+      "title": "Collection of Event",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse": {
+      "type": "object",
+      "title": "Collection of PublicTransportation",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse": {
+      "type": "object",
+      "title": "Collection of Flight",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight"
+          }
+        }
+      }
+    },
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.LocationCollectionResponse": {
+      "type": "object",
+      "title": "Collection of Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+          }
+        }
+      }
     }
   },
   "parameters": {
@@ -31570,14 +31162,16 @@
       "in": "query",
       "name": "$top",
       "description": "Show only the first n items",
-      "type": "integer",
+      "type": "number",
+      "format": "int64",
       "minimum": 0
     },
     "skip": {
       "in": "query",
       "name": "$skip",
       "description": "Skip the first n items",
-      "type": "integer",
+      "type": "number",
+      "format": "int64",
       "minimum": 0
     },
     "count": {
@@ -31628,10 +31222,10 @@
             "type": "string"
           },
           "tripId": {
+            "type": "number",
             "format": "int32",
             "maximum": 2147483647,
-            "minimum": -2147483648,
-            "type": "number"
+            "minimum": -2147483648
           }
         }
       }
@@ -31648,10 +31242,10 @@
             "type": "string"
           },
           "tripId": {
+            "type": "number",
             "format": "int32",
             "maximum": 2147483647,
-            "minimum": -2147483648,
-            "type": "number"
+            "minimum": -2147483648
           }
         }
       }
@@ -31751,8 +31345,8 @@
     "GetFriendsTripsResponse": {
       "description": "Success",
       "schema": {
-        "title": "Collection of Trip",
         "type": "object",
+        "title": "Collection of Trip",
         "properties": {
           "value": {
             "type": "array",
@@ -31769,8 +31363,8 @@
         "type": "object",
         "properties": {
           "value": {
-            "default": false,
-            "type": "boolean"
+            "type": "boolean",
+            "default": false
           }
         }
       }
@@ -31778,8 +31372,8 @@
     "GetPeersForTripResponse": {
       "description": "Success",
       "schema": {
-        "title": "Collection of Person",
         "type": "object",
+        "title": "Collection of Person",
         "properties": {
           "value": {
             "type": "array",

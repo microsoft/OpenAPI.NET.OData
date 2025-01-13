@@ -17,7 +17,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class MediaEntityPathItemHandlerTests
     {
-        private readonly MediaEntityPathItemHandler _pathItemHandler = new MyMediaEntityPathItemHandler();
+        private readonly MediaEntityPathItemHandler _pathItemHandler = new MyMediaEntityPathItemHandler(new());
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -313,7 +313,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
     }
 
-    internal class MyMediaEntityPathItemHandler : MediaEntityPathItemHandler
+    internal class MyMediaEntityPathItemHandler(OpenApiDocument document) : MediaEntityPathItemHandler(document)
     {
         protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
         {

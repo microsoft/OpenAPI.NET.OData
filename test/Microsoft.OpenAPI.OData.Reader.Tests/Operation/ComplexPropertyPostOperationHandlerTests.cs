@@ -13,7 +13,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests;
 
 public class ComplexPropertyPostOperationHandlerTests
 {
-	private readonly ComplexPropertyPostOperationHandler _operationHandler = new();
+	private readonly ComplexPropertyPostOperationHandler _operationHandler = new(new());
 	[Fact]
 	public void CreateComplexPropertyPostOperationThrowsForSingle()
 	{

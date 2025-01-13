@@ -4,9 +4,12 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -14,7 +17,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntityPatchOperationHandlerTests
     {
-        private EntityPatchOperationHandler _operationHandler = new EntityPatchOperationHandler();
+        public EntityPatchOperationHandlerTests()
+        {
+          _operationHandler = new EntityPatchOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private readonly EntityPatchOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true)]
@@ -36,6 +45,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var patch = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(patch);
@@ -77,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEntityPatchReturnsSecurityForUpdateRestrictions(bool enableAnnotation)
+        public async Task CreateEntityPatchReturnsSecurityForUpdateRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
   <Record>
@@ -153,7 +163,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, patch.Security.Count);
 
-                string json = patch.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await patch.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

@@ -5,8 +5,11 @@
 
 using System;
 using System.Linq;
+using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -55,7 +58,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateRequestBody(actionImport: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateRequestBody(actionImport: null, new()));
         }
 
         [Fact]
@@ -65,7 +68,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("actionImport", () => context.CreateRequestBody(actionImport: null));
+            Assert.Throws<ArgumentNullException>("actionImport", () => context.CreateRequestBody(actionImport: null, new()));
         }
 
         [Fact]
@@ -75,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBody = context.CreateRequestBody(_actionImport);
+            var requestBody = context.CreateRequestBody(_actionImport, new());
 
             // Assert
             Assert.NotNull(requestBody);
@@ -87,26 +90,25 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             Assert.NotNull(content.Value.Schema);
             var schema = content.Value.Schema;
-            Assert.Equal("object", schema.Type);
+            Assert.Equal(JsonSchemaType.Object, schema.Type);
             Assert.NotNull(schema.Properties);
             var parameter = Assert.Single(schema.Properties);
             Assert.Equal("param", parameter.Key);
-            Assert.Equal("string", parameter.Value.Type);
+            Assert.Equal(JsonSchemaType.String, parameter.Value.Type);
         }
 
         [Fact]
-        public void CanSerializeAsJsonFromTheCreatedRequestBody()
+        public async Task CanSerializeAsJsonFromTheCreatedRequestBody()
         {
             // Arrange
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBody = context.CreateRequestBody(_actionImport);
+            var requestBody = context.CreateRequestBody(_actionImport, new());
 
             // Assert
-            string json = requestBody.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-
-            Assert.Equal(@"{
+            string json = await requestBody.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
+            var expectedJson = @"{
   ""description"": ""Action parameters"",
   ""content"": {
     ""application/json"": {
@@ -122,7 +124,12 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
     }
   },
   ""required"": true
-}".ChangeLineBreaks(), json);
+}";
+
+            var actualJsonNode = JsonNode.Parse(json);
+            var expectedJsonNode = JsonNode.Parse(expectedJson);
+
+            Assert.True(JsonNode.DeepEquals(actualJsonNode, expectedJsonNode));
         }
 
         [Fact]
@@ -132,7 +139,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBody = context.CreateRequestBody(_action);
+            var requestBody = context.CreateRequestBody(_action, new());
 
             // Assert
             Assert.NotNull(requestBody);
@@ -144,11 +151,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             Assert.NotNull(content.Value.Schema);
             var schema = content.Value.Schema;
-            Assert.Equal("object", schema.Type);
+            Assert.Equal(JsonSchemaType.Object, schema.Type);
             Assert.NotNull(schema.Properties);
             var parameter = Assert.Single(schema.Properties);
             Assert.Equal("param", parameter.Key);
-            Assert.Equal("string", parameter.Value.Type);
+            Assert.Equal(JsonSchemaType.String, parameter.Value.Type);
         }
 
         [Fact]
@@ -158,7 +165,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBodies = context.CreateRequestBodies();
+            var requestBodies = context.CreateRequestBodies(new());
             requestBodies.TryGetValue(Common.Constants.ReferencePostRequestBodyName, out Models.OpenApiRequestBody refPostBody);
 
             // Assert

@@ -77,8 +77,8 @@
         "description": "The structure of this object is service-specific"
       },
       "ODataCountResponse": {
-        "type": "integer",
-        "format": "int32"
+        "type": "number",
+        "format": "int64"
       },
       "ReferenceUpdate": {
         "type": "object",
@@ -144,7 +144,8 @@
         "explode": false,
         "schema": {
           "minimum": 0,
-          "type": "integer"
+          "type": "number",
+          "format": "int64"	
         },
         "example": 50
       },
@@ -156,7 +157,8 @@
         "explode": false,
         "schema": {
           "minimum": 0,
-          "type": "integer"
+          "type": "number",
+          "format": "int64"
         }
       },
       "count": {

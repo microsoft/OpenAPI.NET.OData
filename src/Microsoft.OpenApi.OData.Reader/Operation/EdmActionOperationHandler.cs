@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -18,6 +19,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EdmActionOperationHandler : EdmOperationOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EdmActionOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EdmActionOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
 
@@ -41,19 +50,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            if (EdmOperation is IEdmAction action && Context.CreateRequestBody(action) is OpenApiRequestBody requestBody)
+            if (EdmOperation is IEdmAction action && Context.CreateRequestBody(action, _document) is OpenApiRequestBody requestBody)
             {               
                 if (Context.Model.OperationTargetsMultiplePaths(action))
                 {
-                    operation.RequestBody = new OpenApiRequestBody
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.RequestBody,
-                            Id = $"{action.Name}RequestBody"
-                        }
-                    };
+                    operation.RequestBody = new OpenApiRequestBodyReference($"{action.Name}RequestBody", _document);
                 }
                 else
                 {
@@ -67,7 +68,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("action"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("action"));
             base.SetExtensions(operation);
         }
     }

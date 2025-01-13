@@ -10,6 +10,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
@@ -21,7 +22,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// Adds the derived types references together with their base type reference in the OneOf property of an OpenAPI schema.
         /// </summary>
         /// <returns>The OpenAPI schema with the list of derived types references and their base type references set in the OneOf property.</returns>
-        internal static OpenApiSchema GetDerivedTypesReferenceSchema(IEdmStructuredType structuredType, IEdmModel edmModel)
+        internal static OpenApiSchema GetDerivedTypesReferenceSchema(IEdmStructuredType structuredType, IEdmModel edmModel, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
             Utils.CheckArgumentNull(edmModel, nameof(edmModel));
@@ -39,28 +40,12 @@ namespace Microsoft.OpenApi.OData.Common
                 OneOf = new List<OpenApiSchema>()
             };
 
-            OpenApiSchema baseTypeSchema = new()
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = schemaElement.FullName()
-                }
-            };
+            OpenApiSchema baseTypeSchema = new OpenApiSchemaReference(schemaElement.FullName(), document);
             schema.OneOf.Add(baseTypeSchema);
 
             foreach (IEdmSchemaElement derivedType in derivedTypes)
             {
-                OpenApiSchema derivedTypeSchema = new()
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = derivedType.FullName()
-                    }
-                };
+                OpenApiSchema derivedTypeSchema = new OpenApiSchemaReference(derivedType.FullName(), document);
                 schema.OneOf.Add(derivedTypeSchema);
             };
 

@@ -5,9 +5,12 @@
 
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -15,7 +18,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntityGetOperationHandlerTests
     {
-        private EntityGetOperationHandler _operationHandler = new EntityGetOperationHandler();
+        public EntityGetOperationHandlerTests()
+        {
+          _operationHandler = new EntityGetOperationHandler(_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private  readonly EntityGetOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true)]
@@ -37,6 +46,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var get = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
+
 
             // Assert
             Assert.NotNull(get);
@@ -110,7 +121,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEntityGetOperationReturnsSecurityForReadRestrictions(bool enableAnnotation)
+        public async Task CreateEntityGetOperationReturnsSecurityForReadRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
   <Record>
@@ -190,7 +201,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, get.Security.Count);
 
-                string json = get.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await get.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {
