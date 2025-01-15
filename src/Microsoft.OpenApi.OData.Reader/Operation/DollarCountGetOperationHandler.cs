@@ -128,17 +128,17 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
                 else if (SecondLastSegment is ODataNavigationPropertySegment)
                 {
-                    var navPropOpId = string.Join(".", EdmModelHelper.RetrieveNavigationPropertyPathsOperationIdSegments(Path));
+                    var navPropOpId = string.Join(".", EdmModelHelper.RetrieveNavigationPropertyPathsOperationIdSegments(Path, Context));
                     operation.OperationId = $"{navPropOpId}.GetCount-{Path.GetPathHash(Context.Settings)}";
                 }
                 else if (SecondLastSegment is ODataTypeCastSegment odataTypeCastSegment)
                 {
                     IEdmNamedElement targetStructuredType = odataTypeCastSegment.StructuredType as IEdmNamedElement;
-                    operation.OperationId = $"{EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path, false)}.GetCount.As{Utils.UpperFirstChar(targetStructuredType.Name)}-{Path.GetPathHash(Context.Settings)}";
+                    operation.OperationId = $"{EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path, Context, false)}.GetCount.As{Utils.UpperFirstChar(targetStructuredType.Name)}-{Path.GetPathHash(Context.Settings)}";
                 }
                 else if (SecondLastSegment is ODataComplexPropertySegment)
                 {
-                    operation.OperationId = $"{EdmModelHelper.GenerateComplexPropertyPathOperationId(Path)}.GetCount-{Path.GetPathHash(Context.Settings)}";
+                    operation.OperationId = $"{EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, Context)}.GetCount-{Path.GetPathHash(Context.Settings)}";
                 }
             }
 

@@ -41,7 +41,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         if (Context.Settings.EnableOperationId)
         {
             string prefix = OperationType == OperationType.Patch ? "Update" : "Set";
-            operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, prefix);
+            operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, Context, prefix);
         }
     }
 
