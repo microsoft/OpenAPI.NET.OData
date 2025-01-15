@@ -42,7 +42,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
         // OperationId
         if (Context.Settings.EnableOperationId)
         {
-            operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, "Set");
+            operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, Context, "Set");
         }
 
         // Summary and Description
