@@ -173,8 +173,16 @@ namespace Microsoft.OpenApi.OData.Operation
                     break;
                 // If the operation is a function or action, append the word "Function" or "Action" to the tag name
                 case ODataOperationSegment operationSegment:
-                    string suffixName = operationSegment.Operation.IsAction() ? operationSegment.Operation.Name + "Actions" : operationSegment.Operation.Name + "Functions";
-                     tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name + "." + suffixName;
+                    tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
+                    if(operationSegment.Operation.IsAction())
+                    {
+                        tagName += ".Actions";
+                    }
+
+                    if(operationSegment.Operation.IsFunction())
+                    {
+                        tagName += ".Functions";
+                    }
                     break;
                 default:
                     tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
