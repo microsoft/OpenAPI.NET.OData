@@ -460,7 +460,7 @@ paths:
     description: Provides operations to call the Upload method.
     post:
       tags:
-        - Documents.DocumentDto
+        - Documents.DocumentDto.Actions
       summary: Invoke action Upload
       operationId: Documents.DocumentDto.Upload
       parameters:
@@ -2771,7 +2771,7 @@ paths:
     description: Provides operations to call the Upload method.
     post:
       tags:
-        - Tasks.DocumentDto
+        - Tasks.DocumentDto.Actions
       summary: Invoke action Upload
       operationId: Tasks.DocumentDto.Upload
       parameters:
@@ -5384,6 +5384,8 @@ tags:
     x-ms-docs-toc-type: page
   - name: Documents.DocumentDto
     x-ms-docs-toc-type: page
+  - name: Documents.DocumentDto.Actions
+    x-ms-docs-toc-type: container
   - name: Documents.RevisionDto
     x-ms-docs-toc-type: page
   - name: Documents.DocumentTagRelDto
@@ -5404,6 +5406,8 @@ tags:
     x-ms-docs-toc-type: page
   - name: Tasks.DocumentDto
     x-ms-docs-toc-type: page
+  - name: Tasks.DocumentDto.Actions
+    x-ms-docs-toc-type: container
   - name: Tasks.RevisionDto
     x-ms-docs-toc-type: page
   - name: Tasks.DocumentTagRelDto

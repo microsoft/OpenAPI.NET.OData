@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Details of the shared trip.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People.Person", tag.Name);
+            Assert.Equal("People.Person.Actions", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Single(operation.Parameters);
@@ -79,7 +79,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal($"Invoke action {actionName}", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal($"{entitySetName}.AccountApiModel", tag.Name);
+            Assert.Equal($"{entitySetName}.AccountApiModel.Actions", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Single(operation.Parameters);

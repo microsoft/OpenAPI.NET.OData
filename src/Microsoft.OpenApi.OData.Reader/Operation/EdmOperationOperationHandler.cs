@@ -171,21 +171,16 @@ namespace Microsoft.OpenApi.OData.Operation
                     skip += 1;
                     GenerateTagName(out tagName, skip);
                     break;
-                // If the operation is a function or action, append the word "Function" or "Action" to the tag name
-                case ODataOperationSegment operationSegment:
+                default:
                     tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
-                    if(operationSegment.Operation.IsAction())
+                    if (EdmOperation.IsAction())
                     {
                         tagName += ".Actions";
                     }
-
-                    if(operationSegment.Operation.IsFunction())
+                    else if (EdmOperation.IsFunction())
                     {
                         tagName += ".Functions";
                     }
-                    break;
-                default:
-                    tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
                     break;
             }
         }
