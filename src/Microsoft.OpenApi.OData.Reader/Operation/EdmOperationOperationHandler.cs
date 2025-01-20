@@ -162,7 +162,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <summary>
-        /// Genrates the tag name for the operation.
+        /// Genrates the tag name for the operation. Adds Action or Function name to the tag name if the operation is an action or function.
         /// </summary>
         /// <param name="tagName">The generated tag name.</param>
         /// <param name="skip">The number of segments to skip.</param>
@@ -175,16 +175,22 @@ namespace Microsoft.OpenApi.OData.Operation
                 case ODataNavigationPropertySegment:
                     tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
                     break;
-                case ODataOperationSegment:
                 case ODataOperationImportSegment:
                 // Previous segmment could be a navigation property or a navigation source segment
                 case ODataKeySegment:
                     skip += 1;
                     GenerateTagName(out tagName, skip);
                     break;
-                // ODataNavigationSourceSegment
                 default:
                     tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
+                    if (EdmOperation.IsAction())
+                    {
+                        tagName += ".Actions";
+                    }
+                    else if (EdmOperation.IsFunction())
+                    {
+                        tagName += ".Functions";
+                    }
                     break;
             }
         }
