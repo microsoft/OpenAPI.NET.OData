@@ -81,12 +81,11 @@ namespace Microsoft.OpenApi.OData.Operation
                 // duplicates in entity vs entityset functions/actions
 
                 List<string> identifiers = new();
-                string pathHash = string.Empty;
                 foreach (ODataSegment segment in Path.Segments)
                 {
                     if (segment is ODataKeySegment keySegment)
                     {
-                        if (!keySegment.IsAlternateKey) 
+                        if (!keySegment.IsAlternateKey)
                         {
                             identifiers.Add(segment.EntityType.Name);
                             continue;
@@ -102,18 +101,6 @@ namespace Microsoft.OpenApi.OData.Operation
                             identifiers.Add(keySegment.Identifier);
                         }
                     }
-                    else if (segment is ODataOperationSegment opSegment)
-                    {
-                        if (opSegment.Operation is IEdmFunction function && Context.Model.IsOperationOverload(function))
-                        {
-                            // Hash the segment to avoid duplicate operationIds
-                            pathHash = string.IsNullOrEmpty(pathHash)
-                                ? opSegment.GetPathHash(Context.Settings)
-                                : (pathHash + opSegment.GetPathHash(Context.Settings)).GetHashSHA256().Substring(0, 4);
-                        }
-
-                        identifiers.Add(segment.Identifier);
-                    }
                     else
                     {
                         identifiers.Add(segment.Identifier);
@@ -122,13 +109,21 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 string operationId = string.Join(".", identifiers);
 
-                if (!string.IsNullOrEmpty(pathHash))
+                if (EdmOperation.IsAction())
                 {
-                    operation.OperationId = operationId + "-" + pathHash;
+                    operation.OperationId = operationId;
                 }
                 else
                 {
-                    operation.OperationId = operationId;
+                    if (Path.LastSegment is ODataOperationSegment operationSegment &&
+                        Context.Model.IsOperationOverload(operationSegment.Operation))
+                    {
+                        operation.OperationId = operationId + "-" + Path.LastSegment.GetPathHash(Context.Settings);
+                    }
+                    else
+                    {
+                        operation.OperationId = operationId;
+                    }
                 }
             }
 
@@ -152,12 +147,12 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <summary>
-        /// Genrates the tag name for the operation.
+        /// Genrates the tag name for the operation. Adds Action or Function name to the tag name if the operation is an action or function.
         /// </summary>
         /// <param name="tagName">The generated tag name.</param>
         /// <param name="skip">The number of segments to skip.</param>
         private void GenerateTagName(out string tagName, int skip = 1)
-        {            
+        {
             var targetSegment = Path.Segments.Reverse().Skip(skip).FirstOrDefault();
 
             switch (targetSegment)
@@ -165,16 +160,23 @@ namespace Microsoft.OpenApi.OData.Operation
                 case ODataNavigationPropertySegment:
                     tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
                     break;
-                case ODataOperationSegment:
                 case ODataOperationImportSegment:
                 // Previous segmment could be a navigation property or a navigation source segment
                 case ODataKeySegment:
                     skip += 1;
                     GenerateTagName(out tagName, skip);
                     break;
-                // ODataNavigationSourceSegment
                 default:
                     tagName = NavigationSource.Name + "." + NavigationSource.EntityType().Name;
+                    if (EdmOperation.IsAction())
+                    {
+                        tagName += ".Actions";
+                    }
+                    else if (EdmOperation.IsFunction())
+                    {
+                        tagName += ".Functions";
+                    }
+
                     break;
             }
         }
@@ -192,7 +194,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        protected override void SetResponses(OpenApiOperation operation) 
+        protected override void SetResponses(OpenApiOperation operation)
         {
             operation.Responses = Context.CreateResponses(EdmOperation);
             base.SetResponses(operation);
@@ -292,10 +294,10 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 LinkRelKey key = EdmOperation.IsAction() ? LinkRelKey.Action : LinkRelKey.Function;
                 Context.Settings.CustomHttpMethodLinkRelMapping.TryGetValue(key, out string linkRelValue);
-                CustomLinkRel =  linkRelValue;
+                CustomLinkRel = linkRelValue;
             }
         }
-    
+
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
