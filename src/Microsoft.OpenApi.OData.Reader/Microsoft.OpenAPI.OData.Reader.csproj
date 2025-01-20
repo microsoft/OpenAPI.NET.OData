@@ -33,6 +33,7 @@
 		- Further fix for generating unique operation ids for paths with composable overloaded functions where all functions in path are overloaded #594
 		- Further fix for generating unique operation ids for navigation property paths with composable overloaded functions #596
 		- Updates PUT operation id prefix from Update to Set #600
+    - Adds action/function suffix to tag names for actions/functions operations #641
 	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>

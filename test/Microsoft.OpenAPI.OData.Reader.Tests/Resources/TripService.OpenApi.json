@@ -8518,7 +8518,7 @@
       "description": "Provides operations to call the GetFavoriteAirline method.",
       "get": {
         "tags": [
-          "Me.Person"
+          "Me.Person.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "operationId": "Me.GetFavoriteAirline",
@@ -8544,7 +8544,7 @@
       "description": "Provides operations to call the GetFriendsTrips method.",
       "get": {
         "tags": [
-          "Me.Person"
+          "Me.Person.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
         "operationId": "Me.GetFriendsTrips",
@@ -8638,7 +8638,7 @@
       "description": "Provides operations to call the GetPeersForTrip method.",
       "post": {
         "tags": [
-          "Me.Person"
+          "Me.Person.Actions"
         ],
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "Me.GetPeersForTrip",
@@ -12054,7 +12054,7 @@
       "description": "Provides operations to call the Hire method.",
       "post": {
         "tags": [
-          "Me.Person"
+          "Me.Person.Actions"
         ],
         "summary": "Invoke action Hire",
         "description": "Hires someone for the company.",
@@ -12990,7 +12990,7 @@
       "description": "Provides operations to call the ShareTrip method.",
       "post": {
         "tags": [
-          "Me.Person"
+          "Me.Person.Actions"
         ],
         "summary": "Invoke action ShareTrip",
         "description": "Details of the shared trip.",
@@ -13020,7 +13020,7 @@
       "description": "Provides operations to call the UpdatePersonLastName method.",
       "get": {
         "tags": [
-          "Me.Person"
+          "Me.Person.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
         "operationId": "Me.UpdatePersonLastName",
@@ -17309,7 +17309,7 @@
       "description": "Provides operations to call the GetFavoriteAirline method.",
       "get": {
         "tags": [
-          "NewComePeople.Person"
+          "NewComePeople.Person.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "operationId": "NewComePeople.Person.GetFavoriteAirline",
@@ -17340,7 +17340,7 @@
       "description": "Provides operations to call the GetFriendsTrips method.",
       "get": {
         "tags": [
-          "NewComePeople.Person"
+          "NewComePeople.Person.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
         "operationId": "NewComePeople.Person.GetFriendsTrips",
@@ -17444,7 +17444,7 @@
       "description": "Provides operations to call the GetPeersForTrip method.",
       "post": {
         "tags": [
-          "NewComePeople.Person"
+          "NewComePeople.Person.Actions"
         ],
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "NewComePeople.Person.GetPeersForTrip",
@@ -17478,7 +17478,7 @@
       "description": "Provides operations to call the Hire method.",
       "post": {
         "tags": [
-          "NewComePeople.Person"
+          "NewComePeople.Person.Actions"
         ],
         "summary": "Invoke action Hire",
         "description": "Hires someone for the company.",
@@ -17534,7 +17534,7 @@
       "description": "Provides operations to call the ShareTrip method.",
       "post": {
         "tags": [
-          "NewComePeople.Person"
+          "NewComePeople.Person.Actions"
         ],
         "summary": "Invoke action ShareTrip",
         "description": "Details of the shared trip.",
@@ -17569,7 +17569,7 @@
       "description": "Provides operations to call the UpdatePersonLastName method.",
       "get": {
         "tags": [
-          "NewComePeople.Person"
+          "NewComePeople.Person.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
         "operationId": "NewComePeople.Person.UpdatePersonLastName",
@@ -27318,7 +27318,7 @@
       "description": "Provides operations to call the GetFavoriteAirline method.",
       "get": {
         "tags": [
-          "People.Person"
+          "People.Person.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "operationId": "People.Person.GetFavoriteAirline",
@@ -27356,7 +27356,7 @@
       "description": "Provides operations to call the GetFriendsTrips method.",
       "get": {
         "tags": [
-          "People.Person"
+          "People.Person.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
         "operationId": "People.Person.GetFriendsTrips",
@@ -27460,7 +27460,7 @@
       "description": "Provides operations to call the GetPeersForTrip method.",
       "post": {
         "tags": [
-          "People.Person"
+          "People.Person.Actions"
         ],
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "People.Person.GetPeersForTrip",
@@ -31602,7 +31602,7 @@
       "description": "Provides operations to call the Hire method.",
       "post": {
         "tags": [
-          "People.Person"
+          "People.Person.Actions"
         ],
         "summary": "Invoke action Hire",
         "description": "Hires someone for the company.",
@@ -32682,7 +32682,7 @@
       "description": "Provides operations to call the ShareTrip method.",
       "post": {
         "tags": [
-          "People.Person"
+          "People.Person.Actions"
         ],
         "summary": "Invoke action ShareTrip",
         "description": "Details of the shared trip.",
@@ -32724,7 +32724,7 @@
       "description": "Provides operations to call the UpdatePersonLastName method.",
       "get": {
         "tags": [
-          "People.Person"
+          "People.Person.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
         "operationId": "People.Person.UpdatePersonLastName",
@@ -35876,6 +35876,14 @@
       "x-ms-docs-toc-type": "page"
     },
     {
+      "name": "Me.Person.Functions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "Me.Person.Actions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
       "name": "NewComePeople.Person",
       "x-ms-docs-toc-type": "page"
     },
@@ -35886,6 +35894,14 @@
     {
       "name": "NewComePeople.Person.Location",
       "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "NewComePeople.Person.Functions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "NewComePeople.Person.Actions",
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "NewComePeople.Trip",
@@ -35914,6 +35930,14 @@
     {
       "name": "People.Trips.PlanItem",
       "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "People.Person.Functions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "People.Person.Actions",
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "ResetDataSource",
