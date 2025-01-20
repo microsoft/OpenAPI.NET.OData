@@ -85,7 +85,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     if (segment is ODataKeySegment keySegment)
                     {
-                        if (!keySegment.IsAlternateKey) 
+                        if (!keySegment.IsAlternateKey)
                         {
                             identifiers.Add(segment.EntityType.Name);
                             continue;
@@ -152,7 +152,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="tagName">The generated tag name.</param>
         /// <param name="skip">The number of segments to skip.</param>
         private void GenerateTagName(out string tagName, int skip = 1)
-        {            
+        {
             var targetSegment = Path.Segments.Reverse().Skip(skip).FirstOrDefault();
 
             switch (targetSegment)
@@ -166,21 +166,17 @@ namespace Microsoft.OpenApi.OData.Operation
                     skip += 1;
                     GenerateTagName(out tagName, skip);
                     break;
-                // If the operation is a function or action, append the word "Function" or "Action" to the tag name
-                case ODataOperationSegment operationSegment:
+                default:
                     tagName = NavigationSource.Name + "." + NavigationSource.EntityType().Name;
-                    if(operationSegment.Operation.IsAction())
+                    if (EdmOperation.IsAction())
                     {
                         tagName += ".Actions";
                     }
-
-                    if(operationSegment.Operation.IsFunction())
+                    else if (EdmOperation.IsFunction())
                     {
                         tagName += ".Functions";
                     }
-                    break;
-                default:
-                    tagName = NavigationSource.Name + "." + NavigationSource.EntityType().Name;
+
                     break;
             }
         }
@@ -198,7 +194,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        protected override void SetResponses(OpenApiOperation operation) 
+        protected override void SetResponses(OpenApiOperation operation)
         {
             operation.Responses = Context.CreateResponses(EdmOperation);
             base.SetResponses(operation);
@@ -298,10 +294,10 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 LinkRelKey key = EdmOperation.IsAction() ? LinkRelKey.Action : LinkRelKey.Function;
                 Context.Settings.CustomHttpMethodLinkRelMapping.TryGetValue(key, out string linkRelValue);
-                CustomLinkRel =  linkRelValue;
+                CustomLinkRel = linkRelValue;
             }
         }
-    
+
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
