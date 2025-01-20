@@ -180,7 +180,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                     break;
                 default:
-                    tagName = NavigationSource.Name + "." + NavigationSource.EntityType.Name;
+                    tagName = NavigationSource.Name + "." + NavigationSource.EntityType().Name;
                     break;
             }
         }
