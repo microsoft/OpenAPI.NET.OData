@@ -32,7 +32,10 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
-            IEdmFunctionImport functionImport = EdmOperationImport as IEdmFunctionImport;
+            if (EdmOperationImport is not IEdmFunctionImport functionImport)
+            {
+                return;
+            }
 
             if (OperationImportSegment.ParameterMappings != null)
             {
