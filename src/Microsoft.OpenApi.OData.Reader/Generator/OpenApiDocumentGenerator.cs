@@ -43,8 +43,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 ExternalDocs = null,
             };
 
-            doc.Components = context.CreateComponents(doc);
-            doc.Paths = context.CreatePaths(doc);
+            context.AddComponentsToDocument(doc);
+            context.AddPathsToDocument(doc);
             doc.Tags = context.CreateTags(); // order matters so the operation generators have populated the tags
 
 

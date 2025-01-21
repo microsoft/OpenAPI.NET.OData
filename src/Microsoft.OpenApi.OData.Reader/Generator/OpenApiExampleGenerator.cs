@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -23,37 +24,27 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
         /// <param name="document">The Open API document.</param>
-        /// <returns>The created <see cref="OpenApiExample"/> dictionary.</returns>
-        public static IDictionary<string, OpenApiExample> CreateExamples(this ODataContext context, OpenApiDocument document)
+        public static void AddExamplesToDocument(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            IDictionary<string, OpenApiExample> examples = new Dictionary<string, OpenApiExample>();
 
             // Each entity type, complex type, enumeration type, and type definition directly
             // or indirectly used in the paths field is represented as a name / value pair of the schemas map.
             // Ideally this would be driven off the types used in the paths, but in practice, it is simply
             // all of the types present in the model.
-            IEnumerable<IEdmSchemaElement> elements = context.Model.GetAllElements();
+            var elements = context.Model.GetAllElements()
+                                            .Where(static x => x.SchemaElementKind is EdmSchemaElementKind.TypeDefinition)
+                                            .OfType<IEdmType>();
 
             foreach (var element in elements)
             {
-                switch (element.SchemaElementKind)
+                if (context.CreateExample(element, document) is OpenApiExample example)
                 {
-                    case EdmSchemaElementKind.TypeDefinition when element is IEdmType reference: // Type definition
-                        {
-                            OpenApiExample example = context.CreateExample(reference, document);
-                            if (example != null)
-                            {
-                                examples.Add(reference.FullTypeName(), example);
-                            }
-                        }
-                        break;
+                    document.AddComponent(element.FullTypeName(), example);
                 }
             }
-
-            return examples;
         }
 
         private static OpenApiExample CreateExample(this ODataContext context, IEdmType edmType, OpenApiDocument document)

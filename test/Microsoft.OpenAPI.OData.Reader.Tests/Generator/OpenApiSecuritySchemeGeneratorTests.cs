@@ -26,9 +26,11 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             ODataContext context = new ODataContext(GetEdmModel());
+            OpenApiDocument openApiDocument = new();
 
             // Act
-            var schemes = context.CreateSecuritySchemes();
+            context.AddSecuritySchemesToDocument(openApiDocument);
+            var schemes = openApiDocument.Components.SecuritySchemes;
 
             // Assert
             Assert.NotNull(schemes);

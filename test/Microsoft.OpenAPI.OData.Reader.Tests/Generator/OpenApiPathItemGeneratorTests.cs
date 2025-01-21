@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreatePathItems(openApiDocument));
+            Assert.Throws<ArgumentNullException>("context", () => context.AddPathItemsToDocument(openApiDocument));
         }
 
         [Fact]
@@ -39,7 +39,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model);
 
             // Act
-            var pathItems = context.CreatePathItems(openApiDocument);
+            context.AddPathItemsToDocument(openApiDocument);
+            var pathItems = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(pathItems);
@@ -62,7 +63,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var pathItems = context.CreatePathItems(openApiDocument);
+            context.AddPathItemsToDocument(openApiDocument);
+            var pathItems = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(pathItems);
@@ -149,7 +151,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var pathItems = context.CreatePathItems(openApiDocument);
+            context.AddPathItemsToDocument(openApiDocument);
+            var pathItems = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(pathItems);
@@ -205,7 +208,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new(model);
 
             // Act
-            var pathItems = context.CreatePathItems(openApiDocument);
+            context.AddPathItemsToDocument(openApiDocument);
+            var pathItems = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(pathItems);

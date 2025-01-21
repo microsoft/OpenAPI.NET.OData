@@ -23,17 +23,17 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="document">The Open API document to use to lookup references.</param>
-        /// <returns>The created map of <see cref="OpenApiPathItem"/>.</returns>
-        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this ODataContext context, OpenApiDocument document)
+        public static void AddPathItemsToDocument(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(document, nameof(document));
 
-            IDictionary<string, OpenApiPathItem> pathItems = new Dictionary<string, OpenApiPathItem>();
             if (context.EntityContainer == null)
             {
-                return pathItems;
+                return;
             }
 
+            document.Paths ??= [];
             OpenApiConvertSettings settings = context.Settings.Clone();
             settings.EnableKeyAsSegment = context.KeyAsSegment;
             foreach (ODataPath path in context.AllPaths)
@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                pathItems.TryAddPath(context, path, pathItem);
+                document.Paths.TryAddPath(context, path, pathItem);
             }
 
             if (settings.ShowRootPath)
@@ -73,10 +73,8 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 };
-                pathItems.Add("/", rootPath);
+                document.Paths.Add("/", rootPath);
             }
-
-            return pathItems;
         }
 
         private static IDictionary<string, OpenApiLink> CreateRootLinks(IEdmEntityContainer entityContainer)

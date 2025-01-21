@@ -8,23 +8,24 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
+using Moq;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiPathsGeneratorTest
     {
-        private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
-
         [Fact]
         public void CreatePathsThrowArgumentNullContext()
         {
             // Arrange
             OpenApiDocument openApiDocument = new();
             ODataContext context = null;
+            var mockModel = new Mock<IEdmModel>().Object;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreatePaths(openApiDocument));
+            Assert.Throws<ArgumentNullException>("context", () => context.AddPathsToDocument(openApiDocument));
+            Assert.Throws<ArgumentNullException>("document", () => new ODataContext(mockModel).AddPathsToDocument(null));
         }
 
         [Fact]
@@ -36,7 +37,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model);
 
             // Act
-            var paths = context.CreatePaths(openApiDocument);
+            context.AddPathsToDocument(openApiDocument);
+            var paths = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(paths);
@@ -59,7 +61,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var paths = context.CreatePaths(openApiDocument);
+            context.AddPathsToDocument(openApiDocument);
+            var paths = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(paths);
@@ -120,7 +123,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var paths = context.CreatePaths(openApiDocument);
+            context.AddPathsToDocument(openApiDocument);
+            var paths = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(paths);
@@ -178,7 +182,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var paths = context.CreatePaths(openApiDocument);
+            context.AddPathsToDocument(openApiDocument);
+            var paths = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(paths);

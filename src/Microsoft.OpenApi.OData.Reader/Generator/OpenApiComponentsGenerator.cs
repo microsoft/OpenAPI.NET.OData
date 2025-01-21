@@ -21,22 +21,20 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
         /// <param name="document">The Open API document.</param>
-        /// <returns>The created <see cref="OpenApiComponents"/> object.</returns>
-        public static OpenApiComponents CreateComponents(this ODataContext context, OpenApiDocument document)
+        public static void AddComponentsToDocument(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(document, nameof(document));
 
             context.AddSchemasToDocument(document);
             context.AddParametersToDocument(document);
             context.AddResponsesToDocument(document);
             context.AddRequestBodiesToDocument(document);
-            //TODO convert all other create methods to add
-            context.CreateExamples(document);
-            context.CreateSecuritySchemes();
+            context.AddExamplesToDocument(document);
+            context.AddSecuritySchemesToDocument(document);
             document.Components.Links = null;
             document.Components.Callbacks = null;
             document.Components.Extensions = null;
-            return document.Components;
         }
     }
 }
