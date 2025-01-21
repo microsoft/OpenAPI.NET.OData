@@ -96,34 +96,21 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="document">The OpenApi document to lookup references.</param>
-        /// <returns>The created dictionary of <see cref="OpenApiRequestBody"/> indexed by ref name</returns>
-        public static IDictionary<string, OpenApiRequestBody> CreateRequestBodies(this ODataContext context, OpenApiDocument document)
+        public static void AddRequestBodiesToDocument(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            Dictionary<string, OpenApiRequestBody> requestBodies = new()
-            {
-                {
-                    Constants.ReferencePostRequestBodyName,
-                    CreateRefPostRequestBody(document)
-                },
-                {
-                    Constants.ReferencePutRequestBodyName,
-                    CreateRefPutRequestBody(document)
-                }
-            };
+            document.AddComponent(Constants.ReferencePostRequestBodyName, CreateRefPostRequestBody(document));
+            document.AddComponent(Constants.ReferencePutRequestBodyName, CreateRefPutRequestBody(document));
 
             // add request bodies for actions targeting multiple related paths
             foreach (IEdmAction action in context.Model.SchemaElements.OfType<IEdmAction>()
-                .Where(action => context.Model.OperationTargetsMultiplePaths(action)))
+                .Where(context.Model.OperationTargetsMultiplePaths))
             {
-                OpenApiRequestBody requestBody = context.CreateRequestBody(action, document);
-                if (requestBody != null)
-                    requestBodies.Add($"{action.Name}RequestBody", requestBody);
+                if (context.CreateRequestBody(action, document) is OpenApiRequestBody requestBody)
+                    document.AddComponent($"{action.Name}RequestBody", requestBody);
             }
-      
-            return requestBodies;
         }
 
         /// <summary>

@@ -63,10 +63,10 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="document">The OpenApi document to lookup references.</param>
-        /// <returns>The name/value pairs for the standard OData error response.</returns>
-        public static IDictionary<string, OpenApiResponse> CreateResponses(this ODataContext context, OpenApiDocument document)
+        public static void AddResponsesToDocument(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(document, nameof(document));
 
             var responses =  new Dictionary<string, OpenApiResponse>
             {
@@ -101,7 +101,10 @@ namespace Microsoft.OpenApi.OData.Generator
                     responses[$"{operation.Name}Response"] = response;
             }
 
-            return responses;
+            foreach (var response in responses)
+            {
+                document.AddComponent(response.Key, response.Value);
+            }
         }
 
         /// <summary>

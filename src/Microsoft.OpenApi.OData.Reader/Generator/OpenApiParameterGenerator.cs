@@ -30,7 +30,6 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="document">The Open API document.</param>
-        /// <returns>The created map of <see cref="OpenApiParameter"/> object.</returns>
         public static void AddParametersToDocument(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));

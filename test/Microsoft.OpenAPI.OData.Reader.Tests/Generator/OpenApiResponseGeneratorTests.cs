@@ -13,6 +13,7 @@ using Xunit;
 using Microsoft.OpenApi.OData.Edm;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using Moq;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {
@@ -48,9 +49,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             ODataContext context = null;
+            var mockModel = new Mock<IEdmModel>().Object;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(new()));
+            Assert.Throws<ArgumentNullException>("context", () => context.AddResponsesToDocument(new()));
+            Assert.Throws<ArgumentNullException>("document", () => new ODataContext(mockModel).AddResponsesToDocument(null));
         }
 
         [Fact]
@@ -64,9 +67,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                     EnablePagination = true,
             };
             ODataContext context = new(model, settings);
+            OpenApiDocument document = new();
 
             // Act & Assert
-            var responses = context.CreateResponses(new());
+            context.AddResponsesToDocument(document);
+            var responses = document.Components.Responses;
 
             var flightCollectionResponse = responses["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
             var stringCollectionResponse = responses["StringCollectionResponse"];
@@ -81,9 +86,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
             ODataContext context = new ODataContext(model);
+            OpenApiDocument document = new();
 
             // Act
-            var responses = context.CreateResponses(new());
+            context.AddResponsesToDocument(document);
+            var responses = document.Components.Responses;
 
             // Assert
             Assert.NotNull(responses);
@@ -101,9 +108,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
             ODataContext context = new ODataContext(model);
+            OpenApiDocument document = new();
 
             // Act
-            var responses = context.CreateResponses(new());
+            context.AddResponsesToDocument(document);
+            var responses = document.Components.Responses;
 
             // Assert
             var response = responses["error"];

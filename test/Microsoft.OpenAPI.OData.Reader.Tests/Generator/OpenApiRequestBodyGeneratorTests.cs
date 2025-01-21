@@ -163,9 +163,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             ODataContext context = new ODataContext(_model);
+            OpenApiDocument openApiDocument = new OpenApiDocument();
 
             // Act
-            var requestBodies = context.CreateRequestBodies(new());
+            context.AddRequestBodiesToDocument(openApiDocument);
+            var requestBodies = openApiDocument.Components.RequestBodies;
             requestBodies.TryGetValue(Common.Constants.ReferencePostRequestBodyName, out Models.OpenApiRequestBody refPostBody);
 
             // Assert

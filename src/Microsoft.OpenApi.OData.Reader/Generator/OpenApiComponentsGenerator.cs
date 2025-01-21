@@ -28,11 +28,11 @@ namespace Microsoft.OpenApi.OData.Generator
 
             context.AddSchemasToDocument(document);
             context.AddParametersToDocument(document);
+            context.AddResponsesToDocument(document);
+            context.AddRequestBodiesToDocument(document);
             //TODO convert all other create methods to add
-            document.Components.Responses = context.CreateResponses(document);
-            document.Components.RequestBodies = context.CreateRequestBodies(document);
-            document.Components.Examples = context.CreateExamples(document);
-            document.Components.SecuritySchemes = context.CreateSecuritySchemes();
+            context.CreateExamples(document);
+            context.CreateSecuritySchemes();
             document.Components.Links = null;
             document.Components.Callbacks = null;
             document.Components.Extensions = null;
