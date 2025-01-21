@@ -65,7 +65,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // Check whether path is a navigation property path
             IsNavigationPropertyPath = Path.Segments.Contains(
-                Path.Segments.Where(segment => segment is ODataNavigationPropertySegment).FirstOrDefault());
+                Path.Segments.FirstOrDefault(segment => segment is ODataNavigationPropertySegment));
 
             LastSegmentIsStreamPropertySegment = Path.LastSegment.Kind == ODataSegmentKind.StreamProperty;
 
