@@ -23,13 +23,23 @@ namespace Microsoft.OpenApi.OData.Generator
     internal static class OpenApiEdmTypeSchemaGenerator
     {
         /// <summary>
-        /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmTypeReference"/>.
+        /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmTypeReference"/> when producing an OpenAPI parameter.
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="edmTypeReference">The Edm type reference.</param>
         /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmTypeSchema(this ODataContext context, IEdmTypeReference edmTypeReference, OpenApiDocument document)
+        public static OpenApiSchema CreateEdmTypeSchemaForParameter(this ODataContext context, IEdmTypeReference edmTypeReference, OpenApiDocument document)
+        => CreateEdmTypeSchema(context, edmTypeReference, document, true);
+        /// <summary>
+        /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmTypeReference"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="edmTypeReference">The Edm type reference.</param>
+        /// <param name="document">The Open API document to lookup references.</param>
+        /// <param name="schemaForParameter">Whether the schema is for a parameter.</param>
+        /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
+        public static OpenApiSchema CreateEdmTypeSchema(this ODataContext context, IEdmTypeReference edmTypeReference, OpenApiDocument document, bool schemaForParameter = false)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(edmTypeReference, nameof(edmTypeReference));
@@ -45,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     OpenApiSchema schema;
                     schema = typeRef.TypeKind() == EdmTypeKind.Complex || typeRef.TypeKind() == EdmTypeKind.Entity
                         ? context.CreateStructuredTypeSchema(typeRef.AsStructured(), document, true)
-                        : context.CreateEdmTypeSchema(typeRef, document);
+                        : context.CreateEdmTypeSchema(typeRef, document, schemaForParameter);
 
                     return new OpenApiSchema
                     {
@@ -67,7 +77,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 // represented as Schema Objects that are JSON References to definitions in the Definitions Object
                 case EdmTypeKind.Primitive:
                     IEdmPrimitiveTypeReference primitiveTypeReference = (IEdmPrimitiveTypeReference)edmTypeReference;
-                    return context.CreateSchema(primitiveTypeReference, document);
+                    return context.CreateSchema(primitiveTypeReference, document, schemaForParameter);
 
                 case EdmTypeKind.TypeDefinition:
                     return context.CreateSchema(((IEdmTypeDefinitionReference)edmTypeReference).TypeDefinition().UnderlyingType, document);
@@ -90,14 +100,15 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="context">The OData context.</param>
         /// <param name="primitiveType">The Edm primitive reference.</param>
         /// <param name="document">The Open API document to lookup references.</param>
+        /// <param name="schemaForParameter">Whether the schema is for a parameter.</param>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveTypeReference primitiveType, OpenApiDocument document)
+        public static OpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveTypeReference primitiveType, OpenApiDocument document, bool schemaForParameter = false)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(primitiveType, nameof(primitiveType));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            OpenApiSchema schema = context.CreateSchema(primitiveType.PrimitiveDefinition(), document);
+            OpenApiSchema schema = context.CreateSchema(primitiveType.PrimitiveDefinition(), document, schemaForParameter);
             if (schema != null)
             {
                 switch(primitiveType.PrimitiveKind())
@@ -151,8 +162,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="context">The OData context.</param>
         /// <param name="primitiveType">The Edm primitive type.</param>
         /// <param name="document">The Open API document to lookup references.</param>
+        /// <param name="schemaForParameter">Whether the schema is for a parameter.</param>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveType primitiveType, OpenApiDocument document)
+        public static OpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveType primitiveType, OpenApiDocument document, bool schemaForParameter = false)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(primitiveType, nameof(primitiveType));
@@ -165,6 +177,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 OneOf = null,
                 AnyOf = null
             };
+
+            var emitIEEECompatibleTypes = context.Settings.IEEE754Compatible && (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0 || !schemaForParameter);
+            var emitV2CompatibleParameterTypes = context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi2_0 && schemaForParameter;
 
             switch (primitiveType.PrimitiveKind)
             {
@@ -185,36 +200,42 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Format = "date-time";
                     schema.Pattern = "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$";
                     break;
-                case EdmPrimitiveTypeKind.Decimal: // decimal
-                    if (context.Settings.IEEE754Compatible)
-                    {
-                        schema.OneOf = new List<OpenApiSchema>
-                        {
-                            new OpenApiSchema { Type = JsonSchemaType.Number, Format = Constants.DecimalFormat, Nullable = true },
-                            new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
-                        };
-                    }
-                    else
-                    {
+                case EdmPrimitiveTypeKind.Decimal when emitIEEECompatibleTypes: // decimal
+                    schema.OneOf =
+                    [
+                        new OpenApiSchema { Type = JsonSchemaType.Number, Format = Constants.DecimalFormat, Nullable = true },
+                        new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
+                    ];
+                    break;
+                case EdmPrimitiveTypeKind.Decimal when !emitIEEECompatibleTypes: // decimal
                         schema.Type = JsonSchemaType.Number;
                         schema.Format = Constants.DecimalFormat;
-                    }
                     break;
-                case EdmPrimitiveTypeKind.Double: // double
-                    schema.OneOf = new List<OpenApiSchema>
-                    {
+                case EdmPrimitiveTypeKind.Double when emitV2CompatibleParameterTypes: // double
+                    schema.Type = JsonSchemaType.Number;
+                    schema.Format = "double";
+                    schema.Nullable = true;
+                    break;
+                case EdmPrimitiveTypeKind.Double when !emitV2CompatibleParameterTypes: // double
+                    schema.OneOf =
+                    [
                         new OpenApiSchema { Type = JsonSchemaType.Number, Format = "double", Nullable = true },
                         new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
                         new OpenApiSchemaReference(Constants.ReferenceNumericName, document)
-                    };
+                    ];
                     break;
-                case EdmPrimitiveTypeKind.Single: // single
-                    schema.OneOf = new List<OpenApiSchema>
-                    {
+                case EdmPrimitiveTypeKind.Single when emitV2CompatibleParameterTypes: // single
+                    schema.Type = JsonSchemaType.Number;
+                    schema.Format = "float";
+                    schema.Nullable = true;
+                    break;
+                case EdmPrimitiveTypeKind.Single when !emitV2CompatibleParameterTypes: // single
+                    schema.OneOf =
+                    [
                         new OpenApiSchema { Type = JsonSchemaType.Number, Format = "float", Nullable = true },
                         new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
                         new OpenApiSchemaReference(Constants.ReferenceNumericName, document)
-                    };
+                    ];
                     break;
                 case EdmPrimitiveTypeKind.Guid: // guid
                     schema.Type = JsonSchemaType.String;
@@ -233,20 +254,16 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Minimum = Int32.MinValue; // -2147483648
                     schema.Maximum = Int32.MaxValue; // 2147483647
                     break;
-                case EdmPrimitiveTypeKind.Int64:
-                    if (context.Settings.IEEE754Compatible)
-                    {
-                        schema.OneOf = new List<OpenApiSchema>
-                        {
-                            new OpenApiSchema { Type = JsonSchemaType.Number, Format = Constants.Int64Format, Nullable = true },
-                            new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true }
-                        };
-                    }
-                    else
-                    {
-                        schema.Type = JsonSchemaType.Number;
-                        schema.Format = Constants.Int64Format;
-                    }
+                case EdmPrimitiveTypeKind.Int64 when emitIEEECompatibleTypes:
+                    schema.OneOf =
+                    [
+                        new OpenApiSchema { Type = JsonSchemaType.Number, Format = Constants.Int64Format, Nullable = true },
+                        new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true }
+                    ];
+                    break;
+                case EdmPrimitiveTypeKind.Int64 when !emitIEEECompatibleTypes:
+                    schema.Type = JsonSchemaType.Number;
+                    schema.Format = Constants.Int64Format;
                     break;
                 case EdmPrimitiveTypeKind.SByte:
                     schema.Type = JsonSchemaType.Number;

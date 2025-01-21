@@ -1244,12 +1244,14 @@
             "in": "path",
             "name": "lat",
             "required": true,
+            "type": "number",
             "format": "double"
           },
           {
             "in": "path",
             "name": "lon",
             "required": true,
+            "type": "number",
             "format": "double"
           }
         ],

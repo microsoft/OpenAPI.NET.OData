@@ -133,7 +133,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Name = parameterNameMapping == null ? edmParameter.Name : parameterNameMapping[edmParameter.Name],
                         In = isOptionalParameter ? ParameterLocation.Query : ParameterLocation.Path,
                         Required = !isOptionalParameter,
-                        Schema = context.CreateEdmTypeSchema(edmParameter.Type, document)
+                        Schema = context.CreateEdmTypeSchemaForParameter(edmParameter.Type, document)
                     };
                 }
 
@@ -191,7 +191,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     In = ParameterLocation.Path,
                     Required = true,
                     Description = $"The unique identifier of {entityType.Name}",
-                    Schema = context.CreateEdmTypeSchema(keys[0].Type, document)
+                    Schema = context.CreateEdmTypeSchemaForParameter(keys[0].Type, document)
                 };
 
                 parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
@@ -210,7 +210,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         In = ParameterLocation.Path,
                         Required = true,
                         Description = $"Property in multi-part unique identifier of {entityType.Name}",
-                        Schema = context.CreateEdmTypeSchema(keyProperty.Type, document)
+                        Schema = context.CreateEdmTypeSchemaForParameter(keyProperty.Type, document)
                     };
 
                     if (keySegment.KeyMappings != null)
@@ -254,7 +254,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Name = alternateKey.First().Key,
                             In = ParameterLocation.Path,
                             Description = $"Alternate key of {entityType.Name}",
-                            Schema = context.CreateEdmTypeSchema(alternateKey.First().Value.Type, document),
+                            Schema = context.CreateEdmTypeSchemaForParameter(alternateKey.First().Value.Type, document),
                             Required = true
                         }
                      );
@@ -272,7 +272,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Name = compositekey.Key,
                                 In = ParameterLocation.Path,
                                 Description = $"Property in multi-part alternate key of {entityType.Name}",
-                                Schema = context.CreateEdmTypeSchema(compositekey.Value.Type, document),
+                                Schema = context.CreateEdmTypeSchemaForParameter(compositekey.Value.Type, document),
                                 Required = true
                             }
                          );
