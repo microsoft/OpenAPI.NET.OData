@@ -82,13 +82,10 @@ namespace Microsoft.OpenApi.OData.Generator
             int skip = function.IsBound ? 1 : 0;
             foreach (IEdmOperationParameter edmParameter in function.Parameters.Skip(skip))
             {
-                if (parameterNameMapping != null)
+                if (parameterNameMapping != null && !parameterNameMapping.ContainsKey(edmParameter.Name))
                 {
-                    if (!parameterNameMapping.ContainsKey(edmParameter.Name))
-                    {
-                        continue;
-                    }
-                }                
+                    continue;
+                }
 
                 OpenApiParameter parameter;
                 bool isOptionalParameter = edmParameter is IEdmOptionalParameter;
