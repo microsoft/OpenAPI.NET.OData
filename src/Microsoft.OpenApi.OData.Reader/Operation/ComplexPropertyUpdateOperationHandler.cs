@@ -78,7 +78,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
+        operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
         base.SetResponses(operation);
     }
     protected override void SetSecurity(OpenApiOperation operation)
@@ -88,7 +88,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions).ToList();
+        operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions, _document).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)

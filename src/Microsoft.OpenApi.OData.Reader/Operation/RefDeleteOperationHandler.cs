@@ -109,7 +109,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_deleteRestriction.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_deleteRestriction.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>
@@ -119,7 +119,7 @@ namespace Microsoft.OpenApi.OData.Operation
             OpenApiConvertSettings settings = Context.Settings.Clone();
             settings.UseSuccessStatusCodeRange = false;
             
-            operation.AddErrorResponses(settings, true);
+            operation.AddErrorResponses(settings, _document, true);
             base.SetResponses(operation);
         }
 

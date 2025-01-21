@@ -122,7 +122,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
 
-    		operation.AddErrorResponses(Context.Settings, false);
+    		operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -135,7 +135,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>

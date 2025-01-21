@@ -91,7 +91,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     {
                         Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                        new OpenApiResponseReference($"String{Constants.CollectionSchemaSuffix}", null)
+                        new OpenApiResponseReference($"String{Constants.CollectionSchemaSuffix}", _document)
                     }
                 };
             }
@@ -135,7 +135,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 };
             }
 
-    		operation.AddErrorResponses(Context.Settings, false);
+    		operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -195,7 +195,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             ReadRestrictionsBase readBase = _readRestriction;
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

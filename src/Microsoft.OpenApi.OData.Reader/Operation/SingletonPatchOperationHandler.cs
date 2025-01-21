@@ -85,7 +85,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
+            operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
             base.SetResponses(operation);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>

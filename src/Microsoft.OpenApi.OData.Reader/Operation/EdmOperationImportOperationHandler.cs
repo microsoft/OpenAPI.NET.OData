@@ -113,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>

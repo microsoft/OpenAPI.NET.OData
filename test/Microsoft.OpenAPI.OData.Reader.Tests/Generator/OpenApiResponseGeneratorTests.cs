@@ -25,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         public void GetResponseReturnsNullResponseObject(string input)
         {
             // Arrange & Act
-            var response = input.GetResponse();
+            var response = input.GetResponse(new());
 
             // Assert
             Assert.Null(response);
@@ -37,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         public void GetResponseReturnsResponseObject(string input)
         {
             // Arrange & Act
-            var response = input.GetResponse();
+            var response = input.GetResponse(new());
 
             // Assert
             Assert.NotNull(response);

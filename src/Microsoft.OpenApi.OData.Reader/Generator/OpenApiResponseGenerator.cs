@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
@@ -19,28 +20,34 @@ namespace Microsoft.OpenApi.OData.Generator
     /// </summary>
     internal static class OpenApiResponseGenerator
     {
-        private static IDictionary<string, OpenApiResponse> _responses =
-           new Dictionary<string, OpenApiResponse>
-           {
-                { Constants.StatusCodeDefault,
-                    new OpenApiResponseReference(Constants.Error, null)
-                },
+        private static Dictionary<string, OpenApiResponse> _responses;
 
-                { Constants.StatusCode204, new OpenApiResponse { Description = Constants.Success} },
-                { Constants.StatusCode201, new OpenApiResponse { Description = Constants.Created} },
-                { Constants.StatusCodeClass2XX, new OpenApiResponse { Description = Constants.Success} },
-                { Constants.StatusCodeClass4XX, new OpenApiResponseReference(Constants.Error, null)},
-                { Constants.StatusCodeClass5XX, new OpenApiResponseReference(Constants.Error, null)}
-           };
+        private static Dictionary<string, OpenApiResponse> GetResponses(OpenApiDocument openApiDocument)
+        {
+            _responses ??= new()
+                {
+                    { Constants.StatusCodeDefault,
+                        new OpenApiResponseReference(Constants.Error, openApiDocument)
+                    },
+
+                    { Constants.StatusCode204, new OpenApiResponse { Description = Constants.Success} },
+                    { Constants.StatusCode201, new OpenApiResponse { Description = Constants.Created} },
+                    { Constants.StatusCodeClass2XX, new OpenApiResponse { Description = Constants.Success} },
+                    { Constants.StatusCodeClass4XX, new OpenApiResponseReference(Constants.Error, openApiDocument)},
+                    { Constants.StatusCodeClass5XX, new OpenApiResponseReference(Constants.Error, openApiDocument)}
+                };
+            return _responses;
+        }
 
         /// <summary>
         /// Get the <see cref="OpenApiResponse"/> for the build-in statusCode.
         /// </summary>
         /// <param name="statusCode">The status code.</param>
+        /// <param name="document">The OpenApi document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiResponse"/>.</returns>
-        public static OpenApiResponse GetResponse(this string statusCode)
+        public static OpenApiResponse GetResponse(this string statusCode, OpenApiDocument document)
         {
-            if (_responses.TryGetValue(statusCode, out OpenApiResponse response))
+            if (GetResponses(document).TryGetValue(statusCode, out OpenApiResponse response))
             {
                 return response;
             }
@@ -129,13 +136,13 @@ namespace Microsoft.OpenApi.OData.Generator
             
             if (operation.IsAction() && operation.ReturnType == null)
             {
-                responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
+                responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse(document));
             }
             else if (context.Model.OperationTargetsMultiplePaths(operation))
             {
                 responses.Add(
                     context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponseReference($"{operation.Name}Response", null)
+                    new OpenApiResponseReference($"{operation.Name}Response", document)
                  );
             }
             else
@@ -146,12 +153,12 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.ErrorResponsesAsDefault)
             {
-                responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+                responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse(document));
             }
             else
             {
-                responses.Add(Constants.StatusCodeClass4XX, Constants.StatusCodeClass4XX.GetResponse());
-                responses.Add(Constants.StatusCodeClass5XX, Constants.StatusCodeClass5XX.GetResponse());
+                responses.Add(Constants.StatusCodeClass4XX, Constants.StatusCodeClass4XX.GetResponse(document));
+                responses.Add(Constants.StatusCodeClass5XX, Constants.StatusCodeClass5XX.GetResponse(document));
             }
 
             return responses;

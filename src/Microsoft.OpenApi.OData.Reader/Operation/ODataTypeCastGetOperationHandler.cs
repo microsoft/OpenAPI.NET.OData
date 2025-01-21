@@ -227,7 +227,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
             SetCollectionResponse(operation, TargetSchemaElement.FullName());
         }			
 
-		operation.AddErrorResponses(Context.Settings, false);
+		operation.AddErrorResponses(Context.Settings, _document, false);
 
 		base.SetResponses(operation);
 	}
@@ -358,7 +358,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 		ReadRestrictionsBase readBase = restriction.ReadRestrictions;
 
-		operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
+		operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
 	}
 
 	protected override void SetExtensions(OpenApiOperation operation)

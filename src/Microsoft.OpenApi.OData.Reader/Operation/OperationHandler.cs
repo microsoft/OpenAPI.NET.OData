@@ -315,7 +315,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponseReference($"{targetElementFullName}{Constants.CollectionSchemaSuffix}", null)
+                    new OpenApiResponseReference($"{targetElementFullName}{Constants.CollectionSchemaSuffix}", _document)
                 }
             };
         }

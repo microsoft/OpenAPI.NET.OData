@@ -163,7 +163,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             SetSingleResponse(operation, schema);
         }
 
-        operation.AddErrorResponses(Context.Settings, false);
+        operation.AddErrorResponses(Context.Settings, _document, false);
         base.SetResponses(operation);
     }
    
@@ -174,7 +174,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions).ToList();
+        operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)

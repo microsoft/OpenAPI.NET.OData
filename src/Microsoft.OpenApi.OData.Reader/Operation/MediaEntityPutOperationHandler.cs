@@ -101,11 +101,11 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 OpenApiSchema schema = new OpenApiSchemaReference(entityType.FullName(), _document);
 
-                operation.AddErrorResponses(Context.Settings, addNoContent: true, schema: schema);
+                operation.AddErrorResponses(Context.Settings, _document, addNoContent: true, schema: schema);
             }
             else
             {
-                operation.AddErrorResponses(Context.Settings, true);
+                operation.AddErrorResponses(Context.Settings, _document, true);
             }
             
             base.SetResponses(operation);
@@ -121,7 +121,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(update.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>

@@ -23,37 +23,14 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create the list of <see cref="OpenApiSecurityRequirement"/> object.
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
-        /// <param name="securitySchemes">The securitySchemes.</param>
-        /// <returns>The created <see cref="OpenApiSecurityRequirement"/> collection.</returns>
-        public static IEnumerable<OpenApiSecurityRequirement> CreateSecurityRequirements(this ODataContext context,
-            IList<SecurityScheme> securitySchemes)
-        {
-            Utils.CheckArgumentNull(context, nameof(context));
-
-            if (securitySchemes != null)
-            {
-                foreach (var securityScheme in securitySchemes)
-                {
-                    yield return new OpenApiSecurityRequirement
-                    {
-                        [
-                            new OpenApiSecuritySchemeReference(securityScheme.Authorization, null)
-                        ] = new List<string>(securityScheme.RequiredScopes ?? new List<string>())
-                    };
-                }
-            }
-        }
-
-        /// <summary>
-        /// Create the list of <see cref="OpenApiSecurityRequirement"/> object.
-        /// </summary>
-        /// <param name="context">The OData to Open API context.</param>
         /// <param name="permissions">The permissions.</param>
+        /// <param name="document">The Open API document to use for references lookup.</param>
         /// <returns>The created <see cref="OpenApiSecurityRequirement"/> collection.</returns>
         public static IEnumerable<OpenApiSecurityRequirement> CreateSecurityRequirements(this ODataContext context,
-            IList<PermissionType> permissions)
+            IList<PermissionType> permissions, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(document, nameof(document));
 
             if (permissions != null)
             {
@@ -62,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     yield return new OpenApiSecurityRequirement
                     {
                         [
-                            new OpenApiSecuritySchemeReference(permission.SchemeName, null)
+                            new OpenApiSecuritySchemeReference(permission.SchemeName, document)
                         ] = new List<string>(permission.Scopes?.Select(c => c.Scope) ?? new List<string>())
                     };
                 }
