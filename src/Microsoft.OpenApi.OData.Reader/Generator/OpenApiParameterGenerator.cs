@@ -29,21 +29,20 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create a map of <see cref="OpenApiParameter"/> object.
         /// </summary>
         /// <param name="context">The OData context.</param>
+        /// <param name="document">The Open API document.</param>
         /// <returns>The created map of <see cref="OpenApiParameter"/> object.</returns>
-        public static IDictionary<string, OpenApiParameter> CreateParameters(this ODataContext context)
+        public static void AddParametersToDocument(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(document, nameof(document));
 
             // It allows defining query options and headers that can be reused across operations of the service.
             // The value of parameters is a map of Parameter Objects.
-            return new Dictionary<string, OpenApiParameter>
-            {
-                { "top", CreateTop(context.Settings.TopExample) },
-                { "skip", CreateSkip() },
-                { "count", CreateCount() },
-                { "filter", CreateFilter() },
-                { "search", CreateSearch() },
-            };
+            document.AddComponent("top", CreateTop(context.Settings.TopExample));
+            document.AddComponent("skip", CreateSkip());
+            document.AddComponent("count", CreateCount());
+            document.AddComponent("filter", CreateFilter());
+            document.AddComponent("search", CreateSearch());
         }
 
         /// <summary>

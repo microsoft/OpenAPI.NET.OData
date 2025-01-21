@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
+using Moq;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
@@ -26,9 +27,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             ODataContext context = null;
+            var mockModel = new Mock<IEdmModel>().Object;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateParameters());
+            Assert.Throws<ArgumentNullException>("context", () => context.AddParametersToDocument(new()));
+            Assert.Throws<ArgumentNullException>("document", () => new ODataContext(mockModel).AddParametersToDocument(null));
         }
 
         [Fact]
@@ -37,9 +40,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
             ODataContext context = new ODataContext(model);
+            OpenApiDocument openApiDocument = new ();
 
             // Act
-            var parameters = context.CreateParameters();
+            context.AddParametersToDocument(openApiDocument);
+            var parameters = openApiDocument.Components.Parameters;
 
             // Assert
             Assert.NotNull(parameters);
@@ -117,9 +122,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
             ODataContext context = new ODataContext(model);
+            OpenApiDocument openApiDocument = new ();
 
             // Act
-            var parameters = context.CreateParameters();
+            context.AddParametersToDocument(openApiDocument);
+            var parameters = openApiDocument.Components.Parameters;
 
             // Assert
             Assert.Contains("skip", parameters.Select(p => p.Key));
