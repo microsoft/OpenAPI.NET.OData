@@ -70,7 +70,6 @@ override Microsoft.OpenApi.OData.Edm.ODataRefSegment.GetPathItemName(Microsoft.O
 override Microsoft.OpenApi.OData.Edm.ODataStreamContentSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
-static Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions.AddErrorResponses(this Microsoft.OpenApi.Models.OpenApiOperation operation, Microsoft.OpenApi.OData.OpenApiConvertSettings settings, bool addNoContent = false, Microsoft.OpenApi.Models.OpenApiSchema schema = null) -> void
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.OperationTargetsMultiplePaths(this Microsoft.OData.Edm.IEdmModel model, Microsoft.OData.Edm.IEdmOperation operation) -> bool
 static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted(this Microsoft.OData.Edm.IEdmType edmType, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider
@@ -302,7 +301,6 @@ static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.FindAllBaseTypes(this Micr
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.GetAllElements(this Microsoft.OData.Edm.IEdmModel model) -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.IEdmSchemaElement>
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsOperationImportOverload(this Microsoft.OData.Edm.IEdmModel model, Microsoft.OData.Edm.IEdmOperationImport operationImport) -> bool
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsOperationOverload(this Microsoft.OData.Edm.IEdmModel model, Microsoft.OData.Edm.IEdmOperation operation) -> bool
-static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsUrlEscapeFunction(this Microsoft.OData.Edm.IEdmModel model, Microsoft.OData.Edm.IEdmFunction function) -> bool
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsUrlEscapeFunction(this Microsoft.OData.Edm.IEdmModel model, Microsoft.OData.Edm.IEdmOperation operation) -> bool
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.LoadAllNavigationSources(this Microsoft.OData.Edm.IEdmModel model) -> System.Collections.Generic.IDictionary<Microsoft.OData.Edm.IEdmEntityType, System.Collections.Generic.IList<Microsoft.OData.Edm.IEdmNavigationSource>>
 static Microsoft.OpenApi.OData.Edm.ODataRefSegment.Instance -> Microsoft.OpenApi.OData.Edm.ODataRefSegment
@@ -313,4 +311,3 @@ virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.CanFilter(Microsoft.OData.
 virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.GetPaths(Microsoft.OData.Edm.IEdmModel model, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.OData.Edm.ODataPath>
 virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.Initialize(Microsoft.OData.Edm.IEdmModel model) -> void
 virtual Microsoft.OpenApi.OData.Edm.ODataSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType
-Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions

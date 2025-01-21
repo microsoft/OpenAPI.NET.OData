@@ -43,7 +43,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="model">The Edm model.</param>
         /// <param name="function">The specified function</param>
         /// <returns><c>true</c> if the specified operation is UrlEscape function; otherwise, <c>false</c>.</returns>
-        public static bool IsUrlEscapeFunction(this IEdmModel model, IEdmFunction function)
+        private static bool IsUrlEscapeFunction(this IEdmModel model, IEdmFunction function)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(function, nameof(function));

@@ -12,7 +12,7 @@ namespace Microsoft.OpenApi.OData.Common;
 /// <summary>
 /// Extensions methods for the OpenApiOperation class.
 /// </summary>
-public static class OpenApiOperationExtensions
+internal static class OpenApiOperationExtensions
 {
     /// <summary>
     /// Adds a default response to the operation or 4XX/5XX responses for the errors depending on the settings.
