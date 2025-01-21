@@ -22,9 +22,11 @@ namespace UpdateDocs
         {
             // we assume the path are existed for simplicity.
             string path = Directory.GetCurrentDirectory();
-            string csdl = path + "/../../../../../docs/csdl";
-            string oas20 = path + "/../../../../../docs/oas_2_0";
-            string oas30 = path + "/../../../../../docs/oas3_0_0";
+            string parentPath = Path.Combine(path, "..", "..", "..", "..", "..");
+            string csdl = Path.Combine(parentPath, "docs", "csdl");
+            string oas20 = Path.Combine(parentPath, "docs", "oas_2_0");
+            string oas30 = Path.Combine(parentPath, "docs", "oas3_0_0");
+            string oas31 = Path.Combine(parentPath, "docs", "oas3_1_0");
 
             foreach (var filePath in Directory.GetFiles(csdl, "*.xml"))
             {
@@ -53,11 +55,14 @@ namespace UpdateDocs
 
                 settings.EnableKeyAsSegment = true;
                 settings.EnableUnqualifiedCall = true;
-                var output = oas30 + "/" + fileName + ".json";
+                var output = Path.Combine(oas31, fileName + ".json");
                 var document = model.ConvertToOpenApi(settings);
+                await File.WriteAllTextAsync(output, await document.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_1));
+
+                output = Path.Combine(oas30, fileName + ".json");
                 await File.WriteAllTextAsync(output, await document.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
-                output = oas20 + "/" + fileName + ".json";
+                output = Path.Combine(oas20, fileName + ".json");
                 await File.WriteAllTextAsync(output, await document.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi2_0));
 
                 Console.WriteLine("Output [ " + fileName + " ] Successful!");

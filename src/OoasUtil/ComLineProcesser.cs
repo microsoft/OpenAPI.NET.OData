@@ -245,7 +245,7 @@ namespace OoasUtil
 
             if (Version == null)
             {
-                Version = OpenApiSpecVersion.OpenApi3_0;
+                Version = OpenApiSpecVersion.OpenApi3_1;
             }
 
             if (KeyAsSegment == null)
@@ -432,7 +432,7 @@ namespace OoasUtil
                 return false;
             }
 
-            Version = version == 2 ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            Version = version == 2 ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_1;
             return true;
         }
 

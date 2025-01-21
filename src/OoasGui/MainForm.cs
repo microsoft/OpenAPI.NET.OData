@@ -27,7 +27,7 @@ namespace OoasGui
     {
         private OpenApiFormat Format { get; set; } = OpenApiFormat.Json;
 
-        private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_0;
+        private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_1;
 
         private OpenApiConvertSettings Settings = new OpenApiConvertSettings();
 
