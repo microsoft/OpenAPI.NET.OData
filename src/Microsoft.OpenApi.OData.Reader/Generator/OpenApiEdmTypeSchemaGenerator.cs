@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     return context.CreateSchema(primitiveTypeReference, document, schemaForParameter);
 
                 case EdmTypeKind.TypeDefinition:
-                    return context.CreateSchema(((IEdmTypeDefinitionReference)edmTypeReference).TypeDefinition().UnderlyingType, document);
+                    return context.CreateSchema(((IEdmTypeDefinitionReference)edmTypeReference).TypeDefinition().UnderlyingType, document, schemaForParameter);
 
                 case EdmTypeKind.EntityReference:
                     return context.CreateTypeDefinitionSchema(edmTypeReference.AsTypeDefinition(), document);
