@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -382,6 +383,14 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-4d93", operation2.OperationId);
                 Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-a2b2", operation3.OperationId);
                 Assert.Equal("Customers.Customer.MyFunction1.MyFunction2-7bea", operation4.OperationId);
+                var operationIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+                {
+                    operation1.OperationId, 
+                    operation2.OperationId, 
+                    operation3.OperationId, 
+                    operation4.OperationId
+                };
+                Assert.Equal(4, operationIds.Count);// All are unique as the hashset size is unchanged!
             }
             else
             {
