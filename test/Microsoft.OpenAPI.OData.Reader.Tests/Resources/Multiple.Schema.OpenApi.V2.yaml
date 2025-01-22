@@ -13,6 +13,8 @@ paths:
         - Categories.CategoryDto
       summary: Get entities from Categories
       operationId: Categories.CategoryDto.ListCategoryDto
+      produces:
+        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -143,6 +145,8 @@ paths:
       operationId: Categories.CategoryDto.UpdateCategoryDto
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -170,6 +174,8 @@ paths:
         - Categories.CategoryDto
       summary: Delete entity from Categories
       operationId: Categories.CategoryDto.DeleteCategoryDto
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -197,6 +203,9 @@ paths:
         - Categories.CategoryDto
       summary: Get the number of the resource
       operationId: Categories.GetCount-2f72
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -212,6 +221,8 @@ paths:
         - Documents.DocumentDto
       summary: Get entities from Documents
       operationId: Documents.DocumentDto.ListDocumentDto
+      produces:
+        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -362,6 +373,8 @@ paths:
       operationId: Documents.DocumentDto.UpdateDocumentDto
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -389,6 +402,8 @@ paths:
         - Documents.DocumentDto
       summary: Delete entity from Documents
       operationId: Documents.DocumentDto.DeleteDocumentDto
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -416,6 +431,8 @@ paths:
         - Documents.DocumentDto.Actions
       summary: Invoke action Upload
       operationId: Documents.DocumentDto.Upload
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -439,6 +456,8 @@ paths:
         - Documents.RevisionDto
       summary: Get Revisions from Documents
       operationId: Documents.ListRevisions
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -542,6 +561,8 @@ paths:
         - Documents.RevisionDto
       summary: Delete ref of navigation property Revisions for Documents
       operationId: Documents.revisions.DeleteRefRevisionDto
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -578,6 +599,9 @@ paths:
         - Documents.RevisionDto
       summary: Get the number of the resource
       operationId: Documents.Revisions.GetCount-f834
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -602,6 +626,8 @@ paths:
         - Documents.RevisionDto
       summary: Get ref of Revisions from Documents
       operationId: Documents.ListRefRevisions
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -669,6 +695,10 @@ paths:
         - Documents.RevisionDto
       summary: Create new navigation property ref to Revisions for Documents
       operationId: Documents.CreateRefRevisions
+      consumes:
+        - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -691,6 +721,8 @@ paths:
         - Documents.RevisionDto
       summary: Delete ref of navigation property Revisions for Documents
       operationId: Documents.DeleteRefRevisions
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -723,6 +755,8 @@ paths:
         - Documents.DocumentTagRelDto
       summary: Get Tags property value
       operationId: Documents.ListTags
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -775,6 +809,8 @@ paths:
       operationId: Documents.UpdateTags
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -807,6 +843,8 @@ paths:
       summary: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Documents.SetTags
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: path
@@ -841,6 +879,9 @@ paths:
         - Documents.DocumentTagRelDto
       summary: Get the number of the resource
       operationId: Documents.Tags.GetCount-ed53
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -865,6 +906,9 @@ paths:
         - Documents.DocumentDto
       summary: Get the number of the resource
       operationId: Documents.GetCount-f555
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -880,6 +924,8 @@ paths:
         - Libraries.LibraryDto
       summary: Get entities from Libraries
       operationId: Libraries.LibraryDto.ListLibraryDto
+      produces:
+        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1050,6 +1096,8 @@ paths:
       operationId: Libraries.LibraryDto.UpdateLibraryDto
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1077,6 +1125,8 @@ paths:
         - Libraries.LibraryDto
       summary: Delete entity from Libraries
       operationId: Libraries.LibraryDto.DeleteLibraryDto
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1104,6 +1154,8 @@ paths:
         - Libraries.DocumentDto
       summary: Get Documents from Libraries
       operationId: Libraries.ListDocuments
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1186,6 +1238,8 @@ paths:
         - Libraries.DocumentDto
       summary: Delete ref of navigation property Documents for Libraries
       operationId: Libraries.documents.DeleteRefDocumentDto
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1222,6 +1276,8 @@ paths:
         - Libraries.DocumentDto.DocumentTagRelDto
       summary: Get Tags property value
       operationId: Libraries.Documents.ListTags
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1283,6 +1339,8 @@ paths:
       operationId: Libraries.Documents.UpdateTags
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1324,6 +1382,8 @@ paths:
       summary: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Libraries.Documents.SetTags
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: path
@@ -1367,6 +1427,9 @@ paths:
         - Libraries.DocumentDto.DocumentTagRelDto
       summary: Get the number of the resource
       operationId: Libraries.Documents.Tags.GetCount-2853
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1400,6 +1463,9 @@ paths:
         - Libraries.DocumentDto
       summary: Get the number of the resource
       operationId: Libraries.Documents.GetCount-34c7
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1424,6 +1490,8 @@ paths:
         - Libraries.DocumentDto
       summary: Get ref of Documents from Libraries
       operationId: Libraries.ListRefDocuments
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1477,6 +1545,10 @@ paths:
         - Libraries.DocumentDto
       summary: Create new navigation property ref to Documents for Libraries
       operationId: Libraries.CreateRefDocuments
+      consumes:
+        - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1499,6 +1571,8 @@ paths:
         - Libraries.DocumentDto
       summary: Delete ref of navigation property Documents for Libraries
       operationId: Libraries.DeleteRefDocuments
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1531,6 +1605,9 @@ paths:
         - Libraries.LibraryDto
       summary: Get the number of the resource
       operationId: Libraries.GetCount-e13e
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -1546,6 +1623,8 @@ paths:
         - Revisions.RevisionDto
       summary: Get entities from Revisions
       operationId: Revisions.RevisionDto.ListRevisionDto
+      produces:
+        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1724,6 +1803,8 @@ paths:
       operationId: Revisions.RevisionDto.UpdateRevisionDto
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1751,6 +1832,8 @@ paths:
         - Revisions.RevisionDto
       summary: Delete entity from Revisions
       operationId: Revisions.RevisionDto.DeleteRevisionDto
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1901,6 +1984,10 @@ paths:
         - Revisions.Document
       summary: Update the ref of navigation property Document in Revisions
       operationId: Revisions.UpdateRefDocument
+      consumes:
+        - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1923,6 +2010,8 @@ paths:
         - Revisions.Document
       summary: Delete ref of navigation property Document for Revisions
       operationId: Revisions.DeleteRefDocument
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -1950,6 +2039,8 @@ paths:
         - Revisions.Document.DocumentClass
       summary: Get DocumentClasses property value
       operationId: Revisions.Document.ListDocumentClasses
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2025,6 +2116,8 @@ paths:
       operationId: Revisions.Document.UpdateDocumentClasses
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2057,6 +2150,8 @@ paths:
       summary: Sets a new value for the collection of DocumentClass.
       operationId: Revisions.Document.SetDocumentClasses
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: path
@@ -2091,6 +2186,9 @@ paths:
         - Revisions.Document.DocumentClass
       summary: Get the number of the resource
       operationId: Revisions.Document.DocumentClasses.GetCount-6342
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2115,6 +2213,8 @@ paths:
         - Revisions.Document.DocumentTagRel
       summary: Get Tags property value
       operationId: Revisions.Document.ListTags
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2189,6 +2289,8 @@ paths:
       operationId: Revisions.Document.UpdateTags
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2221,6 +2323,8 @@ paths:
       summary: Sets a new value for the collection of DocumentTagRel.
       operationId: Revisions.Document.SetTags
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: path
@@ -2255,6 +2359,9 @@ paths:
         - Revisions.Document.DocumentTagRel
       summary: Get the number of the resource
       operationId: Revisions.Document.Tags.GetCount-161f
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2279,6 +2386,9 @@ paths:
         - Revisions.RevisionDto
       summary: Get the number of the resource
       operationId: Revisions.GetCount-c6a5
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -2294,6 +2404,8 @@ paths:
         - Tasks.DocumentDto
       summary: Get entities from Tasks
       operationId: Tasks.DocumentDto.ListDocumentDto
+      produces:
+        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2444,6 +2556,8 @@ paths:
       operationId: Tasks.DocumentDto.UpdateDocumentDto
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2471,6 +2585,8 @@ paths:
         - Tasks.DocumentDto
       summary: Delete entity from Tasks
       operationId: Tasks.DocumentDto.DeleteDocumentDto
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2498,6 +2614,8 @@ paths:
         - Tasks.DocumentDto.Actions
       summary: Invoke action Upload
       operationId: Tasks.DocumentDto.Upload
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2521,6 +2639,8 @@ paths:
         - Tasks.RevisionDto
       summary: Get Revisions from Tasks
       operationId: Tasks.ListRevisions
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2624,6 +2744,8 @@ paths:
         - Tasks.RevisionDto
       summary: Delete ref of navigation property Revisions for Tasks
       operationId: Tasks.revisions.DeleteRefRevisionDto
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2660,6 +2782,9 @@ paths:
         - Tasks.RevisionDto
       summary: Get the number of the resource
       operationId: Tasks.Revisions.GetCount-9297
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2684,6 +2809,8 @@ paths:
         - Tasks.RevisionDto
       summary: Get ref of Revisions from Tasks
       operationId: Tasks.ListRefRevisions
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2751,6 +2878,10 @@ paths:
         - Tasks.RevisionDto
       summary: Create new navigation property ref to Revisions for Tasks
       operationId: Tasks.CreateRefRevisions
+      consumes:
+        - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2773,6 +2904,8 @@ paths:
         - Tasks.RevisionDto
       summary: Delete ref of navigation property Revisions for Tasks
       operationId: Tasks.DeleteRefRevisions
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2805,6 +2938,8 @@ paths:
         - Tasks.DocumentTagRelDto
       summary: Get Tags property value
       operationId: Tasks.ListTags
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2857,6 +2992,8 @@ paths:
       operationId: Tasks.UpdateTags
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2889,6 +3026,8 @@ paths:
       summary: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Tasks.SetTags
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: path
@@ -2923,6 +3062,9 @@ paths:
         - Tasks.DocumentTagRelDto
       summary: Get the number of the resource
       operationId: Tasks.Tags.GetCount-3a1b
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - in: path
           name: Id
@@ -2947,6 +3089,9 @@ paths:
         - Tasks.DocumentDto
       summary: Get the number of the resource
       operationId: Tasks.GetCount-2961
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
