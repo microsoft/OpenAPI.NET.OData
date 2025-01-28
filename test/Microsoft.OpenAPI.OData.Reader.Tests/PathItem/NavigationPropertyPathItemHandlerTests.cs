@@ -452,7 +452,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
           <PropertyValue Property=""UpdateRestrictions"" >
             <Record>
               <PropertyValue Property=""UpdateMethod"">
-                <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+                <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT Org.OData.Capabilities.V1.HttpMethod/PATCH </EnumMember>
               </PropertyValue>
               <PropertyValue Property=""Updatable"" Bool=""{1}"" />
             </Record>
@@ -488,21 +488,21 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 if (isContainment)
                 {
                     expected = updatable
-                        ? (new[] { OperationType.Get, OperationType.Put, OperationType.Delete })
-                        : (new[] { OperationType.Get, OperationType.Delete });
+                        ? ([OperationType.Get, OperationType.Put, OperationType.Patch, OperationType.Delete])
+                        : ([OperationType.Get, OperationType.Delete]);
                 }
                 else
                 {
                     expected = updatable
-                        ? (new[] { OperationType.Get, OperationType.Put })
-                        : (new[] { OperationType.Get });
+                        ? ([OperationType.Get, OperationType.Put, OperationType.Patch,])
+                        : ([OperationType.Get]);
                 }
             }
             else
             {
                 expected = isContainment
-                    ? (new[] { OperationType.Get, OperationType.Patch, OperationType.Delete })
-                    : (new[] { OperationType.Get });
+                    ? ([OperationType.Get, OperationType.Patch, OperationType.Delete])
+                    : ([OperationType.Get]);
 
             }
 

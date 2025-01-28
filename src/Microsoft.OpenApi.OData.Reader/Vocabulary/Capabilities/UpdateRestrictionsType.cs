@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm.Vocabularies;
@@ -14,17 +15,18 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
     /// <summary>
     /// Enumerates HTTP methods that can be used to update entities
     /// </summary>
+    [Flags]
     internal enum HttpMethod
     {
         /// <summary>
         /// The HTTP PATCH Method
         /// </summary>
-        PATCH,
+        PATCH = 1,
 
         /// <summary>
         /// The HTTP PUT Method
         /// </summary>
-        PUT
+        PUT = 2
     }
     /// <summary>
     /// Complex Type: Org.OData.Capabilities.V1.UpdateRestrictionsType
@@ -46,10 +48,10 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the value indicating Entities can be inserted, updated, and deleted via a PATCH request with a delta payload.
         /// </summary>
-        public bool? DeltaUpdateSupported { get; private set; }
+        public bool? DeltaUpdateSupported { get; private set; }      
 
         /// <summary>
-        /// Gets the value indicating the HTTP Method (PUT or PATCH) for updating an entity. 
+        /// Gets the values indicating the HTTP Method (PUT and/or PATCH) for updating an entity. 
         /// If null, PATCH should be supported and PUT MAY be supported.
         /// </summary>
         public HttpMethod? UpdateMethod { get; private set; }
@@ -124,9 +126,15 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         }
 
         /// <summary>
-        /// Tests whether the update method for the entity has been explicitly specified as PUT
+        /// Tests whether the update method for the target has been explicitly specified as PUT
         /// </summary>
         public bool IsUpdateMethodPut => UpdateMethod.HasValue && UpdateMethod.Value == HttpMethod.PUT;
+
+        /// <summary>
+        /// Tests whether the update method for the target has been explicitly specified as PATCH and PUT
+        /// </summary>
+        public bool IsUpdateMethodPutAndPatch => UpdateMethod.HasValue &&
+            (UpdateMethod.Value & (HttpMethod.PUT | HttpMethod.PATCH)) == (HttpMethod.PUT | HttpMethod.PATCH);
 
         /// <summary>
         /// Lists the media types acceptable for the request content
