@@ -9,6 +9,7 @@ using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -102,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     // $ref returns string for the Uri?
                     Type = JsonSchemaType.String
                 };
-                IDictionary<string, OpenApiLink> links = null;
+                IDictionary<string, IOpenApiLink> links = null;
                 if (Context.Settings.ShowLinks)
                 {
                     string operationId = GetOperationId();
@@ -149,7 +150,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 // Need to verify that TopSupported or others should be applied to navigaiton source.
                 // So, how about for the navigation property.
-                OpenApiParameter parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
+                var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);

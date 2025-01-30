@@ -585,9 +585,9 @@ schema:
             Assert.NotNull(function3);
 
             // Act
-            IList<OpenApiParameter> parameters1 = context.CreateParameters(function1, new());
-            IList<OpenApiParameter> parameters2 = context.CreateParameters(function2, new());
-            IList<OpenApiParameter> parameters3 = context.CreateParameters(function3, new());
+            var parameters1 = context.CreateParameters(function1, new());
+            var parameters2 = context.CreateParameters(function2, new());
+            var parameters3 = context.CreateParameters(function3, new());
 
             // Assert
             Assert.NotNull(parameters1);

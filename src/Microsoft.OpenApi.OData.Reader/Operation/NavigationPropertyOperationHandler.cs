@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -191,7 +192,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-        protected IDictionary<string, OpenApiMediaType> GetContent(OpenApiSchema schema = null, IEnumerable<string> mediaTypes = null)
+        protected IDictionary<string, OpenApiMediaType> GetContent(IOpenApiSchema schema = null, IEnumerable<string> mediaTypes = null)
         {
             schema ??= GetOpenApiSchema();
             var content = new Dictionary<string, OpenApiMediaType>();
@@ -218,7 +219,7 @@ namespace Microsoft.OpenApi.OData.Operation
             return content;
         }
 
-        protected OpenApiSchema GetOpenApiSchema()
+        protected IOpenApiSchema GetOpenApiSchema()
         {
             return new OpenApiSchemaReference(NavigationProperty.ToEntityType().FullName(), _document);
         }

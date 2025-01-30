@@ -9,6 +9,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using System.Linq;
+using Microsoft.OpenApi.Models.Interfaces;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -28,9 +29,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="parameters">"Optional: The list of parameters of the incoming operation.</param>
         /// <param name="navPropOperationId">Optional: The operation id of the source of the NavigationProperty object.</param>
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
-        public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context,
+        public static IDictionary<string, IOpenApiLink> CreateLinks(this ODataContext context,
             IEdmEntityType entityType, string entityName, string entityKind, ODataPath path,
-            IList<OpenApiParameter> parameters = null, string navPropOperationId = null)
+            IList<IOpenApiParameter> parameters = null, string navPropOperationId = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
@@ -53,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             }
 
-            Dictionary<string, OpenApiLink> links = new();
+            Dictionary<string, IOpenApiLink> links = new();
             bool lastSegmentIsColNavProp = (path.LastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
 
             // Valid only for non collection-valued navigation properties

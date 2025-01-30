@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using System.Collections.Generic;
 
 namespace Microsoft.OpenApi.OData
@@ -23,16 +24,16 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// @odata.nextLink KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, OpenApiSchema> OdataNextLink = new("@odata.nextLink", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true });
+        public static KeyValuePair<string, IOpenApiSchema> OdataNextLink = new("@odata.nextLink", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true });
 
         /// <summary>
         /// @odata.count KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, OpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Number, Format = "int64", Nullable = true });
+        public static KeyValuePair<string, IOpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Number, Format = "int64", Nullable = true });
 
         /// <summary>
         /// @odata.deltaLink KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, OpenApiSchema> OdataDeltaLink = new("@odata.deltaLink", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true });
+        public static KeyValuePair<string, IOpenApiSchema> OdataDeltaLink = new("@odata.deltaLink", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true });
     }
 }

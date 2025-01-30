@@ -11,6 +11,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -208,7 +209,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
     {
         if (IsSingleElement)
 		{
-            OpenApiSchema schema = null;
+            IOpenApiSchema schema = null;
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
@@ -303,23 +304,23 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		{
 			if(IsSingleElement)
 			{
-				new OpenApiParameter[] {
+				new IOpenApiParameter[] {
                         Context.CreateSelect(TargetPath, entitySet.EntityType) ?? Context.CreateSelect(entitySet),
                         Context.CreateExpand(TargetPath, entitySet.EntityType) ?? Context.CreateExpand(entitySet),
 					}
 				.Where(x => x != null)
 				.ToList()
-				.ForEach(p => operation.Parameters.Add(p));
+				.ForEach(operation.Parameters.Add);
 			}
 			else
 			{
 				GetParametersForAnnotableOfMany(entitySet)
 				.Union(
-					new OpenApiParameter[] {
+					[
                         Context.CreateOrderBy(TargetPath, entitySet.EntityType) ?? Context.CreateOrderBy(entitySet),
                         Context.CreateSelect(TargetPath, entitySet.EntityType) ?? Context.CreateSelect(entitySet),
                         Context.CreateExpand(TargetPath, entitySet.EntityType) ?? Context.CreateExpand(entitySet),
-					})
+					])
 				.Where(x => x != null)
 				.ToList()
 				.ForEach(p => operation.Parameters.Add(p));
@@ -336,7 +337,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			.ForEach(p => operation.Parameters.Add(p));
 		}
 	}
-	private IEnumerable<OpenApiParameter> GetParametersForAnnotableOfMany(IEdmVocabularyAnnotatable annotable) 
+	private IEnumerable<IOpenApiParameter> GetParametersForAnnotableOfMany(IEdmVocabularyAnnotatable annotable) 
 	{
 		// Need to verify that TopSupported or others should be applied to navigation source.
 		// So, how about for the navigation property.

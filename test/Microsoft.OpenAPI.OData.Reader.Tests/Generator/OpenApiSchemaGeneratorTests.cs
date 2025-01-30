@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -66,7 +67,8 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Collection(stringCollectionResponse.AllOf,
                 item =>
                 {
-                    Assert.Equal(referenceId, item.Reference.Id);
+                    var itemReference = Assert.IsType<OpenApiSchemaReference>(item);
+                    Assert.Equal(referenceId, itemReference.Reference.Id);
                 },
                 item =>
                 {
@@ -75,13 +77,15 @@ namespace Microsoft.OpenApi.OData.Tests
 
                 Assert.Single(flightCollectionResponse.AllOf?.Where(x => x.Properties.TryGetValue("value", out var valueProp) && 
                                                                 (valueProp.Type & JsonSchemaType.Array) is JsonSchemaType.Array &&
-                                                                "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight".Equals(valueProp.Items.Reference.Id)));
+                                                                valueProp.Items is OpenApiSchemaReference openApiSchemaReference &&
+                                                                "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight".Equals(openApiSchemaReference.Reference.Id)));
             }
             else
             {
                 Assert.Equal(JsonSchemaType.Array, stringCollectionResponse.Properties["value"].Type);
                 Assert.Equal(JsonSchemaType.Array, flightCollectionResponse.Properties["value"].Type);
-                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight", flightCollectionResponse.Properties["value"].Items.Reference.Id);
+                var itemsReference = Assert.IsType<OpenApiSchemaReference>(flightCollectionResponse.Properties["value"].Items);
+                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight", itemsReference.Reference.Id);
             }
         }
 
@@ -101,7 +105,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act & Assert
             context.AddSchemasToDocument(openApiDocument);
 
-            openApiDocument.Components.Schemas.TryGetValue(Constants.ReferenceCreateSchemaName, out OpenApiSchema refRequestBody);
+            openApiDocument.Components.Schemas.TryGetValue(Constants.ReferenceCreateSchemaName, out var refRequestBody);
 
             Assert.NotNull(refRequestBody);
             Assert.Equal(JsonSchemaType.Object, refRequestBody.Type);
@@ -133,8 +137,8 @@ namespace Microsoft.OpenApi.OData.Tests
             // Assert
             Assert.NotNull(openApiDocument.Components.Schemas);
             Assert.NotEmpty(openApiDocument.Components.Schemas);
-            openApiDocument.Components.Schemas.TryGetValue(Constants.BaseCollectionPaginationCountResponse, out OpenApiSchema refPaginationCount);
-            openApiDocument.Components.Schemas.TryGetValue(Constants.BaseDeltaFunctionResponse, out OpenApiSchema refDeltaFunc);
+            openApiDocument.Components.Schemas.TryGetValue(Constants.BaseCollectionPaginationCountResponse, out var refPaginationCount);
+            openApiDocument.Components.Schemas.TryGetValue(Constants.BaseDeltaFunctionResponse, out var refDeltaFunc);
             if (enableOdataAnnotationRef)
             {
                 Assert.NotNull(refPaginationCount);
@@ -516,7 +520,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Null(schema.Properties);
 
             Assert.Equal(2, schema.AllOf.Count);
-            var baseSchema = schema.AllOf.First();
+            var baseSchema = Assert.IsType<OpenApiSchemaReference>(schema.AllOf.First());
             Assert.NotNull(baseSchema.Reference);
             Assert.Equal(ReferenceType.Schema, baseSchema.Reference.Type);
             Assert.Equal("NS.LandPlant", baseSchema.Reference.Id);
@@ -668,7 +672,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Null(schema.Properties);
 
             Assert.Equal(2, schema.AllOf.Count);
-            var baseSchema = schema.AllOf.First();
+            var baseSchema = Assert.IsType<OpenApiSchemaReference>(schema.AllOf.First());
             Assert.NotNull(baseSchema.Reference);
             Assert.Equal(ReferenceType.Schema, baseSchema.Reference.Type);
             Assert.Equal("NS.Animal", baseSchema.Reference.Id);
@@ -743,7 +747,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Null(schema.Properties);
 
             Assert.Equal(2, schema.AllOf.Count);
-            var baseSchema = schema.AllOf.First();
+            var baseSchema = Assert.IsType<OpenApiSchemaReference>(schema.AllOf.First());
             Assert.NotNull(baseSchema.Reference);
             Assert.Equal(ReferenceType.Schema, baseSchema.Reference.Type);
             Assert.Equal("SubNS.CustomerBase", baseSchema.Reference.Id);

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -131,7 +132,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <returns>The entity content description.</returns>
         private IDictionary<string, OpenApiMediaType> GetContentDescription()
         {
-            OpenApiSchema schema = GetEntitySchema();
+            var schema = GetEntitySchema();
             var content = new Dictionary<string, OpenApiMediaType>();
 
             if (EntitySet.EntityType.HasStream)
@@ -190,18 +191,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Get the entity schema.
         /// </summary>
         /// <returns>The entity schema.</returns>
-        private OpenApiSchema GetEntitySchema()
+        private IOpenApiSchema GetEntitySchema()
         {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
-            }
-
-            schema ??= new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
-
-            return schema;
+            return Context.Settings.EnableDerivedTypesReferencesForRequestBody ?
+                EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document) :
+                new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
         }
     }
 }

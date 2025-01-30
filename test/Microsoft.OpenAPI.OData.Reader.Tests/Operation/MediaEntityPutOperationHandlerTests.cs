@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -126,9 +127,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Test only for stream properties of identifier 'content' 
             if (useSuccessStatusCodeRange)
             {
-                var referenceId = putOperation3.Responses[statusCode]?.Content[Constants.ApplicationJsonMediaType]?.Schema?.Reference.Id;
-                Assert.NotNull(referenceId);
-                Assert.Equal("microsoft.graph.Todo", referenceId);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(putOperation3.Responses[statusCode]?.Content[Constants.ApplicationJsonMediaType]?.Schema);
+                Assert.NotNull(schemaReference.Reference.Id);
+                Assert.Equal("microsoft.graph.Todo", schemaReference.Reference.Id);
             }
             else
             {

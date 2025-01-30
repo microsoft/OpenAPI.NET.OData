@@ -11,6 +11,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
@@ -57,8 +58,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(new string[] { "UserName" }, operation.Parameters.Select(p => p.Name));
 
             Assert.NotNull(operation.RequestBody);
-            if (operation.RequestBody.Reference != null)
-                Assert.Equal("ShareTripRequestBody", operation.RequestBody.Reference.Id);
+            if (operation.RequestBody is OpenApiSchemaReference openApiSchemaReference)
+                Assert.Equal("ShareTripRequestBody", openApiSchemaReference.Reference.Id);
             else
                 Assert.Equal("Action parameters", operation.RequestBody.Description);
 
@@ -383,8 +384,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             if (enablePagination && enableOdataAnnotationRef)
             {
-                var reference = operation.Responses.First().Value.Content.First().Value.Schema.AllOf.First().Reference.Id;
-                Assert.Equal(Common.Constants.BaseCollectionPaginationCountResponse, reference);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(operation.Responses.First().Value.Content.First().Value.Schema.AllOf[0]);
+                Assert.Equal(Common.Constants.BaseCollectionPaginationCountResponse, schemaReference.Reference.Id);
 
             }
             else if (enablePagination)

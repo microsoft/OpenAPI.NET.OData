@@ -12,6 +12,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.Models.References;
+using Microsoft.OpenApi.Models.Interfaces;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -33,12 +34,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="context">The OData to Open API context.</param>
         /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The string/schema dictionary.</returns>
-        public static IDictionary<string, OpenApiSchema> CreateODataErrorSchemas(this ODataContext context, OpenApiDocument document)
+        public static IDictionary<string, IOpenApiSchema> CreateODataErrorSchemas(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             var rootNamespaceName = context.GetErrorNamespaceName();
 
-            return new Dictionary<string, OpenApiSchema>()
+            return new Dictionary<string, IOpenApiSchema>()
             {
                 { $"{rootNamespaceName}{ODataErrorClassName}", CreateErrorSchema(rootNamespaceName, document) },
                 { $"{rootNamespaceName}{MainErrorClassName}", CreateErrorMainSchema(rootNamespaceName, document) },
@@ -75,7 +76,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     "error"
                 },
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     {
                         "error",
@@ -92,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="context">The OData to Open API context.</param>
         /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The inner error schema definition.</returns>
-        public static OpenApiSchema CreateInnerErrorSchema(ODataContext context, OpenApiDocument document)
+        public static IOpenApiSchema CreateInnerErrorSchema(ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
@@ -126,7 +127,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     "code", "message"
                 },
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     {
                         "code", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false }
@@ -167,7 +168,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     "code", "message"
                 },
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     {
                         "code", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false, }

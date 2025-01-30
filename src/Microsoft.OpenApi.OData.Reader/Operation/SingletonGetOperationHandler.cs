@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -84,8 +85,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-            IDictionary<string, OpenApiLink> links = null;
+            IOpenApiSchema schema = null;
+            IDictionary<string, IOpenApiLink> links = null;
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {

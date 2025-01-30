@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Models.References;
+using Microsoft.OpenApi.Models.Interfaces;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -68,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiSchema parametersSchema = new OpenApiSchema
             {
                 Type = JsonSchemaType.Object,
-                Properties = new Dictionary<string, OpenApiSchema>()
+                Properties = new Dictionary<string, IOpenApiSchema>()
             };
 
             foreach (var parameter in action.Parameters.Skip(skip))
@@ -120,7 +121,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="document">The OpenApi document to lookup references.</param>
         private static OpenApiRequestBody CreateRefPostRequestBody(OpenApiDocument document)
         {
-            OpenApiSchema schema = new OpenApiSchemaReference(Constants.ReferenceCreateSchemaName, document);
+            var schema = new OpenApiSchemaReference(Constants.ReferenceCreateSchemaName, document);
             return new OpenApiRequestBody
             {
                 Required = true,
@@ -144,7 +145,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="document">The OpenApi document to lookup references.</param>
         private static OpenApiRequestBody CreateRefPutRequestBody(OpenApiDocument document)
         {
-            OpenApiSchema schema = new OpenApiSchemaReference(Constants.ReferenceUpdateSchemaName, document);
+            var schema = new OpenApiSchemaReference(Constants.ReferenceUpdateSchemaName, document);
 
             return new OpenApiRequestBody
             {

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.PathItem;
@@ -77,9 +78,9 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static IDictionary<string, OpenApiLink> CreateRootLinks(IEdmEntityContainer entityContainer)
+        private static IDictionary<string, IOpenApiLink> CreateRootLinks(IEdmEntityContainer entityContainer)
         {
-            var links = new Dictionary<string, OpenApiLink>();
+            var links = new Dictionary<string, IOpenApiLink>();
             foreach (var element in entityContainer.Elements)
             {
                 links.Add(element.Name, new OpenApiLink());

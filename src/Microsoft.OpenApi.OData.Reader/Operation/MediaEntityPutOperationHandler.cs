@@ -99,7 +99,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 // Get the entity type declaring this stream property.
                 (var entityType, _) = GetStreamElements();
 
-                OpenApiSchema schema = new OpenApiSchemaReference(entityType.FullName(), _document);
+                var schema = new OpenApiSchemaReference(entityType.FullName(), _document);
 
                 operation.AddErrorResponses(Context.Settings, _document, addNoContent: true, schema: schema);
             }

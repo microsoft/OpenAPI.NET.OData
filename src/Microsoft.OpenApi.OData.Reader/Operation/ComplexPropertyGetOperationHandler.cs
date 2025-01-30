@@ -8,6 +8,7 @@ using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -63,7 +64,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     {
         base.SetParameters(operation);
 
-        OpenApiParameter parameter;
+        IOpenApiParameter parameter;
         if(ComplexPropertySegment.Property.Type.IsCollection())
         {
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
@@ -158,7 +159,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         }
         else
         {
-            OpenApiSchema schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
+            var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
 
             SetSingleResponse(operation, schema);
         }

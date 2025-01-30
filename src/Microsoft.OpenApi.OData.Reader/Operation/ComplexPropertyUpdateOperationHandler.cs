@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -109,7 +110,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         }
     }
 
-    private OpenApiSchema GetOpenApiSchema()
+    private IOpenApiSchema GetOpenApiSchema()
     {
         var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
 
@@ -118,7 +119,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
             return new OpenApiSchema
             {
                 Type = JsonSchemaType.Object,
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     {
                         "value",

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -85,7 +86,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected IDictionary<string, OpenApiMediaType> GetContent()
         {
-            OpenApiSchema schema = GetOpenApiSchema();
+            var schema = GetOpenApiSchema();
             var content = new Dictionary<string, OpenApiMediaType>();
             IEnumerable<string> mediaTypes = _updateRestrictions?.RequestContentTypes;
 
@@ -147,7 +148,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-        private OpenApiSchema GetOpenApiSchema()
+        private IOpenApiSchema GetOpenApiSchema()
         {
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {

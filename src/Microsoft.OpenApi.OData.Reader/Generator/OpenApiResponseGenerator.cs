@@ -8,6 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -20,9 +21,9 @@ namespace Microsoft.OpenApi.OData.Generator
     /// </summary>
     internal static class OpenApiResponseGenerator
     {
-        private static Dictionary<string, OpenApiResponse> _responses;
+        private static Dictionary<string, IOpenApiResponse> _responses;
 
-        private static Dictionary<string, OpenApiResponse> GetResponses(OpenApiDocument openApiDocument)
+        private static Dictionary<string, IOpenApiResponse> GetResponses(OpenApiDocument openApiDocument)
         {
             _responses ??= new()
                 {
@@ -40,14 +41,14 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
-        /// Get the <see cref="OpenApiResponse"/> for the build-in statusCode.
+        /// Get the <see cref="IOpenApiResponse"/> for the build-in statusCode.
         /// </summary>
         /// <param name="statusCode">The status code.</param>
         /// <param name="document">The OpenApi document to lookup references.</param>
-        /// <returns>The created <see cref="OpenApiResponse"/>.</returns>
-        public static OpenApiResponse GetResponse(this string statusCode, OpenApiDocument document)
+        /// <returns>The created <see cref="IOpenApiResponse"/>.</returns>
+        public static IOpenApiResponse GetResponse(this string statusCode, OpenApiDocument document)
         {
-            if (GetResponses(document).TryGetValue(statusCode, out OpenApiResponse response))
+            if (GetResponses(document).TryGetValue(statusCode, out var response))
             {
                 return response;
             }
@@ -172,13 +173,13 @@ namespace Microsoft.OpenApi.OData.Generator
             if (operation.ReturnType == null)
                 return null;
 
-            OpenApiSchema schema;
+            IOpenApiSchema schema;
             if (operation.ReturnType.IsCollection())
             {
                 OpenApiSchema baseSchema = new()
                 {
                     Type = JsonSchemaType.Object,
-                    Properties = new Dictionary<string, OpenApiSchema>
+                    Properties = new Dictionary<string, IOpenApiSchema>
                     {
                         {
                             "value", context.CreateEdmTypeSchema(operation.ReturnType, document)
@@ -191,13 +192,13 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     schema = new OpenApiSchema
                     {
-                        AllOf = new List<OpenApiSchema>
-                        {
+                        AllOf =
+                        [
                             new OpenApiSchemaReference(operation.IsDeltaFunction() ? Constants.BaseDeltaFunctionResponse  // @odata.nextLink + @odata.deltaLink
                                         : Constants.BaseCollectionPaginationCountResponse // @odata.nextLink + @odata.count)
                                         ,document),
                             baseSchema
-                        }
+                        ]
                     };
                 }
                 else if (operation.IsDeltaFunction())
@@ -219,9 +220,12 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema = baseSchema;
                 }
 
-                schema.Title = operation.ReturnType.Definition.AsElementType() is not IEdmEntityType entityType
-                        ? null : $"Collection of {entityType.Name}";
-                schema.Type = JsonSchemaType.Object;             
+                if (schema is OpenApiSchema openApiSchema)
+                {
+                    openApiSchema.Title = operation.ReturnType.Definition.AsElementType() is not IEdmEntityType entityType
+                            ? null : $"Collection of {entityType.Name}";
+                    openApiSchema.Type = JsonSchemaType.Object;
+                }
             }
             else if (operation.ReturnType.IsPrimitive())
             {
@@ -230,7 +234,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 schema = new OpenApiSchema
                 {
                     Type = JsonSchemaType.Object,
-                    Properties = new Dictionary<string, OpenApiSchema>
+                    Properties = new Dictionary<string, IOpenApiSchema>
                     {
                         {
                             "value", context.CreateEdmTypeSchema(operation.ReturnType, document)
@@ -298,7 +302,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
         private static OpenApiResponse CreateCountResponse(OpenApiDocument document)
         {
-            OpenApiSchema schema = new OpenApiSchemaReference(Constants.DollarCountSchemaName, document);
+            var schema = new OpenApiSchemaReference(Constants.DollarCountSchemaName, document);
             return new OpenApiResponse
             {
                 Description = "The count of the resource",

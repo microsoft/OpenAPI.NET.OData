@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
@@ -185,10 +186,10 @@ namespace Microsoft.OpenApi.OData.Tests
             
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
-                Assert.NotNull(schema.Reference);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
                 Assert.Null(schema.AnyOf);
-                Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
-                Assert.Equal(enumType.FullTypeName(), schema.Reference.Id);
+                Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
+                Assert.Equal(enumType.FullTypeName(), schemaReference.Reference.Id);
                 Assert.Equal(isNullable, schema.Nullable);
             }
             else
@@ -198,9 +199,9 @@ namespace Microsoft.OpenApi.OData.Tests
                 {
                     Assert.NotNull(schema.AnyOf);
                     Assert.NotEmpty(schema.AnyOf);
-                    Assert.Null(schema.Reference);
+                    Assert.IsNotType<OpenApiSchemaReference>(schema);
                     Assert.Equal(2, schema.AnyOf.Count);
-                    var anyOfRef = schema.AnyOf.FirstOrDefault();
+                    var anyOfRef = Assert.IsType<OpenApiSchemaReference>(schema.AnyOf.FirstOrDefault());
                     Assert.NotNull(anyOfRef.Reference);
                     Assert.Equal(ReferenceType.Schema, anyOfRef.Reference.Type);
                     Assert.Equal(enumType.FullTypeName(), anyOfRef.Reference.Id);
@@ -212,9 +213,9 @@ namespace Microsoft.OpenApi.OData.Tests
                 else
                 {
                     Assert.Null(schema.AnyOf);
-                    Assert.NotNull(schema.Reference);
-                    Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
-                    Assert.Equal(enumType.FullTypeName(), schema.Reference.Id);
+                    var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
+                    Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
+                    Assert.Equal(enumType.FullTypeName(), schemaReference.Reference.Id);
                 }             
             }
         }
@@ -244,17 +245,17 @@ namespace Microsoft.OpenApi.OData.Tests
             if (specVersion == OpenApiSpecVersion.OpenApi2_0 || isNullable == false)
             {
                 Assert.Null(schema.AnyOf);
-                Assert.NotNull(schema.Reference);
-                Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
-                Assert.Equal(complex.FullTypeName(), schema.Reference.Id);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
+                Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
+                Assert.Equal(complex.FullTypeName(), schemaReference.Reference.Id);
             }
             else
             {
-                Assert.Null(schema.Reference);
+                Assert.IsNotType<OpenApiSchemaReference>(schema);
                 Assert.NotNull(schema.AnyOf);
                 Assert.NotEmpty(schema.AnyOf);
                 Assert.Equal(2, schema.AnyOf.Count);
-                var anyOf = schema.AnyOf.FirstOrDefault();
+                var anyOf = Assert.IsType<OpenApiSchemaReference>(schema.AnyOf.FirstOrDefault());
                 Assert.NotNull(anyOf.Reference);
                 Assert.Equal(ReferenceType.Schema, anyOf.Reference.Type);
                 Assert.Equal(complex.FullTypeName(), anyOf.Reference.Id);
@@ -286,16 +287,17 @@ namespace Microsoft.OpenApi.OData.Tests
             if (specVersion == OpenApiSpecVersion.OpenApi2_0 || isNullable == false)
             {
                 Assert.Null(schema.AnyOf);
-                Assert.NotNull(schema.Reference);
-                Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
-                Assert.Equal(entity.FullTypeName(), schema.Reference.Id);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
+                Assert.NotNull(schemaReference.Reference);
+                Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
+                Assert.Equal(entity.FullTypeName(), schemaReference.Reference.Id);
             }
             else
             {
-                Assert.Null(schema.Reference);
+                Assert.IsNotType<OpenApiSchemaReference>(schema);
                 Assert.NotNull(schema.AnyOf);
                 Assert.NotEmpty(schema.AnyOf);
-                var anyOfRef = schema.AnyOf.FirstOrDefault();
+                var anyOfRef = Assert.IsType<OpenApiSchemaReference>(schema.AnyOf.FirstOrDefault());
                 Assert.NotNull(anyOfRef.Reference);
                 Assert.Equal(ReferenceType.Schema, anyOfRef.Reference.Type);
                 Assert.Equal(entity.FullTypeName(), anyOfRef.Reference.Id);

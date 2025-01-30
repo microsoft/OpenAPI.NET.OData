@@ -11,6 +11,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -445,7 +446,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Equal(8, get.Parameters.Count);
                 if (isReference)
                 {
-                    Assert.Contains(queryOption, get.Parameters.Select(p => p.Reference?.Id));
+                    Assert.Contains(queryOption, get.Parameters.OfType<OpenApiParameterReference>().Select(p => p.Reference?.Id));
                 }
                 else
                 {
@@ -457,7 +458,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Equal(7, get.Parameters.Count);
                 if (isReference)
                 {
-                    Assert.DoesNotContain(queryOption, get.Parameters.Select(p => p.Reference?.Id));
+                    Assert.DoesNotContain(queryOption, get.Parameters.OfType<OpenApiParameterReference>().Select(p => p.Reference?.Id));
                 }
                 else
                 {

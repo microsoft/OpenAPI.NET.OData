@@ -88,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
             // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
             // $top
-            OpenApiParameter parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(EntitySet, _document);
+            var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);

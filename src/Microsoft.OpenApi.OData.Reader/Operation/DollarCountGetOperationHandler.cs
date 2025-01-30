@@ -10,6 +10,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -183,7 +184,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
-            OpenApiParameter parameter;
+            IOpenApiParameter parameter;
 
             parameter = Context.CreateSearch(TargetPath, _document) ?? (annotatables.Count == 0 ? null : annotatables.Select(x => Context.CreateSearch(x, _document)).FirstOrDefault(static x => x is not null));
             if (parameter != null)

@@ -12,6 +12,7 @@ using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 
@@ -307,7 +308,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// <param name="pathItem">The value to be added.</param>
         /// <returns>true when the key and/or value are successfully added/updated to the dictionary; 
         /// false when the dictionary already contains the specified key, and nothing gets added.</returns>
-        internal static bool TryAddPath(this IDictionary<string, OpenApiPathItem> pathItems,
+        internal static bool TryAddPath(this IDictionary<string, IOpenApiPathItem> pathItems,
             ODataContext context,
             ODataPath path,
             OpenApiPathItem pathItem)

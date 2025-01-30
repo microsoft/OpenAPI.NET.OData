@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -40,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// The path parameters in the path
         /// </summary>
-        protected IList<OpenApiParameter> PathParameters;
+        protected IList<IOpenApiParameter> PathParameters;
 
         /// <summary>
         /// The string representation of the Edm target path for annotations.
@@ -261,7 +262,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 if (param.ExampleValues != null)
                 {
-                    parameter.Examples = new Dictionary<string, OpenApiExample>();
+                    parameter.Examples = new Dictionary<string, IOpenApiExample>();
                     int index = 1;
                     foreach (var example in param.ExampleValues)
                     {
@@ -320,7 +321,7 @@ namespace Microsoft.OpenApi.OData.Operation
             };
         }
 
-        internal void SetSingleResponse(OpenApiOperation operation, OpenApiSchema schema)
+        internal void SetSingleResponse(OpenApiOperation operation, IOpenApiSchema schema)
         {
             Utils.CheckArgumentNull(operation, nameof(operation));
             Utils.CheckArgumentNull(schema, nameof(schema));

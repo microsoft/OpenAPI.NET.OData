@@ -10,6 +10,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
@@ -37,15 +38,15 @@ namespace Microsoft.OpenApi.OData.Common
 
             OpenApiSchema schema = new()
             {
-                OneOf = new List<OpenApiSchema>()
+                OneOf = new List<IOpenApiSchema>()
             };
 
-            OpenApiSchema baseTypeSchema = new OpenApiSchemaReference(schemaElement.FullName(), document);
+            var baseTypeSchema = new OpenApiSchemaReference(schemaElement.FullName(), document);
             schema.OneOf.Add(baseTypeSchema);
 
             foreach (IEdmSchemaElement derivedType in derivedTypes)
             {
-                OpenApiSchema derivedTypeSchema = new OpenApiSchemaReference(derivedType.FullName(), document);
+                var derivedTypeSchema = new OpenApiSchemaReference(derivedType.FullName(), document);
                 schema.OneOf.Add(derivedTypeSchema);
             };
 

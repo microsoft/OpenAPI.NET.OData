@@ -14,6 +14,7 @@ using Microsoft.OpenApi.OData.Edm;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Moq;
+using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {
@@ -76,8 +77,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var flightCollectionResponse = responses["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
             var stringCollectionResponse = responses["StringCollectionResponse"];
 
-            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse", flightCollectionResponse.Content["application/json"].Schema.Reference.Id);
-            Assert.Equal("StringCollectionResponse", stringCollectionResponse.Content["application/json"].Schema.Reference.Id);
+            var flightCollectionResponseSchemaReference = Assert.IsType<OpenApiSchemaReference>(flightCollectionResponse.Content["application/json"].Schema);
+            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse", flightCollectionResponseSchemaReference.Reference.Id);
+            var stringCollectionResponseSchemaReference = Assert.IsType<OpenApiSchemaReference>(stringCollectionResponse.Content["application/json"].Schema);
+            Assert.Equal("StringCollectionResponse", stringCollectionResponseSchemaReference.Reference.Id);
         }
 
         [Fact]
@@ -211,7 +214,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(2, responses.Count);
             Assert.Equal(new string[] { "200", "default" }, responses.Select(r => r.Key));
 
-            OpenApiResponse response = responses["200"];
+            var response = responses["200"];
             Assert.NotNull(response.Content);
             OpenApiMediaType mediaType = response.Content["application/json"];
 
@@ -220,17 +223,18 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             {
                 Assert.NotNull(mediaType.Schema);
                 Assert.Null(mediaType.Schema.AnyOf);
-                Assert.NotNull(mediaType.Schema.Reference);
-                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", mediaType.Schema.Reference.Id);
+                var mediaTypeSchemaReference = Assert.IsType<OpenApiSchemaReference>(mediaType.Schema);
+                Assert.NotNull(mediaTypeSchemaReference.Reference);
+                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", mediaTypeSchemaReference.Reference.Id);
                 Assert.True(mediaType.Schema.Nullable);
             }
             else
             {
                 Assert.NotNull(mediaType.Schema);
-                Assert.Null(mediaType.Schema.Reference);
+                Assert.IsNotType<OpenApiSchemaReference>(mediaType.Schema);
                 Assert.NotNull(mediaType.Schema.AnyOf);
                 Assert.Equal(2, mediaType.Schema.AnyOf.Count);
-                var anyOfRef = mediaType.Schema.AnyOf.FirstOrDefault();
+                var anyOfRef = Assert.IsType<OpenApiSchemaReference>(mediaType.Schema.AnyOf.FirstOrDefault());
                 Assert.NotNull(anyOfRef);
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOfRef.Reference.Id);
                 var anyOfNull = mediaType.Schema.AnyOf.Skip(1).FirstOrDefault();
@@ -265,7 +269,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(2, responses1.Count);
             Assert.Equal(new string[] { "200", "default" }, responses1.Select(r => r.Key));
 
-            OpenApiResponse response = responses1["200"];
+            var response = responses1["200"];
             Assert.NotNull(response.Content);
             Assert.Equal("application/octet-stream", response.Content.First().Key);
 

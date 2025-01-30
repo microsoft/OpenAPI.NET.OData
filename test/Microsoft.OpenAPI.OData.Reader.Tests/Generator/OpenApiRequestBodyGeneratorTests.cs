@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -168,12 +169,13 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Act
             context.AddRequestBodiesToDocument(openApiDocument);
             var requestBodies = openApiDocument.Components.RequestBodies;
-            requestBodies.TryGetValue(Common.Constants.ReferencePostRequestBodyName, out Models.OpenApiRequestBody refPostBody);
+            requestBodies.TryGetValue(Common.Constants.ReferencePostRequestBodyName, out var refPostBody);
 
             // Assert
             Assert.NotNull(refPostBody);
             Assert.Equal("New navigation property ref value", refPostBody.Description);
-            Assert.Equal(Common.Constants.ReferenceCreateSchemaName, refPostBody.Content.First().Value.Schema.Reference.Id);
+            var schemaReference = Assert.IsType<OpenApiSchemaReference>(refPostBody.Content.First().Value.Schema);
+            Assert.Equal(Common.Constants.ReferenceCreateSchemaName, schemaReference.Reference.Id);
         }
     }
 }

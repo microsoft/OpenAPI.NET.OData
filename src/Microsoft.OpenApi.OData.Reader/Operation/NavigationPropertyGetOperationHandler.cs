@@ -9,6 +9,7 @@ using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -90,7 +91,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            IDictionary<string, OpenApiLink> links = null;
+            IDictionary<string, IOpenApiLink> links = null;
             if (Context.Settings.ShowLinks)
             {
                 string operationId = GetOperationId();
@@ -107,15 +108,12 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                         new OpenApiResponseReference($"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}", _document)
-                        {
-                            Links = links
-                        }
                     }
                 };
             }
             else
             {
-                OpenApiSchema schema = null;
+                IOpenApiSchema schema = null;
                 var entityType = NavigationProperty.ToEntityType();
 
                 if (Context.Settings.EnableDerivedTypesReferencesForResponses)
@@ -168,7 +166,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 // Need to verify that TopSupported or others should be applied to navigation source.
                 // So, how about for the navigation property.
-                OpenApiParameter parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
+                var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);

@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Nodes;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -25,11 +26,11 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="context">The OData to Open API context.</param>
         /// <param name="document">The document to use to lookup references.</param>
         /// <returns>The string/schema dictionary.</returns>
-        public static IDictionary<string, OpenApiSchema> CreateSpatialSchemas(this ODataContext context, OpenApiDocument document)
+        public static IDictionary<string, IOpenApiSchema> CreateSpatialSchemas(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
-            IDictionary<string, OpenApiSchema> schemas = new Dictionary<string, OpenApiSchema>();
+            var schemas = new Dictionary<string, IOpenApiSchema>();
 
             if (context.IsSpatialTypeUsed)
             {
@@ -76,7 +77,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         /// <param name="document">The document to use to lookup references.</param>
-        public static OpenApiSchema CreateEdmGeographySchema(OpenApiDocument document)
+        public static IOpenApiSchema CreateEdmGeographySchema(OpenApiDocument document)
         {
             return new OpenApiSchemaReference("Edm.Geometry", document);
         }
@@ -86,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         /// <param name="document">The document to use to lookup references.</param>
-        public static OpenApiSchema CreateEdmGeographyPointSchema(OpenApiDocument document)
+        public static IOpenApiSchema CreateEdmGeographyPointSchema(OpenApiDocument document)
         {
             return new OpenApiSchemaReference("Edm.GeometryPoint", document);
         }
@@ -96,7 +97,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         /// <param name="document">The document to use to lookup references.</param>
-        public static OpenApiSchema CreateEdmGeographyLineStringSchema(OpenApiDocument document)
+        public static IOpenApiSchema CreateEdmGeographyLineStringSchema(OpenApiDocument document)
         {
             return new OpenApiSchemaReference("Edm.GeometryLineString", document);
         }
@@ -106,7 +107,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         /// <param name="document">The document to use to lookup references.</param>
-        public static OpenApiSchema CreateEdmGeographyPolygonSchema(OpenApiDocument document)
+        public static IOpenApiSchema CreateEdmGeographyPolygonSchema(OpenApiDocument document)
         {
             return new OpenApiSchemaReference("Edm.GeometryPolygon", document);
         }
@@ -116,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         /// <param name="document">The document to use to lookup references.</param>
-        public static OpenApiSchema CreateEdmGeographyMultiPointSchema(OpenApiDocument document)
+        public static IOpenApiSchema CreateEdmGeographyMultiPointSchema(OpenApiDocument document)
         {
             return new OpenApiSchemaReference("Edm.GeometryMultiPoint", document);
         }
@@ -126,7 +127,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         /// <param name="document">The document to use to lookup references.</param>
-        public static OpenApiSchema CreateEdmGeographyMultiLineStringSchema(OpenApiDocument document)
+        public static IOpenApiSchema CreateEdmGeographyMultiLineStringSchema(OpenApiDocument document)
         {
             return new OpenApiSchemaReference("Edm.GeometryMultiLineString", document);
         }
@@ -136,7 +137,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         /// <param name="document">The document to use to lookup references.</param>
-        public static OpenApiSchema CreateEdmGeographyMultiPolygonSchema(OpenApiDocument document)
+        public static IOpenApiSchema CreateEdmGeographyMultiPolygonSchema(OpenApiDocument document)
         {
             return new OpenApiSchemaReference("Edm.GeometryMultiPolygon", document);
         }
@@ -146,7 +147,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         /// <param name="document">The document to use to lookup references.</param>
-        public static OpenApiSchema CreateEdmGeographyCollectionSchema(OpenApiDocument document)
+        public static IOpenApiSchema CreateEdmGeographyCollectionSchema(OpenApiDocument document)
         {
             return new OpenApiSchemaReference("Edm.GeometryCollection", document);
         }
@@ -184,7 +185,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = JsonSchemaType.Object,
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
@@ -216,7 +217,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = JsonSchemaType.Object,
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
@@ -252,7 +253,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = JsonSchemaType.Object,
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
@@ -292,7 +293,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = JsonSchemaType.Object,
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
@@ -327,7 +328,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = JsonSchemaType.Object,
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
@@ -367,7 +368,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = JsonSchemaType.Object,
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
@@ -411,7 +412,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = JsonSchemaType.Object,
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
