@@ -249,31 +249,31 @@ namespace Microsoft.OpenApi.OData.Operation
             if (function.ReturnType.IsCollection())
             {
                 // $top
-                if (Context.CreateTop(function, _document) is OpenApiParameter topParameter)
+                if (Context.CreateTop(function, _document) is {} topParameter)
                 {
                     operation.Parameters.AppendParameter(topParameter);
                 }
 
                 // $skip
-                if (Context.CreateSkip(function, _document) is OpenApiParameter skipParameter)
+                if (Context.CreateSkip(function, _document) is {} skipParameter)
                 {
                     operation.Parameters.AppendParameter(skipParameter);
                 }
 
                 // $search
-                if (Context.CreateSearch(function, _document) is OpenApiParameter searchParameter)
+                if (Context.CreateSearch(function, _document) is {} searchParameter)
                 {
                     operation.Parameters.AppendParameter(searchParameter);
                 }
 
                 // $filter
-                if (Context.CreateFilter(function, _document) is OpenApiParameter filterParameter)
+                if (Context.CreateFilter(function, _document) is {} filterParameter)
                 {
                     operation.Parameters.AppendParameter(filterParameter);
                 }
 
                 // $count
-                if (Context.CreateCount(function, _document) is OpenApiParameter countParameter)
+                if (Context.CreateCount(function, _document) is {} countParameter)
                 {
                     operation.Parameters.AppendParameter(countParameter);
                 }
@@ -281,19 +281,19 @@ namespace Microsoft.OpenApi.OData.Operation
                 if (function.ReturnType?.Definition?.AsElementType() is IEdmEntityType entityType)
                 {
                     // $select
-                    if (Context.CreateSelect(function, entityType) is OpenApiParameter selectParameter)
+                    if (Context.CreateSelect(function, entityType) is {} selectParameter)
                     {
                         operation.Parameters.AppendParameter(selectParameter);
                     }
 
                     // $orderby
-                    if (Context.CreateOrderBy(function, entityType) is OpenApiParameter orderbyParameter)
+                    if (Context.CreateOrderBy(function, entityType) is {} orderbyParameter)
                     {
                         operation.Parameters.AppendParameter(orderbyParameter);
                     }
 
                     // $expand
-                    if (Context.CreateExpand(function, entityType) is OpenApiParameter expandParameter)
+                    if (Context.CreateExpand(function, entityType) is {} expandParameter)
                     {
                         operation.Parameters.AppendParameter(expandParameter);
                     }

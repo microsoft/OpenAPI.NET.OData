@@ -143,14 +143,15 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     private void AssertDocumentsAreEqual(string result, string fileName, OpenApiFormat format)
     {
         _output.WriteLine(result);
+        var expected = Resources.GetString(fileName);
         if (format is OpenApiFormat.Json)
         {
             var parsedJson = JsonNode.Parse(result);
-            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(Resources.GetString(fileName)), parsedJson));
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(expected), parsedJson));
         }
         else
         {
-            Assert.Equal(Resources.GetString(fileName).ChangeLineBreaks(), result);
+            Assert.Equal(expected.ChangeLineBreaks(), result);
         }
     }
 
