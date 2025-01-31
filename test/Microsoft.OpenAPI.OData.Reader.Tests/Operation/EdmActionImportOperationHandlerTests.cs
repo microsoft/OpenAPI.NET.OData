@@ -4,11 +4,13 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -17,7 +19,17 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmActionImportOperationHandlerTests
     {
-        private EdmActionImportOperationHandler _operationHandler = new EdmActionImportOperationHandler(new());
+        private readonly OpenApiDocument openApiDocument = new();
+        private EdmActionImportOperationHandler _operationHandler => new EdmActionImportOperationHandler(openApiDocument);
+        public EdmActionImportOperationHandlerTests()
+        {
+          openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+          openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+        }
 
         [Fact]
         public void CreateOperationForEdmActionImportReturnsCorrectOperation()
