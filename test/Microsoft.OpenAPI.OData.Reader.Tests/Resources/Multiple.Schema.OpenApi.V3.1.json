@@ -5074,10 +5074,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -5493,10 +5490,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -5507,10 +5501,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -5521,10 +5512,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -5673,10 +5661,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -5746,10 +5731,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -5760,10 +5742,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -6049,10 +6028,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -6063,10 +6039,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -6077,10 +6050,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -6272,10 +6242,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -6286,10 +6253,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true
@@ -6862,10 +6826,7 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": "null"
               }
             ],
             "x-ms-navigationProperty": true

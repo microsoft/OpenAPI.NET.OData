@@ -659,8 +659,8 @@ components:
           type: string
           x-ms-primary-error-message: true
         target:
-          type: string
           nullable: true
+          type: string
         details:
           type: array
           items:
@@ -678,8 +678,8 @@ components:
         message:
           type: string
         target:
-          type: string
           nullable: true
+          type: string
     DefaultNs.ODataErrors.InnerError:
       type: object
       description: The structure of this object is service-specific
@@ -692,8 +692,8 @@ components:
         '@odata.id':
           type: string
         '@odata.type':
-          type: string
           nullable: true
+          type: string
     ReferenceCreate:
       type: object
       properties:
@@ -706,8 +706,8 @@ components:
         - '-INF'
         - INF
         - NaN
-      type: string
       nullable: true
+      type: string
     DefaultNs.Color:
       title: Color
       enum:

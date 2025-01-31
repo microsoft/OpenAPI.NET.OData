@@ -922,9 +922,7 @@ paths:
               schema:
                 anyOf:
                   - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
-                  - type:
-                      - 'null'
-                      - object
+                  - type: 'null'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: functionImport
@@ -944,9 +942,7 @@ paths:
               schema:
                 anyOf:
                   - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                  - type:
-                      - 'null'
-                      - object
+                  - type: 'null'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: functionImport
@@ -7824,9 +7820,7 @@ paths:
                 hire:
                   anyOf:
                     - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                    - type:
-                        - 'null'
-                        - object
+                    - type: 'null'
         required: true
       responses:
         '204':
@@ -11343,9 +11337,7 @@ paths:
                 hire:
                   anyOf:
                     - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                    - type:
-                        - 'null'
-                        - object
+                    - type: 'null'
         required: true
       responses:
         '204':
@@ -20614,9 +20606,7 @@ paths:
                 hire:
                   anyOf:
                     - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                    - type:
-                        - 'null'
-                        - object
+                    - type: 'null'
         required: true
       responses:
         '204':
@@ -22660,9 +22650,7 @@ components:
         HomeAddress:
           anyOf:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-            - type:
-                - 'null'
-                - object
+            - type: 'null'
         FavoriteFeature:
           $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
         Features:
@@ -22683,9 +22671,7 @@ components:
         BestFriend:
           anyOf:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-            - type:
-                - 'null'
-                - object
+            - type: 'null'
           description: The best friend.
           x-ms-navigationProperty: true
         Trips:
@@ -22721,9 +22707,7 @@ components:
         Location:
           anyOf:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
-            - type:
-                - 'null'
-                - object
+            - type: 'null'
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location:
       title: Location
       type: object
@@ -22735,9 +22719,7 @@ components:
         City:
           anyOf:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City'
-            - type:
-                - 'null'
-                - object
+            - type: 'null'
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.City:
       title: City
       type: object
@@ -22765,9 +22747,7 @@ components:
             EmergencyAuthority:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                - type:
-                    - 'null'
-                    - object
+                - type: 'null'
               description: The person to contact in case of a crisis at this location.
               x-ms-navigationProperty: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
@@ -22868,9 +22848,7 @@ components:
             OccursAt:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
-                - type:
-                    - 'null'
-                    - object
+                - type: 'null'
             Description:
               type:
                 - 'null'
@@ -22898,23 +22876,17 @@ components:
             Airline:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
-                - type:
-                    - 'null'
-                    - object
+                - type: 'null'
               x-ms-navigationProperty: true
             From:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
-                - type:
-                    - 'null'
-                    - object
+                - type: 'null'
               x-ms-navigationProperty: true
             To:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
-                - type:
-                    - 'null'
-                    - object
+                - type: 'null'
               x-ms-navigationProperty: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
       allOf:
@@ -22954,9 +22926,7 @@ components:
             BossOffice:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-                - type:
-                    - 'null'
-                    - object
+                - type: 'null'
             DirectReports:
               type: array
               items:
@@ -23173,9 +23143,7 @@ components:
           schema:
             anyOf:
               - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
-              - type:
-                  - 'null'
-                  - object
+              - type: 'null'
     GetFriendsTripsResponse:
       description: Success
       content:

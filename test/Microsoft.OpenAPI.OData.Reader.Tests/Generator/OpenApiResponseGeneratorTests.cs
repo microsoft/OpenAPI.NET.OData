@@ -178,6 +178,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Theory]
+        [InlineData(true, OpenApiSpecVersion.OpenApi3_1)]
+        [InlineData(false, OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
         [InlineData(true, OpenApiSpecVersion.OpenApi2_0)]
@@ -217,8 +219,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var response = responses["200"];
             Assert.NotNull(response.Content);
             OpenApiMediaType mediaType = response.Content["application/json"];
-
-            // openApi version 2 should not use AnyOf
+// openApi version 2 should not use AnyOf
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.NotNull(mediaType.Schema);
@@ -226,7 +227,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 var mediaTypeSchemaReference = Assert.IsType<OpenApiSchemaReference>(mediaType.Schema);
                 Assert.NotNull(mediaTypeSchemaReference.Reference);
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", mediaTypeSchemaReference.Reference.Id);
-                Assert.True(mediaType.Schema.Nullable);
             }
             else
             {
@@ -239,8 +239,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOfRef.Reference.Id);
                 var anyOfNull = mediaType.Schema.AnyOf.Skip(1).FirstOrDefault();
                 Assert.NotNull(anyOfNull.Type);
-                Assert.Equal(JsonSchemaType.Object, anyOfNull.Type);
-                Assert.True(anyOfNull.Nullable);
+                Assert.Equal(JsonSchemaType.Null, anyOfNull.Type);
             }
         }
 

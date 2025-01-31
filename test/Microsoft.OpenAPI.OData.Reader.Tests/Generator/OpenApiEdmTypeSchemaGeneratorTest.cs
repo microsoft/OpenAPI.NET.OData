@@ -164,8 +164,10 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(true, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(true, OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(false, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(false, OpenApiSpecVersion.OpenApi3_1)]
         public void CreateEdmTypeSchemaReturnSchemaForEnumType(bool isNullable, OpenApiSpecVersion specVersion)
         {
             // Arrange
@@ -182,19 +184,15 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // & Assert
             Assert.NotNull(schema);
-
-            
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
                 Assert.Null(schema.AnyOf);
                 Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
                 Assert.Equal(enumType.FullTypeName(), schemaReference.Reference.Id);
-                Assert.Equal(isNullable, schema.Nullable);
             }
             else
             {
-                
                 if (isNullable)
                 {
                     Assert.NotNull(schema.AnyOf);
@@ -207,8 +205,7 @@ namespace Microsoft.OpenApi.OData.Tests
                     Assert.Equal(enumType.FullTypeName(), anyOfRef.Reference.Id);
                     var anyOfNull = schema.AnyOf.Skip(1).FirstOrDefault();
                     Assert.NotNull(anyOfNull.Type);
-                    Assert.Equal(JsonSchemaType.Object, anyOfNull.Type);
-                    Assert.True(anyOfNull.Nullable);
+                    Assert.Equal(JsonSchemaType.Null, anyOfNull.Type);
                 }
                 else
                 {
@@ -216,15 +213,17 @@ namespace Microsoft.OpenApi.OData.Tests
                     var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
                     Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
                     Assert.Equal(enumType.FullTypeName(), schemaReference.Reference.Id);
-                }             
+                }
             }
         }
 
         [Theory]
         [InlineData(true, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(true, OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(false, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(false, OpenApiSpecVersion.OpenApi3_1)]
         public void CreateEdmTypeSchemaReturnSchemaForComplexType(bool isNullable, OpenApiSpecVersion specVersion)
         {
             // Arrange
@@ -263,10 +262,12 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
+        [InlineData(true, OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
         [InlineData(true, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(false, OpenApiSpecVersion.OpenApi3_1)]
         public void CreateEdmTypeSchemaReturnSchemaForEntityType(bool isNullable, OpenApiSpecVersion specVersion)
         {
             // Arrange
@@ -284,7 +285,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.NotNull(schema);
 
-            if (specVersion == OpenApiSpecVersion.OpenApi2_0 || isNullable == false)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0 || !isNullable)
             {
                 Assert.Null(schema.AnyOf);
                 var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
@@ -303,8 +304,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Equal(entity.FullTypeName(), anyOfRef.Reference.Id);
                 var anyOfNull = schema.AnyOf.Skip(1).FirstOrDefault();
                 Assert.NotNull(anyOfNull.Type);
-                Assert.Equal(JsonSchemaType.Object, anyOfNull.Type);
-                Assert.True(anyOfNull.Nullable);
+                Assert.Equal(JsonSchemaType.Null, anyOfNull.Type);
             }
         }
 

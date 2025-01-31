@@ -349,8 +349,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         new OpenApiSchemaReference(typeReference.Definition.FullTypeName(), document),
                         new OpenApiSchema
                         {
-                            Type = JsonSchemaType.Object,
-                            Nullable = true
+                            Type = JsonSchemaType.Null,
                         }
                     ]
                 };
@@ -380,8 +379,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         new OpenApiSchemaReference(typeReference.Definition.FullTypeName(), document),
                         new OpenApiSchema
                         {
-                            Type = JsonSchemaType.Object,
-                            Nullable = true
+                            Type = JsonSchemaType.Null,
                         }
                     ]
                 };
@@ -406,8 +404,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         new OpenApiSchemaReference(reference.Definition.FullTypeName(), document),
                         new OpenApiSchema
                         {
-                            Type = JsonSchemaType.Object,
-                            Nullable = true
+                            Type = JsonSchemaType.Null,
                         }
                     ]
                 };

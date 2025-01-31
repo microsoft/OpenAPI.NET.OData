@@ -316,7 +316,7 @@ namespace Microsoft.OpenApi.OData.Tests
       ""#microsoft.graph.singleUser"": ""#/components/schemas/microsoft.graph.singleUser""
     }
   }
-}".ChangeLineBreaks()
+}"
 :
                 @"{
   ""title"": ""userSet"",
@@ -346,9 +346,9 @@ namespace Microsoft.OpenApi.OData.Tests
       ""#microsoft.graph.singleUser"": ""#/components/schemas/microsoft.graph.singleUser""
     }
   }
-}".ChangeLineBreaks();
+}";
 
-            Assert.Equal(expected, json);
+            Assert.True(JsonObject.DeepEquals(JsonObject.Parse(expected), JsonObject.Parse(json)));
         }
 
         [Fact]
@@ -367,7 +367,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(json);
-            Assert.Equal(@"{
+            Assert.True(JsonObject.DeepEquals(JsonObject.Parse(@"{
   ""allOf"": [
     {
       ""$ref"": ""#/components/schemas/microsoft.graph.entity""
@@ -439,7 +439,7 @@ namespace Microsoft.OpenApi.OData.Tests
       }
     }
   ]
-}".ChangeLineBreaks(), json);
+}"), JsonObject.Parse(json)));
         }
 
         [Fact]
@@ -473,7 +473,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(json);
-            Assert.Equal(@"{
+            Assert.True(JsonObject.DeepEquals(JsonObject.Parse(@"{
   ""title"": ""Address"",
   ""type"": ""object"",
   ""properties"": {
@@ -491,7 +491,7 @@ namespace Microsoft.OpenApi.OData.Tests
     ""Street"": ""string"",
     ""City"": ""string""
   }
-}".ChangeLineBreaks(), json);
+}"), JsonObject.Parse(json)));
         }
 
         [Fact]
@@ -893,6 +893,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
+        [InlineData(OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(OpenApiSpecVersion.OpenApi3_0)]
         [InlineData(OpenApiSpecVersion.OpenApi2_0)]
         public async Task CreatePropertySchemaForNullableEnumPropertyReturnSchema(OpenApiSpecVersion specVersion)
@@ -913,28 +914,45 @@ namespace Microsoft.OpenApi.OData.Tests
             string json = await schema.SerializeAsJsonAsync(specVersion);
             _output.WriteLine(json);
 
-            // Assert
-            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
-            {
-                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
-  ""$ref"": ""#/definitions/DefaultNs.Color""
-}"), JsonNode.Parse(json)));
-            }
-            else
-            {
-                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
-  ""anyOf"": [
-    {
-      ""$ref"": ""#/components/schemas/DefaultNs.Color""
-    },
-    {
-      ""type"": ""object"",
-      ""nullable"": true
-    }
-  ],
-  ""default"": ""yellow""
-}"), JsonNode.Parse(json)));
-            }
+            var expected = JsonNode.Parse(specVersion switch {
+                OpenApiSpecVersion.OpenApi2_0 =>
+                """
+                {
+                  "$ref": "#/definitions/DefaultNs.Color"
+                }
+                """,
+                OpenApiSpecVersion.OpenApi3_0 =>
+                """
+                {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/DefaultNs.Color"
+                    },
+                    {
+                      "type": "object",
+                      "nullable": true
+                    }
+                  ],
+                  "default": "yellow"
+                }
+                """,
+                OpenApiSpecVersion.OpenApi3_1 =>
+                """
+                {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/DefaultNs.Color"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": "yellow"
+                }
+                """,
+            });
+
+            Assert.True(JsonNode.DeepEquals(expected, JsonNode.Parse(json)));
         }
 
         [Theory]
