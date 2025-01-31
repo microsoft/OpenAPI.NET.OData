@@ -13,7 +13,6 @@ using Xunit;
 using System.IO;
 using System.Xml;
 using System.Collections.Generic;
-using System.Net;
 using System.Text;
 using Microsoft.OData.Edm.Validation;
 using Xunit.Abstractions;
@@ -23,40 +22,27 @@ namespace Microsoft.OpenApi.OData.Tests
     /// <summary>
     /// Edm model helpers
     /// </summary>
-    public class EdmModelHelper
+    public class EdmModelHelper(ITestOutputHelper output)
     {
         public static IEdmModel EmptyModel { get; } = new EdmModel();
 
-        public static IEdmModel MultipleInheritanceEdmModel { get; }
+        public static IEdmModel MultipleInheritanceEdmModel { get; } = CreateMultipleInheritanceEdmModel();
 
-        public static IEdmModel InheritanceEdmModelAcrossReferences { get; }
+        public static IEdmModel InheritanceEdmModelAcrossReferences { get; } = CreateInheritanceEdmModelAcrossReferences();
 
-        public static IEdmModel BasicEdmModel { get; }
+        public static IEdmModel BasicEdmModel { get; } = CreateEdmModel();
 
-        public static IEdmModel MultipleSchemasEdmModel { get; }
+        public static IEdmModel MultipleSchemasEdmModel { get; } = LoadEdmModel("Multiple.Schema.OData.xml");
 
-        public static IEdmModel CompositeKeyModel { get; }
+        public static IEdmModel CompositeKeyModel { get; } = CreateCompositeKeyModel();
 
-        public static IEdmModel TripServiceModel { get; }
+        public static IEdmModel TripServiceModel { get; } = LoadEdmModel("TripService.OData.xml");
 
-        public static IEdmModel ContractServiceModel { get; }
+        public static IEdmModel ContractServiceModel { get; } = LoadEdmModel("Contract.OData.xml");
 
-        public static IEdmModel GraphBetaModel { get; }
+        public static IEdmModel GraphBetaModel { get; } = LoadEdmModel("Graph.Beta.OData.xml");
 
-        public static IEdmModel ComposableFunctionsModel { get; }
-
-        static EdmModelHelper()
-        {
-            MultipleInheritanceEdmModel = CreateMultipleInheritanceEdmModel();
-            BasicEdmModel = CreateEdmModel();
-            CompositeKeyModel = CreateCompositeKeyModel();
-            TripServiceModel = LoadEdmModel("TripService.OData.xml");
-            ContractServiceModel = LoadEdmModel("Contract.OData.xml");
-            GraphBetaModel = LoadEdmModel("Graph.Beta.OData.xml");
-            MultipleSchemasEdmModel = LoadEdmModel("Multiple.Schema.OData.xml");
-            InheritanceEdmModelAcrossReferences = CreateInheritanceEdmModelAcrossReferences();
-            ComposableFunctionsModel = LoadEdmModel("ComposableFunctions.OData.xml");
-        }
+        public static IEdmModel ComposableFunctionsModel { get; } = LoadEdmModel("ComposableFunctions.OData.xml");
 
         private static IEdmModel LoadEdmModel(string source)
         {
@@ -64,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Tests
             return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
         }
 
-        private static IEdmModel CreateMultipleInheritanceEdmModel()
+        private static EdmModel CreateMultipleInheritanceEdmModel()
         {
             var model = new EdmModel();
 
@@ -112,7 +98,7 @@ namespace Microsoft.OpenApi.OData.Tests
             horse.AddStructuralProperty("Height", EdmCoreModel.Instance.GetDecimal(false));
             model.AddElement(horse);
 
-            EdmNavigationPropertyInfo navInfo = new EdmNavigationPropertyInfo
+            EdmNavigationPropertyInfo navInfo = new()
             {
                 Name = "Creatures",
                 Target = creature,
@@ -202,19 +188,17 @@ namespace Microsoft.OpenApi.OData.Tests
   </edmx:DataServices>
 </edmx:Edmx>";
 
-            IEdmModel model;
-            IEnumerable<EdmError> errors;
 
             XElement parsed = XElement.Parse(modelText);
             bool result = CsdlReader.TryParse(parsed.CreateReader(),
                 uri => XElement.Parse(subModelText).CreateReader(),
-                out model,
-                out errors);
+                out var model,
+                out var _);
             Assert.True(result);
             return model;
         }
 
-        private static IEdmModel CreateEdmModel()
+        private static EdmModel CreateEdmModel()
         {
             var model = new EdmModel();
 
@@ -272,10 +256,10 @@ namespace Microsoft.OpenApi.OData.Tests
 
             var entityContainer = new EdmEntityContainer("DefaultNs", "Container");
             model.AddElement(entityContainer);
-            EdmSingleton me = new EdmSingleton(entityContainer, "Me", person);
-            EdmEntitySet people = new EdmEntitySet(entityContainer, "People", person);
-            EdmEntitySet cities = new EdmEntitySet(entityContainer, "City", city);
-            EdmEntitySet countriesOrRegions = new EdmEntitySet(entityContainer, "CountryOrRegion", countryOrRegion);
+            EdmSingleton me = new(entityContainer, "Me", person);
+            EdmEntitySet people = new(entityContainer, "People", person);
+            EdmEntitySet cities = new(entityContainer, "City", city);
+            EdmEntitySet countriesOrRegions = new(entityContainer, "CountryOrRegion", countryOrRegion);
             people.AddNavigationTarget(navP, cities, new EdmPathExpression("HomeAddress/City"));
             people.AddNavigationTarget(navP, cities, new EdmPathExpression("Addresses/City"));
             people.AddNavigationTarget(navP2, countriesOrRegions,
@@ -295,7 +279,7 @@ namespace Microsoft.OpenApi.OData.Tests
             return model;
         }
 
-        private static IEdmModel CreateCompositeKeyModel()
+        private static EdmModel CreateCompositeKeyModel()
         {
             var model = new EdmModel();
 
@@ -311,11 +295,7 @@ namespace Microsoft.OpenApi.OData.Tests
             return model;
         }
 
-        private ITestOutputHelper _output;
-        public EdmModelHelper(ITestOutputHelper output)
-        {
-            _output = output;
-        }
+        private readonly ITestOutputHelper _output = output;
 
         [Fact]
         public void MultipleInheritanceEdmModelMetadataDocumentTest()
@@ -413,24 +393,18 @@ namespace Microsoft.OpenApi.OData.Tests
 
         public static string GetCsdl(IEdmModel model)
         {
-            string edmx = String.Empty;
-
-            using (StringWriter sw = new StringWriter())
+            using StringWriter sw = new();
+            XmlWriterSettings settings = new()
             {
-                XmlWriterSettings settings = new XmlWriterSettings();
-                settings.Encoding = Encoding.UTF8;
-                settings.Indent = true;
+                Encoding = Encoding.UTF8,
+                Indent = true
+            };
 
-                using (XmlWriter xw = XmlWriter.Create(sw, settings))
-                {
-                    IEnumerable<EdmError> errors;
-                    CsdlWriter.TryWriteCsdl(model, xw, CsdlTarget.OData, out errors);
-                    xw.Flush();
-                }
+            using XmlWriter xw = XmlWriter.Create(sw, settings);
+            CsdlWriter.TryWriteCsdl(model, xw, CsdlTarget.OData, out var _);
+            xw.Flush();
 
-                edmx = sw.ToString();
-            }
-
+            string edmx = sw.ToString();
             return edmx;
         }
     }

@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -22,6 +23,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EdmOperationImportOperationHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EdmOperationImportOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected EdmOperationImportOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         private OperationRestrictionsType _operationRestriction;
 
         /// <summary>
@@ -91,7 +100,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // describing the structure of the success response by referencing an appropriate schema
             // in the global schemas. In addition, it contains a default name/value pair for
             // the OData error response referencing the global responses.
-            operation.Responses = Context.CreateResponses(EdmOperationImport);
+            operation.Responses = Context.CreateResponses(EdmOperationImport, _document);
 
             base.SetResponses(operation);
         }
@@ -104,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>
@@ -129,35 +138,27 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            operation.Tags = CreateTags(EdmOperationImport);
-            operation.Tags[0].Extensions.Add(Constants.xMsTocType, new OpenApiString("container"));
-            Context.AppendTag(operation.Tags[0]);
+            var tag = CreateTag(EdmOperationImport);
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
+            Context.AppendTag(tag);
+            operation.Tags.Add(new OpenApiTagReference(tag.Name, _document));
 
             base.SetTags(operation);
         }
 
-        private static IList<OpenApiTag> CreateTags(IEdmOperationImport operationImport)
+        private static OpenApiTag CreateTag(IEdmOperationImport operationImport)
         {
-            if (operationImport.EntitySet != null)
+            if (operationImport.EntitySet is IEdmPathExpression pathExpression)
             {
-                var pathExpression = operationImport.EntitySet as IEdmPathExpression;
-                if (pathExpression != null)
+                return new OpenApiTag
                 {
-                    return new List<OpenApiTag>
-                    {
-                        new OpenApiTag
-                        {
-                            Name = PathAsString(pathExpression.PathSegments)
-                        }
-                    };
-                }
+                    Name = PathAsString(pathExpression.PathSegments)
+                };
             }
 
-            return new List<OpenApiTag>{
-                new OpenApiTag
-                {
-                    Name = operationImport.Name
-                }
+            return new OpenApiTag
+            {
+                Name = operationImport.Name
             };
         }
 

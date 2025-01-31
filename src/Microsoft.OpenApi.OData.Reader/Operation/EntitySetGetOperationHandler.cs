@@ -4,9 +4,11 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -22,6 +24,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntitySetGetOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntitySetGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EntitySetGetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -57,12 +67,12 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.EnablePagination)
             {
-                OpenApiObject extension = new OpenApiObject
+                JsonObject extension = new JsonObject
                 {
-                    { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                    { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+                    { "nextLinkName", "@odata.nextLink"},
+                    { "operationName", Context.Settings.PageableOperationName}
                 };
-                operation.Extensions.Add(Constants.xMsPageable, extension);
+                operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
 
                 base.SetExtensions(operation);
             }
@@ -78,35 +88,35 @@ namespace Microsoft.OpenApi.OData.Operation
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
             // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
             // $top
-            OpenApiParameter parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(EntitySet);
+            var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $skip
-            parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(EntitySet);
+            parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $search
-            parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(EntitySet);
+            parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $filter
-            parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(EntitySet);
+            parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $count
-            parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(EntitySet);
+            parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -145,19 +155,11 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference()
-                        {
-                            Type = ReferenceType.Response,
-                            Id = $"{EntitySet.EntityType.FullName()}{Constants.CollectionSchemaSuffix}"
-                        },
-                    }
+                    new OpenApiResponseReference($"{EntitySet.EntityType.FullName()}{Constants.CollectionSchemaSuffix}", _document)
                 }
             };
 
-            operation.AddErrorResponses(Context.Settings, false);
+            operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -169,7 +171,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

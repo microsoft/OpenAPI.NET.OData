@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -36,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 new ODataNavigationPropertySegment(navProperty));
 
             // Act
-            IDictionary<string, OpenApiLink> links = context.CreateLinks(
+            var links = context.CreateLinks(
                 entityType: navProperty.ToEntityType(),
                 entityName: adminEntityType.Name,
                 entityKind: navProperty.PropertyKind.ToString(),
@@ -87,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 new ODataNavigationPropertySegment(navProperty2));
 
             // Act
-            IDictionary<string, OpenApiLink> links = context.CreateLinks(
+            var links = context.CreateLinks(
                 entityType: navProperty2.ToEntityType(),
                 entityName: singletonEntityType.Name,
                 entityKind: navProperty2.PropertyKind.ToString(),
@@ -150,7 +151,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 new ODataNavigationSourceSegment(singleton));
 
             // Act
-            IDictionary<string, OpenApiLink> links = context.CreateLinks(
+            var links = context.CreateLinks(
                 entityType: singleton.EntityType,
                 entityName: singleton.Name,
                 entityKind: singleton.ContainerElementKind.ToString(),
@@ -205,7 +206,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 new ODataNavigationSourceSegment(entityset),
                 new ODataKeySegment(entityset.EntityType));
 
-            var parameters = new List<OpenApiParameter>()
+            var parameters = new List<IOpenApiParameter>()
             {
                 new OpenApiParameter()
                 {
@@ -215,13 +216,13 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                     Required = true,
                     Schema = new OpenApiSchema()
                     {
-                        Type = "string"
+                        Type = JsonSchemaType.String
                     }
                 }
             };
 
             // Act
-            IDictionary<string, OpenApiLink> links = context.CreateLinks(
+            var links = context.CreateLinks(
                 entityType: entityset.EntityType,
                 entityName: entityset.Name,
                 entityKind: entityset.ContainerElementKind.ToString(),

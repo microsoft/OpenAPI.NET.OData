@@ -1,0 +1,151 @@
+openapi: '3.1.1'
+info:
+  title: 'OData Service for namespace '
+  description: This OData service is located at http://localhost
+  version: 1.0.0
+servers:
+  - url: http://localhost
+paths: { }
+components:
+  schemas:
+    ODataErrors.ODataError:
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ODataErrors.MainError'
+    ODataErrors.MainError:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+          x-ms-primary-error-message: true
+        target:
+          type:
+            - 'null'
+            - string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ODataErrors.ErrorDetails'
+        innerError:
+          $ref: '#/components/schemas/ODataErrors.InnerError'
+    ODataErrors.ErrorDetails:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type:
+            - 'null'
+            - string
+    ODataErrors.InnerError:
+      type: object
+      description: The structure of this object is service-specific
+    ODataCountResponse:
+      type: number
+      format: int64
+    ReferenceUpdate:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+        '@odata.type':
+          type:
+            - 'null'
+            - string
+    ReferenceCreate:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+      additionalProperties:
+        type: object
+    ReferenceNumeric:
+      enum:
+        - '-INF'
+        - INF
+        - NaN
+      type:
+        - 'null'
+        - string
+  responses:
+    error:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataErrors.ODataError'
+    ODataCountResponse:
+      description: The count of the resource
+      content:
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/ODataCountResponse'
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Show only the first n items
+      explode: false
+      schema:
+        minimum: 0
+        type: number
+        format: int64
+      example: 50
+    skip:
+      name: $skip
+      in: query
+      description: Skip the first n items
+      explode: false
+      schema:
+        minimum: 0
+        type: number
+        format: int64
+    count:
+      name: $count
+      in: query
+      description: Include count of items
+      explode: false
+      schema:
+        type: boolean
+    filter:
+      name: $filter
+      in: query
+      description: Filter items by property values
+      explode: false
+      schema:
+        type: string
+    search:
+      name: $search
+      in: query
+      description: Search items by search phrases
+      explode: false
+      schema:
+        type: string
+  requestBodies:
+    refPostBody:
+      description: New navigation property ref value
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceCreate'
+      required: true
+    refPutBody:
+      description: New navigation property ref values
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceUpdate'
+      required: true

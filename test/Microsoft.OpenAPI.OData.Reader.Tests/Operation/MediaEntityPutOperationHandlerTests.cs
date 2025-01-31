@@ -4,8 +4,11 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Linq;
 using Xunit;
@@ -14,7 +17,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class MediaEntityPutOperationHandlerTests
     {
-        private readonly MediaEntityPutOperationHandler _operationalHandler = new MediaEntityPutOperationHandler();
+        public MediaEntityPutOperationHandlerTests()
+        {
+          _operationHandler = new (_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly MediaEntityPutOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, false)]
@@ -84,9 +92,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamPropertySegment(sp2.Name));
 
             // Act
-            var putOperation = _operationalHandler.CreateOperation(context, path);
-            var putOperation2 = _operationalHandler.CreateOperation(context, path2);
-            var putOperation3 = _operationalHandler.CreateOperation(context, path3);
+            var putOperation = _operationHandler.CreateOperation(context, path);
+            var putOperation2 = _operationHandler.CreateOperation(context, path2);
+            var putOperation3 = _operationHandler.CreateOperation(context, path3);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(putOperation);
@@ -118,9 +127,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Test only for stream properties of identifier 'content' 
             if (useSuccessStatusCodeRange)
             {
-                var referenceId = putOperation3.Responses[statusCode]?.Content[Constants.ApplicationJsonMediaType]?.Schema?.Reference.Id;
-                Assert.NotNull(referenceId);
-                Assert.Equal("microsoft.graph.Todo", referenceId);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(putOperation3.Responses[statusCode]?.Content[Constants.ApplicationJsonMediaType]?.Schema);
+                Assert.NotNull(schemaReference.Reference.Id);
+                Assert.Equal("microsoft.graph.Todo", schemaReference.Reference.Id);
             }
             else
             {
@@ -150,8 +159,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Todos.Todo.UpdateLogo", putOperation.OperationId);
-                Assert.Equal("me.UpdatePhotoContent", putOperation2.OperationId);
+                Assert.Equal("Todos.Todo.UpdateLogo-9540", putOperation.OperationId);
+                Assert.Equal("me.UpdatePhotoContent-797b", putOperation2.OperationId);
             }
             else
             {
@@ -176,7 +185,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamPropertySegment(property.Name));
 
             // Act
-            var operation = _operationalHandler.CreateOperation(context, path);
+            var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);

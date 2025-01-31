@@ -6,6 +6,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
@@ -13,6 +15,7 @@ using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
+using Moq;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
@@ -24,20 +27,24 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             ODataContext context = null;
+            var mockModel = new Mock<IEdmModel>().Object;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateParameters());
+            Assert.Throws<ArgumentNullException>("context", () => context.AddParametersToDocument(new()));
+            Assert.Throws<ArgumentNullException>("document", () => new ODataContext(mockModel).AddParametersToDocument(null));
         }
 
         [Fact]
-        public void CreateParametersReturnsCreatedParameters()
+        public async Task CreateParametersReturnsCreatedParameters()
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
             ODataContext context = new ODataContext(model);
+            OpenApiDocument openApiDocument = new ();
 
             // Act
-            var parameters = context.CreateParameters();
+            context.AddParametersToDocument(openApiDocument);
+            var parameters = openApiDocument.Components.Parameters;
 
             // Assert
             Assert.NotNull(parameters);
@@ -45,123 +52,98 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(5, parameters.Count);
             Assert.Equal(new[] { "top", "skip", "count", "filter", "search" },
                 parameters.Select(p => p.Key));
-            Assert.Collection(parameters,
-                item => // $top
-                {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+            var expectedTop = JsonNode.Parse(@"{
   ""name"": ""$top"",
   ""in"": ""query"",
   ""description"": ""Show only the first n items"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""minimum"": 0,
-    ""type"": ""integer""
+    ""type"": ""number"",
+    ""format"": ""int64""
   },
   ""example"": 50
-}";
-
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
-                },
-                item => // $skip
-                {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+}");
+            var expectedSkip = JsonNode.Parse(@"{
   ""name"": ""$skip"",
   ""in"": ""query"",
   ""description"": ""Skip the first n items"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""minimum"": 0,
-    ""type"": ""integer""
+    ""type"": ""number"",
+    ""format"": ""int64""
   }
-}";
-
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
-                },
-                item => // $count
-                {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+}");
+            var expectedCount = JsonNode.Parse(@"{
   ""name"": ""$count"",
   ""in"": ""query"",
   ""description"": ""Include count of items"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""type"": ""boolean""
   }
-}";
-
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
-                },
-                item => // $filter
-                {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+}");
+            var expectedFilter = JsonNode.Parse(@"{
   ""name"": ""$filter"",
   ""in"": ""query"",
   ""description"": ""Filter items by property values"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""type"": ""string""
   }
-}";
-
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
-                },
-                item => // $search
-                {
-                    string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = @"{
+}");
+            var expectedSearch = JsonNode.Parse(@"{
   ""name"": ""$search"",
   ""in"": ""query"",
   ""description"": ""Search items by search phrases"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""type"": ""string""
   }
-}";
-
-                    Assert.Equal(expected.ChangeLineBreaks(), json);
-                });
+}");
+            var parametersAsRawJson = await Task.WhenAll(parameters.Select(p => p.Value.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0)));
+            var parametersAsJson = parametersAsRawJson.Select(x => JsonNode.Parse(x)).ToArray();
+            Assert.Contains(parametersAsJson, p => JsonNode.DeepEquals(expectedTop, p));
+            Assert.Contains(parametersAsJson, p => JsonNode.DeepEquals(expectedSkip, p));
+            Assert.Contains(parametersAsJson, p => JsonNode.DeepEquals(expectedCount, p));
+            Assert.Contains(parametersAsJson, p => JsonNode.DeepEquals(expectedFilter, p));
+            Assert.Contains(parametersAsJson, p => JsonNode.DeepEquals(expectedSearch, p));
         }
 
         [Fact]
-        public void CanSeralizeAsYamlFromTheCreatedParameters()
+        public async Task CanSerializeAsYamlFromTheCreatedParameters()
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
             ODataContext context = new ODataContext(model);
+            OpenApiDocument openApiDocument = new ();
 
             // Act
-            var parameters = context.CreateParameters();
+            context.AddParametersToDocument(openApiDocument);
+            var parameters = openApiDocument.Components.Parameters;
 
             // Assert
             Assert.Contains("skip", parameters.Select(p => p.Key));
             var skip = parameters.First(c => c.Key == "skip").Value;
 
-            string yaml = skip.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
+            string yaml = await skip.SerializeAsYamlAsync(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(
 @"name: $skip
 in: query
 description: Skip the first n items
-style: form
 explode: false
 schema:
   minimum: 0
-  type: integer
+  type: number
+  format: int64
 ".ChangeLineBreaks(), yaml);
         }
 
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateKeyParametersForSingleKeyWorks(bool prefix)
+        public async Task CreateKeyParametersForSingleKeyWorks(bool prefix)
         {
             // Arrange
             EdmModel model = new EdmModel();
@@ -176,18 +158,18 @@ schema:
             ODataKeySegment keySegment = new ODataKeySegment(customer);
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment);
+            var parameters = context.CreateKeyParameters(keySegment, new());
 
             // Assert
             Assert.NotNull(parameters);
             var parameter = Assert.Single(parameters);
 
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expected;
+            var json = JsonNode.Parse(await parameter.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            JsonNode expected;
 
             if (prefix)
             {
-                expected = @"{
+                expected = JsonNode.Parse(@"{
   ""name"": ""Customer-Id"",
   ""in"": ""path"",
   ""description"": ""The unique identifier of Customer"",
@@ -197,11 +179,11 @@ schema:
     ""nullable"": true
   },
   ""x-ms-docs-key-type"": ""Customer""
-}";
+}");
             }
             else
             {
-                expected = @"{
+                expected = JsonNode.Parse(@"{
   ""name"": ""Id"",
   ""in"": ""path"",
   ""description"": ""The unique identifier of Customer"",
@@ -211,16 +193,16 @@ schema:
     ""nullable"": true
   },
   ""x-ms-docs-key-type"": ""Customer""
-}";
+}");
             }
 
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+            Assert.True(JsonNode.DeepEquals(expected, json));
         }
 
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateKeyParametersForCompositeKeyWorks(bool prefix)
+        public async Task CreateKeyParametersForCompositeKeyWorks(bool prefix)
         {
             // Arrange
             EdmModel model = new EdmModel();
@@ -236,7 +218,7 @@ schema:
             ODataKeySegment keySegment = new ODataKeySegment(customer);
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment);
+            var parameters = context.CreateKeyParameters(keySegment, new());
 
             // Assert
             Assert.NotNull(parameters);
@@ -244,8 +226,8 @@ schema:
 
             // 1st
             var parameter = parameters.First();
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expected = @"{
+            var json = JsonNode.Parse(await parameter.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expected = JsonNode.Parse(@"{
   ""name"": ""firstName"",
   ""in"": ""path"",
   ""description"": ""Property in multi-part unique identifier of Customer"",
@@ -255,13 +237,13 @@ schema:
     ""nullable"": true
   },
   ""x-ms-docs-key-type"": ""Customer""
-}";
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+}");
+            Assert.True(JsonNode.DeepEquals(expected, json));
 
             // 2nd
             parameter = parameters.Last();
-            json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            expected = @"{
+            json = JsonNode.Parse(await parameter.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            expected = JsonNode.Parse(@"{
   ""name"": ""lastName"",
   ""in"": ""path"",
   ""description"": ""Property in multi-part unique identifier of Customer"",
@@ -271,12 +253,12 @@ schema:
     ""nullable"": true
   },
   ""x-ms-docs-key-type"": ""Customer""
-}";
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+}");
+            Assert.True(JsonNode.DeepEquals(expected, json));
         }
 
         [Fact]
-        public void CreateKeyParametersForAlternateKeyWithSinglePropertyWorks()
+        public async Task CreateKeyParametersForAlternateKeyWithSinglePropertyWorks()
         {
             // Arrange
             EdmModel model = new();
@@ -297,14 +279,14 @@ schema:
             };
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment);
+            var parameters = context.CreateKeyParameters(keySegment, new());
             var altParameter = parameters.Last();
 
             // Assert
             Assert.NotNull(parameters);
             Assert.Single(parameters);
-            string json = altParameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            var json = JsonNode.Parse(await altParameter.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expected = JsonNode.Parse(@"{
   ""name"": ""AltId1"",
   ""in"": ""path"",
   ""description"": ""Alternate key of Customer"",
@@ -313,11 +295,12 @@ schema:
     ""type"": ""string"",
     ""nullable"": true
   }
-}".ChangeLineBreaks(), json);
+}");
+            Assert.True(JsonNode.DeepEquals(expected, json));
         }
 
         [Fact]
-        public void CreateKeyParametersForAlternateKeyWithMultiplePropertiesWorks()
+        public async Task CreateKeyParametersForAlternateKeyWithMultiplePropertiesWorks()
         {
             // Arrange
             EdmModel model = new();
@@ -343,15 +326,15 @@ schema:
             };
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment);
+            var parameters = context.CreateKeyParameters(keySegment, new());
             var altParameter1 = parameters.First();
             var altParameter2 = parameters.Last();
 
             // Assert
             Assert.NotNull(parameters);
             Assert.Equal(2, parameters.Count);
-            string json1 = altParameter1.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            var json1 = JsonNode.Parse(await altParameter1.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expected1 = JsonNode.Parse(@"{
   ""name"": ""AltId1"",
   ""in"": ""path"",
   ""description"": ""Property in multi-part alternate key of Customer"",
@@ -360,10 +343,11 @@ schema:
     ""type"": ""string"",
     ""nullable"": true
   }
-}".ChangeLineBreaks(), json1);
+}");
+            Assert.True(JsonNode.DeepEquals(expected1, json1));
 
-            string json2 = altParameter2.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            var json2 = JsonNode.Parse(await altParameter2.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expected2 = JsonNode.Parse(@"{
   ""name"": ""AltId2"",
   ""in"": ""path"",
   ""description"": ""Property in multi-part alternate key of Customer"",
@@ -372,13 +356,14 @@ schema:
     ""type"": ""string"",
     ""nullable"": true
   }
-}".ChangeLineBreaks(), json2);
+}");
+            Assert.True(JsonNode.DeepEquals(expected2, json2));
         }
 
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateOrderByAndSelectAndExpandParametersWorks(bool useStringArrayForQueryOptionsSchema)
+        public async Task CreateOrderByAndSelectAndExpandParametersWorks(bool useStringArrayForQueryOptionsSchema)
         {
             // Arrange
             IEdmModel model = GetEdmModel();
@@ -398,34 +383,34 @@ schema:
         ""ID"",
         ""ID desc""
       ],";
-            VerifyCreateOrderByParameter(entitySet, context, orderByItemsText);
-            VerifyCreateOrderByParameter(singleton, context);
-            VerifyCreateOrderByParameter(navigationProperty, context);
+            await VerifyCreateOrderByParameter(entitySet, context, orderByItemsText);
+            await VerifyCreateOrderByParameter(singleton, context);
+            await VerifyCreateOrderByParameter(navigationProperty, context);
 
             // Select
             string selectItemsText = useStringArrayForQueryOptionsSchema ? null : @"""enum"": [
         ""ID"",
         ""Addresses""
       ],";
-            VerifyCreateSelectParameter(entitySet, context, selectItemsText);
-            VerifyCreateSelectParameter(singleton, context);
-            VerifyCreateSelectParameter(navigationProperty, context);
+            await VerifyCreateSelectParameter(entitySet, context, selectItemsText);
+            await VerifyCreateSelectParameter(singleton, context);
+            await VerifyCreateSelectParameter(navigationProperty, context);
 
             // Expand
             string expandItemsText = useStringArrayForQueryOptionsSchema ? null : @"""enum"": [
         ""*"",
         ""Addresses""
       ],";
-            VerifyCreateExpandParameter(entitySet, context, expandItemsText);
+            await VerifyCreateExpandParameter(entitySet, context, expandItemsText);
 
             string expandItemsDefaultText = useStringArrayForQueryOptionsSchema ? null : @"""enum"": [
         ""*""
       ],";
-            VerifyCreateExpandParameter(singleton, context, expandItemsDefaultText);
-            VerifyCreateExpandParameter(navigationProperty, context, expandItemsDefaultText);
+            await VerifyCreateExpandParameter(singleton, context, expandItemsDefaultText);
+            await VerifyCreateExpandParameter(navigationProperty, context, expandItemsDefaultText);
         }
 
-        private void VerifyCreateOrderByParameter(IEdmElement edmElement, ODataContext context, string orderByItemsText = null)
+        private static async Task VerifyCreateOrderByParameter(IEdmElement edmElement, ODataContext context, string orderByItemsText = null)
         {
             // Arrange & Act
             OpenApiParameter parameter;
@@ -452,13 +437,11 @@ schema:
             // Assert
             Assert.NotNull(parameter);
 
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-
-            string expected = $@"{{
+            var json = JsonNode.Parse(await parameter.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expectedJson = JsonNode.Parse($@"{{
   ""name"": ""$orderby"",
   ""in"": ""query"",
   ""description"": ""Order items by property values"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {{
     ""uniqueItems"": true,
@@ -467,12 +450,12 @@ schema:
       {itemsText}
     }}
   }}
-}}";
+}}");
 
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+            Assert.True(JsonNode.DeepEquals(expectedJson, json));
         }
 
-        private void VerifyCreateSelectParameter(IEdmElement edmElement, ODataContext context, string selectItemsText = null)
+        private static async Task VerifyCreateSelectParameter(IEdmElement edmElement, ODataContext context, string selectItemsText = null)
         {
             // Arrange & Act
             OpenApiParameter parameter;
@@ -499,13 +482,11 @@ schema:
             // Assert
             Assert.NotNull(parameter);
 
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-
-            string expected = $@"{{
+            var json = JsonNode.Parse(await parameter.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expectedJson = JsonNode.Parse($@"{{
   ""name"": ""$select"",
   ""in"": ""query"",
   ""description"": ""Select properties to be returned"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {{
     ""uniqueItems"": true,
@@ -514,12 +495,11 @@ schema:
       {itemsText}
     }}
   }}
-}}";
-
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+}}");
+            Assert.True(JsonNode.DeepEquals(expectedJson, json));
         }
 
-        private void VerifyCreateExpandParameter(IEdmElement edmElement, ODataContext context, string expandItemsText)
+        private static async Task VerifyCreateExpandParameter(IEdmElement edmElement, ODataContext context, string expandItemsText)
         {
             // Arrange & Act
             OpenApiParameter parameter;
@@ -541,15 +521,13 @@ schema:
             // Assert
             Assert.NotNull(parameter);
 
-            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-
-            string expected = expandItemsText == null
+            var json = JsonNode.Parse(await parameter.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expectedJson = expandItemsText == null
                 ? 
                 $@"{{
   ""name"": ""$expand"",
   ""in"": ""query"",
   ""description"": ""Expand related entities"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {{
     ""uniqueItems"": true,
@@ -564,7 +542,6 @@ schema:
   ""name"": ""$expand"",
   ""in"": ""query"",
   ""description"": ""Expand related entities"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {{
     ""uniqueItems"": true,
@@ -575,12 +552,12 @@ schema:
     }}
   }}
 }}";
-
-            Assert.Equal(expected.ChangeLineBreaks(), json);
+            var expectedJsonNode = JsonNode.Parse(expectedJson);
+            Assert.True(JsonNode.DeepEquals(expectedJsonNode, json));
         }
 
         [Fact]
-        public void CreateParametersWorks()
+        public async Task CreateParametersWorks()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
@@ -598,23 +575,23 @@ schema:
             Assert.NotNull(function3);
 
             // Act
-            IList<OpenApiParameter> parameters1 = context.CreateParameters(function1);
-            IList<OpenApiParameter> parameters2 = context.CreateParameters(function2);
-            IList<OpenApiParameter> parameters3 = context.CreateParameters(function3);
+            var parameters1 = context.CreateParameters(function1, new());
+            var parameters2 = context.CreateParameters(function2, new());
+            var parameters3 = context.CreateParameters(function3, new());
 
             // Assert
             Assert.NotNull(parameters1);
-            OpenApiParameter parameter1 = Assert.Single(parameters1);
+            var parameter1 = Assert.Single(parameters1);
 
             Assert.NotNull(parameters2);
-            OpenApiParameter parameter2 = Assert.Single(parameters2);
+            var parameter2 = Assert.Single(parameters2);
 
             Assert.NotNull(parameters3);
             Assert.Equal(4, parameters3.Count);
-            OpenApiParameter parameter3 = parameters3.First();
+            var parameter3 = parameters3.First();
 
-            string json1 = parameter1.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expectedPayload1 = $@"{{
+            var json1 = JsonNode.Parse(await parameter1.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expectedPayload1 = JsonNode.Parse($@"{{
   ""name"": ""ids"",
   ""in"": ""path"",
   ""description"": ""The URL-encoded JSON object"",
@@ -629,10 +606,11 @@ schema:
       }}
     }}
   }}
-}}";
+}}");
+            Assert.True(JsonNode.DeepEquals(expectedPayload1, json1));
 
-            string json2 = parameter2.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expectedPayload2 = $@"{{
+            var json2 = JsonNode.Parse(await parameter2.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expectedPayload2 = JsonNode.Parse($@"{{
   ""name"": ""resource"",
   ""in"": ""path"",
   ""required"": true,
@@ -640,21 +618,19 @@ schema:
     ""type"": ""string"",
     ""nullable"": true
   }}
-}}";
+}}");
+            Assert.True(JsonNode.DeepEquals(expectedPayload2, json2));
 
-            string json3 = parameter3.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            string expectedPayload3 = $@"{{
+            var json3 = JsonNode.Parse(await parameter3.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var expectedPayload3 = JsonNode.Parse($@"{{
   ""name"": ""directoryScopeId"",
   ""in"": ""query"",
   ""schema"": {{
     ""type"": ""string"",
     ""nullable"": true
   }}
-}}";
-
-            Assert.Equal(expectedPayload1.ChangeLineBreaks(), json1);
-            Assert.Equal(expectedPayload2.ChangeLineBreaks(), json2);
-            Assert.Equal(expectedPayload3.ChangeLineBreaks(), json3);
+}}");
+            Assert.True(JsonNode.DeepEquals(expectedPayload3, json3));
         }
 
         public static IEdmModel GetEdmModel()

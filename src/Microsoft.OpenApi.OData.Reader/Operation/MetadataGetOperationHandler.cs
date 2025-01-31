@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
-using Microsoft.OpenApi.OData.Generator;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -15,6 +14,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class MetadataGetOperationHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="MetadataGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public MetadataGetOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -46,7 +53,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiSchema schema = new OpenApiSchema
             {
-                Type = "string"
+                Type = JsonSchemaType.String
             };
 
             operation.Responses = new OpenApiResponses
@@ -69,7 +76,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
-            operation.AddErrorResponses(Context.Settings, false);
+            operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }

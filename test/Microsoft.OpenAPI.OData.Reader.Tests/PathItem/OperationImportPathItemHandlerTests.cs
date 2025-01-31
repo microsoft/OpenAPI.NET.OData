@@ -20,7 +20,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class OperationImportPathItemHandlerTest
     {
-        private OperationImportPathItemHandler _pathItemHandler = new MyOperationImportPathItemHandler();
+        private OperationImportPathItemHandler _pathItemHandler = new MyOperationImportPathItemHandler(new());
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -146,7 +146,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Extensions);
 
             pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
-            string isHiddenValue = (isHiddenExtension as OpenApiString)?.Value;
+            string isHiddenValue = (isHiddenExtension as OpenApiAny).Node.GetValue<string>();
             Assert.Equal("true", isHiddenValue);
         }
 
@@ -187,7 +187,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
     }
 
-    internal class MyOperationImportPathItemHandler : OperationImportPathItemHandler
+    internal class MyOperationImportPathItemHandler(OpenApiDocument document) : OperationImportPathItemHandler(document)
     {
         protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
         {

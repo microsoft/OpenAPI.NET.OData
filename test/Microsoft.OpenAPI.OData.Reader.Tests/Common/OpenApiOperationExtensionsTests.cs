@@ -25,7 +25,7 @@ public class OpenApiOperationExtensionsTests
 		var operation = new OpenApiOperation();
 
 		// Act
-		operation.AddErrorResponses(settings, addNoContent);
+		operation.AddErrorResponses(settings, new(), addNoContent);
 
 		// Assert
 		Assert.NotNull(operation.Responses);

@@ -4,7 +4,10 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using System.Linq;
 using Xunit;
@@ -13,7 +16,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class RefPutOperationHandlerTests
     {
-        private RefPutOperationHandler _operationHandler = new RefPutOperationHandler();
+        public RefPutOperationHandlerTests()
+        {
+          _operationHandler = new (_openApiDocument);
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private readonly RefPutOperationHandler _operationHandler;
 
         [Theory]
         [InlineData(true, true)]
@@ -42,6 +50,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -54,8 +63,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(operation.Parameters);
             Assert.Single(operation.Parameters);
 
-            Assert.Equal(Models.ReferenceType.RequestBody, operation.RequestBody.Reference.Type);
-            Assert.Equal(Common.Constants.ReferencePutRequestBodyName, operation.RequestBody.Reference.Id);
+            var requestBodyReference = Assert.IsType<OpenApiRequestBodyReference>(operation.RequestBody);
+            Assert.Equal(Models.ReferenceType.RequestBody, requestBodyReference.Reference.Type);
+            Assert.Equal(Common.Constants.ReferencePutRequestBodyName, requestBodyReference.Reference.Id);
 
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));

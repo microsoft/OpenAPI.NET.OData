@@ -5,15 +5,15 @@
 
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests;
 public class ODataTypeCastGetOperationHandlerTests
 {
-    private readonly ODataTypeCastGetOperationHandler _operationHandler = new ();
-
     [Theory]
     [InlineData(true, true, true)]
     [InlineData(true, false, true)]
@@ -42,8 +42,13 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataTypeCastSegment(employee, model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
+
 
         // Assert
         Assert.NotNull(operation);
@@ -66,7 +71,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("People.ListFriends.AsEmployee", operation.OperationId);
+            Assert.Equal("People.ListFriends.AsEmployee-11bf", operation.OperationId);
         }
         else
         {
@@ -101,8 +106,13 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataKeySegment(people.EntityType),
                                                                     new ODataTypeCastSegment(employee,model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
+
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);
@@ -120,17 +130,17 @@ public class ODataTypeCastGetOperationHandlerTests
             Assert.Single(operation.Extensions); //deprecated
 
         Assert.Equal(2, operation.Responses.Count);
-        Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+        Assert.Equal(["200", "default"], operation.Responses.Select(e => e.Key));
 
         if (enableOperationId)
         {
-            Assert.Equal("People.GetFriends.AsEmployee", operation.OperationId);
+            Assert.Equal("People.GetFriends.AsEmployee-11bf", operation.OperationId);
         }
         else
         {
             Assert.Null(operation.OperationId);
         }
-        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
+        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties?.ContainsKey("value") ?? false);
     }
     [Theory]
     [InlineData(true, true)]
@@ -154,8 +164,12 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataPath path = new(new ODataNavigationSourceSegment(people),
                                                                     new ODataTypeCastSegment(employee,model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);
@@ -177,7 +191,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("People.Person.ListPerson.AsEmployee", operation.OperationId);
+            Assert.Equal("People.Person.ListPerson.AsEmployee-013a", operation.OperationId);
         }
         else
         {
@@ -209,8 +223,13 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataKeySegment(people.EntityType),
                                                                     new ODataTypeCastSegment(employee,model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
+
 
         // Assert
         Assert.NotNull(operation);
@@ -232,13 +251,13 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("People.Person.GetPerson.AsEmployee", operation.OperationId);
+            Assert.Equal("People.Person.GetPerson.AsEmployee-317b", operation.OperationId);
         }
         else
         {
             Assert.Null(operation.OperationId);
         }
-        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
+        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties?.ContainsKey("value") ?? false);
     }
     [Theory]
     [InlineData(true, true)]
@@ -266,8 +285,12 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataTypeCastSegment(employee, model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);
@@ -289,13 +312,13 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("People.GetBestFriend.AsEmployee", operation.OperationId);
+            Assert.Equal("People.GetBestFriend.AsEmployee-7188", operation.OperationId);
         }
         else
         {
             Assert.Null(operation.OperationId);
         }
-        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
+        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties?.ContainsKey("value") ?? false);
     }
     [Theory]
     [InlineData(true, true)]
@@ -319,8 +342,12 @@ public class ODataTypeCastGetOperationHandlerTests
         ODataPath path = new(new ODataNavigationSourceSegment(me),
                                                                     new ODataTypeCastSegment(employee, model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);
@@ -342,13 +369,13 @@ public class ODataTypeCastGetOperationHandlerTests
 
         if (enableOperationId)
         {
-            Assert.Equal("Me.Person.GetPerson.AsEmployee", operation.OperationId);
+            Assert.Equal("Me.Person.GetPerson.AsEmployee-bd18", operation.OperationId);
         }
         else
         {
             Assert.Null(operation.OperationId);
         }
-        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
+        Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties?.ContainsKey("value") ?? false);
     }
     [Fact]
     public void CreateODataTypeCastGetOperationReturnsCorrectOperationForSingleNavigationPropertyWithTargetPathAnnotations()
@@ -367,8 +394,12 @@ public class ODataTypeCastGetOperationHandlerTests
                                                                     new ODataNavigationPropertySegment(navProperty),
                                                                     new ODataTypeCastSegment(manager, model));
 
+        var document = new OpenApiDocument();
+        context.AddSchemasToDocument(document);
+        ODataTypeCastGetOperationHandler operationHandler = new (document);
         // Act
-        var operation = _operationHandler.CreateOperation(context, path);
+        var operation = operationHandler.CreateOperation(context, path);
+        document.Tags = context.CreateTags();
 
         // Assert
         Assert.NotNull(operation);

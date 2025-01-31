@@ -4,10 +4,12 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -16,7 +18,20 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class SingletonPatchOperationHandlerTests
     {
-        private SingletonPatchOperationHandler _operationHandler = new SingletonPatchOperationHandler();
+        public SingletonPatchOperationHandlerTests()
+        {
+          _openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+          _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+          _openApiDocument.AddComponent("authorizationName", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private SingletonPatchOperationHandler _operationHandler => new(_openApiDocument);
 
         [Theory]
         [InlineData(true, true)]
@@ -45,6 +60,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var patch = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(patch);
@@ -84,7 +100,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void CreateSingletonPatchOperationReturnsParameterForUpdateRestrictions(bool hasRestriction)
+        public async Task CreateSingletonPatchOperationReturnsParameterForUpdateRestrictions(bool hasRestriction)
         {
             // Arrange
             string annotation = @"<Annotations Target=""NS.Default/Me"">
@@ -183,10 +199,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
               </Annotations>";
 
             // Act & Assert
-            VerifyOperation(annotation, hasRestriction);
+            await VerifyOperation(annotation, hasRestriction);
         }
 
-        private void VerifyOperation(string annotation, bool hasRestriction)
+        private async Task VerifyOperation(string annotation, bool hasRestriction)
         {
             // Arrange
             IEdmModel model = CapabilitiesModelHelper.GetEdmModelOutline(hasRestriction ? annotation : "");
@@ -197,6 +213,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var patch = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(patch);
@@ -223,7 +240,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Equal("authorizationName", securityRequirement.Key.Reference.Id);
                 Assert.Equal(new[] { "scopeName1", "scopeName2" }, securityRequirement.Value);
 
-                string json = patch.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await patch.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

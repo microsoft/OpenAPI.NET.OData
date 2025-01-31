@@ -8,6 +8,7 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -20,6 +21,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class MediaEntityPutOperationHandler : MediaEntityOperationalHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="MediaEntityPutOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public MediaEntityPutOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Put;
         
@@ -90,21 +99,13 @@ namespace Microsoft.OpenApi.OData.Operation
                 // Get the entity type declaring this stream property.
                 (var entityType, _) = GetStreamElements();
 
-                OpenApiSchema schema = new()
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = entityType.FullName()
-                    }
-                };
+                var schema = new OpenApiSchemaReference(entityType.FullName(), _document);
 
-                operation.AddErrorResponses(Context.Settings, addNoContent: true, schema: schema);
+                operation.AddErrorResponses(Context.Settings, _document, addNoContent: true, schema: schema);
             }
             else
             {
-                operation.AddErrorResponses(Context.Settings, true);
+                operation.AddErrorResponses(Context.Settings, _document, true);
             }
             
             base.SetResponses(operation);
@@ -120,7 +121,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(update.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>

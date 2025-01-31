@@ -6,10 +6,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -23,6 +26,14 @@ namespace Microsoft.OpenApi.OData.Operation;
 /// </summary>
 internal class ODataTypeCastGetOperationHandler : OperationHandler
 {
+	/// <summary>
+	/// Initializes a new instance of <see cref="ODataTypeCastGetOperationHandler"/> class.
+	/// </summary>
+	/// <param name="document">The document to use to lookup references.</param>
+	public ODataTypeCastGetOperationHandler(OpenApiDocument document):base(document)
+	{
+		
+	}
 	/// <inheritdoc/>
 	public override OperationType OperationType => OperationType.Get;
 
@@ -62,7 +73,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
     /// <inheritdoc/>
     protected override void Initialize(ODataContext context, ODataPath path)
 	{
-		// reseting the fields as we're reusing the handler
+		// resetting the fields as we're reusing the handler
 		singleton = null;
 		isKeySegment = false;
 		secondLastSegmentIsComplexProperty = false;
@@ -188,7 +199,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
         // OperationId
         if (Context.Settings.EnableOperationId)
-			operation.OperationId = EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path, Context) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}";
+			operation.OperationId = EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path, Context) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}-{Path.GetPathHash(Context.Settings)}";
 
         base.SetBasicInfo(operation);
 	}
@@ -198,24 +209,16 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
     {
         if (IsSingleElement)
 		{
-            OpenApiSchema schema = null;
+            IOpenApiSchema schema = null;
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model, _document);
             }
 
             if (schema == null)
             {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = TargetSchemaElement.FullName()
-                    }
-                };
+                schema = new OpenApiSchemaReference(TargetSchemaElement.FullName(), _document);
             }
 
             SetSingleResponse(operation, schema);
@@ -225,7 +228,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
             SetCollectionResponse(operation, TargetSchemaElement.FullName());
         }			
 
-		operation.AddErrorResponses(Context.Settings, false);
+		operation.AddErrorResponses(Context.Settings, _document, false);
 
 		base.SetResponses(operation);
 	}
@@ -242,12 +245,11 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		else if ((SecondLastSegment is ODataKeySegment && !isIndexedCollValuedNavProp)
 				|| (SecondLastSegment is ODataNavigationSourceSegment))
 		{
-            var entitySet = navigationSource as IEdmEntitySet;
-            var singleton = navigationSource as IEdmSingleton;
+            var singletonNavigationSource = navigationSource as IEdmSingleton;
 
-			tagName = entitySet != null
-                ? entitySet.Name + "." + entitySet.EntityType.Name
-                : singleton.Name + "." + singleton.EntityType.Name;
+            tagName = navigationSource is IEdmEntitySet entitySetNavigationSource
+                ? entitySetNavigationSource.Name + "." + entitySetNavigationSource.EntityType.Name
+                : singletonNavigationSource.Name + "." + singletonNavigationSource.EntityType.Name;
         }
 		else if (SecondLastSegment is ODataComplexPropertySegment)
 		{
@@ -256,17 +258,14 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 		if (tagName != null)
 		{
-			OpenApiTag tag = new()
-			{
-				Name = tagName
-			};
-
-			if (!IsSingleElement)
-				tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
-
-			operation.Tags.Add(tag);
-
-			Context.AppendTag(tag);
+			if (IsSingleElement)
+				Context.AppendTag(new OpenApiTag() { Name = tagName });
+			else
+				Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+				{
+					Name = tagName
+				});
+			operation.Tags.Add(new OpenApiTagReference(tagName, _document));
 		}		
 
 		base.SetTags(operation);
@@ -305,23 +304,23 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		{
 			if(IsSingleElement)
 			{
-				new OpenApiParameter[] {
+				new IOpenApiParameter[] {
                         Context.CreateSelect(TargetPath, entitySet.EntityType) ?? Context.CreateSelect(entitySet),
                         Context.CreateExpand(TargetPath, entitySet.EntityType) ?? Context.CreateExpand(entitySet),
 					}
 				.Where(x => x != null)
 				.ToList()
-				.ForEach(p => operation.Parameters.Add(p));
+				.ForEach(operation.Parameters.Add);
 			}
 			else
 			{
 				GetParametersForAnnotableOfMany(entitySet)
 				.Union(
-					new OpenApiParameter[] {
+					[
                         Context.CreateOrderBy(TargetPath, entitySet.EntityType) ?? Context.CreateOrderBy(entitySet),
                         Context.CreateSelect(TargetPath, entitySet.EntityType) ?? Context.CreateSelect(entitySet),
                         Context.CreateExpand(TargetPath, entitySet.EntityType) ?? Context.CreateExpand(entitySet),
-					})
+					])
 				.Where(x => x != null)
 				.ToList()
 				.ForEach(p => operation.Parameters.Add(p));
@@ -338,17 +337,17 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			.ForEach(p => operation.Parameters.Add(p));
 		}
 	}
-	private IEnumerable<OpenApiParameter> GetParametersForAnnotableOfMany(IEdmVocabularyAnnotatable annotable) 
+	private IEnumerable<IOpenApiParameter> GetParametersForAnnotableOfMany(IEdmVocabularyAnnotatable annotable) 
 	{
 		// Need to verify that TopSupported or others should be applied to navigation source.
 		// So, how about for the navigation property.
-		return new OpenApiParameter[] {
-            Context.CreateTop(annotable),
-			Context.CreateSkip(annotable),
-			Context.CreateSearch(annotable),
-			Context.CreateFilter(annotable),
-			Context.CreateCount(annotable),
-		};
+		return [
+            Context.CreateTop(annotable, _document),
+			Context.CreateSkip(annotable, _document),
+			Context.CreateSearch(annotable, _document),
+			Context.CreateFilter(annotable, _document),
+			Context.CreateCount(annotable, _document),
+		];
 	}
 
 	protected override void SetSecurity(OpenApiOperation operation)
@@ -360,20 +359,20 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 		ReadRestrictionsBase readBase = restriction.ReadRestrictions;
 
-		operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
+		operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
 	}
 
 	protected override void SetExtensions(OpenApiOperation operation)
 	{
 		if (Context.Settings.EnablePagination && !IsSingleElement)
 		{
-			OpenApiObject extension = new()
+			JsonObject extension = new()
 			{
-				{ "nextLinkName", new OpenApiString("@odata.nextLink")},
-				{ "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+				{ "nextLinkName", "@odata.nextLink"},
+				{ "operationName", Context.Settings.PageableOperationName}
 			};
 
-			operation.Extensions.Add(Constants.xMsPageable, extension);
+			operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
 		}
 
 		base.SetExtensions(operation);

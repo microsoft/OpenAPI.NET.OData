@@ -43,7 +43,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="model">The Edm model.</param>
         /// <param name="function">The specified function</param>
         /// <returns><c>true</c> if the specified operation is UrlEscape function; otherwise, <c>false</c>.</returns>
-        public static bool IsUrlEscapeFunction(this IEdmModel model, IEdmFunction function)
+        private static bool IsUrlEscapeFunction(this IEdmModel model, IEdmFunction function)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(function, nameof(function));
@@ -157,9 +157,9 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(operation, nameof(operation));
 
             return model.GetAllElements().OfType<IEdmOperation>()
-                .Where(o => o.IsBound == operation.IsBound && o.FullName() == operation.FullName() &&
+                .Count(o => o.IsBound == operation.IsBound && o.FullName() == operation.FullName() &&
                 o.Parameters.First().Type.Definition.FullTypeName() == operation.Parameters.First().Type.Definition.FullTypeName()
-                ).Count() > 1;
+                ) > 1;
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             return model.EntityContainer.EntitySets().Select(static x => x.EntityType)
                 .Concat(model.EntityContainer.Singletons().Select(static x => x.EntityType))
-                .Where(x => x.FullName().Equals(bindingParameterType.FullName(), StringComparison.OrdinalIgnoreCase)).Count() > 1;
+                .Count(x => x.FullName().Equals(bindingParameterType.FullName(), StringComparison.OrdinalIgnoreCase)) > 1;
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             return model.EntityContainer.OperationImports()
-                .Where(o => o.Operation.IsBound == operationImport.Operation.IsBound && o.Name == operationImport.Name).Count() > 1;
+                .Count(o => o.Operation.IsBound == operationImport.Operation.IsBound && o.Name == operationImport.Name) > 1;
         }
 
         /// <summary>

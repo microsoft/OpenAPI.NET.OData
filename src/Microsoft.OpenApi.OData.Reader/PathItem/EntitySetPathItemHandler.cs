@@ -16,6 +16,14 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class EntitySetPathItemHandler : PathItemHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntitySetPathItemHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use for references lookup.</param>
+        public EntitySetPathItemHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         protected override ODataPathKind HandleKind => ODataPathKind.EntitySet;
 

@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
@@ -19,6 +20,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class MediaEntityOperationalHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="MediaEntityOperationalHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected MediaEntityOperationalHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <summary>
         /// Gets/Sets the NavigationSource segment
         /// </summary>
@@ -56,7 +65,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // Check whether path is a navigation property path
             IsNavigationPropertyPath = Path.Segments.Contains(
-                Path.Segments.Where(segment => segment is ODataNavigationPropertySegment).FirstOrDefault());
+                Path.Segments.FirstOrDefault(segment => segment is ODataNavigationPropertySegment));
 
             LastSegmentIsStreamPropertySegment = Path.LastSegment.Kind == ODataSegmentKind.StreamProperty;
 
@@ -82,17 +91,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 ? EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context)
                 : NavigationSourceSegment.Identifier + "." + NavigationSourceSegment.EntityType.Name;
 
-            OpenApiTag tag = new()
-            {
-                Name = tagIdentifier
-            };
 
-            // Use an extension for TOC (Table of Content)
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
-
-            operation.Tags.Add(tag);
-
-            Context.AppendTag(tag);
+            Context.AddExtensionToTag(tagIdentifier, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+			{
+				Name = tagIdentifier
+			});
+            operation.Tags.Add(new OpenApiTagReference(tagIdentifier, _document));
         }
 
         /// <inheritdoc/>
@@ -112,7 +116,7 @@ namespace Microsoft.OpenApi.OData.Operation
             Utils.CheckArgumentNullOrEmpty(prefix, nameof(prefix));
             Utils.CheckArgumentNullOrEmpty(identifier, nameof(identifier));
 
-            IList<string> items = new List<string>
+            var items = new List<string>
             {
                 NavigationSourceSegment.Identifier
             };
@@ -146,7 +150,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             }
 
-            return string.Join(".", items);
+            return $"{string.Join(".", items)}-{Path.GetPathHash(Context.Settings)}";
         }
 
         /// <summary>
@@ -166,7 +170,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             OpenApiSchema schema = new()
             {
-                Type = "string",
+                Type = JsonSchemaType.String,
                 Format = "binary"
             };
 

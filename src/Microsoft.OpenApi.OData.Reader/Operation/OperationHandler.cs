@@ -5,9 +5,10 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -22,6 +23,16 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class OperationHandler : IOperationHandler
     {
+        protected readonly OpenApiDocument _document;
+        /// <summary>
+        /// Creates a new instance of <see cref="OperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">Document to use to lookup references.</param>
+        protected OperationHandler(OpenApiDocument document)
+        {
+            Utils.CheckArgumentNull(document, nameof(document));
+            _document = document;
+        }
         /// <inheritdoc/>
         public abstract OperationType OperationType { get; }
 
@@ -30,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// The path parameters in the path
         /// </summary>
-        protected IList<OpenApiParameter> PathParameters;
+        protected IList<IOpenApiParameter> PathParameters;
 
         /// <summary>
         /// The string representation of the Edm target path for annotations.
@@ -163,7 +174,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetParameters(OpenApiOperation operation)
         {
-            PathParameters = Path.CreatePathParameters(Context);
+            PathParameters = Path.CreatePathParameters(Context, _document);
             if (!Context.Settings.DeclarePathParametersOnPathItem)
             {
                 foreach (var parameter in PathParameters)
@@ -244,14 +255,14 @@ namespace Microsoft.OpenApi.OData.Operation
                     Description = paramDescription,
                     Schema = new OpenApiSchema
                     {
-                        Type = "string"
+                        Type = JsonSchemaType.String
                     },
                     Required = param.Required ?? false
                 };
 
                 if (param.ExampleValues != null)
                 {
-                    parameter.Examples = new Dictionary<string, OpenApiExample>();
+                    parameter.Examples = new Dictionary<string, IOpenApiExample>();
                     int index = 1;
                     foreach (var example in param.ExampleValues)
                     {
@@ -261,7 +272,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         };
 
                         // maybe call convert to Uri literal
-                        ex.Value = new OpenApiString(example.Value.ToString());
+                        ex.Value = example.Value.ToString();
 
                         parameter.Examples.Add("example-" + index++, ex);
                     }
@@ -305,20 +316,12 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference()
-                        {
-                            Type = ReferenceType.Response,
-                            Id = $"{targetElementFullName}{Constants.CollectionSchemaSuffix}"
-                        }
-                    }
+                    new OpenApiResponseReference($"{targetElementFullName}{Constants.CollectionSchemaSuffix}", _document)
                 }
             };
         }
 
-        internal void SetSingleResponse(OpenApiOperation operation, OpenApiSchema schema)
+        internal void SetSingleResponse(OpenApiOperation operation, IOpenApiSchema schema)
         {
             Utils.CheckArgumentNull(operation, nameof(operation));
             Utils.CheckArgumentNull(schema, nameof(schema));

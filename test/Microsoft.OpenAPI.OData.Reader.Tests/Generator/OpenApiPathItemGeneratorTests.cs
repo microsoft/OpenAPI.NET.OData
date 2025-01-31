@@ -9,6 +9,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OData.Edm.Vocabularies.Community.V1;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
@@ -22,10 +23,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         public void CreatePathItemsThrowArgumentNullContext()
         {
             // Arrange
+            OpenApiDocument openApiDocument = new();
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreatePathItems());
+            Assert.Throws<ArgumentNullException>("context", () => context.AddPathItemsToDocument(openApiDocument));
         }
 
         [Fact]
@@ -33,10 +35,12 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
+            OpenApiDocument openApiDocument = new();
             ODataContext context = new ODataContext(model);
 
             // Act
-            var pathItems = context.CreatePathItems();
+            context.AddPathItemsToDocument(openApiDocument);
+            var pathItems = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(pathItems);
@@ -50,6 +54,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
+            OpenApiDocument openApiDocument = new();
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = true,
@@ -58,7 +63,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var pathItems = context.CreatePathItems();
+            context.AddPathItemsToDocument(openApiDocument);
+            var pathItems = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(pathItems);
@@ -115,6 +121,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             EdmModel model = new EdmModel();
+            OpenApiDocument openApiDocument = new();
             EdmEntityType customer = new EdmEntityType("NS", "Customer");
             customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
             model.AddElement(customer);
@@ -144,7 +151,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(model, settings);
 
             // Act
-            var pathItems = context.CreatePathItems();
+            context.AddPathItemsToDocument(openApiDocument);
+            var pathItems = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(pathItems);
@@ -161,6 +169,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             EdmModel model = new();
+            OpenApiDocument openApiDocument = new();
             EdmEntityType customer = new("NS", "Customer");
             customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
             model.AddElement(customer);
@@ -199,7 +208,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new(model);
 
             // Act
-            var pathItems = context.CreatePathItems();
+            context.AddPathItemsToDocument(openApiDocument);
+            var pathItems = openApiDocument.Paths;
 
             // Assert
             Assert.NotNull(pathItems);

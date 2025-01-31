@@ -4,9 +4,12 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -14,7 +17,17 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntityDeleteOperationHandlerTests
     {
-        private EntityDeleteOperationHandler _operationHandler = new EntityDeleteOperationHandler();
+        public EntityDeleteOperationHandlerTests()
+        {
+          _openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+          _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private EntityDeleteOperationHandler _operationHandler => new (_openApiDocument);
 
         [Theory]
         [InlineData(true)]
@@ -33,6 +46,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var delete = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(delete);
@@ -64,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEntityDeleteReturnsSecurityForDeleteRestrictions(bool enableAnnotation)
+        public async Task CreateEntityDeleteReturnsSecurityForDeleteRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.DeleteRestrictions"">
   <Record>
@@ -140,7 +154,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, delete.Security.Count);
 
-                string json = delete.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await delete.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

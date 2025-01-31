@@ -5,6 +5,7 @@
 
 using System.Linq;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -17,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class RefPutOperationHandler : NavigationPropertyOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="RefPutOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public RefPutOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
         private UpdateRestrictionsType _updateRestriction;
@@ -47,15 +56,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            operation.RequestBody = new OpenApiRequestBody
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {              
-                    Type = ReferenceType.RequestBody,
-                    Id = Constants.ReferencePutRequestBodyName
-                }
-            };
+            operation.RequestBody = new OpenApiRequestBodyReference(Constants.ReferencePutRequestBodyName, _document);
 
             base.SetRequestBody(operation);
         }
@@ -71,7 +72,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
 
-            operation.AddErrorResponses(Context.Settings, false);
+            operation.AddErrorResponses(Context.Settings, _document, false);
             base.SetResponses(operation);
         }
 
@@ -82,7 +83,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_updateRestriction.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_updateRestriction.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

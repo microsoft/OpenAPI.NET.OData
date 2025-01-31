@@ -5,9 +5,12 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -20,6 +23,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class RefGetOperationHandler : NavigationPropertyOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RefGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public RefGetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
         private ReadRestrictionsType _readRestriction;
@@ -59,13 +70,13 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
-                    OpenApiObject extension = new OpenApiObject
+                    JsonObject extension = new JsonObject
                     {
-                        { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                        { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+                        { "nextLinkName", "@odata.nextLink"},
+                        { "operationName", Context.Settings.PageableOperationName}
                     };
 
-                    operation.Extensions.Add(Constants.xMsPageable, extension);
+                    operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
                 }
             }
 
@@ -81,15 +92,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     {
                         Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                        new OpenApiResponse
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Response,
-                                Id = $"String{Constants.CollectionSchemaSuffix}"
-                            },
-                        }
+                        new OpenApiResponseReference($"String{Constants.CollectionSchemaSuffix}", _document)
                     }
                 };
             }
@@ -98,9 +101,9 @@ namespace Microsoft.OpenApi.OData.Operation
                 OpenApiSchema schema = new()
                 {
                     // $ref returns string for the Uri?
-                    Type = "string"
+                    Type = JsonSchemaType.String
                 };
-                IDictionary<string, OpenApiLink> links = null;
+                IDictionary<string, IOpenApiLink> links = null;
                 if (Context.Settings.ShowLinks)
                 {
                     string operationId = GetOperationId();
@@ -133,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 };
             }
 
-    		operation.AddErrorResponses(Context.Settings, false);
+    		operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -147,31 +150,31 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 // Need to verify that TopSupported or others should be applied to navigaiton source.
                 // So, how about for the navigation property.
-                OpenApiParameter parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(NavigationProperty);
+                var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(NavigationProperty);
+                parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(NavigationProperty);
+                parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(NavigationProperty);
+                parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(NavigationProperty);
+                parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(NavigationProperty, _document);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
@@ -193,7 +196,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             ReadRestrictionsBase readBase = _readRestriction;
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

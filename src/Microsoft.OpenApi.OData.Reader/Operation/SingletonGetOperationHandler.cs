@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -21,6 +23,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class SingletonGetOperationHandler : SingletonOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="SingletonGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public SingletonGetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -75,12 +85,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-            IDictionary<string, OpenApiLink> links = null;
+            IOpenApiSchema schema = null;
+            IDictionary<string, IOpenApiLink> links = null;
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model, _document);
             }
 
             if (Context.Settings.ShowLinks)
@@ -89,18 +99,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         entityKind: Singleton.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
             }
 
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = Singleton.EntityType.FullName()
-                    }
-                };
-            }
+            schema ??= new OpenApiSchemaReference(Singleton.EntityType.FullName(), _document);
 
             operation.Responses = new OpenApiResponses
             {
@@ -124,7 +123,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
 
-    		operation.AddErrorResponses(Context.Settings, false);
+    		operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -137,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>
