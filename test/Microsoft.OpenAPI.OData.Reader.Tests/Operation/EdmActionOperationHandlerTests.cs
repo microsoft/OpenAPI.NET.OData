@@ -62,11 +62,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Single(operation.Parameters);
             Assert.Equal(new string[] { "UserName" }, operation.Parameters.Select(p => p.Name));
 
-            Assert.NotNull(operation.RequestBody);
-            if (operation.RequestBody is OpenApiSchemaReference openApiSchemaReference)
-                Assert.Equal("ShareTripRequestBody", openApiSchemaReference.Reference.Id);
-            else
-                Assert.Equal("Action parameters", operation.RequestBody.Description);
+            var requestBodyReference = Assert.IsType<OpenApiRequestBodyReference>(operation.RequestBody);
+            Assert.Equal("ShareTripRequestBody", requestBodyReference.Reference.Id);
 
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
