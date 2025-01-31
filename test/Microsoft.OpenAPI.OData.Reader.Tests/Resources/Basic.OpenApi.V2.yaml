@@ -122,6 +122,8 @@ paths:
       operationId: City.City.UpdateCity
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Name
@@ -146,6 +148,8 @@ paths:
         - City.City
       summary: Delete entity from City
       operationId: City.City.DeleteCity
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Name
@@ -172,6 +176,7 @@ paths:
       operationId: City.GetCount-8728
       produces:
         - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -296,6 +301,8 @@ paths:
       operationId: CountryOrRegion.CountryOrRegion.UpdateCountryOrRegion
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Name
@@ -320,6 +327,8 @@ paths:
         - CountryOrRegion.CountryOrRegion
       summary: Delete entity from CountryOrRegion
       operationId: CountryOrRegion.CountryOrRegion.DeleteCountryOrRegion
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Name
@@ -346,6 +355,7 @@ paths:
       operationId: CountryOrRegion.GetCount-daf5
       produces:
         - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -397,6 +407,8 @@ paths:
       summary: Update Me
       operationId: Me.Person.UpdatePerson
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: body
@@ -540,6 +552,8 @@ paths:
       operationId: People.Person.UpdatePerson
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: path
           name: UserName
@@ -564,6 +578,8 @@ paths:
         - People.Person
       summary: Delete entity from People
       operationId: People.Person.DeletePerson
+      produces:
+        - application/json
       parameters:
         - in: path
           name: UserName
@@ -590,6 +606,7 @@ paths:
       operationId: People.GetCount-dd8d
       produces:
         - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'

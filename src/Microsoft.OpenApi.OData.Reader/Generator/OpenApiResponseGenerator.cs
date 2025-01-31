@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -21,25 +22,6 @@ namespace Microsoft.OpenApi.OData.Generator
     /// </summary>
     internal static class OpenApiResponseGenerator
     {
-        private static Dictionary<string, IOpenApiResponse> _responses;
-
-        private static Dictionary<string, IOpenApiResponse> GetResponses(OpenApiDocument openApiDocument)
-        {
-            _responses ??= new()
-                {
-                    { Constants.StatusCodeDefault,
-                        new OpenApiResponseReference(Constants.Error, openApiDocument)
-                    },
-
-                    { Constants.StatusCode204, new OpenApiResponse { Description = Constants.Success} },
-                    { Constants.StatusCode201, new OpenApiResponse { Description = Constants.Created} },
-                    { Constants.StatusCodeClass2XX, new OpenApiResponse { Description = Constants.Success} },
-                    { Constants.StatusCodeClass4XX, new OpenApiResponseReference(Constants.Error, openApiDocument)},
-                    { Constants.StatusCodeClass5XX, new OpenApiResponseReference(Constants.Error, openApiDocument)}
-                };
-            return _responses;
-        }
-
         /// <summary>
         /// Get the <see cref="IOpenApiResponse"/> for the build-in statusCode.
         /// </summary>
@@ -48,12 +30,15 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="IOpenApiResponse"/>.</returns>
         public static IOpenApiResponse GetResponse(this string statusCode, OpenApiDocument document)
         {
-            if (GetResponses(document).TryGetValue(statusCode, out var response))
-            {
-                return response;
-            }
-
-            return null;
+            return statusCode switch {
+                Constants.StatusCodeDefault => new OpenApiResponseReference(Constants.Error, document),
+                Constants.StatusCode204 => new OpenApiResponse { Description = Constants.Success},
+                Constants.StatusCode201 => new OpenApiResponse { Description = Constants.Created},
+                Constants.StatusCodeClass2XX => new OpenApiResponse { Description = Constants.Success},
+                Constants.StatusCodeClass4XX => new OpenApiResponseReference(Constants.Error, document),
+                Constants.StatusCodeClass5XX => new OpenApiResponseReference(Constants.Error, document),
+                _ => null,
+            };
         }
 
         /// <summary>
