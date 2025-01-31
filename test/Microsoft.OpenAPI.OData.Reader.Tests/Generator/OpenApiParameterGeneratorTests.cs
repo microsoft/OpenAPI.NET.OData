@@ -56,7 +56,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""name"": ""$top"",
   ""in"": ""query"",
   ""description"": ""Show only the first n items"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""minimum"": 0,
@@ -69,7 +68,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""name"": ""$skip"",
   ""in"": ""query"",
   ""description"": ""Skip the first n items"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""minimum"": 0,
@@ -81,7 +79,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""name"": ""$count"",
   ""in"": ""query"",
   ""description"": ""Include count of items"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""type"": ""boolean""
@@ -91,7 +88,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""name"": ""$filter"",
   ""in"": ""query"",
   ""description"": ""Filter items by property values"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""type"": ""string""
@@ -101,7 +97,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""name"": ""$search"",
   ""in"": ""query"",
   ""description"": ""Search items by search phrases"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {
     ""type"": ""string""
@@ -137,7 +132,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 @"name: $skip
 in: query
 description: Skip the first n items
-style: form
 explode: false
 schema:
   minimum: 0
