@@ -23,11 +23,16 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         public EntitySetPostOperationHandlerTests()
         {
-          _operationHandler = new EntitySetPostOperationHandler(_openApiDocument);
+          _openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+          _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
         }
         private readonly OpenApiDocument _openApiDocument = new();
 
-        private readonly EntitySetPostOperationHandler _operationHandler;
+        private EntitySetPostOperationHandler _operationHandler => new(_openApiDocument);
 
         [Theory]
         [InlineData(true, true, true)]

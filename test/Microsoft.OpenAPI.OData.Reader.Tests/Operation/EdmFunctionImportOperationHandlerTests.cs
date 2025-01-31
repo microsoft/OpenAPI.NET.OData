@@ -21,10 +21,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         public EdmFunctionImportOperationHandlerTests()
         {
-          _operationHandler = new EdmFunctionImportOperationHandler(_openApiDocument);
+          _openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+          _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
         }
         private readonly OpenApiDocument _openApiDocument = new();
-        private readonly EdmFunctionImportOperationHandler _operationHandler;
+        private EdmFunctionImportOperationHandler _operationHandler => new(_openApiDocument);
 
         [Theory]
         [InlineData(true)]
