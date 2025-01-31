@@ -442,7 +442,6 @@ schema:
   ""name"": ""$orderby"",
   ""in"": ""query"",
   ""description"": ""Order items by property values"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {{
     ""uniqueItems"": true,
@@ -488,7 +487,6 @@ schema:
   ""name"": ""$select"",
   ""in"": ""query"",
   ""description"": ""Select properties to be returned"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {{
     ""uniqueItems"": true,
@@ -530,7 +528,6 @@ schema:
   ""name"": ""$expand"",
   ""in"": ""query"",
   ""description"": ""Expand related entities"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {{
     ""uniqueItems"": true,
@@ -545,7 +542,6 @@ schema:
   ""name"": ""$expand"",
   ""in"": ""query"",
   ""description"": ""Expand related entities"",
-  ""style"": ""form"",
   ""explode"": false,
   ""schema"": {{
     ""uniqueItems"": true,
