@@ -39,7 +39,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -53,7 +52,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -67,7 +65,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -145,7 +142,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -159,7 +155,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -317,7 +312,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -331,7 +325,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -345,7 +338,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -423,7 +415,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -437,7 +428,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -563,7 +553,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -577,7 +566,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -667,7 +655,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -681,7 +668,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -853,7 +839,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -867,7 +852,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -881,7 +865,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1125,7 +1108,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1139,7 +1121,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1519,7 +1500,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1533,7 +1513,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1630,7 +1609,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1644,7 +1622,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1658,7 +1635,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1882,7 +1858,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1896,7 +1871,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2092,7 +2066,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2106,7 +2079,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2120,7 +2092,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2342,7 +2313,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2356,7 +2326,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2469,7 +2438,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2483,7 +2451,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2531,7 +2498,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2545,7 +2511,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2722,7 +2687,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2736,7 +2700,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2750,7 +2713,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2866,7 +2828,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2880,7 +2841,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2894,7 +2854,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3180,7 +3139,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3194,7 +3152,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3355,7 +3312,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3369,7 +3325,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3441,7 +3396,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3455,7 +3409,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3713,7 +3666,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3852,7 +3804,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3866,7 +3817,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3880,7 +3830,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3997,7 +3946,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4011,7 +3959,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4025,7 +3972,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4112,7 +4058,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4126,7 +4071,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4239,7 +4183,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4253,7 +4196,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4315,7 +4257,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4329,7 +4270,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4343,7 +4283,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4567,7 +4506,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4581,7 +4519,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4777,7 +4714,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4791,7 +4727,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4805,7 +4740,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5027,7 +4961,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5041,7 +4974,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5154,7 +5086,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5168,7 +5099,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5345,7 +5275,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5359,7 +5288,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5373,7 +5301,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5489,7 +5416,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5503,7 +5429,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5517,7 +5442,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5803,7 +5727,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5817,7 +5740,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5978,7 +5900,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -5992,7 +5913,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6250,7 +6170,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6389,7 +6308,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6403,7 +6321,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6417,7 +6334,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6504,7 +6420,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6518,7 +6433,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6646,7 +6560,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6660,7 +6573,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6674,7 +6586,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6786,7 +6697,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6800,7 +6710,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -6814,7 +6723,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7100,7 +7008,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7114,7 +7021,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7432,7 +7338,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7576,7 +7481,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7590,7 +7494,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7604,7 +7507,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7714,7 +7616,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7728,7 +7629,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7914,7 +7814,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7928,7 +7827,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -7942,7 +7840,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8032,7 +7929,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8046,7 +7942,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8060,7 +7955,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8242,7 +8136,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8477,7 +8370,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8491,7 +8383,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8505,7 +8396,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8576,7 +8466,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8590,7 +8479,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8652,7 +8540,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8666,7 +8553,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8680,7 +8566,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8904,7 +8789,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -8918,7 +8802,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9114,7 +8997,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9128,7 +9010,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9142,7 +9023,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9364,7 +9244,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9378,7 +9257,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9491,7 +9369,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9505,7 +9382,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9667,7 +9543,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9681,7 +9556,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9695,7 +9569,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9807,7 +9680,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9821,7 +9693,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -9835,7 +9706,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -10121,7 +9991,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -10135,7 +10004,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -10453,7 +10321,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -10593,7 +10460,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -10607,7 +10473,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -10621,7 +10486,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -10737,7 +10601,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -10751,7 +10614,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -10765,7 +10627,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11051,7 +10912,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11065,7 +10925,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11226,7 +11085,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11240,7 +11098,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11498,7 +11355,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11637,7 +11493,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11651,7 +11506,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11665,7 +11519,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11752,7 +11605,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11766,7 +11618,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11966,7 +11817,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11980,7 +11830,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -11994,7 +11843,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -12104,7 +11952,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -12118,7 +11965,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -12304,7 +12150,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -12318,7 +12163,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -12332,7 +12176,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -12422,7 +12265,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -12436,7 +12278,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -12450,7 +12291,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -12632,7 +12472,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13017,7 +12856,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13031,7 +12869,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13045,7 +12882,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13155,7 +12991,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13169,7 +13004,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13355,7 +13189,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13369,7 +13202,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13383,7 +13215,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13473,7 +13304,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13487,7 +13317,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13501,7 +13330,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13683,7 +13511,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13883,7 +13710,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13897,7 +13723,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13911,7 +13736,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -13989,7 +13813,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14003,7 +13826,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14144,7 +13966,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14158,7 +13979,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14172,7 +13992,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14418,7 +14237,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14432,7 +14250,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14680,7 +14497,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14694,7 +14510,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14708,7 +14523,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -14994,7 +14808,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15008,7 +14821,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15155,7 +14967,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15169,7 +14980,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15227,7 +15037,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15241,7 +15050,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15462,7 +15270,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15476,7 +15283,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15490,7 +15296,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15608,7 +15413,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15622,7 +15426,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15636,7 +15439,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15940,7 +15742,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -15954,7 +15755,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16124,7 +15924,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16138,7 +15937,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16213,7 +16011,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16227,7 +16024,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16500,7 +16296,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16650,7 +16445,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16664,7 +16458,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16678,7 +16471,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16801,7 +16593,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16815,7 +16606,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16829,7 +16619,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16922,7 +16711,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -16936,7 +16724,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17117,7 +16904,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17131,7 +16917,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17145,7 +16930,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17510,7 +17294,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17524,7 +17307,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17538,7 +17320,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17652,7 +17433,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17666,7 +17446,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17857,7 +17636,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17871,7 +17649,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17885,7 +17662,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17974,7 +17750,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -17988,7 +17763,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18002,7 +17776,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18189,7 +17962,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18431,7 +18203,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18445,7 +18216,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18459,7 +18229,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18565,7 +18334,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18579,7 +18347,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18741,7 +18508,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18755,7 +18521,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -18769,7 +18534,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19057,7 +18821,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19071,7 +18834,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19323,7 +19085,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19337,7 +19098,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19351,7 +19111,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19637,7 +19396,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19651,7 +19409,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19798,7 +19555,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19812,7 +19568,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19875,7 +19630,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -19889,7 +19643,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20114,7 +19867,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20128,7 +19880,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20142,7 +19893,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20283,7 +20033,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20297,7 +20046,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20311,7 +20059,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20657,7 +20404,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20671,7 +20417,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20862,7 +20607,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20876,7 +20620,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20958,7 +20701,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -20972,7 +20714,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21284,7 +21025,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21465,7 +21205,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21479,7 +21218,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21493,7 +21231,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21630,7 +21367,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21644,7 +21380,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21658,7 +21393,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21766,7 +21500,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21780,7 +21513,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21941,7 +21673,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -21955,7 +21686,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22027,7 +21757,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22041,7 +21770,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22055,7 +21783,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22343,7 +22070,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22357,7 +22083,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22609,7 +22334,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22623,7 +22347,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22637,7 +22360,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22923,7 +22645,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -22937,7 +22658,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23084,7 +22804,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23098,7 +22817,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23319,7 +23037,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23333,7 +23050,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23347,7 +23063,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23483,7 +23198,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23497,7 +23211,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23511,7 +23224,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23857,7 +23569,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -23871,7 +23582,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24062,7 +23772,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24076,7 +23785,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24384,7 +24092,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24555,7 +24262,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24569,7 +24275,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24583,7 +24288,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24690,7 +24394,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24704,7 +24407,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24866,7 +24568,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24880,7 +24581,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -24894,7 +24594,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -25026,7 +24725,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -25040,7 +24738,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -25054,7 +24751,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -25400,7 +25096,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -25414,7 +25109,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -25802,7 +25496,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -25978,7 +25671,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -25992,7 +25684,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26006,7 +25697,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26138,7 +25828,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26152,7 +25841,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26368,7 +26056,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26382,7 +26069,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26396,7 +26082,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26496,7 +26181,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26510,7 +26194,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26524,7 +26207,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -26736,7 +26418,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27023,7 +26704,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27037,7 +26717,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27051,7 +26730,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27158,7 +26836,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27172,7 +26849,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27244,7 +26920,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27258,7 +26933,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27272,7 +26946,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27560,7 +27233,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27574,7 +27246,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27826,7 +27497,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27840,7 +27510,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -27854,7 +27523,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28140,7 +27808,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28154,7 +27821,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28301,7 +27967,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28315,7 +27980,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28521,7 +28185,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28535,7 +28198,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28549,7 +28211,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28681,7 +28342,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28695,7 +28355,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -28709,7 +28368,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -29055,7 +28713,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -29069,7 +28726,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -29457,7 +29113,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -29629,7 +29284,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -29643,7 +29297,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -29657,7 +29310,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -29793,7 +29445,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -29807,7 +29458,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -29821,7 +29471,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -30167,7 +29816,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -30181,7 +29829,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -30372,7 +30019,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -30386,7 +30032,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -30694,7 +30339,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -30865,7 +30509,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -30879,7 +30522,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -30893,7 +30535,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31000,7 +30641,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31014,7 +30654,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31260,7 +30899,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31274,7 +30912,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31288,7 +30925,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31420,7 +31056,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31434,7 +31069,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31650,7 +31284,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31664,7 +31297,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31678,7 +31310,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31778,7 +31409,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31792,7 +31422,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -31806,7 +31435,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -32018,7 +31646,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -32514,7 +32141,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -32528,7 +32154,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -32542,7 +32167,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -32674,7 +32298,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -32688,7 +32311,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -32904,7 +32526,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -32918,7 +32539,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -32932,7 +32552,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33032,7 +32651,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33046,7 +32664,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33060,7 +32677,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33272,7 +32888,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33563,7 +33178,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33577,7 +33191,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33591,7 +33204,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33708,7 +33320,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33722,7 +33333,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -33736,7 +33346,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -35158,7 +34767,6 @@
         "name": "$top",
         "in": "query",
         "description": "Show only the first n items",
-        "style": "form",
         "explode": false,
         "schema": {
           "minimum": 0,
@@ -35171,7 +34779,6 @@
         "name": "$skip",
         "in": "query",
         "description": "Skip the first n items",
-        "style": "form",
         "explode": false,
         "schema": {
           "minimum": 0,
@@ -35183,7 +34790,6 @@
         "name": "$count",
         "in": "query",
         "description": "Include count of items",
-        "style": "form",
         "explode": false,
         "schema": {
           "type": "boolean"
@@ -35193,7 +34799,6 @@
         "name": "$filter",
         "in": "query",
         "description": "Filter items by property values",
-        "style": "form",
         "explode": false,
         "schema": {
           "type": "string"
@@ -35203,7 +34808,6 @@
         "name": "$search",
         "in": "query",
         "description": "Search items by search phrases",
-        "style": "form",
         "explode": false,
         "schema": {
           "type": "string"
