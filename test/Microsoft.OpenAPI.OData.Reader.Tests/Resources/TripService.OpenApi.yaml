@@ -893,22 +893,22 @@ paths:
           required: true
           schema:
             oneOf:
-              - nullable: true
-                type: number
+              - type: number
+                nullable: true
                 format: double
-              - nullable: true
-                type: string
+              - type: string
+                nullable: true
               - $ref: '#/components/schemas/ReferenceNumeric'
         - name: lon
           in: path
           required: true
           schema:
             oneOf:
-              - nullable: true
-                type: number
+              - type: number
+                nullable: true
                 format: double
-              - nullable: true
-                type: string
+              - type: string
+                nullable: true
               - $ref: '#/components/schemas/ReferenceNumeric'
       responses:
         '200':
@@ -22539,8 +22539,8 @@ components:
           type: string
           x-ms-primary-error-message: true
         target:
-          nullable: true
           type: string
+          nullable: true
         details:
           type: array
           items:
@@ -22558,20 +22558,20 @@ components:
         message:
           type: string
         target:
-          nullable: true
           type: string
+          nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError:
       title: InnerError
       type: object
       properties:
         Date:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         RequestId:
-          nullable: true
           type: string
+          nullable: true
     ODataCountResponse:
       type: number
       format: int64
@@ -22589,8 +22589,8 @@ components:
         '@odata.id':
           type: string
         '@odata.type':
-          nullable: true
           type: string
+          nullable: true
     ReferenceCreate:
       type: object
       properties:
@@ -22603,8 +22603,8 @@ components:
         - '-INF'
         - INF
         - NaN
-      nullable: true
       type: string
+      nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person:
       title: Person
       type: object
@@ -22614,25 +22614,25 @@ components:
         FirstName:
           type: string
         LastName:
-          nullable: true
           type: string
+          nullable: true
         MiddleName:
-          nullable: true
           type: string
+          nullable: true
         Gender:
           $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
         Age:
           oneOf:
-            - nullable: true
-              type: number
+            - type: number
+              nullable: true
               format: int64
-            - nullable: true
-              type: string
+            - type: string
+              nullable: true
         Emails:
           type: array
           items:
-            nullable: true
             type: string
+            nullable: true
         AddressInfo:
           type: array
           items:
@@ -22649,8 +22649,8 @@ components:
           items:
             $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
         Photo:
-          nullable: true
           type: string
+          nullable: true
           format: base64url
         Friends:
           type: array
@@ -22678,20 +22678,20 @@ components:
         AirlineCode:
           type: string
         Name:
-          nullable: true
           type: string
+          nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport:
       title: Airport
       type: object
       properties:
         Name:
-          nullable: true
           type: string
+          nullable: true
         IcaoCode:
           type: string
         IataCode:
-          nullable: true
           type: string
+          nullable: true
         Location:
           anyOf:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
@@ -22702,8 +22702,8 @@ components:
       type: object
       properties:
         Address:
-          nullable: true
           type: string
+          nullable: true
         City:
           anyOf:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City'
@@ -22714,14 +22714,14 @@ components:
       type: object
       properties:
         Name:
-          nullable: true
           type: string
+          nullable: true
         CountryRegion:
-          nullable: true
           type: string
+          nullable: true
         Region:
-          nullable: true
           type: string
+          nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
@@ -22744,8 +22744,8 @@ components:
           type: object
           properties:
             BuildingInfo:
-              nullable: true
               type: string
+              nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip:
       title: Trip
       type: object
@@ -22760,24 +22760,24 @@ components:
           type: string
           format: uuid
         Name:
-          nullable: true
           type: string
+          nullable: true
         Budget:
           oneOf:
-            - nullable: true
-              type: number
+            - type: number
+              nullable: true
               format: float
-            - nullable: true
-              type: string
+            - type: string
+              nullable: true
             - $ref: '#/components/schemas/ReferenceNumeric'
         Description:
-          nullable: true
           type: string
+          nullable: true
         Tags:
           type: array
           items:
-            nullable: true
             type: string
+            nullable: true
         TripData: { }
         DestinationInfo:
           type: array
@@ -22805,8 +22805,8 @@ components:
           type: number
           format: int32
         ConfirmationCode:
-          nullable: true
           type: string
+          nullable: true
         StartsAt:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
@@ -22831,8 +22831,8 @@ components:
                 - nullable: true
                   type: object
             Description:
-              nullable: true
               type: string
+              nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
@@ -22840,8 +22840,8 @@ components:
           type: object
           properties:
             SeatNumber:
-              nullable: true
               type: string
+              nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation'
@@ -22849,8 +22849,8 @@ components:
           type: object
           properties:
             FlightNumber:
-              nullable: true
               type: string
+              nullable: true
             Airline:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
@@ -22877,11 +22877,11 @@ components:
           properties:
             Cost:
               oneOf:
-                - nullable: true
-                  type: number
+                - type: number
+                  nullable: true
                   format: int64
-                - nullable: true
-                  type: string
+                - type: string
+                  nullable: true
             Peers:
               type: array
               items:
@@ -22895,11 +22895,11 @@ components:
           properties:
             Budget:
               oneOf:
-                - nullable: true
-                  type: number
+                - type: number
+                  nullable: true
                   format: int64
-                - nullable: true
-                  type: string
+                - type: string
+                  nullable: true
             BossOffice:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'

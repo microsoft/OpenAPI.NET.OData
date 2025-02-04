@@ -27,8 +27,8 @@ components:
           type: string
           x-ms-primary-error-message: true
         target:
-          nullable: true
           type: string
+          nullable: true
         details:
           type: array
           items:
@@ -46,8 +46,8 @@ components:
         message:
           type: string
         target:
-          nullable: true
           type: string
+          nullable: true
     ODataErrors.InnerError:
       type: object
       description: The structure of this object is service-specific
@@ -60,8 +60,8 @@ components:
         '@odata.id':
           type: string
         '@odata.type':
-          nullable: true
           type: string
+          nullable: true
     ReferenceCreate:
       type: object
       properties:
@@ -74,8 +74,8 @@ components:
         - '-INF'
         - INF
         - NaN
-      nullable: true
       type: string
+      nullable: true
   responses:
     error:
       description: error

@@ -95,7 +95,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(schema.Properties);
             var parameter = Assert.Single(schema.Properties);
             Assert.Equal("param", parameter.Key);
-            Assert.Equal(JsonSchemaType.String, parameter.Value.Type);
+            Assert.Equal(JsonSchemaType.String | JsonSchemaType.Null, parameter.Value.Type);
         }
 
         [Fact]
@@ -156,7 +156,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(schema.Properties);
             var parameter = Assert.Single(schema.Properties);
             Assert.Equal("param", parameter.Key);
-            Assert.Equal(JsonSchemaType.String, parameter.Value.Type);
+            Assert.Equal(JsonSchemaType.String | JsonSchemaType.Null, parameter.Value.Type);
         }
 
         [Fact]

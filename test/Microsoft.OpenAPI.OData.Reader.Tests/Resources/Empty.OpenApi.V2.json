@@ -12,10 +12,10 @@
   "paths": { },
   "definitions": {
     "ODataErrors.ODataError": {
+      "type": "object",
       "required": [
         "error"
       ],
-      "type": "object",
       "properties": {
         "error": {
           "$ref": "#/definitions/ODataErrors.MainError"
@@ -23,11 +23,11 @@
       }
     },
     "ODataErrors.MainError": {
+      "type": "object",
       "required": [
         "code",
         "message"
       ],
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -37,7 +37,8 @@
           "x-ms-primary-error-message": true
         },
         "target": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "details": {
           "type": "array",
@@ -51,11 +52,11 @@
       }
     },
     "ODataErrors.ErrorDetails": {
+      "type": "object",
       "required": [
         "code",
         "message"
       ],
-      "type": "object",
       "properties": {
         "code": {
           "type": "string"
@@ -64,17 +65,18 @@
           "type": "string"
         },
         "target": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
     "ODataErrors.InnerError": {
-      "description": "The structure of this object is service-specific",
-      "type": "object"
+      "type": "object",
+      "description": "The structure of this object is service-specific"
     },
     "ODataCountResponse": {
-      "format": "int64",
-      "type": "number"
+      "type": "number",
+      "format": "int64"
     },
     "ReferenceUpdate": {
       "type": "object",
@@ -83,7 +85,8 @@
           "type": "string"
         },
         "@odata.type": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
@@ -99,12 +102,13 @@
       }
     },
     "ReferenceNumeric": {
+      "type": "string",
+      "x-nullable": true,
       "enum": [
         "-INF",
         "INF",
         "NaN"
-      ],
-      "type": "string"
+      ]
     }
   },
   "parameters": {

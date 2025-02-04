@@ -537,7 +537,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Price", property.Key);
             Assert.Equal("decimal", property.Value.OneOf.FirstOrDefault(x => !string.IsNullOrEmpty(x.Format))?.Format);
             Assert.NotNull(property.Value.OneOf);
-            Assert.Equal([JsonSchemaType.Number, JsonSchemaType.String], property.Value.OneOf.Select(e => e.Type));
+            Assert.Equal([JsonSchemaType.Number | JsonSchemaType.Null, JsonSchemaType.String | JsonSchemaType.Null], property.Value.OneOf.Select(e => e.Type));
 
             Assert.Equal("Complex type 'Tree' description.", declaredSchema.Description);
             Assert.Equal("Tree", declaredSchema.Title);
@@ -950,6 +950,7 @@ namespace Microsoft.OpenApi.OData.Tests
                   "default": "yellow"
                 }
                 """,
+                _ => throw new NotSupportedException()
             });
 
             Assert.True(JsonNode.DeepEquals(expected, JsonNode.Parse(json)));

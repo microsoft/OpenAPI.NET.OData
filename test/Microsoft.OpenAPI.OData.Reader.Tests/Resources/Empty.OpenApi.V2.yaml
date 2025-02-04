@@ -28,6 +28,7 @@ definitions:
         x-ms-primary-error-message: true
       target:
         type: string
+        x-nullable: true
       details:
         type: array
         items:
@@ -46,6 +47,7 @@ definitions:
         type: string
       target:
         type: string
+        x-nullable: true
   ODataErrors.InnerError:
     type: object
     description: The structure of this object is service-specific
@@ -59,6 +61,7 @@ definitions:
         type: string
       '@odata.type':
         type: string
+        x-nullable: true
   ReferenceCreate:
     type: object
     properties:
@@ -68,6 +71,7 @@ definitions:
       type: object
   ReferenceNumeric:
     type: string
+    x-nullable: true
     enum:
       - '-INF'
       - INF

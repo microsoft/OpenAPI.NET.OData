@@ -966,7 +966,8 @@
           "x-ms-primary-error-message": true
         },
         "target": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "details": {
           "type": "array",
@@ -993,7 +994,8 @@
           "type": "string"
         },
         "target": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
@@ -1012,7 +1014,8 @@
           "type": "string"
         },
         "@odata.type": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
@@ -1029,6 +1032,7 @@
     },
     "ReferenceNumeric": {
       "type": "string",
+      "x-nullable": true,
       "enum": [
         "-INF",
         "INF",

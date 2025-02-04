@@ -24,16 +24,16 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// @odata.nextLink KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, IOpenApiSchema> OdataNextLink = new("@odata.nextLink", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true });
+        public static KeyValuePair<string, IOpenApiSchema> OdataNextLink = new("@odata.nextLink", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null });
 
         /// <summary>
         /// @odata.count KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, IOpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Number, Format = "int64", Nullable = true });
+        public static KeyValuePair<string, IOpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = "int64"});
 
         /// <summary>
         /// @odata.deltaLink KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, IOpenApiSchema> OdataDeltaLink = new("@odata.deltaLink", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true });
+        public static KeyValuePair<string, IOpenApiSchema> OdataDeltaLink = new("@odata.deltaLink", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null });
     }
 }

@@ -1309,14 +1309,12 @@
             "in": "path",
             "name": "lat",
             "required": true,
-            "type": "number",
             "format": "double"
           },
           {
             "in": "path",
             "name": "lon",
             "required": true,
-            "type": "number",
             "format": "double"
           }
         ],
@@ -31982,7 +31980,8 @@
           "x-ms-primary-error-message": true
         },
         "target": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "details": {
           "type": "array",
@@ -32009,7 +32008,8 @@
           "type": "string"
         },
         "target": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
@@ -32019,11 +32019,13 @@
       "properties": {
         "Date": {
           "type": "string",
+          "x-nullable": true,
           "format": "date-time",
           "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"
         },
         "RequestId": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
@@ -32050,7 +32052,8 @@
           "type": "string"
         },
         "@odata.type": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
@@ -32067,6 +32070,7 @@
     },
     "ReferenceNumeric": {
       "type": "string",
+      "x-nullable": true,
       "enum": [
         "-INF",
         "INF",
@@ -32084,10 +32088,12 @@
           "type": "string"
         },
         "LastName": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "MiddleName": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "Gender": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
@@ -32097,6 +32103,7 @@
           "allOf": [
             {
               "type": "number",
+              "x-nullable": true,
               "format": "int64"
             }
           ]
@@ -32104,7 +32111,8 @@
         "Emails": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "x-nullable": true
           }
         },
         "AddressInfo": {
@@ -32127,6 +32135,7 @@
         },
         "Photo": {
           "type": "string",
+          "x-nullable": true,
           "format": "base64url"
         },
         "Friends": {
@@ -32158,7 +32167,8 @@
           "type": "string"
         },
         "Name": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
@@ -32167,13 +32177,15 @@
       "title": "Airport",
       "properties": {
         "Name": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "IcaoCode": {
           "type": "string"
         },
         "IataCode": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "Location": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
@@ -32185,7 +32197,8 @@
       "title": "Location",
       "properties": {
         "Address": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "City": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
@@ -32197,13 +32210,16 @@
       "title": "City",
       "properties": {
         "Name": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "CountryRegion": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "Region": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
@@ -32236,7 +32252,8 @@
           "title": "EventLocation",
           "properties": {
             "BuildingInfo": {
-              "type": "string"
+              "type": "string",
+              "x-nullable": true
             }
           }
         }
@@ -32258,24 +32275,28 @@
           "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         },
         "Name": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "Budget": {
           "format": "float",
           "allOf": [
             {
               "type": "number",
+              "x-nullable": true,
               "format": "float"
             }
           ]
         },
         "Description": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "Tags": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "x-nullable": true
           }
         },
         "TripData": { },
@@ -32313,7 +32334,8 @@
           "minimum": -2147483648
         },
         "ConfirmationCode": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "StartsAt": {
           "type": "string",
@@ -32345,7 +32367,8 @@
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
             },
             "Description": {
-              "type": "string"
+              "type": "string",
+              "x-nullable": true
             }
           }
         }
@@ -32361,7 +32384,8 @@
           "title": "PublicTransportation",
           "properties": {
             "SeatNumber": {
-              "type": "string"
+              "type": "string",
+              "x-nullable": true
             }
           }
         }
@@ -32377,7 +32401,8 @@
           "title": "Flight",
           "properties": {
             "FlightNumber": {
-              "type": "string"
+              "type": "string",
+              "x-nullable": true
             },
             "Airline": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
@@ -32406,6 +32431,7 @@
               "allOf": [
                 {
                   "type": "number",
+                  "x-nullable": true,
                   "format": "int64"
                 }
               ]
@@ -32435,6 +32461,7 @@
               "allOf": [
                 {
                   "type": "number",
+                  "x-nullable": true,
                   "format": "int64"
                 }
               ]

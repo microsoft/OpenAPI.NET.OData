@@ -405,19 +405,15 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Type);
                 Assert.NotNull(schema.OneOf);
                 Assert.Equal(2, schema.OneOf.Count);
-                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.Number));
-                Assert.NotNull(numberSchema);
-                Assert.True(numberSchema.Nullable);
-                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.String));
-                Assert.NotNull(stringSchema);
-                Assert.True(stringSchema.Nullable);
-                Assert.False(schema.Nullable);
+                Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.Number | JsonSchemaType.Null));
+                Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.String | JsonSchemaType.Null));
+                Assert.NotEqual(JsonSchemaType.Null, schema.Type & JsonSchemaType.Null);
             }
             else
             {
-                Assert.Equal(JsonSchemaType.Number, schema.Type);
+                Assert.Equal(JsonSchemaType.Number, schema.Type & JsonSchemaType.Number);
                 Assert.Null(schema.OneOf);
-                Assert.Equal(isNullable, schema.Nullable);
+                Assert.Equal(isNullable, (schema.Type & JsonSchemaType.Null) is JsonSchemaType.Null);
             }
         }
 
@@ -448,19 +444,15 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Type);
                 Assert.NotNull(schema.OneOf);
                 Assert.Equal(2, schema.OneOf.Count);
-                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.Number));
-                Assert.NotNull(numberSchema);
-                Assert.True(numberSchema.Nullable);
-                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.String));
-                Assert.NotNull(stringSchema);
-                Assert.True(stringSchema.Nullable);
-                Assert.False(schema.Nullable);
+                Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.Number | JsonSchemaType.Null));
+                Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.String | JsonSchemaType.Null));
+                Assert.NotEqual(JsonSchemaType.Null, schema.Type & JsonSchemaType.Null);
             }
             else
             {
-                Assert.Equal(JsonSchemaType.Number, schema.Type);
+                Assert.Equal(JsonSchemaType.Number, schema.Type & JsonSchemaType.Number);
                 Assert.Null(schema.AnyOf);
-                Assert.Equal(isNullable, schema.Nullable);
+                Assert.Equal(isNullable, (schema.Type & JsonSchemaType.Null) is JsonSchemaType.Null);
             }
         }
 
@@ -516,16 +508,11 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.Null(schema.Type);
 
-            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.Number));
-            Assert.NotNull(numberSchema);
-            Assert.True(numberSchema.Nullable);
-            Assert.Equal("double", numberSchema.Format, StringComparer.OrdinalIgnoreCase);
+            Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.Number | JsonSchemaType.Null) && x.Format.Equals("double", StringComparison.OrdinalIgnoreCase));
 
-            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals(JsonSchemaType.String));
-            Assert.NotNull(stringSchema);
-            Assert.True(stringSchema.Nullable);
+            Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.String | JsonSchemaType.Null));
 
-            Assert.False(schema.Nullable);
+            Assert.NotEqual(JsonSchemaType.Null, schema.Type & JsonSchemaType.Null);
 
             Assert.Null(schema.AnyOf);
 
@@ -550,16 +537,11 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.Null(schema.Type);
 
-            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type != null && x.Type.HasValue && (x.Type & JsonSchemaType.Number) is JsonSchemaType.Number);
-            Assert.NotNull(numberSchema);
-            Assert.True(numberSchema.Nullable);
-            Assert.Equal("float", numberSchema.Format, StringComparer.OrdinalIgnoreCase);
+            Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.Number | JsonSchemaType.Null) && x.Format.Equals("float", StringComparison.OrdinalIgnoreCase));
 
-            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type != null && x.Type.HasValue && (x.Type & JsonSchemaType.String) is JsonSchemaType.String);
-            Assert.NotNull(stringSchema);
-            Assert.True(stringSchema.Nullable);
-            
-            Assert.False(schema.Nullable);
+            Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.String | JsonSchemaType.Null));
+
+            Assert.NotEqual(JsonSchemaType.Null, schema.Type & JsonSchemaType.Null);
 
             Assert.Null(schema.AnyOf);
 

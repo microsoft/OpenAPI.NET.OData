@@ -150,7 +150,10 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 // Nullable properties are marked with the keyword nullable and a value of true.
                 // nullable cannot be true when type is empty, often common in anyof/allOf since individual entries are nullable
-                openApiSchema.Nullable = !string.IsNullOrEmpty(schema.Type.ToIdentifier()) && primitiveType.IsNullable;
+                if (!string.IsNullOrEmpty(schema.Type.ToIdentifier()) && primitiveType.IsNullable)
+                {
+                    openApiSchema.Type |= JsonSchemaType.Null;
+                }
             }
 
             return schema;
@@ -203,8 +206,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.Decimal when emitIEEECompatibleTypes: // decimal
                     schema.OneOf =
                     [
-                        new OpenApiSchema { Type = JsonSchemaType.Number, Format = Constants.DecimalFormat, Nullable = true },
-                        new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
+                        new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = Constants.DecimalFormat },
+                        new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null },
                     ];
                     break;
                 case EdmPrimitiveTypeKind.Decimal when !emitIEEECompatibleTypes: // decimal
@@ -212,28 +215,26 @@ namespace Microsoft.OpenApi.OData.Generator
                         schema.Format = Constants.DecimalFormat;
                     break;
                 case EdmPrimitiveTypeKind.Double when emitV2CompatibleParameterTypes: // double
-                    schema.Type = JsonSchemaType.Number;
+                    schema.Type = JsonSchemaType.Number | JsonSchemaType.Null;
                     schema.Format = "double";
-                    schema.Nullable = true;
                     break;
                 case EdmPrimitiveTypeKind.Double when !emitV2CompatibleParameterTypes: // double
                     schema.OneOf =
                     [
-                        new OpenApiSchema { Type = JsonSchemaType.Number, Format = "double", Nullable = true },
-                        new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
+                        new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = "double" },
+                        new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null },
                         new OpenApiSchemaReference(Constants.ReferenceNumericName, document)
                     ];
                     break;
                 case EdmPrimitiveTypeKind.Single when emitV2CompatibleParameterTypes: // single
-                    schema.Type = JsonSchemaType.Number;
+                    schema.Type = JsonSchemaType.Number | JsonSchemaType.Null;
                     schema.Format = "float";
-                    schema.Nullable = true;
                     break;
                 case EdmPrimitiveTypeKind.Single when !emitV2CompatibleParameterTypes: // single
                     schema.OneOf =
                     [
-                        new OpenApiSchema { Type = JsonSchemaType.Number, Format = "float", Nullable = true },
-                        new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true },
+                        new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = "float"},
+                        new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null},
                         new OpenApiSchemaReference(Constants.ReferenceNumericName, document)
                     ];
                     break;
@@ -257,8 +258,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.Int64 when emitIEEECompatibleTypes:
                     schema.OneOf =
                     [
-                        new OpenApiSchema { Type = JsonSchemaType.Number, Format = Constants.Int64Format, Nullable = true },
-                        new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true }
+                        new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = Constants.Int64Format},
+                        new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null }
                     ];
                     break;
                 case EdmPrimitiveTypeKind.Int64 when !emitIEEECompatibleTypes:

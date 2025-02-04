@@ -130,14 +130,14 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     {
-                        "code", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false }
+                        "code", new OpenApiSchema { Type = JsonSchemaType.String }
                     },
                     {
-                        "message", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false, Extensions = new Dictionary<string, IOpenApiExtension> 
+                        "message", new OpenApiSchema { Type = JsonSchemaType.String, Extensions = new Dictionary<string, IOpenApiExtension> 
                                                                                     { { OpenApiPrimaryErrorMessageExtension.Name, new OpenApiPrimaryErrorMessageExtension { IsPrimaryErrorMessage = true } } } }
                     },
                     {
-                        "target", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true }
+                        "target", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null }
                     },
                     {
                         "details",
@@ -171,13 +171,13 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     {
-                        "code", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false, }
+                        "code", new OpenApiSchema { Type = JsonSchemaType.String, }
                     },
                     {
-                        "message", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false, }
+                        "message", new OpenApiSchema { Type = JsonSchemaType.String, }
                     },
                     {
-                        "target", new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true, }
+                        "target", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null, }
                     }
                 }
             };

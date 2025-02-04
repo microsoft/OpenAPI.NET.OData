@@ -3122,6 +3122,7 @@ definitions:
         x-ms-primary-error-message: true
       target:
         type: string
+        x-nullable: true
       details:
         type: array
         items:
@@ -3140,6 +3141,7 @@ definitions:
         type: string
       target:
         type: string
+        x-nullable: true
   Default.ODataErrors.InnerError:
     type: object
     description: The structure of this object is service-specific
@@ -3161,6 +3163,7 @@ definitions:
         type: string
       '@odata.type':
         type: string
+        x-nullable: true
   ReferenceCreate:
     type: object
     properties:
@@ -3170,6 +3173,7 @@ definitions:
       type: object
   ReferenceNumeric:
     type: string
+    x-nullable: true
     enum:
       - '-INF'
       - INF
@@ -3185,14 +3189,19 @@ definitions:
         minimum: -2147483648
       Name:
         type: string
+        x-nullable: true
       Description:
         type: string
+        x-nullable: true
       Filename:
         type: string
+        x-nullable: true
       NumberOfRevisions:
         type: string
+        x-nullable: true
       Suffix:
         type: string
+        x-nullable: true
       DomainId:
         type: number
         format: int32
@@ -3200,10 +3209,12 @@ definitions:
         minimum: -2147483648
       ModificationDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       ModifiedBy:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -3241,12 +3252,16 @@ definitions:
         minimum: -2147483648
       Name:
         type: string
+        x-nullable: true
       Number:
         type: string
+        x-nullable: true
       Description:
         type: string
+        x-nullable: true
       LibraryTemplateId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -3285,11 +3300,13 @@ definitions:
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       ModifiedBy:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       ModificationDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       Documents:
@@ -3331,13 +3348,16 @@ definitions:
         minimum: -2147483648
       DocumentId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       DocumentName:
         type: string
+        x-nullable: true
       DocumentDescription:
         type: string
+        x-nullable: true
       CreationDate:
         type: string
         format: date-time
@@ -3351,33 +3371,39 @@ definitions:
         type: boolean
       ReviewedBy:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       ReviewedDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       IsApproved:
         type: boolean
       ApprovedBy:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       ApprovedDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       IsRejected:
         type: boolean
       RejectedBy:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       RejectedDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       DomainId:
@@ -3418,8 +3444,10 @@ definitions:
         minimum: -2147483648
       Name:
         type: string
+        x-nullable: true
       Description:
         type: string
+        x-nullable: true
       CreationDate:
         type: string
         format: date-time
@@ -3446,6 +3474,7 @@ definitions:
     properties:
       Name:
         type: string
+        x-nullable: true
     example:
       Name: string
   Siterra.Documents.BusinessLogic.Entities.Document.Document:
@@ -3459,8 +3488,10 @@ definitions:
         minimum: -2147483648
       Name:
         type: string
+        x-nullable: true
       Description:
         type: string
+        x-nullable: true
       StatusId:
         type: number
         format: int32
@@ -3473,6 +3504,7 @@ definitions:
         minimum: -2147483648
       Keywords:
         type: string
+        x-nullable: true
       CreationDate:
         type: string
         format: date-time
@@ -3498,6 +3530,7 @@ definitions:
         minimum: -2147483648
       LibraryId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -3512,24 +3545,30 @@ definitions:
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       LastRevisionId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       CheckoutDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       CheckoutPath:
         type: string
+        x-nullable: true
       CheckoutUserId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       Number:
         type: string
+        x-nullable: true
       OriginalDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       FileSized:
@@ -3537,8 +3576,10 @@ definitions:
         format: decimal
       FileClientPath:
         type: string
+        x-nullable: true
       LastRevisionFileId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -3549,64 +3590,82 @@ definitions:
         minimum: -2147483648
       IsNa:
         type: number
+        x-nullable: true
         format: decimal
       IsRejected:
         type: number
+        x-nullable: true
         format: decimal
       IsReviewed:
         type: number
+        x-nullable: true
         format: decimal
       NaDescription:
         type: string
+        x-nullable: true
       NaReason:
         type: string
+        x-nullable: true
       RejectedDescription:
         type: string
+        x-nullable: true
       RejectedReason:
         type: string
+        x-nullable: true
       ReviewDescription:
         type: string
+        x-nullable: true
       SourceDocumentId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       ScraperMapId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       LastDownloadedDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       SmsId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       IsApprovedOld:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       Suffix:
         type: string
+        x-nullable: true
       ScrapeResultId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       IsApproved:
         type: number
+        x-nullable: true
         format: decimal
       CategoryId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       SectionId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -3617,6 +3676,7 @@ definitions:
         minimum: -2147483648
       LastFileName:
         type: string
+        x-nullable: true
       DocumentClasses:
         type: array
         items:
@@ -3821,13 +3881,16 @@ definitions:
         minimum: -2147483648
       Name:
         type: string
+        x-nullable: true
       ParentFolderId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       Number:
         type: string
+        x-nullable: true
       TypeId:
         type: number
         format: int32
@@ -3871,21 +3934,25 @@ definitions:
         minimum: -2147483648
       ProjectId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       SearchRingId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       SiteId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       AssetId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -3895,25 +3962,30 @@ definitions:
         type: boolean
       Description:
         type: string
+        x-nullable: true
       IsTemplate:
         type: boolean
       ProgramId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       SourceFolderId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       TemplateClassId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       TemplateSubType:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -3926,36 +3998,43 @@ definitions:
         minimum: -2147483648
       StatusId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       SmsId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       ContractId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       VendorId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       OrganizationUnitId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       IncidentId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       EventId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -4051,6 +4130,7 @@ definitions:
         minimum: -2147483648
       Name:
         type: string
+        x-nullable: true
       ModifiedBy:
         type: number
         format: int32
@@ -4071,20 +4151,25 @@ definitions:
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       DomainId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       Description:
         type: string
+        x-nullable: true
       XmlName:
         type: string
+        x-nullable: true
       MasterId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       Number:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -4095,6 +4180,7 @@ definitions:
         minimum: -2147483648
       ParentId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -4148,8 +4234,10 @@ definitions:
         minimum: -2147483648
       Name:
         type: string
+        x-nullable: true
       Path:
         type: string
+        x-nullable: true
       ModifiedBy:
         type: number
         format: int32
@@ -4173,6 +4261,7 @@ definitions:
         format: decimal
       ActualName:
         type: string
+        x-nullable: true
       DomainId:
         type: number
         format: int32
@@ -4180,16 +4269,19 @@ definitions:
         minimum: -2147483648
       SourceClassId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       ContentTypeId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       ClientPath:
         type: string
+        x-nullable: true
       IsSelfHosted:
         type: number
         format: int16
@@ -4197,14 +4289,17 @@ definitions:
         minimum: -32768
       SmsId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       Latitude:
         type: number
+        x-nullable: true
         format: decimal
       Longitude:
         type: number
+        x-nullable: true
         format: decimal
       Documents:
         type: array
@@ -4247,8 +4342,10 @@ definitions:
         minimum: -2147483648
       Name:
         type: string
+        x-nullable: true
       Description:
         type: string
+        x-nullable: true
       CreatedBy:
         type: number
         format: int32
@@ -4357,6 +4454,7 @@ definitions:
         minimum: -2147483648
       DocumentId:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -4380,6 +4478,7 @@ definitions:
         minimum: -2147483648
       Remarks:
         type: string
+        x-nullable: true
       FileId:
         type: number
         format: int32
@@ -4392,22 +4491,29 @@ definitions:
         minimum: -2147483648
       DocumentDescription:
         type: string
+        x-nullable: true
       DocumentStatusDate:
         type: string
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       DocumentFolder:
         type: string
+        x-nullable: true
       DocumentKeywords:
         type: string
+        x-nullable: true
       DocumentStatus:
         type: string
+        x-nullable: true
       DocumentType:
         type: string
+        x-nullable: true
       DocumentName:
         type: string
+        x-nullable: true
       DocumentNumber:
         type: string
+        x-nullable: true
       DomainId:
         type: number
         format: int32
@@ -4422,8 +4528,10 @@ definitions:
         type: boolean
       ReviewDescription:
         type: string
+        x-nullable: true
       ReviewedBy:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -4431,10 +4539,13 @@ definitions:
         type: boolean
       RejectedReason:
         type: string
+        x-nullable: true
       RejectedDescription:
         type: string
+        x-nullable: true
       RejectedBy:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
@@ -4442,19 +4553,23 @@ definitions:
         type: boolean
       ApprovedBy:
         type: number
+        x-nullable: true
         format: int32
         maximum: 2147483647
         minimum: -2147483648
       ReviewedDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       RejectedDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       ApprovedDate:
         type: string
+        x-nullable: true
         format: date-time
         pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
       Document:

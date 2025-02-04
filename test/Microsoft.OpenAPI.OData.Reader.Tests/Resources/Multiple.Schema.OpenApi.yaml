@@ -3241,8 +3241,8 @@ components:
           type: string
           x-ms-primary-error-message: true
         target:
-          nullable: true
           type: string
+          nullable: true
         details:
           type: array
           items:
@@ -3260,8 +3260,8 @@ components:
         message:
           type: string
         target:
-          nullable: true
           type: string
+          nullable: true
     Default.ODataErrors.InnerError:
       type: object
       description: The structure of this object is service-specific
@@ -3282,8 +3282,8 @@ components:
         '@odata.id':
           type: string
         '@odata.type':
-          nullable: true
           type: string
+          nullable: true
     ReferenceCreate:
       type: object
       properties:
@@ -3296,8 +3296,8 @@ components:
         - '-INF'
         - INF
         - NaN
-      nullable: true
       type: string
+      nullable: true
     Siterra.Documents.App.DTO.DocumentDto:
       title: DocumentDto
       type: object
@@ -3308,20 +3308,20 @@ components:
           type: number
           format: int32
         Name:
-          nullable: true
           type: string
+          nullable: true
         Description:
-          nullable: true
           type: string
+          nullable: true
         Filename:
-          nullable: true
           type: string
+          nullable: true
         NumberOfRevisions:
-          nullable: true
           type: string
+          nullable: true
         Suffix:
-          nullable: true
           type: string
+          nullable: true
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
@@ -3329,14 +3329,14 @@ components:
           format: int32
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         Tags:
           type: array
@@ -3371,19 +3371,19 @@ components:
           type: number
           format: int32
         Name:
-          nullable: true
           type: string
+          nullable: true
         Number:
-          nullable: true
           type: string
+          nullable: true
         Description:
-          nullable: true
           type: string
+          nullable: true
         LibraryTemplateId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ParentTypeId:
           maximum: 2147483647
@@ -3421,13 +3421,13 @@ components:
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         Documents:
           type: array
@@ -3469,15 +3469,15 @@ components:
         DocumentId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         DocumentName:
-          nullable: true
           type: string
+          nullable: true
         DocumentDescription:
-          nullable: true
           type: string
+          nullable: true
         CreationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
@@ -3492,39 +3492,39 @@ components:
         ReviewedBy:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ReviewedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         IsApproved:
           type: boolean
         ApprovedBy:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ApprovedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         IsRejected:
           type: boolean
         RejectedBy:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         RejectedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         DomainId:
           maximum: 2147483647
@@ -3567,11 +3567,11 @@ components:
           type: number
           format: int32
         Name:
-          nullable: true
           type: string
+          nullable: true
         Description:
-          nullable: true
           type: string
+          nullable: true
         CreationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
@@ -3597,8 +3597,8 @@ components:
       type: object
       properties:
         Name:
-          nullable: true
           type: string
+          nullable: true
       example:
         Name: string
     Siterra.Documents.BusinessLogic.Entities.Document.Document:
@@ -3611,11 +3611,11 @@ components:
           type: number
           format: int32
         Name:
-          nullable: true
           type: string
+          nullable: true
         Description:
-          nullable: true
           type: string
+          nullable: true
         StatusId:
           maximum: 2147483647
           minimum: -2147483648
@@ -3627,8 +3627,8 @@ components:
           type: number
           format: int32
         Keywords:
-          nullable: true
           type: string
+          nullable: true
         CreationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
@@ -3655,8 +3655,8 @@ components:
         LibraryId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         OwnerUserId:
           maximum: 2147483647
@@ -3670,42 +3670,42 @@ components:
         LastRevisionId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         CheckoutDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         CheckoutPath:
-          nullable: true
           type: string
+          nullable: true
         CheckoutUserId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         Number:
-          nullable: true
           type: string
+          nullable: true
         OriginalDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         FileSized:
           type: number
           format: decimal
         FileClientPath:
-          nullable: true
           type: string
+          nullable: true
         LastRevisionFileId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         IsDeleted:
           maximum: 2147483647
@@ -3713,85 +3713,85 @@ components:
           type: number
           format: int32
         IsNa:
-          nullable: true
           type: number
+          nullable: true
           format: decimal
         IsRejected:
-          nullable: true
           type: number
+          nullable: true
           format: decimal
         IsReviewed:
-          nullable: true
           type: number
+          nullable: true
           format: decimal
         NaDescription:
-          nullable: true
           type: string
+          nullable: true
         NaReason:
-          nullable: true
           type: string
+          nullable: true
         RejectedDescription:
-          nullable: true
           type: string
+          nullable: true
         RejectedReason:
-          nullable: true
           type: string
+          nullable: true
         ReviewDescription:
-          nullable: true
           type: string
+          nullable: true
         SourceDocumentId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ScraperMapId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         LastDownloadedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         SmsId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         IsApprovedOld:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         Suffix:
-          nullable: true
           type: string
+          nullable: true
         ScrapeResultId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         IsApproved:
-          nullable: true
           type: number
+          nullable: true
           format: decimal
         CategoryId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         SectionId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         VersionCount:
           maximum: 2147483647
@@ -3799,8 +3799,8 @@ components:
           type: number
           format: int32
         LastFileName:
-          nullable: true
           type: string
+          nullable: true
         DocumentClasses:
           type: array
           items:
@@ -4028,17 +4028,17 @@ components:
           type: number
           format: int32
         Name:
-          nullable: true
           type: string
+          nullable: true
         ParentFolderId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         Number:
-          nullable: true
           type: string
+          nullable: true
         TypeId:
           maximum: 2147483647
           minimum: -2147483648
@@ -4083,59 +4083,59 @@ components:
         ProjectId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         SearchRingId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         SiteId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         AssetId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         AllowMultiple:
           type: boolean
         AutoCreate:
           type: boolean
         Description:
-          nullable: true
           type: string
+          nullable: true
         IsTemplate:
           type: boolean
         ProgramId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         SourceFolderId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         TemplateClassId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         TemplateSubType:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         IsHidden:
           type: boolean
@@ -4147,44 +4147,44 @@ components:
         StatusId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         SmsId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ContractId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         VendorId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         OrganizationUnitId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         IncidentId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         EventId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ClassInstance:
           maximum: 2147483647
@@ -4289,8 +4289,8 @@ components:
           type: number
           format: int32
         Name:
-          nullable: true
           type: string
+          nullable: true
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
@@ -4312,26 +4312,26 @@ components:
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         Description:
-          nullable: true
           type: string
+          nullable: true
         XmlName:
-          nullable: true
           type: string
+          nullable: true
         MasterId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         Number:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ClassId:
           maximum: 2147483647
@@ -4341,8 +4341,8 @@ components:
         ParentId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         HasChanged:
           type: boolean
@@ -4401,11 +4401,11 @@ components:
           type: number
           format: int32
         Name:
-          nullable: true
           type: string
+          nullable: true
         Path:
-          nullable: true
           type: string
+          nullable: true
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
@@ -4428,8 +4428,8 @@ components:
           type: number
           format: decimal
         ActualName:
-          nullable: true
           type: string
+          nullable: true
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
@@ -4438,18 +4438,18 @@ components:
         SourceClassId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ContentTypeId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ClientPath:
-          nullable: true
           type: string
+          nullable: true
         IsSelfHosted:
           maximum: 32767
           minimum: -32768
@@ -4458,16 +4458,16 @@ components:
         SmsId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         Latitude:
-          nullable: true
           type: number
+          nullable: true
           format: decimal
         Longitude:
-          nullable: true
           type: number
+          nullable: true
           format: decimal
         Documents:
           type: array
@@ -4509,11 +4509,11 @@ components:
           type: number
           format: int32
         Name:
-          nullable: true
           type: string
+          nullable: true
         Description:
-          nullable: true
           type: string
+          nullable: true
         CreatedBy:
           maximum: 2147483647
           minimum: -2147483648
@@ -4623,8 +4623,8 @@ components:
         DocumentId:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
@@ -4645,8 +4645,8 @@ components:
           type: number
           format: int32
         Remarks:
-          nullable: true
           type: string
+          nullable: true
         FileId:
           maximum: 2147483647
           minimum: -2147483648
@@ -4658,30 +4658,30 @@ components:
           type: number
           format: int32
         DocumentDescription:
-          nullable: true
           type: string
+          nullable: true
         DocumentStatusDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
           format: date-time
         DocumentFolder:
-          nullable: true
           type: string
+          nullable: true
         DocumentKeywords:
-          nullable: true
           type: string
+          nullable: true
         DocumentStatus:
-          nullable: true
           type: string
+          nullable: true
         DocumentType:
-          nullable: true
           type: string
+          nullable: true
         DocumentName:
-          nullable: true
           type: string
+          nullable: true
         DocumentNumber:
-          nullable: true
           type: string
+          nullable: true
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
@@ -4695,50 +4695,50 @@ components:
         IsReviewed:
           type: boolean
         ReviewDescription:
-          nullable: true
           type: string
+          nullable: true
         ReviewedBy:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         IsRejected:
           type: boolean
         RejectedReason:
-          nullable: true
           type: string
+          nullable: true
         RejectedDescription:
-          nullable: true
           type: string
+          nullable: true
         RejectedBy:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         IsApproved:
           type: boolean
         ApprovedBy:
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
           type: number
+          nullable: true
           format: int32
         ReviewedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         RejectedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         ApprovedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-          nullable: true
           type: string
+          nullable: true
           format: date-time
         Document:
           anyOf:

@@ -68,8 +68,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 Type = JsonSchemaType.Object,
                 Properties = new Dictionary<string, IOpenApiSchema>
                     {
-                        {Constants.OdataId, new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false }},
-                        {Constants.OdataType, new OpenApiSchema { Type = JsonSchemaType.String, Nullable = true }},
+                        {Constants.OdataId, new OpenApiSchema { Type = JsonSchemaType.String }},
+                        {Constants.OdataType, new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null }},
                     }
             });
 
@@ -78,15 +78,14 @@ namespace Microsoft.OpenApi.OData.Generator
                 Type = JsonSchemaType.Object,
                 Properties = new Dictionary<string, IOpenApiSchema>
                 {
-                    {Constants.OdataId, new OpenApiSchema { Type = JsonSchemaType.String, Nullable = false }}
+                    {Constants.OdataId, new OpenApiSchema { Type = JsonSchemaType.String }}
                 },
                 AdditionalProperties = new OpenApiSchema { Type = JsonSchemaType.Object }
             });
 
             document.AddComponent(Constants.ReferenceNumericName, new OpenApiSchema()
             {
-                Type = JsonSchemaType.String,
-                Nullable = true,
+                Type = JsonSchemaType.String | JsonSchemaType.Null,
                 Enum =
                 [
                     "-INF",
