@@ -20,14 +20,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntityDeleteOperationHandler : EntitySetOperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="EntityDeleteOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public EntityDeleteOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Delete;
 
@@ -96,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Operation
             OpenApiConvertSettings settings = Context.Settings.Clone();
             settings.UseSuccessStatusCodeRange = false;
             
-            operation.AddErrorResponses(settings, _document, true);
+            operation.AddErrorResponses(settings, true);
             base.SetResponses(operation);
         }
 
@@ -107,7 +99,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_deleteRestrictions.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_deleteRestrictions.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

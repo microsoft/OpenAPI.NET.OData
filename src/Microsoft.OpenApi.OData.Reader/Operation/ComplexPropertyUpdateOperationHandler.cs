@@ -18,15 +18,6 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyBaseOperationHandler
 {
-    /// <summary>
-    /// Initializes a new instance of <see cref="ComplexPropertyUpdateOperationHandler"/> class.
-    /// </summary>
-    /// <param name="document">The document to use to lookup references.</param>
-    protected ComplexPropertyUpdateOperationHandler(OpenApiDocument document) : base(document)
-    {
-        
-    }
-    
     private UpdateRestrictionsType _updateRestrictions;
 
     protected override void Initialize(ODataContext context, ODataPath path)
@@ -79,7 +70,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
+        operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
         base.SetResponses(operation);
     }
     protected override void SetSecurity(OpenApiOperation operation)
@@ -89,7 +80,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions, _document).ToList();
+        operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -112,7 +103,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
 
     private IOpenApiSchema GetOpenApiSchema()
     {
-        var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
+        var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName());
 
         if (ComplexPropertySegment.Property.Type.IsCollection())
         {

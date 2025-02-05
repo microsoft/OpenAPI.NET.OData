@@ -14,14 +14,6 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
 {
-    /// <summary>
-    /// Initializes a new instance of <see cref="ComplexPropertyBaseOperationHandler"/> class.
-    /// </summary>
-    /// <param name="document">The document to use to lookup references.</param>
-    protected ComplexPropertyBaseOperationHandler(OpenApiDocument document) : base(document)
-    {
-        
-    }
     protected ODataComplexPropertySegment ComplexPropertySegment;
     
     /// <inheritdoc/>
@@ -42,7 +34,7 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
 			{
 				Name = tagName
 			});
-            operation.Tags.Add(new OpenApiTagReference(tagName, _document));
+            operation.Tags.Add(new OpenApiTagReference(tagName));
         }
         
         base.SetTags(operation);

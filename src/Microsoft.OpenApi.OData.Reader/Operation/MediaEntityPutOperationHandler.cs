@@ -21,14 +21,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class MediaEntityPutOperationHandler : MediaEntityOperationalHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="MediaEntityPutOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public MediaEntityPutOperationHandler(OpenApiDocument document):base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Put;
         
@@ -99,13 +91,13 @@ namespace Microsoft.OpenApi.OData.Operation
                 // Get the entity type declaring this stream property.
                 (var entityType, _) = GetStreamElements();
 
-                var schema = new OpenApiSchemaReference(entityType.FullName(), _document);
+                var schema = new OpenApiSchemaReference(entityType.FullName());
 
-                operation.AddErrorResponses(Context.Settings, _document, addNoContent: true, schema: schema);
+                operation.AddErrorResponses(Context.Settings, addNoContent: true, schema: schema);
             }
             else
             {
-                operation.AddErrorResponses(Context.Settings, _document, true);
+                operation.AddErrorResponses(Context.Settings, true);
             }
             
             base.SetResponses(operation);
@@ -121,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(update.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
         }
 
         /// <inheritdoc/>

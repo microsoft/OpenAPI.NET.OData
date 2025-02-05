@@ -17,13 +17,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class MediaEntityDeleteOperationHandlerTests
     {
-        public MediaEntityDeleteOperationHandlerTests()
-        {
-          _operationHandler = new MediaEntityDeleteOperationHandler(_openApiDocument);
-        }
         private readonly OpenApiDocument _openApiDocument = new();
 
-        private readonly MediaEntityDeleteOperationHandler _operationHandler;
+        private static MediaEntityDeleteOperationHandler _operationHandler => new();
 
         [Fact]
         public void CreateMediaEntityPropertyDeleteOperationWithTargetPathAnnotationsReturnsCorrectOperation()

@@ -19,7 +19,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         public MediaEntityPutOperationHandlerTests()
         {
-          _operationHandler = new (_openApiDocument);
+          _operationHandler = new ();
         }
         private readonly OpenApiDocument _openApiDocument = new();
         private readonly MediaEntityPutOperationHandler _operationHandler;

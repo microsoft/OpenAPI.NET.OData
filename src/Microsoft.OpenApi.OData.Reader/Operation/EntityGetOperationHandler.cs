@@ -23,14 +23,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntityGetOperationHandler : EntitySetOperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="EntityGetOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public EntityGetOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -103,7 +95,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
             }
 
             if (Context.Settings.ShowLinks)
@@ -114,7 +106,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (schema == null)
             {
-                schema = new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
+                schema = new OpenApiSchemaReference(EntitySet.EntityType.FullName());
             }
 
             operation.Responses = new OpenApiResponses
@@ -138,7 +130,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
         }
@@ -161,7 +153,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

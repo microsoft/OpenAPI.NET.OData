@@ -22,7 +22,7 @@ public class OpenApiErrorSchemaGeneratorTests
         };
         ODataContext context = new(model, settings);
 
-        var schema = OpenApiErrorSchemaGenerator.CreateInnerErrorSchema(context, new());
+        var schema = OpenApiErrorSchemaGenerator.CreateInnerErrorSchema(context);
 
         Assert.Equal(JsonSchemaType.Object, schema.Type);
         Assert.Empty(schema.Properties);
@@ -37,7 +37,7 @@ public class OpenApiErrorSchemaGeneratorTests
         };
         ODataContext context = new(model, settings);
 
-        var schema = OpenApiErrorSchemaGenerator.CreateInnerErrorSchema(context, new());
+        var schema = OpenApiErrorSchemaGenerator.CreateInnerErrorSchema(context);
 
         Assert.Equal(JsonSchemaType.Object, schema.Type);
         Assert.NotEmpty(schema.Properties);

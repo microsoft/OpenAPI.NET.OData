@@ -26,14 +26,6 @@ namespace Microsoft.OpenApi.OData.Operation;
 /// </summary>
 internal class ODataTypeCastGetOperationHandler : OperationHandler
 {
-	/// <summary>
-	/// Initializes a new instance of <see cref="ODataTypeCastGetOperationHandler"/> class.
-	/// </summary>
-	/// <param name="document">The document to use to lookup references.</param>
-	public ODataTypeCastGetOperationHandler(OpenApiDocument document):base(document)
-	{
-		
-	}
 	/// <inheritdoc/>
 	public override OperationType OperationType => OperationType.Get;
 
@@ -213,12 +205,12 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model, _document);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model);
             }
 
             if (schema == null)
             {
-                schema = new OpenApiSchemaReference(TargetSchemaElement.FullName(), _document);
+                schema = new OpenApiSchemaReference(TargetSchemaElement.FullName());
             }
 
             SetSingleResponse(operation, schema);
@@ -228,7 +220,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
             SetCollectionResponse(operation, TargetSchemaElement.FullName());
         }			
 
-		operation.AddErrorResponses(Context.Settings, _document, false);
+		operation.AddErrorResponses(Context.Settings, false);
 
 		base.SetResponses(operation);
 	}
@@ -265,7 +257,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				{
 					Name = tagName
 				});
-			operation.Tags.Add(new OpenApiTagReference(tagName, _document));
+			operation.Tags.Add(new OpenApiTagReference(tagName));
 		}		
 
 		base.SetTags(operation);
@@ -342,11 +334,11 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// Need to verify that TopSupported or others should be applied to navigation source.
 		// So, how about for the navigation property.
 		return [
-            Context.CreateTop(annotable, _document),
-			Context.CreateSkip(annotable, _document),
-			Context.CreateSearch(annotable, _document),
-			Context.CreateFilter(annotable, _document),
-			Context.CreateCount(annotable, _document),
+            Context.CreateTop(annotable),
+			Context.CreateSkip(annotable),
+			Context.CreateSearch(annotable),
+			Context.CreateFilter(annotable),
+			Context.CreateCount(annotable),
 		];
 	}
 
@@ -359,7 +351,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 		ReadRestrictionsBase readBase = restriction.ReadRestrictions;
 
-		operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+		operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
 	}
 
 	protected override void SetExtensions(OpenApiOperation operation)

@@ -23,14 +23,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EdmOperationOperationHandler : OperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EdmOperationOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        protected EdmOperationOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         private OperationRestrictionsType _operationRestriction;
 
         /// <summary>
@@ -154,7 +146,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 Name = tagName,
             };
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
-            operation.Tags.Add(new OpenApiTagReference(tag.Name, _document));
+            operation.Tags.Add(new OpenApiTagReference(tag.Name));
 
             Context.AppendTag(tag);
 
@@ -210,7 +202,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation) 
         {
-            operation.Responses = Context.CreateResponses(EdmOperation, _document);
+            operation.Responses = Context.CreateResponses(EdmOperation);
             base.SetResponses(operation);
         }
 
@@ -222,7 +214,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions).ToList();
         }
 
         /// <inheritdoc/>
@@ -249,31 +241,31 @@ namespace Microsoft.OpenApi.OData.Operation
             if (function.ReturnType.IsCollection())
             {
                 // $top
-                if (Context.CreateTop(function, _document) is {} topParameter)
+                if (Context.CreateTop(function) is {} topParameter)
                 {
                     operation.Parameters.AppendParameter(topParameter);
                 }
 
                 // $skip
-                if (Context.CreateSkip(function, _document) is {} skipParameter)
+                if (Context.CreateSkip(function) is {} skipParameter)
                 {
                     operation.Parameters.AppendParameter(skipParameter);
                 }
 
                 // $search
-                if (Context.CreateSearch(function, _document) is {} searchParameter)
+                if (Context.CreateSearch(function) is {} searchParameter)
                 {
                     operation.Parameters.AppendParameter(searchParameter);
                 }
 
                 // $filter
-                if (Context.CreateFilter(function, _document) is {} filterParameter)
+                if (Context.CreateFilter(function) is {} filterParameter)
                 {
                     operation.Parameters.AppendParameter(filterParameter);
                 }
 
                 // $count
-                if (Context.CreateCount(function, _document) is {} countParameter)
+                if (Context.CreateCount(function) is {} countParameter)
                 {
                     operation.Parameters.AppendParameter(countParameter);
                 }

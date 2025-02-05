@@ -23,14 +23,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class RefGetOperationHandler : NavigationPropertyOperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RefGetOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public RefGetOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
         private ReadRestrictionsType _readRestriction;
@@ -92,7 +84,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     {
                         Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                        new OpenApiResponseReference($"String{Constants.CollectionSchemaSuffix}", _document)
+                        new OpenApiResponseReference($"String{Constants.CollectionSchemaSuffix}")
                     }
                 };
             }
@@ -136,7 +128,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 };
             }
 
-    		operation.AddErrorResponses(Context.Settings, _document, false);
+    		operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
         }
@@ -150,31 +142,31 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 // Need to verify that TopSupported or others should be applied to navigaiton source.
                 // So, how about for the navigation property.
-                var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
+                var parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(NavigationProperty, _document);
+                parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(NavigationProperty, _document);
+                parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(NavigationProperty, _document);
+                parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(NavigationProperty, _document);
+                parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
@@ -196,7 +188,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             ReadRestrictionsBase readBase = _readRestriction;
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

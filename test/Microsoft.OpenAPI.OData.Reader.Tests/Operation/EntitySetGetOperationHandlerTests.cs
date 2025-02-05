@@ -33,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         }
         private readonly OpenApiDocument _openApiDocument = new();
 
-        private EntitySetGetOperationHandler _operationHandler => new(_openApiDocument);
+        private static EntitySetGetOperationHandler _operationHandler => new();
 
         [Theory]
         [InlineData(true, true, true)]

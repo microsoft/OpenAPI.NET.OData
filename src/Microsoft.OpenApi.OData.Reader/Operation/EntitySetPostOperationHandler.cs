@@ -24,14 +24,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntitySetPostOperationHandler : EntitySetOperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="EntitySetPostOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public EntitySetPostOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
                
@@ -93,7 +85,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
 
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
         }
@@ -105,7 +97,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -194,8 +186,8 @@ namespace Microsoft.OpenApi.OData.Operation
         private IOpenApiSchema GetEntitySchema()
         {
             return Context.Settings.EnableDerivedTypesReferencesForRequestBody ?
-                EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document) :
-                new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
+                EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model) :
+                new OpenApiSchemaReference(EntitySet.EntityType.FullName());
         }
     }
 }

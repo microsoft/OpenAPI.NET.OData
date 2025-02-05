@@ -19,14 +19,6 @@ namespace Microsoft.OpenApi.OData.Operation
     internal abstract class SingletonOperationHandler : OperationHandler
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="SingletonOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        protected SingletonOperationHandler(OpenApiDocument document):base(document)
-        {
-            
-        }
-        /// <summary>
         /// Gets the <see cref="IEdmSingleton"/>.
         /// </summary>
         protected IEdmSingleton Singleton { get; private set; }
@@ -54,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Operation
 				Name = tagName
 			});
 
-            operation.Tags.Add(new OpenApiTagReference(tagName, _document));
+            operation.Tags.Add(new OpenApiTagReference(tagName));
 
             // Call base.SetTags() at the end of this method.
             base.SetTags(operation);

@@ -23,14 +23,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class SingletonGetOperationHandler : SingletonOperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="SingletonGetOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public SingletonGetOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -90,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model, _document);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model);
             }
 
             if (Context.Settings.ShowLinks)
@@ -99,7 +91,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         entityKind: Singleton.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
             }
 
-            schema ??= new OpenApiSchemaReference(Singleton.EntityType.FullName(), _document);
+            schema ??= new OpenApiSchemaReference(Singleton.EntityType.FullName());
 
             operation.Responses = new OpenApiResponses
             {
@@ -123,7 +115,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
 
-    		operation.AddErrorResponses(Context.Settings, _document, false);
+    		operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
         }
@@ -136,7 +128,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions).ToList();
         }
 
         /// <inheritdoc/>

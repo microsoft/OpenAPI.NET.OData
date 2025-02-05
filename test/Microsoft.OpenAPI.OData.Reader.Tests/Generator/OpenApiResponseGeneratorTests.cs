@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         public void GetResponseReturnsNullResponseObject(string input)
         {
             // Arrange & Act
-            var response = input.GetResponse(new());
+            var response = input.GetResponse();
 
             // Assert
             Assert.Null(response);
@@ -39,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         public void GetResponseReturnsResponseObject(string input)
         {
             // Arrange & Act
-            var response = input.GetResponse(new());
+            var response = input.GetResponse();
 
             // Assert
             Assert.NotNull(response);
@@ -144,7 +144,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operationImport: null, new()));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operationImport: null));
         }
 
         [Fact]
@@ -154,7 +154,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(EdmCoreModel.Instance);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("operationImport", () => context.CreateResponses(operationImport: null, new()));
+            Assert.Throws<ArgumentNullException>("operationImport", () => context.CreateResponses(operationImport: null));
         }
 
         [Fact]
@@ -164,7 +164,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operation: null, new()));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operation: null));
         }
 
         [Fact]
@@ -174,7 +174,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(EdmCoreModel.Instance);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("operation", () => context.CreateResponses(operation: null, new()));
+            Assert.Throws<ArgumentNullException>("operation", () => context.CreateResponses(operation: null));
         }
 
         [Theory]
@@ -200,14 +200,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 IEdmOperationImport operationImport = model.EntityContainer.OperationImports().First(o => o.Name == operationName);
                 Assert.NotNull(operationImport); // guard
                 ODataPath path = new ODataPath(new ODataOperationImportSegment(operationImport));
-                responses = context.CreateResponses(operationImport, new());
+                responses = context.CreateResponses(operationImport);
             }
             else
             {
                 IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == operationName);
                 Assert.NotNull(operation); // guard
                 ODataPath path = new ODataPath(new ODataOperationSegment(operation));
-                responses = context.CreateResponses(operation, new());
+                responses = context.CreateResponses(operation);
             }
 
             // Assert
@@ -259,8 +259,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(operation2);
             ODataPath path1 = new(new ODataOperationSegment(operation1));
             ODataPath path2 = new(new ODataOperationSegment(operation2));
-            OpenApiResponses responses1 = context.CreateResponses(operation1, new());
-            OpenApiResponses responses2 = context.CreateResponses(operation2, new());
+            OpenApiResponses responses1 = context.CreateResponses(operation1);
+            OpenApiResponses responses2 = context.CreateResponses(operation2);
 
             // Assert for operation1 --> getMailboxUsageStorage
             Assert.NotNull(responses1);
@@ -300,14 +300,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 IEdmOperationImport operationImport = model.EntityContainer.OperationImports().First(o => o.Name == actionName);
                 Assert.NotNull(operationImport); // guard
                 ODataPath path = new ODataPath(new ODataOperationImportSegment(operationImport));
-                responses = context.CreateResponses(operationImport, new());
+                responses = context.CreateResponses(operationImport);
             }
             else
             {
                 IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == actionName);
                 Assert.NotNull(operation); // guard
                 ODataPath path = new ODataPath(new ODataOperationSegment(operation));
-                responses = context.CreateResponses(operation, new());
+                responses = context.CreateResponses(operation);
             }
 
             // Assert
@@ -336,7 +336,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == actionName);
             Assert.NotNull(operation); // guard
             ODataPath path = new(new ODataOperationSegment(operation));
-            responses = context.CreateResponses(operation, new());
+            responses = context.CreateResponses(operation);
 
             // Assert
             Assert.NotNull(responses);
@@ -368,7 +368,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmFunction operation = model.SchemaElements.OfType<IEdmFunction>().First(o => o.Name == "delta" &&
                    o.Parameters.First().Type.FullName() == "Collection(microsoft.graph.application)");
             Assert.NotNull(operation); // guard
-            OpenApiResponses responses = context.CreateResponses(operation, new());
+            OpenApiResponses responses = context.CreateResponses(operation);
             string json = await responses.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert

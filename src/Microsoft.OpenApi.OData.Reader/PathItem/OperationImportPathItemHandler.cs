@@ -16,14 +16,6 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class OperationImportPathItemHandler : PathItemHandler
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OperationImportPathItemHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use for references lookup.</param>
-        public OperationImportPathItemHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         protected override ODataPathKind HandleKind => ODataPathKind.OperationImport;
 

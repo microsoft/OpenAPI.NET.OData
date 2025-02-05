@@ -28,23 +28,20 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="edmTypeReference">The Edm type reference.</param>
-        /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static IOpenApiSchema CreateEdmTypeSchemaForParameter(this ODataContext context, IEdmTypeReference edmTypeReference, OpenApiDocument document)
-        => CreateEdmTypeSchema(context, edmTypeReference, document, true);
+        public static IOpenApiSchema CreateEdmTypeSchemaForParameter(this ODataContext context, IEdmTypeReference edmTypeReference)
+        => CreateEdmTypeSchema(context, edmTypeReference, true);
         /// <summary>
         /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmTypeReference"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="edmTypeReference">The Edm type reference.</param>
-        /// <param name="document">The Open API document to lookup references.</param>
         /// <param name="schemaForParameter">Whether the schema is for a parameter.</param>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static IOpenApiSchema CreateEdmTypeSchema(this ODataContext context, IEdmTypeReference edmTypeReference, OpenApiDocument document, bool schemaForParameter = false)
+        public static IOpenApiSchema CreateEdmTypeSchema(this ODataContext context, IEdmTypeReference edmTypeReference, bool schemaForParameter = false)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(edmTypeReference, nameof(edmTypeReference));
-            Utils.CheckArgumentNull(document, nameof(document));
 
             switch (edmTypeReference.TypeKind())
             {
@@ -54,8 +51,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     
                     IEdmTypeReference typeRef = edmTypeReference.AsCollection().ElementType();
                     var schema = typeRef.TypeKind() == EdmTypeKind.Complex || typeRef.TypeKind() == EdmTypeKind.Entity
-                        ? context.CreateStructuredTypeSchema(typeRef.AsStructured(), document, true)
-                        : context.CreateEdmTypeSchema(typeRef, document, schemaForParameter);
+                        ? context.CreateStructuredTypeSchema(typeRef.AsStructured(), true)
+                        : context.CreateEdmTypeSchema(typeRef, schemaForParameter);
 
                     return new OpenApiSchema
                     {
@@ -68,22 +65,22 @@ namespace Microsoft.OpenApi.OData.Generator
                 // or as external references for types defined in referenced CSDL documents.
                 case EdmTypeKind.Complex:
                 case EdmTypeKind.Entity:
-                    return context.CreateStructuredTypeSchema(edmTypeReference.AsStructured(), document);
+                    return context.CreateStructuredTypeSchema(edmTypeReference.AsStructured());
 
                 case EdmTypeKind.Enum:
-                    return context.CreateEnumTypeSchema(edmTypeReference.AsEnum(), document);
+                    return context.CreateEnumTypeSchema(edmTypeReference.AsEnum());
 
                 // Primitive properties of type Edm.PrimitiveType, Edm.Stream, and any of the Edm.Geo* types are
                 // represented as Schema Objects that are JSON References to definitions in the Definitions Object
                 case EdmTypeKind.Primitive:
                     IEdmPrimitiveTypeReference primitiveTypeReference = (IEdmPrimitiveTypeReference)edmTypeReference;
-                    return context.CreateSchema(primitiveTypeReference, document, schemaForParameter);
+                    return context.CreateSchema(primitiveTypeReference, schemaForParameter);
 
                 case EdmTypeKind.TypeDefinition:
-                    return context.CreateSchema(((IEdmTypeDefinitionReference)edmTypeReference).TypeDefinition().UnderlyingType, document, schemaForParameter);
+                    return context.CreateSchema(((IEdmTypeDefinitionReference)edmTypeReference).TypeDefinition().UnderlyingType, schemaForParameter);
 
                 case EdmTypeKind.EntityReference:
-                    return context.CreateTypeDefinitionSchema(edmTypeReference.AsTypeDefinition(), document);
+                    return context.CreateTypeDefinitionSchema(edmTypeReference.AsTypeDefinition());
 
                 case EdmTypeKind.Untyped:
                     return new OpenApiSchema();
@@ -99,16 +96,14 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="primitiveType">The Edm primitive reference.</param>
-        /// <param name="document">The Open API document to lookup references.</param>
         /// <param name="schemaForParameter">Whether the schema is for a parameter.</param>
         /// <returns>The created <see cref="IOpenApiSchema"/>.</returns>
-        public static IOpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveTypeReference primitiveType, OpenApiDocument document, bool schemaForParameter = false)
+        public static IOpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveTypeReference primitiveType, bool schemaForParameter = false)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(primitiveType, nameof(primitiveType));
-            Utils.CheckArgumentNull(document, nameof(document));
 
-            var schema = context.CreateSchema(primitiveType.PrimitiveDefinition(), document, schemaForParameter);
+            var schema = context.CreateSchema(primitiveType.PrimitiveDefinition(), schemaForParameter);
             if (schema is OpenApiSchema openApiSchema)
             {
                 switch(primitiveType.PrimitiveKind())
@@ -164,14 +159,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="primitiveType">The Edm primitive type.</param>
-        /// <param name="document">The Open API document to lookup references.</param>
         /// <param name="schemaForParameter">Whether the schema is for a parameter.</param>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static IOpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveType primitiveType, OpenApiDocument document, bool schemaForParameter = false)
+        public static IOpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveType primitiveType, bool schemaForParameter = false)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(primitiveType, nameof(primitiveType));
-            Utils.CheckArgumentNull(document, nameof(document));
 
             // Spec has different configure for double, AnyOf or OneOf?
             OpenApiSchema schema = new OpenApiSchema
@@ -223,7 +216,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     [
                         new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = "double" },
                         new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null },
-                        new OpenApiSchemaReference(Constants.ReferenceNumericName, document)
+                        new OpenApiSchemaReference(Constants.ReferenceNumericName)
                     ];
                     break;
                 case EdmPrimitiveTypeKind.Single when emitV2CompatibleParameterTypes: // single
@@ -235,7 +228,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     [
                         new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = "float"},
                         new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null},
-                        new OpenApiSchemaReference(Constants.ReferenceNumericName, document)
+                        new OpenApiSchemaReference(Constants.ReferenceNumericName)
                     ];
                     break;
                 case EdmPrimitiveTypeKind.Guid: // guid
@@ -296,37 +289,37 @@ namespace Microsoft.OpenApi.OData.Generator
                     break;
 
                 case EdmPrimitiveTypeKind.Geography:
-                    return new OpenApiSchemaReference("Edm.Geography", document);
+                    return new OpenApiSchemaReference("Edm.Geography");
                 case EdmPrimitiveTypeKind.GeographyPoint:
-                    return new OpenApiSchemaReference("Edm.GeographyPoint", document);
+                    return new OpenApiSchemaReference("Edm.GeographyPoint");
                 case EdmPrimitiveTypeKind.GeographyLineString:
-                    return new OpenApiSchemaReference("Edm.GeographyLineString", document);
+                    return new OpenApiSchemaReference("Edm.GeographyLineString");
                 case EdmPrimitiveTypeKind.GeographyPolygon:
-                    return new OpenApiSchemaReference("Edm.GeographyPolygon", document);
+                    return new OpenApiSchemaReference("Edm.GeographyPolygon");
                 case EdmPrimitiveTypeKind.GeographyCollection:
-                    return new OpenApiSchemaReference("Edm.GeographyCollection", document);
+                    return new OpenApiSchemaReference("Edm.GeographyCollection");
                 case EdmPrimitiveTypeKind.GeographyMultiPolygon:
-                    return new OpenApiSchemaReference("Edm.GeographyMultiPolygon", document);
+                    return new OpenApiSchemaReference("Edm.GeographyMultiPolygon");
                 case EdmPrimitiveTypeKind.GeographyMultiLineString:
-                    return new OpenApiSchemaReference("Edm.GeographyMultiLineString", document);
+                    return new OpenApiSchemaReference("Edm.GeographyMultiLineString");
                 case EdmPrimitiveTypeKind.GeographyMultiPoint:
-                    return new OpenApiSchemaReference("Edm.GeographyMultiPoint", document);
+                    return new OpenApiSchemaReference("Edm.GeographyMultiPoint");
                 case EdmPrimitiveTypeKind.Geometry: // Geometry
-                    return new OpenApiSchemaReference("Edm.Geometry", document);
+                    return new OpenApiSchemaReference("Edm.Geometry");
                 case EdmPrimitiveTypeKind.GeometryPoint:
-                    return new OpenApiSchemaReference("Edm.GeometryPoint", document);
+                    return new OpenApiSchemaReference("Edm.GeometryPoint");
                 case EdmPrimitiveTypeKind.GeometryLineString:
-                    return new OpenApiSchemaReference("Edm.GeometryLineString", document);
+                    return new OpenApiSchemaReference("Edm.GeometryLineString");
                 case EdmPrimitiveTypeKind.GeometryPolygon:
-                    return new OpenApiSchemaReference("Edm.GeometryPolygon", document);
+                    return new OpenApiSchemaReference("Edm.GeometryPolygon");
                 case EdmPrimitiveTypeKind.GeometryCollection:
-                    return new OpenApiSchemaReference("Edm.GeometryCollection", document);
+                    return new OpenApiSchemaReference("Edm.GeometryCollection");
                 case EdmPrimitiveTypeKind.GeometryMultiPolygon:
-                    return new OpenApiSchemaReference("Edm.GeometryMultiPolygon", document);
+                    return new OpenApiSchemaReference("Edm.GeometryMultiPolygon");
                 case EdmPrimitiveTypeKind.GeometryMultiLineString:
-                    return new OpenApiSchemaReference("Edm.GeometryMultiLineString", document);
+                    return new OpenApiSchemaReference("Edm.GeometryMultiLineString");
                 case EdmPrimitiveTypeKind.GeometryMultiPoint:
-                    return new OpenApiSchemaReference("Edm.GeometryMultiPoint", document);
+                    return new OpenApiSchemaReference("Edm.GeometryMultiPoint");
 
                 case EdmPrimitiveTypeKind.None:
                 default:
@@ -336,7 +329,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return schema;
         }
 
-        private static IOpenApiSchema CreateEnumTypeSchema(this ODataContext context, IEdmEnumTypeReference typeReference, OpenApiDocument document)
+        private static IOpenApiSchema CreateEnumTypeSchema(this ODataContext context, IEdmEnumTypeReference typeReference)
         {
             Debug.Assert(context != null);
             Debug.Assert(typeReference != null);
@@ -347,7 +340,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return new OpenApiSchema {
                     AnyOf =
                     [
-                        new OpenApiSchemaReference(typeReference.Definition.FullTypeName(), document),
+                        new OpenApiSchemaReference(typeReference.Definition.FullTypeName()),
                         new OpenApiSchema
                         {
                             Type = JsonSchemaType.Null,
@@ -357,15 +350,14 @@ namespace Microsoft.OpenApi.OData.Generator
             }
             else
             {
-                return new OpenApiSchemaReference(typeReference.Definition.FullTypeName(), document);
+                return new OpenApiSchemaReference(typeReference.Definition.FullTypeName());
             }
         }
 
-        private static IOpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredTypeReference typeReference, OpenApiDocument document, bool isTypeCollection = false)
+        private static IOpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredTypeReference typeReference, bool isTypeCollection = false)
         {
             Debug.Assert(context != null);
             Debug.Assert(typeReference != null);
-            Debug.Assert(document != null);
 
             // AnyOf will only be valid openApi for version 3
             // otherwise the reference should be set directly
@@ -377,7 +369,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return new OpenApiSchema {
                     AnyOf =
                     [
-                        new OpenApiSchemaReference(typeReference.Definition.FullTypeName(), document),
+                        new OpenApiSchemaReference(typeReference.Definition.FullTypeName()),
                         new OpenApiSchema
                         {
                             Type = JsonSchemaType.Null,
@@ -387,22 +379,21 @@ namespace Microsoft.OpenApi.OData.Generator
             }
             else
             {
-                return new OpenApiSchemaReference(typeReference.Definition.FullTypeName(), document);
+                return new OpenApiSchemaReference(typeReference.Definition.FullTypeName());
             }
         }
 
-        private static IOpenApiSchema CreateTypeDefinitionSchema(this ODataContext context, IEdmTypeDefinitionReference reference, OpenApiDocument document)
+        private static IOpenApiSchema CreateTypeDefinitionSchema(this ODataContext context, IEdmTypeDefinitionReference reference)
         {
             Debug.Assert(context != null);
             Debug.Assert(reference != null);
-            Debug.Assert(document != null);
 
             if (reference.IsNullable && context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
             {
                 return new OpenApiSchema {
                     AnyOf =
                     [
-                        new OpenApiSchemaReference(reference.Definition.FullTypeName(), document),
+                        new OpenApiSchemaReference(reference.Definition.FullTypeName()),
                         new OpenApiSchema
                         {
                             Type = JsonSchemaType.Null,
@@ -412,7 +403,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
             else
             {
-                return new OpenApiSchemaReference(reference.Definition.FullTypeName(), document);
+                return new OpenApiSchemaReference(reference.Definition.FullTypeName());
             }           
         }
     }

@@ -28,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           });
         }
         private readonly OpenApiDocument _openApiDocument = new();
-        private NavigationPropertyPostOperationHandler _operationHandler => new(_openApiDocument);
+        private static NavigationPropertyPostOperationHandler _operationHandler => new();
 
         [Theory]
         [InlineData(true, true)]

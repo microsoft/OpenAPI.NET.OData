@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests;
 
 public class ComplexPropertyPathItemHandlerTests
 {
-	private readonly ComplexPropertyItemHandler _pathItemHandler = new(new());
+	private readonly ComplexPropertyItemHandler _pathItemHandler = new();
 
 	[Fact]
 	public void CreatePathItemThrowsForNullContext()

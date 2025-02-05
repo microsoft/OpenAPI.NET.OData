@@ -44,7 +44,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         var document = new OpenApiDocument();
         context.AddSchemasToDocument(document);
-        ODataTypeCastGetOperationHandler operationHandler = new (document);
+        ODataTypeCastGetOperationHandler operationHandler = new ();
         // Act
         var operation = operationHandler.CreateOperation(context, path);
         document.Tags = context.CreateTags();
@@ -108,7 +108,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         var document = new OpenApiDocument();
         context.AddSchemasToDocument(document);
-        ODataTypeCastGetOperationHandler operationHandler = new (document);
+        ODataTypeCastGetOperationHandler operationHandler = new ();
 
         // Act
         var operation = operationHandler.CreateOperation(context, path);
@@ -166,7 +166,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         var document = new OpenApiDocument();
         context.AddSchemasToDocument(document);
-        ODataTypeCastGetOperationHandler operationHandler = new (document);
+        ODataTypeCastGetOperationHandler operationHandler = new ();
         // Act
         var operation = operationHandler.CreateOperation(context, path);
         document.Tags = context.CreateTags();
@@ -225,7 +225,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         var document = new OpenApiDocument();
         context.AddSchemasToDocument(document);
-        ODataTypeCastGetOperationHandler operationHandler = new (document);
+        ODataTypeCastGetOperationHandler operationHandler = new ();
         // Act
         var operation = operationHandler.CreateOperation(context, path);
         document.Tags = context.CreateTags();
@@ -287,7 +287,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         var document = new OpenApiDocument();
         context.AddSchemasToDocument(document);
-        ODataTypeCastGetOperationHandler operationHandler = new (document);
+        ODataTypeCastGetOperationHandler operationHandler = new ();
         // Act
         var operation = operationHandler.CreateOperation(context, path);
         document.Tags = context.CreateTags();
@@ -344,7 +344,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         var document = new OpenApiDocument();
         context.AddSchemasToDocument(document);
-        ODataTypeCastGetOperationHandler operationHandler = new (document);
+        ODataTypeCastGetOperationHandler operationHandler = new ();
         // Act
         var operation = operationHandler.CreateOperation(context, path);
         document.Tags = context.CreateTags();
@@ -396,7 +396,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         var document = new OpenApiDocument();
         context.AddSchemasToDocument(document);
-        ODataTypeCastGetOperationHandler operationHandler = new (document);
+        ODataTypeCastGetOperationHandler operationHandler = new ();
         // Act
         var operation = operationHandler.CreateOperation(context, path);
         document.Tags = context.CreateTags();

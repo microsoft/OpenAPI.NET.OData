@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     public class DollarCountGetOperationHandlerTests
     {
         private readonly OpenApiDocument openApiDocument = new();
-        private DollarCountGetOperationHandler _operationHandler => new(openApiDocument);
+        private static DollarCountGetOperationHandler _operationHandler => new();
         public DollarCountGetOperationHandlerTests()
         {
             openApiDocument.AddComponent("search", new OpenApiParameter {Name = "search", In = ParameterLocation.Query, Schema = new OpenApiSchema {Type = JsonSchemaType.String}});

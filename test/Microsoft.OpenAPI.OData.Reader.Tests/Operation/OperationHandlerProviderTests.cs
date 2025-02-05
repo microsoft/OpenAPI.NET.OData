@@ -39,11 +39,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         public void GetHandlerReturnsCorrectOperationHandlerType(ODataPathKind pathKind, OperationType operationType, Type handlerType)
         {
             // Arrange
-            OpenApiDocument openApiDocument = new();
             OperationHandlerProvider provider = new OperationHandlerProvider();
 
             // Act
-            IOperationHandler hander = provider.GetHandler(pathKind, operationType, openApiDocument);
+            IOperationHandler hander = provider.GetHandler(pathKind, operationType);
 
             // Assert
             Assert.Same(handlerType, hander.GetType());

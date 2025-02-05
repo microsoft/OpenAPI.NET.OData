@@ -23,14 +23,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class SingletonPatchOperationHandler : SingletonOperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="SingletonPatchOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public SingletonPatchOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
 
@@ -86,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
+            operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
             base.SetResponses(operation);
         }
 
@@ -98,7 +90,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions).ToList();
         }
 
         /// <inheritdoc/>
@@ -123,8 +115,8 @@ namespace Microsoft.OpenApi.OData.Operation
         private IOpenApiSchema GetOpenApiSchema()
         {
             return Context.Settings.EnableDerivedTypesReferencesForRequestBody ?
-                EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model, _document) :
-                new OpenApiSchemaReference(Singleton.EntityType.FullName(), _document);
+                EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model) :
+                new OpenApiSchemaReference(Singleton.EntityType.FullName());
         }
     }
 }

@@ -28,10 +28,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             // Arrange
             PathItemHandlerProvider provider = new PathItemHandlerProvider();
-            OpenApiDocument openApiDocument = new OpenApiDocument();
 
             // Act
-            IPathItemHandler hander = provider.GetHandler(pathKind, openApiDocument);
+            IPathItemHandler hander = provider.GetHandler(pathKind);
 
             // Assert
             Assert.Same(handlerType, hander.GetType());
@@ -42,10 +41,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             // Arrange
             PathItemHandlerProvider provider = new PathItemHandlerProvider();
-            OpenApiDocument openApiDocument = new OpenApiDocument();
 
             // Act
-            IPathItemHandler hander = provider.GetHandler(ODataPathKind.Unknown, openApiDocument);
+            IPathItemHandler hander = provider.GetHandler(ODataPathKind.Unknown);
 
             // Assert
             Assert.Null(hander);

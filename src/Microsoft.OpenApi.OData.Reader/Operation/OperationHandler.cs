@@ -23,16 +23,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class OperationHandler : IOperationHandler
     {
-        protected readonly OpenApiDocument _document;
-        /// <summary>
-        /// Creates a new instance of <see cref="OperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">Document to use to lookup references.</param>
-        protected OperationHandler(OpenApiDocument document)
-        {
-            Utils.CheckArgumentNull(document, nameof(document));
-            _document = document;
-        }
         /// <inheritdoc/>
         public abstract OperationType OperationType { get; }
 
@@ -174,7 +164,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetParameters(OpenApiOperation operation)
         {
-            PathParameters = Path.CreatePathParameters(Context, _document);
+            PathParameters = Path.CreatePathParameters(Context);
             if (!Context.Settings.DeclarePathParametersOnPathItem)
             {
                 foreach (var parameter in PathParameters)
@@ -316,7 +306,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponseReference($"{targetElementFullName}{Constants.CollectionSchemaSuffix}", _document)
+                    new OpenApiResponseReference($"{targetElementFullName}{Constants.CollectionSchemaSuffix}")
                 }
             };
         }

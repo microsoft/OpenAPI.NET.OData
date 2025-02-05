@@ -24,15 +24,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="actionImport">The Edm action import.</param>
-        /// <param name="document">The OpenApi document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiRequestBody"/> or null.</returns>
-        public static OpenApiRequestBody CreateRequestBody(this ODataContext context, IEdmActionImport actionImport, OpenApiDocument document)
+        public static OpenApiRequestBody CreateRequestBody(this ODataContext context, IEdmActionImport actionImport)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(actionImport, nameof(actionImport));
-            Utils.CheckArgumentNull(document, nameof(document));
 
-            return context.CreateRequestBody(actionImport.Action, document);
+            return context.CreateRequestBody(actionImport.Action);
         }
 
         /// <summary>
@@ -40,13 +38,11 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="action">The Edm action.</param>
-        /// <param name="document">The OpenApi document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiRequestBody"/> or null.</returns>
-        public static OpenApiRequestBody CreateRequestBody(this ODataContext context, IEdmAction action, OpenApiDocument document)
+        public static OpenApiRequestBody CreateRequestBody(this ODataContext context, IEdmAction action)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(action, nameof(action));
-            Utils.CheckArgumentNull(document, nameof(document));
 
             // return null for empty action parameters
             int skip = 0;
@@ -74,7 +70,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             foreach (var parameter in action.Parameters.Skip(skip))
             {
-                parametersSchema.Properties.Add(parameter.Name, context.CreateEdmTypeSchema(parameter.Type, document));
+                parametersSchema.Properties.Add(parameter.Name, context.CreateEdmTypeSchema(parameter.Type));
             }
 
             OpenApiRequestBody requestBody = new OpenApiRequestBody
@@ -102,14 +98,14 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            document.AddComponent(Constants.ReferencePostRequestBodyName, CreateRefPostRequestBody(document));
-            document.AddComponent(Constants.ReferencePutRequestBodyName, CreateRefPutRequestBody(document));
+            document.AddComponent(Constants.ReferencePostRequestBodyName, CreateRefPostRequestBody());
+            document.AddComponent(Constants.ReferencePutRequestBodyName, CreateRefPutRequestBody());
 
             // add request bodies for actions targeting multiple related paths
             foreach (IEdmAction action in context.Model.SchemaElements.OfType<IEdmAction>()
                 .Where(context.Model.OperationTargetsMultiplePaths))
             {
-                if (context.CreateRequestBody(action, document) is OpenApiRequestBody requestBody)
+                if (context.CreateRequestBody(action) is OpenApiRequestBody requestBody)
                     document.AddComponent($"{action.Name}RequestBody", requestBody);
             }
         }
@@ -118,10 +114,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create a <see cref="OpenApiRequestBody"/> to be reused across ref POST operations
         /// </summary>
         /// <returns>The created <see cref="OpenApiRequestBody"/></returns>
-        /// <param name="document">The OpenApi document to lookup references.</param>
-        private static OpenApiRequestBody CreateRefPostRequestBody(OpenApiDocument document)
+        private static OpenApiRequestBody CreateRefPostRequestBody()
         {
-            var schema = new OpenApiSchemaReference(Constants.ReferenceCreateSchemaName, document);
+            var schema = new OpenApiSchemaReference(Constants.ReferenceCreateSchemaName);
             return new OpenApiRequestBody
             {
                 Required = true,
@@ -142,10 +137,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create a <see cref="OpenApiRequestBody"/> to be reused across ref PUT operations
         /// </summary>
         /// <returns>The created <see cref="OpenApiRequestBody"/></returns>
-        /// <param name="document">The OpenApi document to lookup references.</param>
-        private static OpenApiRequestBody CreateRefPutRequestBody(OpenApiDocument document)
+        private static OpenApiRequestBody CreateRefPutRequestBody()
         {
-            var schema = new OpenApiSchemaReference(Constants.ReferenceUpdateSchemaName, document);
+            var schema = new OpenApiSchemaReference(Constants.ReferenceUpdateSchemaName);
 
             return new OpenApiRequestBody
             {

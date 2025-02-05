@@ -13,14 +13,6 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class DollarCountPathItemHandler : PathItemHandler
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DollarCountPathItemHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use for references lookup.</param>
-        public DollarCountPathItemHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         protected override ODataPathKind HandleKind => ODataPathKind.DollarCount;
 

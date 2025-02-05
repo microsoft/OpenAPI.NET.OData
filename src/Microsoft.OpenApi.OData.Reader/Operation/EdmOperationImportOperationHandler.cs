@@ -23,14 +23,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EdmOperationImportOperationHandler : OperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="EdmOperationImportOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        protected EdmOperationImportOperationHandler(OpenApiDocument document):base(document)
-        {
-            
-        }
         private OperationRestrictionsType _operationRestriction;
 
         /// <summary>
@@ -100,7 +92,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // describing the structure of the success response by referencing an appropriate schema
             // in the global schemas. In addition, it contains a default name/value pair for
             // the OData error response referencing the global responses.
-            operation.Responses = Context.CreateResponses(EdmOperationImport, _document);
+            operation.Responses = Context.CreateResponses(EdmOperationImport);
 
             base.SetResponses(operation);
         }
@@ -113,7 +105,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions).ToList();
         }
 
         /// <inheritdoc/>
@@ -141,7 +133,7 @@ namespace Microsoft.OpenApi.OData.Operation
             var tag = CreateTag(EdmOperationImport);
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
             Context.AppendTag(tag);
-            operation.Tags.Add(new OpenApiTagReference(tag.Name, _document));
+            operation.Tags.Add(new OpenApiTagReference(tag.Name));
 
             base.SetTags(operation);
         }

@@ -18,8 +18,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         /// <param name="pathKind">The path kind.</param>
         /// <param name="operationType">The operation type.</param>
-        /// <param name="document">The Open API document to use to lookup references.</param>
         /// <returns>The corresponding <see cref="IOperationHandler"/>.</returns>
-        IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType, OpenApiDocument document);
+        IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType);
     }
 }

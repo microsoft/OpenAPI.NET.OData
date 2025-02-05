@@ -31,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         }
         private readonly OpenApiDocument _openApiDocument = new();
 
-        private EdmFunctionOperationHandler _operationHandler => new(_openApiDocument);
+        private static EdmFunctionOperationHandler _operationHandler => new();
         #region OperationHandlerTests
         [Fact]
         public void SetsDeprecationInformation()

@@ -24,14 +24,6 @@ namespace Microsoft.OpenApi.OData.Operation
     internal abstract class NavigationPropertyOperationHandler : OperationHandler
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="NavigationPropertyOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        protected NavigationPropertyOperationHandler(OpenApiDocument document):base(document)
-        {
-            
-        }
-        /// <summary>
         /// Gets the navigation property.
         /// </summary>
         protected IEdmNavigationProperty NavigationProperty { get; private set; }
@@ -99,7 +91,7 @@ namespace Microsoft.OpenApi.OData.Operation
 			{
 				Name = name
 			});
-            operation.Tags.Add(new OpenApiTagReference(name, _document));
+            operation.Tags.Add(new OpenApiTagReference(name));
 
             base.SetTags(operation);
         }
@@ -221,7 +213,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected IOpenApiSchema GetOpenApiSchema()
         {
-            return new OpenApiSchemaReference(NavigationProperty.ToEntityType().FullName(), _document);
+            return new OpenApiSchemaReference(NavigationProperty.ToEntityType().FullName());
         }
     }
 }

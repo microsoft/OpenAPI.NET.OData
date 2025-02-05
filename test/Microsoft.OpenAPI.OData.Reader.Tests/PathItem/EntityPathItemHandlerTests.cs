@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class EntityPathItemHandlerTests
     {
-        private EntityPathItemHandler _pathItemHandler = new MyEntityPathItemHandler(new());
+        private EntityPathItemHandler _pathItemHandler = new MyEntityPathItemHandler();
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -292,10 +292,6 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
     internal class MyEntityPathItemHandler : EntityPathItemHandler
     {
-        public MyEntityPathItemHandler(OpenApiDocument document) : base(document)
-        {
-          
-        }
         protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
         {
             item.AddOperation(operationType, new OpenApiOperation());

@@ -25,14 +25,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class NavigationPropertyGetOperationHandler : NavigationPropertyOperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NavigationPropertyGetOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public NavigationPropertyGetOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -107,7 +99,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     {
                         Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                        new OpenApiResponseReference($"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}", _document)
+                        new OpenApiResponseReference($"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}")
                     }
                 };
             }
@@ -118,10 +110,10 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 if (Context.Settings.EnableDerivedTypesReferencesForResponses)
                 {
-                    schema = EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, Context.Model, _document);
+                    schema = EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, Context.Model);
                 }
 
-                schema ??= new OpenApiSchemaReference(entityType.FullName(), _document);
+                schema ??= new OpenApiSchemaReference(entityType.FullName());
 
                 operation.Responses = new OpenApiResponses
                 {
@@ -146,7 +138,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 };
             }
 
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
         }
@@ -166,31 +158,31 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 // Need to verify that TopSupported or others should be applied to navigation source.
                 // So, how about for the navigation property.
-                var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
+                var parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(NavigationProperty, _document);
+                parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(NavigationProperty, _document);
+                parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(NavigationProperty, _document);
+                parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
                 }
 
-                parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(NavigationProperty, _document);
+                parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(NavigationProperty);
                 if (parameter != null)
                 {
                     operation.Parameters.Add(parameter);
@@ -239,7 +231,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 readBase = _readRestriction.ReadByKeyRestrictions;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

@@ -19,14 +19,6 @@ namespace Microsoft.OpenApi.OData.Operation
     internal abstract class EntitySetOperationHandler : OperationHandler
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="EntitySetOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        protected EntitySetOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
-        /// <summary>
         /// Gets/sets the <see cref="IEdmEntitySet"/>.
         /// </summary>
         protected IEdmEntitySet EntitySet { get; private set; }
@@ -47,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             var tagName = EntitySet.Name + "." + EntitySet.EntityType.Name;
 
-            operation.Tags.Add(new OpenApiTagReference(tagName, _document));
+            operation.Tags.Add(new OpenApiTagReference(tagName));
 
             Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
 			{

@@ -19,14 +19,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class MediaEntityGetOperationHandler : MediaEntityOperationalHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="MediaEntityGetOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public MediaEntityGetOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
         private ReadRestrictionsType _readRestrictions = null;
@@ -104,7 +96,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
         }
@@ -130,7 +122,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
         }
 
         /// <inheritdoc/>

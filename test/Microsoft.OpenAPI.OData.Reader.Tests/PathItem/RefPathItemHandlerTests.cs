@@ -19,7 +19,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class RefPathItemHandlerTest
     {
-        private RefPathItemHandler _pathItemHandler = new RefPathItemHandler(new());
+        private RefPathItemHandler _pathItemHandler = new RefPathItemHandler();
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()

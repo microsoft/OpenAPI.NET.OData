@@ -15,14 +15,6 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class MediaEntityPathItemHandler : PathItemHandler
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MediaEntityPathItemHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use for references lookup.</param>
-        public MediaEntityPathItemHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         protected override ODataPathKind HandleKind => ODataPathKind.MediaEntity;
 

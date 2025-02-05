@@ -50,8 +50,8 @@ namespace Microsoft.OpenApi.OData.Edm
             visitor.Visit(model);
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
 
-            OperationHandlerProvider = new OperationHandlerProvider();
-            PathItemHandlerProvider = new PathItemHandlerProvider();
+            OperationHandlerProvider = new CachedOperationHandlerProvider(new OperationHandlerProvider());
+            PathItemHandlerProvider = new CachedPathItemHandlerProvider(new PathItemHandlerProvider());
 
             // If no path provider, use the default path provider.
             _pathProvider = settings.PathProvider ?? new ODataPathProvider();

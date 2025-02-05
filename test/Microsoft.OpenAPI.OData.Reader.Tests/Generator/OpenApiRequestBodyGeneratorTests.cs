@@ -59,7 +59,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateRequestBody(actionImport: null, new()));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateRequestBody(actionImport: null));
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("actionImport", () => context.CreateRequestBody(actionImport: null, new()));
+            Assert.Throws<ArgumentNullException>("actionImport", () => context.CreateRequestBody(actionImport: null));
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBody = context.CreateRequestBody(_actionImport, new());
+            var requestBody = context.CreateRequestBody(_actionImport);
 
             // Assert
             Assert.NotNull(requestBody);
@@ -105,7 +105,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBody = context.CreateRequestBody(_actionImport, new());
+            var requestBody = context.CreateRequestBody(_actionImport);
 
             // Assert
             string json = await requestBody.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
@@ -140,7 +140,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(_model);
 
             // Act
-            var requestBody = context.CreateRequestBody(_action, new());
+            var requestBody = context.CreateRequestBody(_action);
 
             // Assert
             Assert.NotNull(requestBody);

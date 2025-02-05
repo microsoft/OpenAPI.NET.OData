@@ -17,7 +17,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         public NavigationPropertyDeleteOperationHandlerTests()
         {
-          _operationHandler = new (_openApiDocument);
+          _operationHandler = new ();
         }
         private readonly OpenApiDocument _openApiDocument = new();
         private readonly NavigationPropertyDeleteOperationHandler _operationHandler;

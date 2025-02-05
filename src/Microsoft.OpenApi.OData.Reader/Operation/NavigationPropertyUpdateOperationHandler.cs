@@ -21,14 +21,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class NavigationPropertyUpdateOperationHandler : NavigationPropertyOperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="NavigationPropertyUpdateOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        protected NavigationPropertyUpdateOperationHandler(OpenApiDocument document):base(document)
-        {
-            
-        }
         private UpdateRestrictionsType _updateRestriction;
 
         /// <inheritdoc/>
@@ -62,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Operation
             OpenApiSchema schema = null;
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
             }
 
             operation.RequestBody = new OpenApiRequestBody
@@ -78,7 +70,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
+            operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
             base.SetResponses(operation);
         }
 
@@ -89,7 +81,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_updateRestriction.Permissions, _document).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_updateRestriction.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

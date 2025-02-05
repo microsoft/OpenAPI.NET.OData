@@ -18,14 +18,6 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperationHandler
 {
-    /// <summary>
-    /// Initializes a new instance of <see cref="ComplexPropertyPostOperationHandler"/> class.
-    /// </summary>
-    /// <param name="document">The document to use to lookup references.</param>
-    public ComplexPropertyPostOperationHandler(OpenApiDocument document):base(document)
-    {
-        
-    }
     /// <inheritdoc/>
     protected override void Initialize(ODataContext context, ODataPath path)
     {
@@ -101,7 +93,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
+        operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
         base.SetResponses(operation);
     }
 
@@ -112,7 +104,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions, _document).ToList();
+        operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -138,7 +130,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
         return new()
         {
             Type = JsonSchemaType.Array,
-            Items = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document)
+            Items = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName())
         };
     }
 }

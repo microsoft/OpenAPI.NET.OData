@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           });
         }
         private readonly OpenApiDocument _openApiDocument = new();
-        private EdmFunctionImportOperationHandler _operationHandler => new(_openApiDocument);
+        private static EdmFunctionImportOperationHandler _operationHandler => new();
 
         [Theory]
         [InlineData(true)]

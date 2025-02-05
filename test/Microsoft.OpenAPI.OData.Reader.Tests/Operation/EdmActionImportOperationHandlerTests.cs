@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
@@ -20,7 +19,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     public class EdmActionImportOperationHandlerTests
     {
         private readonly OpenApiDocument openApiDocument = new();
-        private EdmActionImportOperationHandler _operationHandler => new EdmActionImportOperationHandler(openApiDocument);
+        private static EdmActionImportOperationHandler _operationHandler => new();
         public EdmActionImportOperationHandlerTests()
         {
           openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {

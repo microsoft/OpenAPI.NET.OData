@@ -24,14 +24,6 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class DollarCountGetOperationHandler : OperationHandler
     {
-        /// <summary>
-        /// Initializes a new instance of <see cref="DollarCountGetOperationHandler"/> class.
-        /// </summary>
-        /// <param name="document">The document to use to lookup references.</param>
-        public DollarCountGetOperationHandler(OpenApiDocument document) : base(document)
-        {
-            
-        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -116,7 +108,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Name = tagName
                 });
 
-                operation.Tags.Add(new OpenApiTagReference(tagName, _document));
+                operation.Tags.Add(new OpenApiTagReference(tagName));
             }
 
             string TagNameFromNavigationSourceSegment(ODataNavigationSourceSegment sourceSegment)
@@ -171,10 +163,10 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponseReference(Constants.DollarCountSchemaName, _document)
+                    new OpenApiResponseReference(Constants.DollarCountSchemaName)
                 }
             };
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
         }
@@ -186,13 +178,13 @@ namespace Microsoft.OpenApi.OData.Operation
 
             IOpenApiParameter parameter;
 
-            parameter = Context.CreateSearch(TargetPath, _document) ?? (annotatables.Count == 0 ? null : annotatables.Select(x => Context.CreateSearch(x, _document)).FirstOrDefault(static x => x is not null));
+            parameter = Context.CreateSearch(TargetPath) ?? (annotatables.Count == 0 ? null : annotatables.Select(x => Context.CreateSearch(x)).FirstOrDefault(static x => x is not null));
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
-            parameter = Context.CreateFilter(TargetPath, _document) ?? (annotatables.Count == 0 ? null : annotatables.Select(x => Context.CreateFilter(x, _document)).FirstOrDefault(static x => x is not null));
+            parameter = Context.CreateFilter(TargetPath) ?? (annotatables.Count == 0 ? null : annotatables.Select(x => Context.CreateFilter(x)).FirstOrDefault(static x => x is not null));
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);

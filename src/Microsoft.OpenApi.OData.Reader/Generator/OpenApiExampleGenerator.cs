@@ -40,14 +40,14 @@ namespace Microsoft.OpenApi.OData.Generator
 
             foreach (var element in elements)
             {
-                if (context.CreateExample(element, document) is OpenApiExample example)
+                if (context.CreateExample(element) is OpenApiExample example)
                 {
                     document.AddComponent(element.FullTypeName(), example);
                 }
             }
         }
 
-        private static OpenApiExample CreateExample(this ODataContext context, IEdmType edmType, OpenApiDocument document)
+        private static OpenApiExample CreateExample(this ODataContext context, IEdmType edmType)
         {
             Debug.Assert(context != null);
             Debug.Assert(edmType != null);
@@ -57,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 // complex type
                 EdmTypeKind.Complex or EdmTypeKind.Entity when edmType is IEdmStructuredType edmStructuredType => new()
                 {
-                    Value = OpenApiSchemaGenerator.CreateStructuredTypePropertiesExample(context, edmStructuredType, document),
+                    Value = OpenApiSchemaGenerator.CreateStructuredTypePropertiesExample(context, edmStructuredType),
                 },
                 _ => null,
             };

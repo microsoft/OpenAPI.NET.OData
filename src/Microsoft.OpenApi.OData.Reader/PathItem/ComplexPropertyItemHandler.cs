@@ -13,14 +13,6 @@ namespace Microsoft.OpenApi.OData.PathItem;
 
 internal class ComplexPropertyItemHandler : PathItemHandler
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ComplexPropertyItemHandler"/> class.
-    /// </summary>
-    /// <param name="document">The document to use for references lookup.</param>
-    public ComplexPropertyItemHandler(OpenApiDocument document) : base(document)
-    {
-        
-    }
     /// <inheritdoc/>
 	protected override ODataPathKind HandleKind => ODataPathKind.ComplexProperty;
 

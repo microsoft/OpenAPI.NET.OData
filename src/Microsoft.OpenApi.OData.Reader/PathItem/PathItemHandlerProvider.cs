@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.PathItem
@@ -14,44 +13,44 @@ namespace Microsoft.OpenApi.OData.PathItem
     internal class PathItemHandlerProvider : IPathItemHandlerProvider
     {
         /// <inheritdoc/>
-        public IPathItemHandler GetHandler(ODataPathKind pathKind, OpenApiDocument document)
+        public IPathItemHandler GetHandler(ODataPathKind pathKind)
         {
             return pathKind switch {
             // EntitySet
-            ODataPathKind.EntitySet => new EntitySetPathItemHandler(document),
+            ODataPathKind.EntitySet => new EntitySetPathItemHandler(),
 
             // Entity
-            ODataPathKind.Entity => new EntityPathItemHandler(document),
+            ODataPathKind.Entity => new EntityPathItemHandler(),
 
             // Singleton
-            ODataPathKind.Singleton => new SingletonPathItemHandler(document),
+            ODataPathKind.Singleton => new SingletonPathItemHandler(),
 
             // Navigation property
-            ODataPathKind.NavigationProperty => new NavigationPropertyPathItemHandler(document),
+            ODataPathKind.NavigationProperty => new NavigationPropertyPathItemHandler(),
 
             // Edm Operation
-            ODataPathKind.Operation => new OperationPathItemHandler(document),
+            ODataPathKind.Operation => new OperationPathItemHandler(),
 
             // Edm OperationImport
-            ODataPathKind.OperationImport => new OperationImportPathItemHandler(document),
+            ODataPathKind.OperationImport => new OperationImportPathItemHandler(),
 
             // Edm Ref
-            ODataPathKind.Ref => new RefPathItemHandler(document),
+            ODataPathKind.Ref => new RefPathItemHandler(),
 
             // Media Entity
-            ODataPathKind.MediaEntity => new MediaEntityPathItemHandler(document),
+            ODataPathKind.MediaEntity => new MediaEntityPathItemHandler(),
 
             // $Metadata
-            ODataPathKind.Metadata => new MetadataPathItemHandler(document),
+            ODataPathKind.Metadata => new MetadataPathItemHandler(),
 
             // $count
-            ODataPathKind.DollarCount => new DollarCountPathItemHandler(document),
+            ODataPathKind.DollarCount => new DollarCountPathItemHandler(),
 
             // ~/groups/{id}/members/microsoft.graph.user
-            ODataPathKind.TypeCast => new ODataTypeCastPathItemHandler(document),
+            ODataPathKind.TypeCast => new ODataTypeCastPathItemHandler(),
 
             // ~/users/{id}/mailboxSettings
-            ODataPathKind.ComplexProperty => new ComplexPropertyItemHandler(document),
+            ODataPathKind.ComplexProperty => new ComplexPropertyItemHandler(),
 
             // Unknown
                 _ => null,

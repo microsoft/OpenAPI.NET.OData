@@ -158,7 +158,7 @@ schema:
             ODataKeySegment keySegment = new ODataKeySegment(customer);
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment, new());
+            var parameters = context.CreateKeyParameters(keySegment);
 
             // Assert
             Assert.NotNull(parameters);
@@ -218,7 +218,7 @@ schema:
             ODataKeySegment keySegment = new ODataKeySegment(customer);
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment, new());
+            var parameters = context.CreateKeyParameters(keySegment);
 
             // Assert
             Assert.NotNull(parameters);
@@ -279,7 +279,7 @@ schema:
             };
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment, new());
+            var parameters = context.CreateKeyParameters(keySegment);
             var altParameter = parameters.Last();
 
             // Assert
@@ -326,7 +326,7 @@ schema:
             };
 
             // Act
-            var parameters = context.CreateKeyParameters(keySegment, new());
+            var parameters = context.CreateKeyParameters(keySegment);
             var altParameter1 = parameters.First();
             var altParameter2 = parameters.Last();
 
@@ -575,9 +575,9 @@ schema:
             Assert.NotNull(function3);
 
             // Act
-            var parameters1 = context.CreateParameters(function1, new());
-            var parameters2 = context.CreateParameters(function2, new());
-            var parameters3 = context.CreateParameters(function3, new());
+            var parameters1 = context.CreateParameters(function1);
+            var parameters2 = context.CreateParameters(function2);
+            var parameters3 = context.CreateParameters(function3);
 
             // Assert
             Assert.NotNull(parameters1);

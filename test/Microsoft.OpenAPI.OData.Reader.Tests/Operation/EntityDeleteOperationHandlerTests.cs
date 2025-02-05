@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           });
         }
         private readonly OpenApiDocument _openApiDocument = new();
-        private EntityDeleteOperationHandler _operationHandler => new (_openApiDocument);
+        private static EntityDeleteOperationHandler _operationHandler => new ();
 
         [Theory]
         [InlineData(true)]

@@ -19,14 +19,6 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperationHandler
 {
-    /// <summary>
-    /// Initializes a new instance of <see cref="ComplexPropertyGetOperationHandler"/> class.
-    /// </summary>
-    /// <param name="document">The document to use to lookup references.</param>
-    public ComplexPropertyGetOperationHandler(OpenApiDocument document):base(document)
-    {
-        
-    }
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Get;
 
@@ -72,35 +64,35 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
             // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
             // $top
-            parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(ComplexPropertySegment.Property, _document);
+            parameter = Context.CreateTop(TargetPath) ?? Context.CreateTop(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $skip
-            parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(ComplexPropertySegment.Property, _document);
+            parameter = Context.CreateSkip(TargetPath) ?? Context.CreateSkip(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $search
-            parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(ComplexPropertySegment.Property, _document);
+            parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $filter
-            parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(ComplexPropertySegment.Property, _document);
+            parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $count
-            parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(ComplexPropertySegment.Property, _document);
+            parameter = Context.CreateCount(TargetPath) ?? Context.CreateCount(ComplexPropertySegment.Property);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -159,12 +151,12 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         }
         else
         {
-            var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
+            var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName());
 
             SetSingleResponse(operation, schema);
         }
 
-        operation.AddErrorResponses(Context.Settings, _document, false);
+        operation.AddErrorResponses(Context.Settings, false);
         base.SetResponses(operation);
     }
    
@@ -175,7 +167,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
+        operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)

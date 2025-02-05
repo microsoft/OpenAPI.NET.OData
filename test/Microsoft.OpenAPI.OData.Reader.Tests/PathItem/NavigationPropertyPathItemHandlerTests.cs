@@ -21,7 +21,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class NavigationPropertyPathItemHandlerTest
     {
-        private NavigationPropertyPathItemHandler _pathItemHandler = new NavigationPropertyPathItemHandler(new());
+        private NavigationPropertyPathItemHandler _pathItemHandler = new NavigationPropertyPathItemHandler();
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()

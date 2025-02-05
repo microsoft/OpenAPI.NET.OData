@@ -31,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           });
         }
         private readonly OpenApiDocument _openApiDocument = new();
-        private EdmActionOperationHandler _operationHandler => new(_openApiDocument);
+        private static EdmActionOperationHandler _operationHandler => new();
 
         [Fact]
         public void CreateOperationForEdmActionReturnsCorrectOperation()

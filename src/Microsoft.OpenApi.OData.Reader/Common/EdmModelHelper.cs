@@ -23,7 +23,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// Adds the derived types references together with their base type reference in the OneOf property of an OpenAPI schema.
         /// </summary>
         /// <returns>The OpenAPI schema with the list of derived types references and their base type references set in the OneOf property.</returns>
-        internal static OpenApiSchema GetDerivedTypesReferenceSchema(IEdmStructuredType structuredType, IEdmModel edmModel, OpenApiDocument document)
+        internal static OpenApiSchema GetDerivedTypesReferenceSchema(IEdmStructuredType structuredType, IEdmModel edmModel)
         {
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
             Utils.CheckArgumentNull(edmModel, nameof(edmModel));
@@ -41,12 +41,12 @@ namespace Microsoft.OpenApi.OData.Common
                 OneOf = new List<IOpenApiSchema>()
             };
 
-            var baseTypeSchema = new OpenApiSchemaReference(schemaElement.FullName(), document);
+            var baseTypeSchema = new OpenApiSchemaReference(schemaElement.FullName());
             schema.OneOf.Add(baseTypeSchema);
 
             foreach (IEdmSchemaElement derivedType in derivedTypes)
             {
-                var derivedTypeSchema = new OpenApiSchemaReference(derivedType.FullName(), document);
+                var derivedTypeSchema = new OpenApiSchemaReference(derivedType.FullName());
                 schema.OneOf.Add(derivedTypeSchema);
             };
 

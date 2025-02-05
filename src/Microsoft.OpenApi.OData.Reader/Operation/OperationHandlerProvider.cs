@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 
@@ -15,65 +14,65 @@ namespace Microsoft.OpenApi.OData.Operation
     internal class OperationHandlerProvider : IOperationHandlerProvider
     {
         /// <inheritdoc/>
-        public IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType, OpenApiDocument document)
+        public IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType)
         {
             return (pathKind, operationType) switch
             {
                 // entity set (Get/Post)
-                (ODataPathKind.EntitySet, OperationType.Get) => new EntitySetGetOperationHandler(document),
-                (ODataPathKind.EntitySet, OperationType.Post) => new EntitySetPostOperationHandler(document),
+                (ODataPathKind.EntitySet, OperationType.Get) => new EntitySetGetOperationHandler(),
+                (ODataPathKind.EntitySet, OperationType.Post) => new EntitySetPostOperationHandler(),
 
                 // entity (Get/Patch/Put/Delete)
-                (ODataPathKind.Entity, OperationType.Get) => new EntityGetOperationHandler(document),
-                (ODataPathKind.Entity, OperationType.Patch) => new EntityPatchOperationHandler(document),
-                (ODataPathKind.Entity, OperationType.Put) => new EntityPutOperationHandler(document),
-                (ODataPathKind.Entity, OperationType.Delete) => new EntityDeleteOperationHandler(document),
+                (ODataPathKind.Entity, OperationType.Get) => new EntityGetOperationHandler(),
+                (ODataPathKind.Entity, OperationType.Patch) => new EntityPatchOperationHandler(),
+                (ODataPathKind.Entity, OperationType.Put) => new EntityPutOperationHandler(),
+                (ODataPathKind.Entity, OperationType.Delete) => new EntityDeleteOperationHandler(),
 
                 // singleton (Get/Patch)
-                (ODataPathKind.Singleton, OperationType.Get) => new SingletonGetOperationHandler(document),
-                (ODataPathKind.Singleton, OperationType.Patch) => new SingletonPatchOperationHandler(document),
+                (ODataPathKind.Singleton, OperationType.Get) => new SingletonGetOperationHandler(),
+                (ODataPathKind.Singleton, OperationType.Patch) => new SingletonPatchOperationHandler(),
 
                 // edm operation (Get|Post)
-                (ODataPathKind.Operation, OperationType.Get) => new EdmFunctionOperationHandler(document),
-                (ODataPathKind.Operation, OperationType.Post) => new EdmActionOperationHandler(document),
+                (ODataPathKind.Operation, OperationType.Get) => new EdmFunctionOperationHandler(),
+                (ODataPathKind.Operation, OperationType.Post) => new EdmActionOperationHandler(),
 
                 // edm operation import (Get|Post)
-                (ODataPathKind.OperationImport, OperationType.Get) => new EdmFunctionImportOperationHandler(document),
-                (ODataPathKind.OperationImport, OperationType.Post) => new EdmActionImportOperationHandler(document),
+                (ODataPathKind.OperationImport, OperationType.Get) => new EdmFunctionImportOperationHandler(),
+                (ODataPathKind.OperationImport, OperationType.Post) => new EdmActionImportOperationHandler(),
 
                 // navigation property (Get/Patch/Put/Post/Delete)
-                (ODataPathKind.NavigationProperty, OperationType.Get) => new NavigationPropertyGetOperationHandler(document),
-                (ODataPathKind.NavigationProperty, OperationType.Patch) => new NavigationPropertyPatchOperationHandler(document),
-                (ODataPathKind.NavigationProperty, OperationType.Put) => new NavigationPropertyPutOperationHandler(document),
-                (ODataPathKind.NavigationProperty, OperationType.Post) => new NavigationPropertyPostOperationHandler(document),
-                (ODataPathKind.NavigationProperty, OperationType.Delete) => new NavigationPropertyDeleteOperationHandler(document),
+                (ODataPathKind.NavigationProperty, OperationType.Get) => new NavigationPropertyGetOperationHandler(),
+                (ODataPathKind.NavigationProperty, OperationType.Patch) => new NavigationPropertyPatchOperationHandler(),
+                (ODataPathKind.NavigationProperty, OperationType.Put) => new NavigationPropertyPutOperationHandler(),
+                (ODataPathKind.NavigationProperty, OperationType.Post) => new NavigationPropertyPostOperationHandler(),
+                (ODataPathKind.NavigationProperty, OperationType.Delete) => new NavigationPropertyDeleteOperationHandler(),
 
                 // navigation property ref (Get/Post/Put/Delete)
-                (ODataPathKind.Ref, OperationType.Get) => new RefGetOperationHandler(document),
-                (ODataPathKind.Ref, OperationType.Put) => new RefPutOperationHandler(document),
-                (ODataPathKind.Ref, OperationType.Post) => new RefPostOperationHandler(document),
-                (ODataPathKind.Ref, OperationType.Delete) => new RefDeleteOperationHandler(document),
+                (ODataPathKind.Ref, OperationType.Get) => new RefGetOperationHandler(),
+                (ODataPathKind.Ref, OperationType.Put) => new RefPutOperationHandler(),
+                (ODataPathKind.Ref, OperationType.Post) => new RefPostOperationHandler(),
+                (ODataPathKind.Ref, OperationType.Delete) => new RefDeleteOperationHandler(),
 
                 // media entity operation (Get|Put|Delete)
-                (ODataPathKind.MediaEntity, OperationType.Get) => new MediaEntityGetOperationHandler(document),
-                (ODataPathKind.MediaEntity, OperationType.Put) => new MediaEntityPutOperationHandler(document),
-                (ODataPathKind.MediaEntity, OperationType.Delete) => new MediaEntityDeleteOperationHandler(document),
+                (ODataPathKind.MediaEntity, OperationType.Get) => new MediaEntityGetOperationHandler(),
+                (ODataPathKind.MediaEntity, OperationType.Put) => new MediaEntityPutOperationHandler(),
+                (ODataPathKind.MediaEntity, OperationType.Delete) => new MediaEntityDeleteOperationHandler(),
 
                 // $metadata operation (Get)
 
-                (ODataPathKind.Metadata, OperationType.Get) => new MetadataGetOperationHandler(document),
+                (ODataPathKind.Metadata, OperationType.Get) => new MetadataGetOperationHandler(),
 
                 // $count operation (Get)
-                (ODataPathKind.DollarCount, OperationType.Get) => new DollarCountGetOperationHandler(document),
+                (ODataPathKind.DollarCount, OperationType.Get) => new DollarCountGetOperationHandler(),
 
                 // .../namespace.typename (cast, get)
-                (ODataPathKind.TypeCast, OperationType.Get) => new ODataTypeCastGetOperationHandler(document),
+                (ODataPathKind.TypeCast, OperationType.Get) => new ODataTypeCastGetOperationHandler(),
 
                 // .../entity/propertyOfComplexType (Get/Patch/Put/Delete)
-                (ODataPathKind.ComplexProperty, OperationType.Get) => new ComplexPropertyGetOperationHandler(document),
-                (ODataPathKind.ComplexProperty, OperationType.Patch) => new ComplexPropertyPatchOperationHandler(document),
-                (ODataPathKind.ComplexProperty, OperationType.Put) => new ComplexPropertyPutOperationHandler(document),
-                (ODataPathKind.ComplexProperty, OperationType.Post) => new ComplexPropertyPostOperationHandler(document),
+                (ODataPathKind.ComplexProperty, OperationType.Get) => new ComplexPropertyGetOperationHandler(),
+                (ODataPathKind.ComplexProperty, OperationType.Patch) => new ComplexPropertyPatchOperationHandler(),
+                (ODataPathKind.ComplexProperty, OperationType.Put) => new ComplexPropertyPutOperationHandler(),
+                (ODataPathKind.ComplexProperty, OperationType.Post) => new ComplexPropertyPostOperationHandler(),
 
                 (_, _) => null,
             };

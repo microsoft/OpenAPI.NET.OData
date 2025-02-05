@@ -15,14 +15,6 @@ namespace Microsoft.OpenApi.OData.PathItem;
 /// </summary>
 internal class ODataTypeCastPathItemHandler : PathItemHandler
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ODataTypeCastPathItemHandler"/> class.
-    /// </summary>
-    /// <param name="document">The document to use for references lookup.</param>
-    public ODataTypeCastPathItemHandler(OpenApiDocument document) : base(document)
-    {
-        
-    }
     /// <inheritdoc/>
     protected override ODataPathKind HandleKind => ODataPathKind.TypeCast;
 
