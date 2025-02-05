@@ -1309,13 +1309,15 @@
             "in": "path",
             "name": "lat",
             "required": true,
-            "format": "double"
+            "format": "double",
+            "type": "number"
           },
           {
             "in": "path",
             "name": "lon",
             "required": true,
-            "format": "double"
+            "format": "double",
+            "type": "number"
           }
         ],
         "responses": {
