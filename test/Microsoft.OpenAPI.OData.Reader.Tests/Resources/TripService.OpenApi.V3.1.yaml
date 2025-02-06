@@ -23230,8 +23230,7 @@ components:
         FirstName: string
         LastName: string
         MiddleName: string
-        Gender:
-          '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender
+        Gender: Male
         Age: 0
         Emails:
           - string
@@ -23239,10 +23238,9 @@ components:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
         HomeAddress:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
-        FavoriteFeature:
-          '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature
+        FavoriteFeature: Feature1
         Features:
-          - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature
+          - Feature1
         Photo: string
         Friends:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
@@ -23347,8 +23345,7 @@ components:
         FirstName: string
         LastName: string
         MiddleName: string
-        Gender:
-          '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender
+        Gender: Male
         Age: 0
         Emails:
           - string
@@ -23356,10 +23353,9 @@ components:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
         HomeAddress:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
-        FavoriteFeature:
-          '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature
+        FavoriteFeature: Feature1
         Features:
-          - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature
+          - Feature1
         Photo: string
         Friends:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
@@ -23376,8 +23372,7 @@ components:
         FirstName: string
         LastName: string
         MiddleName: string
-        Gender:
-          '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender
+        Gender: Male
         Age: 0
         Emails:
           - string
@@ -23385,10 +23380,9 @@ components:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
         HomeAddress:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
-        FavoriteFeature:
-          '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature
+        FavoriteFeature: Feature1
         Features:
-          - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature
+          - Feature1
         Photo: string
         Friends:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person

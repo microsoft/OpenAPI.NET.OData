@@ -34779,9 +34779,7 @@
           "FirstName": "string",
           "LastName": "string",
           "MiddleName": "string",
-          "Gender": {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
-          },
+          "Gender": "Male",
           "Age": 0,
           "Emails": [
             "string"
@@ -34794,13 +34792,9 @@
           "HomeAddress": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
           },
-          "FavoriteFeature": {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-          },
+          "FavoriteFeature": "Feature1",
           "Features": [
-            {
-              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-            }
+            "Feature1"
           ],
           "Photo": "string",
           "Friends": [
@@ -34951,9 +34945,7 @@
           "FirstName": "string",
           "LastName": "string",
           "MiddleName": "string",
-          "Gender": {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
-          },
+          "Gender": "Male",
           "Age": 0,
           "Emails": [
             "string"
@@ -34966,13 +34958,9 @@
           "HomeAddress": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
           },
-          "FavoriteFeature": {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-          },
+          "FavoriteFeature": "Feature1",
           "Features": [
-            {
-              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-            }
+            "Feature1"
           ],
           "Photo": "string",
           "Friends": [
@@ -35002,9 +34990,7 @@
           "FirstName": "string",
           "LastName": "string",
           "MiddleName": "string",
-          "Gender": {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
-          },
+          "Gender": "Male",
           "Age": 0,
           "Emails": [
             "string"
@@ -35017,13 +35003,9 @@
           "HomeAddress": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
           },
-          "FavoriteFeature": {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-          },
+          "FavoriteFeature": "Feature1",
           "Features": [
-            {
-              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-            }
+            "Feature1"
           ],
           "Photo": "string",
           "Friends": [

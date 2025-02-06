@@ -687,11 +687,12 @@ namespace Microsoft.OpenApi.OData.Generator
                                             edmTypeReference.IsDouble() => 0,
                 EdmTypeKind.Primitive => GetTypeNameForPrimitive(context, edmTypeReference, document),
 
-                EdmTypeKind.Entity or EdmTypeKind.Complex or EdmTypeKind.Enum => new JsonObject()
-                    {//TODO this is wrong for enums, and should instead use one of the enum members
+                EdmTypeKind.Entity or EdmTypeKind.Complex => new JsonObject()
+                    {
                         [Constants.OdataType] = edmTypeReference.FullName()
                     },
-
+                EdmTypeKind.Enum when edmTypeReference.Definition is IEdmEnumType edmEnumType && edmEnumType.Members.FirstOrDefault()?.Name is string firstMemberName =>
+                    JsonValue.Create(firstMemberName),
                 EdmTypeKind.Collection => new JsonArray(GetTypeNameForExample(context, edmTypeReference.AsCollection().ElementType(), document)),
                 EdmTypeKind.TypeDefinition => GetTypeNameForExample(context, new EdmPrimitiveTypeReference(edmTypeReference.AsTypeDefinition().TypeDefinition().UnderlyingType, edmTypeReference.IsNullable), document),
                 EdmTypeKind.Untyped => new JsonObject(),

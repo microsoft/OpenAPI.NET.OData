@@ -574,12 +574,8 @@ namespace Microsoft.OpenApi.OData.Tests
     }
   ],
   ""example"": {
-    ""Color"": {
-      ""@odata.type"": ""NS.Color""
-    },
-    ""Continent"": {
-      ""@odata.type"": ""NS.Continent""
-    },
+    ""Color"": ""Blue"",
+    ""Continent"": ""Asia"",
     ""Name"": ""string"",
     ""Price"": 0
   }
