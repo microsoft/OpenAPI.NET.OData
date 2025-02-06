@@ -201,16 +201,17 @@ namespace OoasGui
                 return;
             }
 
-            string openApi = null;
             _document = EdmModel.ConvertToOpenApi(Settings);
-            MemoryStream stream = new MemoryStream();
-            await _document.SerializeAsync(stream, Version, Format);
-            await stream.FlushAsync();
-            stream.Position = 0;
-            openApi = await new StreamReader(stream).ReadToEndAsync();
+            using var stream = new MemoryStream();
+            if (_document is not null)
+            {
+                await _document.SerializeAsync(stream, Version, Format);
+                await stream.FlushAsync();
+                stream.Position = 0;
 
-            oasRichTextBox.Text = openApi;
-            saveBtn.Enabled = true;
+                oasRichTextBox.Text = await new StreamReader(stream).ReadToEndAsync();
+                saveBtn.Enabled = true;
+            }
         }
 
         private string FormatXml(string xml)
@@ -246,11 +247,11 @@ namespace OoasGui
 
             saveFileDialog.RestoreDirectory = true;
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && _document is not null)
             {
                 string output = saveFileDialog.FileName;
                 using FileStream fs = File.Create(output);
-                await _document?.SerializeAsync(fs, Version, Format);
+                await _document.SerializeAsync(fs, Version, Format);
                 await fs.FlushAsync();
 
                 MessageBox.Show("Saved successfully!");
