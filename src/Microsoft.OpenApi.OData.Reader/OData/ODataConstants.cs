@@ -14,26 +14,26 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Namespaces used in standard included models.
         /// </summary>
-        public static IList<string> StandardNamespaces = new List<string>
-        {
+        public readonly static List<string> StandardNamespaces =
+        [
             "Org.OData.",
             "Edm",
             "OData.Community.",
-        };
+        ];
 
         /// <summary>
         /// @odata.nextLink KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, IOpenApiSchema> OdataNextLink = new("@odata.nextLink", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null });
+        public readonly static KeyValuePair<string, IOpenApiSchema> OdataNextLink = new("@odata.nextLink", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null });
 
         /// <summary>
         /// @odata.count KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, IOpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = "int64"});
+        public readonly static KeyValuePair<string, IOpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = "int64"});
 
         /// <summary>
         /// @odata.deltaLink KeyValue pair
         /// </summary>
-        public static KeyValuePair<string, IOpenApiSchema> OdataDeltaLink = new("@odata.deltaLink", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null });
+        public readonly static KeyValuePair<string, IOpenApiSchema> OdataDeltaLink = new("@odata.deltaLink", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null });
     }
 }

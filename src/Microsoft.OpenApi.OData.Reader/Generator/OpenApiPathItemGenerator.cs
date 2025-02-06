@@ -78,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static IDictionary<string, IOpenApiLink> CreateRootLinks(IEdmEntityContainer entityContainer)
+        private static Dictionary<string, IOpenApiLink> CreateRootLinks(IEdmEntityContainer entityContainer)
         {
             var links = new Dictionary<string, IOpenApiLink>();
             foreach (var element in entityContainer.Elements)

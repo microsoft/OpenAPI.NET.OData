@@ -155,7 +155,7 @@ namespace Microsoft.OpenApi.OData.Common
 
             Dictionary<string, string> attributesValueMap = GetCustomXMLAttributesValueMapping(context.Model, element, context.Settings.CustomXMLAttributesMapping);
 
-            if (attributesValueMap?.Any() ?? false)
+            if (attributesValueMap is not null && attributesValueMap.Count > 0)
             {
                 foreach (var item in attributesValueMap)
                 {

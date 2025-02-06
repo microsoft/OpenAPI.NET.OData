@@ -233,13 +233,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="keySegment">The key segment.</param>
         /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>A list of <see cref="OpenApiParameter"/> of alternate key parameters.</returns>
-        private static IList<OpenApiParameter> CreateAlternateKeyParameters(ODataContext context, ODataSegment keySegment, OpenApiDocument document)
+        private static List<OpenApiParameter> CreateAlternateKeyParameters(ODataContext context, ODataKeySegment keySegment, OpenApiDocument document)
         {
             Debug.Assert(keySegment.Kind == ODataSegmentKind.Key);
             
-            IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
-            IEdmEntityType entityType = keySegment.EntityType;
-            IEnumerable<IDictionary<string, IEdmProperty>> alternateKeys = context.Model.GetAlternateKeysAnnotation(entityType);            
+            var parameters = new List<OpenApiParameter>();
+            var entityType = keySegment.EntityType;
+            var alternateKeys = context.Model.GetAlternateKeysAnnotation(entityType);            
             
             foreach (var alternateKey in alternateKeys)
             {
@@ -636,7 +636,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return null;
             }
 
-            IList<JsonNode> orderByItems = new List<JsonNode>();
+            var orderByItems = new List<JsonNode>();
             foreach (var property in structuredType.StructuralProperties())
             {
                 if (sort != null && sort.IsNonSortableProperty(property.Name))
@@ -753,7 +753,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return null;
             }
 
-            IList<JsonNode> selectItems = new List<JsonNode>();
+            var selectItems = new List<JsonNode>();
 
             foreach (var property in structuredType.StructuralProperties())
             {
