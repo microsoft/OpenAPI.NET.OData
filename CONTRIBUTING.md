@@ -6,7 +6,7 @@ OpenAPI.net.OData is a mono-repo containing source code for the following packag
 
 | Library                                                              | NuGet Release                                                                                                                                                                              |
 |----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Microsoft.OpenAPI.OData](./README.md)                         | [![NuGet Version](https://img.shields.io/nuget/vpre/Microsoft.OpenAPI.OData?label=Latest&logo=nuget)](https://www.nuget.org/packages/Microsoft.OpenAPI/)                       |
+| [Microsoft.OpenAPI.OData](./README.md)                         | [![NuGet Version](https://img.shields.io/nuget/vpre/Microsoft.OpenAPI.OData?label=Latest&logo=nuget)](https://www.nuget.org/packages/Microsoft.OpenAPI.OData/)                       |
 
 OpenAPI.net.OData is open to contributions. There are a couple of different recommended paths to get contributions into the released version of this library.
 
