@@ -1,5 +1,5 @@
 {
-  "bootstrap-sha": "4f9bad6ea7d25e8596c0ca214975e690d925e6e7",
+  "bootstrap-sha": "f69fea0e056e6de5a76b128e31ab580ec13356fa",
   "exclude-paths": [
     ".azure-pipelines",
     ".github",
@@ -13,9 +13,6 @@
   "include-component-in-tag": false,
   "include-v-in-tag": true,
   "draft": false,
-  "prerelease": true,
-  "versioning": "prerelease",
-  "prerelease-type": "preview",
   "packages": {
     ".": {
       "package-name": "Microsoft.OpenApi.OData",
