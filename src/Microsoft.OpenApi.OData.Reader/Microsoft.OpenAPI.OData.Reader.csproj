@@ -4,37 +4,12 @@
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <LangVersion>Latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/Microsoft/OpenAPI.NET.OData</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Authors>Microsoft</Authors>
-    <Company>Microsoft</Company>
     <Title>Microsoft Open API OData Reader</Title>
     <RootNamespace>Microsoft.OpenApi.OData</RootNamespace>
     <TargetFrameworks>net8.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>2.0.0-preview.7</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
-    <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
-    <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
-    <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
-    <PackageReleaseNotes>
-		- Upgraded to Microsoft.Odata.Edm 8.0.0
-		- Cleaned up obsolete APIs
-		- Changed target framework to net8.0
-		- Adds support for retrieving collection of enum values from UpdateMethod property of UpdateRestrictions annotation #564
-		- Adds nullable to double schema conversions #581
-		- Updates tag names for actions/functions operations #585
-		- Creates unique operation ids for paths with composable overloaded functions #580
-		- Further fixes for double/decimal/float schema conversions #581
-		- Replaced integer types by number types
-		- Further fix for generating unique operation ids for paths with composable overloaded functions where all functions in path are overloaded #594
-		- Further fix for generating unique operation ids for navigation property paths with composable overloaded functions #596
-		- Updates PUT operation id prefix from Update to Set #600
-    - Adds action/function suffix to tag names for actions/functions operations #641
-	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">..\..\bin\Debug\</OutputPath>
@@ -55,10 +30,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.OData.Edm" Version="8.2.3" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.6.23" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
 	<None Include="..\..\README.md" Pack="true" PackagePath="\" />
 	<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.12.19">
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -67,7 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="icon.png" Pack="true" PackagePath="\" />
     <Compile Update="Properties\SRResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
