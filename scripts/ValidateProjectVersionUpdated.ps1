@@ -10,34 +10,71 @@
     NuGet. If the version has not been updated, the script will fail and indicate
     that the project version neeeds to be updated.
 #>
-Install-Module SemVerPS -Scope CurrentUser -Force
 $packageName = "Microsoft.OpenApi.OData"
-$csprojPath = Join-Path $PSScriptRoot "..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj"
+$csprojPath = Join-Path $PSScriptRoot "..\Directory.Build.props"
 
 [XML]$csprojFile = Get-Content $csprojPath
 $versionNode = Select-Xml $csprojFile -XPath "//Project/PropertyGroup/Version" | Select-Object -ExpandProperty Node
 $projectVersion = $versionNode.InnerText
 
+# If <Version> is missing, try <VersionPrefix> + <VersionSuffix>
+if ($null -eq $projectVersion)
+{
+    $versionPrefixNode = Select-Xml $csprojFile -XPath "//Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node
+    $versionSuffixNode = Select-Xml $csprojFile -XPath "//Project/PropertyGroup/VersionSuffix" | Select-Object -ExpandProperty Node
+    $projectVersion = $versionPrefixNode.InnerText + $versionSuffixNode.InnerText
+}
+
+# Ensure a valid version exists
+if (-not $projectVersion -or $projectVersion -eq "") {
+    Write-Error "No valid version found in .csproj file. Please define <Version> or <VersionPrefix> for $packageName."
+    Exit 1
+}
+
 # Cast the project version string to System.Version
-$currentProjectVersion = ConvertTo-SemVer -Version $projectVersion
+$currentProjectVersion = [System.Management.Automation.SemanticVersion]$projectVersion
+$currentMajorVersion = $currentProjectVersion.Major
 
 # API is case-sensitive
 $packageName = $packageName.ToLower()
 $url = "https://api.nuget.org/v3/registration5-gz-semver2/$packageName/index.json"
 
 # Call the NuGet API for the package and get the current published version.
-$nugetIndex = Invoke-RestMethod -Uri $url -Method Get
-$publishedVersionString = $nugetIndex.items[0].upper
-
-# Cast the published version string to System.Version
-$currentPublishedVersion = ConvertTo-SemVer -Version $publishedVersionString
-
-# Validate that the version number has been updated.
-if ($currentProjectVersion -le $currentPublishedVersion) {
-    Write-Error "The project version in versioning.props file ($projectVersion) `
-    has not been bumped up. The current published version is $publishedVersionString. `
-    Please increment the current project version."
+Try {
+    $nugetIndex = Invoke-RestMethod -Uri $url -Method Get -ErrorAction Stop
+} Catch {
+    if ($_.Exception.Response.StatusCode -eq 404) {
+        Write-Host "No package exists. You will probably be publishing $packageName for the first time."
+        Exit 0
+    }
+    Write-Error "Error fetching package details: $_"
+    Exit 1
 }
-else {
-    Write-Host "Validated that the version has been updated from $publishedVersionString to $currentProjectVersion" -ForegroundColor Green
+
+# Extract and sort all published versions (handling null/empty cases)
+$publishedVersions = $nugetIndex.items | ForEach-Object { [System.Management.Automation.SemanticVersion]$_.upper } | Sort-Object -Descending
+
+if (-not $publishedVersions -or $publishedVersions.Count -eq 0) {
+    Write-Host "No previous versions found on NuGet. Proceeding with publish." -ForegroundColor Green
+    Exit 0
+}
+
+# Find the highest published version within the same major version
+$highestPublishedVersionInMajor = ($publishedVersions | Where-Object { $_.Major -eq $currentMajorVersion })
+
+# Handle empty or null major versions list
+if (-not $highestPublishedVersionInMajor -or $highestPublishedVersionInMajor.Count -eq 0) {
+    Write-Host "No previous versions found for major version $currentMajorVersion. Proceeding with publish." -ForegroundColor Green
+    Exit 0
+}
+
+# Get the latest version for the current major version
+$latestMajorVersion = $highestPublishedVersionInMajor[0]
+
+# Validate that the version number has increased
+if ($currentProjectVersion -le $latestMajorVersion) {
+    Write-Error "The version in .csproj ($currentProjectVersion) must be greater than the highest published version in the same major ($latestMajorVersion)."
+    Exit 1
+} else {
+    Write-Host "Validated version update: $latestMajorVersion -> $currentProjectVersion" -ForegroundColor Green
 }
