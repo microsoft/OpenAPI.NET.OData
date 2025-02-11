@@ -66,7 +66,7 @@ namespace Microsoft.OpenApi.OData
         /// Gets/sets a value indicating whether the version of openApi to serialize to is v2.
         /// Currently only impacts nullable references for EdmTypeSchemaGenerator
         /// </summary>
-        public OpenApiSpecVersion OpenApiSpecVersion { get; set; } = OpenApiSpecVersion.OpenApi3_0;
+        public OpenApiSpecVersion OpenApiSpecVersion { get; set; } = OpenApiSpecVersion.OpenApi3_1;
 
         /// <summary>
         /// Gets/sets a value indicating to set the OperationId on Open API operation.

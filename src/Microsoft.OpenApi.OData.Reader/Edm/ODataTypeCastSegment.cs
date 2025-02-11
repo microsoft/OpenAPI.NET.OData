@@ -43,7 +43,7 @@ public class ODataTypeCastSegment : ODataSegment
     /// <inheritdoc />
     public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
     {
-        return new IEdmVocabularyAnnotatable[] { StructuredType as IEdmVocabularyAnnotatable };
+        return [StructuredType as IEdmVocabularyAnnotatable];
     }
 
     /// <inheritdoc />

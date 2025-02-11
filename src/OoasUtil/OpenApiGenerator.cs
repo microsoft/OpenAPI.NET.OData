@@ -60,12 +60,10 @@ namespace OoasUtil
 
                 this.ModifySettings();
 
-                using (FileStream fs = File.Create(Output))
-                {
-                    OpenApiDocument document = edmModel.ConvertToOpenApi(Settings);
-                    document.Serialize(fs, Settings.OpenApiSpecVersion, Format);
-                    await fs.FlushAsync(cancellationToken);
-                }
+                using FileStream fs = File.Create(Output);
+                OpenApiDocument document = edmModel.ConvertToOpenApi(Settings);
+                await document.SerializeAsync(fs, Settings.OpenApiSpecVersion, Format, cancellationToken).ConfigureAwait(false);
+                await fs.FlushAsync(cancellationToken).ConfigureAwait(false);
             }
             catch(Exception e)
             {

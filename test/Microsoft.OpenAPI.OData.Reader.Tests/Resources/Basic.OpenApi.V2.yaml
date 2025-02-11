@@ -13,6 +13,8 @@ paths:
         - City.City
       summary: Get entities from City
       operationId: City.City.ListCity
+      produces:
+        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -24,26 +26,26 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Name
               - Name desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Name
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           $ref: '#/responses/DefaultNs.CityCollectionResponse'
@@ -94,17 +96,17 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Name
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entity
@@ -119,6 +121,8 @@ paths:
       summary: Update entity in City
       operationId: City.City.UpdateCity
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: path
@@ -144,6 +148,8 @@ paths:
         - City.City
       summary: Delete entity from City
       operationId: City.City.DeleteCity
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Name
@@ -168,6 +174,9 @@ paths:
         - City.City
       summary: Get the number of the resource
       operationId: City.GetCount-8728
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -183,6 +192,8 @@ paths:
         - CountryOrRegion.CountryOrRegion
       summary: Get entities from CountryOrRegion
       operationId: CountryOrRegion.CountryOrRegion.ListCountryOrRegion
+      produces:
+        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -194,26 +205,26 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - Name
               - Name desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Name
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           $ref: '#/responses/DefaultNs.CountryOrRegionCollectionResponse'
@@ -264,17 +275,17 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - Name
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entity
@@ -289,6 +300,8 @@ paths:
       summary: Update entity in CountryOrRegion
       operationId: CountryOrRegion.CountryOrRegion.UpdateCountryOrRegion
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: path
@@ -314,6 +327,8 @@ paths:
         - CountryOrRegion.CountryOrRegion
       summary: Delete entity from CountryOrRegion
       operationId: CountryOrRegion.CountryOrRegion.DeleteCountryOrRegion
+      produces:
+        - application/json
       parameters:
         - in: path
           name: Name
@@ -338,6 +353,9 @@ paths:
         - CountryOrRegion.CountryOrRegion
       summary: Get the number of the resource
       operationId: CountryOrRegion.GetCount-daf5
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -361,20 +379,20 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - UserName
               - HomeAddress
               - WorkAddress
               - Addresses
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entity
@@ -389,6 +407,8 @@ paths:
       summary: Update Me
       operationId: Me.Person.UpdatePerson
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: body
@@ -411,6 +431,8 @@ paths:
       summary: Get entities from People
       description: People's description.
       operationId: People.Person.ListPerson
+      produces:
+        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -422,6 +444,7 @@ paths:
           description: Order items by property values
           type: array
           items:
+            type: string
             enum:
               - UserName
               - UserName desc
@@ -431,26 +454,25 @@ paths:
               - WorkAddress desc
               - Addresses
               - Addresses desc
-            type: string
         - in: query
           name: $select
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - UserName
               - HomeAddress
               - WorkAddress
               - Addresses
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           $ref: '#/responses/DefaultNs.PersonCollectionResponse'
@@ -501,20 +523,20 @@ paths:
           description: Select properties to be returned
           type: array
           items:
+            type: string
             enum:
               - UserName
               - HomeAddress
               - WorkAddress
               - Addresses
-            type: string
         - in: query
           name: $expand
           description: Expand related entities
           type: array
           items:
+            type: string
             enum:
               - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entity
@@ -529,6 +551,8 @@ paths:
       summary: Update entity in People
       operationId: People.Person.UpdatePerson
       consumes:
+        - application/json
+      produces:
         - application/json
       parameters:
         - in: path
@@ -554,6 +578,8 @@ paths:
         - People.Person
       summary: Delete entity from People
       operationId: People.Person.DeletePerson
+      produces:
+        - application/json
       parameters:
         - in: path
           name: UserName
@@ -578,6 +604,9 @@ paths:
         - People.Person
       summary: Get the number of the resource
       operationId: People.GetCount-dd8d
+      produces:
+        - text/plain
+        - application/json
       parameters:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
@@ -588,16 +617,84 @@ paths:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
 definitions:
+  DefaultNs.ODataErrors.ODataError:
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        $ref: '#/definitions/DefaultNs.ODataErrors.MainError'
+  DefaultNs.ODataErrors.MainError:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+        x-ms-primary-error-message: true
+      target:
+        type: string
+        x-nullable: true
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/DefaultNs.ODataErrors.ErrorDetails'
+      innerError:
+        $ref: '#/definitions/DefaultNs.ODataErrors.InnerError'
+  DefaultNs.ODataErrors.ErrorDetails:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      target:
+        type: string
+        x-nullable: true
+  DefaultNs.ODataErrors.InnerError:
+    type: object
+    description: The structure of this object is service-specific
+  ODataCountResponse:
+    type: number
+    format: int64
+  ReferenceUpdate:
+    type: object
+    properties:
+      '@odata.id':
+        type: string
+      '@odata.type':
+        type: string
+        x-nullable: true
+  ReferenceCreate:
+    type: object
+    properties:
+      '@odata.id':
+        type: string
+    additionalProperties:
+      type: object
+  ReferenceNumeric:
+    type: string
+    x-nullable: true
+    enum:
+      - '-INF'
+      - INF
+      - NaN
   DefaultNs.Color:
-    title: Color
+    type: string
     description: Enum type 'Color' description.
+    title: Color
     enum:
       - Blue
       - White
-    type: string
   DefaultNs.Person:
-    title: Person
     type: object
+    title: Person
     properties:
       UserName:
         type: string
@@ -618,158 +715,96 @@ definitions:
       Addresses:
         - '@odata.type': DefaultNs.Address
   DefaultNs.City:
-    title: City
     type: object
+    title: City
     properties:
       Name:
         type: string
     example:
       Name: string (identifier)
   DefaultNs.CountryOrRegion:
-    title: CountryOrRegion
     type: object
+    title: CountryOrRegion
     properties:
       Name:
         type: string
     example:
       Name: string (identifier)
   DefaultNs.Address:
-    title: Address
     type: object
+    title: Address
     properties:
       Id:
+        type: number
         format: int32
         maximum: 2147483647
         minimum: -2147483648
-        type: number
       City:
         $ref: '#/definitions/DefaultNs.City'
     example:
-      Id: number
+      Id: 0
       City:
         '@odata.type': DefaultNs.City
   DefaultNs.WorkAddress:
     allOf:
       - $ref: '#/definitions/DefaultNs.Address'
-      - title: WorkAddress
-        type: object
+      - type: object
+        title: WorkAddress
         properties:
           CountryOrRegion:
             $ref: '#/definitions/DefaultNs.CountryOrRegion'
     example:
-      Id: number
+      Id: 0
       City:
         '@odata.type': DefaultNs.City
       CountryOrRegion:
         '@odata.type': DefaultNs.CountryOrRegion
-  DefaultNs.ODataErrors.ODataError:
-    required:
-      - error
-    type: object
-    properties:
-      error:
-        $ref: '#/definitions/DefaultNs.ODataErrors.MainError'
-  DefaultNs.ODataErrors.MainError:
-    required:
-      - code
-      - message
-    type: object
-    properties:
-      code:
-        type: string
-      message:
-        type: string
-        x-ms-primary-error-message: true
-      target:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/DefaultNs.ODataErrors.ErrorDetails'
-      innerError:
-        $ref: '#/definitions/DefaultNs.ODataErrors.InnerError'
-  DefaultNs.ODataErrors.ErrorDetails:
-    required:
-      - code
-      - message
-    type: object
-    properties:
-      code:
-        type: string
-      message:
-        type: string
-      target:
-        type: string
-  DefaultNs.ODataErrors.InnerError:
-    description: The structure of this object is service-specific
-    type: object
-  ODataCountResponse:
-    format: int32
-    type: integer
   DefaultNs.PersonCollectionResponse:
-    title: Collection of Person
     type: object
+    title: Collection of Person
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/DefaultNs.Person'
   DefaultNs.CityCollectionResponse:
-    title: Collection of City
     type: object
+    title: Collection of City
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/DefaultNs.City'
   DefaultNs.CountryOrRegionCollectionResponse:
-    title: Collection of CountryOrRegion
     type: object
+    title: Collection of CountryOrRegion
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/DefaultNs.CountryOrRegion'
   DefaultNs.AddressCollectionResponse:
-    title: Collection of DefaultNs.Address
     type: object
+    title: Collection of DefaultNs.Address
     properties:
       value:
         type: array
         items:
           $ref: '#/definitions/DefaultNs.Address'
-  ReferenceUpdate:
-    type: object
-    properties:
-      '@odata.id':
-        type: string
-      '@odata.type':
-        type: string
-  ReferenceCreate:
-    type: object
-    properties:
-      '@odata.id':
-        type: string
-    additionalProperties:
-      type: object
-  ReferenceNumeric:
-    enum:
-      - '-INF'
-      - INF
-      - NaN
-    type: string
 parameters:
   top:
     in: query
     name: $top
     description: Show only the first n items
-    type: integer
+    type: number
+    format: int64
     minimum: 0
   skip:
     in: query
     name: $skip
     description: Skip the first n items
-    type: integer
+    type: number
+    format: int64
     minimum: 0
   count:
     in: query

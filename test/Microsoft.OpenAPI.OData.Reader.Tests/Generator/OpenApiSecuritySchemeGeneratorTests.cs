@@ -14,19 +14,23 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
+using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 
 namespace Microsoft.OpenApi.OData.Tests
 {
     public class OpenApiSecuritySchemeGeneratorTest
     {
         [Fact]
-        public void CreateSecuritySchemesWorksForAuthorizationsOnEntitySetContainer()
+        public async Task CreateSecuritySchemesWorksForAuthorizationsOnEntitySetContainer()
         {
             // Arrange
             ODataContext context = new ODataContext(GetEdmModel());
+            OpenApiDocument openApiDocument = new();
 
             // Act
-            var schemes = context.CreateSecuritySchemes();
+            context.AddSecuritySchemesToDocument(openApiDocument);
+            var schemes = openApiDocument.Components.SecuritySchemes;
 
             // Assert
             Assert.NotNull(schemes);
@@ -39,8 +43,8 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("http://TokenUrl", scheme.Flows.ClientCredentials.TokenUrl.OriginalString);
             Assert.Equal("http://RefreshUrl", scheme.Flows.ClientCredentials.RefreshUrl.OriginalString);
             Assert.Equal("OAuth2ClientCredentials Description", scheme.Description);
-            string json = scheme.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            string json = await scheme.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
+            var expectedJson = JsonNode.Parse(@"{
   ""type"": ""oauth2"",
   ""description"": ""OAuth2ClientCredentials Description"",
   ""flows"": {
@@ -52,17 +56,19 @@ namespace Microsoft.OpenApi.OData.Tests
       }
     }
   }
-}".ChangeLineBreaks(), json);
+}");
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(json), expectedJson));
 
             scheme = schemes["Http Name"];
             Assert.Equal(SecuritySchemeType.Http, scheme.Type);
-            json = scheme.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-            Assert.Equal(@"{
+            json = await scheme.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
+            expectedJson = JsonNode.Parse(@"{
   ""type"": ""http"",
   ""description"": ""Http Description"",
   ""scheme"": ""Http Scheme"",
   ""bearerFormat"": ""Http BearerFormat""
-}".ChangeLineBreaks(), json);
+}");
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(json), expectedJson));
         }
 
         private static IEdmModel GetEdmModel()

@@ -6,6 +6,8 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
@@ -21,6 +23,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class NavigationPropertyOperationHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="NavigationPropertyOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected NavigationPropertyOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         /// <summary>
         /// Gets the navigation property.
         /// </summary>
@@ -85,14 +95,11 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetTags(OpenApiOperation operation)
         {
             string name = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
-            OpenApiTag tag = new()
-            {
-                Name = name
-            };
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
-            operation.Tags.Add(tag);
-
-            Context.AppendTag(tag);
+            Context.AddExtensionToTag(name, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+			{
+				Name = name
+			});
+            operation.Tags.Add(new OpenApiTagReference(name, _document));
 
             base.SetTags(operation);
         }
@@ -100,7 +107,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("operation"));
 
             base.SetExtensions(operation);
         }
@@ -185,7 +192,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-        protected IDictionary<string, OpenApiMediaType> GetContent(OpenApiSchema schema = null, IEnumerable<string> mediaTypes = null)
+        protected IDictionary<string, OpenApiMediaType> GetContent(IOpenApiSchema schema = null, IEnumerable<string> mediaTypes = null)
         {
             schema ??= GetOpenApiSchema();
             var content = new Dictionary<string, OpenApiMediaType>();
@@ -212,17 +219,9 @@ namespace Microsoft.OpenApi.OData.Operation
             return content;
         }
 
-        protected OpenApiSchema GetOpenApiSchema()
+        protected IOpenApiSchema GetOpenApiSchema()
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = NavigationProperty.ToEntityType().FullName()
-                }
-            };
+            return new OpenApiSchemaReference(NavigationProperty.ToEntityType().FullName(), _document);
         }
     }
 }

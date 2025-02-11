@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -19,6 +21,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EntityUpdateOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntityUpdateOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected EntityUpdateOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         private UpdateRestrictionsType _updateRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -76,7 +86,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected IDictionary<string, OpenApiMediaType> GetContent()
         {
-            OpenApiSchema schema = GetOpenApiSchema();
+            var schema = GetOpenApiSchema();
             var content = new Dictionary<string, OpenApiMediaType>();
             IEnumerable<string> mediaTypes = _updateRestrictions?.RequestContentTypes;
 
@@ -106,7 +116,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
+            operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
             base.SetResponses(operation);
         }
 
@@ -117,7 +127,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -138,22 +148,14 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-        private OpenApiSchema GetOpenApiSchema()
+        private IOpenApiSchema GetOpenApiSchema()
         {
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                return EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
+                return EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
             }
 
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = EntitySet.EntityType.FullName()
-                }
-            };
+            return new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
         }
     }
 }

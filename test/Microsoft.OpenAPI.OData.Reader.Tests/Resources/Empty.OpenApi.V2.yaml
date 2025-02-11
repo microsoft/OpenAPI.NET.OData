@@ -9,17 +9,17 @@ schemes:
 paths: { }
 definitions:
   ODataErrors.ODataError:
+    type: object
     required:
       - error
-    type: object
     properties:
       error:
         $ref: '#/definitions/ODataErrors.MainError'
   ODataErrors.MainError:
+    type: object
     required:
       - code
       - message
-    type: object
     properties:
       code:
         type: string
@@ -28,6 +28,7 @@ definitions:
         x-ms-primary-error-message: true
       target:
         type: string
+        x-nullable: true
       details:
         type: array
         items:
@@ -35,10 +36,10 @@ definitions:
       innerError:
         $ref: '#/definitions/ODataErrors.InnerError'
   ODataErrors.ErrorDetails:
+    type: object
     required:
       - code
       - message
-    type: object
     properties:
       code:
         type: string
@@ -46,12 +47,13 @@ definitions:
         type: string
       target:
         type: string
+        x-nullable: true
   ODataErrors.InnerError:
-    description: The structure of this object is service-specific
     type: object
+    description: The structure of this object is service-specific
   ODataCountResponse:
-    format: int32
-    type: integer
+    type: number
+    format: int64
   ReferenceUpdate:
     type: object
     properties:
@@ -59,6 +61,7 @@ definitions:
         type: string
       '@odata.type':
         type: string
+        x-nullable: true
   ReferenceCreate:
     type: object
     properties:
@@ -67,23 +70,26 @@ definitions:
     additionalProperties:
       type: object
   ReferenceNumeric:
+    type: string
+    x-nullable: true
     enum:
       - '-INF'
       - INF
       - NaN
-    type: string
 parameters:
   top:
     in: query
     name: $top
     description: Show only the first n items
-    type: integer
+    type: number
+    format: int64
     minimum: 0
   skip:
     in: query
     name: $skip
     description: Skip the first n items
-    type: integer
+    type: number
+    format: int64
     minimum: 0
   count:
     in: query

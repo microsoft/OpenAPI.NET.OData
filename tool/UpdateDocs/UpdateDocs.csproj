@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <OutputType>Exe</OutputType>
@@ -13,6 +13,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.OData.Edm" Version="8.2.3" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.6.23" />
+    <PackageReference Include="Microsoft.OpenApi" Version="2.0.0-preview7" />
   </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
@@ -17,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EntitySetOperationHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntitySetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected EntitySetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <summary>
         /// Gets/sets the <see cref="IEdmEntitySet"/>.
         /// </summary>
@@ -36,16 +45,14 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            OpenApiTag tag = new OpenApiTag
-            {
-                Name = EntitySet.Name + "." + EntitySet.EntityType.Name,
-            };
+            var tagName = EntitySet.Name + "." + EntitySet.EntityType.Name;
 
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+            operation.Tags.Add(new OpenApiTagReference(tagName, _document));
 
-            operation.Tags.Add(tag);
-
-            Context.AppendTag(tag);
+            Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+			{
+				Name = tagName
+			});
 
             base.SetTags(operation);
         }
@@ -53,7 +60,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("operation"));
 
             base.SetExtensions(operation);
         }

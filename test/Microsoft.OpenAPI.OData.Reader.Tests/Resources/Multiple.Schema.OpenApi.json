@@ -39,7 +39,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -67,7 +66,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -89,7 +87,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -173,7 +170,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -195,7 +191,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -362,7 +357,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -398,7 +392,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -425,7 +418,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -510,7 +502,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -537,7 +528,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -734,7 +724,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -784,7 +773,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -818,7 +806,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -979,7 +966,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1159,7 +1145,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1177,7 +1162,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1194,7 +1178,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1412,7 +1395,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1458,7 +1440,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1490,7 +1471,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1575,7 +1555,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1607,7 +1586,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1767,7 +1745,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1803,7 +1780,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1830,7 +1806,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1964,7 +1939,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1982,7 +1956,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -1999,7 +1972,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2282,7 +2254,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2462,7 +2433,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2512,7 +2482,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2546,7 +2515,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2631,7 +2599,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2665,7 +2632,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2810,7 +2776,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -2877,7 +2842,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3102,7 +3066,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3134,7 +3097,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3159,7 +3121,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3364,7 +3325,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3394,7 +3354,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3419,7 +3378,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3639,7 +3597,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3675,7 +3632,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3702,7 +3658,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3787,7 +3742,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -3814,7 +3768,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4011,7 +3964,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4061,7 +4013,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4095,7 +4046,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4256,7 +4206,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4436,7 +4385,6 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4454,7 +4402,6 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4471,7 +4418,6 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "explode": false,
             "schema": {
               "uniqueItems": true,
@@ -4728,15 +4674,15 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Description": "string",
           "Filename": "string",
           "NumberOfRevisions": "string",
           "Suffix": "string",
-          "DomainId": "number",
-          "ModificationDate": "string (timestamp)",
-          "ModifiedBy": "number",
+          "DomainId": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
           "Tags": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentTagRelDto"
@@ -4841,21 +4787,21 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Number": "string",
           "Description": "string",
-          "LibraryTemplateId": "number",
-          "ParentTypeId": "number",
-          "ParentId": "number",
+          "LibraryTemplateId": 0,
+          "ParentTypeId": 0,
+          "ParentId": 0,
           "AllowMultiple": true,
           "AutoCreate": true,
-          "TypeId": "number",
-          "DomainId": "number",
-          "CreatedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModifiedBy": "number",
-          "ModificationDate": "string (timestamp)",
+          "TypeId": 0,
+          "DomainId": 0,
+          "CreatedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentDto"
@@ -4973,23 +4919,23 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
-          "Number": "number",
-          "DocumentId": "number",
+          "Id": 0,
+          "Number": 0,
+          "DocumentId": 0,
           "DocumentName": "string",
           "DocumentDescription": "string",
-          "CreationDate": "string (timestamp)",
-          "CreatedBy": "number",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreatedBy": 0,
           "IsReviewed": true,
-          "ReviewedBy": "number",
-          "ReviewedDate": "string (timestamp)",
+          "ReviewedBy": 0,
+          "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00",
           "IsApproved": true,
-          "ApprovedBy": "number",
-          "ApprovedDate": "string (timestamp)",
+          "ApprovedBy": 0,
+          "ApprovedDate": "0001-01-01T00:00:00.0000000+00:00",
           "IsRejected": true,
-          "RejectedBy": "number",
-          "RejectedDate": "string (timestamp)",
-          "DomainId": "number",
+          "RejectedBy": 0,
+          "RejectedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "DomainId": 0,
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           }
@@ -5031,12 +4977,12 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Description": "string",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
-          "DomainId": "number"
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "DomainId": 0
         }
       },
       "Siterra.Documents.App.DTO.DocumentTagRelDto": {
@@ -5360,49 +5306,49 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Description": "string",
-          "StatusId": "number",
-          "TypeId": "number",
+          "StatusId": 0,
+          "TypeId": 0,
           "Keywords": "string",
-          "CreationDate": "string (timestamp)",
-          "CreatedBy": "number",
-          "ModificationDate": "string (timestamp)",
-          "ModifiedBy": "number",
-          "DomainId": "number",
-          "LibraryId": "number",
-          "OwnerUserId": "number",
-          "StatusDate": "string (timestamp)",
-          "LastRevisionId": "number",
-          "CheckoutDate": "string (timestamp)",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreatedBy": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "DomainId": 0,
+          "LibraryId": 0,
+          "OwnerUserId": 0,
+          "StatusDate": "0001-01-01T00:00:00.0000000+00:00",
+          "LastRevisionId": 0,
+          "CheckoutDate": "0001-01-01T00:00:00.0000000+00:00",
           "CheckoutPath": "string",
-          "CheckoutUserId": "number",
+          "CheckoutUserId": 0,
           "Number": "string",
-          "OriginalDate": "string (timestamp)",
-          "FileSized": "number",
+          "OriginalDate": "0001-01-01T00:00:00.0000000+00:00",
+          "FileSized": 0,
           "FileClientPath": "string",
-          "LastRevisionFileId": "number",
-          "IsDeleted": "number",
-          "IsNa": "number",
-          "IsRejected": "number",
-          "IsReviewed": "number",
+          "LastRevisionFileId": 0,
+          "IsDeleted": 0,
+          "IsNa": 0,
+          "IsRejected": 0,
+          "IsReviewed": 0,
           "NaDescription": "string",
           "NaReason": "string",
           "RejectedDescription": "string",
           "RejectedReason": "string",
           "ReviewDescription": "string",
-          "SourceDocumentId": "number",
-          "ScraperMapId": "number",
-          "LastDownloadedDate": "string (timestamp)",
-          "SmsId": "number",
-          "IsApprovedOld": "number",
+          "SourceDocumentId": 0,
+          "ScraperMapId": 0,
+          "LastDownloadedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "SmsId": 0,
+          "IsApprovedOld": 0,
           "Suffix": "string",
-          "ScrapeResultId": "number",
-          "IsApproved": "number",
-          "CategoryId": "number",
-          "SectionId": "number",
-          "VersionCount": "number",
+          "ScrapeResultId": 0,
+          "IsApproved": 0,
+          "CategoryId": 0,
+          "SectionId": 0,
+          "VersionCount": 0,
           "LastFileName": "string",
           "DocumentClasses": [
             {
@@ -5496,13 +5442,13 @@
           }
         },
         "example": {
-          "ClassInstance": "number",
-          "ClassId": "number",
-          "DocumentId": "number",
-          "CreatedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModifiedBy": "number",
-          "ModificationDate": "string (timestamp)",
+          "ClassInstance": 0,
+          "ClassId": 0,
+          "DocumentId": 0,
+          "CreatedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "IsPrimary": true,
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -5579,13 +5525,13 @@
           }
         },
         "example": {
-          "DocumentId": "number",
-          "TagId": "number",
-          "DomainId": "number",
-          "CreatedBy": "number",
-          "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "DocumentId": 0,
+          "TagId": 0,
+          "DomainId": 0,
+          "CreatedBy": 0,
+          "ModifiedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           },
@@ -5873,43 +5819,43 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
-          "DomainId": "number",
+          "Id": 0,
+          "DomainId": 0,
           "Name": "string",
-          "ParentFolderId": "number",
+          "ParentFolderId": 0,
           "Number": "string",
-          "TypeId": "number",
-          "OwnerUserId": "number",
-          "TotalSize": "number",
-          "FilesCounter": "number",
-          "FoldersCounter": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
-          "ModifiedBy": "number",
-          "CreatedBy": "number",
-          "ProjectId": "number",
-          "SearchRingId": "number",
-          "SiteId": "number",
-          "AssetId": "number",
+          "TypeId": 0,
+          "OwnerUserId": 0,
+          "TotalSize": 0,
+          "FilesCounter": 0,
+          "FoldersCounter": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "CreatedBy": 0,
+          "ProjectId": 0,
+          "SearchRingId": 0,
+          "SiteId": 0,
+          "AssetId": 0,
           "AllowMultiple": true,
           "AutoCreate": true,
           "Description": "string",
           "IsTemplate": true,
-          "ProgramId": "number",
-          "SourceFolderId": "number",
-          "TemplateClassId": "number",
-          "TemplateSubType": "number",
+          "ProgramId": 0,
+          "SourceFolderId": 0,
+          "TemplateClassId": 0,
+          "TemplateSubType": 0,
           "IsHidden": true,
-          "IsDeleted": "number",
-          "StatusId": "number",
-          "SmsId": "number",
-          "ContractId": "number",
-          "VendorId": "number",
-          "OrganizationUnitId": "number",
-          "IncidentId": "number",
-          "EventId": "number",
-          "ClassInstance": "number",
-          "ClassId": "number",
+          "IsDeleted": 0,
+          "StatusId": 0,
+          "SmsId": 0,
+          "ContractId": 0,
+          "VendorId": 0,
+          "OrganizationUnitId": 0,
+          "IncidentId": 0,
+          "EventId": 0,
+          "ClassInstance": 0,
+          "ClassId": 0,
           "LibraryParent": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.Library"
           },
@@ -6057,19 +6003,19 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
-          "ModifiedBy": "number",
-          "CreatedBy": "number",
-          "ModificationDate": "string (timestamp)",
-          "CreationDate": "string (timestamp)",
-          "DomainId": "number",
+          "ModifiedBy": 0,
+          "CreatedBy": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "DomainId": 0,
           "Description": "string",
           "XmlName": "string",
-          "MasterId": "number",
-          "Number": "number",
-          "ClassId": "number",
-          "ParentId": "number",
+          "MasterId": 0,
+          "Number": 0,
+          "ClassId": 0,
+          "ParentId": 0,
           "HasChanged": true,
           "MasterLibraryType": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
@@ -6193,23 +6139,23 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
+          "Id": 0,
           "Name": "string",
           "Path": "string",
-          "ModifiedBy": "number",
-          "CreatedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
-          "Sized": "number",
+          "ModifiedBy": 0,
+          "CreatedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Sized": 0,
           "ActualName": "string",
-          "DomainId": "number",
-          "SourceClassId": "number",
-          "ContentTypeId": "number",
+          "DomainId": 0,
+          "SourceClassId": 0,
+          "ContentTypeId": 0,
           "ClientPath": "string",
-          "IsSelfHosted": "number",
-          "SmsId": "number",
-          "Latitude": "number",
-          "Longitude": "number",
+          "IsSelfHosted": 0,
+          "SmsId": 0,
+          "Latitude": 0,
+          "Longitude": 0,
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -6265,14 +6211,14 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
-          "DomainId": "number",
+          "Id": 0,
+          "DomainId": 0,
           "Name": "string",
           "Description": "string",
-          "CreatedBy": "number",
-          "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)"
+          "CreatedBy": 0,
+          "ModifiedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag": {
@@ -6294,14 +6240,14 @@
           }
         ],
         "example": {
-          "Id": "number (identifier)",
-          "DomainId": "number",
+          "Id": 0,
+          "DomainId": 0,
           "Name": "string",
           "Description": "string",
-          "CreatedBy": "number",
-          "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "CreatedBy": 0,
+          "ModifiedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
@@ -6329,14 +6275,14 @@
           }
         ],
         "example": {
-          "Id": "number (identifier)",
-          "DomainId": "number",
+          "Id": 0,
+          "DomainId": 0,
           "Name": "string",
           "Description": "string",
-          "CreatedBy": "number",
-          "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "CreatedBy": 0,
+          "ModifiedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -6364,14 +6310,14 @@
           }
         ],
         "example": {
-          "Id": "number (identifier)",
-          "DomainId": "number",
+          "Id": 0,
+          "DomainId": 0,
           "Name": "string",
           "Description": "string",
-          "CreatedBy": "number",
-          "ModifiedBy": "number",
-          "CreationDate": "string (timestamp)",
-          "ModificationDate": "string (timestamp)",
+          "CreatedBy": 0,
+          "ModifiedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -6559,38 +6505,38 @@
           }
         },
         "example": {
-          "Id": "number (identifier)",
-          "Number": "number",
-          "DocumentId": "number",
-          "ModificationDate": "string (timestamp)",
-          "CreationDate": "string (timestamp)",
-          "ModifiedBy": "number",
-          "CreatedBy": "number",
+          "Id": 0,
+          "Number": 0,
+          "DocumentId": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "CreatedBy": 0,
           "Remarks": "string",
-          "FileId": "number",
-          "DocumentOwnerContact": "number",
+          "FileId": 0,
+          "DocumentOwnerContact": 0,
           "DocumentDescription": "string",
-          "DocumentStatusDate": "string (timestamp)",
+          "DocumentStatusDate": "0001-01-01T00:00:00.0000000+00:00",
           "DocumentFolder": "string",
           "DocumentKeywords": "string",
           "DocumentStatus": "string",
           "DocumentType": "string",
           "DocumentName": "string",
           "DocumentNumber": "string",
-          "DomainId": "number",
-          "IsDeleted": "number",
+          "DomainId": 0,
+          "IsDeleted": 0,
           "IsReviewed": true,
           "ReviewDescription": "string",
-          "ReviewedBy": "number",
+          "ReviewedBy": 0,
           "IsRejected": true,
           "RejectedReason": "string",
           "RejectedDescription": "string",
-          "RejectedBy": "number",
+          "RejectedBy": 0,
           "IsApproved": true,
-          "ApprovedBy": "number",
-          "ReviewedDate": "string (timestamp)",
-          "RejectedDate": "string (timestamp)",
-          "ApprovedDate": "string (timestamp)",
+          "ApprovedBy": 0,
+          "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "RejectedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ApprovedDate": "0001-01-01T00:00:00.0000000+00:00",
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           }
@@ -6660,8 +6606,8 @@
         "description": "The structure of this object is service-specific"
       },
       "ODataCountResponse": {
-        "type": "integer",
-        "format": "int32"
+        "type": "number",
+        "format": "int64"
       },
       "Siterra.Documents.App.DTO.DocumentDtoCollectionResponse": {
         "title": "Collection of DocumentDto",
@@ -6997,11 +6943,11 @@
         "name": "$top",
         "in": "query",
         "description": "Show only the first n items",
-        "style": "form",
         "explode": false,
         "schema": {
           "minimum": 0,
-          "type": "integer"
+          "type": "number",
+          "format": "int64"
         },
         "example": 50
       },
@@ -7009,18 +6955,17 @@
         "name": "$skip",
         "in": "query",
         "description": "Skip the first n items",
-        "style": "form",
         "explode": false,
         "schema": {
           "minimum": 0,
-          "type": "integer"
+          "type": "number",
+          "format": "int64"
         }
       },
       "count": {
         "name": "$count",
         "in": "query",
         "description": "Include count of items",
-        "style": "form",
         "explode": false,
         "schema": {
           "type": "boolean"
@@ -7030,7 +6975,6 @@
         "name": "$filter",
         "in": "query",
         "description": "Filter items by property values",
-        "style": "form",
         "explode": false,
         "schema": {
           "type": "string"
@@ -7040,7 +6984,6 @@
         "name": "$search",
         "in": "query",
         "description": "Search items by search phrases",
-        "style": "form",
         "explode": false,
         "schema": {
           "type": "string"
@@ -7050,20 +6993,20 @@
     "examples": {
       "Siterra.Documents.App.DTO.DocumentDto": {
         "value": {
-          "Description": "String",
+          "Description": "string",
           "DomainId": 0,
-          "Filename": "String",
+          "Filename": "string",
           "Id": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
-          "NumberOfRevisions": "String",
+          "Name": "string",
+          "NumberOfRevisions": "string",
           "Revisions": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.RevisionDto"
             }
           ],
-          "Suffix": "String",
+          "Suffix": "string",
           "Tags": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentTagRelDto"
@@ -7077,7 +7020,7 @@
           "AutoCreate": true,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentDto"
@@ -7088,8 +7031,8 @@
           "LibraryTemplateId": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
-          "Number": "String",
+          "Name": "string",
+          "Number": "string",
           "ParentId": 0,
           "ParentTypeId": 0,
           "TypeId": 0
@@ -7104,9 +7047,9 @@
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           },
-          "DocumentDescription": "String",
+          "DocumentDescription": "string",
           "DocumentId": 0,
-          "DocumentName": "String",
+          "DocumentName": "string",
           "DomainId": 0,
           "Id": 0,
           "IsApproved": true,
@@ -7122,34 +7065,34 @@
       "Siterra.Documents.App.DTO.CategoryDto": {
         "value": {
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "DomainId": 0,
           "Id": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Name": "String"
+          "Name": "string"
         }
       },
       "Siterra.Documents.App.DTO.DocumentTagRelDto": {
         "value": {
-          "Name": "String"
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Document.Document": {
         "value": {
           "CategoryId": 0,
           "CheckoutDate": "0001-01-01T00:00:00.0000000+00:00",
-          "CheckoutPath": "String",
+          "CheckoutPath": "string",
           "CheckoutUserId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "DocumentClasses": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
             }
           ],
           "DomainId": 0,
-          "FileClientPath": "String",
+          "FileClientPath": "string",
           "FileSized": 0,
           "Id": 0,
           "IsApproved": 0,
@@ -7158,9 +7101,9 @@
           "IsNa": 0,
           "IsRejected": 0,
           "IsReviewed": 0,
-          "Keywords": "String",
+          "Keywords": "string",
           "LastDownloadedDate": "0001-01-01T00:00:00.0000000+00:00",
-          "LastFileName": "String",
+          "LastFileName": "string",
           "LastRevisionFile": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile"
           },
@@ -7172,15 +7115,15 @@
           "LibraryId": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "NaDescription": "String",
-          "Name": "String",
-          "NaReason": "String",
-          "Number": "String",
+          "NaDescription": "string",
+          "Name": "string",
+          "NaReason": "string",
+          "Number": "string",
           "OriginalDate": "0001-01-01T00:00:00.0000000+00:00",
           "OwnerUserId": 0,
-          "RejectedDescription": "String",
-          "RejectedReason": "String",
-          "ReviewDescription": "String",
+          "RejectedDescription": "string",
+          "RejectedReason": "string",
+          "ReviewDescription": "string",
           "Revisions": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Revision.Revision"
@@ -7201,7 +7144,7 @@
           "SourceDocumentId": 0,
           "StatusDate": "0001-01-01T00:00:00.0000000+00:00",
           "StatusId": 0,
-          "Suffix": "String",
+          "Suffix": "string",
           "Tags": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
@@ -7253,7 +7196,7 @@
           "ContractId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
@@ -7278,8 +7221,8 @@
           },
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
-          "Number": "String",
+          "Name": "string",
+          "Number": "string",
           "OrganizationUnitId": 0,
           "OwnerUserId": 0,
           "ParentFolderId": 0,
@@ -7318,7 +7261,7 @@
           "ClassId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "DomainId": 0,
           "HasChanged": true,
           "Id": 0,
@@ -7333,19 +7276,19 @@
           ],
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
+          "Name": "string",
           "Number": 0,
           "ParentId": 0,
           "ParentLibraryTypes": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
           },
-          "XmlName": "String"
+          "XmlName": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile": {
         "value": {
-          "ActualName": "String",
-          "ClientPath": "String",
+          "ActualName": "string",
+          "ClientPath": "string",
           "ContentTypeId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
@@ -7361,8 +7304,8 @@
           "Longitude": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String",
-          "Path": "String",
+          "Name": "string",
+          "Path": "string",
           "Sized": 0,
           "SmsId": 0,
           "SourceClassId": 0
@@ -7372,39 +7315,63 @@
         "value": {
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "String",
+          "Description": "string",
           "DomainId": 0,
           "Id": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "String"
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag": {
         "value": {
+          "CreatedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
             }
-          ]
+          ],
+          "DomainId": 0,
+          "Id": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.Section": {
         "value": {
+          "CreatedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
             }
-          ]
+          ],
+          "DomainId": 0,
+          "Id": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.Category": {
         "value": {
+          "CreatedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Description": "string",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
             }
-          ]
+          ],
+          "DomainId": 0,
+          "Id": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "Name": "string"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Revision.Revision": {
@@ -7416,16 +7383,16 @@
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           },
-          "DocumentDescription": "String",
-          "DocumentFolder": "String",
+          "DocumentDescription": "string",
+          "DocumentFolder": "string",
           "DocumentId": 0,
-          "DocumentKeywords": "String",
-          "DocumentName": "String",
-          "DocumentNumber": "String",
+          "DocumentKeywords": "string",
+          "DocumentName": "string",
+          "DocumentNumber": "string",
           "DocumentOwnerContact": 0,
-          "DocumentStatus": "String",
+          "DocumentStatus": "string",
           "DocumentStatusDate": "0001-01-01T00:00:00.0000000+00:00",
-          "DocumentType": "String",
+          "DocumentType": "string",
           "DomainId": 0,
           "FileId": 0,
           "Id": 0,
@@ -7438,10 +7405,10 @@
           "Number": 0,
           "RejectedBy": 0,
           "RejectedDate": "0001-01-01T00:00:00.0000000+00:00",
-          "RejectedDescription": "String",
-          "RejectedReason": "String",
-          "Remarks": "String",
-          "ReviewDescription": "String",
+          "RejectedDescription": "string",
+          "RejectedReason": "string",
+          "Remarks": "string",
+          "ReviewDescription": "string",
           "ReviewedBy": 0,
           "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00"
         }

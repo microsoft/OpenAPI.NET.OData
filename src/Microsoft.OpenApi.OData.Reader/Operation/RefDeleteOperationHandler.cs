@@ -18,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class RefDeleteOperationHandler : NavigationPropertyOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="RefDeleteOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public RefDeleteOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Delete;
         private DeleteRestrictionsType _deleteRestriction;
@@ -71,7 +79,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 Description = "ETag",
                 Schema = new OpenApiSchema
                 {
-                    Type = "string"
+                    Type = JsonSchemaType.String
                 }
             });
 
@@ -87,7 +95,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Required = true,
                     Schema = new OpenApiSchema
                     {
-                        Type = "string"
+                        Type = JsonSchemaType.String
                     }
                 });
             }
@@ -101,7 +109,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_deleteRestriction.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_deleteRestriction.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>
@@ -111,7 +119,7 @@ namespace Microsoft.OpenApi.OData.Operation
             OpenApiConvertSettings settings = Context.Settings.Clone();
             settings.UseSuccessStatusCodeRange = false;
             
-            operation.AddErrorResponses(settings, true);
+            operation.AddErrorResponses(settings, _document, true);
             base.SetResponses(operation);
         }
 

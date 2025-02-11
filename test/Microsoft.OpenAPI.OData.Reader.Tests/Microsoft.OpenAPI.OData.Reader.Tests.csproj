@@ -15,23 +15,31 @@
   <ItemGroup>
     <None Remove="Resources\Basic.OpenApi.json" />
     <None Remove="Resources\Basic.OpenApi.V2.json" />
+    <None Remove="Resources\Basic.OpenApi.V3.1.json" />
     <None Remove="Resources\Basic.OpenApi.yaml" />
     <None Remove="Resources\Basic.OpenApi.V2.yaml" />
+    <None Remove="Resources\Basic.OpenApi.V3.1.yaml" />
     <None Remove="Resources\ComposableFunctions.OData.xml" />
     <None Remove="Resources\Empty.OpenApi.json" />
     <None Remove="Resources\Empty.OpenApi.V2.json" />
+    <None Remove="Resources\Empty.OpenApi.V3.1.json" />
     <None Remove="Resources\Empty.OpenApi.yaml" />
     <None Remove="Resources\Empty.OpenApi.V2.yaml" />
+    <None Remove="Resources\Empty.OpenApi.V3.1.yaml" />
     <None Remove="Resources\Graph.Beta.OData.xml" />
     <None Remove="Resources\Multiple.Schema.OData.xml" />
     <None Remove="Resources\Multiple.Schema.OpenApi.json" />
     <None Remove="Resources\Multiple.Schema.OpenApi.V2.json" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.V3.1.json" />
     <None Remove="Resources\Multiple.Schema.OpenApi.yaml" />
     <None Remove="Resources\Multiple.Schema.OpenApi.V2.yaml" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.V3.1.yaml" />
     <None Remove="Resources\TripService.OpenApi.json" />
     <None Remove="Resources\TripService.OpenApi.V2.json" />
+    <None Remove="Resources\TripService.OpenApi.V3.1.json" />
     <None Remove="Resources\TripService.OpenApi.yaml" />
     <None Remove="Resources\TripService.OpenApi.V2.yaml" />
+    <None Remove="Resources\TripService.OpenApi.V3.1.yaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,22 +50,30 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Basic.OpenApi.json" />
     <EmbeddedResource Include="Resources\Basic.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\Basic.OpenApi.V3.1.json" />
     <EmbeddedResource Include="Resources\Basic.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\Basic.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\Basic.OpenApi.V3.1.yaml" />
     <EmbeddedResource Include="Resources\Empty.OpenApi.json" />
     <EmbeddedResource Include="Resources\Empty.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.V3.1.json" />
     <EmbeddedResource Include="Resources\Empty.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\Empty.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.V3.1.yaml" />
     <EmbeddedResource Include="Resources\Graph.Beta.OData.xml" />
     <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.json" />
     <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V3.1.json" />
     <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V3.1.yaml" />
     <EmbeddedResource Include="Resources\TripService.OData.xml" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.json" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.V3.1.json" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.V3.1.yaml" />
     <EmbeddedResource Include="Resources\YamlWriterTest.yaml.txt" />
     <EmbeddedResource Include="Resources\JsonWriterTest.json.txt" />
     <EmbeddedResource Include="Resources\Contract.OData.xml" />
@@ -72,8 +88,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.OpenApi" Version="2.0.0-preview7" />
+    <PackageReference Include="moq" Version="4.20.72" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.6.23" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2">
       <PrivateAssets>all</PrivateAssets>

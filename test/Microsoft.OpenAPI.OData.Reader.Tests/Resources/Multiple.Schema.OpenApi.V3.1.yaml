@@ -1,0 +1,5483 @@
+openapi: '3.1.1'
+info:
+  title: OData Service for namespace Default
+  description: This OData service is located at http://localhost
+  version: 1.0.0
+servers:
+  - url: http://localhost
+paths:
+  /Categories:
+    description: Provides operations to manage the collection of CategoryDto entities.
+    get:
+      tags:
+        - Categories.CategoryDto
+      summary: Get entities from Categories
+      operationId: Categories.CategoryDto.ListCategoryDto
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Name
+                - Name desc
+                - Description
+                - Description desc
+                - CreationDate
+                - CreationDate desc
+                - ModificationDate
+                - ModificationDate desc
+                - DomainId
+                - DomainId desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Description
+                - CreationDate
+                - ModificationDate
+                - DomainId
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Categories.CategoryDto
+      summary: Add new entity to Categories
+      operationId: Categories.CategoryDto.CreateCategoryDto
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.CategoryDto'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.CategoryDto'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Categories({Id})':
+    description: Provides operations to manage the collection of CategoryDto entities.
+    get:
+      tags:
+        - Categories.CategoryDto
+      summary: Get entity from Categories by key
+      operationId: Categories.CategoryDto.GetCategoryDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of CategoryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: CategoryDto
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Description
+                - CreationDate
+                - ModificationDate
+                - DomainId
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.CategoryDto'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Categories.CategoryDto
+      summary: Update entity in Categories
+      operationId: Categories.CategoryDto.UpdateCategoryDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of CategoryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: CategoryDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.CategoryDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Categories.CategoryDto
+      summary: Delete entity from Categories
+      operationId: Categories.CategoryDto.DeleteCategoryDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of CategoryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: CategoryDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  /Categories/$count:
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Categories.CategoryDto
+      summary: Get the number of the resource
+      operationId: Categories.GetCount-2f72
+      parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  /Documents:
+    description: Provides operations to manage the collection of DocumentDto entities.
+    get:
+      tags:
+        - Documents.DocumentDto
+      summary: Get entities from Documents
+      operationId: Documents.DocumentDto.ListDocumentDto
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Name
+                - Name desc
+                - Description
+                - Description desc
+                - Filename
+                - Filename desc
+                - NumberOfRevisions
+                - NumberOfRevisions desc
+                - Suffix
+                - Suffix desc
+                - DomainId
+                - DomainId desc
+                - ModificationDate
+                - ModificationDate desc
+                - ModifiedBy
+                - ModifiedBy desc
+                - Tags
+                - Tags desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Description
+                - Filename
+                - NumberOfRevisions
+                - Suffix
+                - DomainId
+                - ModificationDate
+                - ModifiedBy
+                - Tags
+                - Revisions
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Revisions
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Documents.DocumentDto
+      summary: Add new entity to Documents
+      operationId: Documents.DocumentDto.CreateDocumentDto
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Documents({Id})':
+    description: Provides operations to manage the collection of DocumentDto entities.
+    get:
+      tags:
+        - Documents.DocumentDto
+      summary: Get entity from Documents by key
+      operationId: Documents.DocumentDto.GetDocumentDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Description
+                - Filename
+                - NumberOfRevisions
+                - Suffix
+                - DomainId
+                - ModificationDate
+                - ModifiedBy
+                - Tags
+                - Revisions
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Revisions
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+          links:
+            Revisions:
+              operationId: Documents.ListRevisions
+            Upload:
+              operationId: Documents.DocumentDto.Upload
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Documents.DocumentDto
+      summary: Update entity in Documents
+      operationId: Documents.DocumentDto.UpdateDocumentDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Documents.DocumentDto
+      summary: Delete entity from Documents
+      operationId: Documents.DocumentDto.DeleteDocumentDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Documents({Id})/Default.Upload':
+    description: Provides operations to call the Upload method.
+    post:
+      tags:
+        - Documents.DocumentDto.Actions
+      summary: Invoke action Upload
+      operationId: Documents.DocumentDto.Upload
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+      responses:
+        '200':
+          $ref: '#/components/responses/UploadResponse'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
+  '/Documents({Id})/Revisions':
+    description: Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity.
+    get:
+      tags:
+        - Documents.RevisionDto
+      summary: Get Revisions from Documents
+      operationId: Documents.ListRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Number
+                - Number desc
+                - DocumentId
+                - DocumentId desc
+                - DocumentName
+                - DocumentName desc
+                - DocumentDescription
+                - DocumentDescription desc
+                - CreationDate
+                - CreationDate desc
+                - CreatedBy
+                - CreatedBy desc
+                - IsReviewed
+                - IsReviewed desc
+                - ReviewedBy
+                - ReviewedBy desc
+                - ReviewedDate
+                - ReviewedDate desc
+                - IsApproved
+                - IsApproved desc
+                - ApprovedBy
+                - ApprovedBy desc
+                - ApprovedDate
+                - ApprovedDate desc
+                - IsRejected
+                - IsRejected desc
+                - RejectedBy
+                - RejectedBy desc
+                - RejectedDate
+                - RejectedDate desc
+                - DomainId
+                - DomainId desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Number
+                - DocumentId
+                - DocumentName
+                - DocumentDescription
+                - CreationDate
+                - CreatedBy
+                - IsReviewed
+                - ReviewedBy
+                - ReviewedDate
+                - IsApproved
+                - ApprovedBy
+                - ApprovedDate
+                - IsRejected
+                - RejectedBy
+                - RejectedDate
+                - DomainId
+                - Document
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Document
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Documents({Id})/Revisions({Id1})/$ref':
+    description: Provides operations to manage the collection of DocumentDto entities.
+    delete:
+      tags:
+        - Documents.RevisionDto
+      summary: Delete ref of navigation property Revisions for Documents
+      operationId: Documents.revisions.DeleteRefRevisionDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: Id1
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Documents({Id})/Revisions/$count':
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Documents.RevisionDto
+      summary: Get the number of the resource
+      operationId: Documents.Revisions.GetCount-f834
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  '/Documents({Id})/Revisions/$ref':
+    description: Provides operations to manage the collection of DocumentDto entities.
+    get:
+      tags:
+        - Documents.RevisionDto
+      summary: Get ref of Revisions from Documents
+      operationId: Documents.ListRefRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Number
+                - Number desc
+                - DocumentId
+                - DocumentId desc
+                - DocumentName
+                - DocumentName desc
+                - DocumentDescription
+                - DocumentDescription desc
+                - CreationDate
+                - CreationDate desc
+                - CreatedBy
+                - CreatedBy desc
+                - IsReviewed
+                - IsReviewed desc
+                - ReviewedBy
+                - ReviewedBy desc
+                - ReviewedDate
+                - ReviewedDate desc
+                - IsApproved
+                - IsApproved desc
+                - ApprovedBy
+                - ApprovedBy desc
+                - ApprovedDate
+                - ApprovedDate desc
+                - IsRejected
+                - IsRejected desc
+                - RejectedBy
+                - RejectedBy desc
+                - RejectedDate
+                - RejectedDate desc
+                - DomainId
+                - DomainId desc
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/StringCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Documents.RevisionDto
+      summary: Create new navigation property ref to Revisions for Documents
+      operationId: Documents.CreateRefRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+      requestBody:
+        $ref: '#/components/requestBodies/refPostBody'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Documents.RevisionDto
+      summary: Delete ref of navigation property Revisions for Documents
+      operationId: Documents.DeleteRefRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+        - name: '@id'
+          in: query
+          description: The delete Uri
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Documents({Id})/Tags':
+    get:
+      tags:
+        - Documents.DocumentTagRelDto
+      summary: Get Tags property value
+      operationId: Documents.ListTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+                - Name desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      tags:
+        - Documents.DocumentTagRelDto
+      summary: Update property Tags value.
+      operationId: Documents.UpdateTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Documents.DocumentTagRelDto
+      summary: Sets a new value for the collection of DocumentTagRelDto.
+      operationId: Documents.SetTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  '/Documents({Id})/Tags/$count':
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Documents.DocumentTagRelDto
+      summary: Get the number of the resource
+      operationId: Documents.Tags.GetCount-ed53
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  /Documents/$count:
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Documents.DocumentDto
+      summary: Get the number of the resource
+      operationId: Documents.GetCount-f555
+      parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  /Libraries:
+    description: Provides operations to manage the collection of LibraryDto entities.
+    get:
+      tags:
+        - Libraries.LibraryDto
+      summary: Get entities from Libraries
+      operationId: Libraries.LibraryDto.ListLibraryDto
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Name
+                - Name desc
+                - Number
+                - Number desc
+                - Description
+                - Description desc
+                - LibraryTemplateId
+                - LibraryTemplateId desc
+                - ParentTypeId
+                - ParentTypeId desc
+                - ParentId
+                - ParentId desc
+                - AllowMultiple
+                - AllowMultiple desc
+                - AutoCreate
+                - AutoCreate desc
+                - TypeId
+                - TypeId desc
+                - DomainId
+                - DomainId desc
+                - CreatedBy
+                - CreatedBy desc
+                - CreationDate
+                - CreationDate desc
+                - ModifiedBy
+                - ModifiedBy desc
+                - ModificationDate
+                - ModificationDate desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Number
+                - Description
+                - LibraryTemplateId
+                - ParentTypeId
+                - ParentId
+                - AllowMultiple
+                - AutoCreate
+                - TypeId
+                - DomainId
+                - CreatedBy
+                - CreationDate
+                - ModifiedBy
+                - ModificationDate
+                - Documents
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Documents
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Libraries.LibraryDto
+      summary: Add new entity to Libraries
+      operationId: Libraries.LibraryDto.CreateLibraryDto
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDto'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDto'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Libraries({Id})':
+    description: Provides operations to manage the collection of LibraryDto entities.
+    get:
+      tags:
+        - Libraries.LibraryDto
+      summary: Get entity from Libraries by key
+      operationId: Libraries.LibraryDto.GetLibraryDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Number
+                - Description
+                - LibraryTemplateId
+                - ParentTypeId
+                - ParentId
+                - AllowMultiple
+                - AutoCreate
+                - TypeId
+                - DomainId
+                - CreatedBy
+                - CreationDate
+                - ModifiedBy
+                - ModificationDate
+                - Documents
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Documents
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDto'
+          links:
+            Documents:
+              operationId: Libraries.ListDocuments
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Libraries.LibraryDto
+      summary: Update entity in Libraries
+      operationId: Libraries.LibraryDto.UpdateLibraryDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Libraries.LibraryDto
+      summary: Delete entity from Libraries
+      operationId: Libraries.LibraryDto.DeleteLibraryDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Libraries({Id})/Documents':
+    description: Provides operations to manage the Documents property of the Siterra.Documents.App.DTO.LibraryDto entity.
+    get:
+      tags:
+        - Libraries.DocumentDto
+      summary: Get Documents from Libraries
+      operationId: Libraries.ListDocuments
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Name
+                - Name desc
+                - Description
+                - Description desc
+                - Filename
+                - Filename desc
+                - NumberOfRevisions
+                - NumberOfRevisions desc
+                - Suffix
+                - Suffix desc
+                - DomainId
+                - DomainId desc
+                - ModificationDate
+                - ModificationDate desc
+                - ModifiedBy
+                - ModifiedBy desc
+                - Tags
+                - Tags desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Description
+                - Filename
+                - NumberOfRevisions
+                - Suffix
+                - DomainId
+                - ModificationDate
+                - ModifiedBy
+                - Tags
+                - Revisions
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Revisions
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Libraries({Id})/Documents({Id1})/$ref':
+    description: Provides operations to manage the collection of LibraryDto entities.
+    delete:
+      tags:
+        - Libraries.DocumentDto
+      summary: Delete ref of navigation property Documents for Libraries
+      operationId: Libraries.documents.DeleteRefDocumentDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - name: Id1
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Libraries({Id})/Documents({Id1})/Tags':
+    get:
+      tags:
+        - Libraries.DocumentDto.DocumentTagRelDto
+      summary: Get Tags property value
+      operationId: Libraries.Documents.ListTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - name: Id1
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+                - Name desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      tags:
+        - Libraries.DocumentDto.DocumentTagRelDto
+      summary: Update property Tags value.
+      operationId: Libraries.Documents.UpdateTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - name: Id1
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Libraries.DocumentDto.DocumentTagRelDto
+      summary: Sets a new value for the collection of DocumentTagRelDto.
+      operationId: Libraries.Documents.SetTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - name: Id1
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  '/Libraries({Id})/Documents({Id1})/Tags/$count':
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Libraries.DocumentDto.DocumentTagRelDto
+      summary: Get the number of the resource
+      operationId: Libraries.Documents.Tags.GetCount-2853
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - name: Id1
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  '/Libraries({Id})/Documents/$count':
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Libraries.DocumentDto
+      summary: Get the number of the resource
+      operationId: Libraries.Documents.GetCount-34c7
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  '/Libraries({Id})/Documents/$ref':
+    description: Provides operations to manage the collection of LibraryDto entities.
+    get:
+      tags:
+        - Libraries.DocumentDto
+      summary: Get ref of Documents from Libraries
+      operationId: Libraries.ListRefDocuments
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Name
+                - Name desc
+                - Description
+                - Description desc
+                - Filename
+                - Filename desc
+                - NumberOfRevisions
+                - NumberOfRevisions desc
+                - Suffix
+                - Suffix desc
+                - DomainId
+                - DomainId desc
+                - ModificationDate
+                - ModificationDate desc
+                - ModifiedBy
+                - ModifiedBy desc
+                - Tags
+                - Tags desc
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/StringCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Libraries.DocumentDto
+      summary: Create new navigation property ref to Documents for Libraries
+      operationId: Libraries.CreateRefDocuments
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+      requestBody:
+        $ref: '#/components/requestBodies/refPostBody'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Libraries.DocumentDto
+      summary: Delete ref of navigation property Documents for Libraries
+      operationId: Libraries.DeleteRefDocuments
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of LibraryDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: LibraryDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+        - name: '@id'
+          in: query
+          description: The delete Uri
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  /Libraries/$count:
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Libraries.LibraryDto
+      summary: Get the number of the resource
+      operationId: Libraries.GetCount-e13e
+      parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  /Revisions:
+    description: Provides operations to manage the collection of RevisionDto entities.
+    get:
+      tags:
+        - Revisions.RevisionDto
+      summary: Get entities from Revisions
+      operationId: Revisions.RevisionDto.ListRevisionDto
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Number
+                - Number desc
+                - DocumentId
+                - DocumentId desc
+                - DocumentName
+                - DocumentName desc
+                - DocumentDescription
+                - DocumentDescription desc
+                - CreationDate
+                - CreationDate desc
+                - CreatedBy
+                - CreatedBy desc
+                - IsReviewed
+                - IsReviewed desc
+                - ReviewedBy
+                - ReviewedBy desc
+                - ReviewedDate
+                - ReviewedDate desc
+                - IsApproved
+                - IsApproved desc
+                - ApprovedBy
+                - ApprovedBy desc
+                - ApprovedDate
+                - ApprovedDate desc
+                - IsRejected
+                - IsRejected desc
+                - RejectedBy
+                - RejectedBy desc
+                - RejectedDate
+                - RejectedDate desc
+                - DomainId
+                - DomainId desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Number
+                - DocumentId
+                - DocumentName
+                - DocumentDescription
+                - CreationDate
+                - CreatedBy
+                - IsReviewed
+                - ReviewedBy
+                - ReviewedDate
+                - IsApproved
+                - ApprovedBy
+                - ApprovedDate
+                - IsRejected
+                - RejectedBy
+                - RejectedDate
+                - DomainId
+                - Document
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Document
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Revisions.RevisionDto
+      summary: Add new entity to Revisions
+      operationId: Revisions.RevisionDto.CreateRevisionDto
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Revisions({Id})':
+    description: Provides operations to manage the collection of RevisionDto entities.
+    get:
+      tags:
+        - Revisions.RevisionDto
+      summary: Get entity from Revisions by key
+      operationId: Revisions.RevisionDto.GetRevisionDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Number
+                - DocumentId
+                - DocumentName
+                - DocumentDescription
+                - CreationDate
+                - CreatedBy
+                - IsReviewed
+                - ReviewedBy
+                - ReviewedDate
+                - IsApproved
+                - ApprovedBy
+                - ApprovedDate
+                - IsRejected
+                - RejectedBy
+                - RejectedDate
+                - DomainId
+                - Document
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Document
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+          links:
+            Document:
+              operationId: Revisions.GetDocument
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Revisions.RevisionDto
+      summary: Update entity in Revisions
+      operationId: Revisions.RevisionDto.UpdateRevisionDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Revisions.RevisionDto
+      summary: Delete entity from Revisions
+      operationId: Revisions.RevisionDto.DeleteRevisionDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Revisions({Id})/Document':
+    description: Provides operations to manage the Document property of the Siterra.Documents.App.DTO.RevisionDto entity.
+    get:
+      tags:
+        - Revisions.Document
+      summary: Get Document from Revisions
+      operationId: Revisions.GetDocument
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Description
+                - StatusId
+                - TypeId
+                - Keywords
+                - CreationDate
+                - CreatedBy
+                - ModificationDate
+                - ModifiedBy
+                - DomainId
+                - LibraryId
+                - OwnerUserId
+                - StatusDate
+                - LastRevisionId
+                - CheckoutDate
+                - CheckoutPath
+                - CheckoutUserId
+                - Number
+                - OriginalDate
+                - FileSized
+                - FileClientPath
+                - LastRevisionFileId
+                - IsDeleted
+                - IsNa
+                - IsRejected
+                - IsReviewed
+                - NaDescription
+                - NaReason
+                - RejectedDescription
+                - RejectedReason
+                - ReviewDescription
+                - SourceDocumentId
+                - ScraperMapId
+                - LastDownloadedDate
+                - SmsId
+                - IsApprovedOld
+                - Suffix
+                - ScrapeResultId
+                - IsApproved
+                - CategoryId
+                - SectionId
+                - VersionCount
+                - LastFileName
+                - DocumentClasses
+                - Tags
+                - Library
+                - LastRevisionFile
+                - SourceDocument
+                - SourceDocumentChildren
+                - Revisions
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Library
+                - LastRevisionFile
+                - SourceDocument
+                - SourceDocumentChildren
+                - Revisions
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+          links:
+            Library:
+              operationId: Revisions.Document.GetLibrary
+            LastRevisionFile:
+              operationId: Revisions.Document.GetLastRevisionFile
+            SourceDocument:
+              operationId: Revisions.Document.GetSourceDocument
+            SourceDocumentChildren:
+              operationId: Revisions.Document.ListSourceDocumentChildren
+            Revisions:
+              operationId: Revisions.Document.ListRevisions
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Revisions({Id})/Document/$ref':
+    description: Provides operations to manage the collection of RevisionDto entities.
+    get:
+      tags:
+        - Revisions.Document
+      summary: Get ref of Document from Revisions
+      operationId: Revisions.GetRefDocument
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+      responses:
+        '200':
+          description: Retrieved navigation property link
+          content:
+            application/json:
+              schema:
+                type: string
+          links:
+            Library:
+              operationId: Revisions.Document.GetLibrary
+            LastRevisionFile:
+              operationId: Revisions.Document.GetLastRevisionFile
+            SourceDocument:
+              operationId: Revisions.Document.GetSourceDocument
+            SourceDocumentChildren:
+              operationId: Revisions.Document.ListSourceDocumentChildren
+            Revisions:
+              operationId: Revisions.Document.ListRevisions
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    put:
+      tags:
+        - Revisions.Document
+      summary: Update the ref of navigation property Document in Revisions
+      operationId: Revisions.UpdateRefDocument
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+      requestBody:
+        $ref: '#/components/requestBodies/refPutBody'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Revisions.Document
+      summary: Delete ref of navigation property Document for Revisions
+      operationId: Revisions.DeleteRefDocument
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Revisions({Id})/Document/DocumentClasses':
+    get:
+      tags:
+        - Revisions.Document.DocumentClass
+      summary: Get DocumentClasses property value
+      operationId: Revisions.Document.ListDocumentClasses
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - ClassInstance
+                - ClassInstance desc
+                - ClassId
+                - ClassId desc
+                - DocumentId
+                - DocumentId desc
+                - CreatedBy
+                - CreatedBy desc
+                - CreationDate
+                - CreationDate desc
+                - ModifiedBy
+                - ModifiedBy desc
+                - ModificationDate
+                - ModificationDate desc
+                - IsPrimary
+                - IsPrimary desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - ClassInstance
+                - ClassId
+                - DocumentId
+                - CreatedBy
+                - CreationDate
+                - ModifiedBy
+                - ModificationDate
+                - IsPrimary
+                - Document
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Document
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      tags:
+        - Revisions.Document.DocumentClass
+      summary: Update property DocumentClasses value.
+      operationId: Revisions.Document.UpdateDocumentClasses
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Revisions.Document.DocumentClass
+      summary: Sets a new value for the collection of DocumentClass.
+      operationId: Revisions.Document.SetDocumentClasses
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  '/Revisions({Id})/Document/DocumentClasses/$count':
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Revisions.Document.DocumentClass
+      summary: Get the number of the resource
+      operationId: Revisions.Document.DocumentClasses.GetCount-6342
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  '/Revisions({Id})/Document/Tags':
+    get:
+      tags:
+        - Revisions.Document.DocumentTagRel
+      summary: Get Tags property value
+      operationId: Revisions.Document.ListTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - DocumentId
+                - DocumentId desc
+                - TagId
+                - TagId desc
+                - DomainId
+                - DomainId desc
+                - CreatedBy
+                - CreatedBy desc
+                - ModifiedBy
+                - ModifiedBy desc
+                - CreationDate
+                - CreationDate desc
+                - ModificationDate
+                - ModificationDate desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - DocumentId
+                - TagId
+                - DomainId
+                - CreatedBy
+                - ModifiedBy
+                - CreationDate
+                - ModificationDate
+                - Document
+                - Tag
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Document
+                - Tag
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      tags:
+        - Revisions.Document.DocumentTagRel
+      summary: Update property Tags value.
+      operationId: Revisions.Document.UpdateTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Revisions.Document.DocumentTagRel
+      summary: Sets a new value for the collection of DocumentTagRel.
+      operationId: Revisions.Document.SetTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  '/Revisions({Id})/Document/Tags/$count':
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Revisions.Document.DocumentTagRel
+      summary: Get the number of the resource
+      operationId: Revisions.Document.Tags.GetCount-161f
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  /Revisions/$count:
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Revisions.RevisionDto
+      summary: Get the number of the resource
+      operationId: Revisions.GetCount-c6a5
+      parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  /Tasks:
+    description: Provides operations to manage the collection of DocumentDto entities.
+    get:
+      tags:
+        - Tasks.DocumentDto
+      summary: Get entities from Tasks
+      operationId: Tasks.DocumentDto.ListDocumentDto
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Name
+                - Name desc
+                - Description
+                - Description desc
+                - Filename
+                - Filename desc
+                - NumberOfRevisions
+                - NumberOfRevisions desc
+                - Suffix
+                - Suffix desc
+                - DomainId
+                - DomainId desc
+                - ModificationDate
+                - ModificationDate desc
+                - ModifiedBy
+                - ModifiedBy desc
+                - Tags
+                - Tags desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Description
+                - Filename
+                - NumberOfRevisions
+                - Suffix
+                - DomainId
+                - ModificationDate
+                - ModifiedBy
+                - Tags
+                - Revisions
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Revisions
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Tasks.DocumentDto
+      summary: Add new entity to Tasks
+      operationId: Tasks.DocumentDto.CreateDocumentDto
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Tasks({Id})':
+    description: Provides operations to manage the collection of DocumentDto entities.
+    get:
+      tags:
+        - Tasks.DocumentDto
+      summary: Get entity from Tasks by key
+      operationId: Tasks.DocumentDto.GetDocumentDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Name
+                - Description
+                - Filename
+                - NumberOfRevisions
+                - Suffix
+                - DomainId
+                - ModificationDate
+                - ModifiedBy
+                - Tags
+                - Revisions
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Revisions
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+          links:
+            Revisions:
+              operationId: Tasks.ListRevisions
+            Upload:
+              operationId: Tasks.DocumentDto.Upload
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Tasks.DocumentDto
+      summary: Update entity in Tasks
+      operationId: Tasks.DocumentDto.UpdateDocumentDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Tasks.DocumentDto
+      summary: Delete entity from Tasks
+      operationId: Tasks.DocumentDto.DeleteDocumentDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Tasks({Id})/Default.Upload':
+    description: Provides operations to call the Upload method.
+    post:
+      tags:
+        - Tasks.DocumentDto.Actions
+      summary: Invoke action Upload
+      operationId: Tasks.DocumentDto.Upload
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+      responses:
+        '200':
+          $ref: '#/components/responses/UploadResponse'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
+  '/Tasks({Id})/Revisions':
+    description: Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity.
+    get:
+      tags:
+        - Tasks.RevisionDto
+      summary: Get Revisions from Tasks
+      operationId: Tasks.ListRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Number
+                - Number desc
+                - DocumentId
+                - DocumentId desc
+                - DocumentName
+                - DocumentName desc
+                - DocumentDescription
+                - DocumentDescription desc
+                - CreationDate
+                - CreationDate desc
+                - CreatedBy
+                - CreatedBy desc
+                - IsReviewed
+                - IsReviewed desc
+                - ReviewedBy
+                - ReviewedBy desc
+                - ReviewedDate
+                - ReviewedDate desc
+                - IsApproved
+                - IsApproved desc
+                - ApprovedBy
+                - ApprovedBy desc
+                - ApprovedDate
+                - ApprovedDate desc
+                - IsRejected
+                - IsRejected desc
+                - RejectedBy
+                - RejectedBy desc
+                - RejectedDate
+                - RejectedDate desc
+                - DomainId
+                - DomainId desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Number
+                - DocumentId
+                - DocumentName
+                - DocumentDescription
+                - CreationDate
+                - CreatedBy
+                - IsReviewed
+                - ReviewedBy
+                - ReviewedDate
+                - IsApproved
+                - ApprovedBy
+                - ApprovedDate
+                - IsRejected
+                - RejectedBy
+                - RejectedDate
+                - DomainId
+                - Document
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Document
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Tasks({Id})/Revisions({Id1})/$ref':
+    description: Provides operations to manage the collection of DocumentDto entities.
+    delete:
+      tags:
+        - Tasks.RevisionDto
+      summary: Delete ref of navigation property Revisions for Tasks
+      operationId: Tasks.revisions.DeleteRefRevisionDto
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: Id1
+          in: path
+          description: The unique identifier of RevisionDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: RevisionDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Tasks({Id})/Revisions/$count':
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Tasks.RevisionDto
+      summary: Get the number of the resource
+      operationId: Tasks.Revisions.GetCount-9297
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  '/Tasks({Id})/Revisions/$ref':
+    description: Provides operations to manage the collection of DocumentDto entities.
+    get:
+      tags:
+        - Tasks.RevisionDto
+      summary: Get ref of Revisions from Tasks
+      operationId: Tasks.ListRefRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Id
+                - Id desc
+                - Number
+                - Number desc
+                - DocumentId
+                - DocumentId desc
+                - DocumentName
+                - DocumentName desc
+                - DocumentDescription
+                - DocumentDescription desc
+                - CreationDate
+                - CreationDate desc
+                - CreatedBy
+                - CreatedBy desc
+                - IsReviewed
+                - IsReviewed desc
+                - ReviewedBy
+                - ReviewedBy desc
+                - ReviewedDate
+                - ReviewedDate desc
+                - IsApproved
+                - IsApproved desc
+                - ApprovedBy
+                - ApprovedBy desc
+                - ApprovedDate
+                - ApprovedDate desc
+                - IsRejected
+                - IsRejected desc
+                - RejectedBy
+                - RejectedBy desc
+                - RejectedDate
+                - RejectedDate desc
+                - DomainId
+                - DomainId desc
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/StringCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Tasks.RevisionDto
+      summary: Create new navigation property ref to Revisions for Tasks
+      operationId: Tasks.CreateRefRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+      requestBody:
+        $ref: '#/components/requestBodies/refPostBody'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Tasks.RevisionDto
+      summary: Delete ref of navigation property Revisions for Tasks
+      operationId: Tasks.DeleteRefRevisions
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+        - name: '@id'
+          in: query
+          description: The delete Uri
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Tasks({Id})/Tags':
+    get:
+      tags:
+        - Tasks.DocumentTagRelDto
+      summary: Get Tags property value
+      operationId: Tasks.ListTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+                - Name desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      tags:
+        - Tasks.DocumentTagRelDto
+      summary: Update property Tags value.
+      operationId: Tasks.UpdateTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - Tasks.DocumentTagRelDto
+      summary: Sets a new value for the collection of DocumentTagRelDto.
+      operationId: Tasks.SetTags
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  '/Tasks({Id})/Tags/$count':
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Tasks.DocumentTagRelDto
+      summary: Get the number of the resource
+      operationId: Tasks.Tags.GetCount-3a1b
+      parameters:
+        - name: Id
+          in: path
+          description: The unique identifier of DocumentDto
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: number
+            format: int32
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+  /Tasks/$count:
+    description: Provides operations to count the resources in the collection.
+    get:
+      tags:
+        - Tasks.DocumentDto
+      summary: Get the number of the resource
+      operationId: Tasks.GetCount-2961
+      parameters:
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ODataCountResponse'
+        default:
+          $ref: '#/components/responses/error'
+components:
+  schemas:
+    Default.ODataErrors.ODataError:
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/Default.ODataErrors.MainError'
+    Default.ODataErrors.MainError:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+          x-ms-primary-error-message: true
+        target:
+          type:
+            - 'null'
+            - string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/Default.ODataErrors.ErrorDetails'
+        innerError:
+          $ref: '#/components/schemas/Default.ODataErrors.InnerError'
+    Default.ODataErrors.ErrorDetails:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type:
+            - 'null'
+            - string
+    Default.ODataErrors.InnerError:
+      type: object
+      description: The structure of this object is service-specific
+    ODataCountResponse:
+      type: number
+      format: int64
+    StringCollectionResponse:
+      title: Collection of string
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: string
+    ReferenceUpdate:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+        '@odata.type':
+          type:
+            - 'null'
+            - string
+    ReferenceCreate:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+      additionalProperties:
+        type: object
+    ReferenceNumeric:
+      enum:
+        - '-INF'
+        - INF
+        - NaN
+      type:
+        - 'null'
+        - string
+    Siterra.Documents.App.DTO.DocumentDto:
+      title: DocumentDto
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Name:
+          type:
+            - 'null'
+            - string
+        Description:
+          type:
+            - 'null'
+            - string
+        Filename:
+          type:
+            - 'null'
+            - string
+        NumberOfRevisions:
+          type:
+            - 'null'
+            - string
+        Suffix:
+          type:
+            - 'null'
+            - string
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+        Revisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+          x-ms-navigationProperty: true
+      example:
+        Id: 0
+        Name: string
+        Description: string
+        Filename: string
+        NumberOfRevisions: string
+        Suffix: string
+        DomainId: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        Tags:
+          - '@odata.type': Siterra.Documents.App.DTO.DocumentTagRelDto
+        Revisions:
+          - '@odata.type': Siterra.Documents.App.DTO.RevisionDto
+    Siterra.Documents.App.DTO.LibraryDto:
+      title: LibraryDto
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Name:
+          type:
+            - 'null'
+            - string
+        Number:
+          type:
+            - 'null'
+            - string
+        Description:
+          type:
+            - 'null'
+            - string
+        LibraryTemplateId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ParentTypeId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ParentId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        AllowMultiple:
+          type: boolean
+        AutoCreate:
+          type: boolean
+        TypeId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        Documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+          x-ms-navigationProperty: true
+      example:
+        Id: 0
+        Name: string
+        Number: string
+        Description: string
+        LibraryTemplateId: 0
+        ParentTypeId: 0
+        ParentId: 0
+        AllowMultiple: true
+        AutoCreate: true
+        TypeId: 0
+        DomainId: 0
+        CreatedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Documents:
+          - '@odata.type': Siterra.Documents.App.DTO.DocumentDto
+    Siterra.Documents.App.DTO.RevisionDto:
+      title: RevisionDto
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DocumentId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        DocumentName:
+          type:
+            - 'null'
+            - string
+        DocumentDescription:
+          type:
+            - 'null'
+            - string
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        IsReviewed:
+          type: boolean
+        ReviewedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ReviewedDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        IsApproved:
+          type: boolean
+        ApprovedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ApprovedDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        IsRejected:
+          type: boolean
+        RejectedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        RejectedDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Document:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+            - type: 'null'
+          x-ms-navigationProperty: true
+      example:
+        Id: 0
+        Number: 0
+        DocumentId: 0
+        DocumentName: string
+        DocumentDescription: string
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreatedBy: 0
+        IsReviewed: true
+        ReviewedBy: 0
+        ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
+        IsApproved: true
+        ApprovedBy: 0
+        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
+        IsRejected: true
+        RejectedBy: 0
+        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
+        Document:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.App.DTO.CategoryDto:
+      title: CategoryDto
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Name:
+          type:
+            - 'null'
+            - string
+        Description:
+          type:
+            - 'null'
+            - string
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+      example:
+        Id: 0
+        Name: string
+        Description: string
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
+    Siterra.Documents.App.DTO.DocumentTagRelDto:
+      title: DocumentTagRelDto
+      type: object
+      properties:
+        Name:
+          type:
+            - 'null'
+            - string
+      example:
+        Name: string
+    Siterra.Documents.BusinessLogic.Entities.Document.Document:
+      title: Document
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Name:
+          type:
+            - 'null'
+            - string
+        Description:
+          type:
+            - 'null'
+            - string
+        StatusId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        TypeId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Keywords:
+          type:
+            - 'null'
+            - string
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        LibraryId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        OwnerUserId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        StatusDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        LastRevisionId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        CheckoutDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        CheckoutPath:
+          type:
+            - 'null'
+            - string
+        CheckoutUserId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        Number:
+          type:
+            - 'null'
+            - string
+        OriginalDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        FileSized:
+          type: number
+          format: decimal
+        FileClientPath:
+          type:
+            - 'null'
+            - string
+        LastRevisionFileId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        IsDeleted:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        IsNa:
+          type:
+            - 'null'
+            - number
+          format: decimal
+        IsRejected:
+          type:
+            - 'null'
+            - number
+          format: decimal
+        IsReviewed:
+          type:
+            - 'null'
+            - number
+          format: decimal
+        NaDescription:
+          type:
+            - 'null'
+            - string
+        NaReason:
+          type:
+            - 'null'
+            - string
+        RejectedDescription:
+          type:
+            - 'null'
+            - string
+        RejectedReason:
+          type:
+            - 'null'
+            - string
+        ReviewDescription:
+          type:
+            - 'null'
+            - string
+        SourceDocumentId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ScraperMapId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        LastDownloadedDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        SmsId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        IsApprovedOld:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        Suffix:
+          type:
+            - 'null'
+            - string
+        ScrapeResultId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        IsApproved:
+          type:
+            - 'null'
+            - number
+          format: decimal
+        CategoryId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        SectionId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        VersionCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        LastFileName:
+          type:
+            - 'null'
+            - string
+        DocumentClasses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
+        Library:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+            - type: 'null'
+          x-ms-navigationProperty: true
+        LastRevisionFile:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile'
+            - type: 'null'
+          x-ms-navigationProperty: true
+        SourceDocument:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+            - type: 'null'
+          x-ms-navigationProperty: true
+        SourceDocumentChildren:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+          x-ms-navigationProperty: true
+        Revisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
+          x-ms-navigationProperty: true
+      example:
+        Id: 0
+        Name: string
+        Description: string
+        StatusId: 0
+        TypeId: 0
+        Keywords: string
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreatedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        DomainId: 0
+        LibraryId: 0
+        OwnerUserId: 0
+        StatusDate: '0001-01-01T00:00:00.0000000+00:00'
+        LastRevisionId: 0
+        CheckoutDate: '0001-01-01T00:00:00.0000000+00:00'
+        CheckoutPath: string
+        CheckoutUserId: 0
+        Number: string
+        OriginalDate: '0001-01-01T00:00:00.0000000+00:00'
+        FileSized: 0
+        FileClientPath: string
+        LastRevisionFileId: 0
+        IsDeleted: 0
+        IsNa: 0
+        IsRejected: 0
+        IsReviewed: 0
+        NaDescription: string
+        NaReason: string
+        RejectedDescription: string
+        RejectedReason: string
+        ReviewDescription: string
+        SourceDocumentId: 0
+        ScraperMapId: 0
+        LastDownloadedDate: '0001-01-01T00:00:00.0000000+00:00'
+        SmsId: 0
+        IsApprovedOld: 0
+        Suffix: string
+        ScrapeResultId: 0
+        IsApproved: 0
+        CategoryId: 0
+        SectionId: 0
+        VersionCount: 0
+        LastFileName: string
+        DocumentClasses:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
+        Tags:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
+        Library:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        LastRevisionFile:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile
+        SourceDocument:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        SourceDocumentChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        Revisions:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Revision.Revision
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass:
+      title: DocumentClass
+      type: object
+      properties:
+        ClassInstance:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ClassId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DocumentId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        IsPrimary:
+          type: boolean
+        Document:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+            - type: 'null'
+          x-ms-navigationProperty: true
+      example:
+        ClassInstance: 0
+        ClassId: 0
+        DocumentId: 0
+        CreatedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        IsPrimary: true
+        Document:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel:
+      title: DocumentTagRel
+      type: object
+      properties:
+        DocumentId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        TagId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        Document:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+            - type: 'null'
+          x-ms-navigationProperty: true
+        Tag:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
+            - type: 'null'
+          x-ms-navigationProperty: true
+      example:
+        DocumentId: 0
+        TagId: 0
+        DomainId: 0
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Document:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        Tag:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Tags.Tag
+    Siterra.Documents.BusinessLogic.Entities.Library.Library:
+      title: Library
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Name:
+          type:
+            - 'null'
+            - string
+        ParentFolderId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        Number:
+          type:
+            - 'null'
+            - string
+        TypeId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        OwnerUserId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        TotalSize:
+          type: number
+          format: decimal
+        FilesCounter:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        FoldersCounter:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ProjectId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        SearchRingId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        SiteId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        AssetId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        AllowMultiple:
+          type: boolean
+        AutoCreate:
+          type: boolean
+        Description:
+          type:
+            - 'null'
+            - string
+        IsTemplate:
+          type: boolean
+        ProgramId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        SourceFolderId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        TemplateClassId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        TemplateSubType:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        IsHidden:
+          type: boolean
+        IsDeleted:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        StatusId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        SmsId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ContractId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        VendorId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        OrganizationUnitId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        IncidentId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        EventId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ClassInstance:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ClassId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        LibraryParent:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+            - type: 'null'
+          x-ms-navigationProperty: true
+        Type:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+            - type: 'null'
+          x-ms-navigationProperty: true
+        SourceFolder:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+            - type: 'null'
+          x-ms-navigationProperty: true
+        Documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+          x-ms-navigationProperty: true
+        LibraryChildren:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+          x-ms-navigationProperty: true
+        SourceLibraryChildren:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+          x-ms-navigationProperty: true
+      example:
+        Id: 0
+        DomainId: 0
+        Name: string
+        ParentFolderId: 0
+        Number: string
+        TypeId: 0
+        OwnerUserId: 0
+        TotalSize: 0
+        FilesCounter: 0
+        FoldersCounter: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        CreatedBy: 0
+        ProjectId: 0
+        SearchRingId: 0
+        SiteId: 0
+        AssetId: 0
+        AllowMultiple: true
+        AutoCreate: true
+        Description: string
+        IsTemplate: true
+        ProgramId: 0
+        SourceFolderId: 0
+        TemplateClassId: 0
+        TemplateSubType: 0
+        IsHidden: true
+        IsDeleted: 0
+        StatusId: 0
+        SmsId: 0
+        ContractId: 0
+        VendorId: 0
+        OrganizationUnitId: 0
+        IncidentId: 0
+        EventId: 0
+        ClassInstance: 0
+        ClassId: 0
+        LibraryParent:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        Type:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+        SourceFolder:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        LibraryChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        SourceLibraryChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+    Siterra.Documents.BusinessLogic.Entities.Library.LibraryType:
+      title: LibraryType
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Name:
+          type:
+            - 'null'
+            - string
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        Description:
+          type:
+            - 'null'
+            - string
+        XmlName:
+          type:
+            - 'null'
+            - string
+        MasterId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        Number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ClassId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ParentId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        HasChanged:
+          type: boolean
+        MasterLibraryType:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+            - type: 'null'
+          x-ms-navigationProperty: true
+        ParentLibraryTypes:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+            - type: 'null'
+          x-ms-navigationProperty: true
+        MasterLibraryTypeChildren:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+          x-ms-navigationProperty: true
+        ChildrenLibraryTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+          x-ms-navigationProperty: true
+      example:
+        Id: 0
+        Name: string
+        ModifiedBy: 0
+        CreatedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
+        Description: string
+        XmlName: string
+        MasterId: 0
+        Number: 0
+        ClassId: 0
+        ParentId: 0
+        HasChanged: true
+        MasterLibraryType:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+        ParentLibraryTypes:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+        MasterLibraryTypeChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+        ChildrenLibraryTypes:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+    Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile:
+      title: DocumentFile
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Name:
+          type:
+            - 'null'
+            - string
+        Path:
+          type:
+            - 'null'
+            - string
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        Sized:
+          type: number
+          format: decimal
+        ActualName:
+          type:
+            - 'null'
+            - string
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        SourceClassId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ContentTypeId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ClientPath:
+          type:
+            - 'null'
+            - string
+        IsSelfHosted:
+          maximum: 32767
+          minimum: -32768
+          type: number
+          format: int16
+        SmsId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        Latitude:
+          type:
+            - 'null'
+            - number
+          format: decimal
+        Longitude:
+          type:
+            - 'null'
+            - number
+          format: decimal
+        Documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+          x-ms-navigationProperty: true
+      example:
+        Id: 0
+        Name: string
+        Path: string
+        ModifiedBy: 0
+        CreatedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Sized: 0
+        ActualName: string
+        DomainId: 0
+        SourceClassId: 0
+        ContentTypeId: 0
+        ClientPath: string
+        IsSelfHosted: 0
+        SmsId: 0
+        Latitude: 0
+        Longitude: 0
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.BusinessLogic.Entities.Tags.Tag:
+      title: Tag
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Name:
+          type:
+            - 'null'
+            - string
+        Description:
+          type:
+            - 'null'
+            - string
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+      example:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+    Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag:
+      allOf:
+        - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
+        - title: UserDefinedTag
+          type: object
+          properties:
+            Documents:
+              type: array
+              items:
+                $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
+      example:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
+    Siterra.Documents.BusinessLogic.Entities.Tags.Section:
+      allOf:
+        - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
+        - title: Section
+          type: object
+          properties:
+            Documents:
+              type: array
+              items:
+                $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+              x-ms-navigationProperty: true
+      example:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.BusinessLogic.Entities.Tags.Category:
+      allOf:
+        - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
+        - title: Category
+          type: object
+          properties:
+            Documents:
+              type: array
+              items:
+                $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+              x-ms-navigationProperty: true
+      example:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.BusinessLogic.Entities.Revision.Revision:
+      title: Revision
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DocumentId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ModificationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        CreationDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        ModifiedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        CreatedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        Remarks:
+          type:
+            - 'null'
+            - string
+        FileId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DocumentOwnerContact:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        DocumentDescription:
+          type:
+            - 'null'
+            - string
+        DocumentStatusDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+        DocumentFolder:
+          type:
+            - 'null'
+            - string
+        DocumentKeywords:
+          type:
+            - 'null'
+            - string
+        DocumentStatus:
+          type:
+            - 'null'
+            - string
+        DocumentType:
+          type:
+            - 'null'
+            - string
+        DocumentName:
+          type:
+            - 'null'
+            - string
+        DocumentNumber:
+          type:
+            - 'null'
+            - string
+        DomainId:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        IsDeleted:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          format: int32
+        IsReviewed:
+          type: boolean
+        ReviewDescription:
+          type:
+            - 'null'
+            - string
+        ReviewedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        IsRejected:
+          type: boolean
+        RejectedReason:
+          type:
+            - 'null'
+            - string
+        RejectedDescription:
+          type:
+            - 'null'
+            - string
+        RejectedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        IsApproved:
+          type: boolean
+        ApprovedBy:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+            - 'null'
+            - number
+          format: int32
+        ReviewedDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        RejectedDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        ApprovedDate:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type:
+            - 'null'
+            - string
+          format: date-time
+        Document:
+          anyOf:
+            - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+            - type: 'null'
+          x-ms-navigationProperty: true
+      example:
+        Id: 0
+        Number: 0
+        DocumentId: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        CreatedBy: 0
+        Remarks: string
+        FileId: 0
+        DocumentOwnerContact: 0
+        DocumentDescription: string
+        DocumentStatusDate: '0001-01-01T00:00:00.0000000+00:00'
+        DocumentFolder: string
+        DocumentKeywords: string
+        DocumentStatus: string
+        DocumentType: string
+        DocumentName: string
+        DocumentNumber: string
+        DomainId: 0
+        IsDeleted: 0
+        IsReviewed: true
+        ReviewDescription: string
+        ReviewedBy: 0
+        IsRejected: true
+        RejectedReason: string
+        RejectedDescription: string
+        RejectedBy: 0
+        IsApproved: true
+        ApprovedBy: 0
+        ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
+        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
+        Document:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.App.DTO.DocumentDtoCollectionResponse:
+      title: Collection of DocumentDto
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+    Siterra.Documents.App.DTO.LibraryDtoCollectionResponse:
+      title: Collection of LibraryDto
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDto'
+    Siterra.Documents.App.DTO.RevisionDtoCollectionResponse:
+      title: Collection of RevisionDto
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+    Siterra.Documents.App.DTO.CategoryDtoCollectionResponse:
+      title: Collection of CategoryDto
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.CategoryDto'
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse:
+      title: Collection of Document
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+    Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse:
+      title: Collection of Revision
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
+    Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse:
+      title: Collection of Library
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+    Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse:
+      title: Collection of LibraryType
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+    Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse:
+      title: Collection of Siterra.Documents.App.DTO.DocumentTagRelDto
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse:
+      title: Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse:
+      title: Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
+  responses:
+    error:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Default.ODataErrors.ODataError'
+    ODataCountResponse:
+      description: The count of the resource
+      content:
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/ODataCountResponse'
+    Siterra.Documents.App.DTO.DocumentDtoCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
+    Siterra.Documents.App.DTO.LibraryDtoCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse'
+    Siterra.Documents.App.DTO.RevisionDtoCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+    Siterra.Documents.App.DTO.CategoryDtoCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse'
+    Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse'
+    StringCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StringCollectionResponse'
+    UploadResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Show only the first n items
+      explode: false
+      schema:
+        minimum: 0
+        type: number
+        format: int64
+      example: 50
+    skip:
+      name: $skip
+      in: query
+      description: Skip the first n items
+      explode: false
+      schema:
+        minimum: 0
+        type: number
+        format: int64
+    count:
+      name: $count
+      in: query
+      description: Include count of items
+      explode: false
+      schema:
+        type: boolean
+    filter:
+      name: $filter
+      in: query
+      description: Filter items by property values
+      explode: false
+      schema:
+        type: string
+    search:
+      name: $search
+      in: query
+      description: Search items by search phrases
+      explode: false
+      schema:
+        type: string
+  examples:
+    Siterra.Documents.App.DTO.DocumentDto:
+      value:
+        Id: 0
+        Name: string
+        Description: string
+        Filename: string
+        NumberOfRevisions: string
+        Suffix: string
+        DomainId: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        Tags:
+          - '@odata.type': Siterra.Documents.App.DTO.DocumentTagRelDto
+        Revisions:
+          - '@odata.type': Siterra.Documents.App.DTO.RevisionDto
+    Siterra.Documents.App.DTO.LibraryDto:
+      value:
+        Id: 0
+        Name: string
+        Number: string
+        Description: string
+        LibraryTemplateId: 0
+        ParentTypeId: 0
+        ParentId: 0
+        AllowMultiple: true
+        AutoCreate: true
+        TypeId: 0
+        DomainId: 0
+        CreatedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Documents:
+          - '@odata.type': Siterra.Documents.App.DTO.DocumentDto
+    Siterra.Documents.App.DTO.RevisionDto:
+      value:
+        Id: 0
+        Number: 0
+        DocumentId: 0
+        DocumentName: string
+        DocumentDescription: string
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreatedBy: 0
+        IsReviewed: true
+        ReviewedBy: 0
+        ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
+        IsApproved: true
+        ApprovedBy: 0
+        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
+        IsRejected: true
+        RejectedBy: 0
+        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
+        Document:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.App.DTO.CategoryDto:
+      value:
+        Id: 0
+        Name: string
+        Description: string
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
+    Siterra.Documents.App.DTO.DocumentTagRelDto:
+      value:
+        Name: string
+    Siterra.Documents.BusinessLogic.Entities.Document.Document:
+      value:
+        Id: 0
+        Name: string
+        Description: string
+        StatusId: 0
+        TypeId: 0
+        Keywords: string
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreatedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        DomainId: 0
+        LibraryId: 0
+        OwnerUserId: 0
+        StatusDate: '0001-01-01T00:00:00.0000000+00:00'
+        LastRevisionId: 0
+        CheckoutDate: '0001-01-01T00:00:00.0000000+00:00'
+        CheckoutPath: string
+        CheckoutUserId: 0
+        Number: string
+        OriginalDate: '0001-01-01T00:00:00.0000000+00:00'
+        FileSized: 0
+        FileClientPath: string
+        LastRevisionFileId: 0
+        IsDeleted: 0
+        IsNa: 0
+        IsRejected: 0
+        IsReviewed: 0
+        NaDescription: string
+        NaReason: string
+        RejectedDescription: string
+        RejectedReason: string
+        ReviewDescription: string
+        SourceDocumentId: 0
+        ScraperMapId: 0
+        LastDownloadedDate: '0001-01-01T00:00:00.0000000+00:00'
+        SmsId: 0
+        IsApprovedOld: 0
+        Suffix: string
+        ScrapeResultId: 0
+        IsApproved: 0
+        CategoryId: 0
+        SectionId: 0
+        VersionCount: 0
+        LastFileName: string
+        DocumentClasses:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
+        Tags:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
+        Library:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        LastRevisionFile:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile
+        SourceDocument:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        SourceDocumentChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        Revisions:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Revision.Revision
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass:
+      value:
+        ClassInstance: 0
+        ClassId: 0
+        DocumentId: 0
+        CreatedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        IsPrimary: true
+        Document:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel:
+      value:
+        DocumentId: 0
+        TagId: 0
+        DomainId: 0
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Document:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        Tag:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Tags.Tag
+    Siterra.Documents.BusinessLogic.Entities.Library.Library:
+      value:
+        Id: 0
+        DomainId: 0
+        Name: string
+        ParentFolderId: 0
+        Number: string
+        TypeId: 0
+        OwnerUserId: 0
+        TotalSize: 0
+        FilesCounter: 0
+        FoldersCounter: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        CreatedBy: 0
+        ProjectId: 0
+        SearchRingId: 0
+        SiteId: 0
+        AssetId: 0
+        AllowMultiple: true
+        AutoCreate: true
+        Description: string
+        IsTemplate: true
+        ProgramId: 0
+        SourceFolderId: 0
+        TemplateClassId: 0
+        TemplateSubType: 0
+        IsHidden: true
+        IsDeleted: 0
+        StatusId: 0
+        SmsId: 0
+        ContractId: 0
+        VendorId: 0
+        OrganizationUnitId: 0
+        IncidentId: 0
+        EventId: 0
+        ClassInstance: 0
+        ClassId: 0
+        LibraryParent:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        Type:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+        SourceFolder:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+        LibraryChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+        SourceLibraryChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.Library
+    Siterra.Documents.BusinessLogic.Entities.Library.LibraryType:
+      value:
+        Id: 0
+        Name: string
+        ModifiedBy: 0
+        CreatedBy: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        DomainId: 0
+        Description: string
+        XmlName: string
+        MasterId: 0
+        Number: 0
+        ClassId: 0
+        ParentId: 0
+        HasChanged: true
+        MasterLibraryType:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+        ParentLibraryTypes:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+        MasterLibraryTypeChildren:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+        ChildrenLibraryTypes:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Library.LibraryType
+    Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile:
+      value:
+        Id: 0
+        Name: string
+        Path: string
+        ModifiedBy: 0
+        CreatedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Sized: 0
+        ActualName: string
+        DomainId: 0
+        SourceClassId: 0
+        ContentTypeId: 0
+        ClientPath: string
+        IsSelfHosted: 0
+        SmsId: 0
+        Latitude: 0
+        Longitude: 0
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.BusinessLogic.Entities.Tags.Tag:
+      value:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+    Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag:
+      value:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
+    Siterra.Documents.BusinessLogic.Entities.Tags.Section:
+      value:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.BusinessLogic.Entities.Tags.Category:
+      value:
+        Id: 0
+        DomainId: 0
+        Name: string
+        Description: string
+        CreatedBy: 0
+        ModifiedBy: 0
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        Documents:
+          - '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+    Siterra.Documents.BusinessLogic.Entities.Revision.Revision:
+      value:
+        Id: 0
+        Number: 0
+        DocumentId: 0
+        ModificationDate: '0001-01-01T00:00:00.0000000+00:00'
+        CreationDate: '0001-01-01T00:00:00.0000000+00:00'
+        ModifiedBy: 0
+        CreatedBy: 0
+        Remarks: string
+        FileId: 0
+        DocumentOwnerContact: 0
+        DocumentDescription: string
+        DocumentStatusDate: '0001-01-01T00:00:00.0000000+00:00'
+        DocumentFolder: string
+        DocumentKeywords: string
+        DocumentStatus: string
+        DocumentType: string
+        DocumentName: string
+        DocumentNumber: string
+        DomainId: 0
+        IsDeleted: 0
+        IsReviewed: true
+        ReviewDescription: string
+        ReviewedBy: 0
+        IsRejected: true
+        RejectedReason: string
+        RejectedDescription: string
+        RejectedBy: 0
+        IsApproved: true
+        ApprovedBy: 0
+        ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
+        RejectedDate: '0001-01-01T00:00:00.0000000+00:00'
+        ApprovedDate: '0001-01-01T00:00:00.0000000+00:00'
+        Document:
+          '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
+  requestBodies:
+    refPostBody:
+      description: New navigation property ref value
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceCreate'
+      required: true
+    refPutBody:
+      description: New navigation property ref values
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceUpdate'
+      required: true
+tags:
+  - name: Categories.CategoryDto
+    x-ms-docs-toc-type: page
+  - name: Documents.DocumentDto
+    x-ms-docs-toc-type: page
+  - name: Documents.DocumentDto.Actions
+    x-ms-docs-toc-type: container
+  - name: Documents.RevisionDto
+    x-ms-docs-toc-type: page
+  - name: Documents.DocumentTagRelDto
+    x-ms-docs-toc-type: page
+  - name: Libraries.LibraryDto
+    x-ms-docs-toc-type: page
+  - name: Libraries.DocumentDto
+    x-ms-docs-toc-type: page
+  - name: Libraries.DocumentDto.DocumentTagRelDto
+    x-ms-docs-toc-type: page
+  - name: Revisions.RevisionDto
+    x-ms-docs-toc-type: page
+  - name: Revisions.Document
+    x-ms-docs-toc-type: page
+  - name: Revisions.Document.DocumentClass
+    x-ms-docs-toc-type: page
+  - name: Revisions.Document.DocumentTagRel
+    x-ms-docs-toc-type: page
+  - name: Tasks.DocumentDto
+    x-ms-docs-toc-type: page
+  - name: Tasks.DocumentDto.Actions
+    x-ms-docs-toc-type: container
+  - name: Tasks.RevisionDto
+    x-ms-docs-toc-type: page
+  - name: Tasks.DocumentTagRelDto
+    x-ms-docs-toc-type: page

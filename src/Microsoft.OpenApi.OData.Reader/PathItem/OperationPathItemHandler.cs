@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -18,6 +19,14 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class OperationPathItemHandler : PathItemHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OperationPathItemHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use for references lookup.</param>
+        public OperationPathItemHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         protected override ODataPathKind HandleKind => ODataPathKind.Operation;
 
@@ -83,15 +92,15 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             if (samePaths.Any())
             {
-                OpenApiArray array = new OpenApiArray();
+                JsonArray array = new JsonArray();
                 OpenApiConvertSettings settings = Context.Settings.Clone();
                 settings.EnableKeyAsSegment = Context.KeyAsSegment;
                 foreach (var p in samePaths)
                 {
-                    array.Add(new OpenApiString(p.GetPathItemName(settings)));
+                    array.Add(p.GetPathItemName(settings));
                 }
 
-                item.Extensions.Add(Constants.xMsDosGroupPath, array);
+                item.Extensions.Add(Constants.xMsDosGroupPath, new OpenApiAny(array));
             }
 
             base.SetExtensions(item);

@@ -5,12 +5,14 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -18,7 +20,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmFunctionOperationHandlerTests
     {
-        private EdmFunctionOperationHandler _operationHandler = new();
+        public EdmFunctionOperationHandlerTests()
+        {
+          _openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+          _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private EdmFunctionOperationHandler _operationHandler => new(_openApiDocument);
         #region OperationHandlerTests
         [Fact]
         public void SetsDeprecationInformation()
@@ -94,6 +107,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -131,6 +145,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -395,7 +410,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void OperationRestrictionsTermWorksToCreateOperationForEdmFunction(bool enableAnnotation)
+        public async Task OperationRestrictionsTermWorksToCreateOperationForEdmFunction(bool enableAnnotation)
         {
             string template = @"<?xml version=""1.0"" encoding=""utf-8""?>
 <edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
@@ -480,7 +495,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, operation.Security.Count);
 
-                string json = operation.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await operation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {

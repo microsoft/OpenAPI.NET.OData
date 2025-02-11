@@ -11,6 +11,8 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.Models.References;
+using Microsoft.OpenApi.Models.Interfaces;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -21,6 +23,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntityGetOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntityGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EntityGetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -88,12 +98,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-            IDictionary<string, OpenApiLink> links = null;
+            IOpenApiSchema schema = null;
+            IDictionary<string, IOpenApiLink> links = null;
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
             }
 
             if (Context.Settings.ShowLinks)
@@ -104,15 +114,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (schema == null)
             {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = EntitySet.EntityType.FullName()
-                    }
-                };
+                schema = new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
             }
 
             operation.Responses = new OpenApiResponses
@@ -136,7 +138,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
-            operation.AddErrorResponses(Context.Settings, false);
+            operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -159,7 +161,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

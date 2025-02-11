@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.OData.Generator;
 using System.Collections.Generic;
 
@@ -12,7 +13,7 @@ namespace Microsoft.OpenApi.OData.Common;
 /// <summary>
 /// Extensions methods for the OpenApiOperation class.
 /// </summary>
-public static class OpenApiOperationExtensions
+internal static class OpenApiOperationExtensions
 {
     /// <summary>
     /// Adds a default response to the operation or 4XX/5XX responses for the errors depending on the settings.
@@ -22,10 +23,12 @@ public static class OpenApiOperationExtensions
     /// <param name="settings">The settings.</param>
     /// <param name="addNoContent">Optional: Whether to add a 204 no content response.</param>
     /// <param name="schema">Optional: The OpenAPI schema of the response.</param>
-    public static void AddErrorResponses(this OpenApiOperation operation, OpenApiConvertSettings settings, bool addNoContent = false, OpenApiSchema schema = null)
+    /// <param name="document">The OpenAPI document to lookup references.</param>
+    public static void AddErrorResponses(this OpenApiOperation operation, OpenApiConvertSettings settings, OpenApiDocument document, bool addNoContent = false, IOpenApiSchema schema = null)
     {
         Utils.CheckArgumentNull(operation, nameof(operation));
         Utils.CheckArgumentNull(settings, nameof(settings));
+        Utils.CheckArgumentNull(document, nameof(document));
         
 		if (operation.Responses == null)
 		{
@@ -54,22 +57,22 @@ public static class OpenApiOperationExtensions
                         }
                     };
                 }
-                operation.Responses.Add(Constants.StatusCodeClass2XX, response ?? Constants.StatusCodeClass2XX.GetResponse());
+                operation.Responses.Add(Constants.StatusCodeClass2XX, response ?? Constants.StatusCodeClass2XX.GetResponse(document));
             }
             else
             {
-                operation.Responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
+                operation.Responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse(document));
             }
         }
 
         if (settings.ErrorResponsesAsDefault)
         {
-            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse(document));
         }
         else
         {
-			operation.Responses.Add(Constants.StatusCodeClass4XX, Constants.StatusCodeClass4XX.GetResponse());
-			operation.Responses.Add(Constants.StatusCodeClass5XX, Constants.StatusCodeClass5XX.GetResponse());
+			operation.Responses.Add(Constants.StatusCodeClass4XX, Constants.StatusCodeClass4XX.GetResponse(document));
+			operation.Responses.Add(Constants.StatusCodeClass5XX, Constants.StatusCodeClass5XX.GetResponse(document));
         }
     }
 }

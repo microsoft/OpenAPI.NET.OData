@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -22,6 +24,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EntitySetPostOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EntitySetPostOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EntitySetPostOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
                
@@ -83,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
 
-            operation.AddErrorResponses(Context.Settings, false);
+            operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -95,7 +105,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -122,7 +132,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <returns>The entity content description.</returns>
         private IDictionary<string, OpenApiMediaType> GetContentDescription()
         {
-            OpenApiSchema schema = GetEntitySchema();
+            var schema = GetEntitySchema();
             var content = new Dictionary<string, OpenApiMediaType>();
 
             if (EntitySet.EntityType.HasStream)
@@ -144,7 +154,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Schema = new OpenApiSchema
                         {
-                            Type = "string",
+                            Type = JsonSchemaType.String,
                             Format = "binary"
                         }
                     });
@@ -181,29 +191,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Get the entity schema.
         /// </summary>
         /// <returns>The entity schema.</returns>
-        private OpenApiSchema GetEntitySchema()
+        private IOpenApiSchema GetEntitySchema()
         {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model);
-            }
-
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = EntitySet.EntityType.FullName()
-                    }
-                };
-            }
-
-            return schema;
+            return Context.Settings.EnableDerivedTypesReferencesForRequestBody ?
+                EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document) :
+                new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
         }
     }
 }

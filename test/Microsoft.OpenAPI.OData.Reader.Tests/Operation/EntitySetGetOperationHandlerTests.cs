@@ -5,12 +5,16 @@
 
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -18,7 +22,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EntitySetGetOperationHandlerTests
     {
-        private EntitySetGetOperationHandler _operationHandler = new EntitySetGetOperationHandler();
+        public EntitySetGetOperationHandlerTests()
+        {
+          _openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+          _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+
+        private EntitySetGetOperationHandler _operationHandler => new(_openApiDocument);
 
         [Theory]
         [InlineData(true, true, true)]
@@ -41,6 +56,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var get = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(get);
@@ -227,7 +243,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEntitySetGetOperationReturnsSecurityForReadRestrictions(bool enableAnnotation)
+        public async Task CreateEntitySetGetOperationReturnsSecurityForReadRestrictions(bool enableAnnotation)
         {
             string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
   <Record>
@@ -303,7 +319,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, get.Security.Count);
 
-                string json = get.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await get.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {
@@ -435,7 +451,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Equal(8, get.Parameters.Count);
                 if (isReference)
                 {
-                    Assert.Contains(queryOption, get.Parameters.Select(p => p.Reference?.Id));
+                    Assert.Contains(queryOption, get.Parameters.OfType<OpenApiParameterReference>().Select(p => p.Reference?.Id));
                 }
                 else
                 {
@@ -447,7 +463,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Equal(7, get.Parameters.Count);
                 if (isReference)
                 {
-                    Assert.DoesNotContain(queryOption, get.Parameters.Select(p => p.Reference?.Id));
+                    Assert.DoesNotContain(queryOption, get.Parameters.OfType<OpenApiParameterReference>().Select(p => p.Reference?.Id));
                 }
                 else
                 {

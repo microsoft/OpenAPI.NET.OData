@@ -32,24 +32,21 @@ namespace Microsoft.OpenApi.OData.Generator
             //   "paths": …,
             //   "components": …
             // }
-            OpenApiDocument doc = new OpenApiDocument
+            OpenApiDocument doc = new()
             {
                 Info = context.CreateInfo(),
 
                 Servers = context.CreateServers(),
 
-             //   Tags = context.CreateTags(),
-
-                Paths = context.CreatePaths(),
-
-                Components = context.CreateComponents(),
-
                 SecurityRequirements = null,
 
-                ExternalDocs = null
+                ExternalDocs = null,
             };
 
-            doc.Tags = context.CreateTags();
+            context.AddComponentsToDocument(doc);
+            context.AddPathsToDocument(doc);
+            doc.Tags = context.CreateTags(); // order matters so the operation generators have populated the tags
+
 
             return doc;
         }

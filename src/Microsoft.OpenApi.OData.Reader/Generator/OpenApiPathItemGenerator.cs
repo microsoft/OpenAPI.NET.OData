@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.PathItem;
@@ -22,22 +23,23 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create a map of <see cref="OpenApiPathItem"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
-        /// <returns>The created map of <see cref="OpenApiPathItem"/>.</returns>
-        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this ODataContext context)
+        /// <param name="document">The Open API document to use to lookup references.</param>
+        public static void AddPathItemsToDocument(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(document, nameof(document));
 
-            IDictionary<string, OpenApiPathItem> pathItems = new Dictionary<string, OpenApiPathItem>();
             if (context.EntityContainer == null)
             {
-                return pathItems;
+                return;
             }
 
+            document.Paths ??= [];
             OpenApiConvertSettings settings = context.Settings.Clone();
             settings.EnableKeyAsSegment = context.KeyAsSegment;
             foreach (ODataPath path in context.AllPaths)
             {
-                IPathItemHandler handler = context.PathItemHanderProvider.GetHandler(path.Kind);
+                IPathItemHandler handler = context.PathItemHandlerProvider.GetHandler(path.Kind, document);
                 if (handler == null)
                 {
                     continue;
@@ -49,7 +51,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                pathItems.TryAddPath(context, path, pathItem);
+                document.Paths.TryAddPath(context, path, pathItem);
             }
 
             if (settings.ShowRootPath)
@@ -72,15 +74,13 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 };
-                pathItems.Add("/", rootPath);
+                document.Paths.Add("/", rootPath);
             }
-
-            return pathItems;
         }
 
-        private static IDictionary<string, OpenApiLink> CreateRootLinks(IEdmEntityContainer entityContainer)
+        private static Dictionary<string, IOpenApiLink> CreateRootLinks(IEdmEntityContainer entityContainer)
         {
-            var links = new Dictionary<string, OpenApiLink>();
+            var links = new Dictionary<string, IOpenApiLink>();
             foreach (var element in entityContainer.Elements)
             {
                 links.Add(element.Name, new OpenApiLink());

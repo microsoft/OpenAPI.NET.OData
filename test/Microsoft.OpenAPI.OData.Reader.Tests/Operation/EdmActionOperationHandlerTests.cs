@@ -4,11 +4,16 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -16,7 +21,17 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmActionOperationHandlerTests
     {
-        private EdmActionOperationHandler _operationHandler = new EdmActionOperationHandler();
+        public EdmActionOperationHandlerTests()
+        {
+          _openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+          _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
+            Type = SecuritySchemeType.OAuth2,
+          });
+        }
+        private readonly OpenApiDocument _openApiDocument = new();
+        private EdmActionOperationHandler _operationHandler => new(_openApiDocument);
 
         [Fact]
         public void CreateOperationForEdmActionReturnsCorrectOperation()
@@ -33,6 +48,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -46,11 +62,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Single(operation.Parameters);
             Assert.Equal(new string[] { "UserName" }, operation.Parameters.Select(p => p.Name));
 
-            Assert.NotNull(operation.RequestBody);
-            if (operation.RequestBody.Reference != null)
-                Assert.Equal("ShareTripRequestBody", operation.RequestBody.Reference.Id);
-            else
-                Assert.Equal("Action parameters", operation.RequestBody.Description);
+            var requestBodyReference = Assert.IsType<OpenApiRequestBodyReference>(operation.RequestBody);
+            Assert.Equal("ShareTripRequestBody", requestBodyReference.Reference.Id);
 
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
@@ -73,6 +86,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            _openApiDocument.Tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(operation);
@@ -192,7 +206,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void OperationRestrictionsTermWorksToCreateOperationForEdmAction(bool enableAnnotation)
+        public async Task OperationRestrictionsTermWorksToCreateOperationForEdmAction(bool enableAnnotation)
         {
             string template = @"<?xml version=""1.0"" encoding=""utf-8""?>
 <edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
@@ -276,7 +290,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Equal(2, operation.Security.Count);
 
-                string json = operation.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                string json = await operation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
                 Assert.Contains(@"
   ""security"": [
     {
@@ -372,8 +386,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             if (enablePagination && enableOdataAnnotationRef)
             {
-                var reference = operation.Responses.First().Value.Content.First().Value.Schema.AllOf.First().Reference.Id;
-                Assert.Equal(Common.Constants.BaseCollectionPaginationCountResponse, reference);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(operation.Responses.First().Value.Content.First().Value.Schema.AllOf[0]);
+                Assert.Equal(Common.Constants.BaseCollectionPaginationCountResponse, schemaReference.Reference.Id);
 
             }
             else if (enablePagination)

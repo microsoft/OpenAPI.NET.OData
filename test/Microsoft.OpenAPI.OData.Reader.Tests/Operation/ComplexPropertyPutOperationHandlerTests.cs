@@ -5,6 +5,7 @@
 
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Xunit;
 
@@ -12,7 +13,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests;
 
 public class ComplexPropertyPutOperationHandlerTests
 {
-	private readonly ComplexPropertyPutOperationHandler _operationHandler = new();
+	private readonly ComplexPropertyPutOperationHandler _operationHandler = new(new());
 
 	[Theory]
 	[InlineData(true, true)]
@@ -102,9 +103,9 @@ public class ComplexPropertyPutOperationHandlerTests
 		var schema = put.RequestBody?.Content.FirstOrDefault().Value?.Schema;
 
         Assert.NotNull(schema);
-		Assert.Equal("object", schema.Type);
+		Assert.Equal(JsonSchemaType.Object, schema.Type);
 		Assert.Equal("value", schema.Properties.FirstOrDefault().Key);
-        Assert.Equal("array", schema.Properties.FirstOrDefault().Value.Type);
+        Assert.Equal(JsonSchemaType.Array, schema.Properties.FirstOrDefault().Value.Type);
 
         if (enableOperationId)
 		{

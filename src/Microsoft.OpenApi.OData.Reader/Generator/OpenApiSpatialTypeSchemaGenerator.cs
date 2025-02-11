@@ -4,8 +4,10 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.OpenApi.Any;
+using System.Text.Json.Nodes;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 
@@ -22,46 +24,47 @@ namespace Microsoft.OpenApi.OData.Generator
         /// The value of each pair is a <see cref="OpenApiSchema"/>.
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
+        /// <param name="document">The document to use to lookup references.</param>
         /// <returns>The string/schema dictionary.</returns>
-        public static IDictionary<string, OpenApiSchema> CreateSpatialSchemas(this ODataContext context)
+        public static IDictionary<string, IOpenApiSchema> CreateSpatialSchemas(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
-            IDictionary<string, OpenApiSchema> schemas = new Dictionary<string, OpenApiSchema>();
+            var schemas = new Dictionary<string, IOpenApiSchema>();
 
             if (context.IsSpatialTypeUsed)
             {
-                schemas.Add("Edm.Geography", CreateEdmGeographySchema());
+                schemas.Add("Edm.Geography", CreateEdmGeographySchema(document));
 
-                schemas.Add("Edm.GeographyPoint", CreateEdmGeographyPointSchema());
+                schemas.Add("Edm.GeographyPoint", CreateEdmGeographyPointSchema(document));
 
-                schemas.Add("Edm.GeographyLineString", CreateEdmGeographyLineStringSchema());
+                schemas.Add("Edm.GeographyLineString", CreateEdmGeographyLineStringSchema(document));
 
-                schemas.Add("Edm.GeographyPolygon", CreateEdmGeographyPolygonSchema());
+                schemas.Add("Edm.GeographyPolygon", CreateEdmGeographyPolygonSchema(document));
 
-                schemas.Add("Edm.GeographyMultiPoint", CreateEdmGeographyMultiPointSchema());
+                schemas.Add("Edm.GeographyMultiPoint", CreateEdmGeographyMultiPointSchema(document));
 
-                schemas.Add("Edm.GeographyMultiLineString", CreateEdmGeographyMultiLineStringSchema());
+                schemas.Add("Edm.GeographyMultiLineString", CreateEdmGeographyMultiLineStringSchema(document));
 
-                schemas.Add("Edm.GeographyMultiPolygon", CreateEdmGeographyMultiPolygonSchema());
+                schemas.Add("Edm.GeographyMultiPolygon", CreateEdmGeographyMultiPolygonSchema(document));
 
-                schemas.Add("Edm.GeographyCollection", CreateEdmGeographyCollectionSchema());
+                schemas.Add("Edm.GeographyCollection", CreateEdmGeographyCollectionSchema(document));
 
-                schemas.Add("Edm.Geometry", CreateEdmGeometrySchema());
+                schemas.Add("Edm.Geometry", CreateEdmGeometrySchema(document));
 
-                schemas.Add("Edm.GeometryPoint", CreateEdmGeometryPointSchema());
+                schemas.Add("Edm.GeometryPoint", CreateEdmGeometryPointSchema(document));
 
-                schemas.Add("Edm.GeometryLineString", CreateEdmGeometryLineStringSchema());
+                schemas.Add("Edm.GeometryLineString", CreateEdmGeometryLineStringSchema(document));
 
-                schemas.Add("Edm.GeometryPolygon", CreateEdmGeometryPolygonSchema());
+                schemas.Add("Edm.GeometryPolygon", CreateEdmGeometryPolygonSchema(document));
 
-                schemas.Add("Edm.GeometryMultiPoint", CreateEdmGeometryMultiPointSchema());
+                schemas.Add("Edm.GeometryMultiPoint", CreateEdmGeometryMultiPointSchema(document));
 
-                schemas.Add("Edm.GeometryMultiLineString", CreateEdmGeometryMultiLineStringSchema());
+                schemas.Add("Edm.GeometryMultiLineString", CreateEdmGeometryMultiLineStringSchema(document));
 
-                schemas.Add("Edm.GeometryMultiPolygon", CreateEdmGeometryMultiPolygonSchema());
+                schemas.Add("Edm.GeometryMultiPolygon", CreateEdmGeometryMultiPolygonSchema(document));
 
-                schemas.Add("Edm.GeometryCollection", CreateEdmGeometryCollectionSchema());
+                schemas.Add("Edm.GeometryCollection", CreateEdmGeometryCollectionSchema(document));
 
                 schemas.Add("GeoJSON.position", CreateGeoJsonPointSchema());
             }
@@ -73,157 +76,102 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create <see cref="OpenApiSchema"/> for Edm.Geography.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeographySchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static IOpenApiSchema CreateEdmGeographySchema(OpenApiDocument document)
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = "Edm.Geometry"
-                }
-            };
+            return new OpenApiSchemaReference("Edm.Geometry", document);
         }
 
         /// <summary>
         /// Create <see cref="OpenApiSchema"/> for Edm.GeographyPoint.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeographyPointSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static IOpenApiSchema CreateEdmGeographyPointSchema(OpenApiDocument document)
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = "Edm.GeometryPoint"
-                }
-            };
+            return new OpenApiSchemaReference("Edm.GeometryPoint", document);
         }
 
         /// <summary>
         /// Create <see cref="OpenApiSchema"/> for Edm.GeographyLineString.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeographyLineStringSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static IOpenApiSchema CreateEdmGeographyLineStringSchema(OpenApiDocument document)
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = "Edm.GeometryLineString"
-                }
-            };
+            return new OpenApiSchemaReference("Edm.GeometryLineString", document);
         }
 
         /// <summary>
         /// Create <see cref="OpenApiSchema"/> for Edm.GeographyPolygon.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeographyPolygonSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static IOpenApiSchema CreateEdmGeographyPolygonSchema(OpenApiDocument document)
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = "Edm.GeometryPolygon"
-                }
-            };
+            return new OpenApiSchemaReference("Edm.GeometryPolygon", document);
         }
 
         /// <summary>
         /// Create <see cref="OpenApiSchema"/> for Edm.GeographyMultiPoint.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeographyMultiPointSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static IOpenApiSchema CreateEdmGeographyMultiPointSchema(OpenApiDocument document)
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = "Edm.GeometryMultiPoint"
-                }
-            };
+            return new OpenApiSchemaReference("Edm.GeometryMultiPoint", document);
         }
 
         /// <summary>
         /// Create <see cref="OpenApiSchema"/> for Edm.GeographyMultiLineString.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeographyMultiLineStringSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static IOpenApiSchema CreateEdmGeographyMultiLineStringSchema(OpenApiDocument document)
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = "Edm.GeometryMultiLineString"
-                }
-            };
+            return new OpenApiSchemaReference("Edm.GeometryMultiLineString", document);
         }
 
         /// <summary>
         /// Create <see cref="OpenApiSchema"/> for Edm.GeographyMultiPolygon.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeographyMultiPolygonSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static IOpenApiSchema CreateEdmGeographyMultiPolygonSchema(OpenApiDocument document)
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = "Edm.GeometryMultiPolygon"
-                }
-            };
+            return new OpenApiSchemaReference("Edm.GeometryMultiPolygon", document);
         }
 
         /// <summary>
         /// Create <see cref="OpenApiSchema"/> for Edm.GeographyCollection.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeographyCollectionSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static IOpenApiSchema CreateEdmGeographyCollectionSchema(OpenApiDocument document)
         {
-            return new OpenApiSchema
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = "Edm.GeometryCollection"
-                }
-            };
+            return new OpenApiSchemaReference("Edm.GeometryCollection", document);
         }
 
         /// <summary>
         /// Create <see cref="OpenApiSchema"/> for Edm.Geometry.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeometrySchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static OpenApiSchema CreateEdmGeometrySchema(OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
-                OneOf = new List<OpenApiSchema>
-                {
-                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryPoint" } },
-                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryLineString" } },
-                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryPolygon" } },
-                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryMultiPoint" } },
-                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryMultiLineString" } },
-                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryMultiPolygon" } },
-                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryCollection" } }
-                }
+                Type = JsonSchemaType.Object,
+                OneOf =
+                [
+                    new OpenApiSchemaReference("Edm.GeometryPoint", document),
+                    new OpenApiSchemaReference("Edm.GeometryLineString", document),
+                    new OpenApiSchemaReference("Edm.GeometryPolygon", document),
+                    new OpenApiSchemaReference("Edm.GeometryMultiPoint", document),
+                    new OpenApiSchemaReference("Edm.GeometryMultiLineString", document),
+                    new OpenApiSchemaReference("Edm.GeometryMultiPolygon", document),
+                    new OpenApiSchemaReference("Edm.GeometryCollection", document),
+                ]
             };
         }
 
@@ -231,24 +179,25 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create <see cref="OpenApiSchema"/> for Edm.GeometryPoint.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeometryPointSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static OpenApiSchema CreateEdmGeometryPointSchema(OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
-                Properties = new Dictionary<string, OpenApiSchema>
+                Type = JsonSchemaType.Object,
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
-                            Type = "string",
-                            Enum = new List<IOpenApiAny>
+                            Type = JsonSchemaType.String,
+                            Enum = new List<JsonNode>
                             {
-                                new OpenApiString("Point")
+                                "Point"
                             },
-                            Default = new OpenApiString("Point")
+                            Default = "Point"
                         }
                     },
-                    { "coordinates", new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } } }
+                    { "coordinates", new OpenApiSchemaReference("GeoJSON.position", document) } 
                 },
                 Required = new HashSet<string>
                 {
@@ -262,25 +211,26 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create <see cref="OpenApiSchema"/> for Edm.GeometryLineString.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeometryLineStringSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static OpenApiSchema CreateEdmGeometryLineStringSchema(OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
-                Properties = new Dictionary<string, OpenApiSchema>
+                Type = JsonSchemaType.Object,
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
-                            Enum = new List<IOpenApiAny>
+                            Enum = new List<JsonNode>
                             {
-                                new OpenApiString("LineString")
+                                "LineString"
                             },
                         }
                     },
                     { "coordinates", new OpenApiSchema
                         {
-                            Type = "array",
-                            Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" }},
+                            Type = JsonSchemaType.Array,
+                            Items = new OpenApiSchemaReference("GeoJSON.position", document),
                             MinItems = 2
                         }
                     }
@@ -297,28 +247,29 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create <see cref="OpenApiSchema"/> for Edm.GeometryPolygon.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeometryPolygonSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static OpenApiSchema CreateEdmGeometryPolygonSchema(OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
-                Properties = new Dictionary<string, OpenApiSchema>
+                Type = JsonSchemaType.Object,
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
-                            Enum = new List<IOpenApiAny>
+                            Enum = new List<JsonNode>
                             {
-                                new OpenApiString("Polygon")
+                                "Polygon"
                             },
                         }
                     },
                     { "coordinates", new OpenApiSchema
                         {
-                            Type = "array",
+                            Type = JsonSchemaType.Array,
                             Items = new OpenApiSchema
                             {
-                                Type = "array",
-                                Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } }
+                                Type = JsonSchemaType.Array,
+                                Items = new OpenApiSchemaReference("GeoJSON.position", document)
                             },
                             MinItems = 4
                         }
@@ -336,25 +287,26 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create <see cref="OpenApiSchema"/> for Edm.GeometryMultiPoint.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeometryMultiPointSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static OpenApiSchema CreateEdmGeometryMultiPointSchema(OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
-                Properties = new Dictionary<string, OpenApiSchema>
+                Type = JsonSchemaType.Object,
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
-                            Enum = new List<IOpenApiAny>
+                            Enum = new List<JsonNode>
                             {
-                                new OpenApiString("MultiPoint")
+                                "MultiPoint"
                             },
                         }
                     },
                     { "coordinates", new OpenApiSchema
                         {
-                            Type = "array",
-                            Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" }}
+                            Type = JsonSchemaType.Array,
+                            Items = new OpenApiSchemaReference("GeoJSON.position", document)
                         }
                     }
                 },
@@ -370,28 +322,29 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create <see cref="OpenApiSchema"/> for Edm.GeometryMultiLineString.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeometryMultiLineStringSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static OpenApiSchema CreateEdmGeometryMultiLineStringSchema(OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
-                Properties = new Dictionary<string, OpenApiSchema>
+                Type = JsonSchemaType.Object,
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
-                            Enum = new List<IOpenApiAny>
+                            Enum = new List<JsonNode>
                             {
-                                new OpenApiString("MultiLineString")
+                                "MultiLineString"
                             },
                         }
                     },
                     { "coordinates", new OpenApiSchema
                         {
-                            Type = "array",
+                            Type = JsonSchemaType.Array,
                             Items = new OpenApiSchema
                             {
-                                Type = "array",
-                                Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } }
+                                Type = JsonSchemaType.Array,
+                                Items = new OpenApiSchemaReference("GeoJSON.position", document)
                             },
                             MinItems = 2
                         }
@@ -409,31 +362,32 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create <see cref="OpenApiSchema"/> for Edm.GeometryMultiPolygon.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeometryMultiPolygonSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static OpenApiSchema CreateEdmGeometryMultiPolygonSchema(OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
-                Properties = new Dictionary<string, OpenApiSchema>
+                Type = JsonSchemaType.Object,
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
-                            Enum = new List<IOpenApiAny>
+                            Enum = new List<JsonNode>
                             {
-                                new OpenApiString("MultiPolygon")
+                                "MultiPolygon"
                             },
                         }
                     },
                     { "coordinates", new OpenApiSchema
                         {
-                            Type = "array",
+                            Type = JsonSchemaType.Array,
                             Items = new OpenApiSchema
                             {
-                                Type = "array",
+                                Type = JsonSchemaType.Array,
                                 Items = new OpenApiSchema
                                 {
-                                    Type = "array",
-                                    Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } }
+                                    Type = JsonSchemaType.Array,
+                                    Items = new OpenApiSchemaReference("GeoJSON.position", document)
                                 }
                             },
                             MinItems = 4
@@ -452,25 +406,26 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create <see cref="OpenApiSchema"/> for Edm.GeometryCollection.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateEdmGeometryCollectionSchema()
+        /// <param name="document">The document to use to lookup references.</param>
+        public static OpenApiSchema CreateEdmGeometryCollectionSchema(OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
-                Properties = new Dictionary<string, OpenApiSchema>
+                Type = JsonSchemaType.Object,
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     { "type", new OpenApiSchema
                         {
-                            Enum = new List<IOpenApiAny>
+                            Enum = new List<JsonNode>
                             {
-                                new OpenApiString("GeometryCollection")
+                                "GeometryCollection"
                             },
                         }
                     },
                     { "coordinates", new OpenApiSchema
                         {
-                            Type = "array",
-                            Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.Geometry" } }
+                            Type = JsonSchemaType.Array,
+                            Items = new OpenApiSchemaReference("Edm.Geometry", document)
                         }
                     }
                 },
@@ -490,8 +445,8 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
-                Type = "array",
-                Items = new OpenApiSchema { Type = "number" },
+                Type = JsonSchemaType.Array,
+                Items = new OpenApiSchema { Type = JsonSchemaType.Number },
                 MinItems = 2
             };
         }

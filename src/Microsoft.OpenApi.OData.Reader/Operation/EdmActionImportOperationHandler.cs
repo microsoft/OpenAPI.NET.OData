@@ -16,6 +16,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EdmActionImportOperationHandler : EdmOperationImportOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EdmActionImportOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EdmActionImportOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
 
@@ -25,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // The requestBody field contains a Request Body Object describing the structure of the request body.
             // Its schema value follows the rules for Schema Objects for complex types, with one property per action parameter.
-            operation.RequestBody = Context.CreateRequestBody(actionImport);
+            operation.RequestBody = Context.CreateRequestBody(actionImport, _document);
 
             base.SetRequestBody(operation);
         }
@@ -33,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("actionImport"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("actionImport"));
 
             base.SetExtensions(operation);
         }

@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class EntityPathItemHandlerTests
     {
-        private EntityPathItemHandler _pathItemHandler = new MyEntityPathItemHandler();
+        private EntityPathItemHandler _pathItemHandler = new MyEntityPathItemHandler(new());
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -281,17 +281,21 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Extensions);
 
             pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
-            string isHiddenValue = (isHiddenExtension as OpenApiString)?.Value;
+            string isHiddenValue = (isHiddenExtension as OpenApiAny).Node.GetValue<string>();
             Assert.Equal("true", isHiddenValue);
 
             pathItem.Extensions.TryGetValue("x-ms-isOwner", out IOpenApiExtension isOwnerExtension);
-            string isOwnerValue = (isOwnerExtension as OpenApiString)?.Value;
+            string isOwnerValue = (isOwnerExtension as OpenApiAny).Node.GetValue<string>();
             Assert.Equal("true", isOwnerValue);
         }
     }
 
     internal class MyEntityPathItemHandler : EntityPathItemHandler
     {
+        public MyEntityPathItemHandler(OpenApiDocument document) : base(document)
+        {
+          
+        }
         protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
         {
             item.AddOperation(operationType, new OpenApiOperation());

@@ -24,21 +24,15 @@ namespace Microsoft.OpenApi.OData.Generator
         /// The name of each pair is the name of authorization. The value of each pair is a <see cref="OpenApiSecurityScheme"/>.
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
-        /// <returns>The string/security scheme dictionary.</returns>
-        public static IDictionary<string, OpenApiSecurityScheme> CreateSecuritySchemes(this ODataContext context)
+        /// <param name="document">The Open API document.</param>
+        public static void AddSecuritySchemesToDocument(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(document, nameof(document));
 
-            if (context.Model == null || context.Model.EntityContainer == null)
+            if (context.Model == null || context.Model.EntityContainer == null || context.Model.GetAuthorizations(context.EntityContainer) is not {} authorizations)
             {
-                return null;
-            }
-
-            IDictionary<string, OpenApiSecurityScheme> securitySchemes = new Dictionary<string, OpenApiSecurityScheme>();
-            var authorizations = context.Model.GetAuthorizations(context.EntityContainer);
-            if (authorizations == null)
-            {
-                return securitySchemes;
+                return;
             }
 
             foreach (var authorization in authorizations)
@@ -68,10 +62,8 @@ namespace Microsoft.OpenApi.OData.Generator
                         break;
                 }
 
-                securitySchemes[authorization.Name] = scheme;
+                document.AddComponent(authorization.Name, scheme);
             }
-
-            return securitySchemes;
         }
 
         private static void AppendApiKey(OpenApiSecurityScheme scheme, ApiKey apiKey)

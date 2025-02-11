@@ -19,6 +19,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class NavigationPropertyDeleteOperationHandler : NavigationPropertyOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NavigationPropertyDeleteOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookups references.</param>
+        public NavigationPropertyDeleteOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Delete;
 
@@ -61,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 Description = "ETag",
                 Schema = new OpenApiSchema
                 {
-                    Type = "string"
+                    Type = JsonSchemaType.String
                 }
             });
         }
@@ -74,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_deleteRestriction.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_deleteRestriction.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>
@@ -84,7 +92,7 @@ namespace Microsoft.OpenApi.OData.Operation
             OpenApiConvertSettings settings = Context.Settings.Clone();
             settings.UseSuccessStatusCodeRange = false;
             
-            operation.AddErrorResponses(settings, true);
+            operation.AddErrorResponses(settings, _document, true);
             base.SetResponses(operation);
         }
 

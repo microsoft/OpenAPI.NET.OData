@@ -11,6 +11,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.MicrosoftExtensions;
+using Microsoft.OpenApi.Models.References;
+using Microsoft.OpenApi.Models.Interfaces;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -30,18 +32,19 @@ namespace Microsoft.OpenApi.OData.Generator
         /// The value of each pair is a <see cref="OpenApiSchema"/>.
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
+        /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The string/schema dictionary.</returns>
-        public static IDictionary<string, OpenApiSchema> CreateODataErrorSchemas(this ODataContext context)
+        public static IDictionary<string, IOpenApiSchema> CreateODataErrorSchemas(this ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             var rootNamespaceName = context.GetErrorNamespaceName();
 
-            return new Dictionary<string, OpenApiSchema>()
+            return new Dictionary<string, IOpenApiSchema>()
             {
-                { $"{rootNamespaceName}{ODataErrorClassName}", CreateErrorSchema(rootNamespaceName) },
-                { $"{rootNamespaceName}{MainErrorClassName}", CreateErrorMainSchema(rootNamespaceName) },
+                { $"{rootNamespaceName}{ODataErrorClassName}", CreateErrorSchema(rootNamespaceName, document) },
+                { $"{rootNamespaceName}{MainErrorClassName}", CreateErrorMainSchema(rootNamespaceName, document) },
                 { $"{rootNamespaceName}{ErrorDetailsClassName}", CreateErrorDetailSchema() },
-                { $"{rootNamespaceName}{InnerErrorClassName}", CreateInnerErrorSchema(context) }
+                { $"{rootNamespaceName}{InnerErrorClassName}", CreateInnerErrorSchema(context, document) }
             };
         }
 
@@ -63,28 +66,21 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         /// <param name="rootNamespaceName">The root namespace name. With a trailing dot.</param>
-        public static OpenApiSchema CreateErrorSchema(string rootNamespaceName)
+        /// <param name="document">The Open API document to lookup references.</param>
+        public static OpenApiSchema CreateErrorSchema(string rootNamespaceName, OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
+                Type = JsonSchemaType.Object,
                 Required = new HashSet<string>
                 {
                     "error"
                 },
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     {
                         "error",
-                        new OpenApiSchema
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = $"{rootNamespaceName}{MainErrorClassName}"
-                            }
-                        }
+                        new OpenApiSchemaReference($"{rootNamespaceName}{MainErrorClassName}", document)
                     }
                 }
             };
@@ -95,8 +91,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Otherwise, a default inner error type of object will be created.
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
+        /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The inner error schema definition.</returns>
-        public static OpenApiSchema CreateInnerErrorSchema(ODataContext context)
+        public static IOpenApiSchema CreateInnerErrorSchema(ODataContext context, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
@@ -105,12 +102,12 @@ namespace Microsoft.OpenApi.OData.Generator
                 !string.IsNullOrEmpty(rootNamespace) &&
                 context.Model.FindDeclaredType($"{rootNamespace}.{context.Settings.InnerErrorComplexTypeName}") is IEdmComplexType complexType)
             {
-                return context.CreateSchemaTypeSchema(complexType);
+                return context.CreateSchemaTypeSchema(complexType, document);
             }
             
             return new OpenApiSchema
             {
-                Type = "object",
+                Type = JsonSchemaType.Object,
                 Description = "The structure of this object is service-specific"
             };
         }
@@ -119,55 +116,40 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create <see cref="OpenApiSchema"/> for main property of the error.
         /// </summary>
         /// <param name="rootNamespaceName">The root namespace name. With a trailing dot.</param>
+        /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateErrorMainSchema(string rootNamespaceName)
+        public static OpenApiSchema CreateErrorMainSchema(string rootNamespaceName, OpenApiDocument document)
         {
             return new OpenApiSchema
             {
-                Type = "object",
+                Type = JsonSchemaType.Object,
                 Required = new HashSet<string>
                 {
                     "code", "message"
                 },
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     {
-                        "code", new OpenApiSchema { Type = "string", Nullable = false }
+                        "code", new OpenApiSchema { Type = JsonSchemaType.String }
                     },
                     {
-                        "message", new OpenApiSchema { Type = "string", Nullable = false, Extensions = new Dictionary<string, IOpenApiExtension> 
+                        "message", new OpenApiSchema { Type = JsonSchemaType.String, Extensions = new Dictionary<string, IOpenApiExtension> 
                                                                                     { { OpenApiPrimaryErrorMessageExtension.Name, new OpenApiPrimaryErrorMessageExtension { IsPrimaryErrorMessage = true } } } }
                     },
                     {
-                        "target", new OpenApiSchema { Type = "string", Nullable = true }
+                        "target", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null }
                     },
                     {
                         "details",
                         new OpenApiSchema
                         {
-                            Type = "array",
-                            Items = new OpenApiSchema
-                            {
-                                UnresolvedReference = true,
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = $"{rootNamespaceName}{ErrorDetailsClassName}"
-                                }
-                            }
+                            Type = JsonSchemaType.Array,
+                            Items = new OpenApiSchemaReference($"{rootNamespaceName}{ErrorDetailsClassName}", document)
                         }
                     },
                     {
                         "innerError",
-                        new OpenApiSchema
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = $"{rootNamespaceName}{InnerErrorClassName}"
-                            }
-                        }
+                        new OpenApiSchemaReference($"{rootNamespaceName}{InnerErrorClassName}", document)
                     }
                 }
             };
@@ -181,21 +163,21 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
-                Type = "object",
+                Type = JsonSchemaType.Object,
                 Required = new HashSet<string>
                 {
                     "code", "message"
                 },
-                Properties = new Dictionary<string, OpenApiSchema>
+                Properties = new Dictionary<string, IOpenApiSchema>
                 {
                     {
-                        "code", new OpenApiSchema { Type = "string", Nullable = false, }
+                        "code", new OpenApiSchema { Type = JsonSchemaType.String, }
                     },
                     {
-                        "message", new OpenApiSchema { Type = "string", Nullable = false, }
+                        "message", new OpenApiSchema { Type = JsonSchemaType.String, }
                     },
                     {
-                        "target", new OpenApiSchema { Type = "string", Nullable = true, }
+                        "target", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null, }
                     }
                 }
             };

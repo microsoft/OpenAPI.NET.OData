@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
@@ -17,6 +18,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class SingletonOperationHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="SingletonOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        protected SingletonOperationHandler(OpenApiDocument document):base(document)
+        {
+            
+        }
         /// <summary>
         /// Gets the <see cref="IEdmSingleton"/>.
         /// </summary>
@@ -38,17 +47,14 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // In this SDK, we use "[Singleton Name].[Singleton Entity Type Name]
             // For example: "Me.User"
-            OpenApiTag tag = new OpenApiTag
-            {
-                Name = Singleton.Name + "." + Singleton.EntityType.Name,
-            };
+            var tagName = Singleton.Name + "." + Singleton.EntityType.Name;
 
-            // Use an extension for TOC (Table of Content)
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+            Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+			{
+				Name = tagName
+			});
 
-            operation.Tags.Add(tag);
-
-            Context.AppendTag(tag);
+            operation.Tags.Add(new OpenApiTagReference(tagName, _document));
 
             // Call base.SetTags() at the end of this method.
             base.SetTags(operation);
@@ -57,7 +63,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("operation"));
 
             base.SetExtensions(operation);
         }

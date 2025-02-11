@@ -16,6 +16,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class EdmFunctionImportOperationHandler : EdmOperationImportOperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="EdmFunctionImportOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public EdmFunctionImportOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -24,11 +32,14 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
-            IEdmFunctionImport functionImport = EdmOperationImport as IEdmFunctionImport;
+            if (EdmOperationImport is not IEdmFunctionImport functionImport)
+            {
+                return;
+            }
 
             if (OperationImportSegment.ParameterMappings != null)
             {
-                foreach (var param in Context.CreateParameters(functionImport.Function, OperationImportSegment.ParameterMappings))
+                foreach (var param in Context.CreateParameters(functionImport.Function, _document, OperationImportSegment.ParameterMappings))
                 {
                     operation.Parameters.AppendParameter(param);
                 }
@@ -37,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 //The parameters array contains a Parameter Object for each parameter of the function overload,
                 // and it contains specific Parameter Objects for the allowed system query options.
-                foreach (var param in Context.CreateParameters(functionImport))
+                foreach (var param in Context.CreateParameters(functionImport, _document))
                 {
                     operation.Parameters.AppendParameter(param);
                 }
@@ -47,7 +58,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("functionImport"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("functionImport"));
             base.SetExtensions(operation);
         }
     }

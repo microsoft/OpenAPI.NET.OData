@@ -3,11 +3,15 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -20,6 +24,14 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class DollarCountGetOperationHandler : OperationHandler
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="DollarCountGetOperationHandler"/> class.
+        /// </summary>
+        /// <param name="document">The document to use to lookup references.</param>
+        public DollarCountGetOperationHandler(OpenApiDocument document) : base(document)
+        {
+            
+        }
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
@@ -31,7 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation
         private ODataSegment firstSegment;
         private int pathCount;        
         private const int SecondLastSegmentIndex = 2;
-        private IEdmVocabularyAnnotatable annotatable;
+        private readonly List<IEdmVocabularyAnnotatable> annotatables = [];
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -39,20 +51,32 @@ namespace Microsoft.OpenApi.OData.Operation
             base.Initialize(context, path);
 
             // Get the first segment
-            firstSegment = path.Segments.First();
+            firstSegment = path.Segments[0];
 
             // get the last second segment
             pathCount = path.Segments.Count;
             if(pathCount >= SecondLastSegmentIndex)
-                SecondLastSegment = path.Segments.ElementAt(pathCount - SecondLastSegmentIndex);
+                SecondLastSegment = path.Segments[pathCount - SecondLastSegmentIndex];
 
-            if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
+            AddODataSegmentToAnnotables(SecondLastSegment, path.Segments.Count > SecondLastSegmentIndex ? path.Segments.SkipLast(SecondLastSegmentIndex).ToArray() : []);
+        }
+        private void AddODataSegmentToAnnotables(ODataSegment oDataSegment, ODataSegment[] oDataSegments)
+        {
+            if (oDataSegment is ODataNavigationSourceSegment sourceSegment)
             {
-                annotatable = sourceSegment.NavigationSource as IEdmEntitySet;
+                annotatables.Add(sourceSegment.NavigationSource as IEdmEntitySet);
             }
-            else if (SecondLastSegment is ODataNavigationPropertySegment navigationPropertySegment)
+            else if (oDataSegment is ODataNavigationPropertySegment navigationPropertySegment)
             {
-                annotatable = navigationPropertySegment.NavigationProperty;
+                annotatables.Add(navigationPropertySegment.NavigationProperty);
+            }
+            else if (oDataSegment is ODataTypeCastSegment odataTypeCastSegment)
+            {
+                annotatables.Add(odataTypeCastSegment.StructuredType as IEdmVocabularyAnnotatable);
+                if (annotatables.Count == 1 && oDataSegments.Length > 0)
+                {// we want to look at the parent navigation property or entity set
+                    AddODataSegmentToAnnotables(oDataSegments[oDataSegments.Length - 1], oDataSegments.SkipLast(1).ToArray());
+                }
             }
         }
 
@@ -70,7 +94,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else if (SecondLastSegment is ODataTypeCastSegment)
             {
-                ODataSegment lastThirdSegment = Path.Segments.ElementAt(pathCount - 3);
+                ODataSegment lastThirdSegment = Path.Segments[pathCount - 3];
                 if (lastThirdSegment is ODataNavigationSourceSegment sourceSegment2)
                 {
                     tagName = TagNameFromNavigationSourceSegment(sourceSegment2);
@@ -87,17 +111,12 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (tagName != null)
             {
-                OpenApiTag tag = new()
+                Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
                 {
                     Name = tagName
-                };
+                });
 
-                // Use an extension for TOC (Table of Content)
-                tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
-
-                operation.Tags.Add(tag);
-
-                Context.AppendTag(tag);
+                operation.Tags.Add(new OpenApiTagReference(tagName, _document));
             }
 
             string TagNameFromNavigationSourceSegment(ODataNavigationSourceSegment sourceSegment)
@@ -152,17 +171,10 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponse
-                    {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference() {
-                            Type = ReferenceType.Response,
-                            Id = Constants.DollarCountSchemaName
-                        }
-                    }
+                    new OpenApiResponseReference(Constants.DollarCountSchemaName, _document)
                 }
             };
-            operation.AddErrorResponses(Context.Settings, false);
+            operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -172,20 +184,15 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
-            if (annotatable == null)
-            {
-                return;
-            }
+            IOpenApiParameter parameter;
 
-            OpenApiParameter parameter;
-
-            parameter = Context.CreateSearch(TargetPath) ?? Context.CreateSearch(annotatable);
+            parameter = Context.CreateSearch(TargetPath, _document) ?? (annotatables.Count == 0 ? null : annotatables.Select(x => Context.CreateSearch(x, _document)).FirstOrDefault(static x => x is not null));
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
-            parameter = Context.CreateFilter(TargetPath) ?? Context.CreateFilter(annotatable);
+            parameter = Context.CreateFilter(TargetPath, _document) ?? (annotatables.Count == 0 ? null : annotatables.Select(x => Context.CreateFilter(x, _document)).FirstOrDefault(static x => x is not null));
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -194,15 +201,13 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            if (annotatable == null)
-            {
-                return;
-            }
-
             ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            ReadRestrictionsType annotatableReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
-            readRestrictions?.MergePropertiesIfNull(annotatableReadRestrictions);
-            readRestrictions ??= annotatableReadRestrictions;
+            if (annotatables.Count > 0)
+            {
+                ReadRestrictionsType annotatableReadRestrictions = annotatables.Select(x => Context.Model.GetRecord<ReadRestrictionsType>(x, CapabilitiesConstants.ReadRestrictions)).FirstOrDefault(static x => x is not null);
+                readRestrictions?.MergePropertiesIfNull(annotatableReadRestrictions);
+                readRestrictions ??= annotatableReadRestrictions;
+            }
             
             if (readRestrictions == null)
             {

@@ -5,9 +5,12 @@
 
 using System;
 using System.Linq;
+using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
@@ -30,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateEdmTypeSchema(edmTypeReference: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateEdmTypeSchema(edmTypeReference: null, new()));
         }
 
         [Fact]
@@ -40,13 +43,13 @@ namespace Microsoft.OpenApi.OData.Tests
             ODataContext context = new ODataContext(EdmCoreModel.Instance);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("edmTypeReference", () => context.CreateEdmTypeSchema(edmTypeReference: null));
+            Assert.Throws<ArgumentNullException>("edmTypeReference", () => context.CreateEdmTypeSchema(edmTypeReference: null, new()));
         }
 
         [Theory]
         [InlineData(OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        public void CreateEdmTypeSchemaReturnSchemaForNullableCollectionComplexType(OpenApiSpecVersion specVersion)
+        public async Task CreateEdmTypeSchemaReturnSchemaForNullableCollectionComplexType(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -59,33 +62,33 @@ namespace Microsoft.OpenApi.OData.Tests
                 new EdmCollectionType(new EdmComplexTypeReference(complex, true)));
 
             // Act
-            var schema = context.CreateEdmTypeSchema(collectionType);
+            var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(context.Settings.OpenApiSpecVersion);
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(context.Settings.OpenApiSpecVersion));
 
             // & Assert
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""$ref"": ""#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
   }
-}".ChangeLineBreaks(), json);
+}"), json));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""$ref"": ""#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
   }
-}".ChangeLineBreaks(), json);
+}"), json));
             }           
         }
 
         [Fact]
-        public void CreateEdmTypeSchemaReturnSchemaForNonNullableCollectionComplexType()
+        public async Task CreateEdmTypeSchemaReturnSchemaForNonNullableCollectionComplexType()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -95,21 +98,21 @@ namespace Microsoft.OpenApi.OData.Tests
                 new EdmCollectionType(new EdmComplexTypeReference(complex, false)));
 
             // Act
-            var schema = context.CreateEdmTypeSchema(collectionType);
+            var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""$ref"": ""#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
   }
-}".ChangeLineBreaks(), json);
+}"), json));
         }
 
         [Fact]
-        public void CreateEdmTypeSchemaReturnSchemaForNonNullableCollectionPrimitiveType()
+        public async Task CreateEdmTypeSchemaReturnSchemaForNonNullableCollectionPrimitiveType()
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -118,21 +121,21 @@ namespace Microsoft.OpenApi.OData.Tests
                 new EdmCollectionType(EdmCoreModel.Instance.GetString(false)));
 
             // Act
-            var schema = context.CreateEdmTypeSchema(collectionType);
+            var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""type"": ""string""
   }
-}".ChangeLineBreaks(), json);
+}"), json));
         }
 
         [Fact]
-        public void CreateEdmTypeSchemaReturnSchemaForNullableCollectionPrimitiveType()
+        public async Task CreateEdmTypeSchemaReturnSchemaForNullableCollectionPrimitiveType()
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -141,12 +144,12 @@ namespace Microsoft.OpenApi.OData.Tests
                 new EdmCollectionType(EdmCoreModel.Instance.GetInt32(true)));
 
             // Act
-            var schema = context.CreateEdmTypeSchema(collectionType);
+            var schema = context.CreateEdmTypeSchema(collectionType, new());
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
-            Assert.Equal(@"{
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""array"",
   ""items"": {
     ""maximum"": 2147483647,
@@ -155,14 +158,16 @@ namespace Microsoft.OpenApi.OData.Tests
     ""format"": ""int32"",
     ""nullable"": true
   }
-}".ChangeLineBreaks(), json);
+}"), json));
         }
 
         [Theory]
         [InlineData(true, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(true, OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(false, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(false, OpenApiSpecVersion.OpenApi3_1)]
         public void CreateEdmTypeSchemaReturnSchemaForEnumType(bool isNullable, OpenApiSpecVersion specVersion)
         {
             // Arrange
@@ -175,53 +180,50 @@ namespace Microsoft.OpenApi.OData.Tests
             context.Settings.OpenApiSpecVersion = specVersion;
 
             // Act
-            var schema = context.CreateEdmTypeSchema(enumTypeReference);
+            var schema = context.CreateEdmTypeSchema(enumTypeReference, new());
 
             // & Assert
             Assert.NotNull(schema);
-
-            
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
-                Assert.NotNull(schema.Reference);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
                 Assert.Null(schema.AnyOf);
-                Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
-                Assert.Equal(enumType.FullTypeName(), schema.Reference.Id);
-                Assert.Equal(isNullable, schema.Nullable);
+                Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
+                Assert.Equal(enumType.FullTypeName(), schemaReference.Reference.Id);
             }
             else
             {
-                
                 if (isNullable)
                 {
                     Assert.NotNull(schema.AnyOf);
                     Assert.NotEmpty(schema.AnyOf);
-                    Assert.Null(schema.Reference);
+                    Assert.IsNotType<OpenApiSchemaReference>(schema);
                     Assert.Equal(2, schema.AnyOf.Count);
-                    var anyOfRef = schema.AnyOf.FirstOrDefault();
+                    var anyOfRef = Assert.IsType<OpenApiSchemaReference>(schema.AnyOf.FirstOrDefault());
                     Assert.NotNull(anyOfRef.Reference);
                     Assert.Equal(ReferenceType.Schema, anyOfRef.Reference.Type);
                     Assert.Equal(enumType.FullTypeName(), anyOfRef.Reference.Id);
                     var anyOfNull = schema.AnyOf.Skip(1).FirstOrDefault();
                     Assert.NotNull(anyOfNull.Type);
-                    Assert.Equal("object", anyOfNull.Type);
-                    Assert.True(anyOfNull.Nullable);
+                    Assert.Equal(JsonSchemaType.Null, anyOfNull.Type);
                 }
                 else
                 {
                     Assert.Null(schema.AnyOf);
-                    Assert.NotNull(schema.Reference);
-                    Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
-                    Assert.Equal(enumType.FullTypeName(), schema.Reference.Id);
-                }             
+                    var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
+                    Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
+                    Assert.Equal(enumType.FullTypeName(), schemaReference.Reference.Id);
+                }
             }
         }
 
         [Theory]
         [InlineData(true, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(true, OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(false, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(false, OpenApiSpecVersion.OpenApi3_1)]
         public void CreateEdmTypeSchemaReturnSchemaForComplexType(bool isNullable, OpenApiSpecVersion specVersion)
         {
             // Arrange
@@ -234,7 +236,7 @@ namespace Microsoft.OpenApi.OData.Tests
             context.Settings.OpenApiSpecVersion = specVersion;
 
             // Act
-            var schema = context.CreateEdmTypeSchema(complexTypeReference);
+            var schema = context.CreateEdmTypeSchema(complexTypeReference, new());
 
             // & Assert
             Assert.NotNull(schema);
@@ -242,17 +244,17 @@ namespace Microsoft.OpenApi.OData.Tests
             if (specVersion == OpenApiSpecVersion.OpenApi2_0 || isNullable == false)
             {
                 Assert.Null(schema.AnyOf);
-                Assert.NotNull(schema.Reference);
-                Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
-                Assert.Equal(complex.FullTypeName(), schema.Reference.Id);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
+                Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
+                Assert.Equal(complex.FullTypeName(), schemaReference.Reference.Id);
             }
             else
             {
-                Assert.Null(schema.Reference);
+                Assert.IsNotType<OpenApiSchemaReference>(schema);
                 Assert.NotNull(schema.AnyOf);
                 Assert.NotEmpty(schema.AnyOf);
                 Assert.Equal(2, schema.AnyOf.Count);
-                var anyOf = schema.AnyOf.FirstOrDefault();
+                var anyOf = Assert.IsType<OpenApiSchemaReference>(schema.AnyOf.FirstOrDefault());
                 Assert.NotNull(anyOf.Reference);
                 Assert.Equal(ReferenceType.Schema, anyOf.Reference.Type);
                 Assert.Equal(complex.FullTypeName(), anyOf.Reference.Id);
@@ -260,10 +262,12 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
+        [InlineData(true, OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
         [InlineData(true, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi2_0)]
         [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(false, OpenApiSpecVersion.OpenApi3_1)]
         public void CreateEdmTypeSchemaReturnSchemaForEntityType(bool isNullable, OpenApiSpecVersion specVersion)
         {
             // Arrange
@@ -276,31 +280,31 @@ namespace Microsoft.OpenApi.OData.Tests
             context.Settings.OpenApiSpecVersion = specVersion;
 
             // Act
-            var schema = context.CreateEdmTypeSchema(entityTypeReference);
+            var schema = context.CreateEdmTypeSchema(entityTypeReference, new());
 
             // & Assert
             Assert.NotNull(schema);
 
-            if (specVersion == OpenApiSpecVersion.OpenApi2_0 || isNullable == false)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0 || !isNullable)
             {
                 Assert.Null(schema.AnyOf);
-                Assert.NotNull(schema.Reference);
-                Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
-                Assert.Equal(entity.FullTypeName(), schema.Reference.Id);
+                var schemaReference = Assert.IsType<OpenApiSchemaReference>(schema);
+                Assert.NotNull(schemaReference.Reference);
+                Assert.Equal(ReferenceType.Schema, schemaReference.Reference.Type);
+                Assert.Equal(entity.FullTypeName(), schemaReference.Reference.Id);
             }
             else
             {
-                Assert.Null(schema.Reference);
+                Assert.IsNotType<OpenApiSchemaReference>(schema);
                 Assert.NotNull(schema.AnyOf);
                 Assert.NotEmpty(schema.AnyOf);
-                var anyOfRef = schema.AnyOf.FirstOrDefault();
+                var anyOfRef = Assert.IsType<OpenApiSchemaReference>(schema.AnyOf.FirstOrDefault());
                 Assert.NotNull(anyOfRef.Reference);
                 Assert.Equal(ReferenceType.Schema, anyOfRef.Reference.Type);
                 Assert.Equal(entity.FullTypeName(), anyOfRef.Reference.Id);
                 var anyOfNull = schema.AnyOf.Skip(1).FirstOrDefault();
                 Assert.NotNull(anyOfNull.Type);
-                Assert.Equal("object", anyOfNull.Type);
-                Assert.True(anyOfNull.Nullable);
+                Assert.Equal(JsonSchemaType.Null, anyOfNull.Type);
             }
         }
 
@@ -309,7 +313,7 @@ namespace Microsoft.OpenApi.OData.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEdmTypeSchemaReturnSchemaForString(bool isNullable)
+        public async Task CreateEdmTypeSchemaReturnSchemaForString(bool isNullable)
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -317,30 +321,30 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetString(isNullable);
 
             // Act
-            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             if (isNullable)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""string"",
   ""nullable"": true
-}".ChangeLineBreaks(), json);
+}"), json));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""type"": ""string""
-}".ChangeLineBreaks(), json);
+}"), json));
             }
         }
 
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEdmTypeSchemaReturnSchemaForInt32(bool isNullable)
+        public async Task CreateEdmTypeSchemaReturnSchemaForInt32(bool isNullable)
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -348,29 +352,29 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetInt32(isNullable);
 
             // Act
-            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             if (isNullable)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
   ""type"": ""number"",
   ""format"": ""int32"",
   ""nullable"": true
-}".ChangeLineBreaks(), json);
+}"), json));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
   ""type"": ""number"",
   ""format"": ""int32""
-}".ChangeLineBreaks(), json);
+}"), json));
             }
         }
 
@@ -392,7 +396,7 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetDecimal(isNullable);
 
             // Act
-            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
 
             // & Assert
@@ -401,19 +405,15 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Type);
                 Assert.NotNull(schema.OneOf);
                 Assert.Equal(2, schema.OneOf.Count);
-                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
-                Assert.NotNull(numberSchema);
-                Assert.True(numberSchema.Nullable);
-                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
-                Assert.NotNull(stringSchema);
-                Assert.True(stringSchema.Nullable);
-                Assert.False(schema.Nullable);
+                Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.Number | JsonSchemaType.Null));
+                Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.String | JsonSchemaType.Null));
+                Assert.NotEqual(JsonSchemaType.Null, schema.Type & JsonSchemaType.Null);
             }
             else
             {
-                Assert.Equal("number", schema.Type);
+                Assert.Equal(JsonSchemaType.Number, schema.Type & JsonSchemaType.Number);
                 Assert.Null(schema.OneOf);
-                Assert.Equal(isNullable, schema.Nullable);
+                Assert.Equal(isNullable, (schema.Type & JsonSchemaType.Null) is JsonSchemaType.Null);
             }
         }
 
@@ -435,7 +435,7 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetInt64(isNullable);
 
             // Act
-            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
 
             // & Assert
@@ -444,26 +444,22 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Type);
                 Assert.NotNull(schema.OneOf);
                 Assert.Equal(2, schema.OneOf.Count);
-                var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
-                Assert.NotNull(numberSchema);
-                Assert.True(numberSchema.Nullable);
-                var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
-                Assert.NotNull(stringSchema);
-                Assert.True(stringSchema.Nullable);
-                Assert.False(schema.Nullable);
+                Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.Number | JsonSchemaType.Null));
+                Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.String | JsonSchemaType.Null));
+                Assert.NotEqual(JsonSchemaType.Null, schema.Type & JsonSchemaType.Null);
             }
             else
             {
-                Assert.Equal("number", schema.Type);
+                Assert.Equal(JsonSchemaType.Number, schema.Type & JsonSchemaType.Number);
                 Assert.Null(schema.AnyOf);
-                Assert.Equal(isNullable, schema.Nullable);
+                Assert.Equal(isNullable, (schema.Type & JsonSchemaType.Null) is JsonSchemaType.Null);
             }
         }
 
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEdmTypeSchemaReturnSchemaForGuid(bool isNullable)
+        public async Task CreateEdmTypeSchemaReturnSchemaForGuid(bool isNullable)
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
@@ -471,27 +467,27 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetGuid(isNullable);
 
             // Act
-            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
 
             // & Assert
             if (isNullable)
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""pattern"": ""^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"",
   ""type"": ""string"",
   ""format"": ""uuid"",
   ""nullable"": true
-}".ChangeLineBreaks(), json);
+}"), json));
             }
             else
             {
-                Assert.Equal(@"{
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
   ""pattern"": ""^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"",
   ""type"": ""string"",
   ""format"": ""uuid""
-}".ChangeLineBreaks(), json);
+}"), json));
             }
         }
 
@@ -506,22 +502,17 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetDouble(isNullable);
 
             // Act
-            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
 
             // & Assert
             Assert.Null(schema.Type);
 
-            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
-            Assert.NotNull(numberSchema);
-            Assert.True(numberSchema.Nullable);
-            Assert.Equal("double", numberSchema.Format, StringComparer.OrdinalIgnoreCase);
+            Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.Number | JsonSchemaType.Null) && x.Format.Equals("double", StringComparison.OrdinalIgnoreCase));
 
-            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
-            Assert.NotNull(stringSchema);
-            Assert.True(stringSchema.Nullable);
+            Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.String | JsonSchemaType.Null));
 
-            Assert.False(schema.Nullable);
+            Assert.NotEqual(JsonSchemaType.Null, schema.Type & JsonSchemaType.Null);
 
             Assert.Null(schema.AnyOf);
 
@@ -540,22 +531,17 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetSingle(isNullable);
 
             // Act
-            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            var schema = context.CreateEdmTypeSchema(edmTypeReference, new());
             Assert.NotNull(schema); // guard
 
             // & Assert
             Assert.Null(schema.Type);
 
-            var numberSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("number", StringComparison.OrdinalIgnoreCase));
-            Assert.NotNull(numberSchema);
-            Assert.True(numberSchema.Nullable);
-            Assert.Equal("float", numberSchema.Format, StringComparer.OrdinalIgnoreCase);
+            Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.Number | JsonSchemaType.Null) && x.Format.Equals("float", StringComparison.OrdinalIgnoreCase));
 
-            var stringSchema = schema.OneOf.FirstOrDefault(x => x.Type.Equals("string", StringComparison.OrdinalIgnoreCase));
-            Assert.NotNull(stringSchema);
-            Assert.True(stringSchema.Nullable);
-            
-            Assert.False(schema.Nullable);
+            Assert.Single(schema.OneOf, x => x.Type.Equals(JsonSchemaType.String | JsonSchemaType.Null));
+
+            Assert.NotEqual(JsonSchemaType.Null, schema.Type & JsonSchemaType.Null);
 
             Assert.Null(schema.AnyOf);
 

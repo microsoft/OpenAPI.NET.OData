@@ -27,7 +27,7 @@ namespace OoasGui
     {
         private OpenApiFormat Format { get; set; } = OpenApiFormat.Json;
 
-        private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_0;
+        private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_1;
 
         private OpenApiConvertSettings Settings = new OpenApiConvertSettings();
 
@@ -201,19 +201,17 @@ namespace OoasGui
                 return;
             }
 
-            string openApi = null;
-            await Task.Run(() =>
+            _document = EdmModel.ConvertToOpenApi(Settings);
+            using var stream = new MemoryStream();
+            if (_document is not null)
             {
-                _document = EdmModel.ConvertToOpenApi(Settings);
-                MemoryStream stream = new MemoryStream();
-                _document.Serialize(stream, Version, Format);
-                stream.Flush();
+                await _document.SerializeAsync(stream, Version, Format);
+                await stream.FlushAsync();
                 stream.Position = 0;
-                openApi = new StreamReader(stream).ReadToEnd();
-            });
 
-            oasRichTextBox.Text = openApi;
-            saveBtn.Enabled = true;
+                oasRichTextBox.Text = await new StreamReader(stream).ReadToEndAsync();
+                saveBtn.Enabled = true;
+            }
         }
 
         private string FormatXml(string xml)
@@ -249,17 +247,12 @@ namespace OoasGui
 
             saveFileDialog.RestoreDirectory = true;
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && _document is not null)
             {
                 string output = saveFileDialog.FileName;
-                using (FileStream fs = File.Create(output))
-                {
-                    await Task.Run(() =>
-                    {
-                        _document?.Serialize(fs, Version, Format);
-                        fs.Flush();
-                    });
-                }
+                using FileStream fs = File.Create(output);
+                await _document.SerializeAsync(fs, Version, Format);
+                await fs.FlushAsync();
 
                 MessageBox.Show("Saved successfully!");
             }
