@@ -13,6 +13,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.OData.Edm" Version="8.2.3" />
-    <PackageReference Include="Microsoft.OpenApi" Version="2.0.0-preview7" />
+    <PackageReference Include="Microsoft.OpenApi" Version="2.0.0-preview8" />
   </ItemGroup>
 </Project>
