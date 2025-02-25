@@ -512,7 +512,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.True(String.IsNullOrEmpty(schema.Type.ToIdentifier()));
+            Assert.Null(schema.Type.ToIdentifiers());
 
             Assert.NotNull(schema.AllOf);
             Assert.Null(schema.AnyOf);
@@ -660,7 +660,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.True(String.IsNullOrEmpty(schema.Type.ToIdentifier()));
+            Assert.Null(schema.Type.ToIdentifiers());
 
             Assert.NotNull(schema.AllOf);
             Assert.Null(schema.AnyOf);
@@ -735,7 +735,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(schema);
-            Assert.True(string.IsNullOrEmpty(schema.Type.ToIdentifier()));
+            Assert.Null(schema.Type.ToIdentifiers());
 
             Assert.NotNull(schema.AllOf);
             Assert.Null(schema.AnyOf);

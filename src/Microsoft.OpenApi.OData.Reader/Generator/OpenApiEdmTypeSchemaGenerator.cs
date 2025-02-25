@@ -150,7 +150,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 // Nullable properties are marked with the keyword nullable and a value of true.
                 // nullable cannot be true when type is empty, often common in anyof/allOf since individual entries are nullable
-                if (!string.IsNullOrEmpty(schema.Type.ToIdentifier()) && primitiveType.IsNullable)
+                if (schema.Type.ToIdentifiers() is { Length: > 0 } && primitiveType.IsNullable)
                 {
                     openApiSchema.Type |= JsonSchemaType.Null;
                 }
