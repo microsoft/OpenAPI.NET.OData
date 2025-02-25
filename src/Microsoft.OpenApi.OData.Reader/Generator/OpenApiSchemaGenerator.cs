@@ -659,7 +659,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
                 else
                 {
-                    return schema.Type.ToIdentifier() ??
+                    return (schema.Type & ~JsonSchemaType.Null)?.ToIdentifiers()[0] ??
                         (schema.AnyOf ?? Enumerable.Empty<IOpenApiSchema>())
                         .Union(schema.AllOf ?? Enumerable.Empty<IOpenApiSchema>())
                         .Union(schema.OneOf ?? Enumerable.Empty<IOpenApiSchema>())
