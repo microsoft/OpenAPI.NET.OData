@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq;
+using System.Net.Http;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
@@ -58,10 +59,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData("GetNearestAirport", OperationType.Get)]
-        [InlineData("ResetDataSource", OperationType.Post)]
+        [InlineData("GetNearestAirport", "get")]
+        [InlineData("ResetDataSource", "post")]
         public void CreatePathItemForOperationImportReturnsCorrectPathItem(string operationImport,
-            OperationType operationType)
+            string operationType)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -78,18 +79,18 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem);
             Assert.NotNull(pathItem.Operations);
             var operationKeyValue = Assert.Single(pathItem.Operations);
-            Assert.Equal(operationType, operationKeyValue.Key);
+            Assert.Equal(HttpMethod.Parse(operationType), operationKeyValue.Key);
             Assert.NotNull(operationKeyValue.Value);
             Assert.NotEmpty(pathItem.Description);
         }
 
         [Theory]
-        [InlineData(true, "GetNearestCustomers", OperationType.Get)]
+        [InlineData(true, "GetNearestCustomers", "get")]
         [InlineData(false, "GetNearestCustomers", null)]
-        [InlineData(true, "ResetDataSource", OperationType.Post)]
-        [InlineData(false, "ResetDataSource", OperationType.Post)]
+        [InlineData(true, "ResetDataSource", "post")]
+        [InlineData(false, "ResetDataSource", "post")]
         public void CreatePathItemForOperationImportWithReadRestrictionsReturnsCorrectPathItem(bool readable, string operationImport,
-            OperationType? operationType)
+            string operationType)
         {
             // Arrange
             string annotation = $@"
@@ -119,7 +120,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             else
             {
                 var operationKeyValue = Assert.Single(pathItem.Operations);
-                Assert.Equal(operationType, operationKeyValue.Key);
+                Assert.Equal(HttpMethod.Parse(operationType), operationKeyValue.Key);
                 Assert.NotNull(operationKeyValue.Value);
             }
         }
@@ -189,7 +190,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
     internal class MyOperationImportPathItemHandler(OpenApiDocument document) : OperationImportPathItemHandler(document)
     {
-        protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
+        protected override void AddOperation(OpenApiPathItem item, HttpMethod operationType)
         {
             item.AddOperation(operationType, new OpenApiOperation());
         }

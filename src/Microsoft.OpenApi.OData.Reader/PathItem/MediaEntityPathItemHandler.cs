@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
@@ -48,7 +49,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                (readRestrictions.ReadByKeyRestrictions == null && readRestrictions.IsReadable) ||
                (readRestrictions.ReadByKeyRestrictions != null && readRestrictions.ReadByKeyRestrictions.IsReadable))
             {
-                AddOperation(item, OperationType.Get);
+                AddOperation(item, HttpMethod.Get);
             }
 
             UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
@@ -58,7 +59,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             updateRestrictions ??= navSourceUpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
             {
-                AddOperation(item, OperationType.Put);
+                AddOperation(item, HttpMethod.Put);
             }
 
             DeleteRestrictionsType deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
@@ -68,7 +69,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             deleteRestrictions ??= navSourceDeleteRestrictions;
             if (deleteRestrictions?.IsDeletable ?? true)
             {
-                AddOperation(item, OperationType.Delete);
+                AddOperation(item, HttpMethod.Delete);
             }
         }
 

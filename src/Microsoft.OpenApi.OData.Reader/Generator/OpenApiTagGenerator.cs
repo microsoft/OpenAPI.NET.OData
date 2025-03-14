@@ -22,7 +22,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <returns>The created collection of <see cref="OpenApiTag"/> object.</returns>
-        public static IList<OpenApiTag> CreateTags(this ODataContext context)
+        public static ISet<OpenApiTag> CreateTags(this ODataContext context)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
@@ -38,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return context.Tags;
             }
 
-            IList<OpenApiTag> tags = new List<OpenApiTag>();
+            var tags = new HashSet<OpenApiTag>();
             if (context.EntityContainer != null)
             {
                 foreach (IEdmEntityContainerElement element in context.Model.EntityContainer.Elements)

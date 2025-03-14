@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
@@ -60,7 +61,7 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             {
                 string typeName = entityType.Name;
-                string prefix = OperationType == OperationType.Patch ? "Update" : "Set";
+                string prefix = OperationType == HttpMethod.Patch ? "Update" : "Set";
                 string operationName = $"{prefix}{ Utils.UpperFirstChar(typeName)}";
                 if (keySegment.IsAlternateKey)
                 {

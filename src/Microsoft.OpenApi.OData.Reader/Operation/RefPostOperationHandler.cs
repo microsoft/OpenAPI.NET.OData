@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -27,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation
             
         }
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Post;
+        public override HttpMethod OperationType => HttpMethod.Post;
         private InsertRestrictionsType _insertRestriction;
 
         /// <inheritdoc/>

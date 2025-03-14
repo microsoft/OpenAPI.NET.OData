@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
@@ -20,7 +21,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class EntitySetPathItemHandlerTests
     {
-        private EntitySetPathItemHandler _pathItemHandler = new MyEntitySetPathItemHandler(new());
+        private readonly EntitySetPathItemHandler _pathItemHandler = new MyEntitySetPathItemHandler(new());
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -76,15 +77,15 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
             Assert.Equal(2, pathItem.Operations.Count);
-            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Post },
+            Assert.Equal([HttpMethod.Get, HttpMethod.Post],
                 pathItem.Operations.Select(o => o.Key));
             Assert.NotEmpty(pathItem.Description);
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Post })]
-        [InlineData(false, new OperationType[] { OperationType.Post })]
-        public void CreateEntitySetPathItemWorksForReadRestrictionsCapablities(bool readable, OperationType[] expected)
+        [InlineData(true, new [] { "get", "post" })]
+        [InlineData(false, new [] { "post" })]
+        public void CreateEntitySetPathItemWorksForReadRestrictionsCapabilities(bool readable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -99,9 +100,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Post })]
-        [InlineData(false, new OperationType[] { OperationType.Get })]
-        public void CreateEntitySetPathItemWorksForInsertRestrictionsCapablities(bool insertable, OperationType[] expected)
+        [InlineData(true, new [] { "get", "post" })]
+        [InlineData(false, new [] { "get" })]
+        public void CreateEntitySetPathItemWorksForInsertRestrictionsCapablities(bool insertable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -132,10 +133,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 </Annotation>";
 
             // Assert
-            VerifyPathItemOperations(annotation, new OperationType[] { });
+            VerifyPathItemOperations(annotation, []);
         }
 
-        private void VerifyPathItemOperations(string annotation, OperationType[] expected)
+        private void VerifyPathItemOperations(string annotation, string[] expected)
         {
             // Arrange
             IEdmModel model = GetEdmModel(annotation);
@@ -151,7 +152,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem);
 
             Assert.NotNull(pathItem.Operations);
-            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
+            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key.ToString().ToLowerInvariant()));
         }
 
         [Fact]
@@ -216,7 +217,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
     internal class MyEntitySetPathItemHandler(OpenApiDocument document) : EntitySetPathItemHandler(document)
     {
-        protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
+        protected override void AddOperation(OpenApiPathItem item, HttpMethod operationType)
         {
             item.AddOperation(operationType, new OpenApiOperation());
         }

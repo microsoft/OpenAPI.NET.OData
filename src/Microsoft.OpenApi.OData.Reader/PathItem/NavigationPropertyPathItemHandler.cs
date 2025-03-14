@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Text.Json.Nodes;
+using System.Net.Http;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -126,7 +127,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                            ((entityInsertRestrictions?.IsInsertable ?? true) &&
                            (navPropInsertRestrictions?.IsInsertable ?? true)))
                         {
-                            AddOperation(item, OperationType.Post);
+                            AddOperation(item, HttpMethod.Post);
                         }
                     }
                 }
@@ -152,7 +153,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                     {
                         if (navPropInsertRestrictions?.Insertable ?? false)
                         {
-                            AddOperation(item, OperationType.Post);
+                            AddOperation(item, HttpMethod.Post);
                         }
                     }
                 }
@@ -181,7 +182,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             bool isReadableDefault = navPropReadRestriction == null && entityReadRestriction == null;
             if (isReadableDefault)
             {
-                AddOperation(item, OperationType.Get);
+                AddOperation(item, HttpMethod.Get);
                 return;
             }
 
@@ -193,7 +194,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                     if ((navPropReadRestriction?.ReadByKeyRestrictions?.IsReadable ?? true) &&
                         (entityReadRestriction?.IsReadable ?? true))
                     {
-                        AddOperation(item, OperationType.Get);
+                        AddOperation(item, HttpMethod.Get);
                     }
                 }
                 else
@@ -201,7 +202,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                     if ((navPropReadRestriction?.IsReadable ?? true) &&
                         (entityReadRestriction?.IsReadable ?? true))
                     {
-                        AddOperation(item, OperationType.Get);
+                        AddOperation(item, HttpMethod.Get);
                     }
                 }
             }
@@ -211,7 +212,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 if ((navPropReadRestriction?.IsReadable ?? true) &&
                    (entityReadRestriction?.IsReadable ?? true))
                 {
-                    AddOperation(item, OperationType.Get);
+                    AddOperation(item, HttpMethod.Get);
                 }
             }
         }
@@ -238,13 +239,13 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             if (NavigationProperty.ContainsTarget && isDeletable)
             {
-                AddOperation(item, OperationType.Delete);
+                AddOperation(item, HttpMethod.Delete);
             }
             else if (navPropDeleteRestriction?.Deletable ?? false)
             {
                 // Add delete operation for non-contained nav. props only if explicitly set to true via annotation
                 // Note: Use Deletable and NOT IsDeletable
-                AddOperation(item, OperationType.Delete);
+                AddOperation(item, HttpMethod.Delete);
             }
 
             return;
@@ -256,16 +257,16 @@ namespace Microsoft.OpenApi.OData.PathItem
             {
                 if (updateRestrictionsType?.IsUpdateMethodPutAndPatch == true)
                 {
-                    AddOperation(item, OperationType.Put);
-                    AddOperation(item, OperationType.Patch);
+                    AddOperation(item, HttpMethod.Put);
+                    AddOperation(item, HttpMethod.Patch);
                 }
                 else if (updateRestrictionsType?.IsUpdateMethodPut == true)
                 {
-                    AddOperation(item, OperationType.Put);
+                    AddOperation(item, HttpMethod.Put);
                 }
                 else
                 {
-                    AddOperation(item, OperationType.Patch);
+                    AddOperation(item, HttpMethod.Patch);
                 }
             }
 

@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Operation;
@@ -18,5 +19,5 @@ internal class ComplexPropertyPatchOperationHandler : ComplexPropertyUpdateOpera
         
     }
     /// <inheritdoc />
-    public override OperationType OperationType => OperationType.Patch;
+    public override HttpMethod OperationType => HttpMethod.Patch;
 }

@@ -10,7 +10,6 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
 using Xunit;
@@ -19,7 +18,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class RefPathItemHandlerTest
     {
-        private RefPathItemHandler _pathItemHandler = new RefPathItemHandler(new());
+        private readonly RefPathItemHandler _pathItemHandler = new RefPathItemHandler(new());
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -57,10 +56,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Delete}, true)]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Post, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
-        public void CreateNavigationPropertyRefPathItemReturnsCorrectPathItem(bool collectionNav, OperationType[] expected, bool indexedColNav = false)
+        [InlineData(true, new string[] { "delete"}, true)]
+        [InlineData(true, new string[] { "get", "post", "delete" })]
+        [InlineData(false, new string[] { "get", "put", "delete" })]
+        public void CreateNavigationPropertyRefPathItemReturnsCorrectPathItem(bool collectionNav, string[] expected, bool indexedColNav = false)
         {
             // Arrange
             IEdmModel model = GetEdmModel("");
@@ -100,7 +99,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
-            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
+            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key.ToString().ToLowerInvariant()));
             Assert.NotEmpty(pathItem.Description);
         }
 

@@ -10,6 +10,7 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
 using System;
 using System.Linq;
+using System.Net.Http;
 using System.Xml.Linq;
 using Xunit;
 
@@ -90,17 +91,17 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotEmpty(pathItem2.Operations);
             Assert.Equal(3, pathItem.Operations.Count);
             Assert.Equal(3, pathItem2.Operations.Count);
-            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete },
+            Assert.Equal([HttpMethod.Get, HttpMethod.Put, HttpMethod.Delete],
                 pathItem.Operations.Select(o => o.Key));
-            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete },
+            Assert.Equal([HttpMethod.Get, HttpMethod.Put, HttpMethod.Delete],
                 pathItem2.Operations.Select(o => o.Key));
             Assert.NotEmpty(pathItem.Description);
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Put, OperationType.Delete })]
-        public void CreateMediaEntityPathItemWorksForReadByKeyRestrictionsCapabilities(bool readable, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "put", "delete" })]
+        [InlineData(false, new string[] { "put", "delete" })]
+        public void CreateMediaEntityPathItemWorksForReadByKeyRestrictionsCapabilities(bool readable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -120,9 +121,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Delete })]
-        public void CreateMediaEntityPathItemWorksForUpdateRestrictionsCapabilities(bool updatable, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "put", "delete" })]
+        [InlineData(false, new string[] { "get", "delete" })]
+        public void CreateMediaEntityPathItemWorksForUpdateRestrictionsCapabilities(bool updatable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -138,9 +139,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Delete })]
-        public void CreateMediaEntityPathItemWorksForUpdateRestrictionsCapabilitiesWithTargetPathAnnotations(bool updatable, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "put", "delete" })]
+        [InlineData(false, new string[] { "get", "delete" })]
+        public void CreateMediaEntityPathItemWorksForUpdateRestrictionsCapabilitiesWithTargetPathAnnotations(bool updatable, string[] expected)
         {
             string annotation = $@"
 <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
@@ -164,9 +165,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Put })]
-        public void CreateMediaEntityPathItemWorksForDeleteRestrictionsCapabilities(bool deletable, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "put", "delete" })]
+        [InlineData(false, new string[] { "get", "put" })]
+        public void CreateMediaEntityPathItemWorksForDeleteRestrictionsCapabilities(bool deletable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -182,9 +183,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Put })]
-        public void CreateMediaEntityPathItemWorksForDeleteRestrictionsCapabilitiesWithTargetPathAnnotations(bool deletable, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "put", "delete" })]
+        [InlineData(false, new string[] { "get", "put" })]
+        public void CreateMediaEntityPathItemWorksForDeleteRestrictionsCapabilitiesWithTargetPathAnnotations(bool deletable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -209,7 +210,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             VerifyPathItemOperationsForStreamPropertySegment(annotation, expected, streamPropertyTargetPathAnnotation);
         }
 
-        private void VerifyPathItemOperationsForStreamPropertySegment(string annotation, OperationType[] expected, string targetPathAnnotations = "")
+        private void VerifyPathItemOperationsForStreamPropertySegment(string annotation, string[] expected, string targetPathAnnotations = "")
         {
             // Arrange
             
@@ -232,10 +233,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
-            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
+            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key.ToString().ToLowerInvariant()));
         }
 
-        private void VerifyPathItemOperationsForStreamContentSegment(string annotation, OperationType[] expected, string targetPathAnnotations = null)
+        private void VerifyPathItemOperationsForStreamContentSegment(string annotation, string[] expected, string targetPathAnnotations = null)
         {
             // Arrange
             IEdmModel model = GetEdmModel(annotation, targetPathAnnotations);
@@ -268,8 +269,8 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem2.Operations);
             Assert.NotEmpty(pathItem.Operations);
             Assert.NotEmpty(pathItem2.Operations);
-            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
-            Assert.Equal(expected, pathItem2.Operations.Select(e => e.Key));
+            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key.ToString().ToLowerInvariant()));
+            Assert.Equal(expected, pathItem2.Operations.Select(e => e.Key.ToString().ToLowerInvariant()));;
         }
 
         private IEdmModel GetEdmModel(string annotation, string targetPathAnnotation = "")
@@ -315,7 +316,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
     internal class MyMediaEntityPathItemHandler(OpenApiDocument document) : MediaEntityPathItemHandler(document)
     {
-        protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
+        protected override void AddOperation(OpenApiPathItem item, HttpMethod operationType)
         {
             item.AddOperation(operationType, new OpenApiOperation());
         }

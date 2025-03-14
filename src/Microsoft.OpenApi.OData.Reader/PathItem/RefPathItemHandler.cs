@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using System.Net.Http;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -105,7 +106,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             deleteRestrictions ??= restriction?.DeleteRestrictions;
             if (deleteRestrictions?.IsDeletable ?? true)
             {
-                AddOperation(item, OperationType.Delete);
+                AddOperation(item, HttpMethod.Delete);
             }
         }
 
@@ -116,7 +117,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             readRestrictions ??= restriction?.ReadRestrictions;
             if (readRestrictions?.IsReadable ?? true)
             {
-                AddOperation(item, OperationType.Get);
+                AddOperation(item, HttpMethod.Get);
             }
         }
 
@@ -127,7 +128,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             insertRestrictions ??= restriction?.InsertRestrictions;
             if (insertRestrictions?.IsInsertable ?? true)
             {
-                AddOperation(item, OperationType.Post);
+                AddOperation(item, HttpMethod.Post);
             }
         }
 
@@ -138,7 +139,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             updateRestrictions ??= restriction?.UpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
             {
-                AddOperation(item, OperationType.Put);
+                AddOperation(item, HttpMethod.Put);
             }
         }
 

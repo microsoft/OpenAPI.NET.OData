@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
     /// Enumerates HTTP methods that can be used to update entities
     /// </summary>
     [Flags]
-    internal enum HttpMethod
+    internal enum HttpUpdateMethod
     {
         /// <summary>
         /// The HTTP PATCH Method
@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Gets the values indicating the HTTP Method (PUT and/or PATCH) for updating an entity. 
         /// If null, PATCH should be supported and PUT MAY be supported.
         /// </summary>
-        public HttpMethod? UpdateMethod { get; private set; }
+        public HttpUpdateMethod? UpdateMethod { get; private set; }
 
         /// <summary>
         /// Gets the value indicating Members of collections can be updated via a PATCH request with a '/$filter(...)/$each' segment.
@@ -128,13 +128,13 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Tests whether the update method for the target has been explicitly specified as PUT
         /// </summary>
-        public bool IsUpdateMethodPut => UpdateMethod.HasValue && UpdateMethod.Value == HttpMethod.PUT;
+        public bool IsUpdateMethodPut => UpdateMethod.HasValue && UpdateMethod.Value == HttpUpdateMethod.PUT;
 
         /// <summary>
         /// Tests whether the update method for the target has been explicitly specified as PATCH and PUT
         /// </summary>
         public bool IsUpdateMethodPutAndPatch => UpdateMethod.HasValue &&
-            (UpdateMethod.Value & (HttpMethod.PUT | HttpMethod.PATCH)) == (HttpMethod.PUT | HttpMethod.PATCH);
+            (UpdateMethod.Value & (HttpUpdateMethod.PUT | HttpUpdateMethod.PATCH)) == (HttpUpdateMethod.PUT | HttpUpdateMethod.PATCH);
 
         /// <summary>
         /// Lists the media types acceptable for the request content
@@ -166,7 +166,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             DeltaUpdateSupported = record.GetBoolean("DeltaUpdateSupported");
 
             // UpdateMethod
-            UpdateMethod = record.GetEnum<HttpMethod>("UpdateMethod");
+            UpdateMethod = record.GetEnum<HttpUpdateMethod>("UpdateMethod");
 
             // FilterSegmentSupported
             FilterSegmentSupported = record.GetBoolean("FilterSegmentSupported");

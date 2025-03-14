@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Net.Http;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 
@@ -23,7 +24,7 @@ namespace Microsoft.OpenApi.OData.Operation
             
         }
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Get;
+        public override HttpMethod OperationType => HttpMethod.Get;
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)

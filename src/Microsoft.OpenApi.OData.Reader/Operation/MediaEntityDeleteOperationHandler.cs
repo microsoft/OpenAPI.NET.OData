@@ -5,6 +5,7 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Linq;
+using System.Net.Http;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -19,7 +20,7 @@ namespace Microsoft.OpenApi.OData.Operation
             
         }
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Delete;
+        public override HttpMethod OperationType => HttpMethod.Delete;
 
         private DeleteRestrictionsType _deleteRestrictions;
 

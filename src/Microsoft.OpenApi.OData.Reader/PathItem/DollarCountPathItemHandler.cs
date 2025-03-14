@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 
@@ -27,7 +28,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            AddOperation(item, OperationType.Get);
+            AddOperation(item, HttpMethod.Get);
         }
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)

@@ -38,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 Servers = context.CreateServers(),
 
-                SecurityRequirements = null,
+                Security = null,
 
                 ExternalDocs = null,
             };

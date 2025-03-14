@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 
@@ -20,6 +21,6 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operationType">The operation type.</param>
         /// <param name="document">The Open API document to use to lookup references.</param>
         /// <returns>The corresponding <see cref="IOperationHandler"/>.</returns>
-        IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType, OpenApiDocument document);
+        IOperationHandler GetHandler(ODataPathKind pathKind, HttpMethod operationType, OpenApiDocument document);
     }
 }

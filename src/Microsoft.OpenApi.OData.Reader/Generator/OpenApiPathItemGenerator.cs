@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
@@ -58,9 +59,9 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 OpenApiPathItem rootPath = new()
                 {
-                    Operations = new Dictionary<OperationType, OpenApiOperation> {
+                    Operations = new Dictionary<HttpMethod, OpenApiOperation> {
                         {
-                            OperationType.Get, new OpenApiOperation {
+                            HttpMethod.Get, new OpenApiOperation {
                                 OperationId = "graphService.GetGraphService",
                                 Responses = new OpenApiResponses()
                                 {

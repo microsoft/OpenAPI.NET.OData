@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
@@ -30,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Operation
             
         }
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Put;
+        public override HttpMethod OperationType => HttpMethod.Put;
         
         private UpdateRestrictionsType _updateRestrictions = null;
 
