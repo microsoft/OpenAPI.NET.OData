@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Net.Http;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Xunit;
@@ -13,40 +14,40 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     public class OperationHandlerProviderTests
     {
         [Theory]
-        [InlineData(ODataPathKind.EntitySet, OperationType.Get, typeof(EntitySetGetOperationHandler))]
-        [InlineData(ODataPathKind.EntitySet, OperationType.Post, typeof(EntitySetPostOperationHandler))]
-        [InlineData(ODataPathKind.Entity, OperationType.Get, typeof(EntityGetOperationHandler))]
-        [InlineData(ODataPathKind.Entity, OperationType.Patch, typeof(EntityPatchOperationHandler))]
-        [InlineData(ODataPathKind.Entity, OperationType.Delete, typeof(EntityDeleteOperationHandler))]
-        [InlineData(ODataPathKind.Singleton, OperationType.Get, typeof(SingletonGetOperationHandler))]
-        [InlineData(ODataPathKind.Singleton, OperationType.Patch, typeof(SingletonPatchOperationHandler))]
-        [InlineData(ODataPathKind.NavigationProperty, OperationType.Get, typeof(NavigationPropertyGetOperationHandler))]
-        [InlineData(ODataPathKind.NavigationProperty, OperationType.Post, typeof(NavigationPropertyPostOperationHandler))]
-        [InlineData(ODataPathKind.NavigationProperty, OperationType.Patch, typeof(NavigationPropertyPatchOperationHandler))]
-        [InlineData(ODataPathKind.NavigationProperty, OperationType.Delete, typeof(NavigationPropertyDeleteOperationHandler))]
-        [InlineData(ODataPathKind.Operation, OperationType.Get, typeof(EdmFunctionOperationHandler))]
-        [InlineData(ODataPathKind.Operation, OperationType.Post, typeof(EdmActionOperationHandler))]
-        [InlineData(ODataPathKind.OperationImport, OperationType.Get, typeof(EdmFunctionImportOperationHandler))]
-        [InlineData(ODataPathKind.OperationImport, OperationType.Post, typeof(EdmActionImportOperationHandler))]
-        [InlineData(ODataPathKind.Ref, OperationType.Post, typeof(RefPostOperationHandler))]
-        [InlineData(ODataPathKind.Ref, OperationType.Delete, typeof(RefDeleteOperationHandler))]
-        [InlineData(ODataPathKind.Ref, OperationType.Get, typeof(RefGetOperationHandler))]
-        [InlineData(ODataPathKind.Ref, OperationType.Put, typeof(RefPutOperationHandler))]
-        [InlineData(ODataPathKind.MediaEntity, OperationType.Get, typeof(MediaEntityGetOperationHandler))]
-        [InlineData(ODataPathKind.MediaEntity, OperationType.Put, typeof(MediaEntityPutOperationHandler))]
-        [InlineData(ODataPathKind.Metadata, OperationType.Get, typeof(MetadataGetOperationHandler))]
-        [InlineData(ODataPathKind.DollarCount, OperationType.Get, typeof(DollarCountGetOperationHandler))]
-        public void GetHandlerReturnsCorrectOperationHandlerType(ODataPathKind pathKind, OperationType operationType, Type handlerType)
+        [InlineData(ODataPathKind.EntitySet, "get", typeof(EntitySetGetOperationHandler))]
+        [InlineData(ODataPathKind.EntitySet, "post", typeof(EntitySetPostOperationHandler))]
+        [InlineData(ODataPathKind.Entity, "get", typeof(EntityGetOperationHandler))]
+        [InlineData(ODataPathKind.Entity, "patch", typeof(EntityPatchOperationHandler))]
+        [InlineData(ODataPathKind.Entity, "delete", typeof(EntityDeleteOperationHandler))]
+        [InlineData(ODataPathKind.Singleton, "get", typeof(SingletonGetOperationHandler))]
+        [InlineData(ODataPathKind.Singleton, "patch", typeof(SingletonPatchOperationHandler))]
+        [InlineData(ODataPathKind.NavigationProperty, "get", typeof(NavigationPropertyGetOperationHandler))]
+        [InlineData(ODataPathKind.NavigationProperty, "post", typeof(NavigationPropertyPostOperationHandler))]
+        [InlineData(ODataPathKind.NavigationProperty, "patch", typeof(NavigationPropertyPatchOperationHandler))]
+        [InlineData(ODataPathKind.NavigationProperty, "delete", typeof(NavigationPropertyDeleteOperationHandler))]
+        [InlineData(ODataPathKind.Operation, "get", typeof(EdmFunctionOperationHandler))]
+        [InlineData(ODataPathKind.Operation, "post", typeof(EdmActionOperationHandler))]
+        [InlineData(ODataPathKind.OperationImport, "get", typeof(EdmFunctionImportOperationHandler))]
+        [InlineData(ODataPathKind.OperationImport, "post", typeof(EdmActionImportOperationHandler))]
+        [InlineData(ODataPathKind.Ref, "post", typeof(RefPostOperationHandler))]
+        [InlineData(ODataPathKind.Ref, "delete", typeof(RefDeleteOperationHandler))]
+        [InlineData(ODataPathKind.Ref, "get", typeof(RefGetOperationHandler))]
+        [InlineData(ODataPathKind.Ref, "put", typeof(RefPutOperationHandler))]
+        [InlineData(ODataPathKind.MediaEntity, "get", typeof(MediaEntityGetOperationHandler))]
+        [InlineData(ODataPathKind.MediaEntity, "put", typeof(MediaEntityPutOperationHandler))]
+        [InlineData(ODataPathKind.Metadata, "get", typeof(MetadataGetOperationHandler))]
+        [InlineData(ODataPathKind.DollarCount, "get", typeof(DollarCountGetOperationHandler))]
+        public void GetHandlerReturnsCorrectOperationHandlerType(ODataPathKind pathKind, string operationType, Type handlerType)
         {
             // Arrange
             OpenApiDocument openApiDocument = new();
             OperationHandlerProvider provider = new OperationHandlerProvider();
 
             // Act
-            IOperationHandler hander = provider.GetHandler(pathKind, operationType, openApiDocument);
+            IOperationHandler handler = provider.GetHandler(pathKind, HttpMethod.Parse(operationType), openApiDocument);
 
             // Assert
-            Assert.Same(handlerType, hander.GetType());
+            Assert.Same(handlerType, handler.GetType());
         }
     }
 }

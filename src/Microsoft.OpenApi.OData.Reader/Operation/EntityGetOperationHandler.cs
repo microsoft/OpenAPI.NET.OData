@@ -13,6 +13,7 @@ using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.Models.Interfaces;
+using System.Net.Http;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -32,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Operation
             
         }
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Get;
+        public override HttpMethod OperationType => HttpMethod.Get;
 
         private ReadRestrictionsType _readRestrictions;
 

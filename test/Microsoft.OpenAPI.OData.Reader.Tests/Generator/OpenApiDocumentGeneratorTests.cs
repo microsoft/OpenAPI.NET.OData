@@ -42,7 +42,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(document.Components);
 
             Assert.Null(document.ExternalDocs);
-            Assert.Null(document.SecurityRequirements);
+            Assert.Null(document.Security);
         }
     }
 }

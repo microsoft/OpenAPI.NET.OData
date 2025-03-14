@@ -10,6 +10,7 @@ using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Operation;
 using Microsoft.OpenApi.OData.Properties;
 using System;
+using System.Net.Http;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -111,7 +112,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// </summary>
         /// <param name="item">The path item.</param>
         /// <param name="operationType">The operation type.</param>
-        protected virtual void AddOperation(OpenApiPathItem item, OperationType operationType)
+        protected virtual void AddOperation(OpenApiPathItem item, HttpMethod operationType)
         {
             string httpMethod = operationType.ToString();
             if (!Path.SupportHttpMethod(httpMethod))

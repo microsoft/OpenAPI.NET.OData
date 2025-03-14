@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
@@ -28,7 +29,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         
     }
     /// <inheritdoc />
-    public override OperationType OperationType => OperationType.Get;
+    public override HttpMethod OperationType => HttpMethod.Get;
 
     private ReadRestrictionsType _readRestrictions;
 

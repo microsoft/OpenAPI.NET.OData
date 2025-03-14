@@ -9,6 +9,7 @@ using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Writers;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -178,7 +179,8 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
         Assert.NotNull(document); // guard
 
         MemoryStream stream = new();
-        await document.SerializeAsync(stream, settings.OpenApiSpecVersion, target);
+        var writerSettings = new OpenApiWriterSettings();
+        await document.SerializeAsync(stream, settings.OpenApiSpecVersion, target, writerSettings);
         await stream.FlushAsync();
         stream.Position = 0;
         return await new StreamReader(stream).ReadToEndAsync();

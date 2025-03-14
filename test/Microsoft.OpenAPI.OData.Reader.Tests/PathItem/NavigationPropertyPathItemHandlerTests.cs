@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
@@ -59,11 +60,11 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
-        [InlineData(true, false, new OperationType[] { OperationType.Get, OperationType.Post })]
-        [InlineData(false, true, new OperationType[] { OperationType.Get, OperationType.Delete })] // Deletablity explicitly set via annotation
-        [InlineData(false, false, new OperationType[] { OperationType.Get})]
-        public void CreateCollectionNavigationPropertyPathItemReturnsCorrectPathItem(bool containment, bool keySegment, OperationType[] expected)
+        [InlineData(true, true, new string[] { "get", "patch", "delete" })]
+        [InlineData(true, false, new string[] { "get", "post" })]
+        [InlineData(false, true, new string[] { "get", "delete" })] // Deletablity explicitly set via annotation
+        [InlineData(false, false, new string[] { "get"})]
+        public void CreateCollectionNavigationPropertyPathItemReturnsCorrectPathItem(bool containment, bool keySegment, string[] expected)
         {
             string annotation = 
                 containment ? 
@@ -103,7 +104,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
-            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
+            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key.ToString().ToLowerInvariant()));
             Assert.NotEmpty(pathItem.Description);
         }
 
@@ -167,9 +168,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Get })]
-        public void CreateSingleNavigationPropertyPathItemReturnsCorrectPathItem(bool containment, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "patch", "delete" })]
+        [InlineData(false, new string[] { "get" })]
+        public void CreateSingleNavigationPropertyPathItemReturnsCorrectPathItem(bool containment, string[] expected)
         {
             // Arrange
             IEdmModel model = GetEdmModel("");
@@ -194,7 +195,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
-            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
+            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key.ToString().ToLowerInvariant()));
         }
 
         public static IEnumerable<object[]> CollectionNavigationPropertyData
@@ -298,13 +299,13 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             if (hasRestrictions)
             {
                 if (readable)
-                    Assert.Contains(pathItem.Operations, o => o.Key == OperationType.Get);
+                    Assert.Contains(pathItem.Operations, o => o.Key == HttpMethod.Get);
                 else
-                    Assert.DoesNotContain(pathItem.Operations, o => o.Key == OperationType.Get);
+                    Assert.DoesNotContain(pathItem.Operations, o => o.Key == HttpMethod.Get);
             }
             else
             {
-                Assert.Contains(pathItem.Operations, o => o.Key == OperationType.Get);
+                Assert.Contains(pathItem.Operations, o => o.Key == HttpMethod.Get);
             }
         }
 
@@ -349,18 +350,18 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             bool isContainment = path.Segments.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty.ContainsTarget;
 
-            OperationType[] expected;
+            HttpMethod[] expected;
             if (hasRestrictions)
             {
                 expected = insertable
-                    ? (new[] { OperationType.Get, OperationType.Post })
-                    : (new[] { OperationType.Get });
+                    ? (new[] { HttpMethod.Get, HttpMethod.Post })
+                    : (new[] { HttpMethod.Get });
             }
             else
             {
                 expected = isContainment
-                    ? (new[] { OperationType.Get, OperationType.Post })
-                    : (new[] { OperationType.Get });
+                    ? (new[] { HttpMethod.Get, HttpMethod.Post })
+                    : (new[] { HttpMethod.Get });
             }
 
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
@@ -410,27 +411,27 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             bool isContainment = navigationProperty.ContainsTarget;
             bool isCollection = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
 
-            OperationType[] expected;
+            HttpMethod[] expected;
             if (hasRestrictions)
             {
                 if (isContainment)
                 {
                     expected = updatable
-                        ? (new[] { OperationType.Get, OperationType.Patch, OperationType.Delete })
-                        : (new[] { OperationType.Get, OperationType.Delete });
+                        ? (new[] { HttpMethod.Get, HttpMethod.Patch, HttpMethod.Delete })
+                        : (new[] { HttpMethod.Get, HttpMethod.Delete });
                 }
                 else
                 {
                     expected = updatable
-                        ? (new[] { OperationType.Get, OperationType.Patch })
-                        : (new[] { OperationType.Get });
+                        ? (new[] { HttpMethod.Get, HttpMethod.Patch })
+                        : (new[] { HttpMethod.Get });
                 }                               
             }
             else
             {
                 expected = isContainment
-                    ? (new[] { OperationType.Get, OperationType.Patch, OperationType.Delete })
-                    : (new[] { OperationType.Get });
+                    ? (new[] { HttpMethod.Get, HttpMethod.Patch, HttpMethod.Delete })
+                    : (new[] { HttpMethod.Get });
             }
 
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
@@ -480,29 +481,28 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             var navigationProperty = path.Segments.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
             bool isContainment = navigationProperty.ContainsTarget;
-            bool isCollection = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
 
-            OperationType[] expected;
+            HttpMethod[] expected;
             if (updateMethod)
             {
                 if (isContainment)
                 {
                     expected = updatable
-                        ? ([OperationType.Get, OperationType.Put, OperationType.Patch, OperationType.Delete])
-                        : ([OperationType.Get, OperationType.Delete]);
+                        ? ([HttpMethod.Get, HttpMethod.Put, HttpMethod.Patch, HttpMethod.Delete])
+                        : ([HttpMethod.Get, HttpMethod.Delete]);
                 }
                 else
                 {
                     expected = updatable
-                        ? ([OperationType.Get, OperationType.Put, OperationType.Patch,])
-                        : ([OperationType.Get]);
+                        ? ([HttpMethod.Get, HttpMethod.Put, HttpMethod.Patch,])
+                        : ([HttpMethod.Get]);
                 }
             }
             else
             {
                 expected = isContainment
-                    ? ([OperationType.Get, OperationType.Patch, OperationType.Delete])
-                    : ([OperationType.Get]);
+                    ? ([HttpMethod.Get, HttpMethod.Patch, HttpMethod.Delete])
+                    : ([HttpMethod.Get]);
 
             }
 
@@ -543,7 +543,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem);
             Assert.NotNull(pathItem.Operations);
             Assert.Single(pathItem.Operations);
-            Assert.Equal(OperationType.Get, pathItem.Operations.FirstOrDefault().Key);
+            Assert.Equal(HttpMethod.Get, pathItem.Operations.FirstOrDefault().Key);
         }
 
         [Fact]
@@ -575,7 +575,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem);
             Assert.NotNull(pathItem.Operations);
             Assert.Equal(2, pathItem.Operations.Count);
-            Assert.Equal(new[] { OperationType.Get, OperationType.Patch }, pathItem.Operations.Select(o => o.Key));
+            Assert.Equal(new[] { HttpMethod.Get, HttpMethod.Patch }, pathItem.Operations.Select(o => o.Key));
         }
 
         [Fact]

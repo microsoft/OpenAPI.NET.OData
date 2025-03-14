@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
@@ -56,10 +57,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData("GetFriendsTrips", "People", OperationType.Get)]
-        [InlineData("ShareTrip", "People", OperationType.Post)]
+        [InlineData("GetFriendsTrips", "People", "get")]
+        [InlineData("ShareTrip", "People", "post")]
         public void CreatePathItemForOperationReturnsCorrectPathItem(string operationName, string entitySet,
-            OperationType operationType)
+            string operationType)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -80,7 +81,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem);
             Assert.NotNull(pathItem.Operations);
             var operationKeyValue = Assert.Single(pathItem.Operations);
-            Assert.Equal(operationType, operationKeyValue.Key);
+            Assert.Equal(HttpMethod.Parse(operationType), operationKeyValue.Key);
             Assert.NotNull(operationKeyValue.Value);
 
             Assert.Equal(expectSummary, operationKeyValue.Value.Summary);

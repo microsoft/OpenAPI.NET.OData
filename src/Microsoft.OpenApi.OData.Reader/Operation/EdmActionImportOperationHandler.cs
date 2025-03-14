@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -25,7 +26,7 @@ namespace Microsoft.OpenApi.OData.Operation
             
         }
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Post;
+        public override HttpMethod OperationType => HttpMethod.Post;
 
         protected override void SetRequestBody(OpenApiOperation operation)
         {

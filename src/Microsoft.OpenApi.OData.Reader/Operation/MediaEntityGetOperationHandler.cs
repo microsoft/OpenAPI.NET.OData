@@ -11,6 +11,7 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Linq;
+using System.Net.Http;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -28,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Operation
             
         }
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Get;
+        public override HttpMethod OperationType => HttpMethod.Get;
         private ReadRestrictionsType _readRestrictions = null;
 
         protected override void Initialize(ODataContext context, ODataPath path)

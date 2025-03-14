@@ -5,6 +5,7 @@
 
 using System;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
@@ -74,7 +75,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
             Assert.Equal(3, pathItem.Operations.Count);
-            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete },
+            Assert.Equal(new HttpMethod[] { HttpMethod.Get, HttpMethod.Patch, HttpMethod.Delete },
                 pathItem.Operations.Select(o => o.Key));
         }
 
@@ -103,7 +104,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
             Assert.Equal(3, pathItem.Operations.Count);
-            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete },
+            Assert.Equal(new HttpMethod[] { HttpMethod.Get, HttpMethod.Patch, HttpMethod.Delete },
                 pathItem.Operations.Select(o => o.Key));
 
             if (declarePathParametersOnPathItem)
@@ -138,15 +139,15 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
             Assert.Equal(3, pathItem.Operations.Count);
-            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete },
+            Assert.Equal(new HttpMethod[] { HttpMethod.Get, HttpMethod.Patch, HttpMethod.Delete },
                 pathItem.Operations.Select(o => o.Key));
             Assert.NotEmpty(pathItem.Description);
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Patch, OperationType.Delete })]
-        public void CreateEntityPathItemWorksForReadByKeyRestrictionsCapablities(bool readable, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "patch", "delete" })]
+        [InlineData(false, new string[] { "patch", "delete" })]
+        public void CreateEntityPathItemWorksForReadByKeyRestrictionsCapablities(bool readable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -165,9 +166,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Patch, OperationType.Delete })]
-        public void CreateEntityPathItemWorksForReadRestrictionsCapablities(bool readable, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "patch", "delete" })]
+        [InlineData(false, new string[] { "patch", "delete" })]
+        public void CreateEntityPathItemWorksForReadRestrictionsCapablities(bool readable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -182,9 +183,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Delete })]
-        public void CreateEntityPathItemWorksForUpdateRestrictionsCapablities(bool updatable, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "patch", "delete" })]
+        [InlineData(false, new string[] { "get", "delete" })]
+        public void CreateEntityPathItemWorksForUpdateRestrictionsCapablities(bool updatable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -199,9 +200,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
-        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Patch })]
-        public void CreateEntityPathItemWorksForDeleteRestrictionsCapablities(bool deletable, OperationType[] expected)
+        [InlineData(true, new string[] { "get", "patch", "delete" })]
+        [InlineData(false, new string[] { "get", "patch" })]
+        public void CreateEntityPathItemWorksForDeleteRestrictionsCapablities(bool deletable, string[] expected)
         {
             // Arrange
             string annotation = $@"
@@ -216,9 +217,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
-        public void CreateEntityPathItemWorksForUpdateMethodRestrictionsCapabilities(bool updateMethod, OperationType[] expected)
+        [InlineData(false, new string[] { "get", "patch", "delete" })]
+        [InlineData(true, new string[] { "get", "put", "delete" })]
+        public void CreateEntityPathItemWorksForUpdateMethodRestrictionsCapabilities(bool updateMethod, string[] expected)
         {
             // Arrange
             string annotation = updateMethod ? $@"
@@ -234,7 +235,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             VerifyPathItemOperations(annotation, expected);
         }
 
-        private void VerifyPathItemOperations(string annotation, OperationType[] expected)
+        private void VerifyPathItemOperations(string annotation, string[] expected)
         {
             // Arrange
             IEdmModel model = EntitySetPathItemHandlerTests.GetEdmModel(annotation);
@@ -251,7 +252,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
-            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
+            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key.ToString().ToLowerInvariant()));
         }
 
         [Fact]
@@ -296,7 +297,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
           
         }
-        protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
+        protected override void AddOperation(OpenApiPathItem item, HttpMethod operationType)
         {
             item.AddOperation(operationType, new OpenApiOperation());
         }

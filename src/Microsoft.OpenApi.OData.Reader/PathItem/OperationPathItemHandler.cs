@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
@@ -42,13 +43,13 @@ namespace Microsoft.OpenApi.OData.PathItem
             {
                 // The Path Item Object for a bound action contains the keyword post,
                 // The value of the operation keyword is an Operation Object that describes how to invoke the action.
-                AddOperation(item, OperationType.Post);
+                AddOperation(item, HttpMethod.Post);
             }
             else
             {
                 // The Path Item Object for a bound function contains the keyword get,
                 // The value of the operation keyword is an Operation Object that describes how to invoke the function.
-                AddOperation(item, OperationType.Get);
+                AddOperation(item, HttpMethod.Get);
             }
         }
 

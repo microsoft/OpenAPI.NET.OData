@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -47,7 +48,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
         if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isReadable) ||
             !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
         {
-            AddOperation(item, OperationType.Get);
+            AddOperation(item, HttpMethod.Get);
         }
     }
 
@@ -63,7 +64,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
             if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isInsertable) ||
                 !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
             {
-                AddOperation(item, OperationType.Post);
+                AddOperation(item, HttpMethod.Post);
             }
         }
     }
@@ -80,16 +81,16 @@ internal class ComplexPropertyItemHandler : PathItemHandler
         {
             if (updateRestrictions?.IsUpdateMethodPutAndPatch == true)
             {
-                AddOperation(item, OperationType.Put);
-                AddOperation(item, OperationType.Patch);
+                AddOperation(item, HttpMethod.Put);
+                AddOperation(item, HttpMethod.Patch);
             }
             else if (updateRestrictions?.IsUpdateMethodPut == true)
             {
-                AddOperation(item, OperationType.Put);
+                AddOperation(item, HttpMethod.Put);
             }
             else
             {
-                AddOperation(item, OperationType.Patch);
+                AddOperation(item, HttpMethod.Patch);
             }
         }
     }

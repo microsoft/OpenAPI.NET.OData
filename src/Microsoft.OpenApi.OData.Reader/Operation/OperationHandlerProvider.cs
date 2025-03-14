@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Net.Http;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 
@@ -15,65 +16,65 @@ namespace Microsoft.OpenApi.OData.Operation
     internal class OperationHandlerProvider : IOperationHandlerProvider
     {
         /// <inheritdoc/>
-        public IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType, OpenApiDocument document)
+        public IOperationHandler GetHandler(ODataPathKind pathKind, HttpMethod operationType, OpenApiDocument document)
         {
-            return (pathKind, operationType) switch
+            return (pathKind, operationType.ToString().ToLowerInvariant()) switch
             {
                 // entity set (Get/Post)
-                (ODataPathKind.EntitySet, OperationType.Get) => new EntitySetGetOperationHandler(document),
-                (ODataPathKind.EntitySet, OperationType.Post) => new EntitySetPostOperationHandler(document),
+                (ODataPathKind.EntitySet, "get") => new EntitySetGetOperationHandler(document),
+                (ODataPathKind.EntitySet, "post") => new EntitySetPostOperationHandler(document),
 
                 // entity (Get/Patch/Put/Delete)
-                (ODataPathKind.Entity, OperationType.Get) => new EntityGetOperationHandler(document),
-                (ODataPathKind.Entity, OperationType.Patch) => new EntityPatchOperationHandler(document),
-                (ODataPathKind.Entity, OperationType.Put) => new EntityPutOperationHandler(document),
-                (ODataPathKind.Entity, OperationType.Delete) => new EntityDeleteOperationHandler(document),
+                (ODataPathKind.Entity, "get") => new EntityGetOperationHandler(document),
+                (ODataPathKind.Entity, "patch") => new EntityPatchOperationHandler(document),
+                (ODataPathKind.Entity, "put") => new EntityPutOperationHandler(document),
+                (ODataPathKind.Entity, "delete") => new EntityDeleteOperationHandler(document),
 
                 // singleton (Get/Patch)
-                (ODataPathKind.Singleton, OperationType.Get) => new SingletonGetOperationHandler(document),
-                (ODataPathKind.Singleton, OperationType.Patch) => new SingletonPatchOperationHandler(document),
+                (ODataPathKind.Singleton, "get") => new SingletonGetOperationHandler(document),
+                (ODataPathKind.Singleton, "patch") => new SingletonPatchOperationHandler(document),
 
                 // edm operation (Get|Post)
-                (ODataPathKind.Operation, OperationType.Get) => new EdmFunctionOperationHandler(document),
-                (ODataPathKind.Operation, OperationType.Post) => new EdmActionOperationHandler(document),
+                (ODataPathKind.Operation, "get") => new EdmFunctionOperationHandler(document),
+                (ODataPathKind.Operation, "post") => new EdmActionOperationHandler(document),
 
                 // edm operation import (Get|Post)
-                (ODataPathKind.OperationImport, OperationType.Get) => new EdmFunctionImportOperationHandler(document),
-                (ODataPathKind.OperationImport, OperationType.Post) => new EdmActionImportOperationHandler(document),
+                (ODataPathKind.OperationImport, "get") => new EdmFunctionImportOperationHandler(document),
+                (ODataPathKind.OperationImport, "post") => new EdmActionImportOperationHandler(document),
 
                 // navigation property (Get/Patch/Put/Post/Delete)
-                (ODataPathKind.NavigationProperty, OperationType.Get) => new NavigationPropertyGetOperationHandler(document),
-                (ODataPathKind.NavigationProperty, OperationType.Patch) => new NavigationPropertyPatchOperationHandler(document),
-                (ODataPathKind.NavigationProperty, OperationType.Put) => new NavigationPropertyPutOperationHandler(document),
-                (ODataPathKind.NavigationProperty, OperationType.Post) => new NavigationPropertyPostOperationHandler(document),
-                (ODataPathKind.NavigationProperty, OperationType.Delete) => new NavigationPropertyDeleteOperationHandler(document),
+                (ODataPathKind.NavigationProperty, "get") => new NavigationPropertyGetOperationHandler(document),
+                (ODataPathKind.NavigationProperty, "patch") => new NavigationPropertyPatchOperationHandler(document),
+                (ODataPathKind.NavigationProperty, "put") => new NavigationPropertyPutOperationHandler(document),
+                (ODataPathKind.NavigationProperty, "post") => new NavigationPropertyPostOperationHandler(document),
+                (ODataPathKind.NavigationProperty, "delete") => new NavigationPropertyDeleteOperationHandler(document),
 
                 // navigation property ref (Get/Post/Put/Delete)
-                (ODataPathKind.Ref, OperationType.Get) => new RefGetOperationHandler(document),
-                (ODataPathKind.Ref, OperationType.Put) => new RefPutOperationHandler(document),
-                (ODataPathKind.Ref, OperationType.Post) => new RefPostOperationHandler(document),
-                (ODataPathKind.Ref, OperationType.Delete) => new RefDeleteOperationHandler(document),
+                (ODataPathKind.Ref, "get") => new RefGetOperationHandler(document),
+                (ODataPathKind.Ref, "put") => new RefPutOperationHandler(document),
+                (ODataPathKind.Ref, "post") => new RefPostOperationHandler(document),
+                (ODataPathKind.Ref, "delete") => new RefDeleteOperationHandler(document),
 
                 // media entity operation (Get|Put|Delete)
-                (ODataPathKind.MediaEntity, OperationType.Get) => new MediaEntityGetOperationHandler(document),
-                (ODataPathKind.MediaEntity, OperationType.Put) => new MediaEntityPutOperationHandler(document),
-                (ODataPathKind.MediaEntity, OperationType.Delete) => new MediaEntityDeleteOperationHandler(document),
+                (ODataPathKind.MediaEntity, "get") => new MediaEntityGetOperationHandler(document),
+                (ODataPathKind.MediaEntity, "put") => new MediaEntityPutOperationHandler(document),
+                (ODataPathKind.MediaEntity, "delete") => new MediaEntityDeleteOperationHandler(document),
 
                 // $metadata operation (Get)
 
-                (ODataPathKind.Metadata, OperationType.Get) => new MetadataGetOperationHandler(document),
+                (ODataPathKind.Metadata, "get") => new MetadataGetOperationHandler(document),
 
                 // $count operation (Get)
-                (ODataPathKind.DollarCount, OperationType.Get) => new DollarCountGetOperationHandler(document),
+                (ODataPathKind.DollarCount, "get") => new DollarCountGetOperationHandler(document),
 
                 // .../namespace.typename (cast, get)
-                (ODataPathKind.TypeCast, OperationType.Get) => new ODataTypeCastGetOperationHandler(document),
+                (ODataPathKind.TypeCast, "get") => new ODataTypeCastGetOperationHandler(document),
 
                 // .../entity/propertyOfComplexType (Get/Patch/Put/Delete)
-                (ODataPathKind.ComplexProperty, OperationType.Get) => new ComplexPropertyGetOperationHandler(document),
-                (ODataPathKind.ComplexProperty, OperationType.Patch) => new ComplexPropertyPatchOperationHandler(document),
-                (ODataPathKind.ComplexProperty, OperationType.Put) => new ComplexPropertyPutOperationHandler(document),
-                (ODataPathKind.ComplexProperty, OperationType.Post) => new ComplexPropertyPostOperationHandler(document),
+                (ODataPathKind.ComplexProperty, "get") => new ComplexPropertyGetOperationHandler(document),
+                (ODataPathKind.ComplexProperty, "patch") => new ComplexPropertyPatchOperationHandler(document),
+                (ODataPathKind.ComplexProperty, "put") => new ComplexPropertyPutOperationHandler(document),
+                (ODataPathKind.ComplexProperty, "post") => new ComplexPropertyPostOperationHandler(document),
 
                 (_, _) => null,
             };

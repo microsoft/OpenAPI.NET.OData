@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -41,7 +42,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 // resource path of the action import prepended with a forward slash, and whose value is a Path
                 // Item Object containing the keyword post with an Operation Object as value that describes
                 // how to invoke the action import.
-                AddOperation(item, OperationType.Post);
+                AddOperation(item, HttpMethod.Post);
             }
             else
             {
@@ -57,7 +58,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 readRestrictions ??= operationReadRestrictions;
                 if (readRestrictions?.IsReadable ?? true)
                 {
-                    AddOperation(item, OperationType.Get);
+                    AddOperation(item, HttpMethod.Get);
                 }
             }
         }

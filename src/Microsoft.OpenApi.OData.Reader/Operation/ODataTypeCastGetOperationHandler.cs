@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
@@ -35,7 +36,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		
 	}
 	/// <inheritdoc/>
-	public override OperationType OperationType => OperationType.Get;
+	public override HttpMethod OperationType => HttpMethod.Get;
 
 	/// <summary>
 	/// Gets/sets the segment before cast.

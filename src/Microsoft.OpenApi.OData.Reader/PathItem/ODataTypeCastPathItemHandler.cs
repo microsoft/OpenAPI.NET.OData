@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -29,7 +30,7 @@ internal class ODataTypeCastPathItemHandler : PathItemHandler
     /// <inheritdoc/>
     protected override void SetOperations(OpenApiPathItem item)
     {
-        AddOperation(item, OperationType.Get);
+        AddOperation(item, HttpMethod.Get);
     }
     /// <inheritdoc/>
     protected override void Initialize(ODataContext context, ODataPath path)
