@@ -96,6 +96,8 @@ namespace Microsoft.OpenApi.OData.Operation
 			{
 				Name = tagIdentifier
 			});
+
+            operation.Tags ??= new HashSet<OpenApiTagReference>();
             operation.Tags.Add(new OpenApiTagReference(tagIdentifier, _document));
         }
 

@@ -99,6 +99,7 @@ namespace Microsoft.OpenApi.OData.Operation
 			{
 				Name = name
 			});
+            operation.Tags ??= new HashSet<OpenApiTagReference>();
             operation.Tags.Add(new OpenApiTagReference(name, _document));
 
             base.SetTags(operation);

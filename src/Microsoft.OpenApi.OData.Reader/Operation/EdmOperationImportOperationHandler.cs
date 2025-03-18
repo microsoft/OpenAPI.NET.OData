@@ -141,6 +141,8 @@ namespace Microsoft.OpenApi.OData.Operation
             var tag = CreateTag(EdmOperationImport);
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
             Context.AppendTag(tag);
+
+            operation.Tags ??= new HashSet<OpenApiTagReference>();
             operation.Tags.Add(new OpenApiTagReference(tag.Name, _document));
 
             base.SetTags(operation);
