@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0-preview.10](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview10...v2.0.0-preview.10) (2025-03-18)
+
+
+### Miscellaneous Chores
+
+* release 2.0.0-preview.10 ([5cd79d7](https://github.com/microsoft/OpenAPI.NET.OData/commit/5cd79d76cc63ab3c311351f8e661b2bd7b88b35b))
+
 ## [2.0.0-preview10](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview9...v2.0.0-preview10) (2025-03-18)
 
 
