@@ -978,9 +978,8 @@ namespace Microsoft.OpenApi.OData.Tests
   ""format"": ""duration"",
   ""description"": ""The length of the appointment, denoted in ISO8601 format."",
   ""pattern"": ""^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$"",
-  ""type"": ""string"",
-  ""readOnly"": true
-}"), json));
+  ""type"": ""string""
+}"), json)); // TODO FIXME after resolution of https://github.com/microsoft/OpenAPI.NET/issues/2272
             }
             else
             {
