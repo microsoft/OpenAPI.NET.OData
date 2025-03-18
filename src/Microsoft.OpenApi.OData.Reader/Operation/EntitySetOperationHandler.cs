@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System.Collections.Generic;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -46,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetTags(OpenApiOperation operation)
         {
             var tagName = EntitySet.Name + "." + EntitySet.EntityType.Name;
-
+            operation.Tags ??= new HashSet<OpenApiTagReference>();
             operation.Tags.Add(new OpenApiTagReference(tagName, _document));
 
             Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()

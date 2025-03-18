@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System.Collections.Generic;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -53,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Operation
 			{
 				Name = tagName
 			});
-
+            operation.Tags ??= new HashSet<OpenApiTagReference>();
             operation.Tags.Add(new OpenApiTagReference(tagName, _document));
 
             // Call base.SetTags() at the end of this method.

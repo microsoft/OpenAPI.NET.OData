@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System.Collections.Generic;
 
 namespace Microsoft.OpenApi.OData.Operation;
 
@@ -35,7 +36,7 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
     protected override void SetTags(OpenApiOperation operation)
     {
         string tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, Context);
-
+        operation.Tags ??= new HashSet<OpenApiTagReference>();
         if (!string.IsNullOrEmpty(tagName))
         {
             Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()

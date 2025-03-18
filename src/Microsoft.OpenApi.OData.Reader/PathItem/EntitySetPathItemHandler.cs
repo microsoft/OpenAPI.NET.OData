@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -41,7 +42,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             readRestrictions ??= entityReadRestrictions;
             if (readRestrictions?.IsReadable ?? true)
             {
-                AddOperation(item, OperationType.Get);
+                AddOperation(item, HttpMethod.Get);
             }
 
             InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
@@ -50,7 +51,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             insertRestrictions ??= entityInsertRestrictions;
             if (insertRestrictions?.IsInsertable ?? true)
             {
-                AddOperation(item, OperationType.Post);
+                AddOperation(item, HttpMethod.Post);
             }
         }
 

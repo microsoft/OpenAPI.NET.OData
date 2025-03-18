@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Operation
@@ -23,6 +24,6 @@ namespace Microsoft.OpenApi.OData.Operation
             
         }
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Put;
+        public override HttpMethod OperationType => HttpMethod.Put;
     }
 }

@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
@@ -64,13 +65,13 @@ public class ComplexPropertyPathItemHandlerTests
 
 		if (operationCount > 0)
 		{
-			Assert.True(pathItem.Operations.ContainsKey(OperationType.Get));
-			Assert.True(pathItem.Operations.ContainsKey(OperationType.Patch));
+			Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Get));
+			Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Patch));
 		}
 		else
 		{
-			Assert.False(pathItem.Operations.ContainsKey(OperationType.Get));
-			Assert.False(pathItem.Operations.ContainsKey(OperationType.Patch));
+			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Get));
+			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Patch));
 		}
 	}
 
@@ -119,18 +120,18 @@ public class ComplexPropertyPathItemHandlerTests
 		{
 			if (annotationAvailable)
 			{
-				Assert.True(pathItem.Operations.ContainsKey(OperationType.Put));
+				Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Put));
 			}
             else
             {
-				Assert.True(pathItem.Operations.ContainsKey(OperationType.Get));
-				Assert.True(pathItem.Operations.ContainsKey(OperationType.Patch));
+				Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Get));
+				Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Patch));
 			}
 		}
 		else
 		{
-			Assert.False(pathItem.Operations.ContainsKey(OperationType.Patch));
-			Assert.False(pathItem.Operations.ContainsKey(OperationType.Put));
+			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Patch));
+			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Put));
 		}
     }
 
@@ -175,11 +176,11 @@ public class ComplexPropertyPathItemHandlerTests
 
 		if (operationCount > 0)
         {
-			Assert.True(pathItem.Operations.ContainsKey(OperationType.Post));
+			Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Post));
 		}
         else
         {
-			Assert.False(pathItem.Operations.ContainsKey(OperationType.Post));
+			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Post));
 		}		
 	}
 	[Fact]
@@ -256,15 +257,15 @@ public class ComplexPropertyPathItemHandlerTests
         Assert.Equal(operationCount, pathItem.Operations.Count);
         if (operationCount == 1)
         {
-            Assert.True(pathItem.Operations.ContainsKey(OperationType.Patch));
-            Assert.False(pathItem.Operations.ContainsKey(OperationType.Post));
-            Assert.False(pathItem.Operations.ContainsKey(OperationType.Get));
+            Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Patch));
+            Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Post));
+            Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Get));
         }
         else if (operationCount == 3) 
         {
-            Assert.True(pathItem.Operations.ContainsKey(OperationType.Patch));
-            Assert.True(pathItem.Operations.ContainsKey(OperationType.Post));
-            Assert.True(pathItem.Operations.ContainsKey(OperationType.Get));
+            Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Patch));
+            Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Post));
+            Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Get));
         }
     }
 }

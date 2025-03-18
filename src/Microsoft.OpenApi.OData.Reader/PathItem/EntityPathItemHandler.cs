@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -39,7 +40,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                (readRestrictions.ReadByKeyRestrictions != null && readRestrictions.ReadByKeyRestrictions.IsReadable))
             {
                 // If we don't have Read by key read restriction, we should check the set read restrction.
-                AddOperation(item, OperationType.Get);
+                AddOperation(item, HttpMethod.Get);
             }
 
             UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
@@ -50,16 +51,16 @@ namespace Microsoft.OpenApi.OData.PathItem
             {
                 if (updateRestrictions?.IsUpdateMethodPutAndPatch == true)
                 {
-                    AddOperation(item, OperationType.Put);
-                    AddOperation(item, OperationType.Patch);
+                    AddOperation(item, HttpMethod.Put);
+                    AddOperation(item, HttpMethod.Patch);
                 }
                 else if (updateRestrictions?.IsUpdateMethodPut == true)
                 {
-                    AddOperation(item, OperationType.Put);
+                    AddOperation(item, HttpMethod.Put);
                 }
                 else
                 {
-                    AddOperation(item, OperationType.Patch);
+                    AddOperation(item, HttpMethod.Patch);
                 }
             }
 
@@ -69,7 +70,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             deleteRestrictions ??= entityDeleteRestrictions;
             if (deleteRestrictions?.IsDeletable ?? true)
             {
-                AddOperation(item, OperationType.Delete);
+                AddOperation(item, HttpMethod.Delete);
             }
         }
 

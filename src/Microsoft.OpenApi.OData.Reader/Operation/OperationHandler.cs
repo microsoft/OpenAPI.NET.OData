@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
@@ -34,7 +35,7 @@ namespace Microsoft.OpenApi.OData.Operation
             _document = document;
         }
         /// <inheritdoc/>
-        public abstract OperationType OperationType { get; }
+        public abstract HttpMethod OperationType { get; }
 
         protected IDictionary<ODataSegment, IDictionary<string, string>> ParameterMappings;
 
@@ -289,13 +290,13 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.CustomHttpMethodLinkRelMapping != null)
             {
-                LinkRelKey? key = OperationType switch
+                LinkRelKey? key = OperationType.ToString().ToLowerInvariant() switch
                 {
-                    OperationType.Get => Path.LastSegment?.Kind ==  ODataSegmentKind.Key ? LinkRelKey.ReadByKey : LinkRelKey.List,
-                    OperationType.Post => LinkRelKey.Create,
-                    OperationType.Patch => LinkRelKey.Update,
-                    OperationType.Put => LinkRelKey.Update,
-                    OperationType.Delete => LinkRelKey.Delete,
+                    "get" => Path.LastSegment?.Kind ==  ODataSegmentKind.Key ? LinkRelKey.ReadByKey : LinkRelKey.List,
+                    "post" => LinkRelKey.Create,
+                    "patch" => LinkRelKey.Update,
+                    "put" => LinkRelKey.Update,
+                    "delete" => LinkRelKey.Delete,
                     _ => null,
                 };
 

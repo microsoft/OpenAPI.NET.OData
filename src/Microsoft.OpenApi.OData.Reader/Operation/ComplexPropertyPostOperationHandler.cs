@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
@@ -41,7 +42,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
         _insertRestrictions ??= complexPropertyInsertRestrictions;
     }
     /// <inheritdoc />
-    public override OperationType OperationType => OperationType.Post;
+    public override HttpMethod OperationType => HttpMethod.Post;
 
     private InsertRestrictionsType _insertRestrictions;
 

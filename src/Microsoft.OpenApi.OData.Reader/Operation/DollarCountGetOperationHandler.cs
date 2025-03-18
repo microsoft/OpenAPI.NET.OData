@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
@@ -33,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Operation
             
         }
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Get;
+        public override HttpMethod OperationType => HttpMethod.Get;
 
         /// <summary>
         /// Gets/sets the segment before $count.
@@ -84,6 +85,8 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetTags(OpenApiOperation operation)
         {
             string tagName = null;
+            operation.Tags ??= new HashSet<OpenApiTagReference>();
+
             if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
             {
                 tagName = TagNameFromNavigationSourceSegment(sourceSegment);

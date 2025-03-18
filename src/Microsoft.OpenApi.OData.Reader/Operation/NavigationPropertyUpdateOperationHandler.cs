@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -49,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string prefix = OperationType == OperationType.Patch ? "Update" : "Set";
+                string prefix = OperationType == HttpMethod.Patch ? "Update" : "Set";
                 operation.OperationId = GetOperationId(prefix);
             }
 

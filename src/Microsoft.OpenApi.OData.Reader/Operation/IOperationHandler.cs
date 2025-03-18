@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Net.Http;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 
@@ -16,7 +17,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// The operation type.
         /// </summary>
-        OperationType OperationType { get; }
+        HttpMethod OperationType { get; }
 
         /// <summary>
         /// Create the <see cref="OpenApiOperation"/>.
