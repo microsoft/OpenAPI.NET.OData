@@ -148,14 +148,6 @@ extends:
               projects: src/Microsoft.OpenApi.OData.Reader/Microsoft.OpenAPI.OData.Reader.csproj
               arguments: '-o $(Build.ArtifactStagingDirectory) --configuration $(BuildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg'
 
-          - task: PowerShell@2
-            displayName: 'Validate project version has been incremented'
-            condition: and(contains(variables['build.sourceBranch'], 'refs/tags/v'), succeeded())
-            inputs:
-              targetType: 'filePath'
-              filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
-              pwsh: true
-
           - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
             displayName: 'ESRP CodeSigning Nuget Packages'
             inputs:
