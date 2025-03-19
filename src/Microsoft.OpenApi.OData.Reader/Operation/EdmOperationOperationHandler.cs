@@ -154,6 +154,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 Name = tagName,
             };
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
+            operation.Tags ??= new HashSet<OpenApiTagReference>();
             operation.Tags.Add(new OpenApiTagReference(tag.Name, _document));
 
             Context.AppendTag(tag);

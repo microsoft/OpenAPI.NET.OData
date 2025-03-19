@@ -1,5 +1,33 @@
 # Changelog
 
+## [2.0.0-preview.11](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.10...v2.0.0-preview.11) (2025-03-19)
+
+
+### Bug Fixes
+
+* bump oai version ([caa2055](https://github.com/microsoft/OpenAPI.NET.OData/commit/caa2055e039298d4471f265797b6f6be381a03ce))
+* bump oai version ([d40746c](https://github.com/microsoft/OpenAPI.NET.OData/commit/d40746c055af4d7d7a5ae8fec3baeb862ab8ad56))
+
+## [2.0.0-preview.10](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview10...v2.0.0-preview.10) (2025-03-18)
+
+
+### Miscellaneous Chores
+
+* release 2.0.0-preview.10 ([5cd79d7](https://github.com/microsoft/OpenAPI.NET.OData/commit/5cd79d76cc63ab3c311351f8e661b2bd7b88b35b))
+
+## [2.0.0-preview10](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview9...v2.0.0-preview10) (2025-03-18)
+
+
+### Features
+
+* bump openapi.net packages to the latest preview. ([d8b9f3f](https://github.com/microsoft/OpenAPI.NET.OData/commit/d8b9f3f15a2586646fb78bf803ecf7a11db1d053))
+* migrates to the latest preview of OAI.net ([3295eb9](https://github.com/microsoft/OpenAPI.NET.OData/commit/3295eb9faec51b77bfd089a80539a0cbeea41641))
+
+
+### Bug Fixes
+
+* disable failing test for now. ([6f52acc](https://github.com/microsoft/OpenAPI.NET.OData/commit/6f52acc33d66dd9c55ed6952e8b4472364ccefb7))
+
 ## [2.0.0-preview9](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview8...v2.0.0-preview9) (2025-02-25)
 
 

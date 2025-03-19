@@ -238,6 +238,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	protected override void SetTags(OpenApiOperation operation)
 	{
         string tagName = null;
+        operation.Tags ??= new HashSet<OpenApiTagReference>();
 
         if (SecondLastSegment is ODataNavigationPropertySegment || isIndexedCollValuedNavProp)
 		{
