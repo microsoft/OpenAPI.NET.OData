@@ -34,17 +34,17 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Gets the navigation property.
         /// </summary>
-        protected IEdmNavigationProperty NavigationProperty { get; private set; }
+        protected IEdmNavigationProperty? NavigationProperty { get; private set; }
 
         /// <summary>
         /// Gets the navigation source.
         /// </summary>
-        protected IEdmNavigationSource NavigationSource { get; private set; }
+        protected IEdmNavigationSource? NavigationSource { get; private set; }
 
         /// <summary>
         /// Gets the navigation restriction.
         /// </summary>
-        protected NavigationPropertyRestriction Restriction { get; private set; }
+        protected NavigationPropertyRestriction? Restriction { get; private set; }
 
         /// <summary>
         /// Gets a bool value indicating whether the last segment is a key segment.
@@ -66,41 +66,37 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.Initialize(context, path);
 
-            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-            NavigationSource = navigationSourceSegment.NavigationSource;
+            ODataNavigationSourceSegment? navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
+            NavigationSource = navigationSourceSegment?.NavigationSource;
 
             LastSegmentIsKeySegment = path.LastSegment is ODataKeySegment;
             LastSegmentIsRefSegment = path.LastSegment is ODataRefSegment;
             SecondLastSegmentIsKeySegment = Path.Segments.Reverse().Skip(1).Take(1).Single().Kind == ODataSegmentKind.Key;
             NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
 
-            IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
-            IEdmSingleton singleton = NavigationSource as IEdmSingleton;
-
-            NavigationRestrictionsType navigation;
-            if (entitySet != null)
-            {
-                navigation = Context.Model.GetRecord<NavigationRestrictionsType>(entitySet, CapabilitiesConstants.NavigationRestrictions);
-            }
-            else
-            {
-                navigation = Context.Model.GetRecord<NavigationRestrictionsType>(singleton, CapabilitiesConstants.NavigationRestrictions);
-            }
+            var navigation = NavigationSource switch {
+                IEdmEntitySet entitySet => Context?.Model.GetRecord<NavigationRestrictionsType>(entitySet, CapabilitiesConstants.NavigationRestrictions),
+                IEdmSingleton singleton => Context?.Model.GetRecord<NavigationRestrictionsType>(singleton, CapabilitiesConstants.NavigationRestrictions),
+                _ => null
+            };
 
             Restriction = navigation?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty != null && r.NavigationProperty == Path.NavigationPropertyPath())
-                    ?? Context.Model.GetRecord<NavigationRestrictionsType>(NavigationProperty, CapabilitiesConstants.NavigationRestrictions)?.RestrictedProperties?.FirstOrDefault();
+                    ?? Context?.Model.GetRecord<NavigationRestrictionsType>(NavigationProperty, CapabilitiesConstants.NavigationRestrictions)?.RestrictedProperties?.FirstOrDefault();
         }
 
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            string name = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
-            Context.AddExtensionToTag(name, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
-			{
-				Name = name
-			});
-            operation.Tags ??= new HashSet<OpenApiTagReference>();
-            operation.Tags.Add(new OpenApiTagReference(name, _document));
+            if (Context is not null && Path is not null)
+            {
+                string name = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
+                Context.AddExtensionToTag(name, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+                {
+                    Name = name
+                });
+                operation.Tags ??= new HashSet<OpenApiTagReference>();
+                operation.Tags.Add(new OpenApiTagReference(name, _document));
+            }
 
             base.SetTags(operation);
         }
@@ -143,12 +139,13 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         /// <param name="annotationTerm">The fully qualified restriction annotation term.</param>
         /// <returns>The restriction annotation, or null if not available.</returns>
-        protected IRecord GetRestrictionAnnotation(string annotationTerm)
+        protected IRecord? GetRestrictionAnnotation(string annotationTerm)
         {
+            if (Context is null) return null;
             switch (annotationTerm)
             {
                 case CapabilitiesConstants.ReadRestrictions:
-                    var readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+                    var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
                     readRestrictions?.MergePropertiesIfNull(Restriction?.ReadRestrictions);
                     readRestrictions ??= Restriction?.ReadRestrictions;
 
@@ -158,7 +155,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
                     return readRestrictions;
                 case CapabilitiesConstants.UpdateRestrictions:
-                    var updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+                    var updateRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
                     updateRestrictions?.MergePropertiesIfNull(Restriction?.UpdateRestrictions);
                     updateRestrictions ??= Restriction?.UpdateRestrictions;
 
@@ -168,7 +165,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
                     return updateRestrictions;
                 case CapabilitiesConstants.InsertRestrictions:
-                    var insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+                    var insertRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
                     insertRestrictions?.MergePropertiesIfNull(Restriction?.InsertRestrictions);
                     insertRestrictions ??= Restriction?.InsertRestrictions;
 
@@ -178,7 +175,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
                     return insertRestrictions;
                 case CapabilitiesConstants.DeleteRestrictions:
-                    var deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+                    var deleteRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
                     deleteRestrictions?.MergePropertiesIfNull(Restriction?.DeleteRestrictions);
                     deleteRestrictions ??= Restriction?.DeleteRestrictions;
 
@@ -193,7 +190,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-        protected IDictionary<string, OpenApiMediaType> GetContent(IOpenApiSchema schema = null, IEnumerable<string> mediaTypes = null)
+        protected Dictionary<string, OpenApiMediaType> GetContent(IOpenApiSchema? schema = null, IEnumerable<string>? mediaTypes = null)
         {
             schema ??= GetOpenApiSchema();
             var content = new Dictionary<string, OpenApiMediaType>();
@@ -215,7 +212,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     Schema = schema
                 });
-            };
+            }
 
             return content;
         }

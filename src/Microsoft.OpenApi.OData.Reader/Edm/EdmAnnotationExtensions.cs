@@ -21,9 +21,9 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     internal static class EdmVocabularyAnnotationExtensions
     {
-        private static IDictionary<IEdmVocabularyAnnotatable, IDictionary<string, object>> _cachedAnnotations;
-        private static IEdmModel _savedModel = null; // if diffenent model, the cache will be cleaned.
-        private static object _objectLock = new object();
+        private static IDictionary<IEdmVocabularyAnnotatable, IDictionary<string, object>>? _cachedAnnotations;
+        private static IEdmModel? _savedModel = null; // if different model, the cache will be cleaned.
+        private static readonly object _objectLock = new object();
 
         /// <summary>
         /// Gets the boolean term value for the given <see cref="IEdmVocabularyAnnotatable"/>.
@@ -54,8 +54,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         // Note: Graph has a lot of annotations applied to the type, not to the navigation source.
                         // Here's a work around to retrieve these annotations from type if we can't find it from navigation source.
                         // It's the same reason for belows
-                        IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
-                        if (navigationSource != null)
+                        if (target is IEdmNavigationSource navigationSource)
                         {
                             IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetBoolean(entityType, term);
@@ -87,7 +86,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="target">The Edm target.</param>
         /// <param name="qualifiedName">The Term qualified name.</param>
         /// <returns>Null or the string value for this annotation.</returns>
-        public static string GetString(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName)
+        public static string? GetString(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
@@ -95,7 +94,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             return GetOrAddCached(model, target, qualifiedName, () =>
             {
-                string value = null;
+                string? value = null;
                 IEdmTerm term = model.FindTerm(qualifiedName);
                 if (term != null)
                 {
@@ -106,8 +105,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     }
                     else
                     {
-                        IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
-                        if (navigationSource != null)
+                        if (target is IEdmNavigationSource navigationSource)
                         {
                             IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetString(entityType, term);
@@ -127,8 +125,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="model">The Edm model.</param>
         /// <param name="target">The target element.</param>
         /// <returns>Null or the record value (a complex type) for this annotation.</returns>
-        public static T GetRecord<T>(this IEdmModel model, IEdmVocabularyAnnotatable target)
-            where T : IRecord, new()
+        public static T? GetRecord<T>(this IEdmModel model, IEdmVocabularyAnnotatable target)
+            where T : class, IRecord, new()
         {
             string qualifiedName = Utils.GetTermQualifiedName<T>();
             return model.GetRecord<T>(target, qualifiedName);
@@ -142,8 +140,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="target">The Edm target.</param>
         /// <param name="qualifiedName">The Term qualified name.</param>
         /// <returns>Null or the record value (a complex type) for this annotation.</returns>
-        public static T GetRecord<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName)
-            where T : IRecord, new()
+        public static T? GetRecord<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName)
+            where T : class, IRecord, new()
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
@@ -151,7 +149,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             return GetOrAddCached(model, target, qualifiedName, () =>
             {
-                T value = default;
+                T? value = default;
                 IEdmTerm term = model.FindTerm(qualifiedName);
                 if (term != null)
                 {
@@ -162,8 +160,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     }
                     else
                     {
-                        IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
-                        if (navigationSource != null)
+                        if (target is IEdmNavigationSource navigationSource)
                         {
                             IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetRecord<T>(entityType, term);
@@ -183,8 +180,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="targetPath">The string representation of the Edm target path.</param>
         /// <param name="qualifiedName">The Term qualified name.</param>
         /// <returns></returns>
-        public static T GetRecord<T>(this IEdmModel model, string targetPath, string qualifiedName)
-            where T : IRecord, new()
+        public static T? GetRecord<T>(this IEdmModel model, string targetPath, string qualifiedName)
+            where T : class, IRecord, new()
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -204,7 +201,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="target">The Edm target.</param>
         /// <param name="qualifiedName">The Term qualified name.</param>
         /// <returns>Null or the collection of string value for this annotation.</returns>
-        public static IEnumerable<string> GetCollection(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName)
+        public static IEnumerable<string>? GetCollection(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
@@ -212,7 +209,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             return GetOrAddCached(model, target, qualifiedName, () =>
             {
-                IEnumerable<string> value = null;
+                IEnumerable<string>? value = null;
                 IEdmTerm term = model.FindTerm(qualifiedName);
                 if (term != null)
                 {
@@ -223,8 +220,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     }
                     else
                     {
-                        IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
-                        if (navigationSource != null)
+                        if (target is IEdmNavigationSource navigationSource)
                         {
                             IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetCollection(entityType, term);
@@ -244,7 +240,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="model">The Edm model.</param>
         /// <param name="target">The Edm target.</param>
         /// <returns>Null or the colllection of record value (a complex type) for this annotation.</returns>
-        public static IEnumerable<T> GetCollection<T>(this IEdmModel model, IEdmVocabularyAnnotatable target)
+        public static IEnumerable<T>? GetCollection<T>(this IEdmModel model, IEdmVocabularyAnnotatable target)
             where T : IRecord, new()
         {
             string qualifiedName = Utils.GetTermQualifiedName<T>();
@@ -259,7 +255,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="target">The Edm target.</param>
         /// <param name="qualifiedName">The Term qualified name.</param>
         /// <returns>Null or the colllection of record value (a complex type) for this annotation.</returns>
-        public static IEnumerable<T> GetCollection<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName)
+        public static IEnumerable<T>? GetCollection<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName)
             where T : IRecord, new()
         {
             Utils.CheckArgumentNull(model, nameof(model));
@@ -268,7 +264,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             return GetOrAddCached(model, target, qualifiedName, () =>
             {
-                IEnumerable<T> value = null;
+                IEnumerable<T>? value = null;
                 IEdmTerm term = model.FindTerm(qualifiedName);
                 if (term != null)
                 {
@@ -279,8 +275,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     }
                     else
                     {
-                        IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
-                        if (navigationSource != null)
+                        if (target is IEdmNavigationSource navigationSource)
                         {
                             IEdmEntityType entityType = navigationSource.EntityType;
                             value = model.GetCollection<T>(entityType, term);
@@ -299,7 +294,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="target">The Edm target.</param>
         /// <param name="linkRel">The link relation type for path operation.</param>
         /// <returns>Null or the links record value (a complex type) for this annotation.</returns>
-        public static LinkType GetLinkRecord(this IEdmModel model, IEdmVocabularyAnnotatable target, string linkRel)
+        public static LinkType? GetLinkRecord(this IEdmModel model, IEdmVocabularyAnnotatable target, string linkRel)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
@@ -314,7 +309,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="targetPath">The string representation of the Edm target path.</param>
         /// <param name="linkRel">The link relation type for path operation.</param>
         /// <returns>Null or the links record value (a complex type) for this annotation.</returns>
-        public static LinkType GetLinkRecord(this IEdmModel model, string targetPath, string linkRel)
+        public static LinkType? GetLinkRecord(this IEdmModel model, string targetPath, string linkRel)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -332,7 +327,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="model">The Edm model.</param>
         /// <param name="target">The Edm target.</param>
         /// <returns>The created <see cref="Authorization"/> object.</returns>
-        public static IEnumerable<Authorization> GetAuthorizations(this IEdmModel model, IEdmVocabularyAnnotatable target)
+        public static IEnumerable<Authorization>? GetAuthorizations(this IEdmModel model, IEdmVocabularyAnnotatable target)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
@@ -342,7 +337,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 IEdmTerm term = model.FindTerm(AuthorizationConstants.Authorizations);
                 if (term != null)
                 {
-                    IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
+                    IEdmVocabularyAnnotation? annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
                     if (annotation != null && annotation.Value != null && annotation.Value.ExpressionKind == EdmExpressionKind.Collection)
                     {
                         IEdmCollectionExpression collection = (IEdmCollectionExpression)annotation.Value;
@@ -364,7 +359,7 @@ namespace Microsoft.OpenApi.OData.Edm
             });
         }
 
-        public static string GetDescriptionAnnotation(this IEdmModel model, string targetPath)
+        public static string? GetDescriptionAnnotation(this IEdmModel model, string targetPath)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -376,7 +371,7 @@ namespace Microsoft.OpenApi.OData.Edm
             return model.GetDescriptionAnnotation(target);
         }
 
-        private static T GetOrAddCached<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName, Func<T> createFunc)
+        private static T? GetOrAddCached<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName, Func<T> createFunc)
         {
             if (model == null || target == null)
             {
@@ -400,8 +395,8 @@ namespace Microsoft.OpenApi.OData.Edm
                     _cachedAnnotations = new Dictionary<IEdmVocabularyAnnotatable, IDictionary<string, object>>();
                 }
 
-                object restriction;
-                if (_cachedAnnotations.TryGetValue(target, out IDictionary<string, object> value))
+                object? restriction;
+                if (_cachedAnnotations.TryGetValue(target, out var value))
                 {
                     // Here means we visited target before and we are sure that the value is not null.
                     if (value.TryGetValue(qualifiedName, out restriction))
@@ -409,9 +404,8 @@ namespace Microsoft.OpenApi.OData.Edm
                         T ret = (T)restriction;
                         return ret;
                     }
-                    else
+                    else if (createFunc() is T ret)
                     {
-                        T ret = createFunc();
                         value[qualifiedName] = ret;
                         return ret;
                     }
@@ -420,9 +414,12 @@ namespace Microsoft.OpenApi.OData.Edm
                 // It's first time to query this target, create new dictionary and restriction.
                 value = new Dictionary<string, object>();
                 _cachedAnnotations[target] = value;
-                T newAnnotation = createFunc();
-                value[qualifiedName] = newAnnotation;
-                return newAnnotation;
+                if (createFunc() is T newAnnotation)
+                {
+                    value[qualifiedName] = newAnnotation;
+                    return newAnnotation;
+                }
+                return default;
             }
         }
 
@@ -432,7 +429,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(target != null);
             Debug.Assert(term != null);
 
-            IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
+            IEdmVocabularyAnnotation? annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
             if (annotation != null && annotation.Value != null && annotation.Value.ExpressionKind == EdmExpressionKind.BooleanConstant)
             {
                 IEdmBooleanConstantExpression boolConstant = (IEdmBooleanConstantExpression)annotation.Value;
@@ -445,13 +442,13 @@ namespace Microsoft.OpenApi.OData.Edm
             return null;
         }
 
-        private static string GetString(this IEdmModel model, IEdmVocabularyAnnotatable target, IEdmTerm term)
+        private static string? GetString(this IEdmModel model, IEdmVocabularyAnnotatable target, IEdmTerm term)
         {
             Debug.Assert(model != null);
             Debug.Assert(target != null);
             Debug.Assert(term != null);
 
-            IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
+            IEdmVocabularyAnnotation? annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
             if (annotation != null && annotation.Value != null && annotation.Value.ExpressionKind == EdmExpressionKind.StringConstant)
             {
                 IEdmStringConstantExpression stringConstant = (IEdmStringConstantExpression)annotation.Value;
@@ -461,13 +458,13 @@ namespace Microsoft.OpenApi.OData.Edm
             return null;
         }
 
-        private static IEnumerable<string> GetCollection(this IEdmModel model, IEdmVocabularyAnnotatable target, IEdmTerm term)
+        private static IEnumerable<string>? GetCollection(this IEdmModel model, IEdmVocabularyAnnotatable target, IEdmTerm term)
         {
             Debug.Assert(model != null);
             Debug.Assert(target != null);
             Debug.Assert(term != null);
 
-            IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
+            IEdmVocabularyAnnotation? annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
             if (annotation != null && annotation.Value != null && annotation.Value.ExpressionKind == EdmExpressionKind.Collection)
             {
                 IEdmCollectionExpression collection = (IEdmCollectionExpression)annotation.Value;
@@ -480,14 +477,14 @@ namespace Microsoft.OpenApi.OData.Edm
             return null;
         }
 
-        private static T GetRecord<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, IEdmTerm term)
+        private static T? GetRecord<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, IEdmTerm term)
             where T : IRecord, new()
         {
             Debug.Assert(model != null);
             Debug.Assert(target != null);
             Debug.Assert(term != null);
 
-            IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
+            IEdmVocabularyAnnotation? annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
             if (annotation != null && annotation.Value != null && annotation.Value.ExpressionKind == EdmExpressionKind.Record)
             {
                 IEdmRecordExpression recordExpression = (IEdmRecordExpression)annotation.Value;
@@ -499,14 +496,14 @@ namespace Microsoft.OpenApi.OData.Edm
             return default;
         }
 
-        private static IEnumerable<T> GetCollection<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, IEdmTerm term)
+        private static IEnumerable<T>? GetCollection<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, IEdmTerm term)
             where T : IRecord, new()
         {
             Debug.Assert(model != null);
             Debug.Assert(target != null);
             Debug.Assert(term != null);
 
-            IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
+            IEdmVocabularyAnnotation? annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
             if (annotation != null && annotation.Value != null && annotation.Value.ExpressionKind == EdmExpressionKind.Collection)
             {
                 IEdmCollectionExpression collection = (IEdmCollectionExpression)annotation.Value;

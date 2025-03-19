@@ -203,35 +203,44 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets the stream property and entity type declaring the stream property.
         /// </summary>
         /// <returns>The stream property and entity type declaring the stream property.</returns>
-        protected (IEdmEntityType entityType, IEdmProperty property) GetStreamElements()
+        protected (IEdmEntityType? entityType, IEdmProperty? property) GetStreamElements()
         {
             // Only ODataStreamPropertySegment is annotatable
-            if (!LastSegmentIsStreamPropertySegment && !LastSegmentIsStreamContentSegment) return (null, null);
+            if (!LastSegmentIsStreamPropertySegment && !LastSegmentIsStreamContentSegment || Path is null) return (null, null);
 
             // Retrieve the entity type of the segment before the stream property segment
             var entityType = LastSegmentIsStreamContentSegment
-                ? Path.Segments.ElementAtOrDefault(Path.Segments.Count - 3).EntityType
-                : Path.Segments.ElementAtOrDefault(Path.Segments.Count - 2).EntityType;
+                ? Path.Segments.ElementAtOrDefault(Path.Segments.Count - 3)?.EntityType
+                : Path.Segments.ElementAtOrDefault(Path.Segments.Count - 2)?.EntityType;
+
+            if (entityType is null) return (null, null);
 
             // The stream property can either be a structural type or a navigation property type
-            ODataSegment lastSegmentProp = LastSegmentIsStreamContentSegment
+            var lastSegmentProp = LastSegmentIsStreamContentSegment
                 ? Path.Segments.Reverse().Skip(1).FirstOrDefault()
-                : Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
-            IEdmProperty property = GetStructuralProperty(entityType, lastSegmentProp.Identifier);
-            if (property == null)
+                : Path.Segments.OfType<ODataStreamPropertySegment>().LastOrDefault();
+            
+            if (lastSegmentProp?.Identifier is not string lastIdentifier) return (null, null);
+            
+            if (GetStructuralProperty(entityType, lastIdentifier) is IEdmProperty property)
             {
-                property = GetNavigationProperty(entityType, lastSegmentProp.Identifier);
+                return (entityType, property);
             }
 
-            return (entityType, property);
+            if (GetNavigationProperty(entityType, lastIdentifier) is IEdmProperty navigationProperty)
+            {
+                return (entityType, navigationProperty);
+            }
+
+            return (null, null);
         }
 
-        private IEdmStructuralProperty GetStructuralProperty(IEdmEntityType entityType, string identifier)
+        private static IEdmStructuralProperty? GetStructuralProperty(IEdmEntityType entityType, string identifier)
         {
             return entityType.StructuralProperties().FirstOrDefault(x => x.Name.Equals(identifier));
         }
 
-        private IEdmNavigationProperty GetNavigationProperty(IEdmEntityType entityType, string identifier)
+        private static IEdmNavigationProperty? GetNavigationProperty(IEdmEntityType entityType, string identifier)
         {
             return entityType.DeclaredNavigationProperties().FirstOrDefault(x => x.Name.Equals(identifier));
         }
@@ -239,10 +248,14 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs && Property != null)
+            if (Context is { Settings.ShowExternalDocs: true } && Property != null)
             {
-                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
-                    Context.Model.GetLinkRecord(Property, CustomLinkRel);
+                var externalDocs = (string.IsNullOrEmpty(TargetPath), string.IsNullOrEmpty(CustomLinkRel)) switch
+                {
+                    (_, true) => null,
+                    (false, false) => Context.Model.GetLinkRecord(TargetPath!, CustomLinkRel!),
+                    (_, false) => Context.Model.GetLinkRecord(Property, CustomLinkRel!),
+                };
 
                 if (externalDocs != null)
                 {

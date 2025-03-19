@@ -77,12 +77,12 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the parameter mappings.
         /// </summary>
-        public IDictionary<string, string> ParameterMappings { get; }
+        public IDictionary<string, string>? ParameterMappings { get; }
 
         /// <summary>
         /// Gets the operation.
         /// </summary>
-        public IEdmOperation Operation { get; }
+        public IEdmOperation? Operation { get; }
 
         /// <summary>
         /// Gets the is escaped function.
@@ -93,19 +93,19 @@ namespace Microsoft.OpenApi.OData.Edm
         public override ODataSegmentKind Kind => ODataSegmentKind.Operation;
 
         /// <inheritdoc />
-        public override string Identifier { get => Operation.Name; }
+        public override string? Identifier { get => Operation?.Name; }
 
         /// <inheritdoc />
-        public override IEdmEntityType EntityType => null;
+        public override IEdmEntityType? EntityType => null;
 
         /// <inheritdoc />
         public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
 
-            if (Operation.IsFunction())
+            if (Operation is IEdmFunction function)
             {
-                return FunctionName(Operation as IEdmFunction, settings, parameters);
+                return FunctionName(function, settings, parameters);
             }
 
             return OperationName(Operation, settings);
@@ -115,9 +115,8 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             IDictionary<string, string> parameterNamesMapping = new Dictionary<string, string>();
 
-            if (Operation.IsFunction())
+            if (Operation is IEdmFunction function)
             {
-                IEdmFunction function = Operation as IEdmFunction;
                 if (settings.EnableUriEscapeFunctionCall && IsEscapedFunction)
                 {
                     string parameterName = function.Parameters.Last().Name;
@@ -192,7 +191,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
-			return new IEdmVocabularyAnnotatable[] { Operation };
+			return Operation is null ? [] : [Operation];
 		}
     }
 }

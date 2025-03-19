@@ -19,17 +19,17 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     public class ODataPathProvider : IODataPathProvider
     {
-        private IDictionary<IEdmEntityType, IList<IEdmNavigationSource>> _allNavigationSources;
+        private Dictionary<IEdmEntityType, IList<IEdmNavigationSource>>? _allNavigationSources;
 
-        private IDictionary<IEdmEntityType, IList<ODataPath>> _allNavigationSourcePaths =
+        private readonly IDictionary<IEdmEntityType, IList<ODataPath>> _allNavigationSourcePaths =
             new Dictionary<IEdmEntityType, IList<ODataPath>>();
 
-        private IDictionary<IEdmEntityType, IList<ODataPath>> _allNavigationPropertyPaths =
+        private readonly IDictionary<IEdmEntityType, IList<ODataPath>> _allNavigationPropertyPaths =
             new Dictionary<IEdmEntityType, IList<ODataPath>>();
 
-        private IList<ODataPath> _allOperationPaths = new List<ODataPath>();
+        private readonly List<ODataPath> _allOperationPaths = [];
 
-        private IEdmModel _model;
+        private IEdmModel? _model;
 
         private readonly IDictionary<IEdmEntityType, IList<ODataPath>> _dollarCountPaths =
            new Dictionary<IEdmEntityType, IList<ODataPath>>();
@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
            if (model == null || model.EntityContainer == null)
            {
-               return Enumerable.Empty<ODataPath>();
+               return [];
            }
 
            Initialize(model);
@@ -734,7 +734,7 @@ namespace Microsoft.OpenApi.OData.Edm
             if(!convertSettings.EnableODataTypeCast)
                 return;
 
-            var annotedTypeNames = GetDerivedTypeConstaintTypeNames(annotable);
+            var annotedTypeNames = GetDerivedTypeConstraintTypeNames(annotable);
             
             if(!annotedTypeNames.Any() && convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments) 
                 return; // we don't want to generate any downcast path item if there is no type cast annotation.
@@ -1099,11 +1099,11 @@ namespace Microsoft.OpenApi.OData.Edm
             OpenApiConvertSettings convertSettings)
         {
             return convertSettings.RequireDerivedTypesConstraintForBoundOperations &&
-                   !GetDerivedTypeConstaintTypeNames(annotatable)
+                   !GetDerivedTypeConstraintTypeNames(annotatable)
                        .Any(c => c.Equals(baseType.FullName(), StringComparison.OrdinalIgnoreCase));
         }
-        private IEnumerable<string> GetDerivedTypeConstaintTypeNames(IEdmVocabularyAnnotatable annotatable) =>
-            _model.GetCollection(annotatable, "Org.OData.Validation.V1.DerivedTypeConstraint") ?? Enumerable.Empty<string>();
+        private IEnumerable<string> GetDerivedTypeConstraintTypeNames(IEdmVocabularyAnnotatable annotatable) =>
+            _model?.GetCollection(annotatable, "Org.OData.Validation.V1.DerivedTypeConstraint") ?? [];
 
         private void AppendBoundOperationOnDerivedNavigationPropertyPath(
             IEdmOperation edmOperation,
@@ -1112,11 +1112,11 @@ namespace Microsoft.OpenApi.OData.Edm
             OpenApiConvertSettings convertSettings)
         {
             if (!convertSettings.AppendBoundOperationsOnDerivedTypeCastSegments) return;
-            bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
+            bool isEscapedFunction = _model?.IsUrlEscapeFunction(edmOperation) ?? false;
 
             foreach (var baseType in bindingEntityType.FindAllBaseTypes())
             {
-                if (_allNavigationPropertyPaths.TryGetValue(baseType, out IList<ODataPath> paths))
+                if (_allNavigationPropertyPaths.TryGetValue(baseType, out var paths))
                 {
                     foreach (var path in paths.Where(x => !_pathKindToSkipForNavigationProperties.Contains(x.Kind)))
                     {
@@ -1126,7 +1126,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             continue;
                         }
 
-                        if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty, npSegment.NavigationProperty.ContainsTarget))
+                        if (_model is not null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty, npSegment.NavigationProperty.ContainsTarget))
                         {
                             continue;
                         }
@@ -1173,7 +1173,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private void AppendBoundOperationOnOperationPath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType)
         {
-            bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
+            bool isEscapedFunction = _model?.IsUrlEscapeFunction(edmOperation) ?? false;
 
             // only composable functions
             var paths = _allOperationPaths.Where(x => x.LastSegment is ODataOperationSegment operationSegment
@@ -1187,7 +1187,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     || operationSegment.Operation is not IEdmFunction edmFunction || !edmFunction.IsComposable
                     || edmFunction.ReturnType == null || !edmFunction.ReturnType.Definition.Equals(bindingEntityType)
                     || isCollection
-                    || !EdmModelHelper.IsOperationAllowed(_model, edmOperation, operationSegment.Operation, true))
+                    || _model is not null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, operationSegment.Operation, true))
                 {
                     continue;
                 }
@@ -1199,7 +1199,10 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 ODataPath newOperationPath = path.Clone();
-                newOperationPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
+                if (_model is not null)
+                {
+                    newOperationPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
+                }
                 AppendPath(newOperationPath);
             }
         }

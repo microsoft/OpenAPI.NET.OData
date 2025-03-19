@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
@@ -37,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Get;
 
-        private ReadRestrictionsType _readRestriction;
+        private ReadRestrictionsType? _readRestriction;
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -56,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is { Settings.EnableOperationId: true })
             {
                 string prefix = "Get";
                 if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
@@ -72,18 +73,16 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            if (Context.Settings.EnablePagination)
+            if (Context is { Settings.EnablePagination: true } && !LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                var extension = new JsonObject
                 {
-                    JsonObject extension = new JsonObject
-                    {
-                        { "nextLinkName", "@odata.nextLink"},
-                        { "operationName", Context.Settings.PageableOperationName}
-                    };
+                    { "nextLinkName", "@odata.nextLink"},
+                    { "operationName", Context.Settings.PageableOperationName}
+                };
 
-                    operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
-                }
+                operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
             }
 
             base.SetExtensions(operation);
@@ -92,8 +91,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            IDictionary<string, IOpenApiLink> links = null;
-            if (Context.Settings.ShowLinks)
+            IDictionary<string, IOpenApiLink>? links = null;
+            if (Context is { Settings.ShowLinks: true })
             {
                 string operationId = GetOperationId();
 
@@ -114,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else
             {
-                IOpenApiSchema schema = null;
+                IOpenApiSchema? schema = null;
                 var entityType = NavigationProperty.ToEntityType();
 
                 if (Context.Settings.EnableDerivedTypesReferencesForResponses)
@@ -157,10 +156,15 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
-            OpenApiParameter selectParameter = Context.CreateSelect(TargetPath, NavigationProperty.ToEntityType()) 
+            if (Context is null)
+            {
+                return;
+            }
+
+            var selectParameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, NavigationProperty.ToEntityType())) 
                 ?? Context.CreateSelect(NavigationProperty);
 
-            OpenApiParameter expandParameter = Context.CreateExpand(TargetPath, NavigationProperty.ToEntityType()) 
+            var expandParameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, NavigationProperty.ToEntityType())) 
                 ?? Context.CreateExpand(NavigationProperty);
 
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
@@ -240,7 +244,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 readBase = _readRestriction.ReadByKeyRestrictions;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+            if (readBase.Permissions is not null)
+                operation.Security = Context?.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -316,10 +317,14 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs)
+            if (Context is { Settings.ShowExternalDocs: true })
             {
-                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
-                    Context.Model.GetLinkRecord(EdmOperation, CustomLinkRel);
+                var externalDocs = (string.IsNullOrEmpty(TargetPath), string.IsNullOrEmpty(CustomLinkRel))  switch
+                {
+                    (_, true) => null,
+                    (false, false) => Context.Model.GetLinkRecord(TargetPath!, CustomLinkRel!),
+                    (true, false) => Context.Model.GetLinkRecord(EdmOperation, CustomLinkRel!),
+                };
 
                 if (externalDocs != null)
                 {
@@ -335,14 +340,15 @@ namespace Microsoft.OpenApi.OData.Operation
         // <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            if (Context.Settings.EnablePagination && EdmOperation.ReturnType?.TypeKind() == EdmTypeKind.Collection)
+            if (Context is { Settings.EnablePagination: true } && EdmOperation.ReturnType?.TypeKind() == EdmTypeKind.Collection)
             {
                 JsonObject extension = new JsonObject
                 {
                     { "nextLinkName", "@odata.nextLink"},
                     { "operationName", Context.Settings.PageableOperationName}
                 };
-
+                
+                operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
             }
             base.SetExtensions(operation);

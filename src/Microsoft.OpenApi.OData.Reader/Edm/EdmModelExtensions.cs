@@ -73,16 +73,16 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <returns>The dictionary.</returns>
-        public static IDictionary<IEdmEntityType, IList<IEdmNavigationSource>> LoadAllNavigationSources(this IEdmModel model)
+        public static Dictionary<IEdmEntityType, IList<IEdmNavigationSource>> LoadAllNavigationSources(this IEdmModel model)
         {
             var navigationSourceDic = new Dictionary<IEdmEntityType, IList<IEdmNavigationSource>>();
             if (model != null && model.EntityContainer != null)
             {
                 Action<IEdmNavigationSource, IDictionary<IEdmEntityType, IList<IEdmNavigationSource>>> action = (ns, dic) =>
                 {
-                    if (!dic.TryGetValue(ns.EntityType, out IList<IEdmNavigationSource> value))
+                    if (!dic.TryGetValue(ns.EntityType, out var value))
                     {
-                        value = new List<IEdmNavigationSource>();
+                        value = [];
                         dic[ns.EntityType] = value;
                     }
 
@@ -96,9 +96,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 // singleton
-                foreach (var singelton in model.EntityContainer.Singletons())
+                foreach (var singleton in model.EntityContainer.Singletons())
                 {
-                    action(singelton, navigationSourceDic);
+                    action(singleton, navigationSourceDic);
                 }
             }
 

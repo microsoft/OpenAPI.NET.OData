@@ -209,7 +209,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Merges properties of the specified <see cref="UpdateRestrictionsType"/> object into this instance if they are null.
         /// </summary>
         /// <param name="source">The <see cref="UpdateRestrictionsType"/> object containing properties to merge.</param>
-        public void MergePropertiesIfNull(UpdateRestrictionsType source)
+        public void MergePropertiesIfNull(UpdateRestrictionsType? source)
         {
             if (source == null)
                 return;

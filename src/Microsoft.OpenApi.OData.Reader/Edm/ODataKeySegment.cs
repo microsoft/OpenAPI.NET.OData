@@ -45,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the key/template mappings.
         /// </summary>
-        public IDictionary<string, string> KeyMappings { get; }
+        public IDictionary<string, string>? KeyMappings { get; }
 
         /// <inheritdoc />
         public override IEdmEntityType EntityType { get; }

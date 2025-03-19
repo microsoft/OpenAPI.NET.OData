@@ -3,9 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -32,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Gets the Edm Function.
         /// </summary>
-        public IEdmFunction Function => EdmOperation as IEdmFunction;
+        public IEdmFunction? Function => EdmOperation as IEdmFunction;
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
@@ -54,6 +56,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
+            operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("function"));
             base.SetExtensions(operation);
         }

@@ -105,7 +105,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>The path item name.</returns>
         public string GetPathItemName(OpenApiConvertSettings settings)
         {
-            return GetPathItemName(settings, new HashSet<string>());
+            return GetPathItemName(settings, []);
         }
         /// <summary>
         /// Provides a suffix for the operation id based on the operation path.
@@ -113,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="path">Path to use to deduplicate.</param>
         /// <param name="settings">The settings.</param>
         ///<returns>The suffix.</returns>
-        public string GetPathHash(OpenApiConvertSettings settings, ODataPath path = default)
+        public string GetPathHash(OpenApiConvertSettings settings, ODataPath? path = default)
         {
             var suffix = string.Join("/", path?.Segments.Select(x => x.Identifier).Distinct() ?? Enumerable.Empty<string>());
             return (GetPathItemName(settings) + suffix).GetHashSHA256().Substring(0, 4);

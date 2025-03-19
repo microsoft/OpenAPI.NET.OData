@@ -700,7 +700,7 @@ namespace Microsoft.OpenApi.OData.Generator
             };
         }
 
-        private static JsonNode CreateDefault(this IEdmStructuralProperty property)
+        private static JsonNode? CreateDefault(this IEdmStructuralProperty property)
         {
             if (property == null ||
                 property.DefaultValueString == null)
