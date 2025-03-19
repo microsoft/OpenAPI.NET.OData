@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0-preview.11](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.10...v2.0.0-preview.11) (2025-03-19)
+
+
+### Bug Fixes
+
+* bump oai version ([caa2055](https://github.com/microsoft/OpenAPI.NET.OData/commit/caa2055e039298d4471f265797b6f6be381a03ce))
+* bump oai version ([d40746c](https://github.com/microsoft/OpenAPI.NET.OData/commit/d40746c055af4d7d7a5ae8fec3baeb862ab8ad56))
+
 ## [2.0.0-preview.10](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview10...v2.0.0-preview.10) (2025-03-18)
 
 
