@@ -30,7 +30,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             
         }
-        private UpdateRestrictionsType _updateRestriction;
+        private UpdateRestrictionsType? _updateRestriction;
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -43,12 +43,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            string placeHolder = "Update the navigation property " + NavigationProperty.Name + " in " + NavigationSource.Name;
+            string placeHolder = "Update the navigation property " + NavigationProperty?.Name + " in " + NavigationSource?.Name;
             operation.Summary = _updateRestriction?.Description ?? placeHolder;
             operation.Description = _updateRestriction?.LongDescription;
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true})
             {
                 string prefix = OperationType == HttpMethod.Patch ? "Update" : "Set";
                 operation.OperationId = GetOperationId(prefix);
@@ -60,11 +60,9 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document);
-            }
+            var schema = Context is { Settings.EnableDerivedTypesReferencesForRequestBody: true } ? 
+                EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document) :
+                null;
 
             operation.RequestBody = new OpenApiRequestBody
             {
@@ -79,7 +77,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
             base.SetResponses(operation);
         }
 
@@ -90,7 +89,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_updateRestriction.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_updateRestriction.Permissions, _document).ToList() ?? [];
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

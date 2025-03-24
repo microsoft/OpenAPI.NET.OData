@@ -31,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
         public static IDictionary<string, IOpenApiLink> CreateLinks(this ODataContext context,
             IEdmEntityType entityType, string entityName, string entityKind, ODataPath path,
-            IList<IOpenApiParameter> parameters = null, string navPropOperationId = null)
+            IList<IOpenApiParameter>? parameters = null, string? navPropOperationId = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entityType, nameof(entityType));

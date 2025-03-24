@@ -52,10 +52,10 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            string placeHolder = "Get " + NavigationProperty.Name + " from " + NavigationSource.Name;
+            string placeHolder = "Get " + NavigationProperty?.Name + " from " + NavigationSource?.Name;
             operation.Summary = (LastSegmentIsKeySegment ? _readRestriction?.ReadByKeyRestrictions?.Description : _readRestriction?.Description) ?? placeHolder;    
             operation.Description = (LastSegmentIsKeySegment ? _readRestriction?.ReadByKeyRestrictions?.LongDescription : _readRestriction?.LongDescription)
-                ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
+                ?? Context?.Model.GetDescriptionAnnotation(NavigationProperty);
 
             // OperationId
             if (Context is { Settings.EnableOperationId: true })
@@ -93,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetResponses(OpenApiOperation operation)
         {
             IDictionary<string, IOpenApiLink>? links = null;
-            if (Context is { Settings.ShowLinks: true })
+            if (Context is { Settings.ShowLinks: true } && NavigationProperty is not null && Path is not null)
             {
                 string operationId = GetOperationId();
 
@@ -107,7 +107,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.Responses = new OpenApiResponses
                 {
                     {
-                        Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                        Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                         new OpenApiResponseReference($"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}", _document)
                     }
                 };
@@ -117,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 IOpenApiSchema? schema = null;
                 var entityType = NavigationProperty.ToEntityType();
 
-                if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+                if (Context is { Settings.EnableDerivedTypesReferencesForResponses: true })
                 {
                     schema = EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, Context.Model, _document);
                 }
@@ -127,7 +127,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.Responses = new OpenApiResponses
                 {
                     {
-                        Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                        Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                         new OpenApiResponse
                         {
                             Description = "Retrieved navigation property",
@@ -147,7 +147,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 };
             }
 
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
