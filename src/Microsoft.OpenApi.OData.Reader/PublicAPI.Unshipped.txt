@@ -47,17 +47,17 @@ Microsoft.OpenApi.OData.Edm.ODataPath
 Microsoft.OpenApi.OData.Edm.ODataPath.Clone() -> Microsoft.OpenApi.OData.Edm.ODataPath!
 Microsoft.OpenApi.OData.Edm.ODataPath.CompareTo(Microsoft.OpenApi.OData.Edm.ODataPath! other) -> int
 Microsoft.OpenApi.OData.Edm.ODataPath.Count.get -> int
-Microsoft.OpenApi.OData.Edm.ODataPath.FirstSegment.get -> Microsoft.OpenApi.OData.Edm.ODataSegment!
+Microsoft.OpenApi.OData.Edm.ODataPath.FirstSegment.get -> Microsoft.OpenApi.OData.Edm.ODataSegment?
 Microsoft.OpenApi.OData.Edm.ODataPath.GetCount(bool keySegmentAsDepth) -> int
 Microsoft.OpenApi.OData.Edm.ODataPath.GetEnumerator() -> System.Collections.Generic.IEnumerator<Microsoft.OpenApi.OData.Edm.ODataSegment!>!
-Microsoft.OpenApi.OData.Edm.ODataPath.GetPathHash(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings) -> string!
+Microsoft.OpenApi.OData.Edm.ODataPath.GetPathHash(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings) -> string?
 Microsoft.OpenApi.OData.Edm.ODataPath.GetPathItemName() -> string!
 Microsoft.OpenApi.OData.Edm.ODataPath.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings) -> string!
 Microsoft.OpenApi.OData.Edm.ODataPath.HttpMethods.get -> System.Collections.Generic.ISet<string!>!
-Microsoft.OpenApi.OData.Edm.ODataPath.LastSegment.get -> Microsoft.OpenApi.OData.Edm.ODataSegment!
+Microsoft.OpenApi.OData.Edm.ODataPath.LastSegment.get -> Microsoft.OpenApi.OData.Edm.ODataSegment?
 Microsoft.OpenApi.OData.Edm.ODataPath.ODataPath(params Microsoft.OpenApi.OData.Edm.ODataSegment![]! segments) -> void
 Microsoft.OpenApi.OData.Edm.ODataPath.ODataPath(System.Collections.Generic.IEnumerable<Microsoft.OpenApi.OData.Edm.ODataSegment!>! segments) -> void
-Microsoft.OpenApi.OData.Edm.ODataPath.PathTemplate.get -> string!
+Microsoft.OpenApi.OData.Edm.ODataPath.PathTemplate.get -> string?
 Microsoft.OpenApi.OData.Edm.ODataPath.PathTemplate.set -> void
 Microsoft.OpenApi.OData.Edm.ODataPath.Segments.get -> System.Collections.Generic.IList<Microsoft.OpenApi.OData.Edm.ODataSegment!>!
 Microsoft.OpenApi.OData.Edm.ODataPathKind

@@ -113,8 +113,12 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetExtensions(operation);
         }
 
-        internal string GetOperationId(string? prefix = null)
-        {            
+        internal string? GetOperationId(string? prefix = null)
+        {
+            if (Context is null || Path is null)
+            {
+                return null;
+            }
             return EdmModelHelper.GenerateNavigationPropertyPathOperationId(Path, Context, prefix);
         }               
 

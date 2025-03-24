@@ -371,14 +371,12 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 	protected override void SetSecurity(OpenApiOperation operation)
 	{
-		if (restriction == null || restriction.ReadRestrictions == null)
+		if (restriction is not {ReadRestrictions.Permissions: not null})
 		{
 			return;
 		}
 
-		ReadRestrictionsBase readBase = restriction.ReadRestrictions;
-
-		operation.Security = Context?.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+		operation.Security = Context?.CreateSecurityRequirements(restriction.ReadRestrictions.Permissions, _document).ToList();
 	}
 
 	protected override void SetExtensions(OpenApiOperation operation)
