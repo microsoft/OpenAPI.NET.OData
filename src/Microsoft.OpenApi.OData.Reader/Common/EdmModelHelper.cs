@@ -23,7 +23,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// Adds the derived types references together with their base type reference in the OneOf property of an OpenAPI schema.
         /// </summary>
         /// <returns>The OpenAPI schema with the list of derived types references and their base type references set in the OneOf property.</returns>
-        internal static OpenApiSchema GetDerivedTypesReferenceSchema(IEdmStructuredType structuredType, IEdmModel edmModel, OpenApiDocument document)
+        internal static OpenApiSchema? GetDerivedTypesReferenceSchema(IEdmStructuredType structuredType, IEdmModel edmModel, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
             Utils.CheckArgumentNull(edmModel, nameof(edmModel));
@@ -38,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Common
 
             OpenApiSchema schema = new()
             {
-                OneOf = new List<IOpenApiSchema>()
+                OneOf = []
             };
 
             var baseTypeSchema = new OpenApiSchemaReference(schemaElement.FullName(), document);
@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 var derivedTypeSchema = new OpenApiSchemaReference(derivedType.FullName(), document);
                 schema.OneOf.Add(derivedTypeSchema);
-            };
+            }
 
             return schema;
         }
@@ -82,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// <param name="context">The OData context.</param>
         /// <param name="prefix">Optional: Identifier indicating whether it is a collection-valued non-indexed or single-valued navigation property.</param>
         /// <returns>The operation id generated from the given navigation property path.</returns>
-        internal static string GenerateNavigationPropertyPathOperationId(ODataPath path, ODataContext context, string prefix = null)
+        internal static string? GenerateNavigationPropertyPathOperationId(ODataPath path, ODataContext context, string? prefix = null)
         {
             IList<string> items = RetrieveNavigationPropertyPathsOperationIdSegments(path, context);
 
@@ -110,24 +110,22 @@ namespace Microsoft.OpenApi.OData.Common
         /// <param name="context">The OData context.</param>
         /// <param name="prefix">Optional: Identifier indicating whether it is a collection-valued or single-valued complex property.</param>
         /// <returns>The operation id generated from the given complex property path.</returns>
-        internal static string GenerateComplexPropertyPathOperationId(ODataPath path, ODataContext context, string prefix = null)
+        internal static string? GenerateComplexPropertyPathOperationId(ODataPath path, ODataContext context, string? prefix = null)
         {
             IList<string> items = RetrieveNavigationPropertyPathsOperationIdSegments(path, context);
 
             if (!items.Any())
                 return null;
 
-            ODataComplexPropertySegment lastSegment = path.Segments.Skip(1).OfType<ODataComplexPropertySegment>()?.Last();
-            Utils.CheckArgumentNull(lastSegment, nameof(lastSegment));
-
-            if (!string.IsNullOrEmpty(prefix))
-            {
-                items.Add(prefix + Utils.UpperFirstChar(lastSegment?.Identifier));
-            }
-            else
-            {
-                items.Add(Utils.UpperFirstChar(lastSegment?.Identifier));
-            }
+            if (path.Segments.Skip(1).OfType<ODataComplexPropertySegment>()?.Last()?.Identifier is string lastSegmentIdentifier)
+                if (!string.IsNullOrEmpty(prefix))
+                {
+                    items.Add(prefix + Utils.UpperFirstChar(lastSegmentIdentifier));
+                }
+                else
+                {
+                    items.Add(Utils.UpperFirstChar(lastSegmentIdentifier));
+                }
 
             return GenerateNavigationPropertyPathOperationId(items);
         }
@@ -137,7 +135,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         /// <param name="items">The list of string values.</param>
         /// <returns>The generated navigation property operation id.</returns>
-        private static string GenerateNavigationPropertyPathOperationId(IList<string> items)
+        private static string? GenerateNavigationPropertyPathOperationId(IList<string> items)
         {
             if (!items.Any())
                 return null;
@@ -155,10 +153,10 @@ namespace Microsoft.OpenApi.OData.Common
         {
             Utils.CheckArgumentNull(path, nameof(path));
 
-            IEdmNavigationSource navigationSource = (path.FirstSegment as ODataNavigationSourceSegment)?.NavigationSource;
-            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            if (path.FirstSegment is not ODataNavigationSourceSegment {NavigationSource: IEdmNavigationSource navigationSource})
+                throw new InvalidOperationException("The first segment of the path is not a navigation source segment.");
 
-            IList<string> items = new List<string>
+            var items = new List<string>
             {
                 navigationSource.Name
             };
@@ -174,7 +172,7 @@ namespace Microsoft.OpenApi.OData.Common
                 s is ODataKeySegment);
             Utils.CheckArgumentNull(segments, nameof(segments));
 
-            string previousTypeCastSegmentId = null;
+            string? previousTypeCastSegmentId = null;
             string pathHash = string.Empty;
 
             foreach (var segment in segments)
@@ -185,15 +183,18 @@ namespace Microsoft.OpenApi.OData.Common
                 }
                 else if (segment is ODataTypeCastSegment typeCastSegment
                     && path.Kind != ODataPathKind.TypeCast // ex: ~/NavSource/NavProp/TypeCast
-                    && !(path.Kind == ODataPathKind.DollarCount && path.Segments.ElementAt(path.Segments.Count - 2)?.Kind == ODataSegmentKind.TypeCast)) // ex: ~/NavSource/NavProp/TypeCast/$count
+                    && !(path.Kind == ODataPathKind.DollarCount && path.Segments[path.Segments.Count - 2]?.Kind == ODataSegmentKind.TypeCast)) // ex: ~/NavSource/NavProp/TypeCast/$count
                 {
                     // Only the last OData type cast segment identifier is added to the operation id
-                    items.Remove(previousTypeCastSegmentId);
-                    IEdmSchemaElement schemaElement = typeCastSegment.StructuredType as IEdmSchemaElement;
-                    previousTypeCastSegmentId = "As" + Utils.UpperFirstChar(schemaElement.Name);
-                    items.Add(previousTypeCastSegmentId);
+                    if (!string.IsNullOrEmpty(previousTypeCastSegmentId))
+                        items.Remove(previousTypeCastSegmentId);
+                    if (typeCastSegment.StructuredType is IEdmSchemaElement schemaElement)
+                    {
+                        previousTypeCastSegmentId = "As" + Utils.UpperFirstChar(schemaElement.Name);
+                        items.Add(previousTypeCastSegmentId);
+                    }
                 }
-                else if (segment is ODataOperationSegment operationSegment)
+                else if (segment is ODataOperationSegment operationSegment && !string.IsNullOrEmpty(operationSegment.Identifier))
                 {
                     // Navigation property generated via composable function
                     if (operationSegment.Operation is IEdmFunction function && context.Model.IsOperationOverload(function))
@@ -239,19 +240,20 @@ namespace Microsoft.OpenApi.OData.Common
             Utils.CheckArgumentNull(path, nameof(path));
             Utils.CheckArgumentNull(context, nameof(context));
 
-            IEdmNavigationSource navigationSource = (path.FirstSegment as ODataNavigationSourceSegment)?.NavigationSource;
+            if (path.FirstSegment is not ODataNavigationSourceSegment {NavigationSource: IEdmNavigationSource navigationSource })
+                throw new InvalidOperationException("The first segment of the path is not a navigation source segment.");
             
-            IList<string> items = new List<string>
+            var items = new List<string>
             {
                 navigationSource.Name
             };
 
-            IEdmNavigationProperty navigationProperty = path.OfType<ODataNavigationPropertySegment>()?.Last()?.NavigationProperty;
-            Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
+            if (path.OfType<ODataNavigationPropertySegment>()?.Last()?.NavigationProperty is not IEdmNavigationProperty navigationProperty)
+                throw new InvalidOperationException("The last segment of the path is not a navigation property segment.");
 
-            foreach (var segment in path.Segments.Skip(1).OfType<ODataNavigationPropertySegment>())
+            foreach (var segment in path.Segments.Skip(1).OfType<ODataNavigationPropertySegment>().Select(static x => x.NavigationProperty))
             {
-                if (segment.NavigationProperty == navigationProperty)
+                if (segment == navigationProperty)
                 {
                     items.Add(navigationProperty.ToEntityType().Name);
                     break;
@@ -260,12 +262,12 @@ namespace Microsoft.OpenApi.OData.Common
                 {
                     if (items.Count >= context.Settings.TagDepth - 1)
                     {
-                        items.Add(segment.NavigationProperty.ToEntityType().Name);
+                        items.Add(segment.ToEntityType().Name);
                         break;
                     }
                     else
                     {
-                        items.Add(segment.NavigationProperty.Name);
+                        items.Add(segment.Name);
                     }
                 }
             }
@@ -284,12 +286,12 @@ namespace Microsoft.OpenApi.OData.Common
             Utils.CheckArgumentNull(path, nameof(path));
             Utils.CheckArgumentNull(context, nameof(context));
 
-            ODataComplexPropertySegment complexSegment = path.Segments.OfType<ODataComplexPropertySegment>()?.Last();
-            Utils.CheckArgumentNull(complexSegment, nameof(complexSegment));
+            if (path.Segments.OfType<ODataComplexPropertySegment>()?.Last() is not ODataComplexPropertySegment complexSegment)
+                throw new InvalidOperationException("The last segment of the path is not a complex property segment.");
 
             // Get the segment before the last complex type segment
             int complexSegmentIndex = path.Segments.IndexOf(complexSegment);
-            ODataSegment preComplexSegment = path.Segments.ElementAt(complexSegmentIndex - 1);
+            ODataSegment preComplexSegment = path.Segments[complexSegmentIndex - 1];
             int preComplexSegmentIndex = path.Segments.IndexOf(preComplexSegment);
 
             while (preComplexSegment is ODataTypeCastSegment)
@@ -297,10 +299,10 @@ namespace Microsoft.OpenApi.OData.Common
                 // Skip this segment,
                 // Tag names don't include OData type cast segment identifiers 
                 preComplexSegmentIndex--;
-                preComplexSegment = path.Segments.ElementAt(preComplexSegmentIndex);
+                preComplexSegment = path.Segments[preComplexSegmentIndex];
             }
 
-            string tagName = null;
+            string? tagName = null;
 
             if (preComplexSegment is ODataNavigationSourceSegment sourceSegment)
             {
@@ -312,7 +314,7 @@ namespace Microsoft.OpenApi.OData.Common
             }
             else if (preComplexSegment is ODataKeySegment)
             {
-                var prevKeySegment = path.Segments.ElementAt(preComplexSegmentIndex - 1);
+                var prevKeySegment = path.Segments[preComplexSegmentIndex - 1];
                 if (prevKeySegment is ODataNavigationPropertySegment)
                 {
                     tagName = GenerateNavigationPropertyPathTagName(path, context);
@@ -323,7 +325,7 @@ namespace Microsoft.OpenApi.OData.Common
                 }
             }
 
-            List<string> tagNameItems = tagName?.Split('.').ToList();
+            List<string> tagNameItems = tagName?.Split('.').ToList() ?? [];
             
             if (tagNameItems.Count < context.Settings.TagDepth)
             {
@@ -340,41 +342,41 @@ namespace Microsoft.OpenApi.OData.Common
         /// <param name="context">The OData context.</param>
         /// <param name="includeListOrGetPrefix">Optional: Whether to include the List or Get prefix to the generated operation id.</param>
         /// <returns>The operation id prefix generated from the OData type cast path.</returns>
-        internal static string GenerateODataTypeCastPathOperationIdPrefix(ODataPath path, ODataContext context, bool includeListOrGetPrefix = true)
+        internal static string? GenerateODataTypeCastPathOperationIdPrefix(ODataPath path, ODataContext context, bool includeListOrGetPrefix = true)
         {
             // Get the segment before the last OData type cast segment
-            ODataTypeCastSegment typeCastSegment = path.Segments.OfType<ODataTypeCastSegment>()?.Last();
-            Utils.CheckArgumentNull(typeCastSegment, nameof(typeCastSegment));
+            if (path.Segments.OfType<ODataTypeCastSegment>()?.Last() is not ODataTypeCastSegment typeCastSegment)
+                throw new InvalidOperationException("The last segment of the path is not a type cast segment.");
 
             int typeCastSegmentIndex = path.Segments.IndexOf(typeCastSegment);
             
             // The segment 1 place before the last OData type cast segment
-            ODataSegment secondLastSegment = path.Segments.ElementAt(typeCastSegmentIndex - 1);
+            ODataSegment secondLastSegment = path.Segments[typeCastSegmentIndex - 1];
 
             bool isIndexedCollValuedNavProp = false;
             if (secondLastSegment is ODataKeySegment)
             {
                 // The segment 2 places before the last OData type cast segment
-                ODataSegment thirdLastSegment = path.Segments.ElementAt(typeCastSegmentIndex - 2);
+                ODataSegment thirdLastSegment = path.Segments[typeCastSegmentIndex - 2];
                 if (thirdLastSegment is ODataNavigationPropertySegment)
                 {
                     isIndexedCollValuedNavProp = true;
                 }
             }
 
-            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-            IEdmSingleton singleton = navigationSourceSegment?.NavigationSource as IEdmSingleton;
-            IEdmEntitySet entitySet = navigationSourceSegment?.NavigationSource as IEdmEntitySet;
+            ODataNavigationSourceSegment? navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
+            IEdmSingleton? singleton = navigationSourceSegment?.NavigationSource as IEdmSingleton;
+            IEdmEntitySet? entitySet = navigationSourceSegment?.NavigationSource as IEdmEntitySet;
 
-            string operationId = null;
+            string? operationId = null;
             if (secondLastSegment is ODataComplexPropertySegment complexSegment)
             {
-                string listOrGet = includeListOrGetPrefix ? (complexSegment.Property.Type.IsCollection() ? "List" : "Get") : null;
+                string? listOrGet = includeListOrGetPrefix ? (complexSegment.Property.Type.IsCollection() ? "List" : "Get") : null;
                 operationId = GenerateComplexPropertyPathOperationId(path, context, listOrGet);
             }
             else if (secondLastSegment is ODataNavigationPropertySegment navPropSegment)
             {
-                string prefix = null;
+                string? prefix = null;
                 if (includeListOrGetPrefix)
                 {
                     prefix = navPropSegment?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many ? "List" : "Get";
@@ -391,22 +393,34 @@ namespace Microsoft.OpenApi.OData.Common
                 else
                 {
                     string entityTypeName = keySegment.EntityType.Name;
-                    string getPrefix = includeListOrGetPrefix ? "Get" : null;
+                    string? getPrefix = includeListOrGetPrefix ? "Get" : null;
                     string operationName = $"{getPrefix}{Utils.UpperFirstChar(entityTypeName)}";
                     if (keySegment.IsAlternateKey)
                     {
                         string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
                         operationName = $"{operationName}By{alternateKeyName}";
                     }
-                    operationId = (entitySet != null) ? entitySet.Name : singleton.Name;
+                    if (entitySet != null)
+                    {
+                        operationId = entitySet.Name;
+                    }
+                    else if (singleton != null)
+                    {
+                        operationId = singleton.Name;
+                    }
                     operationId += $".{entityTypeName}.{operationName}";
                 }
             }
             else if (secondLastSegment is ODataNavigationSourceSegment)
             {
-                operationId = (entitySet != null)
-                    ? entitySet.Name + "." + entitySet.EntityType.Name + $".{(includeListOrGetPrefix ? "List" : null)}" + Utils.UpperFirstChar(entitySet.EntityType.Name)
-                    : singleton.Name + "." + singleton.EntityType.Name + $".{(includeListOrGetPrefix ? "Get" : null)}" + Utils.UpperFirstChar(singleton.EntityType.Name);
+                if (entitySet != null)
+                {
+                    operationId = entitySet.Name + "." + entitySet.EntityType.Name + $".{(includeListOrGetPrefix ? "List" : null)}" + Utils.UpperFirstChar(entitySet.EntityType.Name);
+                }
+                else if (singleton != null)
+                {
+                    operationId = singleton.Name + "." + singleton.EntityType.Name + $".{(includeListOrGetPrefix ? "Get" : null)}" + Utils.UpperFirstChar(singleton.EntityType.Name);
+                }
             }
 
             return operationId;

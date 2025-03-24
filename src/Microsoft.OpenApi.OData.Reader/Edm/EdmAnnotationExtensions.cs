@@ -298,6 +298,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
+            Utils.CheckArgumentNull(linkRel, nameof(linkRel));
 
             return model.GetCollection<LinkType>(target, CoreConstants.Links)?.FirstOrDefault(x => x.Rel == linkRel);
         }
