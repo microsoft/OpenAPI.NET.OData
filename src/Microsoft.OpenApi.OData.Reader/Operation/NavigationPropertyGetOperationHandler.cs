@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -161,73 +162,66 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            var selectParameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, NavigationProperty.ToEntityType())) 
-                ?? Context.CreateSelect(NavigationProperty);
+            var (selectParameter, expandParameter) = (string.IsNullOrEmpty(TargetPath), NavigationProperty) switch
+            { 
+                (false, not null) when NavigationProperty.ToEntityType() is {} entityType =>
+                    (Context.CreateSelect(TargetPath!, entityType) ?? Context.CreateSelect(NavigationProperty), 
+                    Context.CreateExpand(TargetPath!, entityType) ?? Context.CreateExpand(NavigationProperty)),
+                (true, not null) => (Context.CreateSelect(NavigationProperty), Context.CreateExpand(NavigationProperty)),
+                _ => (null, null),
+            };
 
-            var expandParameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, NavigationProperty.ToEntityType())) 
-                ?? Context.CreateExpand(NavigationProperty);
-
-            if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            var parametersToAdd = new List<IOpenApiParameter>();
+            if (!LastSegmentIsKeySegment && NavigationProperty?.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 // Need to verify that TopSupported or others should be applied to navigation source.
                 // So, how about for the navigation property.
-                var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
+                AddParameterIfExists(parametersToAdd, Context.CreateTop, Context.CreateTop);
+                AddParameterIfExists(parametersToAdd, Context.CreateSkip, Context.CreateSkip);
+                AddParameterIfExists(parametersToAdd, Context.CreateSearch, Context.CreateSearch);
+                AddParameterIfExists(parametersToAdd, Context.CreateFilter, Context.CreateFilter);
+                AddParameterIfExists(parametersToAdd, Context.CreateCount, Context.CreateCount);
 
-                parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(NavigationProperty, _document);
-                if (parameter != null)
+                var orderByParameter = (string.IsNullOrEmpty(TargetPath), NavigationProperty) switch
+                { 
+                    (false, not null) when NavigationProperty.ToEntityType() is {} entityType =>
+                        Context.CreateOrderBy(TargetPath!, entityType),
+                    (true, not null) => Context.CreateOrderBy(NavigationProperty),
+                    _ => null,
+                };
+                if (orderByParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(NavigationProperty, _document);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(NavigationProperty, _document);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(NavigationProperty, _document);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateOrderBy(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateOrderBy(NavigationProperty);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                if (selectParameter != null)
-                {
-                    operation.Parameters.Add(selectParameter);
-                }
-
-                if (expandParameter != null)
-                {
-                    operation.Parameters.Add(expandParameter);
+                    parametersToAdd.Add(orderByParameter);
                 }
             }
-            else
-            {
-                if (selectParameter != null)
-                {
-                    operation.Parameters.Add(selectParameter);
-                }
 
-                if (expandParameter != null)
-                {
-                    operation.Parameters.Add(expandParameter);
-                }
+            if (selectParameter != null)
+            {
+                parametersToAdd.Add(selectParameter);
+            }
+
+            if (expandParameter != null)
+            {
+                parametersToAdd.Add(expandParameter);
+            }
+
+            if (parametersToAdd.Count > 0)
+            {
+                if (operation.Parameters is null) operation.Parameters = parametersToAdd;
+                else parametersToAdd.ForEach(p => operation.Parameters.Add(p));
+            }
+        }
+        private void AddParameterIfExists(List<IOpenApiParameter> parameters,
+                                            Func<string, OpenApiDocument, IOpenApiParameter?> createParameterFromPath,
+                                            Func<IEdmNavigationProperty, OpenApiDocument, IOpenApiParameter?> createParameterFromProperty)
+        {
+            if (!string.IsNullOrEmpty(TargetPath) && createParameterFromPath(TargetPath, _document) is {} parameterFromPath)
+            {
+                parameters.Add(parameterFromPath);
+            }
+            else if (NavigationProperty is not null && createParameterFromProperty(NavigationProperty, _document) is {} parameterFromProperty)
+            {
+                parameters.Add(parameterFromProperty);
             }
         }
 

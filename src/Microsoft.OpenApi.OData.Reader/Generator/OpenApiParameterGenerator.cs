@@ -689,8 +689,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
 
-            IEdmTargetPath target = context.Model.GetTargetPath(targetPath);
-            if (target == null)
+            if (context.Model.GetTargetPath(targetPath) is not {} target)
                 return null;
 
             return context.CreateSelect(target, entityType);
