@@ -95,7 +95,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IDictionary<string, IOpenApiLink>? links = null;
             if (Context is { Settings.ShowLinks: true } && NavigationProperty is not null && Path is not null)
             {
-                string operationId = GetOperationId();
+                var operationId = GetOperationId();
 
                 links = Context.CreateLinks(entityType: NavigationProperty.ToEntityType(), entityName: NavigationProperty.Name,
                         entityKind: NavigationProperty.PropertyKind.ToString(), path: Path, parameters: PathParameters,

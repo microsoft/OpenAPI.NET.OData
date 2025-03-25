@@ -3,11 +3,14 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -36,16 +39,20 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Get;
 
-        private ReadRestrictionsType _readRestrictions;
+        private ReadRestrictionsType? _readRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            var entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
-            _readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
-            _readRestrictions ??= entityReadRestrictions;
+            if (!string.IsNullOrEmpty(TargetPath))
+                _readRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            if (Context is not null)
+            {
+                var entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+                _readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
+                _readRestrictions ??= entityReadRestrictions;
+            }
         }
 
         /// <inheritdoc/>
@@ -54,10 +61,10 @@ namespace Microsoft.OpenApi.OData.Operation
             // Summary and Descriptions
             string placeHolder = "Get entities from " + EntitySet.Name;
             operation.Summary = _readRestrictions?.Description ?? placeHolder;
-            operation.Description = _readRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(EntitySet);
+            operation.Description = _readRestrictions?.LongDescription ?? Context?.Model.GetDescriptionAnnotation(EntitySet);
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true})
             {
                 string typeName = EntitySet.EntityType.Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".List" + Utils.UpperFirstChar(typeName);
@@ -66,13 +73,14 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            if (Context.Settings.EnablePagination)
+            if (Context is {Settings.EnablePagination: true})
             {
-                JsonObject extension = new JsonObject
+                var extension = new JsonObject
                 {
                     { "nextLinkName", "@odata.nextLink"},
                     { "operationName", Context.Settings.PageableOperationName}
                 };
+                operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
 
                 base.SetExtensions(operation);
@@ -83,41 +91,43 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetParameters(OpenApiOperation operation)
         {
             base.SetParameters(operation);
+            if (Context is null) return;
 
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
             // and it does not list system query options not allowed for this collection, see terms
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
             // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
             // $top
-            var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(EntitySet, _document);
+            operation.Parameters ??= [];
+            var parameter = (TargetPath is null ? null : Context.CreateTop(TargetPath, _document)) ?? Context.CreateTop(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $skip
-            parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(EntitySet, _document);
+            parameter = (TargetPath is null ? null : Context.CreateSkip(TargetPath, _document)) ?? Context.CreateSkip(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $search
-            parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(EntitySet, _document);
+            parameter = (TargetPath is null ? null : Context.CreateSearch(TargetPath, _document)) ?? Context.CreateSearch(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $filter
-            parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(EntitySet, _document);
+            parameter = (TargetPath is null ? null : Context.CreateFilter(TargetPath, _document)) ?? Context.CreateFilter(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $count
-            parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(EntitySet, _document);
+            parameter = (TargetPath is null ? null : Context.CreateCount(TargetPath, _document)) ?? Context.CreateCount(EntitySet, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -128,21 +138,21 @@ namespace Microsoft.OpenApi.OData.Operation
             // of just providing a comma-separated list of properties can be expressed via an array-valued
             // parameter with an enum constraint
             // $order
-            parameter = Context.CreateOrderBy(TargetPath, EntitySet.EntityType) ?? Context.CreateOrderBy(EntitySet);
+            parameter = (TargetPath is null ? null : Context.CreateOrderBy(TargetPath, EntitySet.EntityType)) ?? Context.CreateOrderBy(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $select
-            parameter = Context.CreateSelect(TargetPath, EntitySet.EntityType) ?? Context.CreateSelect(EntitySet);
+            parameter = (TargetPath is null ? null : Context.CreateSelect(TargetPath, EntitySet.EntityType)) ?? Context.CreateSelect(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $expand
-            parameter = Context.CreateExpand(TargetPath, EntitySet.EntityType) ?? Context.CreateExpand(EntitySet);
+            parameter = (TargetPath is null ? null : Context.CreateExpand(TargetPath, EntitySet.EntityType)) ?? Context.CreateExpand(EntitySet);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -155,12 +165,13 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                    Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                     new OpenApiResponseReference($"{EntitySet.EntityType.FullName()}{Constants.CollectionSchemaSuffix}", _document)
                 }
             };
 
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -172,7 +183,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

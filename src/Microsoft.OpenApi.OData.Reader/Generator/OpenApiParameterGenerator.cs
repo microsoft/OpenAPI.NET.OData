@@ -456,8 +456,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            SearchRestrictionsType search = context.Model.GetRecord<SearchRestrictionsType>(target, CapabilitiesConstants.SearchRestrictions);
-            if (search == null || search.IsSearchable)
+            if (context.Model.GetRecord<SearchRestrictionsType>(target, CapabilitiesConstants.SearchRestrictions) is not {} search || search.IsSearchable)
             {
                 return new OpenApiParameterReference("search", document);
             }
@@ -497,8 +496,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            CountRestrictionsType count = context.Model.GetRecord<CountRestrictionsType>(target, CapabilitiesConstants.CountRestrictions);
-            if (count == null || count.IsCountable)
+            if (context.Model.GetRecord<CountRestrictionsType>(target, CapabilitiesConstants.CountRestrictions) is not {} count || count.IsCountable)
             {
                 return new OpenApiParameterReference("count", document);
             }
@@ -539,8 +537,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            FilterRestrictionsType filter = context.Model.GetRecord<FilterRestrictionsType>(target, CapabilitiesConstants.FilterRestrictions);
-            if (filter == null || filter.IsFilterable)
+            if (context.Model.GetRecord<FilterRestrictionsType>(target, CapabilitiesConstants.FilterRestrictions) is not {} filter || filter.IsFilterable)
             {
                 return new OpenApiParameterReference("filter", document);
             }
@@ -630,7 +627,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
-            SortRestrictionsType sort = context.Model.GetRecord<SortRestrictionsType>(target, CapabilitiesConstants.SortRestrictions);
+            var sort = context.Model.GetRecord<SortRestrictionsType>(target, CapabilitiesConstants.SortRestrictions);
             if (sort != null && !sort.IsSortable)
             {
                 return null;
@@ -746,7 +743,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
-            NavigationRestrictionsType navigation = context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
+            var navigation = context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
             if (navigation != null && !navigation.IsNavigable)
             {
                 return null;
@@ -852,7 +849,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
-            ExpandRestrictionsType expand = context.Model.GetRecord<ExpandRestrictionsType>(target, CapabilitiesConstants.ExpandRestrictions);
+            var expand = context.Model.GetRecord<ExpandRestrictionsType>(target, CapabilitiesConstants.ExpandRestrictions);
             if (expand != null && !expand.IsExpandable)
             {
                 return null;

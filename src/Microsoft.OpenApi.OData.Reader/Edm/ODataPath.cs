@@ -204,10 +204,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>The whole path object.</returns>
         internal ODataPath Push(ODataSegment segment)
         {
-            if (Segments == null)
-            {
-                Segments = new List<ODataSegment>();
-            }
+            Segments ??= [];
 
             _pathKind = null;
             _defaultPathItemName = null;
