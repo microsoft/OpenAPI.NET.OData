@@ -287,7 +287,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 return PathTemplate;
             }
 
-            return "/" + String.Join("/", Segments.Select(e => e.Kind));
+            return "/" + string.Join("/", Segments.Select(e => e.Kind));
         }
 
         /// <summary>
@@ -295,9 +295,9 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="other">The compare to ODataPath.</param>
         /// <returns>true/false</returns>
-        public int CompareTo(ODataPath other)
+        public int CompareTo(ODataPath? other)
         {
-            return GetPathItemName().CompareTo(other.GetPathItemName());
+            return GetPathItemName().CompareTo(other?.GetPathItemName());
         }
 
         private ODataPathKind CalcPathType()

@@ -60,8 +60,8 @@ namespace Microsoft.OpenApi.OData.Common
         /// <param name="restrictionProperty">The <see cref="NavigationPropertyRestriction"/>.</param>
         /// <returns>true, if navigability is allowed, otherwise false.</returns>
         internal static bool NavigationRestrictionsAllowsNavigability(
-            NavigationRestrictionsType restrictionType,
-            NavigationPropertyRestriction restrictionProperty)
+            NavigationRestrictionsType? restrictionType,
+            NavigationPropertyRestriction? restrictionProperty)
         {
             // Verify using individual navigation restriction first
             if (restrictionProperty?.Navigability != null && restrictionProperty.Navigability.Value == NavigationType.None)

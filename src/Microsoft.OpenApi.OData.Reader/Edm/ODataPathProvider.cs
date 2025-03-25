@@ -142,9 +142,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 case ODataPathKind.MediaEntity:
                     if (path.FirstSegment is ODataNavigationSourceSegment navigationSourceSegment)
                     {
-                        if(!_allNavigationSourcePaths.TryGetValue(navigationSourceSegment.EntityType, out IList<ODataPath> nsList))
+                        if(!_allNavigationSourcePaths.TryGetValue(navigationSourceSegment.EntityType, out var nsList))
                         {
-                            nsList = new List<ODataPath>();
+                            nsList = [];
                             _allNavigationSourcePaths[navigationSourceSegment.EntityType] = nsList;
                         }
                         
@@ -157,9 +157,9 @@ namespace Microsoft.OpenApi.OData.Edm
                             }
                             else
                             {
-                                if (!_dollarCountPaths.TryGetValue(navigationSourceSegment.EntityType, out IList<ODataPath> dollarPathList))
+                                if (!_dollarCountPaths.TryGetValue(navigationSourceSegment.EntityType, out var dollarPathList))
                                 {
-                                    dollarPathList = new List<ODataPath>();
+                                    dollarPathList = [];
                                     _dollarCountPaths[navigationSourceSegment.EntityType] = dollarPathList;
                                 }
                                 dollarPathList.Add(path);
@@ -174,9 +174,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 case ODataPathKind.Ref:
                     ODataNavigationPropertySegment navigationPropertySegment = path.OfType<ODataNavigationPropertySegment>().Last();
 
-                    if (!_allNavigationPropertyPaths.TryGetValue(navigationPropertySegment.EntityType, out IList<ODataPath> npList))
+                    if (!_allNavigationPropertyPaths.TryGetValue(navigationPropertySegment.EntityType, out var npList))
                     {
-                        npList = new List<ODataPath>();
+                        npList = [];
                         _allNavigationPropertyPaths[navigationPropertySegment.EntityType] = npList;
                     }
 
@@ -190,7 +190,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         foreach (var kvp in _dollarCountPaths)
                         {
                             if (kvp.Value.FirstOrDefault(p => DollarCountAndOperationPathsSimilar(p, path)) is ODataPath dollarCountPath &&
-                                _allNavigationSourcePaths.TryGetValue(kvp.Key, out IList<ODataPath> dollarPathList))
+                                _allNavigationSourcePaths.TryGetValue(kvp.Key, out var dollarPathList))
                             {
                                 dollarPathList.Remove(dollarCountPath);
                                 break;
@@ -208,9 +208,9 @@ namespace Microsoft.OpenApi.OData.Edm
             bool DollarCountAndOperationPathsSimilar(ODataPath path1, ODataPath path2)
             {
                 if ((path1.Kind == ODataPathKind.DollarCount && 
-                    path2.Kind == ODataPathKind.Operation && path2.LastSegment.Identifier.Equals(Constants.CountSegmentIdentifier, StringComparison.OrdinalIgnoreCase)) ||
+                    path2.Kind == ODataPathKind.Operation && Constants.CountSegmentIdentifier.Equals(path2.LastSegment?.Identifier, StringComparison.OrdinalIgnoreCase)) ||
                     (path2.Kind == ODataPathKind.DollarCount &&
-                    path1.Kind == ODataPathKind.Operation && path1.LastSegment.Identifier.Equals(Constants.CountSegmentIdentifier, StringComparison.OrdinalIgnoreCase)))
+                    path1.Kind == ODataPathKind.Operation && Constants.CountSegmentIdentifier.Equals(path1.LastSegment?.Identifier, StringComparison.OrdinalIgnoreCase)))
                 {
                     return GetModifiedPathItemName(path1)?.Equals(GetModifiedPathItemName(path2), StringComparison.OrdinalIgnoreCase) ?? false;
                 }
@@ -218,9 +218,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 return false;                
             }
 
-            string GetModifiedPathItemName(ODataPath path)
+            string? GetModifiedPathItemName(ODataPath path)
             {
-                if (!path.Any()) return null;
+                if (path.Count == 0) return null;
 
                 IEnumerable<ODataSegment> modifiedSegments = path.Take(path.Count - 1);
                 ODataPath modifiedPath = new(modifiedSegments);
@@ -242,14 +242,15 @@ namespace Microsoft.OpenApi.OData.Edm
             ODataPath path = new(new ODataNavigationSourceSegment(navigationSource));
             AppendPath(path.Clone());
 
-            IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
             IEdmEntityType entityType = navigationSource.EntityType;
-            CountRestrictionsType count = null;
+            CountRestrictionsType? count = null;
             bool? indexableByKey = false;
+            var entitySetIsNull = true;
 
             // for entity set, create a path with key and a $count path
-            if (entitySet != null)
+            if (navigationSource is IEdmEntitySet entitySet && _model is not null)
             {
+                entitySetIsNull = false;
                 string targetPath = path.GetTargetPath(_model);
                 count = _model.GetRecord<CountRestrictionsType>(targetPath, CapabilitiesConstants.CountRestrictions)
                     ?? _model.GetRecord<CountRestrictionsType>(entitySet, CapabilitiesConstants.CountRestrictions);
@@ -291,13 +292,13 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
-            if (entitySet != null && (indexableByKey ?? true))
+            if (!entitySetIsNull && (indexableByKey ?? true))
             {
                 path.Pop(); // end of entity
             }
 
             path.Pop(); // end of navigation source.
-            Debug.Assert(path.Any() == false);
+            Debug.Assert(path.Count == 0);
         }
 
         /// <summary>
@@ -312,7 +313,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(currentPath, nameof(currentPath));
             Utils.CheckArgumentNull(convertSettings, nameof(convertSettings));
 
-            if (!convertSettings.EnableNavigationPropertyPath) return;
+            if (!convertSettings.EnableNavigationPropertyPath || _model is null) return;
 
             foreach (IEdmStructuralProperty sp in entityType.StructuralProperties()
                                                     .Where(x => x.Type.IsComplex() ||
@@ -327,9 +328,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 AppendPath(currentPath.Clone());
 
-                if (sp.Type.IsCollection())
+                if (sp.Type.IsCollection() && sp.Type.Definition.AsElementType() is IEdmComplexType elemType)
                 {
-                    CreateTypeCastPaths(currentPath, convertSettings, sp.Type.Definition.AsElementType() as IEdmComplexType, sp, true);
+                    CreateTypeCastPaths(currentPath, convertSettings, elemType, sp, true);
                     var isCountable = _model.GetRecord<CountRestrictionsType>(targetPath, CapabilitiesConstants.CountRestrictions)?.IsCountable
                         ?? _model.GetRecord<CountRestrictionsType>(sp, CapabilitiesConstants.CountRestrictions)?.IsCountable
                         ?? true;
@@ -373,7 +374,7 @@ namespace Microsoft.OpenApi.OData.Edm
                                         .Distinct()
                                         .Where(CanFilter);
 
-            if (!navigationProperties.Any()) return false;
+            if (!navigationProperties.Any() || _model is null) return false;
 
             foreach (var np in navigationProperties)
             {
@@ -434,14 +435,14 @@ namespace Microsoft.OpenApi.OData.Edm
             if (!convertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
                 return true;
 
-            bool isReadable = _model.GetRecord<ReadRestrictionsType>(targetPath, CapabilitiesConstants.ReadRestrictions)?.Readable 
-                ?? _model.GetRecord<ReadRestrictionsType>(complexProperty, CapabilitiesConstants.ReadRestrictions)?.Readable 
+            bool isReadable = _model?.GetRecord<ReadRestrictionsType>(targetPath, CapabilitiesConstants.ReadRestrictions)?.Readable 
+                ?? _model?.GetRecord<ReadRestrictionsType>(complexProperty, CapabilitiesConstants.ReadRestrictions)?.Readable 
                 ?? false;
-            bool isUpdatable = _model.GetRecord<UpdateRestrictionsType>(targetPath, CapabilitiesConstants.UpdateRestrictions)?.Updatable 
-                ??_model.GetRecord<UpdateRestrictionsType>(complexProperty, CapabilitiesConstants.UpdateRestrictions)?.Updatable 
+            bool isUpdatable = _model?.GetRecord<UpdateRestrictionsType>(targetPath, CapabilitiesConstants.UpdateRestrictions)?.Updatable 
+                ??_model?.GetRecord<UpdateRestrictionsType>(complexProperty, CapabilitiesConstants.UpdateRestrictions)?.Updatable 
                 ?? false;
-            bool isInsertable = _model.GetRecord<InsertRestrictionsType>(targetPath, CapabilitiesConstants.InsertRestrictions)?.Insertable
-                ?? _model.GetRecord<InsertRestrictionsType>(complexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable 
+            bool isInsertable = _model?.GetRecord<InsertRestrictionsType>(targetPath, CapabilitiesConstants.InsertRestrictions)?.Insertable
+                ?? _model?.GetRecord<InsertRestrictionsType>(complexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable 
                 ?? false;
 
             return isReadable || isUpdatable || isInsertable;
@@ -494,10 +495,10 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="visitedNavigationProperties">A stack that holds the visited navigation properties in the <paramref name="currentPath"/>.</param>
         private void RetrieveNavigationPropertyPaths(
             IEdmNavigationProperty navigationProperty,
-            CountRestrictionsType count,
+            CountRestrictionsType? count,
             ODataPath currentPath,
             OpenApiConvertSettings convertSettings,
-            Stack<string> visitedNavigationProperties = null)
+            Stack<string>? visitedNavigationProperties = null)
         {
             Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
             Utils.CheckArgumentNull(currentPath, nameof(currentPath));
@@ -519,17 +520,17 @@ namespace Microsoft.OpenApi.OData.Edm
 
             // Get the annotatable navigation source for this navigation property.
             IEdmVocabularyAnnotatable annotatableNavigationSource = (currentPath.FirstSegment as ODataNavigationSourceSegment)?.NavigationSource as IEdmVocabularyAnnotatable;                   
-            NavigationRestrictionsType navSourceRestrictionType = null;
-            NavigationRestrictionsType navPropRestrictionType = null;
+            NavigationRestrictionsType? navSourceRestrictionType = null;
+            NavigationRestrictionsType? navPropRestrictionType = null;
 
             // Get the NavigationRestrictions referenced by this navigation property: Can be defined in the navigation source or in-lined in the navigation property.
-            if (annotatableNavigationSource != null)
+            if (annotatableNavigationSource != null && _model is not null)
             {
                 navSourceRestrictionType = _model.GetRecord<NavigationRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.NavigationRestrictions);
                 navPropRestrictionType = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
             }            
             
-            NavigationPropertyRestriction restriction = navSourceRestrictionType?.RestrictedProperties?
+            NavigationPropertyRestriction? restriction = navSourceRestrictionType?.RestrictedProperties?
                 .FirstOrDefault(r => r.NavigationProperty == currentPath.NavigationPropertyPath(navigationProperty.Name))
                 ?? navPropRestrictionType?.RestrictedProperties?.FirstOrDefault();
 
@@ -1162,10 +1163,13 @@ namespace Microsoft.OpenApi.OData.Edm
                             continue;
                         }
 
-                        ODataPath newPath = path.Clone();
-                        newPath.Push(new ODataTypeCastSegment(bindingEntityType, _model));
-                        newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
-                        AppendPath(newPath);
+                        if (_model is not null)
+                        {
+                            ODataPath newPath = path.Clone();
+                            newPath.Push(new ODataTypeCastSegment(bindingEntityType, _model));
+                            newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
+                            AppendPath(newPath);
+                        }
                     }
                 }
             }

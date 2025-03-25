@@ -63,8 +63,8 @@ namespace Microsoft.OpenApi.OData.Operation
             var placeholderValue = LastSegmentIsStreamPropertySegment ? Path?.LastSegment?.Identifier : "media content";
             operation.Summary = _readRestrictions?.Description;
             operation.Summary ??= IsNavigationPropertyPath
-                ? $"Get {placeholderValue} for the navigation property {NavigationProperty.Name} from {NavigationSourceSegment.NavigationSource.Name}"
-                : $"Get {placeholderValue} for {NavigationSourceSegment.EntityType.Name} from {NavigationSourceSegment.Identifier}";
+                ? $"Get {placeholderValue} for the navigation property {NavigationProperty?.Name} from {NavigationSourceSegment?.NavigationSource.Name}"
+                : $"Get {placeholderValue} for {NavigationSourceSegment?.EntityType.Name} from {NavigationSourceSegment?.Identifier}";
 
             // Description
             string? description;
