@@ -33,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = $"Get OData metadata (CSDL) document";
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true})
             {
                 string routePrefix = Context.Settings.PathPrefix ?? "";
                 if (Context.Settings.PathPrefix != null)

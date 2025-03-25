@@ -116,8 +116,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            IEdmVocabularyAnnotatable annotatableNavigationSource = (IEdmVocabularyAnnotatable)NavigationSourceSegment.NavigationSource;
-            if (Context?.Model.GetRecord<ReadRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.ReadRestrictions) is not {} read)
+            if (NavigationSourceSegment?.NavigationSource is not IEdmVocabularyAnnotatable annotatableNavigationSource ||
+                Context?.Model.GetRecord<ReadRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.ReadRestrictions) is not {} read)
             {
                 return;
             }

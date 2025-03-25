@@ -52,11 +52,11 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary
-            string placeholderValue = LastSegmentIsStreamPropertySegment && Path is not null ? Path.LastSegment.Identifier : "media content";
+            string placeholderValue = LastSegmentIsStreamPropertySegment && Path is {LastSegment.Identifier: not null} ? Path.LastSegment.Identifier : "media content";
             operation.Summary = _deleteRestrictions?.Description;
             operation.Summary ??= IsNavigationPropertyPath
-                ? $"Delete {placeholderValue} for the navigation property {NavigationProperty.Name} in {NavigationSourceSegment.NavigationSource.Name}"
-                : $"Delete {placeholderValue} for {NavigationSourceSegment.EntityType.Name} in {NavigationSourceSegment.Identifier}";
+                ? $"Delete {placeholderValue} for the navigation property {NavigationProperty?.Name} in {NavigationSourceSegment?.NavigationSource.Name}"
+                : $"Delete {placeholderValue} for {NavigationSourceSegment?.EntityType.Name} in {NavigationSourceSegment?.Identifier}";
 
             // Description
             operation.Description = _deleteRestrictions?.LongDescription ?? Context?.Model.GetDescriptionAnnotation(Property);
@@ -64,7 +64,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context is {Settings.EnableOperationId: true})
             {
-                string identifier = LastSegmentIsStreamPropertySegment && Path is not null ? Path.LastSegment.Identifier : "Content";
+                string identifier = LastSegmentIsStreamPropertySegment && Path is {LastSegment.Identifier: not null} ? Path.LastSegment.Identifier : "Content";
                 operation.OperationId = GetOperationId("Delete", identifier);
             }
 
