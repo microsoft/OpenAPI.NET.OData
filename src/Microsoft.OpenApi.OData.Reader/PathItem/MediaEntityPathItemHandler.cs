@@ -79,13 +79,10 @@ namespace Microsoft.OpenApi.OData.PathItem
             base.Initialize(context, path);
 
             // The first segment could be an entity set segment or a singleton segment.
-            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-
-            EntitySet = navigationSourceSegment.NavigationSource as IEdmEntitySet;
-            if (EntitySet == null)
-            {
-                Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
-            }
+            if (path.FirstSegment is ODataNavigationSourceSegment {NavigationSource: IEdmEntitySet entitySet})
+                EntitySet = entitySet;
+            if (path.FirstSegment is ODataNavigationSourceSegment {NavigationSource: IEdmSingleton singleton})
+                Singleton = singleton;
         }
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
