@@ -3,9 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -36,10 +38,14 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetBasicInfo(operation);
 
-            InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
-            InsertRestrictionsType operationReadRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EdmOperation, CapabilitiesConstants.InsertRestrictions);
-            insertRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
-            insertRestrictions ??= operationReadRestrictions;
+            var insertRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+            
+            if (Context is not null && EdmOperation is not null)
+            {
+                var operationReadRestrictions = Context?.Model.GetRecord<InsertRestrictionsType>(EdmOperation, CapabilitiesConstants.InsertRestrictions);
+                insertRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
+                insertRestrictions ??= operationReadRestrictions;
+            }
 
             // Description
             if (!string.IsNullOrWhiteSpace(insertRestrictions?.LongDescription))
@@ -51,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            if (EdmOperation is IEdmAction action && Context.CreateRequestBody(action, _document) is OpenApiRequestBody requestBody)
+            if (EdmOperation is IEdmAction action && Context?.CreateRequestBody(action, _document) is OpenApiRequestBody requestBody)
             {               
                 if (Context.Model.OperationTargetsMultiplePaths(action))
                 {
@@ -69,6 +75,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
+            operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("action"));
             base.SetExtensions(operation);
         }

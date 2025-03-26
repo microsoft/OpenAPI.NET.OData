@@ -346,7 +346,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     // Append navigation property paths for this complex property
                     RetrieveComplexTypeNavigationPropertyPaths(complexType, currentPath, convertSettings);
 
-                    // Traverse this complex property to rerieve nested navigation property paths
+                    // Traverse this complex property to retrieve nested navigation property paths
                     TraverseComplexProperty(sp, currentPath, convertSettings);
                 }
 
@@ -519,12 +519,11 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             // Get the annotatable navigation source for this navigation property.
-            IEdmVocabularyAnnotatable annotatableNavigationSource = (currentPath.FirstSegment as ODataNavigationSourceSegment)?.NavigationSource as IEdmVocabularyAnnotatable;                   
             NavigationRestrictionsType? navSourceRestrictionType = null;
             NavigationRestrictionsType? navPropRestrictionType = null;
 
             // Get the NavigationRestrictions referenced by this navigation property: Can be defined in the navigation source or in-lined in the navigation property.
-            if (annotatableNavigationSource != null && _model is not null)
+            if (currentPath.FirstSegment is ODataNavigationSourceSegment { NavigationSource: IEdmVocabularyAnnotatable annotatableNavigationSource } && _model is not null)
             {
                 navSourceRestrictionType = _model.GetRecord<NavigationRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.NavigationRestrictions);
                 navPropRestrictionType = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
@@ -550,22 +549,13 @@ namespace Microsoft.OpenApi.OData.Edm
             visitedNavigationProperties.Push(navPropFullyQualifiedName);
 
             // For fetching annotations
-            var targetPath = currentPath.GetTargetPath(_model);
+            var targetPath = _model is null ? null : currentPath.GetTargetPath(_model);
 
             // Check whether a collection-valued navigation property should be indexed by key value(s).
             // Find indexability annotation annotated directly via NavigationPropertyRestriction.
-            bool? annotatedIndexability = _model.GetBoolean(targetPath, CapabilitiesConstants.IndexableByKey)
-                ?? _model.GetBoolean(navigationProperty, CapabilitiesConstants.IndexableByKey);
-            bool indexableByKey = true;
-
-            if (restriction?.IndexableByKey != null)
-            {
-                indexableByKey = (bool)restriction.IndexableByKey;
-            }
-            else if (annotatedIndexability != null)
-            {
-                indexableByKey = annotatedIndexability.Value;
-            }
+            bool? annotatedIndexability = (string.IsNullOrEmpty(targetPath) ? null : _model?.GetBoolean(targetPath, CapabilitiesConstants.IndexableByKey))
+                ?? _model?.GetBoolean(navigationProperty, CapabilitiesConstants.IndexableByKey);
+            bool indexableByKey = restriction?.IndexableByKey ?? annotatedIndexability ?? true;
 
             if (indexableByKey)
             {
@@ -578,8 +568,8 @@ namespace Microsoft.OpenApi.OData.Edm
                     if (count == null)
                     {
                         // First, get the directly annotated restriction annotation of the navigation property
-                        count = _model.GetRecord<CountRestrictionsType>(targetPath, CapabilitiesConstants.CountRestrictions)
-                            ?? _model.GetRecord<CountRestrictionsType>(navigationProperty, CapabilitiesConstants.CountRestrictions);
+                        count = (string.IsNullOrEmpty(targetPath) ? null : _model?.GetRecord<CountRestrictionsType>(targetPath, CapabilitiesConstants.CountRestrictions))
+                            ?? _model?.GetRecord<CountRestrictionsType>(navigationProperty, CapabilitiesConstants.CountRestrictions);
                         createCountPath = count?.Countable;
                     }
 
@@ -740,8 +730,6 @@ namespace Microsoft.OpenApi.OData.Edm
             if(!annotedTypeNames.Any() && convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments) 
                 return; // we don't want to generate any downcast path item if there is no type cast annotation.
 
-            var annotedTypeNamesSet = new HashSet<string>(annotedTypeNames, StringComparer.OrdinalIgnoreCase);
-
             bool filter(IEdmStructuredType x) =>
                 convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && annotedTypeNames.Contains(x.FullTypeName()) ||
                 !convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && (
@@ -750,16 +738,18 @@ namespace Microsoft.OpenApi.OData.Edm
                 );
 
             var targetTypes = _model
-                                .FindAllDerivedTypes(structuredType)
+                                ?.FindAllDerivedTypes(structuredType)
                                 .Where(x => (x.TypeKind == EdmTypeKind.Entity || x.TypeKind == EdmTypeKind.Complex) && filter(x))
                                 .OfType<IEdmStructuredType>()
                                 .ToArray();
+
+            if (targetTypes is not { Length: > 0} || _model is null) return;
 
             foreach (var targetType in targetTypes)
             {
                 var targetTypeSegment = new ODataTypeCastSegment(targetType, _model);
 
-                if (currentPath.Segments.Any(x => x.Identifier.Equals(targetTypeSegment.Identifier)))
+                if (currentPath.Segments.Any(x => x.Identifier?.Equals(targetTypeSegment.Identifier) ?? false))
                 {
                     // In case we have expanded a derived type's navigation property
                     // and we are in a cyclic loop where the expanded navigation property
@@ -802,7 +792,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         private void RetrieveBoundOperationPaths(OpenApiConvertSettings convertSettings)
         {
-            var edmOperations = _model.GetAllElements().OfType<IEdmOperation>().Where(x => x.IsBound).ToArray();
+            var edmOperations = _model?.GetAllElements().OfType<IEdmOperation>().Where(x => x.IsBound).ToArray() ?? [];
             foreach (var edmOperation in edmOperations)
             {
                 if (!CanFilter(edmOperation))
@@ -876,7 +866,7 @@ namespace Microsoft.OpenApi.OData.Edm
                                                     && operationSegment.Operation is IEdmFunction edmFunction
                                                     && edmFunction.IsComposable
                                                     && edmFunction.ReturnType != null
-                                                    && edmFunction.ReturnType.Definition is IEdmEntityType returnBindingEntityType);
+                                                    && edmFunction.ReturnType.Definition is IEdmEntityType);
 
             foreach( var functionPath in functionPaths)
             {
@@ -902,11 +892,11 @@ namespace Microsoft.OpenApi.OData.Edm
                 {
                     /* Get number of segments already appended after the first composable function segment
                      */
-                    int composableFuncSegIndex = functionPath.Segments.IndexOf(
-                        functionPath.Segments.FirstOrDefault(
-                            x => x is ODataOperationSegment operationSegment &&
-                            operationSegment.Operation is IEdmFunction edmFunction &&
-                            edmFunction.IsComposable));                   
+                    int composableFuncSegIndex = functionPath
+                                                    .Segments
+                                                    .OfType<ODataOperationSegment>()
+                                                    .FirstOrDefault(x => x.Operation is IEdmFunction {IsComposable: true}) is {} firstOperationSegment ?
+                     functionPath.Segments.IndexOf(firstOperationSegment) : -1;
                     int currentDepth = functionPath.Count - composableFuncSegIndex - 1;
 
                     if (currentDepth < convertSettings.ComposableFunctionsExpansionDepth)
@@ -928,10 +918,10 @@ namespace Microsoft.OpenApi.OData.Edm
                 z.EntityType.FindAllBaseTypes().Contains(firstEntityType);
 
             return new IEdmEntityType[] { firstEntityType }
-                    .Union(_model.EntityContainer.EntitySets()
-                            .Where(filter).Select(x => x.EntityType)) //Search all EntitySets
-                    .Union(_model.EntityContainer.Singletons()
-                            .Where(filter).Select(x => x.EntityType)) //Search all singletons
+                    .Union(_model?.EntityContainer.EntitySets()
+                            .Where(filter).Select(x => x.EntityType) ?? []) //Search all EntitySets
+                    .Union(_model?.EntityContainer.Singletons()
+                            .Where(filter).Select(x => x.EntityType) ?? []) //Search all singletons
                     .Distinct()
                     .ToList();
         }
@@ -944,9 +934,9 @@ namespace Microsoft.OpenApi.OData.Edm
         };
         private void AppendBoundOperationOnNavigationSourcePath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType, OpenApiConvertSettings convertSettings)
         {
-            if (_allNavigationSourcePaths.TryGetValue(bindingEntityType, out IList<ODataPath> value))
+            if (_allNavigationSourcePaths.TryGetValue(bindingEntityType, out var value))
             {
-                bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
+                bool isEscapedFunction = _model?.IsUrlEscapeFunction(edmOperation) ?? false;
 
                 foreach (var subPath in value)
                 {
@@ -973,7 +963,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         var annotatable = (lastPathSegment as ODataNavigationSourceSegment)?.NavigationSource as IEdmVocabularyAnnotatable;
                         annotatable ??= (lastPathSegment as ODataKeySegment)?.EntityType;
                         
-                        if (annotatable != null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, annotatable))
+                        if (annotatable != null && _model is not null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, annotatable))
                         {
                             // Check whether the navigation source is allowed to have an operation on the entity type
                             annotatable = (secondLastPathSegment as ODataNavigationSourceSegment)?.NavigationSource as IEdmVocabularyAnnotatable;
@@ -983,9 +973,12 @@ namespace Microsoft.OpenApi.OData.Edm
                             }                          
                         }
 
-                        ODataPath newPath = subPath.Clone();
-                        newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
-                        AppendPath(newPath);
+                        if (_model is not null)
+                        {
+                            ODataPath newPath = subPath.Clone();
+                            newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
+                            AppendPath(newPath);
+                        }
                     }
                 }
             }
@@ -995,15 +988,15 @@ namespace Microsoft.OpenApi.OData.Edm
         };
         private void AppendBoundOperationOnNavigationPropertyPath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType)
         {
-            bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
+            bool isEscapedFunction = _model?.IsUrlEscapeFunction(edmOperation) ?? false;
 
-            if (_allNavigationPropertyPaths.TryGetValue(bindingEntityType, out IList<ODataPath> value))
+            if (_allNavigationPropertyPaths.TryGetValue(bindingEntityType, out var value))
             {
                 foreach (var path in value.Where(x => !_pathKindToSkipForNavigationProperties.Contains(x.Kind)))
                 {
-                    ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
+                    ODataNavigationPropertySegment npSegment = path.Segments.OfType<ODataNavigationPropertySegment>().Last();
                     
-                    if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty, npSegment.NavigationProperty.ContainsTarget))
+                    if (_model is not null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, npSegment.NavigationProperty, npSegment.NavigationProperty.ContainsTarget))
                     {
                         continue;
                     }
@@ -1030,9 +1023,12 @@ namespace Microsoft.OpenApi.OData.Edm
                         }
                     }
 
-                    ODataPath newPath = path.Clone();
-                    newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
-                    AppendPath(newPath);
+                    if (_model is not null)
+                    {
+                        ODataPath newPath = path.Clone();
+                        newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction, _model));
+                        AppendPath(newPath);
+                    }
                 }
             }
         }
@@ -1044,22 +1040,24 @@ namespace Microsoft.OpenApi.OData.Edm
             OpenApiConvertSettings convertSettings)
         {
             if (!convertSettings.AppendBoundOperationsOnDerivedTypeCastSegments) return;
-            bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
+            bool isEscapedFunction = _model?.IsUrlEscapeFunction(edmOperation) ?? false;
+            if (_allNavigationSources is null) return;
             foreach (var baseType in bindingEntityType.FindAllBaseTypes())
             {
-                if (_allNavigationSources.TryGetValue(baseType, out IList<IEdmNavigationSource> baseNavigationSource))
+                if (_allNavigationSources.TryGetValue(baseType, out var baseNavigationSource))
                 {
                     foreach (var ns in baseNavigationSource)
                     {
-                        if (HasUnsatisfiedDerivedTypeConstraint(
-                            ns as IEdmVocabularyAnnotatable,
+                        if (ns is not IEdmVocabularyAnnotatable nsAnnotable ||
+                            HasUnsatisfiedDerivedTypeConstraint(
+                            nsAnnotable,
                             baseType,
                             convertSettings))
                         {
                             continue;
                         }
 
-                        if (!EdmModelHelper.IsOperationAllowed(_model, edmOperation, ns as IEdmVocabularyAnnotatable))
+                        if (_model is null || !EdmModelHelper.IsOperationAllowed(_model, edmOperation, nsAnnotable))
                         {
                             continue;
                         }

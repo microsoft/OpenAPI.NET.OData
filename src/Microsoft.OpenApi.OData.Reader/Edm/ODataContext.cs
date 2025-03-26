@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Generator;
@@ -24,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     internal class ODataContext
     {
-        private IEnumerable<ODataPath> _allPaths;
+        private IEnumerable<ODataPath>? _allPaths;
         private readonly IODataPathProvider _pathProvider;
 
         /// <summary>
@@ -135,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets all tags.
         /// </summary>
-        public ISet<OpenApiTag> Tags { get; private set; }
+        public ISet<OpenApiTag>? Tags { get; private set; }
 
         /// <summary>
         /// Append tag.
@@ -145,7 +146,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             Tags ??= new HashSet<OpenApiTag>();
 
-            if (FindTagByName(tagItem.Name) is not null)
+            if (tagItem.Name is not null && FindTagByName(tagItem.Name) is not null)
             {
                 return;
             }
@@ -158,7 +159,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="name">The name to lookup the tag.</param>
         /// <returns></returns>
-        internal OpenApiTag FindTagByName(string name)
+        internal OpenApiTag? FindTagByName(string name)
         {
             Utils.CheckArgumentNullOrEmpty(name, nameof(name));
             return Tags?.FirstOrDefault(t => StringComparer.Ordinal.Equals(t.Name, name));
@@ -180,11 +181,13 @@ namespace Microsoft.OpenApi.OData.Edm
 
             if (FindTagByName(tagName) is {} foundTag)
             {
+                foundTag.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 foundTag.Extensions.TryAdd(extensionName, extensionValue);
             }
             else
             {
                 var tag = initialValueFactory();
+                tag.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 tag.Extensions.TryAdd(extensionName, extensionValue);
                 AppendTag(tag);
             }

@@ -42,9 +42,13 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetBasicInfo(operation);
 
             var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            var operationReadRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(EdmOperation, CapabilitiesConstants.ReadRestrictions);
-            readRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
-            readRestrictions ??= operationReadRestrictions;
+
+            if (Context is not null && EdmOperation is not null)
+            {
+                var operationReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperation, CapabilitiesConstants.ReadRestrictions);
+                readRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
+                readRestrictions ??= operationReadRestrictions;
+            }
 
             // Description
             if (!string.IsNullOrWhiteSpace(readRestrictions?.LongDescription))

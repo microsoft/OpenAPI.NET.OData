@@ -17,6 +17,7 @@ using System.Text.Json.Nodes;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Interfaces;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -160,7 +161,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
         public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, ODataKeySegment keySegment,
             OpenApiDocument document,
-            IDictionary<string, string> parameterNameMapping = null)
+            IDictionary<string, string>? parameterNameMapping = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(keySegment, nameof(keySegment));
@@ -193,6 +194,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Schema = context.CreateEdmTypeSchemaForParameter(keys[0].Type, document)
                 };
 
+                parameter.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
                 parameters.Add(parameter);
             }
@@ -218,6 +220,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         parameter.Description += $", {keyProperty.Name}={quote}{{{parameter.Name}}}{quote}";
                     }
 
+                    parameter.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                     parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
                     parameters.Add(parameter);
                 }
@@ -341,21 +344,21 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="parameter">The new OpenApiParameter to be appended</param>
         public static void AppendParameter(this IList<IOpenApiParameter> parameters, IOpenApiParameter parameter)
         {
-            HashSet<string> parametersSet = new(parameters.Select(p => p.Name));
+            HashSet<string> parametersSet = new(parameters.Select(p => p.Name).OfType<string>());
 
-            string parameterName = parameter.Name;
-            int index = 1;
-            while (parametersSet.Contains(parameterName))
+            if (parameter.Name is not string parameterName &&
+                parameter is OpenApiParameter openApiParameter)
             {
-                parameterName += index.ToString();
-                index++;
-            }
-
-            if (parameter is OpenApiParameter openApiParameter)
-            {
+                parameterName = string.Empty;
+                int index = 1;
+                while (parametersSet.Contains(parameterName))
+                {
+                    parameterName += index.ToString();
+                    index++;
+                }
                 openApiParameter.Name = parameterName;
             }
-            parametersSet.Add(parameterName);
+
             parameters.Add(parameter);
         }
 
