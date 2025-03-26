@@ -41,18 +41,19 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context is null) return;
             if (!string.IsNullOrEmpty(TargetPath))
                 _deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
-            var entityDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
-            _deleteRestrictions?.MergePropertiesIfNull(entityDeleteRestrictions);
-            _deleteRestrictions ??= entityDeleteRestrictions;
+            if (EntitySet is not null)
+            {
+                var entityDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
+                _deleteRestrictions?.MergePropertiesIfNull(entityDeleteRestrictions);
+                _deleteRestrictions ??= entityDeleteRestrictions;
+            }
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            IEdmEntityType entityType = EntitySet.EntityType;
-
             // Description
-            string placeHolder = $"Delete entity from {EntitySet.Name}";
+            string placeHolder = $"Delete entity from {EntitySet?.Name}";
             if (Path is {LastSegment: ODataKeySegment {IsAlternateKey: true} keySegment})
             {
                 placeHolder = $"{placeHolder} by {keySegment.Identifier}";
@@ -61,7 +62,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Description = _deleteRestrictions?.LongDescription;
 
             // OperationId
-            if (Context is { Settings.EnableOperationId: true})
+            if (Context is { Settings.EnableOperationId: true} && EntitySet?.EntityType is IEdmEntityType entityType)
             {
                 string typeName = entityType.Name;
                 string operationName =$"Delete{Utils.UpperFirstChar(typeName)}";

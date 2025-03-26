@@ -150,35 +150,34 @@ namespace Microsoft.OpenApi.OData.Edm
 
             if (!string.IsNullOrWhiteSpace(settings.PathPrefix))
             {
-                sb.Append("/");
+                sb.Append('/');
                 sb.Append(settings.PathPrefix);
             }
 
             foreach (var segment in Segments)
             {
-                string pathItemName = segment.GetPathItemName(settings, parameters);
+                var pathItemName = segment.GetPathItemName(settings, parameters);
 
                 if (segment is ODataKeySegment keySegment &&
                     (settings.EnableKeyAsSegment == null || !settings.EnableKeyAsSegment.Value || keySegment.IsAlternateKey))
                 {
-                    sb.Append("(");
+                    sb.Append('(');
                     sb.Append(pathItemName);
-                    sb.Append(")");
+                    sb.Append(')');
                 }
                 else // other segments
                 {
-                    if (segment.Kind == ODataSegmentKind.Operation)
+                    if (segment.Kind == ODataSegmentKind.Operation &&
+                        segment is ODataOperationSegment operation &&
+                        operation.IsEscapedFunction &&
+                        settings.EnableUriEscapeFunctionCall)
                     {
-                        ODataOperationSegment operation = (ODataOperationSegment)segment;
-                        if (operation.IsEscapedFunction && settings.EnableUriEscapeFunctionCall)
-                        {
-                            sb.Append(":/");
-                            sb.Append(pathItemName);
-                            continue;
-                        }
+                        sb.Append(":/");
+                        sb.Append(pathItemName);
+                        continue;
                     }
 
-                    sb.Append("/");
+                    sb.Append('/');
                     sb.Append(pathItemName);
                 }
             }

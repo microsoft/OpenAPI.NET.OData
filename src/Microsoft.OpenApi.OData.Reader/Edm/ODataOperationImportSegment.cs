@@ -41,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the parameter mappings.
         /// </summary>
-        public IDictionary<string, string> ParameterMappings { get; }
+        public IDictionary<string, string>? ParameterMappings { get; }
 
         /// <summary>
         /// Gets the operation import.
@@ -49,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Edm
         public IEdmOperationImport OperationImport { get; }
 
         /// <inheritdoc />
-        public override IEdmEntityType EntityType => null;
+        public override IEdmEntityType? EntityType => null;
 
         /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.OperationImport;
@@ -60,7 +60,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
-			return new IEdmVocabularyAnnotatable[] { OperationImport };
+			return [OperationImport];
 		}
 
 		/// <inheritdoc />
@@ -68,15 +68,15 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
 
-            if (OperationImport.IsFunctionImport())
+            if (OperationImport.IsFunctionImport() && OperationImport is IEdmFunctionImport edmFunctionImport)
             {
-                return FunctionImportName(OperationImport as IEdmFunctionImport, settings, parameters);
+                return FunctionImportName(edmFunctionImport, settings, parameters);
             }
 
             return OperationImport.Name;
         }
 
-        private string FunctionImportName(IEdmFunctionImport functionImport, OpenApiConvertSettings settings, HashSet<string> parameters)
+        private static string FunctionImportName(IEdmFunctionImport functionImport, OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             StringBuilder functionName = new StringBuilder(functionImport.Name);
             functionName.Append("(");

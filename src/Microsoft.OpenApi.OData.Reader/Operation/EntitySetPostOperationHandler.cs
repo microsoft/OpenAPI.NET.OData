@@ -44,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (!string.IsNullOrEmpty(TargetPath))
                 _insertRestrictions = Context?.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
-            if (Context is not null)
+            if (Context is not null && EntitySet is not null)
             {
                 var entityInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
                 _insertRestrictions?.MergePropertiesIfNull(entityInsertRestrictions);
@@ -56,12 +56,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            string placeHolder = "Add new entity to " + EntitySet.Name;
+            string placeHolder = "Add new entity to " + EntitySet?.Name;
             operation.Summary = _insertRestrictions?.Description ?? placeHolder;
             operation.Description = _insertRestrictions?.LongDescription;
 
             // OperationId
-            if (Context is {Settings.EnableOperationId: true})
+            if (Context is {Settings.EnableOperationId: true} && EntitySet is not null)
             {
                 string typeName = EntitySet.EntityType.Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Create" + Utils.UpperFirstChar(typeName);
@@ -141,7 +141,7 @@ namespace Microsoft.OpenApi.OData.Operation
             var schema = GetEntitySchema();
             var content = new Dictionary<string, OpenApiMediaType?>();
 
-            if (EntitySet.EntityType.HasStream)
+            if (EntitySet is {EntityType.HasStream: true})
             {
                 if (Context?.Model.GetCollection(EntitySet.EntityType,
                     CoreConstants.AcceptableMediaTypes) is {} mediaTypes)
@@ -196,6 +196,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <returns>The entity schema.</returns>
         private IOpenApiSchema? GetEntitySchema()
         {
+            if (EntitySet is null) return null;
             return Context?.Settings.EnableDerivedTypesReferencesForRequestBody ?? false ?
                 EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document) :
                 new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);

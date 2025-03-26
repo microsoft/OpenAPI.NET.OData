@@ -33,7 +33,7 @@ Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment
 Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.ODataOperationImportSegment(Microsoft.OData.Edm.IEdmOperationImport! operationImport) -> void
 Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.ODataOperationImportSegment(Microsoft.OData.Edm.IEdmOperationImport! operationImport, System.Collections.Generic.IDictionary<string!, string!>! parameterMappings) -> void
 Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.OperationImport.get -> Microsoft.OData.Edm.IEdmOperationImport!
-Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.ParameterMappings.get -> System.Collections.Generic.IDictionary<string!, string!>!
+Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.ParameterMappings.get -> System.Collections.Generic.IDictionary<string!, string!>?
 Microsoft.OpenApi.OData.Edm.ODataOperationSegment
 Microsoft.OpenApi.OData.Edm.ODataOperationSegment.IsEscapedFunction.get -> bool
 Microsoft.OpenApi.OData.Edm.ODataOperationSegment.ODataOperationSegment(Microsoft.OData.Edm.IEdmOperation! operation) -> void
@@ -261,7 +261,7 @@ override Microsoft.OpenApi.OData.Edm.ODataNavigationSourceSegment.GetAnnotables(
 override Microsoft.OpenApi.OData.Edm.ODataNavigationSourceSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings, System.Collections.Generic.HashSet<string!>! parameters) -> string!
 override Microsoft.OpenApi.OData.Edm.ODataNavigationSourceSegment.Identifier.get -> string!
 override Microsoft.OpenApi.OData.Edm.ODataNavigationSourceSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
-override Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType!
+override Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType?
 override Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable!>!
 override Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings, System.Collections.Generic.HashSet<string!>! parameters) -> string!
 override Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.Identifier.get -> string!

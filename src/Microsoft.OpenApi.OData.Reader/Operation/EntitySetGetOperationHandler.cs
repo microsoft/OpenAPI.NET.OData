@@ -47,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (!string.IsNullOrEmpty(TargetPath))
                 _readRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            if (Context is not null)
+            if (Context is not null && EntitySet is not null)
             {
                 var entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
                 _readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
@@ -59,12 +59,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Descriptions
-            string placeHolder = "Get entities from " + EntitySet.Name;
+            string placeHolder = "Get entities from " + EntitySet?.Name;
             operation.Summary = _readRestrictions?.Description ?? placeHolder;
             operation.Description = _readRestrictions?.LongDescription ?? Context?.Model.GetDescriptionAnnotation(EntitySet);
 
             // OperationId
-            if (Context is {Settings.EnableOperationId: true})
+            if (Context is {Settings.EnableOperationId: true} && EntitySet is not null)
             {
                 string typeName = EntitySet.EntityType.Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".List" + Utils.UpperFirstChar(typeName);
@@ -91,7 +91,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetParameters(OpenApiOperation operation)
         {
             base.SetParameters(operation);
-            if (Context is null) return;
+            if (Context is null || EntitySet is null) return;
 
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
             // and it does not list system query options not allowed for this collection, see terms
@@ -166,7 +166,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {
                     Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponseReference($"{EntitySet.EntityType.FullName()}{Constants.CollectionSchemaSuffix}", _document)
+                    new OpenApiResponseReference($"{EntitySet?.EntityType.FullName()}{Constants.CollectionSchemaSuffix}", _document)
                 }
             };
 
