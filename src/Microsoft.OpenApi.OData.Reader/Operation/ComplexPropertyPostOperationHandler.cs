@@ -36,21 +36,25 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             throw new InvalidOperationException("OData conventions do not support POSTing to a complex property that is not a collection.");
         }
 
-        _insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
-        var complexPropertyInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
+        if (!string.IsNullOrEmpty(TargetPath))
+        {
+            _insertRestrictions = Context?.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+        }
+        
+        var complexPropertyInsertRestrictions = Context?.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
         _insertRestrictions?.MergePropertiesIfNull(complexPropertyInsertRestrictions);
         _insertRestrictions ??= complexPropertyInsertRestrictions;
     }
     /// <inheritdoc />
     public override HttpMethod OperationType => HttpMethod.Post;
 
-    private InsertRestrictionsType _insertRestrictions;
+    private InsertRestrictionsType? _insertRestrictions;
 
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiOperation operation)
     {
         // OperationId
-        if (Context.Settings.EnableOperationId)
+        if (Context is {Settings.EnableOperationId: true} && Path is not null)
         {
             operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, Context, "Set");
         }
@@ -68,6 +72,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     {
         base.SetParameters(operation);
 
+        operation.Parameters ??= [];
         operation.Parameters.Add(new OpenApiParameter
         {
             Name = "If-Match",
@@ -102,7 +107,8 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
+        if (Context is not null)
+            operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
         base.SetResponses(operation);
     }
 
@@ -113,7 +119,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions, _document).ToList();
+        operation.Security = Context?.CreateSecurityRequirements(_insertRestrictions.Permissions, _document).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)

@@ -3,8 +3,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -31,7 +33,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <summary>
         /// Gets the operation import.
         /// </summary>
-        public IEdmOperationImport EdmOperationImport { get; private set; }
+        public IEdmOperationImport? EdmOperationImport { get; private set; }
 
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
@@ -52,10 +54,13 @@ namespace Microsoft.OpenApi.OData.PathItem
                 // how to invoke the function import.
 
                 // so far, <Term Name="ReadRestrictions" Type="Capabilities.ReadRestrictionsType" AppliesTo="EntitySet Singleton FunctionImport">
-                ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-                ReadRestrictionsType operationReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperationImport, CapabilitiesConstants.ReadRestrictions);
-                readRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
-                readRestrictions ??= operationReadRestrictions;
+                var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+                if (Context is not null && EdmOperationImport is not null)
+                {
+                    var operationReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperationImport, CapabilitiesConstants.ReadRestrictions);
+                    readRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
+                    readRestrictions ??= operationReadRestrictions;
+                }
                 if (readRestrictions?.IsReadable ?? true)
                 {
                     AddOperation(item, HttpMethod.Get);
@@ -68,21 +73,23 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             base.Initialize(context, path);
 
-            ODataOperationImportSegment operationImportSegment = path.FirstSegment as ODataOperationImportSegment;
-            EdmOperationImport = operationImportSegment.OperationImport;
+            if (path.FirstSegment is ODataOperationImportSegment {OperationImport: {} import})
+                EdmOperationImport = import;
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
             base.SetBasicInfo(pathItem);
-            pathItem.Description = $"Provides operations to call the {EdmOperationImport.Name} method.";
+            pathItem.Description = $"Provides operations to call the {EdmOperationImport?.Name} method.";
         }
 
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiPathItem item)
         {
             base.SetExtensions(item);
+            if (EdmOperationImport is null || Context is null) return;
+            item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
             item.Extensions.AddCustomAttributesToExtensions(Context, EdmOperationImport);
         }
     }

@@ -11,7 +11,6 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -40,8 +39,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets/sets the segment before $count.
         /// this segment could be "entity set", "Collection property", "Composable function whose return is collection",etc.
         /// </summary>
-        internal ODataSegment SecondLastSegment { get; set; }
-        private ODataSegment firstSegment;
+        internal ODataSegment? SecondLastSegment { get; set; }
+        private ODataSegment? firstSegment;
         private int pathCount;        
         private const int SecondLastSegmentIndex = 2;
         private readonly List<IEdmVocabularyAnnotatable> annotatables = [];
@@ -61,19 +60,19 @@ namespace Microsoft.OpenApi.OData.Operation
 
             AddODataSegmentToAnnotables(SecondLastSegment, path.Segments.Count > SecondLastSegmentIndex ? path.Segments.SkipLast(SecondLastSegmentIndex).ToArray() : []);
         }
-        private void AddODataSegmentToAnnotables(ODataSegment oDataSegment, ODataSegment[] oDataSegments)
+        private void AddODataSegmentToAnnotables(ODataSegment? oDataSegment, ODataSegment[] oDataSegments)
         {
-            if (oDataSegment is ODataNavigationSourceSegment sourceSegment)
+            if (oDataSegment is ODataNavigationSourceSegment {NavigationSource: IEdmEntitySet sourceSet})
             {
-                annotatables.Add(sourceSegment.NavigationSource as IEdmEntitySet);
+                annotatables.Add(sourceSet);
             }
             else if (oDataSegment is ODataNavigationPropertySegment navigationPropertySegment)
             {
                 annotatables.Add(navigationPropertySegment.NavigationProperty);
             }
-            else if (oDataSegment is ODataTypeCastSegment odataTypeCastSegment)
+            else if (oDataSegment is ODataTypeCastSegment {StructuredType: IEdmVocabularyAnnotatable annotable})
             {
-                annotatables.Add(odataTypeCastSegment.StructuredType as IEdmVocabularyAnnotatable);
+                annotatables.Add(annotable);
                 if (annotatables.Count == 1 && oDataSegments.Length > 0)
                 {// we want to look at the parent navigation property or entity set
                     AddODataSegmentToAnnotables(oDataSegments[oDataSegments.Length - 1], oDataSegments.SkipLast(1).ToArray());
@@ -84,7 +83,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            string tagName = null;
+            string? tagName = null;
             operation.Tags ??= new HashSet<OpenApiTagReference>();
 
             if (SecondLastSegment is ODataNavigationSourceSegment sourceSegment)
@@ -95,7 +94,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 tagName = TagNameFromNavigationPropertySegment();
             }
-            else if (SecondLastSegment is ODataTypeCastSegment)
+            else if (SecondLastSegment is ODataTypeCastSegment && Path is not null)
             {
                 ODataSegment lastThirdSegment = Path.Segments[pathCount - 3];
                 if (lastThirdSegment is ODataNavigationSourceSegment sourceSegment2)
@@ -107,12 +106,12 @@ namespace Microsoft.OpenApi.OData.Operation
                     tagName = TagNameFromNavigationPropertySegment();
                 }
             }
-            else if (SecondLastSegment is ODataComplexPropertySegment)
+            else if (SecondLastSegment is ODataComplexPropertySegment && Path is not null && Context is not null)
             {
                 tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, Context);
             }
 
-            if (tagName != null)
+            if (tagName != null && Context is not null)
             {
                 Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
                 {
@@ -127,9 +126,9 @@ namespace Microsoft.OpenApi.OData.Operation
                 return $"{sourceSegment.NavigationSource.Name}.{sourceSegment.NavigationSource.EntityType.Name}";
             }
 
-            string TagNameFromNavigationPropertySegment()
+            string? TagNameFromNavigationPropertySegment()
             {
-                return EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
+                return Path is null || Context is null ? null : EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
             }
 
             base.SetTags(operation);
@@ -142,9 +141,9 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = $"Get the number of the resource";
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true} && Path is not null)
             {
-                if (SecondLastSegment is ODataNavigationSourceSegment)
+                if (SecondLastSegment is ODataNavigationSourceSegment && firstSegment is not null)
                 {
                     operation.OperationId = $"{firstSegment.Identifier}.GetCount-{Path.GetPathHash(Context.Settings)}";
                 }
@@ -153,9 +152,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     var navPropOpId = string.Join(".", EdmModelHelper.RetrieveNavigationPropertyPathsOperationIdSegments(Path, Context));
                     operation.OperationId = $"{navPropOpId}.GetCount-{Path.GetPathHash(Context.Settings)}";
                 }
-                else if (SecondLastSegment is ODataTypeCastSegment odataTypeCastSegment)
+                else if (SecondLastSegment is ODataTypeCastSegment { StructuredType: IEdmNamedElement targetStructuredType})
                 {
-                    IEdmNamedElement targetStructuredType = odataTypeCastSegment.StructuredType as IEdmNamedElement;
                     operation.OperationId = $"{EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path, Context, false)}.GetCount.As{Utils.UpperFirstChar(targetStructuredType.Name)}-{Path.GetPathHash(Context.Settings)}";
                 }
                 else if (SecondLastSegment is ODataComplexPropertySegment)
@@ -173,11 +171,12 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                    Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                     new OpenApiResponseReference(Constants.DollarCountSchemaName, _document)
                 }
             };
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -207,10 +206,10 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            if (annotatables.Count > 0)
+            var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            if (annotatables.Count > 0 && Context is not null)
             {
-                ReadRestrictionsType annotatableReadRestrictions = annotatables.Select(x => Context.Model.GetRecord<ReadRestrictionsType>(x, CapabilitiesConstants.ReadRestrictions)).FirstOrDefault(static x => x is not null);
+                var annotatableReadRestrictions = annotatables.Select(x => Context.Model.GetRecord<ReadRestrictionsType>(x, CapabilitiesConstants.ReadRestrictions)).FirstOrDefault(static x => x is not null);
                 readRestrictions?.MergePropertiesIfNull(annotatableReadRestrictions);
                 readRestrictions ??= annotatableReadRestrictions;
             }

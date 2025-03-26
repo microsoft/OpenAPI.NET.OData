@@ -106,6 +106,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     };
                     document.AddComponent(Constants.BaseCollectionPaginationCountResponse, responseSchema);
 
+                    responseSchema.Properties ??= new Dictionary<string, IOpenApiSchema>();
                     if (context.Settings.EnableCount)
                         responseSchema.Properties.Add(ODataConstants.OdataCount);
                     if (context.Settings.EnablePagination)
@@ -210,7 +211,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
         private static OpenApiSchema CreateCollectionSchema(ODataContext context, IEdmStructuredType structuredType, OpenApiDocument document)
         {
-            IOpenApiSchema schema = null;
+            IOpenApiSchema? schema = null;
             var entityType = structuredType as IEdmEntityType;
 
             if (context.Settings.EnableDerivedTypesReferencesForResponses && entityType != null)
@@ -315,6 +316,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     IsFlags = true,
                 };
+                schema.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 schema.Extensions.Add(OpenApiEnumFlagsExtension.Name, enumFlagsExtension);
             }
 
@@ -334,12 +336,15 @@ namespace Microsoft.OpenApi.OData.Generator
                 AddEnumDescription(member, extension, context);
             }
 
-            if(extension?.ValuesDescriptions.Any() ?? false)
+            if(extension is {ValuesDescriptions.Count:> 0})
+            {
+                schema.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 schema.Extensions.Add(OpenApiEnumValuesDescriptionExtension.Name, extension);
+            }
             schema.Title = enumType.Name;
             return schema;
         }
-        private static void AddEnumDescription(IEdmEnumMember member, OpenApiEnumValuesDescriptionExtension target, ODataContext context)
+        private static void AddEnumDescription(IEdmEnumMember member, OpenApiEnumValuesDescriptionExtension? target, ODataContext context)
         {
             if (target == null)
                 return;
@@ -485,12 +490,12 @@ namespace Microsoft.OpenApi.OData.Generator
 
         private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase, bool processExample,
             OpenApiDocument document,
-            IEnumerable<IEdmStructuredType> derivedTypes = null)
+            IEnumerable<IEdmStructuredType>? derivedTypes = null)
         {
             Debug.Assert(context != null);
             Debug.Assert(structuredType != null);
 
-            JsonNode example = null;
+            JsonNode? example = null;
             if (context.Settings.ShowSchemaExamples)
             {
                 example = CreateStructuredTypePropertiesExample(context, structuredType, document);
@@ -504,8 +509,8 @@ namespace Microsoft.OpenApi.OData.Generator
             if (processBase && structuredType.BaseType != null)
             {
                 // The x-ms-discriminator-value extension is added to structured types which are derived types.
-                Dictionary<string, IOpenApiExtension> extension = null;
-                if (context.Settings.EnableDiscriminatorValue && !derivedTypes.Any())
+                Dictionary<string, IOpenApiExtension>? extension = null;
+                if (context.Settings.EnableDiscriminatorValue && (derivedTypes is null || !derivedTypes.Any()))
                 {
                     extension = new Dictionary<string, IOpenApiExtension>
                     {
@@ -537,11 +542,13 @@ namespace Microsoft.OpenApi.OData.Generator
             else
             {
                 // The discriminator object is added to structured types which have derived types.
-                OpenApiDiscriminator discriminator = null;
-                if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any())
+                OpenApiDiscriminator? discriminator = null;
+                if (context.Settings.EnableDiscriminatorValue && derivedTypes is not null && derivedTypes.Any())
                 {
                     Dictionary<string, string> mapping = derivedTypes
-                        .ToDictionary(x => $"#{x.FullTypeName()}", x => new OpenApiSchemaReference(x.FullTypeName(), document).Reference.ReferenceV3);
+                        .Select(x => ($"#{x.FullTypeName()}", new OpenApiSchemaReference(x.FullTypeName(), document).Reference.ReferenceV3))
+                        .Where(x => x.Item2 != null)
+                        .ToDictionary(x => x.Item1, x => x.Item2!);
 
                     discriminator = new OpenApiDiscriminator
                     {
@@ -571,13 +578,13 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (context.Settings.EnableDiscriminatorValue)
                 {
-                    JsonNode defaultValue = null;
+                    JsonNode? defaultValue = null;
                     bool isBaseTypeEntity = Constants.EntityName.Equals(structuredType.BaseType?.FullTypeName().Split('.').Last(), StringComparison.OrdinalIgnoreCase);
                     bool isBaseTypeAbstractNonEntity = (structuredType.BaseType?.IsAbstract ?? false) && !isBaseTypeEntity;
 
                     if (!context.Settings.EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty ||
                         isBaseTypeAbstractNonEntity ||
-                        context.Model.IsBaseTypeReferencedAsTypeInModel(structuredType.BaseType))
+                        structuredType.BaseType is not null && context.Model.IsBaseTypeReferencedAsTypeInModel(structuredType.BaseType))
                     {
                         defaultValue = "#" + structuredType.FullTypeName();
                     }
@@ -591,6 +598,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         throw new InvalidOperationException(
                             $"Property {Constants.OdataType} is already present in schema {structuredType.FullTypeName()}; verify CSDL.");
                     }
+                    schema.Required ??= new HashSet<string>();
                     schema.Required.Add(Constants.OdataType);
                 }
 
@@ -629,7 +637,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (propertyType.TypeKind() == EdmTypeKind.Primitive &&
                     item is JsonValue jsonValue &&
-                    jsonValue.TryGetValue(out string stringAny) &&
+                    jsonValue.TryGetValue<string>(out var stringAny) &&
                     structuredType is IEdmEntityType entityType &&
                     entityType.Key().Any(k => StringComparer.Ordinal.Equals(k.Name, property.Name)))
                 {
@@ -642,7 +650,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return example;
         }
 
-        private static JsonNode GetTypeNameForPrimitive(ODataContext context, IEdmTypeReference edmTypeReference, OpenApiDocument document)
+        private static JsonNode? GetTypeNameForPrimitive(ODataContext context, IEdmTypeReference edmTypeReference, OpenApiDocument document)
         {
             IEdmPrimitiveType primitiveType = edmTypeReference.AsPrimitive().PrimitiveDefinition();
             IOpenApiSchema schema = context.CreateSchema(primitiveType, document);
@@ -685,7 +693,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                             edmTypeReference.IsInt64() ||
                                             edmTypeReference.IsFloating() ||
                                             edmTypeReference.IsDouble() => 0,
-                EdmTypeKind.Primitive => GetTypeNameForPrimitive(context, edmTypeReference, document),
+                EdmTypeKind.Primitive when GetTypeNameForPrimitive(context, edmTypeReference, document) is JsonNode primitiveType => primitiveType,
 
                 EdmTypeKind.Entity or EdmTypeKind.Complex => new JsonObject()
                     {

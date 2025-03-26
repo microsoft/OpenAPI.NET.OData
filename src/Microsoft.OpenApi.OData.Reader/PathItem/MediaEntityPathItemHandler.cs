@@ -30,20 +30,20 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <summary>
         /// Gets the entity set.
         /// </summary>
-        protected IEdmEntitySet EntitySet { get; private set; }
+        protected IEdmEntitySet? EntitySet { get; private set; }
 
         /// <summary>
         /// Gets the singleton.
         /// </summary>
-        protected IEdmSingleton Singleton { get; private set; }
+        protected IEdmSingleton? Singleton { get; private set; }
 
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            ReadRestrictionsType navSourceReadRestrictions = EntitySet != null
+            var readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            var navSourceReadRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<ReadRestrictionsType>(EntitySet)
-                : Context.Model.GetRecord<ReadRestrictionsType>(Singleton);
+                : (Singleton is null ? null : Context.Model.GetRecord<ReadRestrictionsType>(Singleton));
             readRestrictions ??= navSourceReadRestrictions;
             if (readRestrictions == null ||
                (readRestrictions.ReadByKeyRestrictions == null && readRestrictions.IsReadable) ||
@@ -52,20 +52,20 @@ namespace Microsoft.OpenApi.OData.PathItem
                 AddOperation(item, HttpMethod.Get);
             }
 
-            UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
-            UpdateRestrictionsType navSourceUpdateRestrictions = EntitySet != null
+            var updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+            var navSourceUpdateRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet)
-                : Context.Model.GetRecord<UpdateRestrictionsType>(Singleton);
+                : (Singleton is null ? null : Context.Model.GetRecord<UpdateRestrictionsType>(Singleton));
             updateRestrictions ??= navSourceUpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
             {
                 AddOperation(item, HttpMethod.Put);
             }
 
-            DeleteRestrictionsType deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
-            DeleteRestrictionsType navSourceDeleteRestrictions = EntitySet != null
+            var deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+            var navSourceDeleteRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet)
-                : Context.Model.GetRecord<DeleteRestrictionsType>(Singleton);
+                : (Singleton is null ? null : Context.Model.GetRecord<DeleteRestrictionsType>(Singleton));
             deleteRestrictions ??= navSourceDeleteRestrictions;
             if (deleteRestrictions?.IsDeletable ?? true)
             {
@@ -88,7 +88,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
             base.SetBasicInfo(pathItem);
-            pathItem.Description = $"Provides operations to manage the media for the {(EntitySet?.EntityType ?? Singleton?.EntityType).Name} entity.";
+            pathItem.Description = $"Provides operations to manage the media for the {(EntitySet?.EntityType ?? Singleton?.EntityType)?.Name} entity.";
         }
     }
 }

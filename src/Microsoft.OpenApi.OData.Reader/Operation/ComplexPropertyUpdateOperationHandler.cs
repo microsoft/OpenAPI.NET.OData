@@ -28,14 +28,16 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         
     }
     
-    private UpdateRestrictionsType _updateRestrictions;
+    private UpdateRestrictionsType? _updateRestrictions;
 
     protected override void Initialize(ODataContext context, ODataPath path)
     {
         base.Initialize(context, path);
 
-        _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
-        var complexPropertyUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
+        if (!string.IsNullOrEmpty(TargetPath))
+            _updateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+        
+        var complexPropertyUpdateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
         _updateRestrictions?.MergePropertiesIfNull(complexPropertyUpdateRestrictions);
         _updateRestrictions ??= complexPropertyUpdateRestrictions;
     }
@@ -49,7 +51,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         operation.Description = _updateRestrictions?.LongDescription;
 
         // OperationId
-        if (Context.Settings.EnableOperationId)
+        if (Context is {Settings.EnableOperationId: true} && Path is not null)
         {
             string prefix = OperationType == HttpMethod.Patch ? "Update" : "Set";
             operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, Context, prefix);
@@ -80,7 +82,8 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
+        if (Context is not null)
+            operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
         base.SetResponses(operation);
     }
     protected override void SetSecurity(OpenApiOperation operation)
@@ -90,7 +93,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions, _document).ToList();
+        operation.Security = Context?.CreateSecurityRequirements(_updateRestrictions.Permissions, _document).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)

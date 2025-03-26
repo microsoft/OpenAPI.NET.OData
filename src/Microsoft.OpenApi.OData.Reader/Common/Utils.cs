@@ -212,10 +212,10 @@ namespace Microsoft.OpenApi.OData.Common
         internal static bool IsBaseTypeReferencedAsTypeInModel(
             this IEdmModel model,
             IEdmStructuredType baseType,
-            IEnumerable<IEdmStructuredType> structuredTypes = null,
-            IEnumerable<IEdmAction> actions = null)
+            IEnumerable<IEdmStructuredType>? structuredTypes = null,
+            IEnumerable<IEdmAction>? actions = null)
         {
-            string baseTypeName = baseType?.FullTypeName();
+            string baseTypeName = baseType.FullTypeName();
             bool isBaseTypeEntity = Constants.EntityName.Equals(baseTypeName?.Split('.').Last(), StringComparison.OrdinalIgnoreCase);
 
             if (!string.IsNullOrEmpty(baseTypeName) && !isBaseTypeEntity)
