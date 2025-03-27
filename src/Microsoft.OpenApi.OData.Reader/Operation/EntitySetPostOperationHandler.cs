@@ -136,10 +136,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Get the entity content description.
         /// </summary>
         /// <returns>The entity content description.</returns>
-        private IDictionary<string, OpenApiMediaType?> GetContentDescription()
+        private IDictionary<string, OpenApiMediaType> GetContentDescription()
         {
             var schema = GetEntitySchema();
-            var content = new Dictionary<string, OpenApiMediaType?>();
+            var content = new Dictionary<string, OpenApiMediaType>();
 
             if (EntitySet is {EntityType.HasStream: true})
             {
@@ -148,7 +148,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     foreach (string item in mediaTypes)
                     {
-                        content.Add(item, null);
+                        content.Add(item, new());
                     }
                 }
                 else
