@@ -130,8 +130,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     scheme.Flows.AuthorizationCode = flow;
                     break;
 
-                case OAuth2Type.Password: // Password
-                    OAuth2Password password = (OAuth2Password)oAuth2;
+                case OAuth2Type.Password when oAuth2 is OAuth2Password { TokenUrl: not null} password:
+                    // Password
                     flow = new OpenApiOAuthFlow
                     {
                         TokenUrl = new Uri(password.TokenUrl)

@@ -128,8 +128,7 @@ namespace Microsoft.OpenApi.OData.Edm
         public static T? GetRecord<T>(this IEdmModel model, IEdmVocabularyAnnotatable target)
             where T : class, IRecord, new()
         {
-            string qualifiedName = Utils.GetTermQualifiedName<T>();
-            return model.GetRecord<T>(target, qualifiedName);
+            return Utils.GetTermQualifiedName<T>() is string qualifiedName ? model.GetRecord<T>(target, qualifiedName) : null;
         }
 
         /// <summary>
@@ -243,8 +242,7 @@ namespace Microsoft.OpenApi.OData.Edm
         public static IEnumerable<T>? GetCollection<T>(this IEdmModel model, IEdmVocabularyAnnotatable target)
             where T : IRecord, new()
         {
-            string qualifiedName = Utils.GetTermQualifiedName<T>();
-            return GetCollection<T>(model, target, qualifiedName);
+            return Utils.GetTermQualifiedName<T>() is string qualifiedName ? GetCollection<T>(model, target, qualifiedName) : null;
         }
 
         /// <summary>
@@ -349,9 +347,8 @@ namespace Microsoft.OpenApi.OData.Edm
                                 Debug.Assert(e.ExpressionKind == EdmExpressionKind.Record);
 
                                 IEdmRecordExpression recordExpression = (IEdmRecordExpression)e;
-                                Authorization auth = Authorization.CreateAuthorization(recordExpression);
-                                return auth;
-                            });
+                                return Authorization.CreateAuthorization(recordExpression);
+                            }).OfType<Authorization>();
                         }
                     }
                 }

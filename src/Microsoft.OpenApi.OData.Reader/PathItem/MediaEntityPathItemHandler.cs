@@ -40,10 +40,10 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            var readRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null :Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
             var navSourceReadRestrictions = EntitySet != null
-                ? Context.Model.GetRecord<ReadRestrictionsType>(EntitySet)
-                : (Singleton is null ? null : Context.Model.GetRecord<ReadRestrictionsType>(Singleton));
+                ? Context?.Model.GetRecord<ReadRestrictionsType>(EntitySet)
+                : (Singleton is null ? null : Context?.Model.GetRecord<ReadRestrictionsType>(Singleton));
             readRestrictions ??= navSourceReadRestrictions;
             if (readRestrictions == null ||
                (readRestrictions.ReadByKeyRestrictions == null && readRestrictions.IsReadable) ||
@@ -52,20 +52,20 @@ namespace Microsoft.OpenApi.OData.PathItem
                 AddOperation(item, HttpMethod.Get);
             }
 
-            var updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+            var updateRestrictions = string.IsNullOrEmpty(TargetPath) ? null :Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
             var navSourceUpdateRestrictions = EntitySet != null
-                ? Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet)
-                : (Singleton is null ? null : Context.Model.GetRecord<UpdateRestrictionsType>(Singleton));
+                ? Context?.Model.GetRecord<UpdateRestrictionsType>(EntitySet)
+                : (Singleton is null ? null : Context?.Model.GetRecord<UpdateRestrictionsType>(Singleton));
             updateRestrictions ??= navSourceUpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
             {
                 AddOperation(item, HttpMethod.Put);
             }
 
-            var deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+            var deleteRestrictions = string.IsNullOrEmpty(TargetPath) ? null :Context?.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
             var navSourceDeleteRestrictions = EntitySet != null
-                ? Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet)
-                : (Singleton is null ? null : Context.Model.GetRecord<DeleteRestrictionsType>(Singleton));
+                ? Context?.Model.GetRecord<DeleteRestrictionsType>(EntitySet)
+                : (Singleton is null ? null : Context?.Model.GetRecord<DeleteRestrictionsType>(Singleton));
             deleteRestrictions ??= navSourceDeleteRestrictions;
             if (deleteRestrictions?.IsDeletable ?? true)
             {

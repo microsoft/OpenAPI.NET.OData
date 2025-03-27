@@ -95,9 +95,9 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 items[lastItemIndex] = prefix + Utils.UpperFirstChar(items[lastItemIndex]);
             }
-            else
+            else if (Utils.UpperFirstChar(items[lastItemIndex]) is string lastIdentifier)
             {
-                items[lastItemIndex] = Utils.UpperFirstChar(items[lastItemIndex]);
+                items[lastItemIndex] = lastIdentifier;
             }
 
             return GenerateNavigationPropertyPathOperationId(items);
@@ -122,9 +122,9 @@ namespace Microsoft.OpenApi.OData.Common
                 {
                     items.Add(prefix + Utils.UpperFirstChar(lastSegmentIdentifier));
                 }
-                else
+                else if (Utils.UpperFirstChar(lastSegmentIdentifier) is string lastIdentifier)
                 {
-                    items.Add(Utils.UpperFirstChar(lastSegmentIdentifier));
+                    items.Add(lastIdentifier);
                 }
 
             return GenerateNavigationPropertyPathOperationId(items);
@@ -327,7 +327,7 @@ namespace Microsoft.OpenApi.OData.Common
 
             List<string> tagNameItems = tagName?.Split('.').ToList() ?? [];
             
-            if (tagNameItems.Count < context.Settings.TagDepth)
+            if (tagNameItems.Count < context.Settings.TagDepth && complexSegment.ComplexType is not null)
             {
                 tagNameItems.Add(complexSegment.ComplexType.Name);
             }

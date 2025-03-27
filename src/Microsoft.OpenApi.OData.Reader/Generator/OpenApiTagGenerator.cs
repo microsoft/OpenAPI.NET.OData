@@ -66,7 +66,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         // The tags array can contain additional Tag Objects for other logical groups,
                         // e.g. for action imports or function imports that are not associated with an entity set.
                         case EdmContainerElementKind.ActionImport: // Action Import
-                            OpenApiTag actionImportTag = context.CreateOperationImportTag((IEdmActionImport)element);
+                            var actionImportTag = context.CreateOperationImportTag((IEdmActionImport)element);
                             if (actionImportTag != null)
                             {
                                 tags.Add(actionImportTag);
@@ -74,7 +74,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             break;
 
                         case EdmContainerElementKind.FunctionImport: // Function Import
-                            OpenApiTag functionImportTag = context.CreateOperationImportTag((IEdmFunctionImport)element);
+                            var functionImportTag = context.CreateOperationImportTag((IEdmFunctionImport)element);
                             if (functionImportTag != null)
                             {
                                 tags.Add(functionImportTag);
@@ -87,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return tags;
         }
 
-        private static OpenApiTag CreateOperationImportTag(this ODataContext context, IEdmOperationImport operationImport)
+        private static OpenApiTag? CreateOperationImportTag(this ODataContext context, IEdmOperationImport operationImport)
         {
             Debug.Assert(context != null);
 

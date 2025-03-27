@@ -20,7 +20,7 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public object Value { get; private set; }
 
-        public override string ToString()
+        public override string? ToString()
         {
             return Value.ToString();
         }

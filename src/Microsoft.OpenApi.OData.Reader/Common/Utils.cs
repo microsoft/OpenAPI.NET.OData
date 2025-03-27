@@ -45,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <returns>The changed string.</returns>
-        public static string? UpperFirstChar(string input)
+        public static string? UpperFirstChar(string? input)
         {
             if (input == null)
             {

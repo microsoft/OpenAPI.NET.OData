@@ -109,7 +109,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="entityType">The given entity type.</param>
         /// <returns>All base types or null.</returns>
-        public static IEnumerable<IEdmEntityType>? FindAllBaseTypes(this IEdmEntityType entityType)
+        public static IEnumerable<IEdmEntityType> FindAllBaseTypes(this IEdmEntityType entityType)
         {
             if (entityType == null)
             {
@@ -129,7 +129,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="complexType">The given complex type.</param>
         /// <returns>All base types or null.</returns>
-        public static IEnumerable<IEdmComplexType>? FindAllBaseTypes(this IEdmComplexType complexType)
+        public static IEnumerable<IEdmComplexType> FindAllBaseTypes(this IEdmComplexType complexType)
         {
             if (complexType == null)
             {

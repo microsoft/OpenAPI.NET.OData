@@ -22,7 +22,7 @@ namespace Microsoft.OpenApi.OData.Common
             Utils.CheckArgumentNull(input, nameof(input));
   
             var inputBytes = Encoding.UTF8.GetBytes(input);
-            var hashBytes = hasher.Value.ComputeHash(inputBytes);
+            if (hasher.Value?.ComputeHash(inputBytes) is not {} hashBytes) return string.Empty;
             var hash = new StringBuilder();
             foreach (var b in hashBytes)
             {
