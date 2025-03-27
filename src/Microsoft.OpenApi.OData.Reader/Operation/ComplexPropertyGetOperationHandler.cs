@@ -40,9 +40,13 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         base.Initialize(context, path);
 
         _readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-        var complexPropertyReadRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
-        _readRestrictions?.MergePropertiesIfNull(complexPropertyReadRestrictions);
-        _readRestrictions ??= complexPropertyReadRestrictions;
+        
+        if (ComplexPropertySegment is not null)
+        {
+            var complexPropertyReadRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
+            _readRestrictions?.MergePropertiesIfNull(complexPropertyReadRestrictions);
+            _readRestrictions ??= complexPropertyReadRestrictions;
+        }
     }
 
     /// <inheritdoc/>
@@ -51,14 +55,15 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         // OperationId
         if (Context is {Settings.EnableOperationId: true} && Path is not null)
         {
-            string prefix = ComplexPropertySegment.Property.Type.IsCollection() ? "List" : "Get";
+            string prefix = ComplexPropertySegment is not null && ComplexPropertySegment.Property.Type.IsCollection() ? "List" : "Get";
             operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, Context, prefix);
         }
 
         // Summary and Description
-        string placeHolder = $"Get {ComplexPropertySegment.Property.Name} property value";
+        string placeHolder = $"Get {ComplexPropertySegment?.Property.Name} property value";
         operation.Summary = _readRestrictions?.Description ?? placeHolder;
-        operation.Description = _readRestrictions?.LongDescription ?? Context?.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
+        operation.Description = _readRestrictions?.LongDescription ??
+                                (ComplexPropertySegment is null ? null : Context?.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property));
 
         base.SetBasicInfo(operation);
     }
@@ -67,7 +72,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     {
         base.SetParameters(operation);
 
-        if (Context is null) return;
+        if (Context is null || ComplexPropertySegment is null) return;
 
         IOpenApiParameter? parameter;
         operation.Parameters ??= [];
@@ -144,7 +149,9 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
 
     protected override void SetExtensions(OpenApiOperation operation)
     {
-        if (Context is {Settings.EnablePagination: true} && ComplexPropertySegment.Property.Type.IsCollection())
+        if (Context is {Settings.EnablePagination: true} &&
+            ComplexPropertySegment is not null &&
+            ComplexPropertySegment.Property.Type.IsCollection())
         {
             JsonObject extension = new()
 			{
@@ -160,16 +167,17 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        if (ComplexPropertySegment.Property.Type.IsCollection())
-        {
-            SetCollectionResponse(operation, ComplexPropertySegment.ComplexType.FullName());
-        }
-        else
-        {
-            var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
+        if (ComplexPropertySegment is not null)
+            if (ComplexPropertySegment.Property.Type.IsCollection())
+            {
+                SetCollectionResponse(operation, ComplexPropertySegment.ComplexType.FullName());
+            }
+            else
+            {
+                var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
 
-            SetSingleResponse(operation, schema);
-        }
+                SetSingleResponse(operation, schema);
+            }
 
         if (Context is not null)
             operation.AddErrorResponses(Context.Settings, _document, false);
