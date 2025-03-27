@@ -23,12 +23,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         /// <summary>
         /// Name that can be used to reference the authorization flow.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Description of the authorization method.
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Gets the security scheme type.
@@ -55,20 +55,19 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         /// </summary>
         /// <param name="record">The input record.</param>
         /// <returns>The created <see cref="Authorization"/> object.</returns>
-        public static Authorization CreateAuthorization(IEdmRecordExpression record)
+        public static Authorization? CreateAuthorization(IEdmRecordExpression record)
         {
             if (record == null || record.DeclaredType == null)
             {
                 return null;
             }
 
-            IEdmComplexType complexType = record.DeclaredType.Definition as IEdmComplexType;
-            if (complexType == null)
-            {
-                return null;
-            }
+			if (record.DeclaredType.Definition is not IEdmComplexType complexType)
+			{
+				return null;
+			}
 
-            Authorization auth;
+			Authorization auth;
             switch (complexType.FullTypeName())
             {
                 case AuthorizationConstants.OpenIDConnect: // OpenIDConnect
@@ -104,10 +103,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
                     throw new OpenApiException(String.Format(SRResource.AuthorizationRecordTypeNameNotCorrect, complexType.FullTypeName()));
             }
 
-            if (auth != null)
-            {
-                auth.Initialize(record);
-            }
+            auth?.Initialize(record);
 
             return auth;
         }

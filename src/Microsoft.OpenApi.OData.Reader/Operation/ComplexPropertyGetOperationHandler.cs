@@ -3,11 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
@@ -31,14 +33,14 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     /// <inheritdoc />
     public override HttpMethod OperationType => HttpMethod.Get;
 
-    private ReadRestrictionsType _readRestrictions;
+    private ReadRestrictionsType? _readRestrictions;
 
     protected override void Initialize(ODataContext context, ODataPath path)
     {
         base.Initialize(context, path);
 
-        _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-        var complexPropertyReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
+        _readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+        var complexPropertyReadRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
         _readRestrictions?.MergePropertiesIfNull(complexPropertyReadRestrictions);
         _readRestrictions ??= complexPropertyReadRestrictions;
     }
@@ -47,7 +49,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     protected override void SetBasicInfo(OpenApiOperation operation)
     {
         // OperationId
-        if (Context.Settings.EnableOperationId)
+        if (Context is {Settings.EnableOperationId: true} && Path is not null)
         {
             string prefix = ComplexPropertySegment.Property.Type.IsCollection() ? "List" : "Get";
             operation.OperationId = EdmModelHelper.GenerateComplexPropertyPathOperationId(Path, Context, prefix);
@@ -56,7 +58,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         // Summary and Description
         string placeHolder = $"Get {ComplexPropertySegment.Property.Name} property value";
         operation.Summary = _readRestrictions?.Description ?? placeHolder;
-        operation.Description = _readRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
+        operation.Description = _readRestrictions?.LongDescription ?? Context?.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
 
         base.SetBasicInfo(operation);
     }
@@ -65,7 +67,10 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     {
         base.SetParameters(operation);
 
-        IOpenApiParameter parameter;
+        if (Context is null) return;
+
+        IOpenApiParameter? parameter;
+        operation.Parameters ??= [];
         if(ComplexPropertySegment.Property.Type.IsCollection())
         {
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
@@ -73,35 +78,35 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
             // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
             // $top
-            parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(ComplexPropertySegment.Property, _document);
+            parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateTop(TargetPath, _document)) ?? Context.CreateTop(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $skip
-            parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(ComplexPropertySegment.Property, _document);
+            parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSkip(TargetPath, _document)) ?? Context.CreateSkip(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $search
-            parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(ComplexPropertySegment.Property, _document);
+            parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSearch(TargetPath, _document)) ?? Context.CreateSearch(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $filter
-            parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(ComplexPropertySegment.Property, _document);
+            parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateFilter(TargetPath, _document)) ?? Context.CreateFilter(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $count
-            parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(ComplexPropertySegment.Property, _document);
+            parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateCount(TargetPath, _document)) ?? Context.CreateCount(ComplexPropertySegment.Property, _document);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -112,7 +117,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             // of just providing a comma-separated list of properties can be expressed via an array-valued
             // parameter with an enum constraint
             // $order
-            parameter = Context.CreateOrderBy(TargetPath, ComplexPropertySegment.ComplexType) 
+            parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateOrderBy(TargetPath, ComplexPropertySegment.ComplexType)) 
                 ?? Context.CreateOrderBy(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
             if (parameter != null)
             {
@@ -121,7 +126,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         }
 
         // $select
-        parameter = Context.CreateSelect(TargetPath, ComplexPropertySegment.ComplexType) 
+        parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, ComplexPropertySegment.ComplexType)) 
             ?? Context.CreateSelect(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
         if (parameter != null)
         {
@@ -129,7 +134,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         }
 
         // $expand
-        parameter = Context.CreateExpand(TargetPath, ComplexPropertySegment.ComplexType) 
+        parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, ComplexPropertySegment.ComplexType)) 
             ?? Context.CreateExpand(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
         if (parameter != null)
         {
@@ -139,13 +144,14 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
 
     protected override void SetExtensions(OpenApiOperation operation)
     {
-        if (Context.Settings.EnablePagination && ComplexPropertySegment.Property.Type.IsCollection())
+        if (Context is {Settings.EnablePagination: true} && ComplexPropertySegment.Property.Type.IsCollection())
         {
             JsonObject extension = new()
 			{
                 { "nextLinkName", "@odata.nextLink"},
                 { "operationName", Context.Settings.PageableOperationName}
             };
+            operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
             operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
 
             base.SetExtensions(operation);
@@ -165,7 +171,8 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             SetSingleResponse(operation, schema);
         }
 
-        operation.AddErrorResponses(Context.Settings, _document, false);
+        if (Context is not null)
+            operation.AddErrorResponses(Context.Settings, _document, false);
         base.SetResponses(operation);
     }
    
@@ -176,7 +183,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
+        operation.Security = Context?.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)

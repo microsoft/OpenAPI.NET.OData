@@ -42,16 +42,16 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 
     public void AddReadOperation(OpenApiPathItem item)
     {
-        var readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+        var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null :  Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
         if (ComplexProperty is not null)
         {
-            var complexTypeReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions);
+            var complexTypeReadRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions);
             readRestrictions?.MergePropertiesIfNull(complexTypeReadRestrictions);
             readRestrictions ??= complexTypeReadRestrictions;
         }
         bool isReadable = readRestrictions?.Readable ?? false;
-        if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isReadable) ||
-            !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
+        if (Context is not null && ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isReadable) ||
+            !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths))
         {
             AddOperation(item, HttpMethod.Get);
         }
@@ -59,18 +59,18 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 
 	public void AddInsertOperation(OpenApiPathItem item)
 	{
-        if (Path.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsCollection())
+        if (Path?.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsCollection())
         {
-            var insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+            var insertRestrictions = string.IsNullOrEmpty(TargetPath) ? null :  Context?.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
             if (ComplexProperty is not null)
             {
-                var entityInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions);
+                var entityInsertRestrictions = Context?.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions);
                 insertRestrictions?.MergePropertiesIfNull(entityInsertRestrictions);
                 insertRestrictions ??= entityInsertRestrictions;
             }
             bool isInsertable = insertRestrictions?.Insertable ?? false;
-            if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isInsertable) ||
-                !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
+            if (Context is not null && ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isInsertable) ||
+                !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths))
             {
                 AddOperation(item, HttpMethod.Post);
             }
@@ -79,16 +79,16 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 
 	public void AddUpdateOperation(OpenApiPathItem item)
 	{
-        var updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+        var updateRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
         if (ComplexProperty is not null)
         {
-            var complexTypeUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty, CapabilitiesConstants.UpdateRestrictions);
+            var complexTypeUpdateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty, CapabilitiesConstants.UpdateRestrictions);
             updateRestrictions?.MergePropertiesIfNull(complexTypeUpdateRestrictions);
             updateRestrictions ??= complexTypeUpdateRestrictions;
         }
         bool isUpdatable = updateRestrictions?.Updatable ?? false;
-        if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isUpdatable) ||
-            !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
+        if (Context is not null && ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isUpdatable) ||
+            !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths))
         {
             if (updateRestrictions?.IsUpdateMethodPutAndPatch == true)
             {
@@ -121,7 +121,10 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 	{
         if (ComplexProperty is null) return;
 
-        item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-		item.Extensions.AddCustomAttributesToExtensions(Context, ComplexProperty);
+        if (Context is not null)
+        {
+            item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+		    item.Extensions.AddCustomAttributesToExtensions(Context, ComplexProperty);
+        }
 	}
 }

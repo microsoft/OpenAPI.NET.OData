@@ -25,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the navigation properties which do not allow DeleteLink requests.
         /// </summary>
-        public IList<string> NonDeletableNavigationProperties { get; private set; }
+        public IList<string>? NonDeletableNavigationProperties { get; private set; }
 
         /// <summary>
         /// Gets the maximum number of navigation properties that can be traversed.
@@ -45,27 +45,27 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the required scopes to perform the insert.
         /// </summary>
-        public IList<PermissionType> Permissions { get; private set; }
+        public IList<PermissionType>? Permissions { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom headers.
         /// </summary>
-        public IList<CustomParameter> CustomHeaders { get; private set; }
+        public IList<CustomParameter>? CustomHeaders { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom query options.
         /// </summary>
-        public IList<CustomParameter> CustomQueryOptions { get; private set; }
+        public IList<CustomParameter>? CustomQueryOptions { get; private set; }
 
         /// <summary>
         /// Gets A brief description of the request.
         /// </summary>
-        public string Description { get; private set; }
+        public string? Description { get; private set; }
 
         /// <summary>
         /// Gets A lengthy description of the request.
         /// </summary>
-        public string LongDescription { get; private set; }
+        public string? LongDescription { get; private set; }
 
         /// <summary>
         /// Test the target supports delete.
@@ -80,9 +80,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <returns>True/False.</returns>
         public bool IsNonDeletableNavigationProperty(string navigationPropertyPath)
         {
-            return NonDeletableNavigationProperties != null ?
-                NonDeletableNavigationProperties.Any(a => a == navigationPropertyPath) :
-                false;
+            return NonDeletableNavigationProperties != null && NonDeletableNavigationProperties.Any(a => a == navigationPropertyPath);
         }
 
         /// <summary>

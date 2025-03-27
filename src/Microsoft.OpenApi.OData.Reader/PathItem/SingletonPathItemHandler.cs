@@ -3,8 +3,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -31,26 +33,33 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <summary>
         /// Gets the singleton.
         /// </summary>
-        protected IEdmSingleton Singleton { get; private set; }
+        protected IEdmSingleton? Singleton { get; private set; }
 
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
             // Retrieve a singleton.
-            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            ReadRestrictionsType singletonReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
-            readRestrictions?.MergePropertiesIfNull(singletonReadRestrictions);
-            readRestrictions ??= singletonReadRestrictions;
+            var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            
+            if (Context is not null && Singleton is not null)
+            {
+                var singletonReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
+                readRestrictions?.MergePropertiesIfNull(singletonReadRestrictions);
+                readRestrictions ??= singletonReadRestrictions;
+            }
             if (readRestrictions?.IsReadable ?? true)
             {
                 AddOperation(item, HttpMethod.Get);
             }
 
             // Update a singleton
-            UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
-            UpdateRestrictionsType singletonUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
-            updateRestrictions?.MergePropertiesIfNull(singletonUpdateRestrictions);
-            updateRestrictions ??= singletonUpdateRestrictions;
+            var updateRestrictions = string.IsNullOrEmpty(TargetPath) ? null :  Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+            if (Context is not null && Singleton is not null)
+            {
+                var singletonUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
+                updateRestrictions?.MergePropertiesIfNull(singletonUpdateRestrictions);
+                updateRestrictions ??= singletonUpdateRestrictions;
+            }
             if (updateRestrictions?.IsUpdatable ?? true)
             {
                 AddOperation(item, HttpMethod.Patch);
@@ -62,22 +71,27 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             base.Initialize(context, path);
 
-            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-            Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
+            if (path.FirstSegment is ODataNavigationSourceSegment {NavigationSource: IEdmSingleton source})
+                Singleton = source;
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
             base.SetBasicInfo(pathItem);
-            pathItem.Description = $"Provides operations to manage the {Singleton.EntityType.Name} singleton.";
+            pathItem.Description = $"Provides operations to manage the {Singleton?.EntityType.Name} singleton.";
         }
 
         /// <inheritdoc/>
-        protected override void SetExtensions(OpenApiPathItem pathItem)
+        protected override void SetExtensions(OpenApiPathItem item)
         {
-            base.SetExtensions(pathItem);
-            pathItem.Extensions.AddCustomAttributesToExtensions(Context, Singleton);            
+            base.SetExtensions(item);
+
+            if (Context is not null && Singleton is not null)
+            {
+                item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                item.Extensions.AddCustomAttributesToExtensions(Context, Singleton);            
+            }
         }
     }
 }
