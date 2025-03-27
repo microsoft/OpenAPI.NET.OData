@@ -39,8 +39,8 @@ internal class RevisionRecord : RevisionType
 		{
 			Date = Date.HasValue ? new DateTimeOffset(Date.Value, TimeSpan.Zero) : default,
 			RemovalDate = RemovalDate.HasValue ? new DateTimeOffset(RemovalDate.Value, TimeSpan.Zero) : default,
-			Description = Description,
-			Version = Version,
+			Description = string.IsNullOrEmpty(Description) ? string.Empty : Description,
+			Version = string.IsNullOrEmpty(Version) ? string.Empty : Version,
 		};
 	}
 }

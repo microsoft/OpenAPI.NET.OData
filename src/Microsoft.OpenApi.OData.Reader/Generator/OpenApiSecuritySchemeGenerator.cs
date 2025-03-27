@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.OpenApi.Models;
@@ -37,6 +36,10 @@ namespace Microsoft.OpenApi.OData.Generator
 
             foreach (var authorization in authorizations)
             {
+                if (string.IsNullOrEmpty(authorization.Name))
+                {
+                    continue;
+                }
                 OpenApiSecurityScheme scheme = new OpenApiSecurityScheme
                 {
                     Type = authorization.SchemeType,
@@ -104,7 +107,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(scheme != null);
             Debug.Assert(openIdConnect != null);
 
-            scheme.OpenIdConnectUrl = new Uri(openIdConnect.IssuerUrl);
+            if (!string.IsNullOrEmpty(openIdConnect.IssuerUrl))
+                scheme.OpenIdConnectUrl = new Uri(openIdConnect.IssuerUrl);
         }
 
         private static void AppendOAuth2(OpenApiSecurityScheme scheme, OAuthAuthorization oAuth2)
@@ -113,11 +117,11 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(oAuth2 != null);
 
             scheme.Flows = new OpenApiOAuthFlows();
-            OpenApiOAuthFlow flow = null;
+            OpenApiOAuthFlow? flow = null;
             switch (oAuth2.OAuth2Type)
             {
-                case OAuth2Type.AuthCode: // AuthCode
-                    OAuth2AuthCode authCode = (OAuth2AuthCode)oAuth2;
+                case OAuth2Type.AuthCode when oAuth2 is OAuth2AuthCode {AuthorizationUrl: not null, TokenUrl: not null} authCode:
+                    // AuthCode
                     flow = new OpenApiOAuthFlow
                     {
                         AuthorizationUrl = new Uri(authCode.AuthorizationUrl),
@@ -126,7 +130,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     scheme.Flows.AuthorizationCode = flow;
                     break;
 
-                case OAuth2Type.Pasword: // Password
+                case OAuth2Type.Password: // Password
                     OAuth2Password password = (OAuth2Password)oAuth2;
                     flow = new OpenApiOAuthFlow
                     {
@@ -135,8 +139,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     scheme.Flows.Password = flow;
                     break;
 
-                case OAuth2Type.Implicit: // Implicit
-                    OAuth2Implicit @implicit = (OAuth2Implicit)oAuth2;
+                case OAuth2Type.Implicit when oAuth2 is OAuth2Implicit {AuthorizationUrl: not null} @implicit:
+                    // Implicit
                     flow = new OpenApiOAuthFlow
                     {
                         AuthorizationUrl = new Uri(@implicit.AuthorizationUrl)
@@ -144,8 +148,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     scheme.Flows.Implicit = flow;
                     break;
 
-                case OAuth2Type.ClientCredentials: // ClientCredentials
-                    OAuth2ClientCredentials credentials = (OAuth2ClientCredentials)oAuth2;
+                case OAuth2Type.ClientCredentials when oAuth2 is OAuth2ClientCredentials {TokenUrl: not null} credentials:
+                    // ClientCredentials
                     flow = new OpenApiOAuthFlow
                     {
                         TokenUrl = new Uri(credentials.TokenUrl)
@@ -155,11 +159,14 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             Debug.Assert(flow != null);
-            flow.RefreshUrl = new Uri(oAuth2.RefreshUrl);
+            if (!string.IsNullOrEmpty(oAuth2.RefreshUrl))
+                flow.RefreshUrl = new Uri(oAuth2.RefreshUrl);
 
             if (oAuth2.Scopes != null)
             {
-                flow.Scopes = oAuth2.Scopes.ToDictionary(s => s.Scope, s => s.Description);
+                flow.Scopes = oAuth2.Scopes
+                                    .Where(static x => !string.IsNullOrEmpty(x.Scope) && !string.IsNullOrEmpty(x.Description))
+                                    .ToDictionary(s => s.Scope!, s => s.Description!);
             }
         }
     }

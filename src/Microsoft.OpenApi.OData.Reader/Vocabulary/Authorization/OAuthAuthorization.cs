@@ -26,9 +26,9 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         Implicit,
 
         /// <summary>
-        /// Pasword
+        /// Password
         /// </summary>
-        Pasword,
+        Password,
 
         /// <summary>
         /// AuthCode

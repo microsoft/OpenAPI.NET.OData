@@ -17,7 +17,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         /// <summary>
         /// Gets the Example value for the custom parameter
         /// </summary>
-        public ODataPrimitiveValue Value { get; private set; }
+        public ODataPrimitiveValue? Value { get; private set; }
 
         /// <summary>
         /// Init the <see cref="PrimitiveExampleValue"/>

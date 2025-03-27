@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         /// <summary>
         /// Gets the Url reference to the value in its literal format
         /// </summary>
-        public string ExternalValue { get; set; }
+        public string? ExternalValue { get; set; }
 
         /// <summary>
         /// Init the <see cref="ExternalExampleValue"/>

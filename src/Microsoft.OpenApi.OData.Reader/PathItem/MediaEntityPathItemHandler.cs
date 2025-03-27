@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            var readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            var readRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
             var navSourceReadRestrictions = EntitySet != null
                 ? Context.Model.GetRecord<ReadRestrictionsType>(EntitySet)
                 : (Singleton is null ? null : Context.Model.GetRecord<ReadRestrictionsType>(Singleton));

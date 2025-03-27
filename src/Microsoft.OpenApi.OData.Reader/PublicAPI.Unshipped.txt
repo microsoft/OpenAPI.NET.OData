@@ -103,13 +103,13 @@ Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.ODataTypeCastSegment(Microsoft.
 Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.StructuredType.get -> Microsoft.OData.Edm.IEdmStructuredType!
 Microsoft.OpenApi.OData.EdmModelOpenApiExtensions
 Microsoft.OpenApi.OData.Extensions.IODataRoutePathPrefixProvider
-Microsoft.OpenApi.OData.Extensions.IODataRoutePathPrefixProvider.Parameters.get -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.Models.OpenApiParameter!>!
-Microsoft.OpenApi.OData.Extensions.IODataRoutePathPrefixProvider.PathPrefix.get -> string!
+Microsoft.OpenApi.OData.Extensions.IODataRoutePathPrefixProvider.Parameters.get -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.Models.OpenApiParameter!>?
+Microsoft.OpenApi.OData.Extensions.IODataRoutePathPrefixProvider.PathPrefix.get -> string?
 Microsoft.OpenApi.OData.Extensions.ODataRoutePathPrefixProvider
 Microsoft.OpenApi.OData.Extensions.ODataRoutePathPrefixProvider.ODataRoutePathPrefixProvider() -> void
-Microsoft.OpenApi.OData.Extensions.ODataRoutePathPrefixProvider.Parameters.get -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.Models.OpenApiParameter!>!
+Microsoft.OpenApi.OData.Extensions.ODataRoutePathPrefixProvider.Parameters.get -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.Models.OpenApiParameter!>?
 Microsoft.OpenApi.OData.Extensions.ODataRoutePathPrefixProvider.Parameters.set -> void
-Microsoft.OpenApi.OData.Extensions.ODataRoutePathPrefixProvider.PathPrefix.get -> string!
+Microsoft.OpenApi.OData.Extensions.ODataRoutePathPrefixProvider.PathPrefix.get -> string?
 Microsoft.OpenApi.OData.Extensions.ODataRoutePathPrefixProvider.PathPrefix.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddAlternateKeyPaths.get -> bool

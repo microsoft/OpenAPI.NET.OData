@@ -14,7 +14,7 @@ internal class RevisionType : IRecord
 	/// <summary>
 	/// The version this revision was introduced.
 	/// </summary>
-	public string Version { get; private set; }
+	public string? Version { get; private set; }
 	/// <summary>
 	/// The kind of the revision
 	/// </summary>
@@ -22,7 +22,7 @@ internal class RevisionType : IRecord
 	/// <summary>
 	/// The description of the revision.
 	/// </summary>
-	public string Description { get; private set; }
+	public string? Description { get; private set; }
 	/// <summary>
 	/// Init the <see cref="RevisionType"/>.
 	/// </summary>

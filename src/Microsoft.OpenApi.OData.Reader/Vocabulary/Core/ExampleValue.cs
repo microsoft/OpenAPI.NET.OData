@@ -17,7 +17,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         /// <summary>
         /// Gets the description of the example value.
         /// </summary>
-        public string Description { get; private set; }
+        public string? Description { get; private set; }
 
         /// <summary>
         /// Init the <see cref="ExampleValue"/>

@@ -3,9 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -39,22 +41,20 @@ namespace Microsoft.OpenApi.OData
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(settings, nameof(settings));
 
-            if (settings.VerifyEdmModel)
-            {
-				if (!model.Validate(out var errors))
+			if (settings.VerifyEdmModel && !model.Validate(out var errors))
+			{
+				OpenApiDocument document = new();
+				int index = 1;
+				document.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+				foreach (var error in errors)
 				{
-					OpenApiDocument document = new();
-					int index = 1;
-					foreach (var error in errors)
-					{
-						document.Extensions.Add(Constants.xMsEdmModelError + index++, new OpenApiAny(error.ToString()));
-					}
-
-					return document;
+					document.Extensions.Add(Constants.xMsEdmModelError + index++, new OpenApiAny(error.ToString()));
 				}
+
+				return document;
 			}
 
-            ODataContext context = new(model, settings);
+			ODataContext context = new(model, settings);
             return context.CreateDocument();
         }
     }
