@@ -34,28 +34,32 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <summary>
         /// Gets the navigation property.
         /// </summary>
-        public IEdmNavigationProperty NavigationProperty { get; private set; }
+        public IEdmNavigationProperty? NavigationProperty { get; private set; }
 
         /// <summary>
         /// Gets the navigation source.
         /// </summary>
-        public IEdmNavigationSource NavigationSource { get; private set; }
+        public IEdmNavigationSource? NavigationSource { get; private set; }
 
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
-            IEdmVocabularyAnnotatable target = entitySet;
-            target ??= NavigationSource as IEdmSingleton;
+            if (NavigationSource is not IEdmVocabularyAnnotatable target)
+                throw new InvalidOperationException($"The navigation source {NavigationSource?.Name} is not a vocabulary annotatable.");
 
-            string navigationPropertyPath = String.Join("/",
-                Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment)).Select(e => e.Identifier));
+            string navigationPropertyPath = string.Join("/",
+                Path?.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment)).Select(e => e.Identifier) ?? []);
            
-            NavigationRestrictionsType navigationRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(TargetPath, CapabilitiesConstants.NavigationRestrictions);
-            NavigationRestrictionsType sourceNavigationRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
-            navigationRestrictions?.MergePropertiesIfNull(sourceNavigationRestrictions);
-            navigationRestrictions ??= sourceNavigationRestrictions;
-            NavigationPropertyRestriction restriction = navigationRestrictions?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty == navigationPropertyPath);
+            var navigationRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<NavigationRestrictionsType>(TargetPath, CapabilitiesConstants.NavigationRestrictions);
+            
+            if (Context is not null && target is not null)
+            {
+                var sourceNavigationRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
+                navigationRestrictions?.MergePropertiesIfNull(sourceNavigationRestrictions);
+                navigationRestrictions ??= sourceNavigationRestrictions;
+            }
+
+            var restriction = navigationRestrictions?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty == navigationPropertyPath);
 
             // verify using individual first
             if (restriction?.Navigability != null && restriction.Navigability.Value == NavigationType.None)
@@ -77,8 +81,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             // Create the ref
             if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                ODataSegment penultimateSegment = Path.Segments.Reverse().Skip(1).First();
-                if (penultimateSegment is ODataKeySegment)
+                if (Path?.Segments.Reverse().Skip(1).First() is ODataKeySegment)
                 {
                     // Collection-valued indexed: DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
                     AddDeleteOperation(item, restriction);
@@ -99,9 +102,9 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
         }
 
-        private void AddDeleteOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        private void AddDeleteOperation(OpenApiPathItem item, NavigationPropertyRestriction? restriction)
         {
-            DeleteRestrictionsType deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+            var deleteRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
             deleteRestrictions?.MergePropertiesIfNull(restriction?.DeleteRestrictions);
             deleteRestrictions ??= restriction?.DeleteRestrictions;
             if (deleteRestrictions?.IsDeletable ?? true)
@@ -110,9 +113,9 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
         }
 
-        private void AddReadOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        private void AddReadOperation(OpenApiPathItem item, NavigationPropertyRestriction? restriction)
         {
-            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
             readRestrictions?.MergePropertiesIfNull(restriction?.ReadRestrictions);
             readRestrictions ??= restriction?.ReadRestrictions;
             if (readRestrictions?.IsReadable ?? true)
@@ -121,9 +124,9 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
         }
 
-        private void AddInsertOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        private void AddInsertOperation(OpenApiPathItem item, NavigationPropertyRestriction? restriction)
         {
-            InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+            var insertRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
             insertRestrictions?.MergePropertiesIfNull(restriction?.InsertRestrictions);
             insertRestrictions ??= restriction?.InsertRestrictions;
             if (insertRestrictions?.IsInsertable ?? true)
@@ -132,9 +135,9 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
         }
 
-        private void AddUpdateOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        private void AddUpdateOperation(OpenApiPathItem item, NavigationPropertyRestriction? restriction)
         {
-            UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+            var updateRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
             updateRestrictions?.MergePropertiesIfNull(restriction?.UpdateRestrictions);
             updateRestrictions ??= restriction?.UpdateRestrictions;
             if (updateRestrictions?.IsUpdatable ?? true)
@@ -148,8 +151,10 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             base.Initialize(context, path);
 
-            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-            NavigationSource = navigationSourceSegment.NavigationSource;
+            if (path.FirstSegment is ODataNavigationSourceSegment {NavigationSource: {} source})
+            {
+                NavigationSource = source;
+            }
 
             NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
         }
