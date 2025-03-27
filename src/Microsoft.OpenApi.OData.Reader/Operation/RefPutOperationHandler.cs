@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (_updateRestriction == null)
+            if (_updateRestriction?.Permissions == null)
             {
                 return;
             }

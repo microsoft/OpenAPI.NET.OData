@@ -117,11 +117,12 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 foreach (var operationPath in operationPaths)
                 {
+                    if (operationPath.LastSegment?.Identifier is null) continue;
                     OpenApiLink link = new()
                     {
                         OperationId = string.Join(".", operationPath.Segments.Select(x =>
                         {
-                            return x.Kind.Equals(ODataSegmentKind.Key) ? x.EntityType.Name : x.Identifier;
+                            return x.Kind.Equals(ODataSegmentKind.Key) && x.EntityType is not null ? x.EntityType.Name : x.Identifier;
                         }))
                     };
 

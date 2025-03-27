@@ -37,16 +37,19 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         if (!string.IsNullOrEmpty(TargetPath))
             _updateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
         
-        var complexPropertyUpdateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
-        _updateRestrictions?.MergePropertiesIfNull(complexPropertyUpdateRestrictions);
-        _updateRestrictions ??= complexPropertyUpdateRestrictions;
+        if (ComplexPropertySegment is not null)
+        {
+            var complexPropertyUpdateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
+            _updateRestrictions?.MergePropertiesIfNull(complexPropertyUpdateRestrictions);
+            _updateRestrictions ??= complexPropertyUpdateRestrictions;
+        }
     }
 
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiOperation operation)
     {
         // Summary and Description
-        string placeHolder = $"Update property {ComplexPropertySegment.Property.Name} value.";
+        string placeHolder = $"Update property {ComplexPropertySegment?.Property.Name} value.";
         operation.Summary = _updateRestrictions?.Description ?? placeHolder;
         operation.Description = _updateRestrictions?.LongDescription;
 
@@ -114,8 +117,9 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         }
     }
 
-    private IOpenApiSchema GetOpenApiSchema()
+    private IOpenApiSchema? GetOpenApiSchema()
     {
+        if (ComplexPropertySegment is null) return null;
         var schema = new OpenApiSchemaReference(ComplexPropertySegment.ComplexType.FullName(), _document);
 
         if (ComplexPropertySegment.Property.Type.IsCollection())

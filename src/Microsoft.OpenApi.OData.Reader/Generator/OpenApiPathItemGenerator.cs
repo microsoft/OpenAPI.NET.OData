@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
@@ -46,8 +45,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                OpenApiPathItem pathItem = handler.CreatePathItem(context, path);
-                if (!pathItem.Operations.Any())
+                if (handler.CreatePathItem(context, path) is not {Operations.Count: > 0} pathItem)
                 {
                     continue;
                 }

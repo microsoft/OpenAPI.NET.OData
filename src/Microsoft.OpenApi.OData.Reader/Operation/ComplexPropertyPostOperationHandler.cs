@@ -31,7 +31,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     protected override void Initialize(ODataContext context, ODataPath path)
     {
         base.Initialize(context, path);
-        if (!ComplexPropertySegment.Property.Type.IsCollection())
+        if (ComplexPropertySegment is null || !ComplexPropertySegment.Property.Type.IsCollection())
         {
             throw new InvalidOperationException("OData conventions do not support POSTing to a complex property that is not a collection.");
         }
@@ -60,7 +60,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
         }
 
         // Summary and Description
-        string placeHolder = $"Sets a new value for the collection of {ComplexPropertySegment.ComplexType.Name}.";
+        string placeHolder = $"Sets a new value for the collection of {ComplexPropertySegment?.ComplexType?.Name}.";
         operation.Summary = _insertRestrictions?.Description ?? placeHolder;
         operation.Description = _insertRestrictions?.LongDescription;
 
@@ -140,8 +140,9 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
         }
     }
 
-    private OpenApiSchema GetOpenApiSchema()
+    private OpenApiSchema? GetOpenApiSchema()
     {
+        if (ComplexPropertySegment is null) return null;
         return new()
         {
             Type = JsonSchemaType.Array,

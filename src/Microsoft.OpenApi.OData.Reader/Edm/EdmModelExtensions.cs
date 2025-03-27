@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(function, nameof(function));
 
-            IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(function,
+            var annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(function,
                 CommunityVocabularyModel.UrlEscapeFunctionTerm).FirstOrDefault();
             if (annotation != null)
             {
@@ -58,12 +58,11 @@ namespace Microsoft.OpenApi.OData.Edm
                     return true;
                 }
 
-                IEdmBooleanConstantExpression tagConstant = annotation.Value as IEdmBooleanConstantExpression;
-                if (tagConstant != null)
-                {
-                    return tagConstant.Value;
-                }
-            }
+				if (annotation.Value is IEdmBooleanConstantExpression tagConstant)
+				{
+					return tagConstant.Value;
+				}
+			}
 
             return false;
         }
@@ -110,11 +109,11 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="entityType">The given entity type.</param>
         /// <returns>All base types or null.</returns>
-        public static IEnumerable<IEdmEntityType> FindAllBaseTypes(this IEdmEntityType entityType)
+        public static IEnumerable<IEdmEntityType>? FindAllBaseTypes(this IEdmEntityType entityType)
         {
             if (entityType == null)
             {
-                yield return null;
+                yield break;
             }
 
             IEdmEntityType current = entityType.BaseEntityType();
@@ -130,11 +129,11 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="complexType">The given complex type.</param>
         /// <returns>All base types or null.</returns>
-        public static IEnumerable<IEdmComplexType> FindAllBaseTypes(this IEdmComplexType complexType)
+        public static IEnumerable<IEdmComplexType>? FindAllBaseTypes(this IEdmComplexType complexType)
         {
             if (complexType == null)
             {
-                yield return null;
+                yield break;
             }
 
             IEdmComplexType current = complexType.BaseComplexType();

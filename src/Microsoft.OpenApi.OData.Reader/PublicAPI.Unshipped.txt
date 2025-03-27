@@ -287,7 +287,7 @@ override Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.GetAnnotables() 
 override Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings, System.Collections.Generic.HashSet<string!>! parameters) -> string!
 override Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.Identifier.get -> string!
 override Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
-override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType!
+override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType?
 override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable!>!
 override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings, System.Collections.Generic.HashSet<string!>! parameters) -> string!
 override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.Identifier.get -> string!
@@ -295,8 +295,8 @@ override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.Kind.get -> Microsoft.
 static Microsoft.OpenApi.OData.Common.Utils.GetTermQualifiedName<T>() -> string?
 static Microsoft.OpenApi.OData.Common.Utils.GetUniqueName(string! input, System.Collections.Generic.HashSet<string!>! set) -> string!
 static Microsoft.OpenApi.OData.Common.Utils.UpperFirstChar(string! input) -> string?
-static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.FindAllBaseTypes(this Microsoft.OData.Edm.IEdmComplexType! complexType) -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.IEdmComplexType!>!
-static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.FindAllBaseTypes(this Microsoft.OData.Edm.IEdmEntityType! entityType) -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.IEdmEntityType!>!
+static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.FindAllBaseTypes(this Microsoft.OData.Edm.IEdmComplexType! complexType) -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.IEdmComplexType!>?
+static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.FindAllBaseTypes(this Microsoft.OData.Edm.IEdmEntityType! entityType) -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.IEdmEntityType!>?
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.GetAllElements(this Microsoft.OData.Edm.IEdmModel! model) -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.IEdmSchemaElement!>!
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsOperationImportOverload(this Microsoft.OData.Edm.IEdmModel! model, Microsoft.OData.Edm.IEdmOperationImport! operationImport) -> bool
 static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.IsOperationOverload(this Microsoft.OData.Edm.IEdmModel! model, Microsoft.OData.Edm.IEdmOperation! operation) -> bool

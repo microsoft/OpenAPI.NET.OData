@@ -5,7 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
@@ -28,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="statusCode">The status code.</param>
         /// <param name="document">The OpenApi document to lookup references.</param>
         /// <returns>The created <see cref="IOpenApiResponse"/>.</returns>
-        public static IOpenApiResponse GetResponse(this string statusCode, OpenApiDocument document)
+        public static IOpenApiResponse? GetResponse(this string statusCode, OpenApiDocument document)
         {
             return statusCode switch {
                 Constants.StatusCodeDefault => new OpenApiResponseReference(Constants.Error, document),
@@ -82,8 +81,7 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (IEdmOperation operation in context.Model.SchemaElements.OfType<IEdmOperation>()
                 .Where(op => context.Model.OperationTargetsMultiplePaths(op)))
             {
-                OpenApiResponse response = context.CreateOperationResponse(operation, document);
-                if (response != null)
+                if (context.CreateOperationResponse(operation, document) is {} response)
                     responses[$"{operation.Name}Response"] = response;
             }
 
@@ -134,26 +132,27 @@ namespace Microsoft.OpenApi.OData.Generator
                     new OpenApiResponseReference($"{operation.Name}Response", document)
                  );
             }
-            else
+            else if (context.CreateOperationResponse(operation, document) is {} successResponse)
             {
-                OpenApiResponse response = context.CreateOperationResponse(operation, document);
-                responses.Add(context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200, response);
+                responses.Add(context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200, successResponse);
             }
 
-            if (context.Settings.ErrorResponsesAsDefault)
+            if (context.Settings.ErrorResponsesAsDefault && Constants.StatusCodeDefault.GetResponse(document) is {} defaultResponse)
             {
-                responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse(document));
+                responses.Add(Constants.StatusCodeDefault, defaultResponse);
             }
             else
             {
-                responses.Add(Constants.StatusCodeClass4XX, Constants.StatusCodeClass4XX.GetResponse(document));
-                responses.Add(Constants.StatusCodeClass5XX, Constants.StatusCodeClass5XX.GetResponse(document));
+                if (Constants.StatusCodeClass4XX.GetResponse(document) is {} x4Response)
+                    responses.Add(Constants.StatusCodeClass4XX, x4Response);
+                if (Constants.StatusCodeClass5XX.GetResponse(document) is {} x5Response)
+                    responses.Add(Constants.StatusCodeClass5XX, x5Response);
             }
 
             return responses;
         }
 
-        public static OpenApiResponse CreateOperationResponse(this ODataContext context, IEdmOperation operation, OpenApiDocument document)
+        public static OpenApiResponse? CreateOperationResponse(this ODataContext context, IEdmOperation operation, OpenApiDocument document)
         {
             if (operation.ReturnType == null)
                 return null;
@@ -232,7 +231,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 schema = context.CreateEdmTypeSchema(operation.ReturnType, document);
             }
 
-            string mediaType = Constants.ApplicationJsonMediaType;
+            string? mediaType = Constants.ApplicationJsonMediaType;
             if (operation.ReturnType.AsPrimitive()?.PrimitiveKind() == EdmPrimitiveTypeKind.Stream)
             {
                 mediaType = context.Model.GetString(operation, CoreConstants.MediaType);

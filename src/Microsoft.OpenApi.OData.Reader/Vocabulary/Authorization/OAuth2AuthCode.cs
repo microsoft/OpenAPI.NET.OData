@@ -16,12 +16,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         /// <summary>
         /// Authorization URL.
         /// </summary>
-        public string AuthorizationUrl { get; set; }
+        public string? AuthorizationUrl { get; set; }
 
         /// <summary>
         /// Token Url.
         /// </summary>
-        public string TokenUrl { get; set; }
+        public string? TokenUrl { get; set; }
 
         /// <summary>
         /// Gets the OAuth2 type.

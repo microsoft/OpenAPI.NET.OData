@@ -30,7 +30,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the properties which cannot be used in $expand expressions.
         /// </summary>
-        public IList<string> NonExpandableProperties { get; private set; }
+        public IList<string>? NonExpandableProperties { get; private set; }
 
         /// <summary>
         /// Gets the maximum number of levels that can be expanded in a expand expression.
@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <returns>True/False.</returns>
         public bool IsNonExpandableProperty(string navigationPropertyPath)
         {
-            return NonExpandableProperties != null ? NonExpandableProperties.Any(a => a == navigationPropertyPath) : false;
+            return NonExpandableProperties != null && NonExpandableProperties.Any(a => a == navigationPropertyPath);
         }
 
         public void Initialize(IEdmRecordExpression record)
