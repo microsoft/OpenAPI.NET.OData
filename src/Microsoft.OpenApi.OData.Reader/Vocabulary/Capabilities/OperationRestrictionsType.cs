@@ -24,17 +24,17 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the List of required scopes to invoke an action or function.
         /// </summary>
-        public IList<PermissionType> Permissions { get; private set; }
+        public IList<PermissionType>? Permissions { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom headers.
         /// </summary>
-        public IList<CustomParameter> CustomHeaders { get; private set; }
+        public IList<CustomParameter>? CustomHeaders { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom query options.
         /// </summary>
-        public IList<CustomParameter> CustomQueryOptions { get; private set; }
+        public IList<CustomParameter>? CustomQueryOptions { get; private set; }
 
         /// <summary>
         /// Init the <see cref="OperationRestrictionsType"/>.

@@ -433,7 +433,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// <param name="model">Optional: The Edm model. Used for searching for the namespace alias.</param>
         /// <param name="settings">The OpenAPI convert settings.</param>
         /// <returns>The element name, alias-prefixed or namespace-stripped if applicable.</returns>
-        internal static string StripOrAliasNamespacePrefix(IEdmSchemaElement element, OpenApiConvertSettings settings, IEdmModel model = null)
+        internal static string StripOrAliasNamespacePrefix(IEdmSchemaElement element, OpenApiConvertSettings settings, IEdmModel? model = null)
         {
             Utils.CheckArgumentNull(element, nameof(element));
             Utils.CheckArgumentNull(settings, nameof(settings));

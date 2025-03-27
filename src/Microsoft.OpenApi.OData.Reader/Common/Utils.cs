@@ -28,10 +28,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         /// <typeparam name="T">The type of the term.</typeparam>
         /// <returns>The qualified name.</returns>
-        public static string GetTermQualifiedName<T>()
+        public static string? GetTermQualifiedName<T>()
         {
             object[] attributes = typeof(T).GetCustomAttributes(typeof(TermAttribute), false);
-            if (attributes == null && attributes.Length == 0)
+            if (attributes == null || attributes.Length == 0)
             {
                 return null;
             }
@@ -45,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <returns>The changed string.</returns>
-        public static string UpperFirstChar(string input)
+        public static string? UpperFirstChar(string input)
         {
             if (input == null)
             {
@@ -129,7 +129,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         /// <param name="path">The <see cref="ODataPath"/>.</param>
         /// <param name="navigationPropertyName">Optional: The navigation property name.</param>
-        internal static string NavigationPropertyPath(this ODataPath path, string navigationPropertyName = null)
+        internal static string NavigationPropertyPath(this ODataPath path, string? navigationPropertyName = null)
         {
             string value = string.Join("/",
                 path.Segments.OfType<ODataNavigationPropertySegment>().Select(e => e.Identifier));
@@ -176,7 +176,7 @@ namespace Microsoft.OpenApi.OData.Common
         {
             Dictionary<string, string> attributesValueMap = new();
 
-            if ((!customXMLAttributesMapping?.Any() ?? true) ||
+            if (customXMLAttributesMapping is not {Count:>0} ||
                 model == null ||
                 element == null)
             {
@@ -187,10 +187,10 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 string attributeName = item.Key.Split(':').Last(); // example, 'ags:IsHidden' --> 'IsHidden'
                 string extensionName = item.Value;
-                EdmStringConstant customXMLAttribute = model.DirectValueAnnotationsManager.GetDirectValueAnnotations(element)?
+                var customXMLAttribute = model.DirectValueAnnotationsManager.GetDirectValueAnnotations(element)?
                                 .Where(x => x.Name.Equals(attributeName, StringComparison.OrdinalIgnoreCase))?
                                 .FirstOrDefault()?.Value as EdmStringConstant;
-                string attributeValue = customXMLAttribute?.Value;
+                var attributeValue = customXMLAttribute?.Value;
 
                 if (!string.IsNullOrEmpty(attributeValue))
                 {
@@ -253,7 +253,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         /// <param name="segment">The target <see cref="ODataSegment"/>.</param>
         /// <returns>The entity type of the target <paramref name="segment"/>.</returns>
-        internal static IEdmEntityType EntityTypeFromPathSegment(this ODataSegment segment)
+        internal static IEdmEntityType? EntityTypeFromPathSegment(this ODataSegment segment)
         {
             CheckArgumentNull(segment, nameof(segment));
 
@@ -279,12 +279,12 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         /// <param name="segment">The target <see cref="ODataOperationSegment"/>.</param>
         /// <returns>The entity type of the target <paramref name="segment"/>.</returns>
-        private static IEdmEntityType EntityTypeFromOperationSegment(this ODataSegment segment)
+        private static IEdmEntityType? EntityTypeFromOperationSegment(this ODataSegment segment)
         {
             CheckArgumentNull(segment, nameof(segment));
 
             if (segment is ODataOperationSegment operationSegment &&
-            operationSegment.Operation.Parameters.FirstOrDefault() is IEdmOperationParameter bindingParameter)
+            operationSegment.Operation?.Parameters.FirstOrDefault() is IEdmOperationParameter bindingParameter)
             {
                 IEdmTypeReference bindingType = bindingParameter.Type;
 
@@ -339,10 +339,10 @@ namespace Microsoft.OpenApi.OData.Common
                 }
 
                 ODataSegment lastSecondSegment = path.Segments.ElementAt(path.Count - secondLastSegmentIndex);
-                IEdmEntityType boundEntityType = lastSecondSegment?.EntityTypeFromPathSegment();
+                var boundEntityType = lastSecondSegment?.EntityTypeFromPathSegment();
 
-                IEdmEntityType operationEntityType = lastSegment.EntityTypeFromOperationSegment();
-                IEnumerable<IEdmStructuredType> derivedTypes = (operationEntityType != null)
+                var operationEntityType = lastSegment.EntityTypeFromOperationSegment();
+                var derivedTypes = (operationEntityType != null)
                     ? context.Model.FindAllDerivedTypes(operationEntityType)
                     : null;
 

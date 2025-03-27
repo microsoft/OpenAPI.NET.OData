@@ -122,28 +122,34 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             // of just providing a comma-separated list of properties can be expressed via an array-valued
             // parameter with an enum constraint
             // $order
-            parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateOrderBy(TargetPath, ComplexPropertySegment.ComplexType)) 
-                ?? Context.CreateOrderBy(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
+            if (ComplexPropertySegment.ComplexType is not null)
+            {
+                parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateOrderBy(TargetPath, ComplexPropertySegment.ComplexType)) 
+                    ?? Context.CreateOrderBy(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+            }
+        }
+
+        if (ComplexPropertySegment.ComplexType is not null)
+        {
+            // $select
+            parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, ComplexPropertySegment.ComplexType)) 
+                ?? Context.CreateSelect(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
-        }
 
-        // $select
-        parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, ComplexPropertySegment.ComplexType)) 
-            ?? Context.CreateSelect(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
-        if (parameter != null)
-        {
-            operation.Parameters.Add(parameter);
-        }
-
-        // $expand
-        parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, ComplexPropertySegment.ComplexType)) 
-            ?? Context.CreateExpand(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
-        if (parameter != null)
-        {
-            operation.Parameters.Add(parameter);
+            // $expand
+            parameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, ComplexPropertySegment.ComplexType)) 
+                ?? Context.CreateExpand(ComplexPropertySegment.Property, ComplexPropertySegment.ComplexType);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
         }
     }
 

@@ -24,7 +24,7 @@ internal static class OpenApiOperationExtensions
     /// <param name="addNoContent">Optional: Whether to add a 204 no content response.</param>
     /// <param name="schema">Optional: The OpenAPI schema of the response.</param>
     /// <param name="document">The OpenAPI document to lookup references.</param>
-    public static void AddErrorResponses(this OpenApiOperation operation, OpenApiConvertSettings settings, OpenApiDocument document, bool addNoContent = false, IOpenApiSchema schema = null)
+    public static void AddErrorResponses(this OpenApiOperation operation, OpenApiConvertSettings settings, OpenApiDocument document, bool addNoContent = false, IOpenApiSchema? schema = null)
     {
         Utils.CheckArgumentNull(operation, nameof(operation));
         Utils.CheckArgumentNull(settings, nameof(settings));
@@ -39,7 +39,7 @@ internal static class OpenApiOperationExtensions
         {
             if (settings.UseSuccessStatusCodeRange)
             {
-                OpenApiResponse response = null;
+                OpenApiResponse? response = null;
                 if (schema != null)
                 {
                     response = new()
