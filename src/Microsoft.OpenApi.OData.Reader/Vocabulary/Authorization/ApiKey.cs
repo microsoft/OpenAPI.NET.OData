@@ -38,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         /// <summary>
         /// The name of the header or query parameter.
         /// </summary>
-        public string KeyName { get; set; }
+        public string? KeyName { get; set; }
 
         /// <summary>
         /// Whether the API Key is passed in the header or as a query option.

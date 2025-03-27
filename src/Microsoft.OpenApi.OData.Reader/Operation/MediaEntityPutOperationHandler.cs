@@ -33,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Put;
         
-        private UpdateRestrictionsType _updateRestrictions = null;
+        private UpdateRestrictionsType? _updateRestrictions = null;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
@@ -41,17 +41,18 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Property != null)
             {
-                _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+                if (!string.IsNullOrEmpty(TargetPath))
+                    _updateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
                 if (Property is IEdmNavigationProperty)
                 {
-                    var navigationUpdateRestrictions = Context.Model.GetRecord<NavigationRestrictionsType>(Property, CapabilitiesConstants.NavigationRestrictions)?
+                    var navigationUpdateRestrictions = Context?.Model.GetRecord<NavigationRestrictionsType>(Property, CapabilitiesConstants.NavigationRestrictions)?
                             .RestrictedProperties?.FirstOrDefault()?.UpdateRestrictions;
                     _updateRestrictions?.MergePropertiesIfNull(navigationUpdateRestrictions);
                     _updateRestrictions ??= navigationUpdateRestrictions;
                 }
                 else
                 {
-                    var propertyUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Property, CapabilitiesConstants.UpdateRestrictions);
+                    var propertyUpdateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(Property, CapabilitiesConstants.UpdateRestrictions);
                     _updateRestrictions?.MergePropertiesIfNull(propertyUpdateRestrictions);
                     _updateRestrictions ??= propertyUpdateRestrictions;
                 }
@@ -62,19 +63,19 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary
-            string placeholderValue = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "media content";
+            var placeholderValue = LastSegmentIsStreamPropertySegment ? Path?.LastSegment?.Identifier : "media content";
             operation.Summary = _updateRestrictions?.Description;
             operation.Summary ??= IsNavigationPropertyPath
-                ? $"Update {placeholderValue} for the navigation property {NavigationProperty.Name} in {NavigationSourceSegment.NavigationSource.Name}"
-                : $"Update {placeholderValue} for {NavigationSourceSegment.EntityType.Name} in {NavigationSourceSegment.Identifier}";
+                ? $"Update {placeholderValue} for the navigation property {NavigationProperty?.Name} in {NavigationSourceSegment?.NavigationSource.Name}"
+                : $"Update {placeholderValue} for {NavigationSourceSegment?.EntityType.Name} in {NavigationSourceSegment?.Identifier}";
 
             // Description
-             operation.Description = _updateRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Property);
+            operation.Description = _updateRestrictions?.LongDescription ?? Context?.Model.GetDescriptionAnnotation(Property);
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true})
             {
-                string identifier = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "Content";
+                var identifier = LastSegmentIsStreamPropertySegment && Path?.LastSegment?.Identifier is string lastIdentifier ? lastIdentifier  : "Content";
                 operation.OperationId = GetOperationId("Update", identifier);
             }
         }
@@ -95,18 +96,18 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            if (LastSegmentIsStreamPropertySegment && Path.LastSegment.Identifier.Equals(Constants.Content, StringComparison.OrdinalIgnoreCase))
+            if (LastSegmentIsStreamPropertySegment && Constants.Content.Equals(Path?.LastSegment?.Identifier, StringComparison.OrdinalIgnoreCase))
             {
                 // Get the entity type declaring this stream property.
                 (var entityType, _) = GetStreamElements();
 
                 var schema = new OpenApiSchemaReference(entityType.FullName(), _document);
 
-                operation.AddErrorResponses(Context.Settings, _document, addNoContent: true, schema: schema);
+                operation.AddErrorResponses(Context?.Settings ?? new(), _document, addNoContent: true, schema: schema);
             }
             else
             {
-                operation.AddErrorResponses(Context.Settings, _document, true);
+                operation.AddErrorResponses(Context?.Settings ?? new(), _document, true);
             }
             
             base.SetResponses(operation);
@@ -115,9 +116,9 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            IEdmVocabularyAnnotatable annotatableNavigationSource = (IEdmVocabularyAnnotatable)NavigationSourceSegment.NavigationSource;
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.UpdateRestrictions);
-            if (update == null || update.Permissions == null)
+            if (NavigationSourceSegment?.NavigationSource is not IEdmVocabularyAnnotatable annotatableNavigationSource ||
+                Context?.Model.GetRecord<UpdateRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.UpdateRestrictions) is not {} update ||
+                update.Permissions == null)
             {
                 return;
             }

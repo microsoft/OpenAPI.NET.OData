@@ -21,17 +21,17 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets/sets the name of the custom parameter.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Gets/sets the description of the custom parameter.
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Gets/sets the documentationURL of the custom parameter.
         /// </summary>
-        public string DocumentationURL { get; set; }
+        public string? DocumentationURL { get; set; }
 
         /// <summary>
         /// Gets/sets the reuired of the custom parameter. true: parameter is required, false or not specified: parameter is optional.
@@ -41,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the list of scopes that can provide access to the resource.
         /// </summary>s
-        public IList<PrimitiveExampleValue> ExampleValues { get; set; }
+        public IList<PrimitiveExampleValue>? ExampleValues { get; set; }
 
         /// <summary>
         /// Init the <see cref="CustomParameter"/>.

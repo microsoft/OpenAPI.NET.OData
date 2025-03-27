@@ -12,6 +12,6 @@ namespace Microsoft.OpenApi.OData
     /// </summary>
     internal class ODataCollectValue : ODataValue
     {
-        public IList<ODataValue> Elements { get; set; }
+        public IList<ODataValue>? Elements { get; set; }
     }
 }

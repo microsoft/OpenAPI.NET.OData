@@ -36,28 +36,32 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Post;
                
-        private InsertRestrictionsType _insertRestrictions;
+        private InsertRestrictionsType? _insertRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            _insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
-            var entityInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
-            _insertRestrictions?.MergePropertiesIfNull(entityInsertRestrictions);
-            _insertRestrictions ??= entityInsertRestrictions;
+            if (!string.IsNullOrEmpty(TargetPath))
+                _insertRestrictions = Context?.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+            if (Context is not null && EntitySet is not null)
+            {
+                var entityInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
+                _insertRestrictions?.MergePropertiesIfNull(entityInsertRestrictions);
+                _insertRestrictions ??= entityInsertRestrictions;
+            }
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            string placeHolder = "Add new entity to " + EntitySet.Name;
+            string placeHolder = "Add new entity to " + EntitySet?.Name;
             operation.Summary = _insertRestrictions?.Description ?? placeHolder;
             operation.Description = _insertRestrictions?.LongDescription;
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true} && EntitySet is not null)
             {
                 string typeName = EntitySet.EntityType.Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Create" + Utils.UpperFirstChar(typeName);
@@ -85,7 +89,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode201,
+                    Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode201,
                     new OpenApiResponse
                     {
                         Description = "Created entity",
@@ -94,7 +98,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
 
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -106,7 +111,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_insertRestrictions.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -136,16 +141,14 @@ namespace Microsoft.OpenApi.OData.Operation
             var schema = GetEntitySchema();
             var content = new Dictionary<string, OpenApiMediaType>();
 
-            if (EntitySet.EntityType.HasStream)
+            if (EntitySet is {EntityType.HasStream: true})
             {
-                IEnumerable<string> mediaTypes = Context.Model.GetCollection(EntitySet.EntityType,
-                    CoreConstants.AcceptableMediaTypes);
-
-                if (mediaTypes != null)
+                if (Context?.Model.GetCollection(EntitySet.EntityType,
+                    CoreConstants.AcceptableMediaTypes) is {} mediaTypes)
                 {
                     foreach (string item in mediaTypes)
                     {
-                        content.Add(item, null);
+                        content.Add(item, new());
                     }
                 }
                 else
@@ -164,8 +167,7 @@ namespace Microsoft.OpenApi.OData.Operation
             else
             {
                 // Add the annotated request content media types
-                IEnumerable<string> mediaTypes = _insertRestrictions?.RequestContentTypes;
-                if (mediaTypes != null)
+                if (_insertRestrictions?.RequestContentTypes is {} mediaTypes)
                 {
                     foreach (string mediaType in mediaTypes)
                     {
@@ -192,9 +194,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Get the entity schema.
         /// </summary>
         /// <returns>The entity schema.</returns>
-        private IOpenApiSchema GetEntitySchema()
+        private IOpenApiSchema? GetEntitySchema()
         {
-            return Context.Settings.EnableDerivedTypesReferencesForRequestBody ?
+            if (EntitySet is null) return null;
+            return Context?.Settings.EnableDerivedTypesReferencesForRequestBody ?? false ?
                 EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document) :
                 new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
         }

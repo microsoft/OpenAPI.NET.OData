@@ -19,12 +19,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         /// <summary>
         /// The name of a required authorization scheme.
         /// </summary>
-        public string Authorization { get; set; }
+        public string? Authorization { get; set; }
 
         /// <summary>
         /// The names of scopes required from this authorization scheme.
         /// </summary>
-        public IList<string> RequiredScopes { get; set; }
+        public IList<string>? RequiredScopes { get; set; }
 
         /// <summary>
         /// Init the <see cref="SecurityScheme"/>.

@@ -25,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Authorization.Tests
 
             // Act & Assert
             Assert.Equal(SecuritySchemeType.OAuth2, password.SchemeType);
-            Assert.Equal(OAuth2Type.Pasword, password.OAuth2Type);
+            Assert.Equal(OAuth2Type.Password, password.OAuth2Type);
         }
 
         [Fact]

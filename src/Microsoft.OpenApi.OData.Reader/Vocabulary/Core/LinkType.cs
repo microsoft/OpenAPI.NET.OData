@@ -19,12 +19,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         /// <summary>
         /// The link relation type.
         /// </summary>
-        public string Rel { get; private set; }
+        public string? Rel { get; private set; }
 
         /// <summary>
         /// The link to the documentation.
         /// </summary>
-        public Uri Href { get; private set; }
+        public Uri? Href { get; private set; }
 
         /// <summary>
         /// Init the <see cref="LinkType"/>.
@@ -34,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Rel = record.GetString("rel");
-            Href = new Uri(record.GetString("href"));
+            Href = record.GetString("href") is string href ? new Uri(href) : null;
         }
     }
 }

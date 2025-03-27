@@ -35,28 +35,33 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Patch;
 
-        private UpdateRestrictionsType _updateRestrictions;
+        private UpdateRestrictionsType? _updateRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
-            var singletonUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
-            _updateRestrictions?.MergePropertiesIfNull(singletonUpdateRestrictions);
-            _updateRestrictions ??= singletonUpdateRestrictions;
+            if (!string.IsNullOrEmpty(TargetPath))
+                _updateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+
+            if (Context is not null && Singleton is not null)
+            {
+                var singletonUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
+                _updateRestrictions?.MergePropertiesIfNull(singletonUpdateRestrictions);
+                _updateRestrictions ??= singletonUpdateRestrictions;
+            }
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Descriptions
-            string placeHolder = "Update " + Singleton.Name;
+            string placeHolder = "Update " + Singleton?.Name;
             operation.Summary = _updateRestrictions?.Description ?? placeHolder;
             operation.Description = _updateRestrictions?.LongDescription;
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true} && Singleton is not null)
             {
                 string typeName = Singleton.EntityType.Name;
                 operation.OperationId = Singleton.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
@@ -87,7 +92,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, _document, true, GetOpenApiSchema());
+            if (Context is not null && GetOpenApiSchema() is {} schema)
+                operation.AddErrorResponses(Context.Settings, _document, true, schema);
             base.SetResponses(operation);
         }
 
@@ -99,7 +105,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_updateRestrictions.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>
@@ -121,9 +127,10 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-        private IOpenApiSchema GetOpenApiSchema()
+        private IOpenApiSchema? GetOpenApiSchema()
         {
-            return Context.Settings.EnableDerivedTypesReferencesForRequestBody ?
+            if (Singleton is null) return null;
+            return Context is {Settings.EnableDerivedTypesReferencesForRequestBody: true} ?
                 EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model, _document) :
                 new OpenApiSchemaReference(Singleton.EntityType.FullName(), _document);
         }

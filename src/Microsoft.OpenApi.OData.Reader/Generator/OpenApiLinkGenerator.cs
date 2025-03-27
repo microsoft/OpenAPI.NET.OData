@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using System.Linq;
 using Microsoft.OpenApi.Models.Interfaces;
+using System;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -31,7 +32,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
         public static IDictionary<string, IOpenApiLink> CreateLinks(this ODataContext context,
             IEdmEntityType entityType, string entityName, string entityKind, ODataPath path,
-            IList<IOpenApiParameter> parameters = null, string navPropOperationId = null)
+            IList<IOpenApiParameter>? parameters = null, string? navPropOperationId = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
@@ -47,7 +48,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 foreach (var parameter in parameters)
                 {
                     if (!string.IsNullOrEmpty(parameter.Description) &&
-                        parameter.Description.ToLower().Contains("key"))
+                        parameter.Description.Contains("key", StringComparison.OrdinalIgnoreCase) &&
+                        !string.IsNullOrEmpty(parameter.Name))
                     {
                         pathKeyNames.Add(parameter.Name);
                     }
@@ -68,7 +70,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     switch (entityKind)
                     {
-                        case "Navigation": // just for contained navigations
+                        case "Navigation" when !string.IsNullOrEmpty(navPropOperationId): // just for contained navigations
                             operationPrefix = navPropOperationId;
                             break;
                         default: // EntitySet, Entity, Singleton
@@ -115,11 +117,12 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 foreach (var operationPath in operationPaths)
                 {
+                    if (operationPath.LastSegment?.Identifier is null) continue;
                     OpenApiLink link = new()
                     {
                         OperationId = string.Join(".", operationPath.Segments.Select(x =>
                         {
-                            return x.Kind.Equals(ODataSegmentKind.Key) ? x.EntityType.Name : x.Identifier;
+                            return x.Kind.Equals(ODataSegmentKind.Key) && x.EntityType is not null ? x.EntityType.Name : x.Identifier;
                         }))
                     };
 

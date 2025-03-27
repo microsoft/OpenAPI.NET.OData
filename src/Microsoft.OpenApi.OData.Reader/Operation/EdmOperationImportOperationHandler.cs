@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -31,17 +32,17 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             
         }
-        private OperationRestrictionsType _operationRestriction;
+        private OperationRestrictionsType? _operationRestriction;
 
         /// <summary>
         /// Gets the <see cref="IEdmOperationImport"/>.
         /// </summary>
-        protected IEdmOperationImport EdmOperationImport { get; private set; }
+        protected IEdmOperationImport? EdmOperationImport { get; private set; }
 
         /// <summary>
         /// Gets the <see cref="IEdmOperationImport"/>.
         /// </summary>
-        protected ODataOperationImportSegment OperationImportSegment { get; private set; }
+        protected ODataOperationImportSegment? OperationImportSegment { get; private set; }
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -49,29 +50,34 @@ namespace Microsoft.OpenApi.OData.Operation
             base.Initialize(context, path);
 
             OperationImportSegment = path.LastSegment as ODataOperationImportSegment;
-            EdmOperationImport = OperationImportSegment.OperationImport;
+            EdmOperationImport = OperationImportSegment?.OperationImport;
 
-            _operationRestriction = Context.Model.GetRecord<OperationRestrictionsType>(TargetPath, CapabilitiesConstants.OperationRestrictions);
-            var operationRestrictions = Context.Model.GetRecord<OperationRestrictionsType>(EdmOperationImport, CapabilitiesConstants.OperationRestrictions);
-
-            if (_operationRestriction == null)
+            _operationRestriction = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<OperationRestrictionsType>(TargetPath, CapabilitiesConstants.OperationRestrictions);
+            
+            
+            if (EdmOperationImport is not null && Context?.Model.GetRecord<OperationRestrictionsType>(EdmOperationImport, CapabilitiesConstants.OperationRestrictions) is {} operationRestrictions)
             {
-                _operationRestriction = operationRestrictions;
-            }
-            else
-            {
-                _operationRestriction.MergePropertiesIfNull(operationRestrictions);
+                if (_operationRestriction == null)
+                {
+                    _operationRestriction = operationRestrictions;
+                }
+                else
+                {
+                    _operationRestriction.MergePropertiesIfNull(operationRestrictions);
+                }
             }
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            operation.Summary = "Invoke " + (EdmOperationImport.IsActionImport() ? "actionImport " : "functionImport ") + EdmOperationImport.Name;
+            operation.Summary = "Invoke " + (EdmOperationImport.IsActionImport() ? "actionImport " : "functionImport ") + EdmOperationImport?.Name;
 
-            operation.Description = Context.Model.GetDescriptionAnnotation(TargetPath) ?? Context.Model.GetDescriptionAnnotation(EdmOperationImport);
+            if (Context is not null)
+                operation.Description = (string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetDescriptionAnnotation(TargetPath)) ??
+                                        Context.Model.GetDescriptionAnnotation(EdmOperationImport);
 
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true} && EdmOperationImport is not null )
             {
                 if (EdmOperationImport.IsActionImport())
                 {
@@ -81,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     if (Context.Model.IsOperationImportOverload(EdmOperationImport))
                     {
-                        operation.OperationId = "FunctionImport." + EdmOperationImport.Name + "-" + Path.LastSegment.GetPathHash(Context.Settings);
+                        operation.OperationId = "FunctionImport." + EdmOperationImport.Name + "-" + Path?.LastSegment?.GetPathHash(Context.Settings);
                     }
                     else
                     {
@@ -100,7 +106,9 @@ namespace Microsoft.OpenApi.OData.Operation
             // describing the structure of the success response by referencing an appropriate schema
             // in the global schemas. In addition, it contains a default name/value pair for
             // the OData error response referencing the global responses.
-            operation.Responses = Context.CreateResponses(EdmOperationImport, _document);
+            
+            if (Context is not null && EdmOperationImport is not null)
+                operation.Responses = Context.CreateResponses(EdmOperationImport, _document);
 
             base.SetResponses(operation);
         }
@@ -113,7 +121,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_operationRestriction.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_operationRestriction.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>
@@ -138,12 +146,16 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            var tag = CreateTag(EdmOperationImport);
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
-            Context.AppendTag(tag);
+            if (EdmOperationImport is not null)
+            {
+                var tag = CreateTag(EdmOperationImport);
+                tag.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
+                Context?.AppendTag(tag);
 
-            operation.Tags ??= new HashSet<OpenApiTagReference>();
-            operation.Tags.Add(new OpenApiTagReference(tag.Name, _document));
+                operation.Tags ??= new HashSet<OpenApiTagReference>();
+                operation.Tags.Add(new OpenApiTagReference(tag.Name!, _document));
+            }
 
             base.SetTags(operation);
         }
@@ -172,10 +184,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs)
+            if (Context is {Settings.ShowExternalDocs: true} && CustomLinkRel is not null)
             {
-                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
-                    Context.Model.GetLinkRecord(EdmOperationImport, CustomLinkRel);
+                var externalDocs = (string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetLinkRecord(TargetPath, CustomLinkRel)) ??
+                    (EdmOperationImport is null ? null : Context.Model.GetLinkRecord(EdmOperationImport, CustomLinkRel));
 
                 if (externalDocs != null)
                 {

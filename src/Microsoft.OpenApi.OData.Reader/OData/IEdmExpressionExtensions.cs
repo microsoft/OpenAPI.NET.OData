@@ -21,7 +21,7 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         /// <param name="expression">The <see cref="IEdmExpression"/>.</param>
         /// <returns>The null or <see cref="ODataValue"/>.</returns>
-        public static ODataValue Convert(this IEdmExpression expression)
+        public static ODataValue? Convert(this IEdmExpression expression)
         {
             if (expression == null)
             {
@@ -112,7 +112,7 @@ namespace Microsoft.OpenApi.OData
                     return new ODataResourceValue
                     {
                         TypeReference = recordExpression.DeclaredType,
-                        Properties = recordExpression.Properties.ToDictionary(p => p.Name, p => p.Value.Convert())
+                        Properties = recordExpression.Properties.Select(p => (p.Name, p.Value.Convert())).Where(p => p.Item2 is not null).ToDictionary(p => p.Item1, p => p.Item2!)
                     };
 
                 case EdmExpressionKind.Collection:
@@ -122,7 +122,7 @@ namespace Microsoft.OpenApi.OData
                         TypeReference = collectionExpression.DeclaredType
                     };
 
-                    collectionValue.Elements = collectionExpression.Elements.Select(e => e.Convert()).ToList();
+                    collectionValue.Elements = collectionExpression.Elements.Select(e => e.Convert()).OfType<ODataValue>().ToList();
                     return collectionValue;
 
                 case EdmExpressionKind.Path:

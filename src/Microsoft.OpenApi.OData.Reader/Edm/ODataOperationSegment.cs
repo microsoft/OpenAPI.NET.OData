@@ -72,17 +72,17 @@ namespace Microsoft.OpenApi.OData.Edm
             _model = model ?? throw Error.ArgumentNull(nameof(model));
         }
         
-        private readonly IEdmModel _model;
+        private readonly IEdmModel? _model;
         
         /// <summary>
         /// Gets the parameter mappings.
         /// </summary>
-        public IDictionary<string, string> ParameterMappings { get; }
+        public IDictionary<string, string>? ParameterMappings { get; }
 
         /// <summary>
         /// Gets the operation.
         /// </summary>
-        public IEdmOperation Operation { get; }
+        public IEdmOperation? Operation { get; }
 
         /// <summary>
         /// Gets the is escaped function.
@@ -93,31 +93,30 @@ namespace Microsoft.OpenApi.OData.Edm
         public override ODataSegmentKind Kind => ODataSegmentKind.Operation;
 
         /// <inheritdoc />
-        public override string Identifier { get => Operation.Name; }
+        public override string? Identifier { get => Operation?.Name; }
 
         /// <inheritdoc />
-        public override IEdmEntityType EntityType => null;
+        public override IEdmEntityType? EntityType => null;
 
         /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
+        public override string? GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
 
-            if (Operation.IsFunction())
+            if (Operation is IEdmFunction function)
             {
-                return FunctionName(Operation as IEdmFunction, settings, parameters);
+                return FunctionName(function, settings, parameters);
             }
 
-            return OperationName(Operation, settings);
+            return Operation is null ? null : OperationName(Operation, settings);
         }
 
         internal IDictionary<string, string> GetNameMapping(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             IDictionary<string, string> parameterNamesMapping = new Dictionary<string, string>();
 
-            if (Operation.IsFunction())
+            if (Operation is IEdmFunction function)
             {
-                IEdmFunction function = Operation as IEdmFunction;
                 if (settings.EnableUriEscapeFunctionCall && IsEscapedFunction)
                 {
                     string parameterName = function.Parameters.Last().Name;
@@ -156,8 +155,6 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             if (settings.EnableUriEscapeFunctionCall && IsEscapedFunction)
             {
-                // Debug.Assert(function.Parameters.Count == 2); It should be verify at Edm model.
-                // Debug.Assert(function.IsBound == true);
                 string parameterName = function.Parameters.Last().Name;
                 string uniqueName = Utils.GetUniqueName(parameterName, parameters);
                 if (function.IsComposable)
@@ -172,7 +169,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             StringBuilder functionName = new();
             functionName.Append(OperationName(function, settings));
-            functionName.Append("(");
+            functionName.Append('(');
             
             int skip = function.IsBound ? 1 : 0;
             functionName.Append(string.Join(",", function.Parameters.Skip(skip).Select(p =>
@@ -184,7 +181,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     : p.Name + $"={quote}{{{uniqueName}}}{quote}";
             })));
 
-            functionName.Append(")");
+            functionName.Append(')');
 
             return functionName.ToString();
         }
@@ -192,7 +189,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
-			return new IEdmVocabularyAnnotatable[] { Operation };
+			return Operation is null ? [] : [Operation];
 		}
     }
 }

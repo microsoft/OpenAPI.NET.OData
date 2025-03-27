@@ -3,8 +3,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -28,7 +30,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 	/// <summary>
 	/// Gets the complex property
 	/// </summary>
-	protected IEdmStructuralProperty ComplexProperty { get; private set; }
+	protected IEdmStructuralProperty? ComplexProperty { get; private set; }
 
 	/// <inheritdoc/>
 	protected override void SetOperations(OpenApiPathItem item)
@@ -40,13 +42,16 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 
     public void AddReadOperation(OpenApiPathItem item)
     {
-        ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-        ReadRestrictionsType complexTypeReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions);
-        readRestrictions?.MergePropertiesIfNull(complexTypeReadRestrictions);
-        readRestrictions ??= complexTypeReadRestrictions;
+        var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null :  Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+        if (ComplexProperty is not null)
+        {
+            var complexTypeReadRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions);
+            readRestrictions?.MergePropertiesIfNull(complexTypeReadRestrictions);
+            readRestrictions ??= complexTypeReadRestrictions;
+        }
         bool isReadable = readRestrictions?.Readable ?? false;
-        if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isReadable) ||
-            !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
+        if (Context is not null && ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isReadable) ||
+            !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths))
         {
             AddOperation(item, HttpMethod.Get);
         }
@@ -54,15 +59,18 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 
 	public void AddInsertOperation(OpenApiPathItem item)
 	{
-        if (Path.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsCollection())
+        if (Path?.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsCollection())
         {
-            InsertRestrictionsType insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
-            InsertRestrictionsType entityInsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions);
-            insertRestrictions?.MergePropertiesIfNull(entityInsertRestrictions);
-            insertRestrictions ??= entityInsertRestrictions;
+            var insertRestrictions = string.IsNullOrEmpty(TargetPath) ? null :  Context?.Model.GetRecord<InsertRestrictionsType>(TargetPath, CapabilitiesConstants.InsertRestrictions);
+            if (ComplexProperty is not null)
+            {
+                var entityInsertRestrictions = Context?.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions);
+                insertRestrictions?.MergePropertiesIfNull(entityInsertRestrictions);
+                insertRestrictions ??= entityInsertRestrictions;
+            }
             bool isInsertable = insertRestrictions?.Insertable ?? false;
-            if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isInsertable) ||
-                !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
+            if (Context is not null && ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isInsertable) ||
+                !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths))
             {
                 AddOperation(item, HttpMethod.Post);
             }
@@ -71,13 +79,16 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 
 	public void AddUpdateOperation(OpenApiPathItem item)
 	{
-        UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
-        UpdateRestrictionsType complexTypeUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty, CapabilitiesConstants.UpdateRestrictions);
-        updateRestrictions?.MergePropertiesIfNull(complexTypeUpdateRestrictions);
-        updateRestrictions ??= complexTypeUpdateRestrictions;
+        var updateRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+        if (ComplexProperty is not null)
+        {
+            var complexTypeUpdateRestrictions = Context?.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty, CapabilitiesConstants.UpdateRestrictions);
+            updateRestrictions?.MergePropertiesIfNull(complexTypeUpdateRestrictions);
+            updateRestrictions ??= complexTypeUpdateRestrictions;
+        }
         bool isUpdatable = updateRestrictions?.Updatable ?? false;
-        if ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isUpdatable) ||
-            !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths)
+        if (Context is not null && ((Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths && isUpdatable) ||
+            !Context.Settings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths))
         {
             if (updateRestrictions?.IsUpdateMethodPutAndPatch == true)
             {
@@ -101,13 +112,19 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 		base.Initialize(context, path);
 
 		// The last segment should be the complex property segment.
-		ODataComplexPropertySegment navigationSourceSegment = path.LastSegment as ODataComplexPropertySegment;
-		ComplexProperty = navigationSourceSegment.Property;
+		if (path.LastSegment is ODataComplexPropertySegment {Property: {} property})
+		    ComplexProperty = property;
 	}
 
 	/// <inheritdoc/>
 	protected override void SetExtensions(OpenApiPathItem item)
 	{
-		item.Extensions.AddCustomAttributesToExtensions(Context, ComplexProperty);
+        if (ComplexProperty is null) return;
+
+        if (Context is not null)
+        {
+            item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+		    item.Extensions.AddCustomAttributesToExtensions(Context, ComplexProperty);
+        }
 	}
 }

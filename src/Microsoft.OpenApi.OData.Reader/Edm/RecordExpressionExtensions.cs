@@ -41,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="record">The given record.</param>
         /// <param name="propertyName">The property name.</param>
         /// <returns>The property string value.</returns>
-        public static string GetString(this IEdmRecordExpression record, string propertyName)
+        public static string? GetString(this IEdmRecordExpression record, string propertyName)
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
@@ -127,7 +127,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="record">The record expression.</param>
         /// <param name="propertyName">The property name.</param>
         /// <returns>The collection or null.</returns>
-        public static T GetRecord<T>(this IEdmRecordExpression record, string propertyName)
+        public static T? GetRecord<T>(this IEdmRecordExpression record, string propertyName)
             where T : IRecord, new()
         {
             Utils.CheckArgumentNull(record, nameof(record));
@@ -150,7 +150,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="record">The record expression.</param>
         /// <param name="propertyName">The property name.</param>
         /// <returns>The property path or null.</returns>
-        public static string GetPropertyPath(this IEdmRecordExpression record, string propertyName)
+        public static string? GetPropertyPath(this IEdmRecordExpression record, string propertyName)
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
@@ -167,7 +167,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="record">The record expression.</param>
         /// <param name="propertyName">The property name.</param>
         /// <returns>The collection of property path or null.</returns>
-        public static IList<string> GetCollectionPropertyPath(this IEdmRecordExpression record, string propertyName)
+        public static IList<string>? GetCollectionPropertyPath(this IEdmRecordExpression record, string propertyName)
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
@@ -196,7 +196,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="record">The record expression.</param>
         /// <param name="propertyName">The property name.</param>
         /// <returns>The collection of string or null.</returns>
-        public static IList<string> GetCollection(this IEdmRecordExpression record, string propertyName)
+        public static IList<string>? GetCollection(this IEdmRecordExpression record, string propertyName)
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
@@ -221,7 +221,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="record">The record expression.</param>
         /// <param name="propertyName">The property name.</param>
         /// <returns>The collection or null.</returns>
-        public static IList<T> GetCollection<T>(this IEdmRecordExpression record, string propertyName)
+        public static IList<T>? GetCollection<T>(this IEdmRecordExpression record, string propertyName)
             where T : IRecord, new()
         {
             Utils.CheckArgumentNull(record, nameof(record));

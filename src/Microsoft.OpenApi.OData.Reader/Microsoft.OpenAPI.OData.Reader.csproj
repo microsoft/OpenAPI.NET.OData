@@ -18,6 +18,7 @@
     <DocumentationFile>..\..\bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <!-- https://github.com/dotnet/sourcelink/blob/main/docs/README.md#embeduntrackedsources -->
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <Nullable>enable</Nullable>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
@@ -30,11 +31,11 @@
     </PackageReference>
     <PackageReference Include="Microsoft.OData.Edm" Version="8.2.3" />
     <PackageReference Include="Microsoft.OpenApi" Version="2.0.0-preview.15" />
-	<None Include="..\..\README.md" Pack="true" PackagePath="\" />
-	<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.13.61">
-	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  <PrivateAssets>all</PrivateAssets>
-	</PackageReference>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.13.61">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

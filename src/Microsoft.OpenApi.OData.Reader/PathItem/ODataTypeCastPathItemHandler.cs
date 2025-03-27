@@ -3,8 +3,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -41,19 +43,22 @@ internal class ODataTypeCastPathItemHandler : PathItemHandler
             StructuredType = castSegment.StructuredType;
         }
     }
-    private IEdmStructuredType StructuredType { get; set; }
+    private IEdmStructuredType? StructuredType { get; set; }
 
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiPathItem pathItem)
     {
         base.SetBasicInfo(pathItem);
-        pathItem.Description = $"Casts the previous resource to {(StructuredType as IEdmNamedElement).Name}.";
+        if (StructuredType is IEdmNamedElement namedElement)
+            pathItem.Description = $"Casts the previous resource to {namedElement.Name}.";
     }
 
     /// <inheritdoc/>
-    protected override void SetExtensions(OpenApiPathItem pathItem)
+    protected override void SetExtensions(OpenApiPathItem item)
     {
-        base.SetExtensions(pathItem);
-        pathItem.Extensions.AddCustomAttributesToExtensions(Context, StructuredType);
+        base.SetExtensions(item);
+        if (StructuredType is null || Context is null) return;
+        item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+        item.Extensions.AddCustomAttributesToExtensions(Context, StructuredType);
     }
 }

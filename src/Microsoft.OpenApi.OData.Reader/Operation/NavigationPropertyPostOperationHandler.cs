@@ -32,7 +32,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Post;
 
-        private InsertRestrictionsType _insertRestriction;
+        private InsertRestrictionsType? _insertRestriction;
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -45,12 +45,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            string placeHolder = "Create new navigation property to " + NavigationProperty.Name + " for " + NavigationSource.Name;
+            string placeHolder = "Create new navigation property to " + NavigationProperty?.Name + " for " + NavigationSource?.Name;
             operation.Summary = _insertRestriction?.Description ?? placeHolder;
             operation.Description = _insertRestriction?.LongDescription;
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true})
             {
                 string prefix = "Create";
                 operation.OperationId = GetOperationId(prefix);
@@ -62,12 +62,9 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document);
-            }
+            var schema = Context is {Settings.EnableDerivedTypesReferencesForRequestBody: true} ?
+                EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document) :
+                null;
 
             operation.RequestBody = new OpenApiRequestBody
             {
@@ -82,17 +79,14 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document);
-            }
+            var schema = Context is {Settings.EnableDerivedTypesReferencesForResponses: true} ? 
+                EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document) :
+                null;
 
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode201,
+                    Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode201,
                     new OpenApiResponse
                     {
                         Description = "Created navigation property.",
@@ -100,7 +94,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -112,7 +107,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_insertRestriction.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_insertRestriction.Permissions ?? [], _document).ToList() ?? [];
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

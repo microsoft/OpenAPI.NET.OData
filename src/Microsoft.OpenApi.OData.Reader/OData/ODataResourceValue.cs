@@ -15,6 +15,6 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets or sets the properties.
         /// </summary>
-        public IDictionary<string, ODataValue> Properties { get; set; }
+        public IDictionary<string, ODataValue>? Properties { get; set; }
     }
 }

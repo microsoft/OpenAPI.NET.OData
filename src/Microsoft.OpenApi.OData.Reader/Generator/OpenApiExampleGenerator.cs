@@ -47,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static OpenApiExample CreateExample(this ODataContext context, IEdmType edmType, OpenApiDocument document)
+        private static OpenApiExample? CreateExample(this ODataContext context, IEdmType edmType, OpenApiDocument document)
         {
             Debug.Assert(context != null);
             Debug.Assert(edmType != null);

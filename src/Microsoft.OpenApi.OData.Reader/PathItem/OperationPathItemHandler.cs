@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -34,7 +35,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <summary>
         /// Gets the Edm operation.
         /// </summary>
-        public IEdmOperation EdmOperation { get; private set; }
+        public IEdmOperation? EdmOperation { get; private set; }
 
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
@@ -58,61 +59,65 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             base.Initialize(context, path);
 
-            ODataOperationSegment operationSegment = path.LastSegment as ODataOperationSegment;
-            EdmOperation = operationSegment.Operation;
+            if (path.LastSegment is ODataOperationSegment {Operation: {} operation})
+                EdmOperation = operation;
         }
 
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiPathItem item)
         {
-            if (!Context.Settings.ShowMsDosGroupPath)
+            if (Context is null || !Context.Settings.ShowMsDosGroupPath)
             {
                 return;
             }
 
-            ODataNavigationSourceSegment navigationSourceSegment = Path.FirstSegment as ODataNavigationSourceSegment;
-            IEdmNavigationSource currentNavSource = navigationSourceSegment.NavigationSource;
-
-            IList<ODataPath> samePaths = new List<ODataPath>();
-            foreach (var path in Context.AllPaths.Where(p => p.Kind == ODataPathKind.Operation && p != Path))
+            if (Path?.FirstSegment is ODataNavigationSourceSegment {NavigationSource: IEdmNavigationSource currentNavSource})
             {
-                navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-                if (currentNavSource != navigationSourceSegment.NavigationSource)
+
+                var samePaths = new List<ODataPath>();
+                foreach (var path in Context.AllPaths.Where(p => p.Kind == ODataPathKind.Operation && p != Path))
                 {
-                    continue;
+                    if (path.FirstSegment is ODataNavigationSourceSegment navigationSourceSegment && currentNavSource != navigationSourceSegment.NavigationSource)
+                    {
+                        continue;
+                    }
+
+                    if (path.LastSegment is ODataOperationSegment operationSegment && EdmOperation.FullName() != operationSegment.Operation.FullName())
+                    {
+                        continue;
+                    }
+
+                    samePaths.Add(path);
                 }
 
-                ODataOperationSegment operationSegment = path.LastSegment as ODataOperationSegment;
-                if (EdmOperation.FullName() != operationSegment.Operation.FullName())
+                if (samePaths.Any())
                 {
-                    continue;
+                    JsonArray array = new JsonArray();
+                    OpenApiConvertSettings settings = Context.Settings.Clone();
+                    settings.EnableKeyAsSegment = Context.KeyAsSegment;
+                    foreach (var p in samePaths)
+                    {
+                        array.Add(p.GetPathItemName(settings));
+                    }
+
+                    item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                    item.Extensions.Add(Constants.xMsDosGroupPath, new OpenApiAny(array));
                 }
-
-                samePaths.Add(path);
-            }
-
-            if (samePaths.Any())
-            {
-                JsonArray array = new JsonArray();
-                OpenApiConvertSettings settings = Context.Settings.Clone();
-                settings.EnableKeyAsSegment = Context.KeyAsSegment;
-                foreach (var p in samePaths)
-                {
-                    array.Add(p.GetPathItemName(settings));
-                }
-
-                item.Extensions.Add(Constants.xMsDosGroupPath, new OpenApiAny(array));
             }
 
             base.SetExtensions(item);
-            item.Extensions.AddCustomAttributesToExtensions(Context, EdmOperation);            
+            if (EdmOperation is not null)
+            {
+                item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                item.Extensions.AddCustomAttributesToExtensions(Context, EdmOperation);
+            }
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
             base.SetBasicInfo(pathItem);
-            pathItem.Description = $"Provides operations to call the {EdmOperation.Name} method.";
+            pathItem.Description = $"Provides operations to call the {EdmOperation?.Name} method.";
         }
     }
 }

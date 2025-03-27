@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -30,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Gets/sets the <see cref="IEdmEntitySet"/>.
         /// </summary>
-        protected IEdmEntitySet EntitySet { get; private set; }
+        protected IEdmEntitySet? EntitySet { get; private set; }
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -38,19 +39,18 @@ namespace Microsoft.OpenApi.OData.Operation
             base.Initialize(context, path);
 
             // get the entity set.
-            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-
-            EntitySet = navigationSourceSegment.NavigationSource as IEdmEntitySet;
+            if (path.FirstSegment is ODataNavigationSourceSegment {NavigationSource: IEdmEntitySet navigationSource})
+                EntitySet = navigationSource;
         }
 
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            var tagName = EntitySet.Name + "." + EntitySet.EntityType.Name;
+            var tagName = EntitySet?.Name + "." + EntitySet?.EntityType.Name;
             operation.Tags ??= new HashSet<OpenApiTagReference>();
             operation.Tags.Add(new OpenApiTagReference(tagName, _document));
 
-            Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+            Context?.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
 			{
 				Name = tagName
 			});
@@ -61,6 +61,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
+            operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("operation"));
 
             base.SetExtensions(operation);
@@ -69,10 +70,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs)
+            if (Context is {Settings.ShowExternalDocs: true} && CustomLinkRel is not null)
             {
-                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
-                    Context.Model.GetLinkRecord(EntitySet, CustomLinkRel);
+                var externalDocs = (string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetLinkRecord(TargetPath, CustomLinkRel)) ??
+                    (EntitySet is null ? null : Context.Model.GetLinkRecord(EntitySet, CustomLinkRel));
 
                 if (externalDocs != null)
                 {

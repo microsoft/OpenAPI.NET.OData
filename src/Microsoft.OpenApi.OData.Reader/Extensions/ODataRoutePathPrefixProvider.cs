@@ -16,11 +16,11 @@ namespace Microsoft.OpenApi.OData.Extensions
         /// <summary>
         /// Gets/sets the path prefix.
         /// </summary>
-        public string PathPrefix { get; set; }
+        public string? PathPrefix { get; set; }
 
         /// <summary>
         /// Gets/sets the associated parameters for the path prefix.
         /// </summary>
-        public IEnumerable<OpenApiParameter> Parameters { get; set; }
+        public IEnumerable<OpenApiParameter>? Parameters { get; set; }
     }
 }

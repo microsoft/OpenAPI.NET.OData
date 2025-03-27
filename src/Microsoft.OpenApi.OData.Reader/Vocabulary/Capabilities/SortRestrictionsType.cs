@@ -25,17 +25,17 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the properties which can only be used for sorting in Ascending order.
         /// </summary>
-        public IList<string> AscendingOnlyProperties { get; private set; }
+        public IList<string>? AscendingOnlyProperties { get; private set; }
 
         /// <summary>
         /// Gets the properties which can only be used for sorting in Descending order.
         /// </summary>
-        public IList<string> DescendingOnlyProperties { get; private set; }
+        public IList<string>? DescendingOnlyProperties { get; private set; }
 
         /// <summary>
         /// Gets the properties which cannot be used in $orderby expressions.
         /// </summary>
-        public IList<string> NonSortableProperties { get; private set; }
+        public IList<string>? NonSortableProperties { get; private set; }
 
         /// <summary>
         /// Gets a boolean value indicating whether the target supports $orderby.
@@ -89,7 +89,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // DescendingOnlyProperties
             DescendingOnlyProperties = record.GetCollectionPropertyPath("DescendingOnlyProperties");
 
-            // NonSortablePropeties
+            // NonSortableProperties
             NonSortableProperties = record.GetCollectionPropertyPath("NonSortableProperties");
         }
     }

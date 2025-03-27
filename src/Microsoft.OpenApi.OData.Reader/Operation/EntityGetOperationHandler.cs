@@ -35,39 +35,43 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Get;
 
-        private ReadRestrictionsType _readRestrictions;
+        private ReadRestrictionsType? _readRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            var entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
-            _readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
-            _readRestrictions ??= entityReadRestrictions;
+            if (!string.IsNullOrEmpty(TargetPath))
+                _readRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            if (Context is not null && EntitySet is not null)
+            {
+                var entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+                _readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
+                _readRestrictions ??= entityReadRestrictions;
+            }
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            IEdmEntityType entityType = EntitySet.EntityType;
-            ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
+            var keySegment = Path?.LastSegment as ODataKeySegment;
 
             // Description
-            string placeHolder = "Get entity from " + EntitySet.Name + " by key";
-            if (keySegment.IsAlternateKey) 
+            string placeHolder = "Get entity from " + EntitySet?.Name + " by key";
+            if (keySegment?.IsAlternateKey ?? false) 
             {
                 placeHolder = $"{placeHolder} ({keySegment.Identifier})";
             }
             operation.Summary = _readRestrictions?.ReadByKeyRestrictions?.Description ?? placeHolder;
-            operation.Description = _readRestrictions?.ReadByKeyRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(entityType);
+            operation.Description = _readRestrictions?.ReadByKeyRestrictions?.LongDescription ?? 
+                                    (EntitySet is null ? null : Context?.Model.GetDescriptionAnnotation(EntitySet.EntityType));
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true} && EntitySet?.EntityType.Name is string entityTypeName)
             { 
-                string typeName = entityType.Name;
+                string typeName = entityTypeName;
                 string operationName = $"Get{Utils.UpperFirstChar(typeName)}";
-                if (keySegment.IsAlternateKey)
+                if (keySegment?.IsAlternateKey ?? false)
                 {
                     string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
                     operationName = $"{operationName}By{alternateKeyName}";
@@ -81,47 +85,49 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
+            if (Context is null || EntitySet is null) return;
+
             // $select
-            OpenApiParameter parameter = Context.CreateSelect(EntitySet);
-            if (parameter != null)
+            if (Context.CreateSelect(EntitySet) is {} sParameter)
             {
-                operation.Parameters.Add(parameter);
+                operation.Parameters ??= [];
+                operation.Parameters.Add(sParameter);
             }
 
             // $expand
-            parameter = Context.CreateExpand(EntitySet);
-            if (parameter != null)
+            if (Context.CreateExpand(EntitySet) is {} eParameter)
             {
-                operation.Parameters.Add(parameter);
+                operation.Parameters ??= [];
+                operation.Parameters.Add(eParameter);
             }
         }
 
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            IOpenApiSchema schema = null;
-            IDictionary<string, IOpenApiLink> links = null;
+            IOpenApiSchema? schema = null;
+            IDictionary<string, IOpenApiLink>? links = null;
 
-            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+            if (EntitySet is not null)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
-            }
+                if (Context is {Settings.EnableDerivedTypesReferencesForResponses: true})
+                {
+                    schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType, Context.Model, _document);
+                }
 
-            if (Context.Settings.ShowLinks)
-            {
-                links = Context.CreateLinks(entityType: EntitySet.EntityType, entityName: EntitySet.Name,
-                        entityKind: EntitySet.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
-            }
+                if (Context is {Settings.ShowLinks: true} && Path is not null)
+                {
+                    links = Context.CreateLinks(entityType: EntitySet.EntityType, entityName: EntitySet.Name,
+                            entityKind: EntitySet.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
+                }
 
-            if (schema == null)
-            {
-                schema = new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
+                schema ??= new OpenApiSchemaReference(EntitySet.EntityType.FullName(), _document);
             }
 
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                    Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                     new OpenApiResponse
                     {
                         Description = "Retrieved entity",
@@ -139,7 +145,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -157,12 +164,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 readBase = _readRestrictions.ReadByKeyRestrictions;
             }
 
-            if (readBase == null && readBase.Permissions == null)
+            if (readBase == null || readBase.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

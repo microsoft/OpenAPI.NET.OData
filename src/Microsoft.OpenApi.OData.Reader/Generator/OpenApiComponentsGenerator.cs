@@ -32,9 +32,12 @@ namespace Microsoft.OpenApi.OData.Generator
             context.AddRequestBodiesToDocument(document);
             context.AddExamplesToDocument(document);
             context.AddSecuritySchemesToDocument(document);
-            document.Components.Links = null;
-            document.Components.Callbacks = null;
-            document.Components.Extensions = null;
+            if (document.Components is not null)
+            {
+                document.Components.Links = null;
+                document.Components.Callbacks = null;
+                document.Components.Extensions = null;
+            }
         }
     }
 }

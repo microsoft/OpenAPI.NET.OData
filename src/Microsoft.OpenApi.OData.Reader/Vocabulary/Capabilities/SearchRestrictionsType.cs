@@ -102,29 +102,23 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             Searchable = record.GetBoolean("Searchable");
 
             // read the "UnsupportedExpressions"
-            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == "UnsupportedExpressions");
-            if (property != null)
+            if (record.Properties.FirstOrDefault(e => e.Name == "UnsupportedExpressions") is {Value: IEdmEnumMemberExpression {EnumMembers: not null} value})
             {
-                IEdmEnumMemberExpression value = property.Value as IEdmEnumMemberExpression;
-                if (value != null && value.EnumMembers != null)
-                {
-                    SearchExpressions result;
-                    foreach (var v in value.EnumMembers)
-                    {
-                        if (Enum.TryParse(v.Name, out result))
-                        {
-                            if (UnsupportedExpressions == null)
-                            {
-                                UnsupportedExpressions = result;
-                            }
-                            else
-                            {
-                                UnsupportedExpressions = UnsupportedExpressions | result;
-                            }
-                        }
-                    }
-                }
-            }
+				foreach (var v in value.EnumMembers)
+				{
+					if (Enum.TryParse(v.Name, out SearchExpressions result))
+					{
+						if (UnsupportedExpressions == null)
+						{
+							UnsupportedExpressions = result;
+						}
+						else
+						{
+							UnsupportedExpressions |= result;
+						}
+					}
+				}
+			}
         }
     }
 }

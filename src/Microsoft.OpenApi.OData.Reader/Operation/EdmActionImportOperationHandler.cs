@@ -3,9 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Generator;
@@ -30,11 +32,10 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            IEdmActionImport actionImport = EdmOperationImport as IEdmActionImport;
-
             // The requestBody field contains a Request Body Object describing the structure of the request body.
             // Its schema value follows the rules for Schema Objects for complex types, with one property per action parameter.
-            operation.RequestBody = Context.CreateRequestBody(actionImport, _document);
+            if (EdmOperationImport is IEdmActionImport actionImport)
+                operation.RequestBody = Context?.CreateRequestBody(actionImport, _document);
 
             base.SetRequestBody(operation);
         }
@@ -42,6 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
+            operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("actionImport"));
 
             base.SetExtensions(operation);

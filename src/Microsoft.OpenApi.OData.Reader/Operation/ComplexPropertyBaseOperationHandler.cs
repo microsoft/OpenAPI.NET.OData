@@ -23,7 +23,7 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
     {
         
     }
-    protected ODataComplexPropertySegment ComplexPropertySegment;
+    protected ODataComplexPropertySegment? ComplexPropertySegment;
     
     /// <inheritdoc/>
     protected override void Initialize(ODataContext context, ODataPath path)
@@ -35,15 +35,18 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
     /// <inheritdoc/>
     protected override void SetTags(OpenApiOperation operation)
     {
-        string tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, Context);
-        operation.Tags ??= new HashSet<OpenApiTagReference>();
-        if (!string.IsNullOrEmpty(tagName))
+        if (Context is not null && Path is not null)
         {
-            Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
-			{
-				Name = tagName
-			});
-            operation.Tags.Add(new OpenApiTagReference(tagName, _document));
+            string tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, Context);
+            operation.Tags ??= new HashSet<OpenApiTagReference>();
+            if (!string.IsNullOrEmpty(tagName))
+            {
+                Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+                {
+                    Name = tagName
+                });
+                operation.Tags.Add(new OpenApiTagReference(tagName, _document));
+            }
         }
         
         base.SetTags(operation);
@@ -52,10 +55,10 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
     /// <inheritdoc/>
     protected override void SetExternalDocs(OpenApiOperation operation)
     {
-        if (Context.Settings.ShowExternalDocs)
+        if (Context is {Settings.ShowExternalDocs: true} && CustomLinkRel is not null)
         {
-            var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
-                Context.Model.GetLinkRecord(ComplexPropertySegment.Property, CustomLinkRel);
+            var externalDocs = (string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetLinkRecord(TargetPath, CustomLinkRel)) ??
+                (ComplexPropertySegment is null ? null : Context.Model.GetLinkRecord(ComplexPropertySegment.Property, CustomLinkRel));
 
             if (externalDocs != null)
             {

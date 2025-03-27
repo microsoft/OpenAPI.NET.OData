@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         /// <summary>
         /// Gets the Example value for the custom parameter
         /// </summary>
-        public ODataResourceValue Value { get; private set; }
+        public ODataResourceValue? Value { get; private set; }
 
         /// <summary>
         /// Init the <see cref="ResourceExampleValue"/>

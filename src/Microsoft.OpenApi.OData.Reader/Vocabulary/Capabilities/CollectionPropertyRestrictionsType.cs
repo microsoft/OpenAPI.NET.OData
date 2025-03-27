@@ -19,27 +19,27 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the Restricted Collection-valued property.
         /// </summary>
-        public string CollectionProperty { get; private set; }
+        public string? CollectionProperty { get; private set; }
 
         /// <summary>
         /// Gets the List of functions and operators supported in filter expressions..
         /// </summary>
-        public IList<string> FilterFunctions { get; private set; }
+        public IList<string>? FilterFunctions { get; private set; }
 
         /// <summary>
         /// Gets Restrictions on filter expressions.
         /// </summary>
-        public FilterRestrictionsType FilterRestrictions { get; private set; }
+        public FilterRestrictionsType? FilterRestrictions { get; private set; }
 
         /// <summary>
         /// Gets Restrictions on search expressions.
         /// </summary>
-        public SearchRestrictionsType SearchRestrictions { get; private set; }
+        public SearchRestrictionsType? SearchRestrictions { get; private set; }
 
         /// <summary>
         /// Gets Restrictions on orderby expressions.
         /// </summary>
-        public SortRestrictionsType SortRestrictions { get; private set; }
+        public SortRestrictionsType? SortRestrictions { get; private set; }
 
         /// <summary>
         /// Gets Supports $top.
@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets Support for $select.
         /// </summary>
-        public SelectSupportType SelectSupport { get; private set; }
+        public SelectSupportType? SelectSupport { get; private set; }
 
         /// <summary>
         /// Gets the collection supports positional inserts.

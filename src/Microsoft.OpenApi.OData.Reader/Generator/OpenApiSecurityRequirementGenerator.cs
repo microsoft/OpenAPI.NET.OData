@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Vocabulary.Authorization;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.Models.References;
 
@@ -36,12 +35,16 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 foreach (PermissionType permission in permissions)
                 {
+                    if (string.IsNullOrEmpty(permission.SchemeName))
+                    {
+                        continue;
+                    }
                     yield return new OpenApiSecurityRequirement
                     {
                         [
                             new OpenApiSecuritySchemeReference(permission.SchemeName, document)
-                        ] = new List<string>(permission.Scopes?.Select(c => c.Scope) ?? new List<string>())
-                    };
+                        ] = [.. permission.Scopes?.Select(c => c.Scope).OfType<string>() ?? []]
+					};
                 }
             }
         }

@@ -15,6 +15,6 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets or set the type reference of this value.
         /// </summary>
-        public IEdmTypeReference TypeReference { get; set; }
+        public IEdmTypeReference? TypeReference { get; set; }
     }
 }

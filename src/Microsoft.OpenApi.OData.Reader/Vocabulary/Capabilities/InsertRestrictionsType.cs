@@ -25,12 +25,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the structural properties cannot be specified on insert.
         /// </summary>
-        public IList<string> NonInsertableProperties { get; private set; }
+        public IList<string>? NonInsertableProperties { get; private set; }
 
         /// <summary>
         /// Gets the navigation properties which do not allow deep inserts.
         /// </summary>
-        public IList<string> NonInsertableNavigationProperties { get; private set; }
+        public IList<string>? NonInsertableNavigationProperties { get; private set; }
 
         /// <summary>
         /// Gets the maximum number of navigation properties that can be traversed.
@@ -45,50 +45,50 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the required scopes to perform the insert.
         /// </summary>
-        public IList<PermissionType> Permissions { get; private set; }
+        public IList<PermissionType>? Permissions { get; private set; }
 
         /// <summary>
         /// Gets the Support for query options with insert requests.
         /// </summary>
-        public ModificationQueryOptionsType QueryOptions { get; private set; }
+        public ModificationQueryOptionsType? QueryOptions { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom headers.
         /// </summary>
-        public IList<CustomParameter> CustomHeaders { get; private set; }
+        public IList<CustomParameter>? CustomHeaders { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom query options.
         /// </summary>
-        public IList<CustomParameter> CustomQueryOptions { get; private set; }
+        public IList<CustomParameter>? CustomQueryOptions { get; private set; }
 
         /// <summary>
         /// Gets A brief description of the request.
         /// </summary>
-        public string Description { get; private set; }
+        public string? Description { get; private set; }
 
         /// <summary>
         /// Gets A lengthy description of the request.
         /// </summary>
-        public string LongDescription { get; private set; }
+        public string? LongDescription { get; private set; }
 
         /// <summary>
         /// Test the target supports insert.
         /// </summary>
         /// <returns>True/false.</returns>
-        public bool IsInsertable => Insertable == null || Insertable.Value == true;
+        public bool IsInsertable => Insertable == null || Insertable.Value;
 
         /// <summary>
         /// Lists the media types acceptable for the request content
         /// </summary>
         /// <remarks>This is not an official OASIS standard property.</remarks>
-        public IList<string> RequestContentTypes { get; private set; }
+        public IList<string>? RequestContentTypes { get; private set; }
 
         /// <summary>
         /// Lists the media types acceptable for the response content
         /// </summary>
         /// <remarks>This is not an official OASIS standard property.</remarks>
-        public IList<string> ResponseContentTypes { get; private set; }
+        public IList<string>? ResponseContentTypes { get; private set; }
 
         /// <summary>
         /// Test the input navigation property do not allow deep insert.
@@ -111,47 +111,47 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             Utils.CheckArgumentNull(record, nameof(record));
 
             // Insertable
-            Insertable = record.GetBoolean("Insertable");
+            Insertable = record.GetBoolean(nameof(Insertable));
 
             // NonInsertableNavigationProperties
-            NonInsertableNavigationProperties = record.GetCollectionPropertyPath("NonInsertableNavigationProperties");
+            NonInsertableNavigationProperties = record.GetCollectionPropertyPath(nameof(NonInsertableNavigationProperties));
 
             // MaxLevels
-            MaxLevels = record.GetInteger("MaxLevels");
+            MaxLevels = record.GetInteger(nameof(MaxLevels));
 
             // TypecastSegmentSupported
-            TypecastSegmentSupported = record.GetBoolean("TypecastSegmentSupported");
+            TypecastSegmentSupported = record.GetBoolean(nameof(TypecastSegmentSupported));
 
             // Permissions
-            Permissions = record.GetCollection<PermissionType>("Permissions");
+            Permissions = record.GetCollection<PermissionType>(nameof(Permissions));
 
             // QueryOptions
-            QueryOptions = record.GetRecord<ModificationQueryOptionsType>("QueryOptions");
+            QueryOptions = record.GetRecord<ModificationQueryOptionsType>(nameof(QueryOptions));
 
             // CustomHeaders
-            CustomHeaders = record.GetCollection<CustomParameter>("CustomHeaders");
+            CustomHeaders = record.GetCollection<CustomParameter>(nameof(CustomHeaders));
 
             // CustomHeaders
-            CustomQueryOptions = record.GetCollection<CustomParameter>("CustomQueryOptions");
+            CustomQueryOptions = record.GetCollection<CustomParameter>(nameof(CustomQueryOptions));
 
             // Description
-            Description = record.GetString("Description");
+            Description = record.GetString(nameof(Description));
 
             // LongDescription
-            LongDescription = record.GetString("LongDescription");
+            LongDescription = record.GetString(nameof(LongDescription));
 
             // RequestContentTypes
-            RequestContentTypes = record.GetCollection("RequestContentTypes");
+            RequestContentTypes = record.GetCollection(nameof(RequestContentTypes));
 
             // ResponseContentTypes
-            ResponseContentTypes = record.GetCollection("ResponseContentTypes");
+            ResponseContentTypes = record.GetCollection(nameof(ResponseContentTypes));
         }
 
         /// <summary>
         /// Merges properties of the specified <see cref="InsertRestrictionsType"/> object into this instance if they are null.
         /// </summary>
         /// <param name="source">The <see cref="InsertRestrictionsType"/> object containing properties to merge.</param>
-        public void MergePropertiesIfNull(InsertRestrictionsType source)
+        public void MergePropertiesIfNull(InsertRestrictionsType? source)
         {
             if (source == null)
                 return;

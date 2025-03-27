@@ -69,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the navigation properties which do not allow rebinding.
         /// </summary>
-        public IList<string> NonUpdatableNavigationProperties { get; private set; }
+        public IList<string>? NonUpdatableNavigationProperties { get; private set; }
 
         /// <summary>
         /// Gets the maximum number of navigation properties that can be traversed when addressing the collection or entity to update.
@@ -80,32 +80,32 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the Required permissions. One of the specified sets of scopes is required to perform the update.
         /// </summary>
-        public IList<PermissionType> Permissions { get; private set; }
+        public IList<PermissionType>? Permissions { get; private set; }
 
         /// <summary>
         /// Gets/sets the support for query options with update requests.
         /// </summary>
-        public ModificationQueryOptionsType QueryOptions { get; private set; }
+        public ModificationQueryOptionsType? QueryOptions { get; private set; }
 
         /// <summary>
         /// Gets/sets the supported or required custom headers.
         /// </summary>
-        public IList<CustomParameter> CustomHeaders { get; private set; }
+        public IList<CustomParameter>? CustomHeaders { get; private set; }
 
         /// <summary>
         /// Gets/sets the supported or required custom query options.
         /// </summary>
-        public IList<CustomParameter> CustomQueryOptions { get; private set; }
+        public IList<CustomParameter>? CustomQueryOptions { get; private set; }
 
         /// <summary>
         /// Gets A brief description of the request.
         /// </summary>
-        public string Description { get; private set; }
+        public string? Description { get; private set; }
 
         /// <summary>
         /// Gets A lengthy description of the request.
         /// </summary>
-        public string LongDescription { get; private set; }
+        public string? LongDescription { get; private set; }
 
         /// <summary>
         /// Test the target supports update.
@@ -120,9 +120,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <returns>True/False.</returns>
         public bool IsNonUpdatableNavigationProperty(string navigationPropertyPath)
         {
-            return NonUpdatableNavigationProperties != null ?
-                NonUpdatableNavigationProperties.Any(a => a == navigationPropertyPath) :
-                false;
+            return NonUpdatableNavigationProperties != null && NonUpdatableNavigationProperties.Any(a => a == navigationPropertyPath);
         }
 
         /// <summary>
@@ -140,13 +138,13 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Lists the media types acceptable for the request content
         /// </summary>
         /// <remarks>This is not an official OASIS standard property.</remarks>
-        public IList<string> RequestContentTypes { get; private set; }
+        public IList<string>? RequestContentTypes { get; private set; }
 
         /// <summary>
         /// Lists the media types acceptable for the response content
         /// </summary>
         /// <remarks>This is not an official OASIS standard property.</remarks>
-        public IList<string> ResponseContentTypes { get; private set; }
+        public IList<string>? ResponseContentTypes { get; private set; }
 
         /// <summary>
         /// Init the <see cref="UpdateRestrictionsType"/>.
@@ -209,7 +207,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Merges properties of the specified <see cref="UpdateRestrictionsType"/> object into this instance if they are null.
         /// </summary>
         /// <param name="source">The <see cref="UpdateRestrictionsType"/> object containing properties to merge.</param>
-        public void MergePropertiesIfNull(UpdateRestrictionsType source)
+        public void MergePropertiesIfNull(UpdateRestrictionsType? source)
         {
             if (source == null)
                 return;

@@ -26,9 +26,9 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         Implicit,
 
         /// <summary>
-        /// Pasword
+        /// Password
         /// </summary>
-        Pasword,
+        Password,
 
         /// <summary>
         /// AuthCode
@@ -44,12 +44,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         /// <summary>
         /// Available scopes.
         /// </summary>
-        public IList<AuthorizationScope> Scopes { get; set; }
+        public IList<AuthorizationScope>? Scopes { get; set; }
 
         /// <summary>
         /// Refresh Url
         /// </summary>
-        public string RefreshUrl { get; set; }
+        public string? RefreshUrl { get; set; }
 
         /// <summary>
         /// Gets the security scheme type.

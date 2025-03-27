@@ -17,14 +17,14 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the Path to the restricted property.
         /// </summary>
-        public string Property { get; private set; }
+        public string? Property { get; private set; }
 
         /// <summary>
         /// Gets the RequiresFilter value.
         /// <Property Name="AllowedExpressions" Type="Capabilities.FilterExpressionType" />
         /// <TypeDefinition Name="FilterExpressionType" UnderlyingType="Edm.String" />
         /// </summary>
-        public string AllowedExpressions { get; private set; }
+        public string? AllowedExpressions { get; private set; }
 
         /// <summary>
         /// Init the <see cref="FilterExpressionRestrictionType"/>.

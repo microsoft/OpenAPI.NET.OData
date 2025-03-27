@@ -17,6 +17,7 @@ using System.Text.Json.Nodes;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Interfaces;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -71,7 +72,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
         public static IList<IOpenApiParameter> CreateParameters(this ODataContext context, IEdmFunction function,
             OpenApiDocument document,
-            IDictionary<string, string> parameterNameMapping = null)
+            IDictionary<string, string>? parameterNameMapping = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(function, nameof(function));
@@ -160,7 +161,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
         public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, ODataKeySegment keySegment,
             OpenApiDocument document,
-            IDictionary<string, string> parameterNameMapping = null)
+            IDictionary<string, string>? parameterNameMapping = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(keySegment, nameof(keySegment));
@@ -193,6 +194,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Schema = context.CreateEdmTypeSchemaForParameter(keys[0].Type, document)
                 };
 
+                parameter.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
                 parameters.Add(parameter);
             }
@@ -218,6 +220,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         parameter.Description += $", {keyProperty.Name}={quote}{{{parameter.Name}}}{quote}";
                     }
 
+                    parameter.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                     parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
                     parameters.Add(parameter);
                 }
@@ -341,21 +344,21 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="parameter">The new OpenApiParameter to be appended</param>
         public static void AppendParameter(this IList<IOpenApiParameter> parameters, IOpenApiParameter parameter)
         {
-            HashSet<string> parametersSet = new(parameters.Select(p => p.Name));
+            HashSet<string> parametersSet = new(parameters.Select(p => p.Name).OfType<string>());
 
-            string parameterName = parameter.Name;
-            int index = 1;
-            while (parametersSet.Contains(parameterName))
+            if (parameter.Name is not string parameterName &&
+                parameter is OpenApiParameter openApiParameter)
             {
-                parameterName += index.ToString();
-                index++;
-            }
-
-            if (parameter is OpenApiParameter openApiParameter)
-            {
+                parameterName = string.Empty;
+                int index = 1;
+                while (parametersSet.Contains(parameterName))
+                {
+                    parameterName += index.ToString();
+                    index++;
+                }
                 openApiParameter.Name = parameterName;
             }
-            parametersSet.Add(parameterName);
+
             parameters.Add(parameter);
         }
 
@@ -366,7 +369,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="target">The Edm annotation target.</param>
         /// <param name="document">The Open API document.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
-        public static IOpenApiParameter CreateTop(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
+        public static IOpenApiParameter? CreateTop(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
@@ -388,7 +391,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="targetPath">The string representation of the Edm target path.</param>
         /// <param name="document">The Open API document to use to build references.</param>
         /// <returns></returns>
-        public static IOpenApiParameter CreateTop(this ODataContext context, string targetPath, OpenApiDocument document)
+        public static IOpenApiParameter? CreateTop(this ODataContext context, string targetPath, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -408,7 +411,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="target">The Edm annotation target.</param>
         /// <param name="document">The Open API document to use to build references.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
-        public static IOpenApiParameter CreateSkip(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
+        public static IOpenApiParameter? CreateSkip(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
@@ -430,7 +433,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="targetPath">The string representation of the Edm target path.</param>
         /// <param name="document">The Open API document to use to build references.</param>
         /// <returns></returns>
-        public static IOpenApiParameter CreateSkip(this ODataContext context, string targetPath, OpenApiDocument document)
+        public static IOpenApiParameter? CreateSkip(this ODataContext context, string targetPath, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -450,14 +453,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="target">The Edm annotation target.</param>
         /// <param name="document">The Open API document to use to build references.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
-        public static IOpenApiParameter CreateSearch(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
+        public static IOpenApiParameter? CreateSearch(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            SearchRestrictionsType search = context.Model.GetRecord<SearchRestrictionsType>(target, CapabilitiesConstants.SearchRestrictions);
-            if (search == null || search.IsSearchable)
+            if (context.Model.GetRecord<SearchRestrictionsType>(target, CapabilitiesConstants.SearchRestrictions) is not {} search || search.IsSearchable)
             {
                 return new OpenApiParameterReference("search", document);
             }
@@ -471,7 +473,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="targetPath">The string representation of the Edm target path.</param>
         /// <param name="document">The Open API document to use to build references.</param>
         /// <returns></returns>
-        public static IOpenApiParameter CreateSearch(this ODataContext context, string targetPath, OpenApiDocument document)
+        public static IOpenApiParameter? CreateSearch(this ODataContext context, string targetPath, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -491,14 +493,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="target">The Edm annotation target.</param>
         /// <param name="document">The Open API document to use to build references.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
-        public static IOpenApiParameter CreateCount(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
+        public static IOpenApiParameter? CreateCount(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            CountRestrictionsType count = context.Model.GetRecord<CountRestrictionsType>(target, CapabilitiesConstants.CountRestrictions);
-            if (count == null || count.IsCountable)
+            if (context.Model.GetRecord<CountRestrictionsType>(target, CapabilitiesConstants.CountRestrictions) is not {} count || count.IsCountable)
             {
                 return new OpenApiParameterReference("count", document);
             }
@@ -513,7 +514,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="targetPath">The string representation of the Edm target path.</param>
         /// <param name="document">The Open API document to use to build references.</param>
         /// <returns></returns>
-        public static IOpenApiParameter CreateCount(this ODataContext context, string targetPath, OpenApiDocument document)
+        public static IOpenApiParameter? CreateCount(this ODataContext context, string targetPath, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -533,14 +534,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="target">The Edm annotation target.</param>
         /// <param name="document">The Open API document to use to build references.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
-        public static IOpenApiParameter CreateFilter(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
+        public static IOpenApiParameter? CreateFilter(this ODataContext context, IEdmVocabularyAnnotatable target, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            FilterRestrictionsType filter = context.Model.GetRecord<FilterRestrictionsType>(target, CapabilitiesConstants.FilterRestrictions);
-            if (filter == null || filter.IsFilterable)
+            if (context.Model.GetRecord<FilterRestrictionsType>(target, CapabilitiesConstants.FilterRestrictions) is not {} filter || filter.IsFilterable)
             {
                 return new OpenApiParameterReference("filter", document);
             }
@@ -555,7 +555,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="targetPath">The string representation of the Edm target path.</param>
         /// <param name="document">The Open API document to use to build references.</param>
         /// <returns></returns>
-        public static IOpenApiParameter CreateFilter(this ODataContext context, string targetPath, OpenApiDocument document)
+        public static IOpenApiParameter? CreateFilter(this ODataContext context, string targetPath, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -567,7 +567,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateFilter(target, document);
         }
 
-        public static OpenApiParameter CreateOrderBy(this ODataContext context, string targetPath, IEdmEntityType entityType)
+        public static OpenApiParameter? CreateOrderBy(this ODataContext context, string targetPath, IEdmEntityType entityType)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -579,7 +579,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateOrderBy(target, entityType);
         }
 
-        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmEntitySet entitySet)
+        public static OpenApiParameter? CreateOrderBy(this ODataContext context, IEdmEntitySet entitySet)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entitySet, nameof(entitySet));
@@ -587,7 +587,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateOrderBy(entitySet, entitySet.EntityType);
         }
 
-        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmSingleton singleton)
+        public static OpenApiParameter? CreateOrderBy(this ODataContext context, IEdmSingleton singleton)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(singleton, nameof(singleton));
@@ -595,7 +595,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateOrderBy(singleton, singleton.EntityType);
         }
 
-        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmNavigationProperty navigationProperty)
+        public static OpenApiParameter? CreateOrderBy(this ODataContext context, IEdmNavigationProperty navigationProperty)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
@@ -610,12 +610,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="target">The Edm annotation target.</param>
         /// <param name="entityType">The Edm Entity type.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
-        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
+        public static OpenApiParameter? CreateOrderBy(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
         {// patchwork to avoid breaking changes
             return context.CreateOrderBy(target, entityType as IEdmStructuredType);
         }
 
-        public static OpenApiParameter CreateOrderBy(this ODataContext context, string targetPath, IEdmStructuredType structuredType)
+        public static OpenApiParameter? CreateOrderBy(this ODataContext context, string targetPath, IEdmStructuredType structuredType)
         {
             IEdmTargetPath target = context.Model.GetTargetPath(targetPath);
             if (target == null)
@@ -624,13 +624,13 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateOrderBy(target, structuredType);
         }
 
-        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmStructuredType structuredType)
+        public static OpenApiParameter? CreateOrderBy(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmStructuredType structuredType)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
-            SortRestrictionsType sort = context.Model.GetRecord<SortRestrictionsType>(target, CapabilitiesConstants.SortRestrictions);
+            var sort = context.Model.GetRecord<SortRestrictionsType>(target, CapabilitiesConstants.SortRestrictions);
             if (sort != null && !sort.IsSortable)
             {
                 return null;
@@ -684,19 +684,18 @@ namespace Microsoft.OpenApi.OData.Generator
             };
         }
 
-        public static OpenApiParameter CreateSelect(this ODataContext context, string targetPath, IEdmEntityType entityType)
+        public static OpenApiParameter? CreateSelect(this ODataContext context, string targetPath, IEdmEntityType entityType)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
 
-            IEdmTargetPath target = context.Model.GetTargetPath(targetPath);
-            if (target == null)
+            if (context.Model.GetTargetPath(targetPath) is not {} target)
                 return null;
 
             return context.CreateSelect(target, entityType);
         }
 
-        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmEntitySet entitySet)
+        public static OpenApiParameter? CreateSelect(this ODataContext context, IEdmEntitySet entitySet)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entitySet, nameof(entitySet));
@@ -704,7 +703,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateSelect(entitySet, entitySet.EntityType);
         }
 
-        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmSingleton singleton)
+        public static OpenApiParameter? CreateSelect(this ODataContext context, IEdmSingleton singleton)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(singleton, nameof(singleton));
@@ -712,7 +711,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateSelect(singleton, singleton.EntityType);
         }
 
-        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmNavigationProperty navigationProperty)
+        public static OpenApiParameter? CreateSelect(this ODataContext context, IEdmNavigationProperty navigationProperty)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
@@ -727,12 +726,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="target">The Edm target.</param>
         /// <param name="entityType">The Edm entity type.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
-        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
+        public static OpenApiParameter? CreateSelect(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
         { // patchwork to avoid breaking changes
             return context.CreateSelect(target, entityType as IEdmStructuredType);
         }
 
-        public static OpenApiParameter CreateSelect(this ODataContext context, string targetPath, IEdmStructuredType structuredType)
+        public static OpenApiParameter? CreateSelect(this ODataContext context, string targetPath, IEdmStructuredType structuredType)
         {
             IEdmTargetPath target = context.Model.GetTargetPath(targetPath);
             if (target == null)
@@ -741,13 +740,13 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateSelect(target, structuredType);
         }
 
-        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmStructuredType structuredType)
+        public static OpenApiParameter? CreateSelect(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmStructuredType structuredType)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
-            NavigationRestrictionsType navigation = context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
+            var navigation = context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
             if (navigation != null && !navigation.IsNavigable)
             {
                 return null;
@@ -790,7 +789,7 @@ namespace Microsoft.OpenApi.OData.Generator
             };
         }
 
-        public static OpenApiParameter CreateExpand(this ODataContext context, string targetPath, IEdmEntityType entityType)
+        public static OpenApiParameter? CreateExpand(this ODataContext context, string targetPath, IEdmEntityType entityType)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(targetPath, nameof(targetPath));
@@ -802,7 +801,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateExpand(target, entityType);
         }
 
-        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmEntitySet entitySet)
+        public static OpenApiParameter? CreateExpand(this ODataContext context, IEdmEntitySet entitySet)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entitySet, nameof(entitySet));
@@ -810,7 +809,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateExpand(entitySet, entitySet.EntityType);
         }
 
-        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmSingleton singleton)
+        public static OpenApiParameter? CreateExpand(this ODataContext context, IEdmSingleton singleton)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(singleton, nameof(singleton));
@@ -818,7 +817,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateExpand(singleton, singleton.EntityType);
         }
 
-        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmNavigationProperty navigationProperty)
+        public static OpenApiParameter? CreateExpand(this ODataContext context, IEdmNavigationProperty navigationProperty)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
@@ -833,12 +832,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="target">The edm entity path.</param>
         /// <param name="entityType">The edm entity path.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
-        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
+        public static OpenApiParameter? CreateExpand(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
         { // patchwork to avoid breaking changes
             return context.CreateExpand(target, entityType as IEdmStructuredType);
         }
 
-        public static OpenApiParameter CreateExpand(this ODataContext context, string targetPath, IEdmStructuredType structuredType)
+        public static OpenApiParameter? CreateExpand(this ODataContext context, string targetPath, IEdmStructuredType structuredType)
         {
             IEdmTargetPath target = context.Model.GetTargetPath(targetPath);
             if (target == null)
@@ -847,13 +846,13 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateExpand(target, structuredType);
         }
 
-        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmStructuredType structuredType)
+        public static OpenApiParameter? CreateExpand(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmStructuredType structuredType)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
-            ExpandRestrictionsType expand = context.Model.GetRecord<ExpandRestrictionsType>(target, CapabilitiesConstants.ExpandRestrictions);
+            var expand = context.Model.GetRecord<ExpandRestrictionsType>(target, CapabilitiesConstants.ExpandRestrictions);
             if (expand != null && !expand.IsExpandable)
             {
                 return null;

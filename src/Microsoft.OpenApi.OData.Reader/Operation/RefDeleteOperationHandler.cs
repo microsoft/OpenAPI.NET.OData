@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Delete;
-        private DeleteRestrictionsType _deleteRestriction;
+        private DeleteRestrictionsType? _deleteRestriction;
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -42,15 +42,15 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            string placeHolder = "Delete ref of navigation property " + NavigationProperty.Name + " for " + NavigationSource.Name;
+            string placeHolder = "Delete ref of navigation property " + NavigationProperty?.Name + " for " + NavigationSource?.Name;
             operation.Summary = _deleteRestriction?.Description ?? placeHolder;
             operation.Description = _deleteRestriction?.LongDescription;
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true})
             {
                 string prefix = "DeleteRef";
-                var segments = GetOperationId().Split('.').ToList();
+                var segments = GetOperationId()?.Split('.').ToList() ?? [];
                 
                 if (SecondLastSegmentIsKeySegment)
                 {
@@ -73,6 +73,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
+            operation.Parameters ??= [];
             operation.Parameters.Add(new OpenApiParameter
             {
                 Name = "If-Match",
@@ -86,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // for collection, we should have @id in query
             if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many &&
-                Path.Segments.Reverse().Skip(1).First() is ODataNavigationPropertySegment)
+                Path?.Segments.Reverse().Skip(1).First() is ODataNavigationPropertySegment)
             {
                 operation.Parameters.Add(new OpenApiParameter
                 {
@@ -105,19 +106,19 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (_deleteRestriction == null)
+            if (_deleteRestriction?.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_deleteRestriction.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_deleteRestriction.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
             // Response for Delete methods should be 204 No Content
-            OpenApiConvertSettings settings = Context.Settings.Clone();
+            var settings = Context?.Settings.Clone() ?? new();
             settings.UseSuccessStatusCodeRange = false;
             
             operation.AddErrorResponses(settings, _document, true);
