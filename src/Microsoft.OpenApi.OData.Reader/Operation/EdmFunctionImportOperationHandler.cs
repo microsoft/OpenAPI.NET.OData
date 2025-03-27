@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            if (OperationImportSegment.ParameterMappings != null &&
+            if (OperationImportSegment?.ParameterMappings != null &&
                 Context?.CreateParameters(functionImport.Function, _document, OperationImportSegment.ParameterMappings) is {} functionParamMappings)
             {
                 operation.Parameters ??= [];

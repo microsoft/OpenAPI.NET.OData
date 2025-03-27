@@ -79,7 +79,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (_deleteRestriction == null)
+            if (_deleteRestriction?.Permissions == null)
             {
                 return;
             }

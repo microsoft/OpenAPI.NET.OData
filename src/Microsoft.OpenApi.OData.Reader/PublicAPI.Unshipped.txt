@@ -236,7 +236,7 @@ override Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.GetAnnotables()
 override Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings, System.Collections.Generic.HashSet<string!>! parameters) -> string!
 override Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.Identifier.get -> string!
 override Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
-override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType!
+override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType?
 override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable!>!
 override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings, System.Collections.Generic.HashSet<string!>! parameters) -> string!
 override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.Identifier.get -> string!
@@ -246,7 +246,7 @@ override Microsoft.OpenApi.OData.Edm.ODataKeySegment.GetAnnotables() -> System.C
 override Microsoft.OpenApi.OData.Edm.ODataKeySegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings, System.Collections.Generic.HashSet<string!>! parameters) -> string!
 override Microsoft.OpenApi.OData.Edm.ODataKeySegment.Identifier.get -> string!
 override Microsoft.OpenApi.OData.Edm.ODataKeySegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
-override Microsoft.OpenApi.OData.Edm.ODataMetadataSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType!
+override Microsoft.OpenApi.OData.Edm.ODataMetadataSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType?
 override Microsoft.OpenApi.OData.Edm.ODataMetadataSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable!>!
 override Microsoft.OpenApi.OData.Edm.ODataMetadataSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings! settings, System.Collections.Generic.HashSet<string!>! parameters) -> string!
 override Microsoft.OpenApi.OData.Edm.ODataMetadataSegment.Identifier.get -> string!

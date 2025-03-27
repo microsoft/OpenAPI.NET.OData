@@ -42,7 +42,9 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
-			return new IEdmVocabularyAnnotatable[] { NavigationSource as IEdmVocabularyAnnotatable, EntityType }.Union(EntityType.FindAllBaseTypes());
+			return (NavigationSource is IEdmVocabularyAnnotatable source ? new IEdmVocabularyAnnotatable[]{source} : [])
+                                                    .Union([EntityType])
+                                                    .Union(EntityType.FindAllBaseTypes());
 		}
 
 		/// <inheritdoc />

@@ -57,34 +57,40 @@ namespace Microsoft.OpenApi.OData.Edm
 
            Initialize(model);
 
-           // entity set
-           foreach (IEdmEntitySet entitySet in _model.EntityContainer.EntitySets())
+           if (_model is not null)
            {
-               if (CanFilter(entitySet))
-               {
-                   RetrieveNavigationSourcePaths(entitySet, settings);
-               }
-           }
+                // entity set
+                foreach (var entitySet in _model.EntityContainer.EntitySets())
+                {
+                    if (CanFilter(entitySet))
+                    {
+                        RetrieveNavigationSourcePaths(entitySet, settings);
+                    }
+                }
 
-           // singleton
-           foreach (IEdmSingleton singleton in _model.EntityContainer.Singletons())
-           {
-               if (CanFilter(singleton))
-               {
-                   RetrieveNavigationSourcePaths(singleton, settings);
-               }
+                // singleton
+                foreach (var singleton in _model.EntityContainer.Singletons())
+                {
+                    if (CanFilter(singleton))
+                    {
+                        RetrieveNavigationSourcePaths(singleton, settings);
+                    }
+                }
            }
 
            // bound operations
            RetrieveBoundOperationPaths(settings);
 
-           // unbound operations
-           foreach (IEdmOperationImport import in _model.EntityContainer.OperationImports())
+           if (_model is not null)
            {
-               if (CanFilter(import))
-               {
-                   AppendPath(new ODataPath(new ODataOperationImportSegment(import)));
-               }
+                // unbound operations
+                foreach (IEdmOperationImport import in _model.EntityContainer.OperationImports())
+                {
+                    if (CanFilter(import))
+                    {
+                        AppendPath(new ODataPath(new ODataOperationImportSegment(import)));
+                    }
+                }
            }
 
            return MergePaths();

@@ -121,9 +121,9 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiResponses responses = new();
             
-            if (operation.IsAction() && operation.ReturnType == null)
+            if (operation.IsAction() && operation.ReturnType == null && Constants.StatusCode204.GetResponse(document) is {} x204Response)
             {
-                responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse(document));
+                responses.Add(Constants.StatusCode204, x204Response);
             }
             else if (context.Model.OperationTargetsMultiplePaths(operation))
             {

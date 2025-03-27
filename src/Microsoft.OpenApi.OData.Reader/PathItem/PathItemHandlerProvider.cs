@@ -14,7 +14,7 @@ namespace Microsoft.OpenApi.OData.PathItem
     internal class PathItemHandlerProvider : IPathItemHandlerProvider
     {
         /// <inheritdoc/>
-        public IPathItemHandler GetHandler(ODataPathKind pathKind, OpenApiDocument document)
+        public IPathItemHandler? GetHandler(ODataPathKind pathKind, OpenApiDocument document)
         {
             return pathKind switch {
             // EntitySet

@@ -283,7 +283,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         };
 
                         // maybe call convert to Uri literal
-                        ex.Value = example.Value.ToString();
+                        ex.Value = example.Value?.ToString();
 
                         parameter.Examples.Add("example-" + index++, ex);
                     }
