@@ -705,8 +705,9 @@ namespace Microsoft.OpenApi.OData.Edm
             IEnumerable<IDictionary<string, IEdmProperty>> alternateKeys = _model.GetAlternateKeysAnnotation(entityType);
             foreach (var keyDict in alternateKeys)
             {
+                if (keyDict.Where(static x => x.Value is not null).ToDictionary(static k => k.Key, static v => v.Value.Name) is not { Count: > 0 } keyMappings)
+                    continue;
                 ODataPath keyPath = currentPath.Clone();
-                IDictionary<string, string> keyMappings = keyDict.ToDictionary(static k => k.Key, static v => v.Value.Name);
                 ODataKeySegment keySegment = new(entityType, keyMappings)
                 {
                     IsAlternateKey = true
