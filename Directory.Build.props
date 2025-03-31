@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/Microsoft/OpenAPI.NET.OData</PackageProjectUrl>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
-    <Version>1.7.4</Version>
+    <Version>1.7.5</Version>
   </PropertyGroup>
   <!-- https://github.com/clairernovotny/DeterministicBuilds#deterministic-builds -->
   <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
