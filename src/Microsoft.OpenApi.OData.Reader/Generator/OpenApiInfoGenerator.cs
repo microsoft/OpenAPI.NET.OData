@@ -100,7 +100,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return "This OData service is located at " + context.Settings.ServiceRoot.OriginalString;
         }
 
-        private static Dictionary<string, IOpenApiExtension> GetExtensions(this ODataContext context)
+        private static Dictionary<string, IOpenApiExtension>? GetExtensions(this ODataContext context)
         {
             Debug.Assert(context != null);
 
@@ -118,7 +118,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 };
             }
-            return [];
+            return null;
         }
     }
 }
