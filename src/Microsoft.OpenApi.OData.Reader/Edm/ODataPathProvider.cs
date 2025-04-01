@@ -1055,16 +1055,16 @@ namespace Microsoft.OpenApi.OData.Edm
                 {
                     foreach (var ns in baseNavigationSource)
                     {
-                        if (ns is not IEdmVocabularyAnnotatable nsAnnotable ||
+                        if (ns is not IEdmVocabularyAnnotatable nsAnnotatable ||
                             HasUnsatisfiedDerivedTypeConstraint(
-                            nsAnnotable,
+                            nsAnnotatable,
                             baseType,
                             convertSettings))
                         {
                             continue;
                         }
 
-                        if (_model is null || !EdmModelHelper.IsOperationAllowed(_model, edmOperation, nsAnnotable))
+                        if (_model is null || !EdmModelHelper.IsOperationAllowed(_model, edmOperation, nsAnnotatable))
                         {
                             continue;
                         }
