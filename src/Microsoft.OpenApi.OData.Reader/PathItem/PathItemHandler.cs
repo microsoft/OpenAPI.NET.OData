@@ -7,7 +7,6 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
-using Microsoft.OpenApi.OData.Operation;
 using Microsoft.OpenApi.OData.Properties;
 using System;
 using System.Net.Http;
@@ -37,17 +36,17 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <summary>
         /// Gets the OData Context.
         /// </summary>
-        protected ODataContext Context { get; private set; }
+        protected ODataContext? Context { get; private set; }
 
         /// <summary>
         /// Gets the OData Path.
         /// </summary>
-        protected ODataPath Path { get; private set; }
+        protected ODataPath? Path { get; private set; }
 
         /// <summary>
         /// Gets the string representation of the Edm target path for annotations.
         /// </summary>
-        protected string TargetPath;
+        protected string? TargetPath;
 
         /// <inheritdoc/>
         public virtual OpenApiPathItem CreatePathItem(ODataContext context, ODataPath path)
@@ -115,14 +114,14 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected virtual void AddOperation(OpenApiPathItem item, HttpMethod operationType)
         {
             string httpMethod = operationType.ToString();
-            if (!Path.SupportHttpMethod(httpMethod))
+            if (Path is null || !Path.SupportHttpMethod(httpMethod))
             {
                 return;
             }
 
-            IOperationHandlerProvider provider = Context.OperationHandlerProvider;
-            IOperationHandler operationHandler = provider.GetHandler(Path.Kind, operationType, _document);
-            item.AddOperation(operationType, operationHandler.CreateOperation(Context, Path));
+            if (Context?.OperationHandlerProvider is {} provider &&
+                provider.GetHandler(Path.Kind, operationType, _document) is {} operationHandler)
+                item.AddOperation(operationType, operationHandler.CreateOperation(Context, Path));
         }
 
         /// <summary>
@@ -131,9 +130,13 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <param name="item">The <see cref="OpenApiPathItem"/>.</param>
         protected virtual void SetParameters(OpenApiPathItem item)
         {
-            foreach (var parameter in Path.CreatePathParameters(Context, _document))
+            if (Context is not null && Path?.CreatePathParameters(Context, _document) is { Count:> 0} parameters)
             {
-                item.Parameters.AppendParameter(parameter);
+                item.Parameters ??= [];
+                foreach (var parameter in parameters)
+                {
+                    item.Parameters.AppendParameter(parameter);
+                }
             }
         }
     }

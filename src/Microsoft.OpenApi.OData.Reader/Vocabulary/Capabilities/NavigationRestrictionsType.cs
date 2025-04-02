@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Navigation properties can be navigated
         /// </summary>
-        public string NavigationProperty { get; set; }
+        public string? NavigationProperty { get; set; }
 
         /// <summary>
         /// Navigation properties can be navigated to this level.
@@ -50,22 +50,22 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// List of functions and operators supported in filter expressions.
         /// </summary>
-        public IList<string> FilterFunctions { get; set; }
+        public IList<string>? FilterFunctions { get; set; }
 
         /// <summary>
         /// Restrictions on filter expressions.
         /// </summary>
-        public FilterRestrictionsType FilterRestrictions { get; set; }
+        public FilterRestrictionsType? FilterRestrictions { get; set; }
 
         /// <summary>
         /// Restrictions on search expressions.
         /// </summary>
-        public SearchRestrictionsType SearchRestrictions { get; set; }
+        public SearchRestrictionsType? SearchRestrictions { get; set; }
 
         /// <summary>
         /// Restrictions on orderby expressions.
         /// </summary>
-        public SortRestrictionsType SortRestrictions { get; set; }
+        public SortRestrictionsType? SortRestrictions { get; set; }
 
         /// <summary>
         /// Supports $top.
@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Supports $select.
         /// </summary>
-        public SelectSupportType SelectSupport { get; set; }
+        public SelectSupportType? SelectSupport { get; set; }
 
         /// <summary>
         /// Supports key values according to OData URL conventions.
@@ -90,27 +90,27 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Restrictions on insert operations.
         /// </summary>
-        public InsertRestrictionsType InsertRestrictions { get; set; }
+        public InsertRestrictionsType? InsertRestrictions { get; set; }
 
         /// <summary>
         /// Deep Insert Support of the annotated resource (the whole service, an entity set, or a collection-valued resource).
         /// </summary>
-        public DeepInsertSupportType DeepInsertSupport { get; set; }
+        public DeepInsertSupportType? DeepInsertSupport { get; set; }
 
         /// <summary>
         /// Restrictions on update operations.
         /// </summary>
-        public UpdateRestrictionsType UpdateRestrictions { get; set; }
+        public UpdateRestrictionsType? UpdateRestrictions { get; set; }
 
         /// <summary>
         /// Deep Update Support of the annotated resource (the whole service, an entity set, or a collection-valued resource).
         /// </summary>
-        public DeepUpdateSupportType DeepUpdateSupport { get; set; }
+        public DeepUpdateSupportType? DeepUpdateSupport { get; set; }
 
         /// <summary>
         /// Restrictions on delete operations.
         /// </summary>
-        public DeleteRestrictionsType DeleteRestrictions { get; set; }
+        public DeleteRestrictionsType? DeleteRestrictions { get; set; }
 
         /// <summary>
         /// Data modification (including insert) along this navigation property requires the use of ETags.
@@ -120,7 +120,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Restrictions for retrieving entities.
         /// </summary>
-        public ReadRestrictionsType ReadRestrictions { get; set; }
+        public ReadRestrictionsType? ReadRestrictions { get; set; }
         
         /// <summary>
         /// Init the <see cref="NavigationPropertyRestriction"/>.
@@ -197,7 +197,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the navigation properties which has navigation restrictions.
         /// </summary>
-        public IList<NavigationPropertyRestriction> RestrictedProperties { get; private set; }
+        public IList<NavigationPropertyRestriction>? RestrictedProperties { get; private set; }
 
         /// <summary>
         /// Gets the navigation property referenceable value.
@@ -216,10 +216,8 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <returns>True/False.</returns>
         public bool IsRestrictedProperty(string navigationPropertyPath)
         {
-            return RestrictedProperties != null ?
-                RestrictedProperties.Where(a => a.NavigationProperty == navigationPropertyPath)
-                .Any(b => b.Navigability != null && b.Navigability.Value == NavigationType.None) :
-                false;
+            return RestrictedProperties != null && RestrictedProperties.Where(a => a.NavigationProperty == navigationPropertyPath)
+                .Any(b => b.Navigability != null && b.Navigability.Value == NavigationType.None);
         }
 
         /// <summary>
@@ -244,7 +242,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Merges properties of the specified <see cref="NavigationRestrictionsType"/> object into this instance if they are null.
         /// </summary>
         /// <param name="source">The <see cref="NavigationRestrictionsType"/> object containing properties to merge.</param>
-        public void MergePropertiesIfNull(NavigationRestrictionsType source)
+        public void MergePropertiesIfNull(NavigationRestrictionsType? source)
         {
             if (source == null)
                 return;

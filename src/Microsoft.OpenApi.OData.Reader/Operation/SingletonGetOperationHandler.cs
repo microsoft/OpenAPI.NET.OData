@@ -35,28 +35,33 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Get;
 
-        private ReadRestrictionsType _readRestrictions;
+        private ReadRestrictionsType? _readRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            var singletonReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
-            _readRestrictions?.MergePropertiesIfNull(singletonReadRestrictions);
-            _readRestrictions ??= singletonReadRestrictions;
+            if (!string.IsNullOrEmpty(TargetPath))
+                _readRestrictions = Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            
+            if (Context is not null && Singleton is not null)
+            {
+                var singletonReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
+                _readRestrictions?.MergePropertiesIfNull(singletonReadRestrictions);
+                _readRestrictions ??= singletonReadRestrictions;
+            }
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Descriptions
-            string placeHolder = "Get " + Singleton.Name;
+            string placeHolder = "Get " + Singleton?.Name;
             operation.Summary = _readRestrictions?.Description ?? placeHolder;
-            operation.Description = _readRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(Singleton);
+            operation.Description = _readRestrictions?.LongDescription ?? Context?.Model.GetDescriptionAnnotation(Singleton);
 
             // OperationId, it should be unique among all operations described in the API.
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true} && Singleton is not null)
             {
                 string typeName = Singleton.EntityType.Name;
                 operation.OperationId = Singleton.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);
@@ -67,16 +72,19 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetParameters(OpenApiOperation operation)
         {
             base.SetParameters(operation);
+            
+            if (Singleton is null) return;
 
             // $select
-            OpenApiParameter parameter = Context.CreateSelect(Singleton);
+            var parameter = Context?.CreateSelect(Singleton);
+            operation.Parameters ??= [];
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
             }
 
             // $expand
-            parameter = Context.CreateExpand(Singleton);
+            parameter = Context?.CreateExpand(Singleton);
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
@@ -86,45 +94,49 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            IOpenApiSchema schema = null;
-            IDictionary<string, IOpenApiLink> links = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+            if (Singleton is not null)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model, _document);
-            }
+                IOpenApiSchema? schema = null;
+                IDictionary<string, IOpenApiLink>? links = null;
 
-            if (Context.Settings.ShowLinks)
-            {
-                links = Context.CreateLinks(entityType: Singleton.EntityType, entityName: Singleton.Name,
-                        entityKind: Singleton.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
-            }
-
-            schema ??= new OpenApiSchemaReference(Singleton.EntityType.FullName(), _document);
-
-            operation.Responses = new OpenApiResponses
-            {
+                if (Context is {Settings.EnableDerivedTypesReferencesForResponses: true})
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
-                    new OpenApiResponse
-                    {
-                        Description = "Retrieved entity",
-                        Content = new Dictionary<string, OpenApiMediaType>
-                        {
-                            {
-                                Constants.ApplicationJsonMediaType,
-                                new OpenApiMediaType
-                                {
-                                    Schema = schema
-                                }
-                            }
-                        },
-                        Links = links
-                    }
+                    schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType, Context.Model, _document);
                 }
-            };
 
-    		operation.AddErrorResponses(Context.Settings, _document, false);
+                if (Context is {Settings.ShowLinks: true} && Path is not null)
+                {
+                    links = Context.CreateLinks(entityType: Singleton.EntityType, entityName: Singleton.Name,
+                            entityKind: Singleton.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
+                }
+
+                schema ??= new OpenApiSchemaReference(Singleton.EntityType.FullName(), _document);
+
+                operation.Responses = new OpenApiResponses
+                {
+                    {
+                        Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                        new OpenApiResponse
+                        {
+                            Description = "Retrieved entity",
+                            Content = new Dictionary<string, OpenApiMediaType>
+                            {
+                                {
+                                    Constants.ApplicationJsonMediaType,
+                                    new OpenApiMediaType
+                                    {
+                                        Schema = schema
+                                    }
+                                }
+                            },
+                            Links = links
+                        }
+                    }
+                };
+            }
+
+    		if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -137,7 +149,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_readRestrictions.Permissions, _document).ToList();
         }
 
         /// <inheritdoc/>

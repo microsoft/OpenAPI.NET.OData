@@ -33,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = $"Get OData metadata (CSDL) document";
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true})
             {
                 string routePrefix = Context.Settings.PathPrefix ?? "";
                 if (Context.Settings.PathPrefix != null)
@@ -60,7 +60,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                    Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                     new OpenApiResponse
                     {
                         Description = "Retrieved metadata document",
@@ -77,7 +77,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }

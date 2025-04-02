@@ -11,6 +11,7 @@ using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
@@ -42,7 +43,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// Gets/sets the segment before cast.
 	/// this segment could be "entity set", "Collection property", etc.
 	/// </summary>
-	internal ODataSegment SecondLastSegment { get; set; }
+	internal ODataSegment? SecondLastSegment { get; set; }
 
     private bool isKeySegment;
 
@@ -58,18 +59,18 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 					entitySet == null);
 	}
 
-	private NavigationPropertyRestriction restriction;
-	private IEdmSingleton singleton;
-	private IEdmEntitySet entitySet;
-	private IEdmNavigationProperty navigationProperty;
-	private IEdmStructuredType parentStructuredType;
-	private IEdmSchemaElement ParentSchemaElement => parentStructuredType as IEdmSchemaElement;
-	private IEdmStructuredType targetStructuredType;
-	private IEdmSchemaElement TargetSchemaElement => targetStructuredType as IEdmSchemaElement;
+	private NavigationPropertyRestriction? restriction;
+	private IEdmSingleton? singleton;
+	private IEdmEntitySet? entitySet;
+	private IEdmNavigationProperty? navigationProperty;
+	private IEdmStructuredType? parentStructuredType;
+	private IEdmSchemaElement? ParentSchemaElement => parentStructuredType as IEdmSchemaElement;
+	private IEdmStructuredType? targetStructuredType;
+	private IEdmSchemaElement? TargetSchemaElement => targetStructuredType as IEdmSchemaElement;
 	private const int SecondLastSegmentIndex = 2;
 	private bool isIndexedCollValuedNavProp = false;
-	private IEdmNavigationSource navigationSource;
-	private IEdmVocabularyAnnotatable annotatable;
+	private IEdmNavigationSource? navigationSource;
+	private IEdmVocabularyAnnotatable? annotatable;
 
     /// <inheritdoc/>
     protected override void Initialize(ODataContext context, ODataPath path)
@@ -90,11 +91,13 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// get the last second segment
 		int count = path.Segments.Count;
 		if(count >= SecondLastSegmentIndex)
-			SecondLastSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex);
+			SecondLastSegment = path.Segments[count - SecondLastSegmentIndex];
 
-		parentStructuredType = SecondLastSegment is ODataComplexPropertySegment complexSegment ? complexSegment.ComplexType : SecondLastSegment.EntityType;
-        ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-        navigationSource = navigationSourceSegment.NavigationSource;
+		parentStructuredType = SecondLastSegment is ODataComplexPropertySegment complexSegment ? complexSegment.ComplexType : SecondLastSegment?.EntityType;
+		if (path.FirstSegment is ODataNavigationSourceSegment navigationSourceSegment)
+		{
+        	navigationSource = navigationSourceSegment.NavigationSource;
+		}
 
 		if (SecondLastSegment is ODataNavigationPropertySegment navigationPropertySegment)
 		{
@@ -107,7 +110,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		else if (SecondLastSegment is ODataKeySegment)
 		{
 			isKeySegment = true;
-			var thirdLastSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex - 1);
+			var thirdLastSegment = path.Segments[count - SecondLastSegmentIndex - 1];
 			if (thirdLastSegment is ODataNavigationPropertySegment navigationPropertySegment1)
 			{
                 isIndexedCollValuedNavProp = true;
@@ -137,20 +140,21 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	{
 		navigationProperty = navigationPropertySegment.NavigationProperty;
 		annotatable = navigationProperty;
-        var navigationPropertyPath = string.Join("/",
-			Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment
-									|| s is ODataStreamContentSegment || s is ODataStreamPropertySegment)).Select(e => e.Identifier));
 
-		if(path.FirstSegment is ODataNavigationSourceSegment navigationSourceSegment)
+		if(path.FirstSegment is ODataNavigationSourceSegment navigationSourceSegment &&
+			Context is not null)
 		{
-			NavigationRestrictionsType navigation = navigationSourceSegment.NavigationSource switch {
+			NavigationRestrictionsType? navigation = navigationSourceSegment.NavigationSource switch {
 				IEdmEntitySet eSet => Context.Model.GetRecord<NavigationRestrictionsType>(eSet, CapabilitiesConstants.NavigationRestrictions),
 				IEdmSingleton single => Context.Model.GetRecord<NavigationRestrictionsType>(single, CapabilitiesConstants.NavigationRestrictions),
 				_ => null
 			};
 
-			if (navigation?.RestrictedProperties != null)
+			if (navigation?.RestrictedProperties != null && Path is not null)
 			{
+				var navigationPropertyPath = string.Join("/",
+								Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment
+									|| s is ODataStreamContentSegment || s is ODataStreamPropertySegment)).Select(e => e.Identifier));
 				restriction = navigation.RestrictedProperties.FirstOrDefault(r => r.NavigationProperty != null && r.NavigationProperty == navigationPropertyPath);
 			}
 		}
@@ -170,16 +174,16 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			singleton = sTon;
 		}
 
-        SetRestrictionFromAnnotatable(annotatable);
+        SetRestrictionFromAnnotatable();
     }
 	    
 
-	private void SetRestrictionFromAnnotatable(IEdmVocabularyAnnotatable annotatable)
+	private void SetRestrictionFromAnnotatable()
 	{
-		if (this.annotatable == null)
+		if (annotatable == null)
 			return;
 
-		NavigationRestrictionsType navigation = Context.Model.GetRecord<NavigationRestrictionsType>(annotatable, CapabilitiesConstants.NavigationRestrictions);
+		var navigation = Context?.Model.GetRecord<NavigationRestrictionsType>(annotatable, CapabilitiesConstants.NavigationRestrictions);
 		if (navigation?.RestrictedProperties != null)
 		{
 			restriction = navigation.RestrictedProperties.FirstOrDefault(r => r.NavigationProperty == null);
@@ -189,7 +193,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// <inheritdoc/>
 	protected override void SetBasicInfo(OpenApiOperation operation)
 	{
-        ReadRestrictionsType _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+        var _readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
 
         // Summary
         string placeHolder = IsSingleElement 
@@ -199,7 +203,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
         operation.Description = _readRestrictions?.LongDescription;
 
         // OperationId
-        if (Context.Settings.EnableOperationId)
+        if (Context is { Settings.EnableOperationId: true } &&
+			Path is not null &&
+			TargetSchemaElement is not null)
 			operation.OperationId = EdmModelHelper.GenerateODataTypeCastPathOperationIdPrefix(Path, Context) + $".As{Utils.UpperFirstChar(TargetSchemaElement.Name)}-{Path.GetPathHash(Context.Settings)}";
 
         base.SetBasicInfo(operation);
@@ -210,9 +216,9 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
     {
         if (IsSingleElement)
 		{
-            IOpenApiSchema schema = null;
+            IOpenApiSchema? schema = null;
 
-            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+            if (Context is { Settings.EnableDerivedTypesReferencesForResponses: true } && targetStructuredType is not null)
             {
                 schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model, _document);
             }
@@ -229,7 +235,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
             SetCollectionResponse(operation, TargetSchemaElement.FullName());
         }			
 
-		operation.AddErrorResponses(Context.Settings, _document, false);
+		if (Context is not null)
+			operation.AddErrorResponses(Context.Settings, _document, false);
 
 		base.SetResponses(operation);
 	}
@@ -237,23 +244,26 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// <inheritdoc/>
 	protected override void SetTags(OpenApiOperation operation)
 	{
-        string tagName = null;
+		if (Context is null)
+			return;
+        string? tagName = null;
         operation.Tags ??= new HashSet<OpenApiTagReference>();
 
-        if (SecondLastSegment is ODataNavigationPropertySegment || isIndexedCollValuedNavProp)
+        if ((SecondLastSegment is ODataNavigationPropertySegment || isIndexedCollValuedNavProp) &&
+			Path is not null)
 		{
 			tagName = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
 		}
 		else if ((SecondLastSegment is ODataKeySegment && !isIndexedCollValuedNavProp)
 				|| (SecondLastSegment is ODataNavigationSourceSegment))
 		{
-            var singletonNavigationSource = navigationSource as IEdmSingleton;
-
-            tagName = navigationSource is IEdmEntitySet entitySetNavigationSource
-                ? entitySetNavigationSource.Name + "." + entitySetNavigationSource.EntityType.Name
-                : singletonNavigationSource.Name + "." + singletonNavigationSource.EntityType.Name;
+            tagName = navigationSource switch {
+				IEdmEntitySet entitySetNavigationSource => entitySetNavigationSource.Name + "." + entitySetNavigationSource.EntityType.Name,
+                IEdmSingleton singletonNavigationSource => singletonNavigationSource.Name + "." + singletonNavigationSource.EntityType.Name,
+				_ => null
+			};
         }
-		else if (SecondLastSegment is ODataComplexPropertySegment)
+		else if (SecondLastSegment is ODataComplexPropertySegment && Path is not null)
 		{
             tagName = EdmModelHelper.GenerateComplexPropertyPathTagName(Path, Context);			
         }
@@ -277,14 +287,19 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	{
 		base.SetParameters(operation);
 
+		if (Context is null)
+			return;
+
+		operation.Parameters ??= [];
+
 		if(navigationProperty != null) {
 			if (IsSingleElement)
 			{
-				new OpenApiParameter[] {
-                        Context.CreateSelect(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateSelect(navigationProperty),
-                        Context.CreateExpand(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateExpand(navigationProperty),
+				new IOpenApiParameter?[] {
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, navigationProperty.ToEntityType())) ?? Context.CreateSelect(navigationProperty),
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, navigationProperty.ToEntityType())) ?? Context.CreateExpand(navigationProperty),
 					}
-				.Where(x => x != null)
+				.OfType<IOpenApiParameter>()
 				.ToList()
 				.ForEach(p => operation.Parameters.Add(p));
 			}
@@ -292,12 +307,12 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			{
 				GetParametersForAnnotableOfMany(navigationProperty)
 				.Union(
-					new OpenApiParameter[] {
-                        Context.CreateOrderBy(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateOrderBy(navigationProperty),
-                        Context.CreateSelect(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateSelect(navigationProperty),
-                        Context.CreateExpand(TargetPath, navigationProperty.ToEntityType()) ?? Context.CreateExpand(navigationProperty),
-					})
-				.Where(x => x != null)
+					[
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateOrderBy(TargetPath, navigationProperty.ToEntityType())) ?? Context.CreateOrderBy(navigationProperty),
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, navigationProperty.ToEntityType())) ?? Context.CreateSelect(navigationProperty),
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, navigationProperty.ToEntityType())) ?? Context.CreateExpand(navigationProperty),
+					])
+				.OfType<IOpenApiParameter>()
 				.ToList()
 				.ForEach(p => operation.Parameters.Add(p));
 			}
@@ -306,11 +321,11 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		{
 			if(IsSingleElement)
 			{
-				new IOpenApiParameter[] {
-                        Context.CreateSelect(TargetPath, entitySet.EntityType) ?? Context.CreateSelect(entitySet),
-                        Context.CreateExpand(TargetPath, entitySet.EntityType) ?? Context.CreateExpand(entitySet),
+				new IOpenApiParameter?[] {
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, entitySet.EntityType)) ?? Context.CreateSelect(entitySet),
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, entitySet.EntityType)) ?? Context.CreateExpand(entitySet),
 					}
-				.Where(x => x != null)
+				.OfType<IOpenApiParameter>()
 				.ToList()
 				.ForEach(operation.Parameters.Add);
 			}
@@ -319,28 +334,30 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				GetParametersForAnnotableOfMany(entitySet)
 				.Union(
 					[
-                        Context.CreateOrderBy(TargetPath, entitySet.EntityType) ?? Context.CreateOrderBy(entitySet),
-                        Context.CreateSelect(TargetPath, entitySet.EntityType) ?? Context.CreateSelect(entitySet),
-                        Context.CreateExpand(TargetPath, entitySet.EntityType) ?? Context.CreateExpand(entitySet),
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateOrderBy(TargetPath, entitySet.EntityType)) ?? Context.CreateOrderBy(entitySet),
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, entitySet.EntityType)) ?? Context.CreateSelect(entitySet),
+                        (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, entitySet.EntityType)) ?? Context.CreateExpand(entitySet),
 					])
-				.Where(x => x != null)
+				.OfType<IOpenApiParameter>()
 				.ToList()
 				.ForEach(p => operation.Parameters.Add(p));
 			}
 		}
 		else if(singleton != null)
 		{
-			new OpenApiParameter[] {
-                    Context.CreateSelect(TargetPath, singleton.EntityType) ?? Context.CreateSelect(singleton),
-                    Context.CreateExpand(TargetPath, singleton.EntityType) ?? Context.CreateExpand(singleton),
+			new IOpenApiParameter?[] {
+                    (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateSelect(TargetPath, singleton.EntityType)) ?? Context.CreateSelect(singleton),
+                    (string.IsNullOrEmpty(TargetPath) ? null : Context.CreateExpand(TargetPath, singleton.EntityType)) ?? Context.CreateExpand(singleton),
 				}
-			.Where(x => x != null)
+			.OfType<IOpenApiParameter>()
 			.ToList()
 			.ForEach(p => operation.Parameters.Add(p));
 		}
 	}
-	private IEnumerable<IOpenApiParameter> GetParametersForAnnotableOfMany(IEdmVocabularyAnnotatable annotable) 
+	private IEnumerable<IOpenApiParameter?> GetParametersForAnnotableOfMany(IEdmVocabularyAnnotatable annotable) 
 	{
+		if (Context is null)
+			return [];
 		// Need to verify that TopSupported or others should be applied to navigation source.
 		// So, how about for the navigation property.
 		return [
@@ -354,19 +371,17 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 	protected override void SetSecurity(OpenApiOperation operation)
 	{
-		if (restriction == null || restriction.ReadRestrictions == null)
+		if (restriction is not {ReadRestrictions.Permissions: not null})
 		{
 			return;
 		}
 
-		ReadRestrictionsBase readBase = restriction.ReadRestrictions;
-
-		operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+		operation.Security = Context?.CreateSecurityRequirements(restriction.ReadRestrictions.Permissions, _document).ToList();
 	}
 
 	protected override void SetExtensions(OpenApiOperation operation)
 	{
-		if (Context.Settings.EnablePagination && !IsSingleElement)
+		if (Context is { Settings.EnablePagination: true } && !IsSingleElement)
 		{
 			JsonObject extension = new()
 			{
@@ -374,6 +389,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				{ "operationName", Context.Settings.PageableOperationName}
 			};
 
+			operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
 			operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
 		}
 
@@ -385,10 +401,15 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		if (annotatable == null)
 			return;
 
-        ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-        var annotatableReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions);
-        readRestrictions?.MergePropertiesIfNull(annotatableReadRestrictions);
-        readRestrictions ??= annotatableReadRestrictions;
+		if (Context is null)
+			return;
+
+        var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+        if (Context.Model.GetRecord<ReadRestrictionsType>(annotatable, CapabilitiesConstants.ReadRestrictions) is {} annotatableReadRestrictions)
+		{
+        	readRestrictions?.MergePropertiesIfNull(annotatableReadRestrictions);
+        	readRestrictions ??= annotatableReadRestrictions;
+		}
 
         if (readRestrictions == null)
         {
@@ -408,7 +429,10 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
     protected override void SetExternalDocs(OpenApiOperation operation)
     {
-        if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) is LinkType externalDocs)
+        if (Context is { Settings.ShowExternalDocs: true } &&
+			!string.IsNullOrEmpty(CustomLinkRel) &&
+			!string.IsNullOrEmpty(TargetPath) &&
+			Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) is LinkType externalDocs)
         {
             operation.ExternalDocs = new OpenApiExternalDocs()
             {

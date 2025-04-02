@@ -17,10 +17,10 @@ public class ODataDollarCountSegment : ODataSegment
     /// <summary>
     /// Get the static instance of $count segment.
     /// </summary>
-    internal static ODataDollarCountSegment Instance = new();
+    internal static readonly ODataDollarCountSegment Instance = new();
 
     /// <inheritdoc />
-    public override IEdmEntityType EntityType => null;
+    public override IEdmEntityType? EntityType => null;
 
     /// <inheritdoc />
     public override ODataSegmentKind Kind => ODataSegmentKind.DollarCount;

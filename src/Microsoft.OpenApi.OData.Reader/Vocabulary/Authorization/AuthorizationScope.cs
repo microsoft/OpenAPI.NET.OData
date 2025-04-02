@@ -17,18 +17,18 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         /// <summary>
         /// Scope name.
         /// </summary>
-        public string Scope { get; set; }
+        public string? Scope { get; set; }
 
         /// <summary>
         /// Scope Grant.
         /// Identity that has access to the scope or can grant access to the scope.
         /// </summary>
-        public string Grant { get; set; }
+        public string? Grant { get; set; }
 
         /// <summary>
         /// Description of the scope.
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Init the <see cref="AuthorizationScope"/>.

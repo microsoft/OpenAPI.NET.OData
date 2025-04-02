@@ -26,7 +26,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="actionImport">The Edm action import.</param>
         /// <param name="document">The OpenApi document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiRequestBody"/> or null.</returns>
-        public static OpenApiRequestBody CreateRequestBody(this ODataContext context, IEdmActionImport actionImport, OpenApiDocument document)
+        public static OpenApiRequestBody? CreateRequestBody(this ODataContext context, IEdmActionImport actionImport, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(actionImport, nameof(actionImport));
@@ -42,7 +42,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="action">The Edm action.</param>
         /// <param name="document">The OpenApi document to lookup references.</param>
         /// <returns>The created <see cref="OpenApiRequestBody"/> or null.</returns>
-        public static OpenApiRequestBody CreateRequestBody(this ODataContext context, IEdmAction action, OpenApiDocument document)
+        public static OpenApiRequestBody? CreateRequestBody(this ODataContext context, IEdmAction action, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(action, nameof(action));

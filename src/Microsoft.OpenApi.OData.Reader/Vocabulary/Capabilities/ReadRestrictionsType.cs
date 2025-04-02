@@ -23,27 +23,27 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the List of required scopes to invoke an action or function
         /// </summary>
-        public IList<PermissionType> Permissions { get; private set; }
+        public IList<PermissionType>? Permissions { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom headers.
         /// </summary>
-        public IList<CustomParameter> CustomHeaders { get; private set; }
+        public IList<CustomParameter>? CustomHeaders { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom query options.
         /// </summary>
-        public IList<CustomParameter> CustomQueryOptions { get; private set; }
+        public IList<CustomParameter>? CustomQueryOptions { get; private set; }
 
         /// <summary>
         /// Gets A brief description of the request.
         /// </summary>
-        public string Description { get; private set; }
+        public string? Description { get; private set; }
 
         /// <summary>
         /// Gets A lengthy description of the request.
         /// </summary>
-        public string LongDescription { get; private set; }
+        public string? LongDescription { get; private set; }
 
         /// <summary>
         /// Test the target supports read.
@@ -83,7 +83,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Merges properties of the specified <see cref="ReadRestrictionsBase"/> object into this instance if they are null.
         /// </summary>
         /// <param name="source">The <see cref="ReadRestrictionsBase"/> object containing properties to merge.</param>
-        public void MergePropertiesIfNull(ReadRestrictionsBase source)
+        public void MergePropertiesIfNull(ReadRestrictionsBase? source)
         {
             if (source == null)
                 return;
@@ -120,7 +120,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the Restrictions for retrieving an entity by key
         /// </summary>
-        public ReadByKeyRestrictions ReadByKeyRestrictions { get; set; }
+        public ReadByKeyRestrictions? ReadByKeyRestrictions { get; set; }
 
         /// <summary>
         /// Init the <see cref="ReadRestrictionsType"/>.
@@ -139,7 +139,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Merges properties of the specified <see cref="ReadRestrictionsType"/> object into this instance if they are null.
         /// </summary>
         /// <param name="source">The <see cref="ReadRestrictionsType"/> object containing properties to merge.</param>
-        public void MergePropertiesIfNull(ReadRestrictionsType source)
+        public void MergePropertiesIfNull(ReadRestrictionsType? source)
         {
             base.MergePropertiesIfNull(source);
 

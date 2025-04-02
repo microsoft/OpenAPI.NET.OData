@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Authorization
         /// Issuer location for the OpenID Provider.
         /// Configuration information can be obtained by appending `/.well-known/openid-configuration` to this Url.
         /// </summary>
-        public string IssuerUrl { get; set; }
+        public string? IssuerUrl { get; set; }
 
         /// <summary>
         /// Gets the security scheme type.

@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(function, nameof(function));
 
-            IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(function,
+            var annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(function,
                 CommunityVocabularyModel.UrlEscapeFunctionTerm).FirstOrDefault();
             if (annotation != null)
             {
@@ -58,12 +58,11 @@ namespace Microsoft.OpenApi.OData.Edm
                     return true;
                 }
 
-                IEdmBooleanConstantExpression tagConstant = annotation.Value as IEdmBooleanConstantExpression;
-                if (tagConstant != null)
-                {
-                    return tagConstant.Value;
-                }
-            }
+				if (annotation.Value is IEdmBooleanConstantExpression tagConstant)
+				{
+					return tagConstant.Value;
+				}
+			}
 
             return false;
         }
@@ -73,16 +72,16 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <returns>The dictionary.</returns>
-        public static IDictionary<IEdmEntityType, IList<IEdmNavigationSource>> LoadAllNavigationSources(this IEdmModel model)
+        public static Dictionary<IEdmEntityType, IList<IEdmNavigationSource>> LoadAllNavigationSources(this IEdmModel model)
         {
             var navigationSourceDic = new Dictionary<IEdmEntityType, IList<IEdmNavigationSource>>();
             if (model != null && model.EntityContainer != null)
             {
                 Action<IEdmNavigationSource, IDictionary<IEdmEntityType, IList<IEdmNavigationSource>>> action = (ns, dic) =>
                 {
-                    if (!dic.TryGetValue(ns.EntityType, out IList<IEdmNavigationSource> value))
+                    if (!dic.TryGetValue(ns.EntityType, out var value))
                     {
-                        value = new List<IEdmNavigationSource>();
+                        value = [];
                         dic[ns.EntityType] = value;
                     }
 
@@ -96,9 +95,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 // singleton
-                foreach (var singelton in model.EntityContainer.Singletons())
+                foreach (var singleton in model.EntityContainer.Singletons())
                 {
-                    action(singelton, navigationSourceDic);
+                    action(singleton, navigationSourceDic);
                 }
             }
 
@@ -114,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             if (entityType == null)
             {
-                yield return null;
+                yield break;
             }
 
             IEdmEntityType current = entityType.BaseEntityType();
@@ -134,7 +133,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             if (complexType == null)
             {
-                yield return null;
+                yield break;
             }
 
             IEdmComplexType current = complexType.BaseComplexType();

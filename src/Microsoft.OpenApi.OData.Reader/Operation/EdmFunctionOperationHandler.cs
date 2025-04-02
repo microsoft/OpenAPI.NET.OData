@@ -3,9 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -32,17 +34,21 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Gets the Edm Function.
         /// </summary>
-        public IEdmFunction Function => EdmOperation as IEdmFunction;
+        public IEdmFunction? Function => EdmOperation as IEdmFunction;
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             base.SetBasicInfo(operation);
 
-            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            ReadRestrictionsType operationReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperation, CapabilitiesConstants.ReadRestrictions);
-            readRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
-            readRestrictions ??= operationReadRestrictions;
+            var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+
+            if (Context is not null && EdmOperation is not null)
+            {
+                var operationReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperation, CapabilitiesConstants.ReadRestrictions);
+                readRestrictions?.MergePropertiesIfNull(operationReadRestrictions);
+                readRestrictions ??= operationReadRestrictions;
+            }
 
             // Description
             if (!string.IsNullOrWhiteSpace(readRestrictions?.LongDescription))
@@ -54,6 +60,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
+            operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("function"));
             base.SetExtensions(operation);
         }

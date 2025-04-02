@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
@@ -40,14 +39,13 @@ namespace Microsoft.OpenApi.OData.Generator
             settings.EnableKeyAsSegment = context.KeyAsSegment;
             foreach (ODataPath path in context.AllPaths)
             {
-                IPathItemHandler handler = context.PathItemHandlerProvider.GetHandler(path.Kind, document);
+                var handler = context.PathItemHandlerProvider.GetHandler(path.Kind, document);
                 if (handler == null)
                 {
                     continue;
                 }
 
-                OpenApiPathItem pathItem = handler.CreatePathItem(context, path);
-                if (!pathItem.Operations.Any())
+                if (handler.CreatePathItem(context, path) is not {Operations.Count: > 0} pathItem)
                 {
                     continue;
                 }

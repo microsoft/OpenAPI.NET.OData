@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Patch;
-        private UpdateRestrictionsType _updateRestriction;
+        private UpdateRestrictionsType? _updateRestriction;
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -42,12 +42,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            string placeHolder = "Update the ref of navigation property " + NavigationProperty.Name + " in " + NavigationSource.Name;
+            string placeHolder = "Update the ref of navigation property " + NavigationProperty?.Name + " in " + NavigationSource?.Name;
             operation.Summary = _updateRestriction?.Description ?? placeHolder;
             operation.Description = _updateRestriction?.LongDescription;
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is {Settings.EnableOperationId: true})
             {
                 string prefix = "UpdateRef";
                 operation.OperationId = GetOperationId(prefix);
@@ -73,18 +73,19 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
 
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
             base.SetResponses(operation);
         }
 
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (_updateRestriction == null)
+            if (_updateRestriction?.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_updateRestriction.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_updateRestriction.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

@@ -28,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <inheritdoc />
-        public override IEdmEntityType EntityType => null;
+        public override IEdmEntityType? EntityType => null;
 
         /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.Ref;

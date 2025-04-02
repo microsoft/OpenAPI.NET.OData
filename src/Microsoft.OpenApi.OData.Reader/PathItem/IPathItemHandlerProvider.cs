@@ -19,6 +19,6 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <param name="pathKind">The path kind.</param>
         /// <param name="document">The Open API document to use to lookup references.</param>
         /// <returns>The <see cref="IPathItemHandler"/>.</returns>
-        IPathItemHandler GetHandler(ODataPathKind pathKind, OpenApiDocument document);
+        IPathItemHandler? GetHandler(ODataPathKind pathKind, OpenApiDocument document);
     }
 }

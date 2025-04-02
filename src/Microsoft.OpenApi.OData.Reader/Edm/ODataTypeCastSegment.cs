@@ -27,7 +27,7 @@ public class ODataTypeCastSegment : ODataSegment
 
     private readonly IEdmModel _model;
     /// <inheritdoc />
-    public override IEdmEntityType EntityType => null;
+    public override IEdmEntityType? EntityType => null;
 
     /// <inheritdoc />
     public override ODataSegmentKind Kind => ODataSegmentKind.TypeCast;
@@ -43,7 +43,7 @@ public class ODataTypeCastSegment : ODataSegment
     /// <inheritdoc />
     public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
     {
-        return [StructuredType as IEdmVocabularyAnnotatable];
+        return StructuredType is IEdmVocabularyAnnotatable annotable ? [annotable] : [];
     }
 
     /// <inheritdoc />

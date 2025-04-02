@@ -3,12 +3,14 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Models.References;
@@ -37,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Get;
 
-        private ReadRestrictionsType _readRestriction;
+        private ReadRestrictionsType? _readRestriction;
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -50,13 +52,13 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            string placeHolder = "Get " + NavigationProperty.Name + " from " + NavigationSource.Name;
+            string placeHolder = "Get " + NavigationProperty?.Name + " from " + NavigationSource?.Name;
             operation.Summary = (LastSegmentIsKeySegment ? _readRestriction?.ReadByKeyRestrictions?.Description : _readRestriction?.Description) ?? placeHolder;    
             operation.Description = (LastSegmentIsKeySegment ? _readRestriction?.ReadByKeyRestrictions?.LongDescription : _readRestriction?.LongDescription)
-                ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
+                ?? Context?.Model.GetDescriptionAnnotation(NavigationProperty);
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is { Settings.EnableOperationId: true })
             {
                 string prefix = "Get";
                 if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
@@ -72,18 +74,16 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            if (Context.Settings.EnablePagination)
+            if (Context is { Settings.EnablePagination: true } && !LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                var extension = new JsonObject
                 {
-                    JsonObject extension = new JsonObject
-                    {
-                        { "nextLinkName", "@odata.nextLink"},
-                        { "operationName", Context.Settings.PageableOperationName}
-                    };
+                    { "nextLinkName", "@odata.nextLink"},
+                    { "operationName", Context.Settings.PageableOperationName}
+                };
 
-                    operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
-                }
+                operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
             }
 
             base.SetExtensions(operation);
@@ -92,10 +92,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            IDictionary<string, IOpenApiLink> links = null;
-            if (Context.Settings.ShowLinks)
+            IDictionary<string, IOpenApiLink>? links = null;
+            if (Context is { Settings.ShowLinks: true } && NavigationProperty is not null && Path is not null)
             {
-                string operationId = GetOperationId();
+                var operationId = GetOperationId();
 
                 links = Context.CreateLinks(entityType: NavigationProperty.ToEntityType(), entityName: NavigationProperty.Name,
                         entityKind: NavigationProperty.PropertyKind.ToString(), path: Path, parameters: PathParameters,
@@ -107,17 +107,17 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.Responses = new OpenApiResponses
                 {
                     {
-                        Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                        Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                         new OpenApiResponseReference($"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}", _document)
                     }
                 };
             }
             else
             {
-                IOpenApiSchema schema = null;
+                IOpenApiSchema? schema = null;
                 var entityType = NavigationProperty.ToEntityType();
 
-                if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+                if (Context is { Settings.EnableDerivedTypesReferencesForResponses: true })
                 {
                     schema = EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, Context.Model, _document);
                 }
@@ -127,7 +127,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.Responses = new OpenApiResponses
                 {
                     {
-                        Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                        Context?.Settings.UseSuccessStatusCodeRange ?? false ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                         new OpenApiResponse
                         {
                             Description = "Retrieved navigation property",
@@ -147,7 +147,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 };
             }
 
-            operation.AddErrorResponses(Context.Settings, _document, false);
+            if (Context is not null)
+                operation.AddErrorResponses(Context.Settings, _document, false);
 
             base.SetResponses(operation);
         }
@@ -157,73 +158,71 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
-            OpenApiParameter selectParameter = Context.CreateSelect(TargetPath, NavigationProperty.ToEntityType()) 
-                ?? Context.CreateSelect(NavigationProperty);
+            if (Context is null)
+            {
+                return;
+            }
 
-            OpenApiParameter expandParameter = Context.CreateExpand(TargetPath, NavigationProperty.ToEntityType()) 
-                ?? Context.CreateExpand(NavigationProperty);
+            var (selectParameter, expandParameter) = (string.IsNullOrEmpty(TargetPath), NavigationProperty) switch
+            { 
+                (false, not null) when NavigationProperty.ToEntityType() is {} entityType =>
+                    (Context.CreateSelect(TargetPath!, entityType) ?? Context.CreateSelect(NavigationProperty), 
+                    Context.CreateExpand(TargetPath!, entityType) ?? Context.CreateExpand(NavigationProperty)),
+                (true, not null) => (Context.CreateSelect(NavigationProperty), Context.CreateExpand(NavigationProperty)),
+                _ => (null, null),
+            };
 
-            if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            var parametersToAdd = new List<IOpenApiParameter>();
+            if (!LastSegmentIsKeySegment && NavigationProperty?.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 // Need to verify that TopSupported or others should be applied to navigation source.
                 // So, how about for the navigation property.
-                var parameter = Context.CreateTop(TargetPath, _document) ?? Context.CreateTop(NavigationProperty, _document);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
+                AddParameterIfExists(parametersToAdd, Context.CreateTop, Context.CreateTop);
+                AddParameterIfExists(parametersToAdd, Context.CreateSkip, Context.CreateSkip);
+                AddParameterIfExists(parametersToAdd, Context.CreateSearch, Context.CreateSearch);
+                AddParameterIfExists(parametersToAdd, Context.CreateFilter, Context.CreateFilter);
+                AddParameterIfExists(parametersToAdd, Context.CreateCount, Context.CreateCount);
 
-                parameter = Context.CreateSkip(TargetPath, _document) ?? Context.CreateSkip(NavigationProperty, _document);
-                if (parameter != null)
+                var orderByParameter = (string.IsNullOrEmpty(TargetPath), NavigationProperty) switch
+                { 
+                    (false, not null) when NavigationProperty.ToEntityType() is {} entityType =>
+                        Context.CreateOrderBy(TargetPath!, entityType),
+                    (true, not null) => Context.CreateOrderBy(NavigationProperty),
+                    _ => null,
+                };
+                if (orderByParameter != null)
                 {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateSearch(TargetPath, _document) ?? Context.CreateSearch(NavigationProperty, _document);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateFilter(TargetPath, _document) ?? Context.CreateFilter(NavigationProperty, _document);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateCount(TargetPath, _document) ?? Context.CreateCount(NavigationProperty, _document);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                parameter = Context.CreateOrderBy(TargetPath, NavigationProperty.ToEntityType()) ?? Context.CreateOrderBy(NavigationProperty);
-                if (parameter != null)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-
-                if (selectParameter != null)
-                {
-                    operation.Parameters.Add(selectParameter);
-                }
-
-                if (expandParameter != null)
-                {
-                    operation.Parameters.Add(expandParameter);
+                    parametersToAdd.Add(orderByParameter);
                 }
             }
-            else
-            {
-                if (selectParameter != null)
-                {
-                    operation.Parameters.Add(selectParameter);
-                }
 
-                if (expandParameter != null)
-                {
-                    operation.Parameters.Add(expandParameter);
-                }
+            if (selectParameter != null)
+            {
+                parametersToAdd.Add(selectParameter);
+            }
+
+            if (expandParameter != null)
+            {
+                parametersToAdd.Add(expandParameter);
+            }
+
+            if (parametersToAdd.Count > 0)
+            {
+                if (operation.Parameters is null) operation.Parameters = parametersToAdd;
+                else parametersToAdd.ForEach(p => operation.Parameters.Add(p));
+            }
+        }
+        private void AddParameterIfExists(List<IOpenApiParameter> parameters,
+                                            Func<string, OpenApiDocument, IOpenApiParameter?> createParameterFromPath,
+                                            Func<IEdmNavigationProperty, OpenApiDocument, IOpenApiParameter?> createParameterFromProperty)
+        {
+            if (!string.IsNullOrEmpty(TargetPath) && createParameterFromPath(TargetPath, _document) is {} parameterFromPath)
+            {
+                parameters.Add(parameterFromPath);
+            }
+            else if (NavigationProperty is not null && createParameterFromProperty(NavigationProperty, _document) is {} parameterFromProperty)
+            {
+                parameters.Add(parameterFromProperty);
             }
         }
 
@@ -240,7 +239,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 readBase = _readRestriction.ReadByKeyRestrictions;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
+            if (readBase.Permissions is not null)
+                operation.Security = Context?.CreateSecurityRequirements(readBase.Permissions, _document).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

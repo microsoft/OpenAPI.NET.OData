@@ -61,7 +61,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             // If no Core.Description is present, a default title has to be provided as this is a required OpenAPI field.
-            string namespaceName = context.Model.EntityContainer != null ?
+            var namespaceName = context.Model.EntityContainer != null ?
                 context.Model.EntityContainer.Namespace :
                 context.Model.DeclaredNamespaces.FirstOrDefault();
 
@@ -100,7 +100,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return "This OData service is located at " + context.Settings.ServiceRoot.OriginalString;
         }
 
-        private static Dictionary<string, IOpenApiExtension> GetExtensions(this ODataContext context)
+        private static Dictionary<string, IOpenApiExtension>? GetExtensions(this ODataContext context)
         {
             Debug.Assert(context != null);
 
@@ -113,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         new OpenApiAny(new JsonObject
                         {
                             { "toolName", "Microsoft.OpenApi.OData" },
-                            { "toolVersion", Assembly.GetExecutingAssembly().GetName().Version.ToString() }
+                            { "toolVersion", Assembly.GetExecutingAssembly().GetName().Version?.ToString() }
                         })
                     }
                 };

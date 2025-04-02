@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -31,7 +32,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Gets/Sets the NavigationSource segment
         /// </summary>
-        protected ODataNavigationSourceSegment NavigationSourceSegment { get; private set; }
+        protected ODataNavigationSourceSegment? NavigationSourceSegment { get; private set; }
     
         /// <summary>
         /// Gets/Sets flag indicating whether path is navigation property path
@@ -50,12 +51,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Gets the media entity property.
         /// </summary>
-        protected IEdmProperty Property { get; private set; }
+        protected IEdmProperty? Property { get; private set; }
 
         /// <summary>
         /// Gets the navigation property.
         /// </summary>
-        protected IEdmNavigationProperty NavigationProperty { get; private set; }
+        protected IEdmNavigationProperty? NavigationProperty { get; private set; }
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -64,12 +65,13 @@ namespace Microsoft.OpenApi.OData.Operation
             NavigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
 
             // Check whether path is a navigation property path
-            IsNavigationPropertyPath = Path.Segments.Contains(
-                Path.Segments.FirstOrDefault(segment => segment is ODataNavigationPropertySegment));
+            IsNavigationPropertyPath = Path is not null &&
+                                        Path.Segments.OfType<ODataNavigationPropertySegment>().FirstOrDefault() is {} firstPropSegment &&
+                                        Path.Segments.Contains(firstPropSegment);
 
-            LastSegmentIsStreamPropertySegment = Path.LastSegment.Kind == ODataSegmentKind.StreamProperty;
+            LastSegmentIsStreamPropertySegment = Path?.LastSegment?.Kind == ODataSegmentKind.StreamProperty;
 
-            LastSegmentIsStreamContentSegment = Path.LastSegment.Kind == ODataSegmentKind.StreamContent;
+            LastSegmentIsStreamContentSegment = Path?.LastSegment?.Kind == ODataSegmentKind.StreamContent;
             
             LastSegmentIsKeySegment = path.LastSegment is ODataKeySegment;
 
@@ -87,12 +89,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetTags(OpenApiOperation operation)
         {
 
-            string tagIdentifier = IsNavigationPropertyPath 
+            string tagIdentifier = IsNavigationPropertyPath && Path is not null && Context is not null
                 ? EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context)
-                : NavigationSourceSegment.Identifier + "." + NavigationSourceSegment.EntityType.Name;
+                : NavigationSourceSegment?.Identifier + "." + NavigationSourceSegment?.EntityType.Name;
 
 
-            Context.AddExtensionToTag(tagIdentifier, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+            Context?.AddExtensionToTag(tagIdentifier, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
 			{
 				Name = tagIdentifier
 			});
@@ -118,17 +120,19 @@ namespace Microsoft.OpenApi.OData.Operation
             Utils.CheckArgumentNullOrEmpty(prefix, nameof(prefix));
             Utils.CheckArgumentNullOrEmpty(identifier, nameof(identifier));
 
-            var items = new List<string>
+            var items = NavigationSourceSegment is null ? [] : new List<string>
             {
                 NavigationSourceSegment.Identifier
             };
 
+            if (Path is null) throw new InvalidOperationException("Path is null.");
+            
             ODataSegment lastSegment = Path.Segments.Last(c => c is ODataStreamContentSegment || c is ODataStreamPropertySegment);
             foreach (ODataSegment segment in Path.Segments.Skip(1))
             {
                 if (segment == lastSegment)
                 {
-                    if (!IsNavigationPropertyPath)
+                    if (!IsNavigationPropertyPath && NavigationSourceSegment is not null)
                     {
                         string typeName = NavigationSourceSegment.EntityType.Name;
                         items.Add(typeName);
@@ -138,8 +142,11 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         // Remove the last navigation property segment for navigation property paths,
                         // as this will be included within the prefixed name of the operation id
-                        items.Remove(NavigationProperty.Name);
-                        items.Add(prefix + Utils.UpperFirstChar(NavigationProperty.Name) + Utils.UpperFirstChar(identifier));
+                        if (NavigationProperty is not null)
+                        {
+                            items.Remove(NavigationProperty.Name);
+                            items.Add(prefix + Utils.UpperFirstChar(NavigationProperty.Name) + Utils.UpperFirstChar(identifier));
+                        }
                     }
                     break;
                 }
@@ -152,7 +159,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             }
 
-            return $"{string.Join(".", items)}-{Path.GetPathHash(Context.Settings)}";
+            return $"{string.Join(".", items)}-{Path.GetPathHash(Context?.Settings ?? new())}";
         }
 
         /// <summary>
@@ -163,12 +170,6 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Fetch the respective AcceptableMediaTypes
             (_, var property) = GetStreamElements();
-            IEnumerable<string> mediaTypes = null;
-            if (property != null)
-            {
-                mediaTypes = Context.Model.GetCollection(property,
-                    CoreConstants.AcceptableMediaTypes);
-            }
 
             OpenApiSchema schema = new()
             {
@@ -177,7 +178,9 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             var content = new Dictionary<string, OpenApiMediaType>();
-            if (mediaTypes != null)
+            if (property is not null &&
+                Context?.Model.GetCollection(property,
+                    CoreConstants.AcceptableMediaTypes) is {} mediaTypes)
             {
                 foreach (string item in mediaTypes)
                 {
@@ -203,35 +206,44 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets the stream property and entity type declaring the stream property.
         /// </summary>
         /// <returns>The stream property and entity type declaring the stream property.</returns>
-        protected (IEdmEntityType entityType, IEdmProperty property) GetStreamElements()
+        protected (IEdmEntityType? entityType, IEdmProperty? property) GetStreamElements()
         {
             // Only ODataStreamPropertySegment is annotatable
-            if (!LastSegmentIsStreamPropertySegment && !LastSegmentIsStreamContentSegment) return (null, null);
+            if (!LastSegmentIsStreamPropertySegment && !LastSegmentIsStreamContentSegment || Path is null) return (null, null);
 
             // Retrieve the entity type of the segment before the stream property segment
             var entityType = LastSegmentIsStreamContentSegment
-                ? Path.Segments.ElementAtOrDefault(Path.Segments.Count - 3).EntityType
-                : Path.Segments.ElementAtOrDefault(Path.Segments.Count - 2).EntityType;
+                ? Path.Segments.ElementAtOrDefault(Path.Segments.Count - 3)?.EntityType
+                : Path.Segments.ElementAtOrDefault(Path.Segments.Count - 2)?.EntityType;
+
+            if (entityType is null) return (null, null);
 
             // The stream property can either be a structural type or a navigation property type
-            ODataSegment lastSegmentProp = LastSegmentIsStreamContentSegment
+            var lastSegmentProp = LastSegmentIsStreamContentSegment
                 ? Path.Segments.Reverse().Skip(1).FirstOrDefault()
-                : Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
-            IEdmProperty property = GetStructuralProperty(entityType, lastSegmentProp.Identifier);
-            if (property == null)
+                : Path.Segments.OfType<ODataStreamPropertySegment>().LastOrDefault();
+            
+            if (lastSegmentProp?.Identifier is not string lastIdentifier) return (null, null);
+            
+            if (GetStructuralProperty(entityType, lastIdentifier) is IEdmProperty property)
             {
-                property = GetNavigationProperty(entityType, lastSegmentProp.Identifier);
+                return (entityType, property);
             }
 
-            return (entityType, property);
+            if (GetNavigationProperty(entityType, lastIdentifier) is IEdmProperty navigationProperty)
+            {
+                return (entityType, navigationProperty);
+            }
+
+            return (null, null);
         }
 
-        private IEdmStructuralProperty GetStructuralProperty(IEdmEntityType entityType, string identifier)
+        private static IEdmStructuralProperty? GetStructuralProperty(IEdmEntityType entityType, string identifier)
         {
             return entityType.StructuralProperties().FirstOrDefault(x => x.Name.Equals(identifier));
         }
 
-        private IEdmNavigationProperty GetNavigationProperty(IEdmEntityType entityType, string identifier)
+        private static IEdmNavigationProperty? GetNavigationProperty(IEdmEntityType entityType, string identifier)
         {
             return entityType.DeclaredNavigationProperties().FirstOrDefault(x => x.Name.Equals(identifier));
         }
@@ -239,10 +251,14 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs && Property != null)
+            if (Context is { Settings.ShowExternalDocs: true } && Property != null)
             {
-                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
-                    Context.Model.GetLinkRecord(Property, CustomLinkRel);
+                var externalDocs = (string.IsNullOrEmpty(TargetPath), string.IsNullOrEmpty(CustomLinkRel)) switch
+                {
+                    (_, true) => null,
+                    (false, false) => Context.Model.GetLinkRecord(TargetPath!, CustomLinkRel!),
+                    (_, false) => Context.Model.GetLinkRecord(Property, CustomLinkRel!),
+                };
 
                 if (externalDocs != null)
                 {

@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
@@ -37,17 +38,17 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public abstract HttpMethod OperationType { get; }
 
-        protected IDictionary<ODataSegment, IDictionary<string, string>> ParameterMappings;
+        protected IDictionary<ODataSegment, IDictionary<string, string>>? ParameterMappings;
 
         /// <summary>
         /// The path parameters in the path
         /// </summary>
-        protected IList<IOpenApiParameter> PathParameters;
+        protected IList<IOpenApiParameter>? PathParameters;
 
         /// <summary>
         /// The string representation of the Edm target path for annotations.
         /// </summary>
-        protected string TargetPath;
+        protected string? TargetPath;
 
         /// <inheritdoc/>
         public virtual OpenApiOperation CreateOperation(ODataContext context, ODataPath path)
@@ -96,38 +97,43 @@ namespace Microsoft.OpenApi.OData.Operation
 
         private void SetDeprecation(OpenApiOperation operation)
         {
-            if (operation != null && Context.Settings.EnableDeprecationInformation)
+            if (operation is null ||
+                Context is null ||
+                !Context.Settings.EnableDeprecationInformation ||
+                Path is null)
             {
-                var deprecationInfo = Path.SelectMany(x => x.GetAnnotables())
-                                    .SelectMany(x => Context.GetDeprecationInformations(x))
-                                    .Where(x => x != null)
-                                    .OrderByDescending(x => x.Date)
-                                    .ThenByDescending(x => x.RemovalDate)
-                                    .FirstOrDefault();
+                return;
+            }
+            var deprecationInfo = Path.SelectMany(x => x.GetAnnotables())
+                                .SelectMany(x => Context.GetDeprecationInformations(x))
+                                .Where(x => x != null)
+                                .OrderByDescending(x => x.Date)
+                                .ThenByDescending(x => x.RemovalDate)
+                                .FirstOrDefault();
 
-                if (deprecationInfo != null)
-                {
-                    operation.Deprecated = true;
-                    var deprecationDetails = deprecationInfo.GetOpenApiExtension();
-                    operation.Extensions.Add(OpenApiDeprecationExtension.Name, deprecationDetails);
-                }
+            if (deprecationInfo != null)
+            {
+                operation.Deprecated = true;
+                var deprecationDetails = deprecationInfo.GetOpenApiExtension();
+                operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                operation.Extensions.Add(OpenApiDeprecationExtension.Name, deprecationDetails);
             }
         }
 
         /// <summary>
         /// Gets the OData context.
         /// </summary>
-        protected ODataContext Context { get; private set; }
+        protected ODataContext? Context { get; private set; }
 
         /// <summary>
         /// Gets the OData path.
         /// </summary>
-        protected ODataPath Path { get; private set; }
+        protected ODataPath? Path { get; private set; }
 
         /// <summary>
         /// Gets the custom link relation type for path based on operation type
         /// </summary>
-        protected string CustomLinkRel { get; set; }
+        protected string? CustomLinkRel { get; set; }
 
         /// <summary>
         /// Initialize the handler.
@@ -175,12 +181,16 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetParameters(OpenApiOperation operation)
         {
-            PathParameters = Path.CreatePathParameters(Context, _document);
-            if (!Context.Settings.DeclarePathParametersOnPathItem)
+            if (Context is not null && Path is not null)
             {
-                foreach (var parameter in PathParameters)
+                PathParameters = Path.CreatePathParameters(Context, _document);
+                if (!Context.Settings.DeclarePathParametersOnPathItem)
                 {
-                    operation.Parameters.AppendParameter(parameter);
+                    operation.Parameters ??= [];
+                    foreach (var parameter in PathParameters)
+                    {
+                        operation.Parameters.AppendParameter(parameter);
+                    }
                 }
             }
 
@@ -239,7 +249,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             foreach (var param in customParameters)
             {
-                string documentationUrl = null;
+                string? documentationUrl = null;
                 if (param.DocumentationURL != null)
                 {
                     documentationUrl = $" Documentation URL: {param.DocumentationURL}";
@@ -247,7 +257,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 // DocumentationURL value is to be appended to
                 // the parameter Description property
-                string paramDescription = (param.Description == null) ? documentationUrl?.Remove(0, 1) : param.Description + documentationUrl;
+                var paramDescription = (param.Description == null) ? documentationUrl?.Remove(0, 1) : param.Description + documentationUrl;
 
                 OpenApiParameter parameter = new()
                 {
@@ -273,12 +283,13 @@ namespace Microsoft.OpenApi.OData.Operation
                         };
 
                         // maybe call convert to Uri literal
-                        ex.Value = example.Value.ToString();
+                        ex.Value = example.Value?.ToString();
 
                         parameter.Examples.Add("example-" + index++, ex);
                     }
                 }
 
+                operation.Parameters ??= [];
                 operation.Parameters.AppendParameter(parameter);
             }
         }
@@ -288,7 +299,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         protected virtual void SetCustomLinkRelType()
         {
-            if (Context.Settings.CustomHttpMethodLinkRelMapping != null)
+            if (Context?.Settings.CustomHttpMethodLinkRelMapping is not null &&
+                Path is not null)
             {
                 LinkRelKey? key = OperationType.ToString().ToLowerInvariant() switch
                 {
@@ -300,9 +312,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     _ => null,
                 };
 
-                if (key != null)
+                if (key != null && key.HasValue && Context.Settings.CustomHttpMethodLinkRelMapping.TryGetValue(key.Value, out var linkRelValue))
                 {
-                    Context.Settings.CustomHttpMethodLinkRelMapping.TryGetValue((LinkRelKey)key, out string linkRelValue);
                     CustomLinkRel = linkRelValue;
                 }
             }
@@ -316,7 +327,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                    (Context?.Settings.UseSuccessStatusCodeRange ?? false) ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                     new OpenApiResponseReference($"{targetElementFullName}{Constants.CollectionSchemaSuffix}", _document)
                 }
             };
@@ -330,7 +341,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                    (Context?.Settings.UseSuccessStatusCodeRange ?? false) ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                     new OpenApiResponse
                     {
                         Description = "Entity result.",

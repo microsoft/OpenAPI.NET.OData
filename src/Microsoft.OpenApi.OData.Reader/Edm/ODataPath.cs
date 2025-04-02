@@ -20,7 +20,7 @@ namespace Microsoft.OpenApi.OData.Edm
     public class ODataPath : IEnumerable<ODataSegment>, IComparable<ODataPath>
     {
         private ODataPathKind? _pathKind;
-        private string _defaultPathItemName;
+        private string? _defaultPathItemName;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataPath"/> class.
@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Gets/Sets the path template for this path.
         /// If it is set, it will be used to generate the path item.
         /// </summary>
-        public string PathTemplate { get; set; }
+        public string? PathTemplate { get; set; }
 
         /// <summary>
         /// Gets the segments.
@@ -80,12 +80,12 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the first segment in the path. Returns null if the path is empty.
         /// </summary>
-        public ODataSegment FirstSegment => Segments.Count == 0 ? null : Segments[0];
+        public ODataSegment? FirstSegment => Segments is null || Segments.Count == 0 ? null : Segments[0];
 
         /// <summary>
         /// Get the last segment in the path. Returns null if the path is empty.
         /// </summary>
-        public ODataSegment LastSegment => Segments.Count == 0 ? null : this.Segments[Segments.Count - 1];
+        public ODataSegment? LastSegment => Segments is null || Segments.Count == 0 ? null : this.Segments[Segments.Count - 1];
 
         /// <summary>
         /// Get the number of segments in this path.
@@ -150,35 +150,34 @@ namespace Microsoft.OpenApi.OData.Edm
 
             if (!string.IsNullOrWhiteSpace(settings.PathPrefix))
             {
-                sb.Append("/");
+                sb.Append('/');
                 sb.Append(settings.PathPrefix);
             }
 
             foreach (var segment in Segments)
             {
-                string pathItemName = segment.GetPathItemName(settings, parameters);
+                var pathItemName = segment.GetPathItemName(settings, parameters);
 
                 if (segment is ODataKeySegment keySegment &&
                     (settings.EnableKeyAsSegment == null || !settings.EnableKeyAsSegment.Value || keySegment.IsAlternateKey))
                 {
-                    sb.Append("(");
+                    sb.Append('(');
                     sb.Append(pathItemName);
-                    sb.Append(")");
+                    sb.Append(')');
                 }
                 else // other segments
                 {
-                    if (segment.Kind == ODataSegmentKind.Operation)
+                    if (segment.Kind == ODataSegmentKind.Operation &&
+                        segment is ODataOperationSegment operation &&
+                        operation.IsEscapedFunction &&
+                        settings.EnableUriEscapeFunctionCall)
                     {
-                        ODataOperationSegment operation = (ODataOperationSegment)segment;
-                        if (operation.IsEscapedFunction && settings.EnableUriEscapeFunctionCall)
-                        {
-                            sb.Append(":/");
-                            sb.Append(pathItemName);
-                            continue;
-                        }
+                        sb.Append(":/");
+                        sb.Append(pathItemName);
+                        continue;
                     }
 
-                    sb.Append("/");
+                    sb.Append('/');
                     sb.Append(pathItemName);
                 }
             }
@@ -204,10 +203,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>The whole path object.</returns>
         internal ODataPath Push(ODataSegment segment)
         {
-            if (Segments == null)
-            {
-                Segments = new List<ODataSegment>();
-            }
+            Segments ??= [];
 
             _pathKind = null;
             _defaultPathItemName = null;
@@ -290,7 +286,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 return PathTemplate;
             }
 
-            return "/" + String.Join("/", Segments.Select(e => e.Kind));
+            return "/" + string.Join("/", Segments.Select(e => e.Kind));
         }
 
         /// <summary>
@@ -298,9 +294,9 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="other">The compare to ODataPath.</param>
         /// <returns>true/false</returns>
-        public int CompareTo(ODataPath other)
+        public int CompareTo(ODataPath? other)
         {
-            return GetPathItemName().CompareTo(other.GetPathItemName());
+            return GetPathItemName().CompareTo(other?.GetPathItemName());
         }
 
         private ODataPathKind CalcPathType()
@@ -365,7 +361,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="settings">The settings.</param>
         ///<returns>The suffix.</returns>
-        public string GetPathHash(OpenApiConvertSettings settings) =>
-            LastSegment.GetPathHash(settings, this);
+        public string? GetPathHash(OpenApiConvertSettings settings) =>
+            LastSegment?.GetPathHash(settings, this);
     }
 }

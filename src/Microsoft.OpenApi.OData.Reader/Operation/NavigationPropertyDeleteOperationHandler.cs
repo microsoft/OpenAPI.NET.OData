@@ -31,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Delete;
 
-        private DeleteRestrictionsType _deleteRestriction;
+        private DeleteRestrictionsType? _deleteRestriction;
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -44,12 +44,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            string placeHolder = "Delete navigation property " + NavigationProperty.Name + " for " + NavigationSource.Name;
+            string placeHolder = "Delete navigation property " + NavigationProperty?.Name + " for " + NavigationSource?.Name;
             operation.Summary = _deleteRestriction?.Description ?? placeHolder;
             operation.Description = _deleteRestriction?.LongDescription;
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is { Settings.EnableOperationId: true})
             {
                 string prefix = "Delete";
                 operation.OperationId = GetOperationId(prefix);
@@ -63,6 +63,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
+            operation.Parameters ??= [];
             operation.Parameters.Add(new OpenApiParameter
             {
                 Name = "If-Match",
@@ -78,19 +79,19 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (_deleteRestriction == null)
+            if (_deleteRestriction?.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_deleteRestriction.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_deleteRestriction.Permissions, _document).ToList() ?? [];
         }
 
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
             // Response for Delete methods should be 204 No Content
-            OpenApiConvertSettings settings = Context.Settings.Clone();
+            OpenApiConvertSettings settings = Context?.Settings.Clone() ?? new();
             settings.UseSuccessStatusCodeRange = false;
             
             operation.AddErrorResponses(settings, _document, true);

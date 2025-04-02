@@ -25,12 +25,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the properties which do not allow /$count segments.
         /// </summary>
-        public IList<string> NonCountableProperties { get; private set; }
+        public IList<string>? NonCountableProperties { get; private set; }
 
         /// <summary>
         /// Gets the navigation properties which do not allow /$count segments.
         /// </summary>
-        public IList<string> NonCountableNavigationProperties { get; private set; }
+        public IList<string>? NonCountableNavigationProperties { get; private set; }
 
         /// <summary>
         /// Test the target supports count.

@@ -138,7 +138,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/sets a value that specifies a prefix to be prepended to all generated paths.
         /// </summary>
-        public string PathPrefix
+        public string? PathPrefix
         {
             get
             {
@@ -166,7 +166,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/sets a route path prefix provider.
         /// </summary>
-        public IODataRoutePathPrefixProvider RoutePathPrefixProvider { get; set; }
+        public IODataRoutePathPrefixProvider? RoutePathPrefixProvider { get; set; }
 
         /// <summary>
         /// Gets/Sets a value indicating whether or not to show the OpenAPI links in the responses.
@@ -203,7 +203,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/sets a the path provider.
         /// </summary>
-        public IODataPathProvider PathProvider { get; set; }
+        public IODataPathProvider? PathProvider { get; set; }
 
         /// <summary>
         /// Gets/sets a value indicating whether or not add OData $count segments in the description for collections.
@@ -315,7 +315,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// The namespace prefix to be stripped from the in method paths.
         /// </summary>
-        public string NamespacePrefixToStripForInMethodPaths { get; set; }
+        public string? NamespacePrefixToStripForInMethodPaths { get; set; }
 
         /// <summary>
         /// Enables the use of aliases for the type cast segments to shorten the url path.

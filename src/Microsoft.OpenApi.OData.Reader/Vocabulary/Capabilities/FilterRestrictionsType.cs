@@ -30,12 +30,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the properties which must be specified in the $filter clause.
         /// </summary>
-        public IList<string> RequiredProperties { get; private set; }
+        public IList<string>? RequiredProperties { get; private set; }
 
         /// <summary>
         /// Gets the properties which cannot be used in $filter expressions.
         /// </summary>
-        public IList<string> NonFilterableProperties { get; private set; }
+        public IList<string>? NonFilterableProperties { get; private set; }
 
         /// <summary>
         /// Gets The maximum number of levels (including recursion) that can be traversed in a filter expression. A value of -1 indicates there is no restriction.
@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Gets These properties only allow a subset of filter expressions.
         /// A valid filter expression for a single property can be enclosed in parentheses and combined by `and` with valid expressions for other properties.
         /// </summary>
-        public IList<FilterExpressionRestrictionType> FilterExpressionRestrictions { get; private set; }
+        public IList<FilterExpressionRestrictionType>? FilterExpressionRestrictions { get; private set; }
 
         /// <summary>
         /// Test the target supports filter.
@@ -61,7 +61,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <returns>True/False.</returns>
         public bool IsRequiredProperty(string propertyPath)
         {
-            return RequiredProperties != null ? RequiredProperties.Any(a => a == propertyPath) : false;
+            return RequiredProperties != null && RequiredProperties.Any(a => a == propertyPath);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <returns>True/False.</returns>
         public bool IsNonFilterableProperty(string propertyPath)
         {
-            return NonFilterableProperties != null ? NonFilterableProperties.Any(a => a == propertyPath) : false;
+            return NonFilterableProperties != null && NonFilterableProperties.Any(a => a == propertyPath);
         }
 
         /// <summary>

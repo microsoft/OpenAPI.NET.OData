@@ -3,8 +3,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -31,10 +33,14 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            ReadRestrictionsType readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
-            ReadRestrictionsType entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
-            readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
-            readRestrictions ??= entityReadRestrictions;
+            var readRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<ReadRestrictionsType>(TargetPath, CapabilitiesConstants.ReadRestrictions);
+            
+            if (Context is not null &&  EntitySet is not null)
+            {
+                var entityReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+                readRestrictions?.MergePropertiesIfNull(entityReadRestrictions);
+                readRestrictions ??= entityReadRestrictions;
+            }
             if (readRestrictions == null ||
                (readRestrictions.ReadByKeyRestrictions == null && readRestrictions.IsReadable) ||
                (readRestrictions.ReadByKeyRestrictions != null && readRestrictions.ReadByKeyRestrictions.IsReadable))
@@ -43,10 +49,14 @@ namespace Microsoft.OpenApi.OData.PathItem
                 AddOperation(item, HttpMethod.Get);
             }
 
-            UpdateRestrictionsType updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
-            UpdateRestrictionsType entityUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
-            updateRestrictions?.MergePropertiesIfNull(entityUpdateRestrictions);
-            updateRestrictions ??= entityUpdateRestrictions;
+            var updateRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<UpdateRestrictionsType>(TargetPath, CapabilitiesConstants.UpdateRestrictions);
+            
+            if (Context is not null &&  EntitySet is not null)
+            {
+                var entityUpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
+                updateRestrictions?.MergePropertiesIfNull(entityUpdateRestrictions);
+                updateRestrictions ??= entityUpdateRestrictions;
+            }
             if (updateRestrictions?.IsUpdatable ?? true)
             {
                 if (updateRestrictions?.IsUpdateMethodPutAndPatch == true)
@@ -64,10 +74,14 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
             }
 
-            DeleteRestrictionsType deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
-            DeleteRestrictionsType entityDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
-            deleteRestrictions?.MergePropertiesIfNull(entityDeleteRestrictions);
-            deleteRestrictions ??= entityDeleteRestrictions;
+            var deleteRestrictions = string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+            
+            if (Context is not null &&  EntitySet is not null)
+            {
+                var entityDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
+                deleteRestrictions?.MergePropertiesIfNull(entityDeleteRestrictions);
+                deleteRestrictions ??= entityDeleteRestrictions;
+            }
             if (deleteRestrictions?.IsDeletable ?? true)
             {
                 AddOperation(item, HttpMethod.Delete);
@@ -75,10 +89,13 @@ namespace Microsoft.OpenApi.OData.PathItem
         }
 
         /// <inheritdoc/>
-        protected override void SetExtensions(OpenApiPathItem pathItem)
+        protected override void SetExtensions(OpenApiPathItem item)
         {
-            base.SetExtensions(pathItem);
-            pathItem.Extensions.AddCustomAttributesToExtensions(Context, EntitySet.EntityType);
+            base.SetExtensions(item);
+            if (EntitySet is null || Context is null) return;
+
+            item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+            item.Extensions.AddCustomAttributesToExtensions(Context, EntitySet.EntityType);
         }
     }
 }

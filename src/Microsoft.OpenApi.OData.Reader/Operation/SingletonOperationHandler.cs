@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -30,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Gets the <see cref="IEdmSingleton"/>.
         /// </summary>
-        protected IEdmSingleton Singleton { get; private set; }
+        protected IEdmSingleton? Singleton { get; private set; }
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
@@ -38,9 +39,8 @@ namespace Microsoft.OpenApi.OData.Operation
             // Base Initialize should be called at top of this method.
             base.Initialize(context, path);
 
-            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-
-            Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
+            if (path.FirstSegment is ODataNavigationSourceSegment {NavigationSource: IEdmSingleton source})
+                Singleton = source;
         }
 
         /// <inheritdoc/>
@@ -48,9 +48,9 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // In this SDK, we use "[Singleton Name].[Singleton Entity Type Name]
             // For example: "Me.User"
-            var tagName = Singleton.Name + "." + Singleton.EntityType.Name;
+            var tagName = Singleton?.Name + "." + Singleton?.EntityType.Name;
 
-            Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+            Context?.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
 			{
 				Name = tagName
 			});
@@ -64,6 +64,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
+            operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("operation"));
 
             base.SetExtensions(operation);
@@ -72,10 +73,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs)
+            if (Context is {Settings.ShowExternalDocs: true} && CustomLinkRel is not null)
             {
-                var externalDocs = Context.Model.GetLinkRecord(TargetPath, CustomLinkRel) ??
-                    Context.Model.GetLinkRecord(Singleton, CustomLinkRel);
+                var externalDocs = (string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetLinkRecord(TargetPath, CustomLinkRel)) ??
+                    (Singleton is null ? null : Context.Model.GetLinkRecord(Singleton, CustomLinkRel));
 
                 if (externalDocs != null)
                 {

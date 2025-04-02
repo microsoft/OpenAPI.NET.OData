@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
@@ -19,12 +18,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the Authorization flow scheme name.
         /// </summary>
-        public string SchemeName { get; private set; }
+        public string? SchemeName { get; private set; }
 
         /// <summary>
         /// Gets the list of scopes that can provide access to the resource.
         /// </summary>
-        public IList<ScopeType> Scopes { get; private set; }
+        public IList<ScopeType>? Scopes { get; private set; }
 
         /// <summary>
         /// Init the <see cref="PermissionType"/>.

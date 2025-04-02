@@ -32,27 +32,29 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override HttpMethod OperationType => HttpMethod.Delete;
 
-        private DeleteRestrictionsType _deleteRestrictions;
+        private DeleteRestrictionsType? _deleteRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            _deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
-            var entityDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
-            _deleteRestrictions?.MergePropertiesIfNull(entityDeleteRestrictions);
-            _deleteRestrictions ??= entityDeleteRestrictions;
+            if (Context is null) return;
+            if (!string.IsNullOrEmpty(TargetPath))
+                _deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(TargetPath, CapabilitiesConstants.DeleteRestrictions);
+            if (EntitySet is not null)
+            {
+                var entityDeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
+                _deleteRestrictions?.MergePropertiesIfNull(entityDeleteRestrictions);
+                _deleteRestrictions ??= entityDeleteRestrictions;
+            }
         }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            IEdmEntityType entityType = EntitySet.EntityType;
-            ODataKeySegment keySegment = Path.LastSegment as ODataKeySegment;
-
             // Description
-            string placeHolder = $"Delete entity from {EntitySet.Name}";
-            if (keySegment.IsAlternateKey)
+            string placeHolder = $"Delete entity from {EntitySet?.Name}";
+            if (Path is {LastSegment: ODataKeySegment {IsAlternateKey: true} keySegment})
             {
                 placeHolder = $"{placeHolder} by {keySegment.Identifier}";
             }
@@ -60,13 +62,13 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Description = _deleteRestrictions?.LongDescription;
 
             // OperationId
-            if (Context.Settings.EnableOperationId)
+            if (Context is { Settings.EnableOperationId: true} && EntitySet?.EntityType is IEdmEntityType entityType)
             {
                 string typeName = entityType.Name;
                 string operationName =$"Delete{Utils.UpperFirstChar(typeName)}";
-                if (keySegment.IsAlternateKey)
+                if (Path is {LastSegment: ODataKeySegment {IsAlternateKey: true} keySegment2})
                 {
-                    string alternateKeyName = string.Join("", keySegment.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
+                    string alternateKeyName = string.Join("", keySegment2.Identifier.Split(',').Select(static x => Utils.UpperFirstChar(x)));
                     operationName = $"{operationName}By{alternateKeyName}";
                 }
                 operation.OperationId =  $"{EntitySet.Name}.{typeName}.{operationName}";          
@@ -78,6 +80,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             base.SetParameters(operation);
 
+            operation.Parameters ??= [];
             operation.Parameters.Add(new OpenApiParameter
             {
                 Name = "If-Match",
@@ -94,7 +97,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetResponses(OpenApiOperation operation)
         {
             // Response for Delete methods should be 204 No Content
-            OpenApiConvertSettings settings = Context.Settings.Clone();
+            OpenApiConvertSettings settings = Context?.Settings.Clone() ?? new();
             settings.UseSuccessStatusCodeRange = false;
             
             operation.AddErrorResponses(settings, _document, true);
@@ -108,7 +111,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(_deleteRestrictions.Permissions, _document).ToList();
+            operation.Security = Context?.CreateSecurityRequirements(_deleteRestrictions.Permissions, _document).ToList() ?? [];
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)

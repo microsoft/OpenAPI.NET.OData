@@ -26,7 +26,7 @@ public class ODataComplexPropertySegment : ODataSegment
     }
 
     /// <inheritdoc />
-    public override IEdmEntityType EntityType => null;
+    public override IEdmEntityType? EntityType => null;
 
     /// <inheritdoc />
     public override ODataSegmentKind Kind => ODataSegmentKind.ComplexProperty;
@@ -42,13 +42,13 @@ public class ODataComplexPropertySegment : ODataSegment
     /// <summary>
     /// Gets the type definition of the property this segment was inserted for.
     /// </summary>
-    public IEdmComplexType ComplexType => 
+    public IEdmComplexType? ComplexType => 
         (Property.Type.IsCollection() ? Property.Type.Definition.AsElementType() : Property.Type.AsComplex().Definition) as IEdmComplexType;
 
     /// <inheritdoc />
     public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
     {
-        return new IEdmVocabularyAnnotatable[] { Property, ComplexType }.Union(ComplexType.FindAllBaseTypes());
+        return new IEdmVocabularyAnnotatable[] { Property }.Union(ComplexType is null ? [] : [ComplexType]).Union(ComplexType?.FindAllBaseTypes() ?? []);
     }
 
     /// <inheritdoc />
