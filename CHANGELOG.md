@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.0-preview.12](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.11...v2.0.0-preview.12) (2025-04-02)
+
+
+### Features
+
+* enables null reference types for the library ([93f46f0](https://github.com/microsoft/OpenAPI.NET.OData/commit/93f46f09b2204e3f18ec19b68850ec7acd209e65))
+
+
+### Bug Fixes
+
+* filter out not found alternate keys properties ([2f6459e](https://github.com/microsoft/OpenAPI.NET.OData/commit/2f6459e30fc08b3f8617bdc182f72d3fbb8f5895))
+* filter out not found alternate keys properties ([6672d76](https://github.com/microsoft/OpenAPI.NET.OData/commit/6672d76724c188957c1aea2069bf49640c2f7b15))
+
 ## [2.0.0-preview.11](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.10...v2.0.0-preview.11) (2025-03-19)
 
 
