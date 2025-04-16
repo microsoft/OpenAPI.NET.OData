@@ -29,13 +29,13 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     }
 
     [Theory]
-    [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
-    public async Task EmptyEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
+    [InlineData(OpenApiSpecVersion.OpenApi2_0, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_0, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi2_0, "yaml")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_0, "yaml")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, "yaml")]
+    public async Task EmptyEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, string format)
     {
         // Arrange
         IEdmModel model = EdmModelHelper.EmptyModel;
@@ -54,13 +54,13 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     }
 
     [Theory]
-    [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
-    public async Task BasicEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
+    [InlineData(OpenApiSpecVersion.OpenApi2_0, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_0, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi2_0, "yaml")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_0, "yaml")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, "yaml")]
+    public async Task BasicEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, string format)
     {
         // Arrange
         IEdmModel model = EdmModelHelper.BasicEdmModel;
@@ -81,13 +81,13 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     }
 
     [Theory]
-    [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
-    public async Task MultipleSchemasEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
+    [InlineData(OpenApiSpecVersion.OpenApi2_0, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_0, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi2_0, "yaml")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_0, "yaml")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, "yaml")]
+    public async Task MultipleSchemasEdmModelToOpenApiWorks(OpenApiSpecVersion specVersion, string format)
     {
         // Arrange
         IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
@@ -110,13 +110,13 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     }
 
     [Theory]
-    [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Json)]
-    [InlineData(OpenApiSpecVersion.OpenApi2_0, OpenApiFormat.Yaml)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_0, OpenApiFormat.Yaml)]
-    [InlineData(OpenApiSpecVersion.OpenApi3_1, OpenApiFormat.Yaml)]
-    public async Task TripServiceMetadataToOpenApiWorks(OpenApiSpecVersion specVersion, OpenApiFormat format)
+    [InlineData(OpenApiSpecVersion.OpenApi2_0, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_0, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, "json")]
+    [InlineData(OpenApiSpecVersion.OpenApi2_0, "yaml")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_0, "yaml")]
+    [InlineData(OpenApiSpecVersion.OpenApi3_1, "yaml")]
+    public async Task TripServiceMetadataToOpenApiWorks(OpenApiSpecVersion specVersion, string format)
     {
         // Arrange
         IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -141,11 +141,11 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
         AssertDocumentsAreEqual(result, fileName, format);
     }
 
-    private void AssertDocumentsAreEqual(string result, string fileName, OpenApiFormat format)
+    private void AssertDocumentsAreEqual(string result, string fileName, string format)
     {
         _output.WriteLine(result);
         var expected = Resources.GetString(fileName);
-        if (format is OpenApiFormat.Json)
+        if (format is "json")
         {
             var parsedJson = JsonNode.Parse(result);
             Assert.True(JsonNode.DeepEquals(JsonNode.Parse(expected), parsedJson));
@@ -156,10 +156,10 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
         }
     }
 
-    private static string GetFormatExt(OpenApiFormat format) =>
+    private static string GetFormatExt(string format) =>
     format switch {
-        OpenApiFormat.Json => "json",
-        OpenApiFormat.Yaml => "yaml",
+        "json" => "json",
+        "yaml" => "yaml",
         _ => throw new NotImplementedException()
     };
 
@@ -171,7 +171,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
         _ => throw new NotImplementedException()
     };
 
-    private static async Task<string> WriteEdmModelAsOpenApi(IEdmModel model, OpenApiFormat target,
+    private static async Task<string> WriteEdmModelAsOpenApi(IEdmModel model, string target,
         OpenApiConvertSettings settings = null)
     {
         settings ??= new OpenApiConvertSettings();

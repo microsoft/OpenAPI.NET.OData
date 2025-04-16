@@ -24,7 +24,7 @@ namespace OoasUtil
         /// <summary>
         /// Output format.
         /// </summary>
-        public OpenApiFormat Format { get; }
+        public string Format { get; }
 
         /// <summary>
         /// Output file.
@@ -42,7 +42,7 @@ namespace OoasUtil
         /// <param name="output">The output.</param>
         /// <param name="format">The output format.</param>
         /// <param name="settings">Conversion settings.</param>
-        protected OpenApiGenerator(string output, OpenApiFormat format, OpenApiConvertSettings settings)
+        protected OpenApiGenerator(string output, string format, OpenApiConvertSettings settings)
         {
             Output = output;
             Format = format;

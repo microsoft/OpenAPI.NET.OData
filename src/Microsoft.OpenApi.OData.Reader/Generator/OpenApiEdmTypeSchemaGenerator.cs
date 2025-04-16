@@ -15,6 +15,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.Models.Interfaces;
+using System.Globalization;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -127,15 +128,15 @@ namespace Microsoft.OpenApi.OData.Generator
                                 // The precision is represented with the maximum and minimum keywords and a value of ±(10^ (precision - scale) - 10^ scale).
                                 double tmp = Math.Pow(10, decimalTypeReference.Precision.Value - decimalTypeReference.Scale.Value)
                                     - Math.Pow(10, -decimalTypeReference.Scale.Value);
-                                openApiSchema.Minimum = (decimal?)(tmp * -1.0);
-                                openApiSchema.Maximum = (decimal?)(tmp);
+                                openApiSchema.Minimum = (tmp * -1.0).ToString(CultureInfo.InvariantCulture);
+                                openApiSchema.Maximum = tmp.ToString(CultureInfo.InvariantCulture);
                             }
                             else
                             {
                                 // If the scale facet has a numeric value, and ±(10^precision - 1) if the scale is variable
                                 double tmp = Math.Pow(10, decimalTypeReference.Precision.Value) - 1;
-                                openApiSchema.Minimum = (decimal?)(tmp * -1.0);
-                                openApiSchema.Maximum = (decimal?)(tmp);
+                                openApiSchema.Minimum = (tmp * -1.0).ToString(CultureInfo.InvariantCulture);
+                                openApiSchema.Maximum = tmp.ToString(CultureInfo.InvariantCulture);
                             }
                         }
 
@@ -246,14 +247,14 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.Int16:
                     schema.Type = JsonSchemaType.Number;
                     schema.Format = "int16";
-                    schema.Minimum = Int16.MinValue; // -32768
-                    schema.Maximum = Int16.MaxValue; // 32767
+                    schema.Minimum = short.MinValue.ToString(CultureInfo.InvariantCulture); // -32768
+                    schema.Maximum = short.MaxValue.ToString(CultureInfo.InvariantCulture); // 32767
                     break;
                 case EdmPrimitiveTypeKind.Int32:
                     schema.Type = JsonSchemaType.Number;
                     schema.Format = "int32";
-                    schema.Minimum = Int32.MinValue; // -2147483648
-                    schema.Maximum = Int32.MaxValue; // 2147483647
+                    schema.Minimum = int.MinValue.ToString(CultureInfo.InvariantCulture); // -2147483648
+                    schema.Maximum = int.MaxValue.ToString(CultureInfo.InvariantCulture); // 2147483647
                     break;
                 case EdmPrimitiveTypeKind.Int64 when emitIEEECompatibleTypes:
                     schema.OneOf =
@@ -269,8 +270,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.SByte:
                     schema.Type = JsonSchemaType.Number;
                     schema.Format = "int8";
-                    schema.Minimum = SByte.MinValue; // -128
-                    schema.Maximum = SByte.MaxValue; // 127
+                    schema.Minimum = sbyte.MinValue.ToString(CultureInfo.InvariantCulture); // -128
+                    schema.Maximum = sbyte.MaxValue.ToString(CultureInfo.InvariantCulture); // 127
                     break;
                 case EdmPrimitiveTypeKind.String: // string
                     schema.Type = JsonSchemaType.String;

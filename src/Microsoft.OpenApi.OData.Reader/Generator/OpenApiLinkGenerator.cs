@@ -30,7 +30,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="parameters">"Optional: The list of parameters of the incoming operation.</param>
         /// <param name="navPropOperationId">Optional: The operation id of the source of the NavigationProperty object.</param>
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
-        public static IDictionary<string, IOpenApiLink> CreateLinks(this ODataContext context,
+        public static Dictionary<string, IOpenApiLink> CreateLinks(this ODataContext context,
             IEdmEntityType entityType, string entityName, string entityKind, ODataPath path,
             IList<IOpenApiParameter>? parameters = null, string? navPropOperationId = null)
         {

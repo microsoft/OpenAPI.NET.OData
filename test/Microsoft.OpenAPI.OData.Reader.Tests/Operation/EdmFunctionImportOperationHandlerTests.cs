@@ -27,6 +27,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
             Type = SecuritySchemeType.OAuth2,
           });
+          _openApiDocument.Tags ??= [];
+          _openApiDocument.Tags.Add(new OpenApiTag { Name = "GetNearestAirport" });
         }
         private readonly OpenApiDocument _openApiDocument = new();
         private EdmFunctionImportOperationHandler _operationHandler => new(_openApiDocument);
@@ -275,10 +277,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(operation);
-            Assert.NotNull(operation.Security);
 
             if (enableAnnotation)
             {
+              Assert.NotNull(operation.Security);
                 Assert.Equal(2, operation.Security.Count);
 
                 string json = await operation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
@@ -355,7 +357,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Empty(operation.Security);
+                Assert.Null(operation.Security);
             }
         }
     }

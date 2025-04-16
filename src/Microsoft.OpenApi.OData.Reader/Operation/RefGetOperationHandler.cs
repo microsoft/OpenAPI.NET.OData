@@ -103,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     // $ref returns string for the Uri?
                     Type = JsonSchemaType.String
                 };
-                IDictionary<string, IOpenApiLink>? links = null;
+                Dictionary<string, IOpenApiLink>? links = null;
                 if (Context is {Settings.ShowLinks: true} && NavigationProperty is not null && Path is not null)
                 {
                     var operationId = GetOperationId();

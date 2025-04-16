@@ -25,7 +25,7 @@ public class OpenApiErrorSchemaGeneratorTests
         var schema = OpenApiErrorSchemaGenerator.CreateInnerErrorSchema(context, new());
 
         Assert.Equal(JsonSchemaType.Object, schema.Type);
-        Assert.Empty(schema.Properties);
+        Assert.Null(schema.Properties);
     }
     [Fact]
     public void AddsInnerErrorPropertiesWhenComplexTypeIsProvided()

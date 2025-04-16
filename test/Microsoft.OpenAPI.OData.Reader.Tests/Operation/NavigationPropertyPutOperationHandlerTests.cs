@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Empty(operation.Responses[statusCode].Content);
+                Assert.Null(operation.Responses[statusCode].Content);
             }
 
             if (enableOperationId)
@@ -188,10 +188,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(operation);
-            Assert.NotNull(operation.Security);
 
             if (enableAnnotation)
             {
+              Assert.NotNull(operation.Security);
                 Assert.Equal(2, operation.Security.Count);
 
                 string json = await operation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
@@ -235,7 +235,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Empty(operation.Security);
+                Assert.Null(operation.Security);
             }
         }
     }

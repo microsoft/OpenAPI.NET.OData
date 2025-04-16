@@ -106,11 +106,11 @@ namespace Microsoft.OpenApi.OData.Generator
                     };
                     document.AddComponent(Constants.BaseCollectionPaginationCountResponse, responseSchema);
 
-                    responseSchema.Properties ??= new Dictionary<string, IOpenApiSchema>();
+                    responseSchema.Properties ??= [];
                     if (context.Settings.EnableCount)
-                        responseSchema.Properties.Add(ODataConstants.OdataCount);
+                        responseSchema.Properties.Add(ODataConstants.OdataCount.Key, ODataConstants.OdataCount.Value);
                     if (context.Settings.EnablePagination)
-                        responseSchema.Properties.Add(ODataConstants.OdataNextLink);
+                        responseSchema.Properties.Add(ODataConstants.OdataNextLink.Key, ODataConstants.OdataNextLink.Value);
                 }
 
                 // @odata.nextLink + @odata.deltaLink
@@ -265,10 +265,10 @@ namespace Microsoft.OpenApi.OData.Generator
                 else
                 {
                     if (context.Settings.EnablePagination)
-                        baseSchema.Properties.Add(ODataConstants.OdataNextLink);
+                        baseSchema.Properties.Add(ODataConstants.OdataNextLink.Key, ODataConstants.OdataNextLink.Value);
 
                     if (context.Settings.EnableCount)
-                        baseSchema.Properties.Add(ODataConstants.OdataCount);
+                        baseSchema.Properties.Add(ODataConstants.OdataCount.Key, ODataConstants.OdataCount.Value);
 
                     collectionSchema = baseSchema;
                 }               
@@ -420,7 +420,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="structuredType">The Edm structured type.</param>
         /// <param name="document">The Open API document to lookup references.</param>
         /// <returns>The created map of <see cref="OpenApiSchema"/>.</returns>
-        public static IDictionary<string, IOpenApiSchema> CreateStructuredTypePropertiesSchema(this ODataContext context, IEdmStructuredType structuredType, OpenApiDocument document)
+        public static Dictionary<string, IOpenApiSchema> CreateStructuredTypePropertiesSchema(this ODataContext context, IEdmStructuredType structuredType, OpenApiDocument document)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
@@ -545,10 +545,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 OpenApiDiscriminator? discriminator = null;
                 if (context.Settings.EnableDiscriminatorValue && derivedTypes is not null && derivedTypes.Any())
                 {
-                    Dictionary<string, string> mapping = derivedTypes
-                        .Select(x => ($"#{x.FullTypeName()}", new OpenApiSchemaReference(x.FullTypeName(), document).Reference.ReferenceV3))
-                        .Where(x => x.Item2 != null)
-                        .ToDictionary(x => x.Item1, x => x.Item2!);
+                    Dictionary<string, OpenApiSchemaReference> mapping = derivedTypes
+                        .Select(x => ($"#{x.FullTypeName()}", new OpenApiSchemaReference(x.FullTypeName(), document)))
+                        .ToDictionary(x => x.Item1, x => x.Item2);
 
                     discriminator = new OpenApiDiscriminator
                     {

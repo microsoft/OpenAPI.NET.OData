@@ -20,7 +20,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <returns>The created collection of <see cref="OpenApiServer"/> object.</returns>
-        public static IList<OpenApiServer> CreateServers(this ODataContext context)
+        public static List<OpenApiServer> CreateServers(this ODataContext context)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 

@@ -88,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetRequestBody(operation);
         }
 
-        protected IDictionary<string, OpenApiMediaType> GetContent()
+        protected Dictionary<string, OpenApiMediaType> GetContent()
         {
             var schema = GetOpenApiSchema();
             var content = new Dictionary<string, OpenApiMediaType>();

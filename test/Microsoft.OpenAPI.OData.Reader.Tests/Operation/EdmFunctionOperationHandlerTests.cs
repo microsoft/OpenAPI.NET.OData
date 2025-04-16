@@ -28,6 +28,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
             Type = SecuritySchemeType.OAuth2,
           });
+          _openApiDocument.Tags ??= [];
+          _openApiDocument.Tags.Add(new OpenApiTag { Name = "me.user.Functions" });
         }
         private readonly OpenApiDocument _openApiDocument = new();
 
@@ -489,10 +491,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(operation);
-            Assert.NotNull(operation.Security);
 
             if (enableAnnotation)
             {
+              Assert.NotNull(operation.Security);
                 Assert.Equal(2, operation.Security.Count);
 
                 string json = await operation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
@@ -515,7 +517,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Empty(operation.Security);
+                Assert.Null(operation.Security);
             }
         }
 
@@ -548,11 +550,11 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             if (enablePagination && function.ReturnType.IsCollection())
             {
-                Assert.True(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
+              Assert.True(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
             }
             else
             {
-                Assert.False(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
+              Assert.DoesNotContain(Common.Constants.xMsPageable, operation.Extensions?.Keys.Select(static x => x) ?? []);
             }
         }
 

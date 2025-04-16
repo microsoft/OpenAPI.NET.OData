@@ -71,7 +71,7 @@ public class ComplexPropertyPostOperationHandlerTests
 		}
 		else
 		{
-			Assert.Empty(post.Responses[statusCode].Content);
+			Assert.Null(post.Responses[statusCode].Content);
 		}
 
 		if (enableOperationId)

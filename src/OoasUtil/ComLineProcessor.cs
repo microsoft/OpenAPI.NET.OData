@@ -15,17 +15,17 @@ namespace OoasUtil
     /// <summary>
     /// Command line arguments processer.
     /// </summary>
-    internal class ComLineProcesser
+    internal class ComLineProcessor
     {
         private IList<string> _args;
         private bool _continue;
         public static Version version = new Version(1, 0, 0, 0);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ComLineProcesser"/> class.
+        /// Initializes a new instance of the <see cref="ComLineProcessor"/> class.
         /// </summary>
         /// <param name="args">The command line arguments.</param>
-        public ComLineProcesser(string[] args)
+        public ComLineProcessor(string[] args)
         {
             _args = args;
         }
@@ -43,7 +43,9 @@ namespace OoasUtil
         /// <summary>
         /// Output format.
         /// </summary>
-        public OpenApiFormat? Format { get; private set; }
+        #nullable enable
+        public string? Format { get; private set; }
+        #nullable restore
 
         /// <summary>
         /// Whether KeyAsSegment is used.
@@ -145,7 +147,7 @@ namespace OoasUtil
 
                         case "--yaml":
                         case "-y":
-                            if (!ProcessTarget(OpenApiFormat.Yaml))
+                            if (!ProcessTarget("yaml"))
                             {
                                 return false;
                             }
@@ -153,7 +155,7 @@ namespace OoasUtil
 
                         case "--json":
                         case "-j":
-                            if (!ProcessTarget(OpenApiFormat.Json))
+                            if (!ProcessTarget("json"))
                             {
                                 return false;
                             }
@@ -240,7 +242,7 @@ namespace OoasUtil
             // by default.
             if (Format == null)
             {
-                Format = OpenApiFormat.Json;
+                Format = "json";
             }
 
             if (Version == null)
@@ -313,7 +315,7 @@ namespace OoasUtil
             return true;
         }
 
-        private bool ProcessTarget(OpenApiFormat format)
+        private bool ProcessTarget(string format)
         {
             if (Format != null)
             {

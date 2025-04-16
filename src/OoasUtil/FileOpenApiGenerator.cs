@@ -35,7 +35,7 @@ namespace OoasUtil
         /// <param name="output">The output.</param>
         /// <param name="format">The format.</param>
         /// <param name="settings">Conversion settings.</param>
-        public FileOpenApiGenerator(string input, string output, OpenApiFormat format, OpenApiConvertSettings settings)
+        public FileOpenApiGenerator(string input, string output, string format, OpenApiConvertSettings settings)
             : base(output, format, settings)
         {
             Input = input;

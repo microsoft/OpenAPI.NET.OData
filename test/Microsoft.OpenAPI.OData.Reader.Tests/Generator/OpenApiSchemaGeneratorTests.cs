@@ -195,75 +195,79 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateStructuredTypeSchema(entity, new());
             var derivedSchema = context.CreateStructuredTypeSchema(derivedEntity, new());
-            var json = JsonNode.Parse(await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var rawJson = await schema.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
+            var json = JsonNode.Parse(rawJson);
 
             // Assert
             Assert.True(derivedSchema.AllOf.FirstOrDefault(x => derivedType.Equals(x.Title))?.Properties.ContainsKey("@odata.type"));
             Assert.NotNull(json);
-            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(@"{
-  ""allOf"": [
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(
+"""
+{
+  "allOf": [
     {
-      ""$ref"": ""#/components/schemas/microsoft.graph.entity""
+      "$ref": "#/components/schemas/microsoft.graph.entity"
     },
     {
-      ""title"": ""directoryObject"",
-      ""required"": [
-        ""@odata.type""
+      "title": "directoryObject",
+      "required": [
+        "@odata.type"
       ],
-      ""type"": ""object"",
-      ""properties"": {
-        ""deletedDateTime"": {
-          ""pattern"": ""^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"",
-          ""type"": ""string"",
-          ""description"": ""Date and time when this object was deleted. Always null when the object hasn't been deleted."",
-          ""format"": ""date-time"",
-          ""nullable"": true
+      "type": "object",
+      "properties": {
+        "deletedDateTime": {
+          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+          "type": "string",
+          "description": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+          "format": "date-time",
+          "nullable": true
         },
-        ""@odata.type"": {
-          ""type"": ""string"",
-          ""default"": ""#microsoft.graph.directoryObject""
+        "@odata.type": {
+          "type": "string",
+          "default": "#microsoft.graph.directoryObject"
         }
       },
-      ""discriminator"": {
-        ""propertyName"": ""@odata.type"",
-        ""mapping"": {
-          ""#microsoft.graph.user"": ""#/components/schemas/microsoft.graph.user"",
-          ""#microsoft.graph.servicePrincipal"": ""#/components/schemas/microsoft.graph.servicePrincipal"",
-          ""#microsoft.graph.group"": ""#/components/schemas/microsoft.graph.group"",
-          ""#microsoft.graph.device"": ""#/components/schemas/microsoft.graph.device"",
-          ""#microsoft.graph.administrativeUnit"": ""#/components/schemas/microsoft.graph.administrativeUnit"",
-          ""#microsoft.graph.application"": ""#/components/schemas/microsoft.graph.application"",
-          ""#microsoft.graph.policyBase"": ""#/components/schemas/microsoft.graph.policyBase"",
-          ""#microsoft.graph.appManagementPolicy"": ""#/components/schemas/microsoft.graph.appManagementPolicy"",
-          ""#microsoft.graph.stsPolicy"": ""#/components/schemas/microsoft.graph.stsPolicy"",
-          ""#microsoft.graph.homeRealmDiscoveryPolicy"": ""#/components/schemas/microsoft.graph.homeRealmDiscoveryPolicy"",
-          ""#microsoft.graph.tokenIssuancePolicy"": ""#/components/schemas/microsoft.graph.tokenIssuancePolicy"",
-          ""#microsoft.graph.tokenLifetimePolicy"": ""#/components/schemas/microsoft.graph.tokenLifetimePolicy"",
-          ""#microsoft.graph.claimsMappingPolicy"": ""#/components/schemas/microsoft.graph.claimsMappingPolicy"",
-          ""#microsoft.graph.activityBasedTimeoutPolicy"": ""#/components/schemas/microsoft.graph.activityBasedTimeoutPolicy"",
-          ""#microsoft.graph.authorizationPolicy"": ""#/components/schemas/microsoft.graph.authorizationPolicy"",
-          ""#microsoft.graph.tenantRelationshipAccessPolicyBase"": ""#/components/schemas/microsoft.graph.tenantRelationshipAccessPolicyBase"",
-          ""#microsoft.graph.crossTenantAccessPolicy"": ""#/components/schemas/microsoft.graph.crossTenantAccessPolicy"",
-          ""#microsoft.graph.tenantAppManagementPolicy"": ""#/components/schemas/microsoft.graph.tenantAppManagementPolicy"",
-          ""#microsoft.graph.externalIdentitiesPolicy"": ""#/components/schemas/microsoft.graph.externalIdentitiesPolicy"",
-          ""#microsoft.graph.permissionGrantPolicy"": ""#/components/schemas/microsoft.graph.permissionGrantPolicy"",
-          ""#microsoft.graph.servicePrincipalCreationPolicy"": ""#/components/schemas/microsoft.graph.servicePrincipalCreationPolicy"",
-          ""#microsoft.graph.identitySecurityDefaultsEnforcementPolicy"": ""#/components/schemas/microsoft.graph.identitySecurityDefaultsEnforcementPolicy"",
-          ""#microsoft.graph.extensionProperty"": ""#/components/schemas/microsoft.graph.extensionProperty"",
-          ""#microsoft.graph.endpoint"": ""#/components/schemas/microsoft.graph.endpoint"",
-          ""#microsoft.graph.resourceSpecificPermissionGrant"": ""#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant"",
-          ""#microsoft.graph.contract"": ""#/components/schemas/microsoft.graph.contract"",
-          ""#microsoft.graph.directoryObjectPartnerReference"": ""#/components/schemas/microsoft.graph.directoryObjectPartnerReference"",
-          ""#microsoft.graph.directoryRole"": ""#/components/schemas/microsoft.graph.directoryRole"",
-          ""#microsoft.graph.directoryRoleTemplate"": ""#/components/schemas/microsoft.graph.directoryRoleTemplate"",
-          ""#microsoft.graph.directorySettingTemplate"": ""#/components/schemas/microsoft.graph.directorySettingTemplate"",
-          ""#microsoft.graph.organization"": ""#/components/schemas/microsoft.graph.organization"",
-          ""#microsoft.graph.orgContact"": ""#/components/schemas/microsoft.graph.orgContact""
+      "discriminator": {
+        "propertyName": "@odata.type",
+        "mapping": {
+          "#microsoft.graph.user": "#/components/schemas/microsoft.graph.user",
+          "#microsoft.graph.servicePrincipal": "#/components/schemas/microsoft.graph.servicePrincipal",
+          "#microsoft.graph.group": "#/components/schemas/microsoft.graph.group",
+          "#microsoft.graph.device": "#/components/schemas/microsoft.graph.device",
+          "#microsoft.graph.administrativeUnit": "#/components/schemas/microsoft.graph.administrativeUnit",
+          "#microsoft.graph.application": "#/components/schemas/microsoft.graph.application",
+          "#microsoft.graph.policyBase": "#/components/schemas/microsoft.graph.policyBase",
+          "#microsoft.graph.appManagementPolicy": "#/components/schemas/microsoft.graph.appManagementPolicy",
+          "#microsoft.graph.stsPolicy": "#/components/schemas/microsoft.graph.stsPolicy",
+          "#microsoft.graph.homeRealmDiscoveryPolicy": "#/components/schemas/microsoft.graph.homeRealmDiscoveryPolicy",
+          "#microsoft.graph.tokenIssuancePolicy": "#/components/schemas/microsoft.graph.tokenIssuancePolicy",
+          "#microsoft.graph.tokenLifetimePolicy": "#/components/schemas/microsoft.graph.tokenLifetimePolicy",
+          "#microsoft.graph.claimsMappingPolicy": "#/components/schemas/microsoft.graph.claimsMappingPolicy",
+          "#microsoft.graph.activityBasedTimeoutPolicy": "#/components/schemas/microsoft.graph.activityBasedTimeoutPolicy",
+          "#microsoft.graph.authorizationPolicy": "#/components/schemas/microsoft.graph.authorizationPolicy",
+          "#microsoft.graph.tenantRelationshipAccessPolicyBase": "#/components/schemas/microsoft.graph.tenantRelationshipAccessPolicyBase",
+          "#microsoft.graph.crossTenantAccessPolicy": "#/components/schemas/microsoft.graph.crossTenantAccessPolicy",
+          "#microsoft.graph.tenantAppManagementPolicy": "#/components/schemas/microsoft.graph.tenantAppManagementPolicy",
+          "#microsoft.graph.externalIdentitiesPolicy": "#/components/schemas/microsoft.graph.externalIdentitiesPolicy",
+          "#microsoft.graph.permissionGrantPolicy": "#/components/schemas/microsoft.graph.permissionGrantPolicy",
+          "#microsoft.graph.servicePrincipalCreationPolicy": "#/components/schemas/microsoft.graph.servicePrincipalCreationPolicy",
+          "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy": "#/components/schemas/microsoft.graph.identitySecurityDefaultsEnforcementPolicy",
+          "#microsoft.graph.extensionProperty": "#/components/schemas/microsoft.graph.extensionProperty",
+          "#microsoft.graph.endpoint": "#/components/schemas/microsoft.graph.endpoint",
+          "#microsoft.graph.resourceSpecificPermissionGrant": "#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant",
+          "#microsoft.graph.contract": "#/components/schemas/microsoft.graph.contract",
+          "#microsoft.graph.directoryObjectPartnerReference": "#/components/schemas/microsoft.graph.directoryObjectPartnerReference",
+          "#microsoft.graph.directoryRole": "#/components/schemas/microsoft.graph.directoryRole",
+          "#microsoft.graph.directoryRoleTemplate": "#/components/schemas/microsoft.graph.directoryRoleTemplate",
+          "#microsoft.graph.directorySettingTemplate": "#/components/schemas/microsoft.graph.directorySettingTemplate",
+          "#microsoft.graph.organization": "#/components/schemas/microsoft.graph.organization",
+          "#microsoft.graph.orgContact": "#/components/schemas/microsoft.graph.orgContact"
         }
       }
     }
   ]
-}"), json));
+}
+"""), json));
         }
 
         [Theory]

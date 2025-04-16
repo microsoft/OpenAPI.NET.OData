@@ -858,7 +858,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return null;
             }
 
-            IList<JsonNode> expandItems = [ "*" ];
+            List<JsonNode> expandItems = [ "*" ];
 
             foreach (var property in structuredType.NavigationProperties())
             {
@@ -902,7 +902,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Type = JsonSchemaType.Number,
                     Format = "int64",
-                    Minimum = 0,
+                    Minimum = "0",
                 },
                 Example = topExample,
                 Style = ParameterStyle.Form,
@@ -922,7 +922,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Type = JsonSchemaType.Number,
                     Format = "int64",
-                    Minimum = 0,
+                    Minimum = "0",
                 },
                 Style = ParameterStyle.Form,
                 Explode = false

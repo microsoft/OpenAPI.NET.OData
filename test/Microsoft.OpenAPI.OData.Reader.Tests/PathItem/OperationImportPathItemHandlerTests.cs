@@ -112,16 +112,16 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             // Assert
             Assert.NotNull(pathItem);
-            Assert.NotNull(pathItem.Operations);
             if (operationType == null)
             {
-                Assert.Empty(pathItem.Operations);
+              Assert.Null(pathItem.Operations);
             }
             else
             {
-                var operationKeyValue = Assert.Single(pathItem.Operations);
-                Assert.Equal(HttpMethod.Parse(operationType), operationKeyValue.Key);
-                Assert.NotNull(operationKeyValue.Value);
+              Assert.NotNull(pathItem.Operations);
+              var operationKeyValue = Assert.Single(pathItem.Operations);
+              Assert.Equal(HttpMethod.Parse(operationType), operationKeyValue.Key);
+              Assert.NotNull(operationKeyValue.Value);
             }
         }
 

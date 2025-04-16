@@ -151,8 +151,13 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             // Assert
             Assert.NotNull(pathItem);
 
-            Assert.NotNull(pathItem.Operations);
-            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key.ToString().ToLowerInvariant()));
+            if (expected is {Length: > 0})
+            {
+              Assert.NotNull(pathItem.Operations);
+              Assert.Equal(expected, pathItem.Operations.Select(e => e.Key.ToString().ToLowerInvariant()));
+            }
+            else
+              Assert.Null(pathItem.Operations);
         }
 
         [Fact]
