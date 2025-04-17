@@ -97,7 +97,7 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Singleton is not null)
             {
                 IOpenApiSchema? schema = null;
-                IDictionary<string, IOpenApiLink>? links = null;
+                Dictionary<string, IOpenApiLink>? links = null;
 
                 if (Context is {Settings.EnableDerivedTypesReferencesForResponses: true})
                 {

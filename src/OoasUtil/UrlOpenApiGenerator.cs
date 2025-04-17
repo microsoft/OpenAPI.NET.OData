@@ -33,7 +33,7 @@ namespace OoasUtil
         /// <param name="output">The output.</param>
         /// <param name="format">The format.</param>
         /// <param name="settings">Conversion settings.</param>
-        public UrlOpenApiGenerator(Uri input, string output, OpenApiFormat format, OpenApiConvertSettings settings)
+        public UrlOpenApiGenerator(Uri input, string output, string format, OpenApiConvertSettings settings)
             : base(output, format, settings)
         {
             Input = input;

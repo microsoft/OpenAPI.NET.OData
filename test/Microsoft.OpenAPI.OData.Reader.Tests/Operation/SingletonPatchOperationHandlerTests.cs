@@ -84,7 +84,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Empty(patch.Responses[statusCode].Content);
+                Assert.Null(patch.Responses[statusCode].Content);
             }
 
             if (enableOperationId)
@@ -302,7 +302,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             else
             {
                 Assert.Empty(patch.Parameters);
-                Assert.Empty(patch.Security);
+                Assert.Null(patch.Security);
             }
         }
     }

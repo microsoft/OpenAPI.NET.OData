@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets all tags.
         /// </summary>
-        public ISet<OpenApiTag>? Tags { get; private set; }
+        public HashSet<OpenApiTag>? Tags { get; private set; }
 
         /// <summary>
         /// Append tag.
@@ -144,7 +144,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="tagItem">The tag item.</param>
         internal void AppendTag(OpenApiTag tagItem)
         {
-            Tags ??= new HashSet<OpenApiTag>();
+            Tags ??= [];
 
             if (tagItem.Name is not null && FindTagByName(tagItem.Name) is not null)
             {

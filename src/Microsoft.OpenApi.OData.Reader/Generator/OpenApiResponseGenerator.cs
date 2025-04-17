@@ -187,19 +187,19 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
                 else if (operation.IsDeltaFunction())
                 {
-                    baseSchema.Properties.Add(ODataConstants.OdataNextLink);
-                    baseSchema.Properties.Add(ODataConstants.OdataDeltaLink);
+                    baseSchema.Properties.Add(ODataConstants.OdataNextLink.Key, ODataConstants.OdataNextLink.Value);
+                    baseSchema.Properties.Add(ODataConstants.OdataDeltaLink.Key, ODataConstants.OdataDeltaLink.Value);
                     schema = baseSchema;
                 }
                 else
                 {
                     if (context.Settings.EnablePagination)
                     {
-                        baseSchema.Properties.Add(ODataConstants.OdataNextLink);
+                        baseSchema.Properties.Add(ODataConstants.OdataNextLink.Key, ODataConstants.OdataNextLink.Value);
                     }
                     if (context.Settings.EnableCount)
                     {
-                        baseSchema.Properties.Add(ODataConstants.OdataCount);
+                        baseSchema.Properties.Add(ODataConstants.OdataCount.Key, ODataConstants.OdataCount.Value);
                     }
                     schema = baseSchema;
                 }

@@ -114,7 +114,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             }
             else
             {
-                Assert.Empty(pathItem.Parameters);
+                Assert.Null(pathItem.Parameters);
             }
         }
 

@@ -92,7 +92,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            IDictionary<string, IOpenApiLink>? links = null;
+            Dictionary<string, IOpenApiLink>? links = null;
             if (Context is { Settings.ShowLinks: true } && NavigationProperty is not null && Path is not null)
             {
                 var operationId = GetOperationId();

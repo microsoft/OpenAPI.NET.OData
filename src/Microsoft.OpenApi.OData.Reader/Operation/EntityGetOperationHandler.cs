@@ -106,7 +106,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetResponses(OpenApiOperation operation)
         {
             IOpenApiSchema? schema = null;
-            IDictionary<string, IOpenApiLink>? links = null;
+            Dictionary<string, IOpenApiLink>? links = null;
 
             if (EntitySet is not null)
             {

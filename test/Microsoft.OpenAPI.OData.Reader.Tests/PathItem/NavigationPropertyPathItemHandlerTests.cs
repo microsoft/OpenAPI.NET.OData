@@ -163,7 +163,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             }
             else
             {
-                Assert.Empty(pathItem.Parameters);
+                Assert.Null(pathItem.Parameters);
             }
         }
 
@@ -202,7 +202,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             get
             {
-                IList<string> navigationPropertyPaths = new List<string>
+                var navigationPropertyPaths = new List<string>
                 {
                     "ContainedOrders",
                     "Orders",
@@ -232,7 +232,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             get
             {
-                IList<string> navigationPropertyPaths = new List<string>
+                var navigationPropertyPaths = new List<string>
                 {
                     "ContainedMyOrder",
                     "MyOrder",
@@ -294,17 +294,20 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             // Assert
             Assert.NotNull(pathItem);
-            Assert.NotNull(pathItem.Operations);
 
             if (hasRestrictions)
             {
                 if (readable)
-                    Assert.Contains(pathItem.Operations, o => o.Key == HttpMethod.Get);
+                {
+                  Assert.NotNull(pathItem.Operations);
+                  Assert.Contains(pathItem.Operations, o => o.Key == HttpMethod.Get);
+                }
                 else
-                    Assert.DoesNotContain(pathItem.Operations, o => o.Key == HttpMethod.Get);
+                    Assert.DoesNotContain(pathItem.Operations ?? [], o => o.Key == HttpMethod.Get);
             }
             else
             {
+                Assert.NotNull(pathItem.Operations);
                 Assert.Contains(pathItem.Operations, o => o.Key == HttpMethod.Get);
             }
         }

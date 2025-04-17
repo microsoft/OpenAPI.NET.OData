@@ -120,7 +120,7 @@ public class ODataTypeCastGetOperationHandlerTests
         Assert.NotNull(operation.Tags);
         var tag = Assert.Single(operation.Tags);
         Assert.Equal("People.Person", tag.Name);
-        Assert.Empty(tag.Extensions);
+        Assert.Null(tag.Extensions);
 
         Assert.NotNull(operation.Parameters);
         Assert.Equal(5, operation.Parameters.Count); //select, expand, id, id, ConsistencyLevel
@@ -237,7 +237,7 @@ public class ODataTypeCastGetOperationHandlerTests
         Assert.NotNull(operation.Tags);
         var tag = Assert.Single(operation.Tags);
         Assert.Equal("People.Person", tag.Name);
-        Assert.Empty(tag.Extensions);
+        Assert.Null(tag.Extensions);
 
         Assert.NotNull(operation.Parameters);
         Assert.Equal(4, operation.Parameters.Count); //select, expand, id
@@ -298,7 +298,7 @@ public class ODataTypeCastGetOperationHandlerTests
         Assert.NotNull(operation.Tags);
         var tag = Assert.Single(operation.Tags);
         Assert.Equal("People.Person", tag.Name);
-        Assert.Empty(tag.Extensions);
+        Assert.Null(tag.Extensions);
 
         Assert.NotNull(operation.Parameters);
         Assert.Equal(3, operation.Parameters.Count); //select, expand, id
@@ -355,7 +355,7 @@ public class ODataTypeCastGetOperationHandlerTests
         Assert.NotNull(operation.Tags);
         var tag = Assert.Single(operation.Tags);
         Assert.Equal("Me.Person", tag.Name);
-        Assert.Empty(tag.Extensions);
+        Assert.Null(tag.Extensions);
 
         Assert.NotNull(operation.Parameters);
         Assert.Equal(2, operation.Parameters.Count); //select, expand

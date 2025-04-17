@@ -133,7 +133,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Empty(putOperation3.Responses[statusCode].Content);
+                Assert.Null(putOperation3.Responses[statusCode].Content);
             }
 
             if (!string.IsNullOrEmpty(annotation))

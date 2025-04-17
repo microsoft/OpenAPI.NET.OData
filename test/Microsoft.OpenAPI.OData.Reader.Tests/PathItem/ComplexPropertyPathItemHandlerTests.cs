@@ -61,7 +61,7 @@ public class ComplexPropertyPathItemHandlerTests
 		Assert.Equal(ODataPathKind.ComplexProperty, path.Kind); // guard
 		var pathItem = _pathItemHandler.CreatePathItem(context, path);
 		Assert.NotNull(pathItem);
-		Assert.Equal(operationCount, pathItem.Operations.Count);
+		Assert.Equal(operationCount, pathItem.Operations?.Count ?? 0);
 
 		if (operationCount > 0)
 		{
@@ -70,8 +70,7 @@ public class ComplexPropertyPathItemHandlerTests
 		}
 		else
 		{
-			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Get));
-			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Patch));
+			Assert.Null(pathItem.Operations);
 		}
 	}
 
@@ -114,7 +113,7 @@ public class ComplexPropertyPathItemHandlerTests
         Assert.Equal(ODataPathKind.ComplexProperty, path.Kind); // guard
         var pathItem = _pathItemHandler.CreatePathItem(context, path);
         Assert.NotNull(pathItem);
-        Assert.Equal(operationCount, pathItem.Operations.Count);
+        Assert.Equal(operationCount, pathItem.Operations?.Count ?? 0);
 
 		if (operationCount > 0)
 		{
@@ -130,8 +129,7 @@ public class ComplexPropertyPathItemHandlerTests
 		}
 		else
 		{
-			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Patch));
-			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Put));
+			Assert.Null(pathItem.Operations);
 		}
     }
 
@@ -172,7 +170,7 @@ public class ComplexPropertyPathItemHandlerTests
 		Assert.Equal(ODataPathKind.ComplexProperty, path.Kind); // guard
 		var pathItem = _pathItemHandler.CreatePathItem(context, path);
 		Assert.NotNull(pathItem);
-		Assert.Equal(operationCount, pathItem.Operations.Count);
+		Assert.Equal(operationCount, pathItem.Operations?.Count ?? 0);
 
 		if (operationCount > 0)
         {
@@ -180,7 +178,7 @@ public class ComplexPropertyPathItemHandlerTests
 		}
         else
         {
-			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Post));
+			Assert.Null(pathItem.Operations);
 		}		
 	}
 	[Fact]
@@ -254,7 +252,7 @@ public class ComplexPropertyPathItemHandlerTests
 
 		// Assert
         Assert.NotNull(pathItem);
-        Assert.Equal(operationCount, pathItem.Operations.Count);
+        Assert.Equal(operationCount, pathItem.Operations?.Count ?? 0);
         if (operationCount == 1)
         {
             Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Patch));

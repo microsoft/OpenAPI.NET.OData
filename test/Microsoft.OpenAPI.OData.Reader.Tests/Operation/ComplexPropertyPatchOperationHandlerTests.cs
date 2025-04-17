@@ -98,7 +98,7 @@ public class ComplexPropertyPatchOperationHandlerTests
 		}
 		else
 		{
-			Assert.Empty(patch.Responses[statusCode].Content);
+			Assert.Null(patch.Responses[statusCode].Content);
 		}
 
 		if (enableOperationId)

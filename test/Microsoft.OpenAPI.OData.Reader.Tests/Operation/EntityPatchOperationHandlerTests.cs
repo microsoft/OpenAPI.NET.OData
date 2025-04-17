@@ -25,6 +25,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
             Type = SecuritySchemeType.OAuth2,
           });
+          _openApiDocument.Tags ??= [];
+          _openApiDocument.Tags.Add(new OpenApiTag { Name = "Customers.Customer" });
         }
         private readonly OpenApiDocument _openApiDocument = new();
 
@@ -76,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Empty(patch.Responses[statusCode].Content);
+                Assert.Null(patch.Responses[statusCode].Content);
             }
 
             if (enableOperationId)
@@ -162,10 +164,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(patch);
-            Assert.NotNull(patch.Security);
 
             if (enableAnnotation)
             {
+              Assert.NotNull(patch.Security);
                 Assert.Equal(2, patch.Security.Count);
 
                 string json = await patch.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
@@ -189,7 +191,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Empty(patch.Security);
+                Assert.Null(patch.Security);
             }
         }
     }

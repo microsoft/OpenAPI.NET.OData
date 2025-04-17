@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Get the entity content description.
         /// </summary>
         /// <returns>The entity content description.</returns>
-        private IDictionary<string, OpenApiMediaType> GetContentDescription()
+        private Dictionary<string, OpenApiMediaType> GetContentDescription()
         {
             var schema = GetEntitySchema();
             var content = new Dictionary<string, OpenApiMediaType>();

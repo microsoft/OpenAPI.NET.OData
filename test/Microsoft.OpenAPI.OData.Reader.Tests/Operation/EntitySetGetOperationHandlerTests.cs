@@ -30,6 +30,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
             Type = SecuritySchemeType.OAuth2,
           });
+          _openApiDocument.Tags ??= [];
+          _openApiDocument.Tags.Add(new OpenApiTag { Name = "Customers.Customer" });
         }
         private readonly OpenApiDocument _openApiDocument = new();
 
@@ -90,7 +92,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.False(get.Extensions.ContainsKey(Constants.xMsPageable));
+                Assert.DoesNotContain(Constants.xMsPageable, get.Extensions?.Keys.Select(static x => x) ?? []);
             }
         }
 
@@ -313,10 +315,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(get);
-            Assert.NotNull(get.Security);
 
             if (enableAnnotation)
             {
+              Assert.NotNull(get.Security);
                 Assert.Equal(2, get.Security.Count);
 
                 string json = await get.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
@@ -338,7 +340,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
             else
             {
-                Assert.Empty(get.Security);
+                Assert.Null(get.Security);
             }
         }
 

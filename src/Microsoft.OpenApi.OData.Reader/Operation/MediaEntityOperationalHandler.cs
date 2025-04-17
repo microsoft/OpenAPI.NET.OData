@@ -166,7 +166,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets a media entity content description.
         /// </summary>
         /// <returns>The entity content description.</returns>
-        protected IDictionary<string, OpenApiMediaType> GetContentDescription()
+        protected Dictionary<string, OpenApiMediaType> GetContentDescription()
         {
             // Fetch the respective AcceptableMediaTypes
             (_, var property) = GetStreamElements();
