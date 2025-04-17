@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0-preview.13](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.12...v2.0.0-preview.13) (2025-04-17)
+
+
+### Features
+
+* upgrades to OAI.net preview17 ([08b5efc](https://github.com/microsoft/OpenAPI.NET.OData/commit/08b5efcea3ad3c8dae4404a8d00218070080cd47))
+* upgrades to OAI.net preview17 ([6e38b40](https://github.com/microsoft/OpenAPI.NET.OData/commit/6e38b406ad63d74d3a13a0397707d6ef242bdbe8))
+
 ## [2.0.0-preview.12](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.11...v2.0.0-preview.12) (2025-04-02)
 
 
