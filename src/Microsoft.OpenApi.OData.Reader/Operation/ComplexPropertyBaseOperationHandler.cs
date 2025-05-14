@@ -3,7 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -41,7 +41,7 @@ internal abstract class ComplexPropertyBaseOperationHandler : OperationHandler
             operation.Tags ??= new HashSet<OpenApiTagReference>();
             if (!string.IsNullOrEmpty(tagName))
             {
-                Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+                Context.AddExtensionToTag(tagName, Constants.xMsTocType, new JsonNodeExtension("page"), () => new OpenApiTag()
                 {
                     Name = tagName
                 });

@@ -17,7 +17,6 @@ using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Text.Json.Nodes;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models.References;
 using System.Globalization;
@@ -452,7 +451,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     // we always want a new copy because it's a reference
                     openApiSchema.Extensions = propertySchema.Extensions is null ? [] : new Dictionary<string, IOpenApiExtension>(propertySchema.Extensions);
                     openApiSchema.Extensions.AddCustomAttributesToExtensions(context, property);
-                    openApiSchema.Extensions.Add(Constants.xMsNavigationProperty, new OpenApiAny(true));
+                    openApiSchema.Extensions.Add(Constants.xMsNavigationProperty, new JsonNodeExtension(true));
                 }
                 properties.Add(property.Name, propertySchema);
             }
@@ -514,7 +513,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     extension = new Dictionary<string, IOpenApiExtension>
                     {
-                        { Constants.xMsDiscriminatorValue, new OpenApiAny("#" + structuredType.FullTypeName()) }
+                        { Constants.xMsDiscriminatorValue, new JsonNodeExtension("#" + structuredType.FullTypeName()) }
                     };
                 }
 

@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
@@ -273,7 +273,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			if (IsSingleElement)
 				Context.AppendTag(new OpenApiTag() { Name = tagName });
 			else
-				Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+				Context.AddExtensionToTag(tagName, Constants.xMsTocType, new JsonNodeExtension("page"), () => new OpenApiTag()
 				{
 					Name = tagName
 				});
@@ -390,7 +390,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 			};
 
 			operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-			operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
+			operation.Extensions.Add(Constants.xMsPageable, new JsonNodeExtension(extension));
 		}
 
 		base.SetExtensions(operation);

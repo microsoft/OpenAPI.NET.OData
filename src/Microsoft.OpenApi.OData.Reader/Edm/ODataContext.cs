@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -172,7 +172,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="extensionName">The extension name.</param>
         /// <param name="extensionValue">The extension value to set.</param>
         /// <param name="initialValueFactory">The tag default value factory.</param>
-        internal void AddExtensionToTag(string tagName, string extensionName, OpenApiAny extensionValue, Func<OpenApiTag> initialValueFactory)
+        internal void AddExtensionToTag(string tagName, string extensionName, JsonNodeExtension extensionValue, Func<OpenApiTag> initialValueFactory)
         {
             Utils.CheckArgumentNullOrEmpty(tagName, nameof(tagName));
             Utils.CheckArgumentNullOrEmpty(extensionName, nameof(extensionName));

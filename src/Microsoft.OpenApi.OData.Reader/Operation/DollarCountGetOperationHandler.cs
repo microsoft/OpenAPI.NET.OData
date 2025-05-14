@@ -9,7 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -113,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (tagName != null && Context is not null)
             {
-                Context.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+                Context.AddExtensionToTag(tagName, Constants.xMsTocType, new JsonNodeExtension("page"), () => new OpenApiTag()
                 {
                     Name = tagName
                 });

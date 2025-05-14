@@ -14,10 +14,10 @@ using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Diagnostics;
 using System;
 using System.Text.Json.Nodes;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.Extensions;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -195,7 +195,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 };
 
                 parameter.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-                parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
+                parameter.Extensions.Add(Constants.xMsKeyType, new JsonNodeExtension(entityType.Name));
                 parameters.Add(parameter);
             }
             else
@@ -221,7 +221,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
 
                     parameter.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-                    parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiAny(entityType.Name));
+                    parameter.Extensions.Add(Constants.xMsKeyType, new JsonNodeExtension(entityType.Name));
                     parameters.Add(parameter);
                 }
             }

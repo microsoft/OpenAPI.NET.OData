@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -101,7 +101,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                     }
 
                     item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-                    item.Extensions.Add(Constants.xMsDosGroupPath, new OpenApiAny(array));
+                    item.Extensions.Add(Constants.xMsDosGroupPath, new JsonNodeExtension(array));
                 }
             }
 

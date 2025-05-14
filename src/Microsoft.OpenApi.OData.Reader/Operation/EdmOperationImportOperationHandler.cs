@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
@@ -150,7 +150,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 var tag = CreateTag(EdmOperationImport);
                 tag.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-                tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
+                tag.Extensions.Add(Constants.xMsTocType, new JsonNodeExtension("container"));
                 Context?.AppendTag(tag);
 
                 operation.Tags ??= new HashSet<OpenApiTagReference>();
