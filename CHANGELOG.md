@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0-preview.14](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.13...v2.0.0-preview.14) (2025-05-14)
+
+
+### Features
+
+* upgrades OpenApi.Net to preview18 ([16e559c](https://github.com/microsoft/OpenAPI.NET.OData/commit/16e559cd5ce907b9eff4b8ed8d8a683a3766fa1e))
+* upgrades OpenApi.Net to preview18 ([c7cc418](https://github.com/microsoft/OpenAPI.NET.OData/commit/c7cc418fddc7a26db52216f6c22a8e49ef1bbc90))
+
 ## [2.0.0-preview.13](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.12...v2.0.0-preview.13) (2025-04-17)
 
 
