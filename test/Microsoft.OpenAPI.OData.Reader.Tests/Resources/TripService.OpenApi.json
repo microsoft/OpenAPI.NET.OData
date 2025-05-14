@@ -7560,6 +7560,7 @@
           }
         },
         "deprecated": true,
+        "security": [ ],
         "x-ms-deprecation": {
           "removalDate": "2023-03-15T00:00:00.0000000+00:00",
           "date": "2021-08-24T00:00:00.0000000+00:00",
@@ -11894,6 +11895,7 @@
           }
         },
         "deprecated": true,
+        "security": [ ],
         "x-ms-deprecation": {
           "removalDate": "2023-03-15T00:00:00.0000000+00:00",
           "date": "2021-08-24T00:00:00.0000000+00:00",
@@ -12933,6 +12935,7 @@
           }
         },
         "deprecated": true,
+        "security": [ ],
         "x-ms-deprecation": {
           "removalDate": "2023-03-15T00:00:00.0000000+00:00",
           "date": "2021-08-24T00:00:00.0000000+00:00",
@@ -17373,6 +17376,7 @@
             "$ref": "#/components/responses/error"
           }
         },
+        "security": [ ],
         "x-ms-docs-operation-type": "operation"
       }
     },
@@ -25758,6 +25762,7 @@
           }
         },
         "deprecated": true,
+        "security": [ ],
         "x-ms-deprecation": {
           "removalDate": "2023-03-15T00:00:00.0000000+00:00",
           "date": "2021-08-24T00:00:00.0000000+00:00",
@@ -30984,6 +30989,7 @@
           }
         },
         "deprecated": true,
+        "security": [ ],
         "x-ms-deprecation": {
           "removalDate": "2023-03-15T00:00:00.0000000+00:00",
           "date": "2021-08-24T00:00:00.0000000+00:00",
@@ -32226,6 +32232,7 @@
           }
         },
         "deprecated": true,
+        "security": [ ],
         "x-ms-deprecation": {
           "removalDate": "2023-03-15T00:00:00.0000000+00:00",
           "date": "2021-08-24T00:00:00.0000000+00:00",

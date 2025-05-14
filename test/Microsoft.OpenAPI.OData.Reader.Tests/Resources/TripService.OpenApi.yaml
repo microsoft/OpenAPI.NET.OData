@@ -5015,6 +5015,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       deprecated: true
+      security: [ ]
       x-ms-deprecation:
         removalDate: '2023-03-15T00:00:00.0000000+00:00'
         date: '2021-08-24T00:00:00.0000000+00:00'
@@ -7924,6 +7925,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       deprecated: true
+      security: [ ]
       x-ms-deprecation:
         removalDate: '2023-03-15T00:00:00.0000000+00:00'
         date: '2021-08-24T00:00:00.0000000+00:00'
@@ -8635,6 +8637,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       deprecated: true
+      security: [ ]
       x-ms-deprecation:
         removalDate: '2023-03-15T00:00:00.0000000+00:00'
         date: '2021-08-24T00:00:00.0000000+00:00'
@@ -11569,6 +11572,7 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
+      security: [ ]
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Trips/{TripId}':
     description: Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -17202,6 +17206,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       deprecated: true
+      security: [ ]
       x-ms-deprecation:
         removalDate: '2023-03-15T00:00:00.0000000+00:00'
         date: '2021-08-24T00:00:00.0000000+00:00'
@@ -20727,6 +20732,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       deprecated: true
+      security: [ ]
       x-ms-deprecation:
         removalDate: '2023-03-15T00:00:00.0000000+00:00'
         date: '2021-08-24T00:00:00.0000000+00:00'
@@ -21580,6 +21586,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       deprecated: true
+      security: [ ]
       x-ms-deprecation:
         removalDate: '2023-03-15T00:00:00.0000000+00:00'
         date: '2021-08-24T00:00:00.0000000+00:00'

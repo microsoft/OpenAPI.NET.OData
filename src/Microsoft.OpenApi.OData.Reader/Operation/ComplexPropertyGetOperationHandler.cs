@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
@@ -165,7 +165,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
                 { "operationName", Context.Settings.PageableOperationName}
             };
             operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-            operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
+            operation.Extensions.Add(Constants.xMsPageable, new JsonNodeExtension(extension));
 
             base.SetExtensions(operation);
         }

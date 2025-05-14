@@ -4,7 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
@@ -94,7 +94,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 : NavigationSourceSegment?.Identifier + "." + NavigationSourceSegment?.EntityType.Name;
 
 
-            Context?.AddExtensionToTag(tagIdentifier, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+            Context?.AddExtensionToTag(tagIdentifier, Constants.xMsTocType, new JsonNodeExtension("page"), () => new OpenApiTag()
 			{
 				Name = tagIdentifier
 			});

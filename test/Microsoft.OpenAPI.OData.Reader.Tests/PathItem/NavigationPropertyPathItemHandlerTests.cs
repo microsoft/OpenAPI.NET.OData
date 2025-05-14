@@ -11,7 +11,7 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
@@ -600,7 +600,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Extensions);
 
             pathItem.Extensions.TryGetValue("x-ms-isHidden", out var value);
-            string isHiddenValue = (value as OpenApiAny).Node.GetValue<string>();
+            string isHiddenValue = Assert.IsType<JsonNodeExtension>(value).Node.GetValue<string>();
             Assert.Equal("true", isHiddenValue);
         }
 

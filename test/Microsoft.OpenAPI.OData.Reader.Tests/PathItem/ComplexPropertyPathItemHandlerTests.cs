@@ -6,7 +6,7 @@
 using System;
 using System.Net.Http;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
@@ -203,7 +203,7 @@ public class ComplexPropertyPathItemHandlerTests
 		Assert.NotNull(pathItem.Extensions);
 
 		pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
-		string isHiddenValue = (isHiddenExtension as OpenApiAny).Node.GetValue<string>();
+		string isHiddenValue = Assert.IsType<JsonNodeExtension>(isHiddenExtension).Node.GetValue<string>();
         Assert.Equal("true", isHiddenValue);
 	}
 

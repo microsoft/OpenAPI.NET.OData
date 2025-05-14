@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
@@ -122,11 +122,11 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Extensions);
 
             pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
-            string isHiddenValue = (isHiddenExtension as OpenApiAny).Node.GetValue<string>();
+            string isHiddenValue = Assert.IsType<JsonNodeExtension>(isHiddenExtension).Node.GetValue<string>();
             Assert.Equal("true", isHiddenValue);
 
             pathItem.Extensions.TryGetValue("x-ms-workloadName", out IOpenApiExtension isOwnerExtension);
-            string isOwnerValue = (isOwnerExtension as OpenApiAny).Node.GetValue<string>();
+            string isOwnerValue = Assert.IsType<JsonNodeExtension>(isOwnerExtension).Node.GetValue<string>();
             Assert.Equal("People", isOwnerValue);
         }
     }

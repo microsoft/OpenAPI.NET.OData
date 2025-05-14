@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
@@ -159,7 +159,7 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 foreach (var item in attributesValueMap)
                 {
-                    extensions.TryAdd(item.Key, new OpenApiAny(item.Value));
+                    extensions.TryAdd(item.Key, new JsonNodeExtension(item.Value));
                 }
             }
         }

@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Validation;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData
 				document.Extensions ??= new Dictionary<string, IOpenApiExtension>();
 				foreach (var error in errors)
 				{
-					document.Extensions.Add(Constants.xMsEdmModelError + index++, new OpenApiAny(error.ToString()));
+					document.Extensions.Add(Constants.xMsEdmModelError + index++, new JsonNodeExtension(error.ToString()));
 				}
 
 				return document;

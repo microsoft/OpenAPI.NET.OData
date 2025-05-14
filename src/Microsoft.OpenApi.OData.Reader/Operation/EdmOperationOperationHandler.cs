@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
@@ -163,7 +163,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 Name = tagName,
             };
             tag.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-            tag.Extensions.Add(Constants.xMsTocType, new OpenApiAny("container"));
+            tag.Extensions.Add(Constants.xMsTocType, new JsonNodeExtension("container"));
             operation.Tags ??= new HashSet<OpenApiTagReference>();
             operation.Tags.Add(new OpenApiTagReference(tag.Name, _document));
 
@@ -360,7 +360,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 };
                 
                 operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-                operation.Extensions.Add(Constants.xMsPageable, new OpenApiAny(extension));
+                operation.Extensions.Add(Constants.xMsPageable, new JsonNodeExtension(extension));
             }
             base.SetExtensions(operation);
         }

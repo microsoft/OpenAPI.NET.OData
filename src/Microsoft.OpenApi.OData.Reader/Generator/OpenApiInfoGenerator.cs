@@ -9,7 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json.Nodes;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -110,7 +110,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     {
                         "x-ms-generated-by",
-                        new OpenApiAny(new JsonObject
+                        new JsonNodeExtension(new JsonObject
                         {
                             { "toolName", "Microsoft.OpenApi.OData" },
                             { "toolVersion", Assembly.GetExecutingAssembly().GetName().Version?.ToString() }

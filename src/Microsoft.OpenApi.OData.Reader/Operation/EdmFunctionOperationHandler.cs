@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -61,7 +61,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetExtensions(OpenApiOperation operation)
         {
             operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("function"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new JsonNodeExtension("function"));
             base.SetExtensions(operation);
         }
     }

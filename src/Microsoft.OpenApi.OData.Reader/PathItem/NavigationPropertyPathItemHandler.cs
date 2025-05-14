@@ -10,12 +10,12 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.Any;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Text.Json.Nodes;
 using System.Net.Http;
 using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.Extensions;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -349,7 +349,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
 
                 item.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-                item.Extensions.Add(Constants.xMsDosGroupPath, new OpenApiAny(array));   
+                item.Extensions.Add(Constants.xMsDosGroupPath, new JsonNodeExtension(array));   
             }
 
             base.SetExtensions(item);

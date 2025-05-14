@@ -4,7 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.References;
@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // For example: "Me.User"
             var tagName = Singleton?.Name + "." + Singleton?.EntityType.Name;
 
-            Context?.AddExtensionToTag(tagName, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+            Context?.AddExtensionToTag(tagName, Constants.xMsTocType, new JsonNodeExtension("page"), () => new OpenApiTag()
 			{
 				Name = tagName
 			});
@@ -65,7 +65,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetExtensions(OpenApiOperation operation)
         {
             operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("operation"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new JsonNodeExtension("operation"));
 
             base.SetExtensions(operation);
         }

@@ -4,7 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Models.Interfaces;
@@ -93,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context is not null && Path is not null)
             {
                 string name = EdmModelHelper.GenerateNavigationPropertyPathTagName(Path, Context);
-                Context.AddExtensionToTag(name, Constants.xMsTocType, new OpenApiAny("page"), () => new OpenApiTag()
+                Context.AddExtensionToTag(name, Constants.xMsTocType, new JsonNodeExtension("page"), () => new OpenApiTag()
                 {
                     Name = name
                 });
@@ -108,7 +108,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetExtensions(OpenApiOperation operation)
         {
             operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
-            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiAny("operation"));
+            operation.Extensions.Add(Constants.xMsDosOperationType, new JsonNodeExtension("operation"));
 
             base.SetExtensions(operation);
         }
