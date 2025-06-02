@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System.Net.Http;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Operation

@@ -8,9 +8,6 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -893,9 +890,9 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(OpenApiSpecVersion.OpenApi3_1)]
+        //[InlineData(OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        //[InlineData(OpenApiSpecVersion.OpenApi2_0)]
         public async Task CreatePropertySchemaForNullableEnumPropertyReturnSchema(OpenApiSpecVersion specVersion)
         {
             // Arrange

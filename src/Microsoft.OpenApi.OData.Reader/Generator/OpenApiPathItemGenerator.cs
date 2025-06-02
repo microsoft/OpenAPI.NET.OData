@@ -6,11 +6,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.Models.Interfaces;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.PathItem;
 
 namespace Microsoft.OpenApi.OData.Generator
 {

@@ -5,14 +5,11 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.Models.References;
-using Microsoft.OpenApi.Models.Interfaces;
 using System.Net.Http;
 
 namespace Microsoft.OpenApi.OData.Operation

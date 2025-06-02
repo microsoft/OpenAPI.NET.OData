@@ -8,7 +8,6 @@ using System.Linq;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
-using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
 {

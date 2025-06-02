@@ -4,10 +4,8 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;

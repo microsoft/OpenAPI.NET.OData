@@ -6,10 +6,8 @@
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using System.Linq;
-using Microsoft.OpenApi.Models.Interfaces;
 using System;
 
 namespace Microsoft.OpenApi.OData.Generator

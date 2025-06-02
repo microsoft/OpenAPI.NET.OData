@@ -5,7 +5,6 @@
 
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Xunit;
 

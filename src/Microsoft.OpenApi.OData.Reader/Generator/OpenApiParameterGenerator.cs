@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Edm;
@@ -14,10 +13,6 @@ using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Diagnostics;
 using System;
 using System.Text.Json.Nodes;
-using Microsoft.OpenApi.Models.References;
-using Microsoft.OpenApi.Models.Interfaces;
-using Microsoft.OpenApi.Interfaces;
-using Microsoft.OpenApi.Extensions;
 
 namespace Microsoft.OpenApi.OData.Generator
 {

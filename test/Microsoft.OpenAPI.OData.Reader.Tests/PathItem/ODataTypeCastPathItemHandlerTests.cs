@@ -8,8 +8,6 @@ using Microsoft.OpenApi.OData.Tests;
 using Microsoft.OpenApi.OData.Edm;
 using System.Linq;
 using Xunit;
-using Microsoft.OpenApi.Interfaces;
-using Microsoft.OpenApi.Extensions;
 
 namespace Microsoft.OpenApi.OData.PathItem.Tests
 {

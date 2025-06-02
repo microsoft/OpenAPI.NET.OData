@@ -4,8 +4,6 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
@@ -65,7 +63,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.NotNull(operation.RequestBody);
             var requestBodyReference = Assert.IsType<OpenApiRequestBodyReference>(operation.RequestBody);
-            Assert.Equal(Models.ReferenceType.RequestBody, requestBodyReference.Reference.Type);
+            Assert.Equal(ReferenceType.RequestBody, requestBodyReference.Reference.Type);
             Assert.Equal(Common.Constants.ReferencePostRequestBodyName, requestBodyReference.Reference.Id);
 
             Assert.Equal(2, operation.Responses.Count);

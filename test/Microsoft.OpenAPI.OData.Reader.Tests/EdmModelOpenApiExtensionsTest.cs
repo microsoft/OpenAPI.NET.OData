@@ -8,8 +8,6 @@ using System.IO;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Writers;
 using Xunit;
 using Xunit.Abstractions;
 

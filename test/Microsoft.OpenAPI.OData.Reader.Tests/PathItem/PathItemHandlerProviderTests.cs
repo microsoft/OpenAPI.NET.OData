@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Xunit;
 

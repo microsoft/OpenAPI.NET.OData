@@ -5,13 +5,12 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -29,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
             Type = SecuritySchemeType.OAuth2,
           });
-          _openApiDocument.Tags ??= [];
+          _openApiDocument.Tags ??= new HashSet<OpenApiTag>();
           _openApiDocument.Tags.Add(new OpenApiTag { Name = "Customers.Customer" });
         }
         private readonly OpenApiDocument _openApiDocument = new();

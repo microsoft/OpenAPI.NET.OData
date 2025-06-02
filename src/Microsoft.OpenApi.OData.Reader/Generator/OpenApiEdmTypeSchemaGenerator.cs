@@ -4,17 +4,11 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Exceptions;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.OData.Common;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models.References;
-using Microsoft.OpenApi.Models.Interfaces;
 using System.Globalization;
 
 namespace Microsoft.OpenApi.OData.Generator

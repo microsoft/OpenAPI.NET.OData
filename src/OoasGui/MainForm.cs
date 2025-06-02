@@ -13,8 +13,6 @@ using Microsoft.OData.Edm;
 using System.Collections.Generic;
 using Microsoft.OData.Edm.Validation;
 using System.Text;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData;
 using System.Xml;
 using System.Threading.Tasks;
@@ -25,7 +23,10 @@ namespace OoasGui
     [System.Runtime.Versioning.SupportedOSPlatform("windows")]
     public partial class MainForm : Form
     {
-        private OpenApiFormat Format { get; set; } = OpenApiFormat.Json;
+        private const string Json = "Json";
+        private const string Yaml = "Yaml";
+
+        private string Format { get; set; } = Json;
 
         private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_1;
 
@@ -58,7 +59,7 @@ namespace OoasGui
         private async void jsonRadioBtn_CheckedChanged(object sender, EventArgs e)
 #pragma warning restore VSTHRD100
         {
-            Format = OpenApiFormat.Json;
+            Format = Json;
             await ConvertAsync();
         }
 
@@ -66,7 +67,7 @@ namespace OoasGui
         private async void yamlRadioBtn_CheckedChanged(object sender, EventArgs e)
 #pragma warning restore VSTHRD100
         {
-            Format = OpenApiFormat.Yaml;
+            Format = Yaml;
             await ConvertAsync();
         }
 
@@ -205,7 +206,7 @@ namespace OoasGui
             using var stream = new MemoryStream();
             if (_document is not null)
             {
-                await _document.SerializeAsync(stream, Version, Format);
+                await _document.SerializeAsync(stream, Version, Format, null);
                 await stream.FlushAsync();
                 stream.Position = 0;
 
@@ -236,7 +237,7 @@ namespace OoasGui
 #pragma warning restore VSTHRD100
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (Format == OpenApiFormat.Json)
+            if (Format == Json)
             {
                 saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
             }
@@ -251,7 +252,7 @@ namespace OoasGui
             {
                 string output = saveFileDialog.FileName;
                 using FileStream fs = File.Create(output);
-                await _document.SerializeAsync(fs, Version, Format);
+                await _document.SerializeAsync(fs, Version, Format, null);
                 await fs.FlushAsync();
 
                 MessageBox.Show("Saved successfully!");

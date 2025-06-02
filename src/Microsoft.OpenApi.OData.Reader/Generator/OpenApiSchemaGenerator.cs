@@ -8,19 +8,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
-using Microsoft.OpenApi.Exceptions;
 using System.Linq;
-using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.MicrosoftExtensions;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Text.Json.Nodes;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models.References;
 using System.Globalization;
-using Microsoft.OpenApi.Models.Interfaces;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -105,7 +99,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     };
                     document.AddComponent(Constants.BaseCollectionPaginationCountResponse, responseSchema);
 
-                    responseSchema.Properties ??= [];
+                    responseSchema.Properties ??= new Dictionary<string, IOpenApiSchema>();
                     if (context.Settings.EnableCount)
                         responseSchema.Properties.Add(ODataConstants.OdataCount.Key, ODataConstants.OdataCount.Value);
                     if (context.Settings.EnablePagination)

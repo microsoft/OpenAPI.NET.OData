@@ -11,7 +11,6 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.OData;
-using Microsoft.OpenApi.Extensions;
 using System.Threading.Tasks;
 
 namespace UpdateDocs

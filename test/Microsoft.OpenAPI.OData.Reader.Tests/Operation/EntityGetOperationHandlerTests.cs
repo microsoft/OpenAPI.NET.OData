@@ -4,11 +4,10 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
@@ -26,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
             Type = SecuritySchemeType.OAuth2,
           });
-          _openApiDocument.Tags ??= [];
+          _openApiDocument.Tags ??= new HashSet<OpenApiTag>();
           _openApiDocument.Tags.Add(new OpenApiTag { Name = "Customers.Customer" });
         }
         private readonly OpenApiDocument _openApiDocument = new();
@@ -225,7 +224,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     }
   ],".ChangeLineBreaks(), json);
 
-                Assert.Contains(get.Parameters, p => p.Name == "odata-debug" && p.In == Models.ParameterLocation.Header);
+                Assert.Contains(get.Parameters, p => p.Name == "odata-debug" && p.In == ParameterLocation.Header);
             }
             else
             {
