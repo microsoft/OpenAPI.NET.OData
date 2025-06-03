@@ -3,16 +3,15 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Linq;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Tests;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Xml.Linq;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -27,7 +26,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
             Type = SecuritySchemeType.OAuth2,
           });
-          _openApiDocument.Tags ??= [];
+          _openApiDocument.Tags ??= new HashSet<OpenApiTag>();
           _openApiDocument.Tags.Add(new OpenApiTag { Name = "GetNearestAirport" });
         }
         private readonly OpenApiDocument _openApiDocument = new();

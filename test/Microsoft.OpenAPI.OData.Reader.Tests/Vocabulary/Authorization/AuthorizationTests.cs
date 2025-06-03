@@ -6,7 +6,6 @@
 using System;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.OData.Vocabulary.Authorization;
 using Xunit;

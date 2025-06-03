@@ -6,8 +6,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests;

@@ -4610,6 +4610,117 @@
   },
   "components": {
     "schemas": {
+      "Default.ODataErrors.ODataError": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Default.ODataErrors.MainError"
+          }
+        }
+      },
+      "Default.ODataErrors.MainError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string",
+            "x-ms-primary-error-message": true
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Default.ODataErrors.ErrorDetails"
+            }
+          },
+          "innerError": {
+            "$ref": "#/components/schemas/Default.ODataErrors.InnerError"
+          }
+        }
+      },
+      "Default.ODataErrors.ErrorDetails": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Default.ODataErrors.InnerError": {
+        "type": "object",
+        "description": "The structure of this object is service-specific"
+      },
+      "ODataCountResponse": {
+        "type": "number",
+        "format": "int64"
+      },
+      "StringCollectionResponse": {
+        "title": "Collection of string",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ReferenceUpdate": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          },
+          "@odata.type": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ReferenceCreate": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {
+          "type": "object"
+        }
+      },
+      "ReferenceNumeric": {
+        "enum": [
+          "-INF",
+          "INF",
+          "NaN"
+        ],
+        "type": "string",
+        "nullable": true
+      },
       "Siterra.Documents.App.DTO.DocumentDto": {
         "title": "DocumentDto",
         "type": "object",
@@ -4911,7 +5022,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5260,7 +5370,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5272,7 +5381,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5284,7 +5392,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5434,7 +5541,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5505,7 +5611,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5517,7 +5622,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5766,7 +5870,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5778,7 +5881,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5790,7 +5892,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5969,7 +6070,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -5981,7 +6081,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -6497,7 +6596,6 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
-                "type": "object",
                 "nullable": true
               }
             ],
@@ -6541,73 +6639,6 @@
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           }
         }
-      },
-      "Default.ODataErrors.ODataError": {
-        "required": [
-          "error"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "$ref": "#/components/schemas/Default.ODataErrors.MainError"
-          }
-        }
-      },
-      "Default.ODataErrors.MainError": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string",
-            "x-ms-primary-error-message": true
-          },
-          "target": {
-            "type": "string",
-            "nullable": true
-          },
-          "details": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Default.ODataErrors.ErrorDetails"
-            }
-          },
-          "innerError": {
-            "$ref": "#/components/schemas/Default.ODataErrors.InnerError"
-          }
-        }
-      },
-      "Default.ODataErrors.ErrorDetails": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          },
-          "target": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "Default.ODataErrors.InnerError": {
-        "type": "object",
-        "description": "The structure of this object is service-specific"
-      },
-      "ODataCountResponse": {
-        "type": "number",
-        "format": "int64"
       },
       "Siterra.Documents.App.DTO.DocumentDtoCollectionResponse": {
         "title": "Collection of DocumentDto",
@@ -6740,50 +6771,6 @@
             }
           }
         }
-      },
-      "StringCollectionResponse": {
-        "title": "Collection of string",
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "ReferenceUpdate": {
-        "type": "object",
-        "properties": {
-          "@odata.id": {
-            "type": "string"
-          },
-          "@odata.type": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ReferenceCreate": {
-        "type": "object",
-        "properties": {
-          "@odata.id": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": {
-          "type": "object"
-        }
-      },
-      "ReferenceNumeric": {
-        "enum": [
-          "-INF",
-          "INF",
-          "NaN"
-        ],
-        "type": "string",
-        "nullable": true
       }
     },
     "responses": {
@@ -6993,83 +6980,83 @@
     "examples": {
       "Siterra.Documents.App.DTO.DocumentDto": {
         "value": {
-          "Description": "string",
-          "DomainId": 0,
-          "Filename": "string",
           "Id": 0,
+          "Name": "string",
+          "Description": "string",
+          "Filename": "string",
+          "NumberOfRevisions": "string",
+          "Suffix": "string",
+          "DomainId": 0,
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModifiedBy": 0,
-          "Name": "string",
-          "NumberOfRevisions": "string",
-          "Revisions": [
-            {
-              "@odata.type": "Siterra.Documents.App.DTO.RevisionDto"
-            }
-          ],
-          "Suffix": "string",
           "Tags": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentTagRelDto"
+            }
+          ],
+          "Revisions": [
+            {
+              "@odata.type": "Siterra.Documents.App.DTO.RevisionDto"
             }
           ]
         }
       },
       "Siterra.Documents.App.DTO.LibraryDto": {
         "value": {
+          "Id": 0,
+          "Name": "string",
+          "Number": "string",
+          "Description": "string",
+          "LibraryTemplateId": 0,
+          "ParentTypeId": 0,
+          "ParentId": 0,
           "AllowMultiple": true,
           "AutoCreate": true,
+          "TypeId": 0,
+          "DomainId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "string",
+          "ModifiedBy": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.App.DTO.DocumentDto"
             }
-          ],
-          "DomainId": 0,
-          "Id": 0,
-          "LibraryTemplateId": 0,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
-          "Name": "string",
-          "Number": "string",
-          "ParentId": 0,
-          "ParentTypeId": 0,
-          "TypeId": 0
+          ]
         }
       },
       "Siterra.Documents.App.DTO.RevisionDto": {
         "value": {
-          "ApprovedBy": 0,
-          "ApprovedDate": "0001-01-01T00:00:00.0000000+00:00",
-          "CreatedBy": 0,
-          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Document": {
-            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
-          },
-          "DocumentDescription": "string",
+          "Id": 0,
+          "Number": 0,
           "DocumentId": 0,
           "DocumentName": "string",
-          "DomainId": 0,
-          "Id": 0,
-          "IsApproved": true,
-          "IsRejected": true,
+          "DocumentDescription": "string",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreatedBy": 0,
           "IsReviewed": true,
-          "Number": 0,
+          "ReviewedBy": 0,
+          "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "IsApproved": true,
+          "ApprovedBy": 0,
+          "ApprovedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "IsRejected": true,
           "RejectedBy": 0,
           "RejectedDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ReviewedBy": 0,
-          "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00"
+          "DomainId": 0,
+          "Document": {
+            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
+          }
         }
       },
       "Siterra.Documents.App.DTO.CategoryDto": {
         "value": {
-          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "string",
-          "DomainId": 0,
           "Id": 0,
+          "Name": "string",
+          "Description": "string",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
           "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Name": "string"
+          "DomainId": 0
         }
       },
       "Siterra.Documents.App.DTO.DocumentTagRelDto": {
@@ -7079,60 +7066,66 @@
       },
       "Siterra.Documents.BusinessLogic.Entities.Document.Document": {
         "value": {
-          "CategoryId": 0,
+          "Id": 0,
+          "Name": "string",
+          "Description": "string",
+          "StatusId": 0,
+          "TypeId": 0,
+          "Keywords": "string",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreatedBy": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "DomainId": 0,
+          "LibraryId": 0,
+          "OwnerUserId": 0,
+          "StatusDate": "0001-01-01T00:00:00.0000000+00:00",
+          "LastRevisionId": 0,
           "CheckoutDate": "0001-01-01T00:00:00.0000000+00:00",
           "CheckoutPath": "string",
           "CheckoutUserId": 0,
-          "CreatedBy": 0,
-          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "string",
+          "Number": "string",
+          "OriginalDate": "0001-01-01T00:00:00.0000000+00:00",
+          "FileSized": 0,
+          "FileClientPath": "string",
+          "LastRevisionFileId": 0,
+          "IsDeleted": 0,
+          "IsNa": 0,
+          "IsRejected": 0,
+          "IsReviewed": 0,
+          "NaDescription": "string",
+          "NaReason": "string",
+          "RejectedDescription": "string",
+          "RejectedReason": "string",
+          "ReviewDescription": "string",
+          "SourceDocumentId": 0,
+          "ScraperMapId": 0,
+          "LastDownloadedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "SmsId": 0,
+          "IsApprovedOld": 0,
+          "Suffix": "string",
+          "ScrapeResultId": 0,
+          "IsApproved": 0,
+          "CategoryId": 0,
+          "SectionId": 0,
+          "VersionCount": 0,
+          "LastFileName": "string",
           "DocumentClasses": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
             }
           ],
-          "DomainId": 0,
-          "FileClientPath": "string",
-          "FileSized": 0,
-          "Id": 0,
-          "IsApproved": 0,
-          "IsApprovedOld": 0,
-          "IsDeleted": 0,
-          "IsNa": 0,
-          "IsRejected": 0,
-          "IsReviewed": 0,
-          "Keywords": "string",
-          "LastDownloadedDate": "0001-01-01T00:00:00.0000000+00:00",
-          "LastFileName": "string",
-          "LastRevisionFile": {
-            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile"
-          },
-          "LastRevisionFileId": 0,
-          "LastRevisionId": 0,
+          "Tags": [
+            {
+              "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
+            }
+          ],
           "Library": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.Library"
           },
-          "LibraryId": 0,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
-          "NaDescription": "string",
-          "Name": "string",
-          "NaReason": "string",
-          "Number": "string",
-          "OriginalDate": "0001-01-01T00:00:00.0000000+00:00",
-          "OwnerUserId": 0,
-          "RejectedDescription": "string",
-          "RejectedReason": "string",
-          "ReviewDescription": "string",
-          "Revisions": [
-            {
-              "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Revision.Revision"
-            }
-          ],
-          "ScrapeResultId": 0,
-          "ScraperMapId": 0,
-          "SectionId": 0,
-          "SmsId": 0,
+          "LastRevisionFile": {
+            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile"
+          },
           "SourceDocument": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           },
@@ -7141,132 +7134,130 @@
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
             }
           ],
-          "SourceDocumentId": 0,
-          "StatusDate": "0001-01-01T00:00:00.0000000+00:00",
-          "StatusId": 0,
-          "Suffix": "string",
-          "Tags": [
+          "Revisions": [
             {
-              "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
+              "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Revision.Revision"
             }
-          ],
-          "TypeId": 0,
-          "VersionCount": 0
+          ]
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass": {
         "value": {
-          "ClassId": 0,
           "ClassInstance": 0,
+          "ClassId": 0,
+          "DocumentId": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "IsPrimary": true,
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
-          },
-          "DocumentId": 0,
-          "IsPrimary": true,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0
+          }
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel": {
         "value": {
+          "DocumentId": 0,
+          "TagId": 0,
+          "DomainId": 0,
           "CreatedBy": 0,
+          "ModifiedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Document": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
           },
-          "DocumentId": 0,
-          "DomainId": 0,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
           "Tag": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Tags.Tag"
-          },
-          "TagId": 0
+          }
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Library.Library": {
         "value": {
-          "AllowMultiple": true,
-          "AssetId": 0,
-          "AutoCreate": true,
-          "ClassId": 0,
-          "ClassInstance": 0,
-          "ContractId": 0,
-          "CreatedBy": 0,
+          "Id": 0,
+          "DomainId": 0,
+          "Name": "string",
+          "ParentFolderId": 0,
+          "Number": "string",
+          "TypeId": 0,
+          "OwnerUserId": 0,
+          "TotalSize": 0,
+          "FilesCounter": 0,
+          "FoldersCounter": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "CreatedBy": 0,
+          "ProjectId": 0,
+          "SearchRingId": 0,
+          "SiteId": 0,
+          "AssetId": 0,
+          "AllowMultiple": true,
+          "AutoCreate": true,
           "Description": "string",
+          "IsTemplate": true,
+          "ProgramId": 0,
+          "SourceFolderId": 0,
+          "TemplateClassId": 0,
+          "TemplateSubType": 0,
+          "IsHidden": true,
+          "IsDeleted": 0,
+          "StatusId": 0,
+          "SmsId": 0,
+          "ContractId": 0,
+          "VendorId": 0,
+          "OrganizationUnitId": 0,
+          "IncidentId": 0,
+          "EventId": 0,
+          "ClassInstance": 0,
+          "ClassId": 0,
+          "LibraryParent": {
+            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.Library"
+          },
+          "Type": {
+            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
+          },
+          "SourceFolder": {
+            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.Library"
+          },
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
             }
           ],
-          "DomainId": 0,
-          "EventId": 0,
-          "FilesCounter": 0,
-          "FoldersCounter": 0,
-          "Id": 0,
-          "IncidentId": 0,
-          "IsDeleted": 0,
-          "IsHidden": true,
-          "IsTemplate": true,
           "LibraryChildren": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.Library"
             }
           ],
-          "LibraryParent": {
-            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.Library"
-          },
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
-          "Name": "string",
-          "Number": "string",
-          "OrganizationUnitId": 0,
-          "OwnerUserId": 0,
-          "ParentFolderId": 0,
-          "ProgramId": 0,
-          "ProjectId": 0,
-          "SearchRingId": 0,
-          "SiteId": 0,
-          "SmsId": 0,
-          "SourceFolder": {
-            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.Library"
-          },
-          "SourceFolderId": 0,
           "SourceLibraryChildren": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.Library"
             }
-          ],
-          "StatusId": 0,
-          "TemplateClassId": 0,
-          "TemplateSubType": 0,
-          "TotalSize": 0,
-          "Type": {
-            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
-          },
-          "TypeId": 0,
-          "VendorId": 0
+          ]
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType": {
         "value": {
-          "ChildrenLibraryTypes": [
-            {
-              "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
-            }
-          ],
-          "ClassId": 0,
-          "CreatedBy": 0,
-          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "string",
-          "DomainId": 0,
-          "HasChanged": true,
           "Id": 0,
+          "Name": "string",
+          "ModifiedBy": 0,
+          "CreatedBy": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "DomainId": 0,
+          "Description": "string",
+          "XmlName": "string",
           "MasterId": 0,
+          "Number": 0,
+          "ClassId": 0,
+          "ParentId": 0,
+          "HasChanged": true,
           "MasterLibraryType": {
+            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
+          },
+          "ParentLibraryTypes": {
             "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
           },
           "MasterLibraryTypeChildren": [
@@ -7274,143 +7265,139 @@
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
             }
           ],
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
-          "Name": "string",
-          "Number": 0,
-          "ParentId": 0,
-          "ParentLibraryTypes": {
-            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
-          },
-          "XmlName": "string"
+          "ChildrenLibraryTypes": [
+            {
+              "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
+            }
+          ]
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile": {
         "value": {
-          "ActualName": "string",
-          "ClientPath": "string",
-          "ContentTypeId": 0,
+          "Id": 0,
+          "Name": "string",
+          "Path": "string",
+          "ModifiedBy": 0,
           "CreatedBy": 0,
           "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Sized": 0,
+          "ActualName": "string",
+          "DomainId": 0,
+          "SourceClassId": 0,
+          "ContentTypeId": 0,
+          "ClientPath": "string",
+          "IsSelfHosted": 0,
+          "SmsId": 0,
+          "Latitude": 0,
+          "Longitude": 0,
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
             }
-          ],
-          "DomainId": 0,
-          "Id": 0,
-          "IsSelfHosted": 0,
-          "Latitude": 0,
-          "Longitude": 0,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
-          "Name": "string",
-          "Path": "string",
-          "Sized": 0,
-          "SmsId": 0,
-          "SourceClassId": 0
+          ]
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.Tag": {
         "value": {
-          "CreatedBy": 0,
-          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Description": "string",
-          "DomainId": 0,
           "Id": 0,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "DomainId": 0,
+          "Name": "string",
+          "Description": "string",
+          "CreatedBy": 0,
           "ModifiedBy": 0,
-          "Name": "string"
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00"
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.UserDefinedTag": {
         "value": {
-          "CreatedBy": 0,
-          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Id": 0,
+          "DomainId": 0,
+          "Name": "string",
           "Description": "string",
+          "CreatedBy": 0,
+          "ModifiedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
             }
-          ],
-          "DomainId": 0,
-          "Id": 0,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
-          "Name": "string"
+          ]
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.Section": {
         "value": {
-          "CreatedBy": 0,
-          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Id": 0,
+          "DomainId": 0,
+          "Name": "string",
           "Description": "string",
+          "CreatedBy": 0,
+          "ModifiedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
             }
-          ],
-          "DomainId": 0,
-          "Id": 0,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
-          "Name": "string"
+          ]
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Tags.Category": {
         "value": {
-          "CreatedBy": 0,
-          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Id": 0,
+          "DomainId": 0,
+          "Name": "string",
           "Description": "string",
+          "CreatedBy": 0,
+          "ModifiedBy": 0,
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
           "Documents": [
             {
               "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
             }
-          ],
-          "DomainId": 0,
-          "Id": 0,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
-          "Name": "string"
+          ]
         }
       },
       "Siterra.Documents.BusinessLogic.Entities.Revision.Revision": {
         "value": {
-          "ApprovedBy": 0,
-          "ApprovedDate": "0001-01-01T00:00:00.0000000+00:00",
-          "CreatedBy": 0,
-          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "Document": {
-            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
-          },
-          "DocumentDescription": "string",
-          "DocumentFolder": "string",
+          "Id": 0,
+          "Number": 0,
           "DocumentId": 0,
+          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "CreationDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ModifiedBy": 0,
+          "CreatedBy": 0,
+          "Remarks": "string",
+          "FileId": 0,
+          "DocumentOwnerContact": 0,
+          "DocumentDescription": "string",
+          "DocumentStatusDate": "0001-01-01T00:00:00.0000000+00:00",
+          "DocumentFolder": "string",
           "DocumentKeywords": "string",
+          "DocumentStatus": "string",
+          "DocumentType": "string",
           "DocumentName": "string",
           "DocumentNumber": "string",
-          "DocumentOwnerContact": 0,
-          "DocumentStatus": "string",
-          "DocumentStatusDate": "0001-01-01T00:00:00.0000000+00:00",
-          "DocumentType": "string",
           "DomainId": 0,
-          "FileId": 0,
-          "Id": 0,
-          "IsApproved": true,
           "IsDeleted": 0,
-          "IsRejected": true,
           "IsReviewed": true,
-          "ModificationDate": "0001-01-01T00:00:00.0000000+00:00",
-          "ModifiedBy": 0,
-          "Number": 0,
-          "RejectedBy": 0,
-          "RejectedDate": "0001-01-01T00:00:00.0000000+00:00",
-          "RejectedDescription": "string",
-          "RejectedReason": "string",
-          "Remarks": "string",
           "ReviewDescription": "string",
           "ReviewedBy": 0,
-          "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00"
+          "IsRejected": true,
+          "RejectedReason": "string",
+          "RejectedDescription": "string",
+          "RejectedBy": 0,
+          "IsApproved": true,
+          "ApprovedBy": 0,
+          "ReviewedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "RejectedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "ApprovedDate": "0001-01-01T00:00:00.0000000+00:00",
+          "Document": {
+            "@odata.type": "Siterra.Documents.BusinessLogic.Entities.Document.Document"
+          }
         }
       }
     },

@@ -5,7 +5,6 @@
 
 using System;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Moq;

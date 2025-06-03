@@ -6,15 +6,12 @@
 using System;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData.Tests;
-using Microsoft.OpenApi.Models;
 using Xunit;
 using Microsoft.OpenApi.OData.Edm;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Moq;
-using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {

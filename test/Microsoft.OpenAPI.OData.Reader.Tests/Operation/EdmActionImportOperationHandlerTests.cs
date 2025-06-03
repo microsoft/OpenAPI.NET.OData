@@ -3,14 +3,12 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -29,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
             Type = SecuritySchemeType.OAuth2,
           });
-          openApiDocument.Tags ??= [];
+          openApiDocument.Tags ??= new HashSet<OpenApiTag>();
           openApiDocument.Tags.Add(new OpenApiTag { Name = "ResetDataSource" });
         }
 

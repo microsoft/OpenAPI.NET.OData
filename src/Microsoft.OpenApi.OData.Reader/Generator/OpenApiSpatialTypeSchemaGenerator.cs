@@ -5,9 +5,6 @@
 
 using System.Collections.Generic;
 using System.Text.Json.Nodes;
-using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.Models.Interfaces;
-using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 

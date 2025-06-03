@@ -109,7 +109,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             Assert.Equal("scheme name", permission.SchemeName);
 
             Assert.NotNull(permission.Scopes);
-            ScopeType scope = Assert.Single(permission.Scopes);
+            OData.Vocabulary.Capabilities.ScopeType scope = Assert.Single(permission.Scopes);
             Assert.Equal("scope name", scope.Scope);
             Assert.Null(scope.RestrictedProperties);
         }

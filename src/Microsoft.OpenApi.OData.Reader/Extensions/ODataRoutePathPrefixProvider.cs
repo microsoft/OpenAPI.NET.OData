@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Extensions
 {

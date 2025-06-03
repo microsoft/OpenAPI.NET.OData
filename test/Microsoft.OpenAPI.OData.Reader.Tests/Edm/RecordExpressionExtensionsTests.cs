@@ -125,7 +125,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                     new EdmPropertyConstructor("RestrictedProperties", new EdmStringConstant("*")))));
 
             // Act
-            ScopeType actual = record.GetRecord<ScopeType>("prop");
+            Vocabulary.Capabilities.ScopeType actual = record.GetRecord<Vocabulary.Capabilities.ScopeType>("prop");
 
             // Assert
             Assert.NotNull(actual);
@@ -164,7 +164,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                         new EdmPropertyConstructor("RestrictedProperties", new EdmStringConstant("restrictedProperties2"))))));
 
             // Act
-            IList<ScopeType> actual = record.GetCollection<ScopeType>("prop");
+            IList<Vocabulary.Capabilities.ScopeType> actual = record.GetCollection<Vocabulary.Capabilities.ScopeType>("prop");
 
             // Assert
             Assert.NotNull(actual);

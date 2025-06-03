@@ -5,11 +5,9 @@
 
 using System.Linq;
 using System.Collections.Generic;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
-using Microsoft.OpenApi.Models.References;
 
 namespace Microsoft.OpenApi.OData.Generator
 {

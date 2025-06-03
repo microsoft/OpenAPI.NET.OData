@@ -5,7 +5,6 @@
 
 using System;
 using System.Net.Http;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Xunit;
 

@@ -20,7 +20,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
         public void DefaultPropertyAsNull()
         {
             // Arrange & Act
-            ScopeType scope = new ScopeType();
+            OData.Vocabulary.Capabilities.ScopeType scope = new();
 
             // Assert
             Assert.Null(scope.Scope);
@@ -31,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
         public void InitializeWithNullRecordThrows()
         {
             // Arrange & Act
-            ScopeType scope = new ScopeType();
+            OData.Vocabulary.Capabilities.ScopeType scope = new();
 
             // Assert
             Assert.Throws<ArgumentNullException>("record", () => scope.Initialize(record: null));
@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
                 new EdmPropertyConstructor("RestrictedProperties", new EdmStringConstant("abc,xyz")));
 
             // Act
-            ScopeType scope = new ScopeType();
+            OData.Vocabulary.Capabilities.ScopeType scope = new();
             scope.Initialize(record);
 
             // Assert
@@ -72,7 +72,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             Assert.NotNull(model); // guard
 
             // Act
-            ScopeType scope = model.GetRecord<ScopeType>(model.EntityContainer, "NS.MyTerm");
+            OData.Vocabulary.Capabilities.ScopeType scope = model.GetRecord<OData.Vocabulary.Capabilities.ScopeType>(model.EntityContainer, "NS.MyTerm");
 
             // Assert
             Assert.NotNull(scope);

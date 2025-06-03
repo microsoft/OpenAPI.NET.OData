@@ -6,7 +6,6 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Authorization;

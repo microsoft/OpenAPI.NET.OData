@@ -5,7 +5,6 @@
 
 using System.Collections.Generic;
 using System.Net.Http;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Operation

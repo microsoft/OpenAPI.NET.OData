@@ -8,9 +8,6 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.Models.References;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
@@ -394,7 +391,6 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.userInsightsSettings""
             },
             {
-              ""type"": ""object"",
               ""nullable"": true
             }
           ],
@@ -407,7 +403,6 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.contactMergeSuggestions""
             },
             {
-              ""type"": ""object"",
               ""nullable"": true
             }
           ],
@@ -420,7 +415,6 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.regionalAndLanguageSettings""
             },
             {
-              ""type"": ""object"",
               ""nullable"": true
             }
           ],
@@ -433,7 +427,6 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.shiftPreferences""
             },
             {
-              ""type"": ""object"",
               ""nullable"": true
             }
           ],
@@ -929,7 +922,6 @@ namespace Microsoft.OpenApi.OData.Tests
                       "$ref": "#/components/schemas/DefaultNs.Color"
                     },
                     {
-                      "type": "object",
                       "nullable": true
                     }
                   ],
