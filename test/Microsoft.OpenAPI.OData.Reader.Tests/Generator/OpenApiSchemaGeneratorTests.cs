@@ -391,7 +391,6 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.userInsightsSettings""
             },
             {
-              ""type"": ""object"",
               ""nullable"": true
             }
           ],
@@ -404,7 +403,6 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.contactMergeSuggestions""
             },
             {
-              ""type"": ""object"",
               ""nullable"": true
             }
           ],
@@ -417,7 +415,6 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.regionalAndLanguageSettings""
             },
             {
-              ""type"": ""object"",
               ""nullable"": true
             }
           ],
@@ -430,7 +427,6 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.shiftPreferences""
             },
             {
-              ""type"": ""object"",
               ""nullable"": true
             }
           ],
@@ -926,7 +922,6 @@ namespace Microsoft.OpenApi.OData.Tests
                       "$ref": "#/components/schemas/DefaultNs.Color"
                     },
                     {
-                      "type": "object",
                       "nullable": true
                     }
                   ],

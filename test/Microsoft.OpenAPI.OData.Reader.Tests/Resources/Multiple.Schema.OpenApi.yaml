@@ -3330,14 +3330,14 @@ components:
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         ModifiedBy:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         Tags:
           type: array
           items:
@@ -3383,8 +3383,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ParentTypeId:
           maximum: 2147483647
           minimum: -2147483648
@@ -3422,13 +3422,13 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         Documents:
           type: array
           items:
@@ -3470,8 +3470,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         DocumentName:
           type: string
           nullable: true
@@ -3493,39 +3493,39 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ReviewedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         IsApproved:
           type: boolean
         ApprovedBy:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ApprovedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         IsRejected:
           type: boolean
         RejectedBy:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         RejectedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         DomainId:
           maximum: 2147483647
           minimum: -2147483648
@@ -3535,7 +3535,6 @@ components:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
       example:
         Id: 0
@@ -3656,8 +3655,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         OwnerUserId:
           maximum: 2147483647
           minimum: -2147483648
@@ -3671,13 +3670,13 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         CheckoutDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         CheckoutPath:
           type: string
           nullable: true
@@ -3685,16 +3684,16 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         Number:
           type: string
           nullable: true
         OriginalDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         FileSized:
           type: number
           format: decimal
@@ -3705,8 +3704,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         IsDeleted:
           maximum: 2147483647
           minimum: -2147483648
@@ -3714,16 +3713,16 @@ components:
           format: int32
         IsNa:
           type: number
-          nullable: true
           format: decimal
+          nullable: true
         IsRejected:
           type: number
-          nullable: true
           format: decimal
+          nullable: true
         IsReviewed:
           type: number
-          nullable: true
           format: decimal
+          nullable: true
         NaDescription:
           type: string
           nullable: true
@@ -3743,31 +3742,31 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ScraperMapId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         LastDownloadedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         SmsId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         IsApprovedOld:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         Suffix:
           type: string
           nullable: true
@@ -3775,24 +3774,24 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         IsApproved:
           type: number
-          nullable: true
           format: decimal
+          nullable: true
         CategoryId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         SectionId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         VersionCount:
           maximum: 2147483647
           minimum: -2147483648
@@ -3813,19 +3812,16 @@ components:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
         LastRevisionFile:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
         SourceDocument:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
         SourceDocumentChildren:
           type: array
@@ -3939,7 +3935,6 @@ components:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
       example:
         ClassInstance: 0
@@ -3993,13 +3988,11 @@ components:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
         Tag:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
       example:
         DocumentId: 0
@@ -4034,8 +4027,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         Number:
           type: string
           nullable: true
@@ -4084,26 +4077,26 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         SearchRingId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         SiteId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         AssetId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         AllowMultiple:
           type: boolean
         AutoCreate:
@@ -4117,26 +4110,26 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         SourceFolderId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         TemplateClassId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         TemplateSubType:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         IsHidden:
           type: boolean
         IsDeleted:
@@ -4148,44 +4141,44 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         SmsId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ContractId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         VendorId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         OrganizationUnitId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         IncidentId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         EventId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ClassInstance:
           maximum: 2147483647
           minimum: -2147483648
@@ -4200,19 +4193,16 @@ components:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
         Type:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
         SourceFolder:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
         Documents:
           type: array
@@ -4313,8 +4303,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         Description:
           type: string
           nullable: true
@@ -4325,14 +4315,14 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         Number:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ClassId:
           maximum: 2147483647
           minimum: -2147483648
@@ -4342,21 +4332,19 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         HasChanged:
           type: boolean
         MasterLibraryType:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
         ParentLibraryTypes:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
         MasterLibraryTypeChildren:
           type: array
@@ -4439,14 +4427,14 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ContentTypeId:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ClientPath:
           type: string
           nullable: true
@@ -4459,16 +4447,16 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         Latitude:
           type: number
-          nullable: true
           format: decimal
+          nullable: true
         Longitude:
           type: number
-          nullable: true
           format: decimal
+          nullable: true
         Documents:
           type: array
           items:
@@ -4624,8 +4612,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ModificationDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
@@ -4701,8 +4689,8 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         IsRejected:
           type: boolean
         RejectedReason:
@@ -4715,36 +4703,35 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         IsApproved:
           type: boolean
         ApprovedBy:
           maximum: 2147483647
           minimum: -2147483648
           type: number
-          nullable: true
           format: int32
+          nullable: true
         ReviewedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         RejectedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         ApprovedDate:
           pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
-          nullable: true
           format: date-time
+          nullable: true
         Document:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - nullable: true
-              type: object
           x-ms-navigationProperty: true
       example:
         Id: 0
