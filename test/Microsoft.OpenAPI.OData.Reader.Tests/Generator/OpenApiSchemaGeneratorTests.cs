@@ -890,9 +890,9 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        //[InlineData(OpenApiSpecVersion.OpenApi3_1)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_1)]
         [InlineData(OpenApiSpecVersion.OpenApi3_0)]
-        //[InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
         public async Task CreatePropertySchemaForNullableEnumPropertyReturnSchema(OpenApiSpecVersion specVersion)
         {
             // Arrange
