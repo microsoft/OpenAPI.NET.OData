@@ -33,4 +33,4 @@ jobs:
     - name: Validate description with redocly
       uses: fluximus-prime/redocly-cli-github-action@v1
       with:
-        args: 'lint test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/${{ matrix.descriptions }} --skip-rule operation-4xx-response --skip-rule no-server-trailing-slash --skip-rule no-unused-components --skip-rule security-defined --skip-rule info-license-url --skip-rule info-license --skip-rule no-empty-servers --skip-rule operation-summary --skip-rule tag-description --max-problems 1000'
+        args: 'lint test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/${{ matrix.descriptions }} --skip-rule operation-4xx-response --skip-rule no-server-trailing-slash --skip-rule no-unused-components --skip-rule security-defined --skip-rule info-license-url --skip-rule info-license --skip-rule no-empty-servers --skip-rule operation-summary --skip-rule tag-description --generate-ignore-file --max-problems 1000'
