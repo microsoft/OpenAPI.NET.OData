@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0-preview.15](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.14...v2.0.0-preview.15) (2025-06-03)
+
+
+### Features
+
+* upgrade oai.net ([cdb20af](https://github.com/microsoft/OpenAPI.NET.OData/commit/cdb20af267ee53bee2fb90d0129905374be52a7f))
+* upgrades OpenApi.NET to preview22 ([8253d67](https://github.com/microsoft/OpenAPI.NET.OData/commit/8253d67478db1ae8146483de51f7105abfe99001))
+
 ## [2.0.0-preview.14](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.13...v2.0.0-preview.14) (2025-05-14)
 
 
