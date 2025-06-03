@@ -1,0 +1,160 @@
+# This file instructs Redocly's linter to ignore the rules contained for specific parts of your API.
+# See https://redocly.com/docs/cli/ for more information.
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Basic.OpenApi.json:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Basic.OpenApi.V3.1.json:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Empty.OpenApi.json:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Empty.OpenApi.V3.1.json:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Multiple.Schema.OpenApi.json:
+  no-server-example.com:
+    - '#/servers/0/url'
+  struct:
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass/properties/Document/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel/properties/Document/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel/properties/Tag/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library/properties/LibraryParent/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType/properties/MasterLibraryType/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType/properties/ParentLibraryTypes/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library/properties/Type/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library/properties/SourceFolder/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document/properties/Library/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document/properties/LastRevisionFile/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document/properties/SourceDocument/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.Revision/properties/Document/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.App.DTO.RevisionDto/properties/Document/anyOf/1/nullable
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Multiple.Schema.OpenApi.V3.1.json:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/TripService.OpenApi.json:
+  struct:
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location/properties/City/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person/properties/HomeAddress/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person/properties/BestFriend/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation/allOf/1/properties/EmergencyAuthority/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport/properties/Location/anyOf/1/nullable
+    - >-
+      #/paths/~1GetNearestAirport(lat={lat},lon={lon})/get/responses/200/content/application~1json/schema/anyOf/1/nullable
+    - >-
+      #/paths/~1GetPersonWithMostFriends()/get/responses/200/content/application~1json/schema/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/allOf/1/properties/BossOffice/anyOf/1/nullable
+    - >-
+      #/components/responses/GetFavoriteAirlineResponse/content/application~1json/schema/anyOf/1/nullable
+    - >-
+      #/paths/~1Me~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire/post/requestBody/content/application~1json/schema/properties/hire/anyOf/1/nullable
+    - >-
+      #/paths/~1NewComePeople~1{UserName}~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire/post/requestBody/content/application~1json/schema/properties/hire/anyOf/1/nullable
+    - >-
+      #/paths/~1People~1{UserName}~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire/post/requestBody/content/application~1json/schema/properties/hire/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event/allOf/1/properties/OccursAt/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight/allOf/1/properties/Airline/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight/allOf/1/properties/From/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight/allOf/1/properties/To/anyOf/1/nullable
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Basic.OpenApi.V3.1.yaml:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Basic.OpenApi.yaml:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Empty.OpenApi.V3.1.yaml:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Empty.OpenApi.yaml:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Multiple.Schema.OpenApi.V3.1.yaml:
+  no-server-example.com:
+    - '#/servers/0/url'
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/Multiple.Schema.OpenApi.yaml:
+  no-server-example.com:
+    - '#/servers/0/url'
+  struct:
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass/properties/Document/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel/properties/Document/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel/properties/Tag/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library/properties/LibraryParent/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType/properties/MasterLibraryType/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType/properties/ParentLibraryTypes/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library/properties/Type/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library/properties/SourceFolder/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document/properties/Library/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document/properties/LastRevisionFile/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document/properties/SourceDocument/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.Revision/properties/Document/anyOf/1/nullable
+    - >-
+      #/components/schemas/Siterra.Documents.App.DTO.RevisionDto/properties/Document/anyOf/1/nullable
+test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/TripService.OpenApi.yaml:
+  struct:
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location/properties/City/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person/properties/HomeAddress/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person/properties/BestFriend/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation/allOf/1/properties/EmergencyAuthority/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport/properties/Location/anyOf/1/nullable
+    - >-
+      #/paths/~1GetNearestAirport(lat={lat},lon={lon})/get/responses/200/content/application~1json/schema/anyOf/1/nullable
+    - >-
+      #/paths/~1GetPersonWithMostFriends()/get/responses/200/content/application~1json/schema/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/allOf/1/properties/BossOffice/anyOf/1/nullable
+    - >-
+      #/components/responses/GetFavoriteAirlineResponse/content/application~1json/schema/anyOf/1/nullable
+    - >-
+      #/paths/~1Me~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire/post/requestBody/content/application~1json/schema/properties/hire/anyOf/1/nullable
+    - >-
+      #/paths/~1NewComePeople~1{UserName}~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire/post/requestBody/content/application~1json/schema/properties/hire/anyOf/1/nullable
+    - >-
+      #/paths/~1People~1{UserName}~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager~1Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire/post/requestBody/content/application~1json/schema/properties/hire/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event/allOf/1/properties/OccursAt/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight/allOf/1/properties/Airline/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight/allOf/1/properties/From/anyOf/1/nullable
+    - >-
+      #/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight/allOf/1/properties/To/anyOf/1/nullable
