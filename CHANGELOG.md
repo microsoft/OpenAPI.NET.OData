@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0-preview.16](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.15...v2.0.0-preview.16) (2025-06-10)
+
+
+### Features
+
+* upgrades openapi.net.odata to the latest version ([743c85d](https://github.com/microsoft/OpenAPI.NET.OData/commit/743c85ddf149a3472279ccf19c21e8e5a9315244))
+
 ## [2.0.0-preview.15](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.14...v2.0.0-preview.15) (2025-06-03)
 
 
