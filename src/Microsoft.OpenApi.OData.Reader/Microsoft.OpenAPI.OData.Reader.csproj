@@ -30,7 +30,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.OData.Edm" Version="8.2.3" />
-    <PackageReference Include="Microsoft.OpenApi" Version="2.0.0-preview.25" />
+    <PackageReference Include="Microsoft.OpenApi" Version="2.0.0-preview9" />
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
