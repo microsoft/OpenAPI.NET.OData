@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.0-preview.18](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.17...v2.0.0-preview.18) (2025-07-02)
+
+
+### Bug Fixes
+
+* a bug where checking the whether a type is referenced would lead to a null reference exception ([39bbbc2](https://github.com/microsoft/OpenAPI.NET.OData/commit/39bbbc23ca4c12b0c117f8016d18542f82af10fd))
+* a bug where checking the whether a type is referenced would lead to a null reference exception ([f0dc51d](https://github.com/microsoft/OpenAPI.NET.OData/commit/f0dc51d544f5727ad813cbc30385837a92ad8d73))
+* a bug where empty enums would make the conversion fail ([b3a645b](https://github.com/microsoft/OpenAPI.NET.OData/commit/b3a645bd7b9302f4a1e64937d475a5f024144d4b))
+* a bug where empty enums would make the conversion fail ([1abcf49](https://github.com/microsoft/OpenAPI.NET.OData/commit/1abcf4971d985c0ebd5a267842d6254a13a5b90d))
+
 ## [2.0.0-preview.17](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.16...v2.0.0-preview.17) (2025-07-02)
 
 
