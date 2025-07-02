@@ -238,7 +238,8 @@ namespace Microsoft.OpenApi.OData.Common
                 if (isReferencedInAction) return true;
 
                 // Recursively check the base type
-                return model.IsBaseTypeReferencedAsTypeInModel(baseType.BaseType, structuredTypes, actions);
+                if (baseType.BaseType is not null)
+                    return model.IsBaseTypeReferencedAsTypeInModel(baseType.BaseType, structuredTypes, actions);
             }
 
             return false;
