@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0-preview.17](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.16...v2.0.0-preview.17) (2025-07-02)
+
+
+### Bug Fixes
+
+* trigger a new release to unblock hidi ([60f887e](https://github.com/microsoft/OpenAPI.NET.OData/commit/60f887e871c1031c70f82110ced332188f832e74))
+* trigger a new release to unblock hidi ([f236734](https://github.com/microsoft/OpenAPI.NET.OData/commit/f236734e73d70b744c0604c3019f3d8a77dee955))
+
 ## [2.0.0-preview.16](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.15...v2.0.0-preview.16) (2025-06-10)
 
 
