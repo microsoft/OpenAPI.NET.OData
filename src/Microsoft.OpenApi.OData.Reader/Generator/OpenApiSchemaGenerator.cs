@@ -693,6 +693,9 @@ namespace Microsoft.OpenApi.OData.Generator
                     },
                 EdmTypeKind.Enum when edmTypeReference.Definition is IEdmEnumType edmEnumType && edmEnumType.Members.FirstOrDefault()?.Name is string firstMemberName =>
                     JsonValue.Create(firstMemberName),
+                // in case the enum members are empty which often happens due to hidden members on Microsoft Graph
+                EdmTypeKind.Enum when edmTypeReference.Definition is IEdmEnumType edmEnumType && edmEnumType.Members.FirstOrDefault()?.Name is null =>
+                    JsonValue.Create(edmTypeReference.FullName()),
                 EdmTypeKind.Collection => new JsonArray(GetTypeNameForExample(context, edmTypeReference.AsCollection().ElementType(), document)),
                 EdmTypeKind.TypeDefinition => GetTypeNameForExample(context, new EdmPrimitiveTypeReference(edmTypeReference.AsTypeDefinition().TypeDefinition().UnderlyingType, edmTypeReference.IsNullable), document),
                 EdmTypeKind.Untyped => new JsonObject(),
