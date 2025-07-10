@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.18...v2.0.0) (2025-07-10)
+
+
+### Features
+
+* general availability of version 2 🎉🎉🎉 ([abe5188](https://github.com/microsoft/OpenAPI.NET.OData/commit/abe518896160b574787a2634489091f59142c22f))
+* upgrades to Microsoft.OpenAPI GA ([254d37c](https://github.com/microsoft/OpenAPI.NET.OData/commit/254d37c8718f1308ff06bb831f3cce2c827b09cf))
+
 ## [2.0.0-preview.18](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.17...v2.0.0-preview.18) (2025-07-02)
 
 
