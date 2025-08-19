@@ -1,0 +1,15 @@
+extends:
+  - recommended
+
+rules:
+  operation-4xx-response: off
+  nullable-type-sibling: off
+  no-server-example.com: off
+  no-server-trailing-slash: off
+  no-unused-components: off
+  security-defined: off
+  info-license-url: off
+  info-license: off
+  no-empty-servers: off
+  operation-summary: off
+  tag-description: off
