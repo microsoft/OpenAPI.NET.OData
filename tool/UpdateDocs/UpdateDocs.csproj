@@ -12,6 +12,6 @@
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.OData.Edm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.OData.Edm" Version="8.4.2" />
   </ItemGroup>
 </Project>
