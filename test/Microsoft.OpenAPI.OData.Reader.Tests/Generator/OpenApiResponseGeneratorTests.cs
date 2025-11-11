@@ -215,7 +215,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             var response = responses["200"];
             Assert.NotNull(response.Content);
-            OpenApiMediaType mediaType = response.Content["application/json"];
+            OpenApiMediaType mediaType = Assert.IsType<OpenApiMediaType>(response.Content["application/json"]);
 // openApi version 2 should not use AnyOf
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {

@@ -94,7 +94,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Required = true,
 
                         // Create schema in the Content property to indicate that the parameters are serialized as JSON
-                        Content = new Dictionary<string, OpenApiMediaType>
+                        Content = new Dictionary<string, IOpenApiMediaType>
                         {
                             {
                                 Constants.ApplicationJsonMediaType,

@@ -89,7 +89,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
         {
             Required = true,
             Description = "New property values",
-            Content = new Dictionary<string, OpenApiMediaType>
+            Content = new Dictionary<string, IOpenApiMediaType>
             {
                 {
                     Constants.ApplicationJsonMediaType, new OpenApiMediaType

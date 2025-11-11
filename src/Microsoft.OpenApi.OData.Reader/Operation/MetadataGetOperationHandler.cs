@@ -63,7 +63,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     new OpenApiResponse
                     {
                         Description = "Retrieved metadata document",
-                        Content = new Dictionary<string, OpenApiMediaType>
+                        Content = new Dictionary<string, IOpenApiMediaType>
                         {
                             {
                                 Constants.ApplicationXmlMediaType,

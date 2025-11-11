@@ -78,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 Description = "Action parameters",
                 Required = true,
-                Content = new Dictionary<string, OpenApiMediaType>()
+                Content = new Dictionary<string, IOpenApiMediaType>()
             };
 
             requestBody.Content.Add(Constants.ApplicationJsonMediaType, new OpenApiMediaType
@@ -123,7 +123,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 Required = true,
                 Description = "New navigation property ref value",
-                Content = new Dictionary<string, OpenApiMediaType>
+                Content = new Dictionary<string, IOpenApiMediaType>
                 {
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
@@ -148,7 +148,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 Required = true,
                 Description = "New navigation property ref values",
-                Content = new Dictionary<string, OpenApiMediaType>
+                Content = new Dictionary<string, IOpenApiMediaType>
                 {
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType

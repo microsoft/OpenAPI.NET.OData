@@ -115,7 +115,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         new OpenApiResponse
                         {
                             Description = "Retrieved navigation property link",
-                            Content = new Dictionary<string, OpenApiMediaType>
+                            Content = new Dictionary<string, IOpenApiMediaType>
                             {
                                 {
                                     Constants.ApplicationJsonMediaType,

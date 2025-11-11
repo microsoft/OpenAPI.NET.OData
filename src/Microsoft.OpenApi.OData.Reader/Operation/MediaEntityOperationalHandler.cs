@@ -163,7 +163,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets a media entity content description.
         /// </summary>
         /// <returns>The entity content description.</returns>
-        protected Dictionary<string, OpenApiMediaType> GetContentDescription()
+        protected Dictionary<string, IOpenApiMediaType> GetContentDescription()
         {
             // Fetch the respective AcceptableMediaTypes
             (_, var property) = GetStreamElements();
@@ -174,7 +174,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 Format = "binary"
             };
 
-            var content = new Dictionary<string, OpenApiMediaType>();
+            var content = new Dictionary<string, IOpenApiMediaType>();
             if (property is not null &&
                 Context?.Model.GetCollection(property,
                     CoreConstants.AcceptableMediaTypes) is {} mediaTypes)
