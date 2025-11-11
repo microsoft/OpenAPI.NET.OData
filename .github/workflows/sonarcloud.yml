@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - support/v1
+      - support/v2
     paths-ignore: ['.vscode/**']
   pull_request:
     types: [opened, synchronize, reopened]
