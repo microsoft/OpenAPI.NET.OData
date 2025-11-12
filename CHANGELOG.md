@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0...v3.0.0) (2025-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* adds support for OpenAPI 3.2.0
+
+### Features
+
+* adds support for OpenAPI 3.2.0 ([f5f69eb](https://github.com/microsoft/OpenAPI.NET.OData/commit/f5f69ebc29530891862ca7f9ce57ffbfb79c9d92))
+
 ## [2.0.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0-preview.18...v2.0.0) (2025-07-10)
 
 
