@@ -242,7 +242,7 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiResponse response = new()
             {
                 Description = "Success",
-                Content = new Dictionary<string, OpenApiMediaType>
+                Content = new Dictionary<string, IOpenApiMediaType>
                 {
                     {
                         mediaType,
@@ -267,7 +267,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiResponse
             {
                 Description = "Retrieved collection",
-                Content = new Dictionary<string, OpenApiMediaType>
+                Content = new Dictionary<string, IOpenApiMediaType>
                 {
                     {
                         Constants.ApplicationJsonMediaType,
@@ -286,7 +286,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiResponse
             {
                 Description = "The count of the resource",
-                Content = new Dictionary<string, OpenApiMediaType>
+                Content = new Dictionary<string, IOpenApiMediaType>
                 {
                     {
                         "text/plain",
@@ -305,7 +305,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiResponse
             {
                 Description = "error",
-                Content = new Dictionary<string, OpenApiMediaType>
+                Content = new Dictionary<string, IOpenApiMediaType>
                 {
                     {
                         Constants.ApplicationJsonMediaType,

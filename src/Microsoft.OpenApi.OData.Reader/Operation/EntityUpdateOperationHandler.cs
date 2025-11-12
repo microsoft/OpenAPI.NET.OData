@@ -85,10 +85,10 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetRequestBody(operation);
         }
 
-        protected Dictionary<string, OpenApiMediaType> GetContent()
+        protected Dictionary<string, IOpenApiMediaType> GetContent()
         {
             var schema = GetOpenApiSchema();
-            var content = new Dictionary<string, OpenApiMediaType>();
+            var content = new Dictionary<string, IOpenApiMediaType>();
 
             // Add the annotated request content media types
             if (_updateRestrictions?.RequestContentTypes is {} mediaTypes)

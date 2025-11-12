@@ -205,10 +205,10 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-        protected Dictionary<string, OpenApiMediaType> GetContent(IOpenApiSchema? schema = null, IEnumerable<string>? mediaTypes = null)
+        protected Dictionary<string, IOpenApiMediaType> GetContent(IOpenApiSchema? schema = null, IEnumerable<string>? mediaTypes = null)
         {
             schema ??= GetOpenApiSchema();
-            var content = new Dictionary<string, OpenApiMediaType>();
+            var content = new Dictionary<string, IOpenApiMediaType>();
 
             if (mediaTypes != null)
             {
