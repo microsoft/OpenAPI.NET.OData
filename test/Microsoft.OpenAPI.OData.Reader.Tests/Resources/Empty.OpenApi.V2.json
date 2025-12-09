@@ -96,19 +96,16 @@
         "@odata.id": {
           "type": "string"
         }
-      },
-      "additionalProperties": {
-        "type": "object"
       }
     },
     "ReferenceNumeric": {
       "type": "string",
-      "x-nullable": true,
       "enum": [
         "-INF",
         "INF",
         "NaN"
-      ]
+      ],
+      "x-nullable": true
     }
   },
   "parameters": {
