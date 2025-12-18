@@ -3532,9 +3532,10 @@ components:
           type: number
           format: int32
         Document:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
       example:
         Id: 0
@@ -3809,19 +3810,22 @@ components:
           items:
             $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
         Library:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
         LastRevisionFile:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
         SourceDocument:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
         SourceDocumentChildren:
           type: array
@@ -3932,9 +3936,10 @@ components:
         IsPrimary:
           type: boolean
         Document:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
       example:
         ClassInstance: 0
@@ -3985,14 +3990,16 @@ components:
           type: string
           format: date-time
         Document:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
         Tag:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
       example:
         DocumentId: 0
@@ -4190,19 +4197,22 @@ components:
           type: number
           format: int32
         LibraryParent:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
         Type:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
         SourceFolder:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
         Documents:
           type: array
@@ -4337,14 +4347,16 @@ components:
         HasChanged:
           type: boolean
         MasterLibraryType:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
         ParentLibraryTypes:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
         MasterLibraryTypeChildren:
           type: array
@@ -4729,9 +4741,10 @@ components:
           format: date-time
           nullable: true
         Document:
+          type: object
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+          nullable: true
           x-ms-navigationProperty: true
       example:
         Id: 0
