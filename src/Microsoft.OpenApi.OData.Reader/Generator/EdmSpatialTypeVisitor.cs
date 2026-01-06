@@ -49,9 +49,9 @@ namespace Microsoft.OpenApi.OData.Generator
 
         private void VisitOperation(IEdmOperation operation)
         {
-            if (operation.ReturnType != null)
+            if (operation.GetReturn() is {} operationReturn)
             {
-                this.VisitTypeReference(operation.ReturnType);
+                this.VisitTypeReference(operationReturn.Type);
             }
 
             foreach (var parameter in operation.Parameters)

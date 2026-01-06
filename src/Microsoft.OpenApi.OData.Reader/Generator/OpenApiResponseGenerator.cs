@@ -117,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiResponses responses = new();
             
-            if (operation.IsAction() && operation.ReturnType == null && Constants.StatusCode204.GetResponse(document) is {} x204Response)
+            if (operation.IsAction() && operation.GetReturn()?.Type == null && Constants.StatusCode204.GetResponse(document) is {} x204Response)
             {
                 responses.Add(Constants.StatusCode204, x204Response);
             }
@@ -150,11 +150,11 @@ namespace Microsoft.OpenApi.OData.Generator
 
         public static OpenApiResponse? CreateOperationResponse(this ODataContext context, IEdmOperation operation, OpenApiDocument document)
         {
-            if (operation.ReturnType == null)
+            if (operation.GetReturn()?.Type is not {} returnType)
                 return null;
 
             IOpenApiSchema schema;
-            if (operation.ReturnType.IsCollection())
+            if (returnType.IsCollection())
             {
                 OpenApiSchema baseSchema = new()
                 {
@@ -162,7 +162,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Properties = new Dictionary<string, IOpenApiSchema>
                     {
                         {
-                            "value", context.CreateEdmTypeSchema(operation.ReturnType, document)
+                            "value", context.CreateEdmTypeSchema(returnType, document)
                         }
                     }
                 };
@@ -202,12 +202,12 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (schema is OpenApiSchema openApiSchema)
                 {
-                    openApiSchema.Title = operation.ReturnType.Definition.AsElementType() is not IEdmEntityType entityType
+                    openApiSchema.Title = returnType.Definition.AsElementType() is not IEdmEntityType entityType
                             ? null : $"Collection of {entityType.Name}";
                     openApiSchema.Type = JsonSchemaType.Object;
                 }
             }
-            else if (operation.ReturnType.IsPrimitive())
+            else if (returnType.IsPrimitive())
             {
                 // A property or operation response that is of a primitive type is represented as an object with a single name/value pair,
                 // whose name is value and whose value is a primitive value.
@@ -217,18 +217,18 @@ namespace Microsoft.OpenApi.OData.Generator
                     Properties = new Dictionary<string, IOpenApiSchema>
                     {
                         {
-                            "value", context.CreateEdmTypeSchema(operation.ReturnType, document)
+                            "value", context.CreateEdmTypeSchema(returnType, document)
                         }
                     }
                 };
             }
             else
             {
-                schema = context.CreateEdmTypeSchema(operation.ReturnType, document);
+                schema = context.CreateEdmTypeSchema(returnType, document);
             }
 
             string? mediaType = Constants.ApplicationJsonMediaType;
-            if (operation.ReturnType.AsPrimitive()?.PrimitiveKind() == EdmPrimitiveTypeKind.Stream)
+            if (returnType.AsPrimitive()?.PrimitiveKind() == EdmPrimitiveTypeKind.Stream)
             {
                 mediaType = context.Model.GetString(operation, CoreConstants.MediaType);
 

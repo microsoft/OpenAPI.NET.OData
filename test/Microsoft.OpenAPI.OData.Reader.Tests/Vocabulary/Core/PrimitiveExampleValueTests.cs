@@ -69,8 +69,8 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Core.Tests
                 new object[] { @"Int=""42""", (long)42 },
                 new object[] { @"Bool=""true""", true },
                 new object[] { @"Bool=""false""", false },
-                new object[] { @"TimeOfDay=""15:38:25.1090000""", new TimeOfDay(15, 38, 25, 109) },
-                new object[] { @"Date=""2014-10-13""", new Date(2014, 10, 13) },
+                new object[] { @"TimeOfDay=""15:38:25.1090000""", new TimeOnly(15, 38, 25, 109) },
+                new object[] { @"Date=""2014-10-13""", new DateOnly(2014, 10, 13) },
                 new object[] { @"Duration=""PT0S""", new TimeSpan() },
                 // new object[] { @"Binary=""AQ==""", new byte[] { 1 }, }, has problem in ODL?
                 new object[] { @"Float=""3.14""", 3.14 },
@@ -106,7 +106,18 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Core.Tests
             Assert.NotNull(value);
             Assert.Equal("Primitive example value", value.Description);
             Assert.NotNull(value.Value);
-            Assert.Equal(except, value.Value.Value);
+            switch (except)
+            {
+              case DateOnly dateOnly:
+                Assert.Equal(dateOnly.ToString("yyyy-MM-dd"), value.Value.Value.ToString());
+                break;
+              case TimeOnly timeOnly:
+                Assert.Equal(timeOnly.ToString("HH:mm:ss.fffffff"), value.Value.Value.ToString());
+                break;
+              default:
+                Assert.Equal(except, value.Value.Value);
+              break;
+            }
         }
 
         private IEdmModel GetEdmModel(string annotation)
