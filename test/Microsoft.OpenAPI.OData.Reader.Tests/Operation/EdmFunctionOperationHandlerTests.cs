@@ -546,7 +546,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             var operation = _operationHandler.CreateOperation(context, path);
 
             // Assert
-            if (enablePagination && function.ReturnType.IsCollection())
+            if (enablePagination && function.GetReturn()?.Type?.IsCollection() == true)
             {
               Assert.True(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
             }
