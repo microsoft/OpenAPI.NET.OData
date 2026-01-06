@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.IO;
 using System.Xml;
 using Microsoft.OData.Edm;
@@ -29,7 +30,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
                 new EdmPropertyConstructor("ExampleValues",
                     new EdmCollectionExpression(
                         new EdmRecordExpression(new EdmPropertyConstructor("Value", new EdmStringConstant("html"))),
-                        new EdmRecordExpression(new EdmPropertyConstructor("Value", new EdmTimeOfDayConstant(new TimeOfDay(3, 4, 5, 6)))))));
+                        new EdmRecordExpression(new EdmPropertyConstructor("Value", new EdmTimeOfDayConstant(new TimeOnly(3, 4, 5, 6)))))));
 
             // Act
             CustomParameter parameter = new CustomParameter();
@@ -102,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             value = parameter.ExampleValues[1];
             Assert.Null(value.Description);
             Assert.NotNull(value.Value);
-            Assert.Equal(new TimeOfDay(3, 4, 5, 6), value.Value.Value);
+            Assert.Equal(new TimeOnly(3, 4, 5, 6).ToString("HH:mm:ss.fffffff"), value.Value.Value.ToString());
         }
 
         private IEdmModel GetEdmModel(string annotation)
