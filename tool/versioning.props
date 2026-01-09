@@ -29,7 +29,7 @@
     overflows the Int16. The system convert below will throw errors when this happens.
   -->
   <PropertyGroup>
-    <VersionStartYear Condition="'$(VersionStartYear)' == ''">2020</VersionStartYear>
+    <VersionStartYear Condition="'$(VersionStartYear)' == ''">2026</VersionStartYear>
 	
 	<!--  { Now.Year - 2019 + 1}{MM}{DD} -->
     <VersionDateCode>$([System.Convert]::ToInt32('$([MSBuild]::Add(1, $([MSBuild]::Subtract($([System.DateTime]::Now.Year), $(VersionStartYear)))))$([System.DateTime]::Now.ToString("MMdd"))'))</VersionDateCode>
