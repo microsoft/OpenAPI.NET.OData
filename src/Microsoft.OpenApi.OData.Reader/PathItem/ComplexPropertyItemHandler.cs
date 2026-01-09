@@ -99,7 +99,16 @@ internal class ComplexPropertyItemHandler : PathItemHandler
             }
             else
             {
-                AddOperation(item, HttpMethod.Patch);
+                // When no explicit update method is specified in UpdateRestrictions,
+                // use the UseHttpPutForUpdate setting to determine the default method
+                if (Context?.Settings?.UseHttpPutForUpdate == true)
+                {
+                    AddOperation(item, HttpMethod.Put);
+                }
+                else
+                {
+                    AddOperation(item, HttpMethod.Patch);
+                }
             }
         }
     }

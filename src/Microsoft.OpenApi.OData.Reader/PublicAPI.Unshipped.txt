@@ -221,6 +221,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.UseStringArrayForQueryOptionsSche
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseStringArrayForQueryOptionsSchema.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseHttpPutForUpdate.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseHttpPutForUpdate.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.VerifyEdmModel.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.VerifyEdmModel.set -> void
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
