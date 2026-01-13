@@ -1309,15 +1309,15 @@
             "in": "path",
             "name": "lat",
             "required": true,
-            "format": "double",
-            "type": "number"
+            "type": "number",
+            "format": "double"
           },
           {
             "in": "path",
             "name": "lon",
             "required": true,
-            "format": "double",
-            "type": "number"
+            "type": "number",
+            "format": "double"
           }
         ],
         "responses": {
@@ -32021,9 +32021,9 @@
       "properties": {
         "Date": {
           "type": "string",
-          "x-nullable": true,
           "format": "date-time",
-          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"
+          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+          "x-nullable": true
         },
         "RequestId": {
           "type": "string",
@@ -32065,19 +32065,16 @@
         "@odata.id": {
           "type": "string"
         }
-      },
-      "additionalProperties": {
-        "type": "object"
       }
     },
     "ReferenceNumeric": {
       "type": "string",
-      "x-nullable": true,
       "enum": [
         "-INF",
         "INF",
         "NaN"
-      ]
+      ],
+      "x-nullable": true
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person": {
       "type": "object",
@@ -32105,8 +32102,8 @@
           "allOf": [
             {
               "type": "number",
-              "x-nullable": true,
-              "format": "int64"
+              "format": "int64",
+              "x-nullable": true
             }
           ]
         },
@@ -32137,8 +32134,8 @@
         },
         "Photo": {
           "type": "string",
-          "x-nullable": true,
-          "format": "base64url"
+          "format": "base64url",
+          "x-nullable": true
         },
         "Friends": {
           "type": "array",
@@ -32285,8 +32282,8 @@
           "allOf": [
             {
               "type": "number",
-              "x-nullable": true,
-              "format": "float"
+              "format": "float",
+              "x-nullable": true
             }
           ]
         },
@@ -32433,8 +32430,8 @@
               "allOf": [
                 {
                   "type": "number",
-                  "x-nullable": true,
-                  "format": "int64"
+                  "format": "int64",
+                  "x-nullable": true
                 }
               ]
             },
@@ -32463,8 +32460,8 @@
               "allOf": [
                 {
                   "type": "number",
-                  "x-nullable": true,
-                  "format": "int64"
+                  "format": "int64",
+                  "x-nullable": true
                 }
               ]
             },

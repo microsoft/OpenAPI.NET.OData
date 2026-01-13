@@ -872,16 +872,16 @@ namespace Microsoft.OpenApi.OData.Edm
             var functionPaths = _allOperationPaths.Where(x => x.LastSegment is ODataOperationSegment operationSegment
                                                     && operationSegment.Operation is IEdmFunction edmFunction
                                                     && edmFunction.IsComposable
-                                                    && edmFunction.ReturnType != null
-                                                    && edmFunction.ReturnType.Definition is IEdmEntityType);
+                                                    && edmFunction.GetReturn()?.Type is { } retType
+                                                    && retType.Definition is IEdmEntityType);
 
             foreach( var functionPath in functionPaths)
             {
                 if (functionPath.LastSegment is not ODataOperationSegment operationSegment
                                                     || operationSegment.Operation is not IEdmFunction edmFunction
                                                     || !edmFunction.IsComposable
-                                                    || edmFunction.ReturnType == null
-                                                    || edmFunction.ReturnType.Definition is not IEdmEntityType returnBindingEntityType)
+                                                    || edmFunction.GetReturn()?.Type is not { } retType
+                                                    || retType.Definition is not IEdmEntityType returnBindingEntityType)
                 {
                     continue;
                 }
@@ -1194,7 +1194,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 if (path.LastSegment is not ODataOperationSegment operationSegment 
                     || (path.Segments.Count > 1 && path.Segments[path.Segments.Count - 2] is ODataOperationSegment)
                     || operationSegment.Operation is not IEdmFunction edmFunction || !edmFunction.IsComposable
-                    || edmFunction.ReturnType == null || !edmFunction.ReturnType.Definition.Equals(bindingEntityType)
+                    || edmFunction.GetReturn()?.Type is not { } retType || !retType.Definition.Equals(bindingEntityType)
                     || isCollection
                     || _model is not null && !EdmModelHelper.IsOperationAllowed(_model, edmOperation, operationSegment.Operation, true))
                 {

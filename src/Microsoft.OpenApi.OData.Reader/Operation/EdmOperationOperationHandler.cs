@@ -254,7 +254,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         private void AppendSystemQueryOptions(IEdmFunction function, OpenApiOperation operation)
         {
-            if (function.ReturnType.IsCollection() && Context is not null)
+            if (function.GetReturn()?.Type is {} functionReturnType && functionReturnType.IsCollection() && Context is not null)
             {
                 operation.Parameters ??= [];
                 // $top
@@ -287,7 +287,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     operation.Parameters.AppendParameter(countParameter);
                 }
 
-                if (function.ReturnType?.Definition?.AsElementType() is IEdmEntityType entityType)
+                if (functionReturnType?.Definition?.AsElementType() is IEdmEntityType entityType)
                 {
                     // $select
                     if (Context.CreateSelect(function, entityType) is {} selectParameter)
@@ -347,7 +347,7 @@ namespace Microsoft.OpenApi.OData.Operation
         // <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            if (Context is { Settings.EnablePagination: true } && EdmOperation?.ReturnType?.TypeKind() == EdmTypeKind.Collection)
+            if (Context is { Settings.EnablePagination: true } && EdmOperation?.GetReturn()?.Type?.TypeKind() == EdmTypeKind.Collection)
             {
                 var extension = new JsonObject
                 {

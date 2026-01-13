@@ -368,75 +368,71 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(json);
-            Assert.True(JsonObject.DeepEquals(JsonObject.Parse(@"{
-  ""allOf"": [
+            Assert.True(JsonNode.DeepEquals(JsonNode.Parse(
+"""
+{
+  "allOf": [
     {
-      ""$ref"": ""#/components/schemas/microsoft.graph.entity""
+      "$ref": "#/components/schemas/microsoft.graph.entity"
     },
     {
-      ""title"": ""userSettings"",
-      ""type"": ""object"",
-      ""properties"": {
-        ""contributionToContentDiscoveryAsOrganizationDisabled"": {
-          ""type"": ""boolean"",
-          ""description"": ""Reflects the Office Delve organization level setting. When set to true, the organization doesn't have access to Office Delve. This setting is read-only and can only be changed by administrators in the SharePoint admin center.""
+      "title": "userSettings",
+      "type": "object",
+      "properties": {
+        "contributionToContentDiscoveryAsOrganizationDisabled": {
+          "type": "boolean",
+          "description": "Reflects the Office Delve organization level setting. When set to true, the organization doesn't have access to Office Delve. This setting is read-only and can only be changed by administrators in the SharePoint admin center."
         },
-        ""contributionToContentDiscoveryDisabled"": {
-          ""type"": ""boolean"",
-          ""description"": ""When set to true, documents in the user's Office Delve are disabled. Users can control this setting in Office Delve.""
+        "contributionToContentDiscoveryDisabled": {
+          "type": "boolean",
+          "description": "When set to true, documents in the user's Office Delve are disabled. Users can control this setting in Office Delve."
         },
-        ""itemInsights"": {
-          ""anyOf"": [
+        "itemInsights": {
+          "anyOf": [
             {
-              ""$ref"": ""#/components/schemas/microsoft.graph.userInsightsSettings""
-            },
-            {
-              ""nullable"": true
+              "$ref": "#/components/schemas/microsoft.graph.userInsightsSettings"
             }
           ],
-          ""description"": ""The user's settings for the visibility of meeting hour insights, and insights derived between a user and other items in Microsoft 365, such as documents or sites. Get userInsightsSettings through this navigation property."",
-          ""x-ms-navigationProperty"": true
+          "description": "The user's settings for the visibility of meeting hour insights, and insights derived between a user and other items in Microsoft 365, such as documents or sites. Get userInsightsSettings through this navigation property.",
+          "nullable": true,
+          "x-ms-navigationProperty": true
         },
-        ""contactMergeSuggestions"": {
-          ""anyOf"": [
+        "contactMergeSuggestions": {
+          "anyOf": [
             {
-              ""$ref"": ""#/components/schemas/microsoft.graph.contactMergeSuggestions""
-            },
-            {
-              ""nullable"": true
+              "$ref": "#/components/schemas/microsoft.graph.contactMergeSuggestions"
             }
           ],
-          ""description"": ""The user's settings for the visibility of merge suggestion for the duplicate contacts in the user's contact list."",
-          ""x-ms-navigationProperty"": true
+          "description": "The user's settings for the visibility of merge suggestion for the duplicate contacts in the user's contact list.",
+          "nullable": true,
+          "x-ms-navigationProperty": true
         },
-        ""regionalAndLanguageSettings"": {
-          ""anyOf"": [
+        "regionalAndLanguageSettings": {
+          "anyOf": [
             {
-              ""$ref"": ""#/components/schemas/microsoft.graph.regionalAndLanguageSettings""
-            },
-            {
-              ""nullable"": true
+              "$ref": "#/components/schemas/microsoft.graph.regionalAndLanguageSettings"
             }
           ],
-          ""description"": ""The user's preferences for languages, regional locale and date/time formatting."",
-          ""x-ms-navigationProperty"": true
+          "description": "The user's preferences for languages, regional locale and date/time formatting.",
+          "nullable": true,
+          "x-ms-navigationProperty": true
         },
-        ""shiftPreferences"": {
-          ""anyOf"": [
+        "shiftPreferences": {
+          "anyOf": [
             {
-              ""$ref"": ""#/components/schemas/microsoft.graph.shiftPreferences""
-            },
-            {
-              ""nullable"": true
+              "$ref": "#/components/schemas/microsoft.graph.shiftPreferences"
             }
           ],
-          ""description"": ""The shift preferences for the user."",
-          ""x-ms-navigationProperty"": true
+          "description": "The shift preferences for the user.",
+          "nullable": true,
+          "x-ms-navigationProperty": true
         }
       }
     }
   ]
-}"), JsonObject.Parse(json)));
+}
+"""
+            ), JsonNode.Parse(json)));
         }
 
         [Fact]
@@ -920,12 +916,10 @@ namespace Microsoft.OpenApi.OData.Tests
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/DefaultNs.Color"
-                    },
-                    {
-                      "nullable": true
                     }
                   ],
-                  "default": "yellow"
+                  "default": "yellow",
+                  "nullable": true
                 }
                 """,
                 OpenApiSpecVersion.OpenApi3_1 =>

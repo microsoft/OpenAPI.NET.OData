@@ -43,8 +43,8 @@ public class RevisionRecordTests
     {
         // Arrange
         IEdmRecordExpression record = new EdmRecordExpression(
-            new EdmPropertyConstructor("Date", new EdmDateConstant(new Date(2021, 8, 24))),
-            new EdmPropertyConstructor("RemovalDate", new EdmDateConstant(new Date(2021, 10, 24))),
+            new EdmPropertyConstructor("Date", new EdmDateConstant(new DateOnly(2021, 8, 24))),
+            new EdmPropertyConstructor("RemovalDate", new EdmDateConstant(new DateOnly(2021, 10, 24))),
             new EdmPropertyConstructor("Kind", new EdmEnumMemberExpression(deprecatedValue)), 
             new EdmPropertyConstructor("Description", new EdmStringConstant("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API.")),
             new EdmPropertyConstructor("Version", new EdmStringConstant("2021-05/test")));
@@ -71,15 +71,15 @@ public class RevisionRecordTests
     {
         // Arrange
         IEdmRecordExpression record1 = new EdmRecordExpression(
-            new EdmPropertyConstructor("Date", new EdmDateConstant(new Date(2021, 8, 24))),
-            new EdmPropertyConstructor("RemovalDate", new EdmDateConstant(new Date(2021, 10, 24))),
+            new EdmPropertyConstructor("Date", new EdmDateConstant(new DateOnly(2021, 8, 24))),
+            new EdmPropertyConstructor("RemovalDate", new EdmDateConstant(new DateOnly(2021, 10, 24))),
             new EdmPropertyConstructor("Kind", new EdmEnumMemberExpression(addedValue)), 
             new EdmPropertyConstructor("Description", new EdmStringConstant("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API.")),
             new EdmPropertyConstructor("Version", new EdmStringConstant("2021-05/test")));
 
         IEdmRecordExpression record2 = new EdmRecordExpression(
-            new EdmPropertyConstructor("Date", new EdmDateConstant(new Date(2023, 3, 2))),
-            new EdmPropertyConstructor("RemovalDate", new EdmDateConstant(new Date(2023, 05, 30))),
+            new EdmPropertyConstructor("Date", new EdmDateConstant(new DateOnly(2023, 3, 2))),
+            new EdmPropertyConstructor("RemovalDate", new EdmDateConstant(new DateOnly(2023, 05, 30))),
             new EdmPropertyConstructor("Kind", new EdmEnumMemberExpression(deprecatedValue)),
             new EdmPropertyConstructor("Description", new EdmStringConstant("Private preview test.")),
             new EdmPropertyConstructor("Version", new EdmStringConstant("2023-03/test")));
