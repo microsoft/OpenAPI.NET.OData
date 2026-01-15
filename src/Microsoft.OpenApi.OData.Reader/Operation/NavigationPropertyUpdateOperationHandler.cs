@@ -58,13 +58,18 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            var schema = Context is { Settings.EnableDerivedTypesReferencesForRequestBody: true } ? 
+            var schema = Context is { Settings.EnableDerivedTypesReferencesForRequestBody: true } ?
                 EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model, _document) :
                 null;
 
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = true,
+                Required = NavigationProperty?.ToEntityType() != null
+                    ? OpenApiRequestBodyGenerator.DetermineIfRequestBodyRequired(
+                        NavigationProperty.ToEntityType(),
+                        isUpdateOperation: true,
+                        Context?.Model)
+                    : true,
                 Description = "New navigation property values",
                 Content = GetContent(schema, _updateRestriction?.RequestContentTypes)
             };

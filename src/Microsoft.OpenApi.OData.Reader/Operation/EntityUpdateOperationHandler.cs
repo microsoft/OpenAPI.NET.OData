@@ -77,7 +77,12 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = true,
+                Required = EntitySet?.EntityType != null
+                    ? OpenApiRequestBodyGenerator.DetermineIfRequestBodyRequired(
+                        EntitySet.EntityType,
+                        isUpdateOperation: true,
+                        Context?.Model)
+                    : true,
                 Description = "New property values",
                 Content = GetContent()
             };

@@ -67,10 +67,15 @@ namespace Microsoft.OpenApi.OData.Operation
 
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
-        {          
+        {
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = true,
+                Required = Singleton?.EntityType != null
+                    ? OpenApiRequestBodyGenerator.DetermineIfRequestBodyRequired(
+                        Singleton.EntityType,
+                        isUpdateOperation: true,
+                        Context?.Model)
+                    : true,
                 Description = "New property values",
                 Content = new Dictionary<string, IOpenApiMediaType>
                 {
