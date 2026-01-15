@@ -70,12 +70,9 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = Singleton?.EntityType != null
-                    ? OpenApiRequestBodyGenerator.DetermineIfRequestBodyRequired(
-                        Singleton.EntityType,
-                        isUpdateOperation: true,
-                        Context?.Model)
-                    : true,
+                Required = Singleton?.EntityType?.ShouldRequestBodyBeRequired(
+                    isUpdateOperation: true,
+                    Context?.Model) ?? true,
                 Description = "New property values",
                 Content = new Dictionary<string, IOpenApiMediaType>
                 {

@@ -307,6 +307,8 @@ static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted
 static Microsoft.OpenApi.OData.Edm.ODataRefSegment.Instance -> Microsoft.OpenApi.OData.Edm.ODataRefSegment!
 static Microsoft.OpenApi.OData.EdmModelOpenApiExtensions.ConvertToOpenApi(this Microsoft.OData.Edm.IEdmModel! model) -> Microsoft.OpenApi.OpenApiDocument!
 static Microsoft.OpenApi.OData.EdmModelOpenApiExtensions.ConvertToOpenApi(this Microsoft.OData.Edm.IEdmModel! model, Microsoft.OpenApi.OData.OpenApiConvertSettings! settings) -> Microsoft.OpenApi.OpenApiDocument!
+static Microsoft.OpenApi.OData.EdmModelOpenApiExtensions.ShouldRequestBodyBeRequired(this Microsoft.OData.Edm.IEdmAction! action) -> bool
+static Microsoft.OpenApi.OData.EdmModelOpenApiExtensions.ShouldRequestBodyBeRequired(this Microsoft.OData.Edm.IEdmStructuredType! structuredType, bool isUpdateOperation, Microsoft.OData.Edm.IEdmModel? model = null) -> bool
 virtual Microsoft.OpenApi.OData.Edm.ODataPath.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataPathKind
 virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.CanFilter(Microsoft.OData.Edm.IEdmElement! element) -> bool
 virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.GetPaths(Microsoft.OData.Edm.IEdmModel! model, Microsoft.OpenApi.OData.OpenApiConvertSettings! settings) -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.OData.Edm.ODataPath!>!

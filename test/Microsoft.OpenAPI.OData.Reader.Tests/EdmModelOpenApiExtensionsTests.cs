@@ -7,12 +7,14 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OData.Edm.Vocabularies.V1;
-using Microsoft.OpenApi.OData.Common;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Tests
 {
-    public class RequestBodyRequirementAnalyzerTests
+    /// <summary>
+    /// Tests for EdmModelOpenApiExtensions.ShouldRequestBodyBeRequired extension methods.
+    /// </summary>
+    public class EdmModelOpenApiExtensionsTests
     {
         #region Action Tests
 
@@ -23,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Tests
             var action = CreateAction("TestAction", isNullable: true);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(action);
+            var result = action.ShouldRequestBodyBeRequired();
 
             // Assert
             Assert.False(result);
@@ -36,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Tests
             var action = CreateAction("TestAction", isNullable: false);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(action);
+            var result = action.ShouldRequestBodyBeRequired();
 
             // Assert
             Assert.True(result);
@@ -53,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Tests
             model.AddElement(action);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(action);
+            var result = action.ShouldRequestBodyBeRequired();
 
             // Assert
             Assert.True(result);
@@ -69,7 +71,7 @@ namespace Microsoft.OpenApi.OData.Tests
             model.AddElement(action);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(action);
+            var result = action.ShouldRequestBodyBeRequired();
 
             // Assert
             Assert.False(result);
@@ -88,7 +90,7 @@ namespace Microsoft.OpenApi.OData.Tests
             model.AddElement(action);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(action);
+            var result = action.ShouldRequestBodyBeRequired();
 
             // Assert
             Assert.False(result); // Only non-binding parameter is nullable
@@ -103,7 +105,7 @@ namespace Microsoft.OpenApi.OData.Tests
             model.AddElement(action);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(action);
+            var result = action.ShouldRequestBodyBeRequired();
 
             // Assert
             Assert.True(result); // No parameters means no request body needed, but returns true (existing behavior)
@@ -113,7 +115,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void NullAction_ReturnsRequired()
         {
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(null);
+            var result = ((IEdmAction)null).ShouldRequestBodyBeRequired();
 
             // Assert
             Assert.True(result); // Safe default
@@ -130,8 +132,7 @@ namespace Microsoft.OpenApi.OData.Tests
             var entityType = CreateEntityType("Customer", hasRequiredProperties: false);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: false,
                 model: null);
 
@@ -146,8 +147,7 @@ namespace Microsoft.OpenApi.OData.Tests
             var entityType = CreateEntityType("Customer", hasRequiredProperties: true);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: false,
                 model: null);
 
@@ -163,8 +163,7 @@ namespace Microsoft.OpenApi.OData.Tests
             entityType.AddKeys(entityType.AddStructuralProperty("Id", EdmPrimitiveTypeKind.Int32, false));
 
             // Act - Create operation includes key properties
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: false,
                 model: null);
 
@@ -184,8 +183,7 @@ namespace Microsoft.OpenApi.OData.Tests
             entityType.AddKeys(entityType.AddStructuralProperty("Id", EdmPrimitiveTypeKind.Int32, false));
 
             // Act - Update operation excludes key properties
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: null);
 
@@ -202,8 +200,7 @@ namespace Microsoft.OpenApi.OData.Tests
             entityType.AddStructuralProperty("Name", EdmPrimitiveTypeKind.String, false); // Required
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: null);
 
@@ -221,8 +218,7 @@ namespace Microsoft.OpenApi.OData.Tests
             entityType.AddStructuralProperty("Email", EdmPrimitiveTypeKind.String, true); // Nullable
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: null);
 
@@ -246,8 +242,7 @@ namespace Microsoft.OpenApi.OData.Tests
             derivedType.AddStructuralProperty("DerivedProperty", EdmPrimitiveTypeKind.String, true); // Nullable
 
             // Act - Update operation
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                derivedType,
+            var result = derivedType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: null);
 
@@ -267,8 +262,7 @@ namespace Microsoft.OpenApi.OData.Tests
             derivedType.AddStructuralProperty("DerivedProperty", EdmPrimitiveTypeKind.String, true); // Nullable
 
             // Act - Update operation
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                derivedType,
+            var result = derivedType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: null);
 
@@ -296,8 +290,7 @@ namespace Microsoft.OpenApi.OData.Tests
             entityType.AddProperty(nameProperty);
 
             // Act - Update operation
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: null);
 
@@ -325,8 +318,7 @@ namespace Microsoft.OpenApi.OData.Tests
             model.SetVocabularyAnnotation(annotation);
 
             // Act - Update operation
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: model);
 
@@ -347,8 +339,7 @@ namespace Microsoft.OpenApi.OData.Tests
             complexType.AddStructuralProperty("City", EdmPrimitiveTypeKind.String, true);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                complexType,
+            var result = complexType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: false,
                 model: null);
 
@@ -365,8 +356,7 @@ namespace Microsoft.OpenApi.OData.Tests
             complexType.AddStructuralProperty("City", EdmPrimitiveTypeKind.String, true);
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                complexType,
+            var result = complexType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: false,
                 model: null);
 
@@ -401,8 +391,7 @@ namespace Microsoft.OpenApi.OData.Tests
             model.AddElement(customerType);
 
             // Act - Update operation (excludes key)
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: model);
 
@@ -433,8 +422,7 @@ namespace Microsoft.OpenApi.OData.Tests
             model.AddElement(customerType);
 
             // Act - Update operation (excludes key)
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: model);
 
@@ -454,8 +442,7 @@ namespace Microsoft.OpenApi.OData.Tests
             entityType.AddKeys(entityType.AddStructuralProperty("Id", EdmPrimitiveTypeKind.Int32, false));
 
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                entityType,
+            var result = entityType.ShouldRequestBodyBeRequired(
                 isUpdateOperation: true,
                 model: null);
 
@@ -467,8 +454,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void NullStructuredType_ReturnsRequired()
         {
             // Act
-            var result = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                null,
+            var result = ((IEdmStructuredType)null).ShouldRequestBodyBeRequired(
                 isUpdateOperation: false,
                 model: null);
 

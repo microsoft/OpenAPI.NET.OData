@@ -77,7 +77,7 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiRequestBody requestBody = new OpenApiRequestBody
             {
                 Description = "Action parameters",
-                Required = RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(action),
+                Required = action.ShouldRequestBodyBeRequired(),
                 Content = new Dictionary<string, IOpenApiMediaType>()
             };
 
@@ -158,24 +158,6 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
-        }
-
-        /// <summary>
-        /// Determines if a request body should be required based on the schema properties.
-        /// </summary>
-        /// <param name="structuredType">The EDM structured type.</param>
-        /// <param name="isUpdateOperation">Whether this is an update operation (excludes key properties).</param>
-        /// <param name="model">The EDM model for additional context.</param>
-        /// <returns>True if the request body should be required, false otherwise.</returns>
-        internal static bool DetermineIfRequestBodyRequired(
-            IEdmStructuredType structuredType,
-            bool isUpdateOperation,
-            IEdmModel? model = null)
-        {
-            return RequestBodyRequirementAnalyzer.ShouldRequestBodyBeRequired(
-                structuredType,
-                isUpdateOperation,
-                model);
         }
     }
 }

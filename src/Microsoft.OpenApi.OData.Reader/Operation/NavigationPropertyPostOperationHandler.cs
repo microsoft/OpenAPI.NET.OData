@@ -67,12 +67,9 @@ namespace Microsoft.OpenApi.OData.Operation
 
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = NavigationProperty?.ToEntityType() != null
-                    ? OpenApiRequestBodyGenerator.DetermineIfRequestBodyRequired(
-                        NavigationProperty.ToEntityType(),
-                        isUpdateOperation: false,
-                        Context?.Model)
-                    : true,
+                Required = NavigationProperty?.ToEntityType()?.ShouldRequestBodyBeRequired(
+                    isUpdateOperation: false,
+                    Context?.Model) ?? true,
                 Description = "New navigation property",
                 Content = GetContent(schema, _insertRestriction?.RequestContentTypes)
             };

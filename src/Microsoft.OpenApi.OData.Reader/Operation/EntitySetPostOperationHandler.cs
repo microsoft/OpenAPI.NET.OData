@@ -72,12 +72,9 @@ namespace Microsoft.OpenApi.OData.Operation
             // that references the schema of the entity set's entity type in the global schemas.
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = EntitySet?.EntityType != null
-                    ? OpenApiRequestBodyGenerator.DetermineIfRequestBodyRequired(
-                        EntitySet.EntityType,
-                        isUpdateOperation: false,
-                        Context?.Model)
-                    : true,
+                Required = EntitySet?.EntityType?.ShouldRequestBodyBeRequired(
+                    isUpdateOperation: false,
+                    Context?.Model) ?? true,
                 Description = "New entity",
                 Content = GetContentDescription()
             };

@@ -87,12 +87,9 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     {
         operation.RequestBody = new OpenApiRequestBody
         {
-            Required = ComplexPropertySegment?.ComplexType != null
-                ? OpenApiRequestBodyGenerator.DetermineIfRequestBodyRequired(
-                    ComplexPropertySegment.ComplexType,
-                    isUpdateOperation: false,
-                    Context?.Model)
-                : true,
+            Required = ComplexPropertySegment?.ComplexType?.ShouldRequestBodyBeRequired(
+                isUpdateOperation: false,
+                Context?.Model) ?? true,
             Description = "New property values",
             Content = new Dictionary<string, IOpenApiMediaType>
             {
