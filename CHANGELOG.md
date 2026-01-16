@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v3.0.0...v3.1.0) (2026-01-16)
+
+
+### Features
+
+* allow optional body parameter ([#773](https://github.com/microsoft/OpenAPI.NET.OData/issues/773)) ([61e4de8](https://github.com/microsoft/OpenAPI.NET.OData/commit/61e4de83021105b873f48263c872a816ba3f2d07))
+
 ## [3.0.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.0.0...v3.0.0) (2025-11-12)
 
 
