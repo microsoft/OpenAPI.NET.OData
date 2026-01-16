@@ -203,7 +203,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/DefaultNs.City"
             }
@@ -479,7 +478,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/DefaultNs.CountryOrRegion"
             }

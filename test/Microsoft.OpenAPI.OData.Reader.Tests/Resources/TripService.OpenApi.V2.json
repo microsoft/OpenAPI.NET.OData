@@ -188,7 +188,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
             }
@@ -448,7 +447,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
             }
@@ -576,7 +574,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
             }
@@ -848,7 +845,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -902,7 +898,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -1103,7 +1098,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -1541,7 +1535,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -1594,7 +1587,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -2009,7 +2001,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -2062,7 +2053,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -2256,7 +2246,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -2756,7 +2745,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -2817,7 +2805,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -3053,7 +3040,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -3915,7 +3901,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -4107,7 +4092,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -4160,7 +4144,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -4575,7 +4558,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -4628,7 +4610,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -4822,7 +4803,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -5271,7 +5251,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -5332,7 +5311,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -5568,7 +5546,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -6226,7 +6203,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -6501,7 +6477,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -6562,7 +6537,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -6798,7 +6772,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -8272,7 +8245,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -8325,7 +8297,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -8740,7 +8711,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -8793,7 +8763,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -8987,7 +8956,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -9419,7 +9387,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -9480,7 +9447,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -9716,7 +9682,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -10317,7 +10282,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -10378,7 +10342,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -10614,7 +10577,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -11272,7 +11234,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -11345,7 +11306,6 @@
             "in": "body",
             "name": "body",
             "description": "Action parameters",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -13537,7 +13497,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -13591,7 +13550,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -14058,7 +14016,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -14119,7 +14076,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -14355,7 +14311,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -14914,7 +14869,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -14976,7 +14930,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -15217,7 +15170,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -16095,7 +16047,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -16330,7 +16281,6 @@
             "in": "body",
             "name": "body",
             "description": "Action parameters",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -17788,7 +17738,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -17849,7 +17798,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -18348,7 +18296,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -18409,7 +18356,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -18645,7 +18591,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -19243,7 +19188,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -19312,7 +19256,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -19588,7 +19531,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -20593,7 +20535,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -20831,7 +20772,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -20892,7 +20832,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -21391,7 +21330,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -21452,7 +21390,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -21688,7 +21625,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -22213,7 +22149,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -22282,7 +22217,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -22558,7 +22492,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -23320,7 +23253,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -23637,7 +23569,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -23706,7 +23637,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -23982,7 +23912,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -25686,7 +25615,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -25747,7 +25675,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -26246,7 +26173,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -26307,7 +26233,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -26543,7 +26468,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -27051,7 +26975,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -27120,7 +27043,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -27396,7 +27318,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -28093,7 +28014,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -28162,7 +28082,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -28438,7 +28357,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -29200,7 +29118,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             }
@@ -29291,7 +29208,6 @@
             "in": "body",
             "name": "body",
             "description": "Action parameters",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {

@@ -1165,7 +1165,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -1222,7 +1221,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -1929,7 +1927,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -1997,7 +1994,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -4240,7 +4236,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -4297,7 +4292,6 @@
             "in": "body",
             "name": "body",
             "description": "New property values",
-            "required": true,
             "schema": {
               "type": "array",
               "items": {

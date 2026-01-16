@@ -135,7 +135,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
-        required: true
       responses:
         '204':
           description: Success
@@ -310,7 +309,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
-        required: true
       responses:
         '204':
           description: Success
@@ -401,7 +399,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
-        required: true
       responses:
         '204':
           description: Success
@@ -597,7 +594,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -629,7 +625,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -761,7 +756,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -1075,7 +1069,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -1106,7 +1099,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -1384,7 +1376,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -1415,7 +1406,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -1540,7 +1530,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -1903,7 +1892,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -1941,7 +1929,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -2103,7 +2090,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -2704,7 +2690,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -2845,7 +2830,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -2876,7 +2860,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -3154,7 +3137,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -3185,7 +3167,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -3310,7 +3291,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -3632,7 +3612,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -3670,7 +3649,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -3832,7 +3810,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -4286,7 +4263,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -4485,7 +4461,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -4523,7 +4498,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -4685,7 +4659,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -5722,7 +5695,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -5753,7 +5725,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -6031,7 +6002,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -6062,7 +6032,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -6187,7 +6156,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -6496,7 +6464,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -6534,7 +6501,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -6696,7 +6662,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -7111,7 +7076,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -7149,7 +7113,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -7311,7 +7274,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -7765,7 +7727,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -7818,7 +7779,6 @@ paths:
                   anyOf:
                     - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
                     - nullable: true
-        required: true
       responses:
         '204':
           description: Success
@@ -9373,7 +9333,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -9405,7 +9364,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -9731,7 +9689,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -9769,7 +9726,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -9931,7 +9887,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -10346,7 +10301,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -10385,7 +10339,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -10552,7 +10505,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -11171,7 +11123,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -11337,7 +11288,6 @@ paths:
                   anyOf:
                     - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
                     - nullable: true
-        required: true
       responses:
         '204':
           description: Success
@@ -12370,7 +12320,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -12408,7 +12357,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -12761,7 +12709,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -12799,7 +12746,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -12961,7 +12907,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -13408,7 +13353,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -13453,7 +13397,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -13650,7 +13593,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -14377,7 +14319,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -14557,7 +14498,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -14595,7 +14535,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -14948,7 +14887,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -14986,7 +14924,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -15148,7 +15085,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -15536,7 +15472,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -15581,7 +15516,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -15778,7 +15712,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -16325,7 +16258,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -16560,7 +16492,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -16605,7 +16536,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -16802,7 +16732,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -18042,7 +17971,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -18080,7 +18008,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -18433,7 +18360,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -18471,7 +18397,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -18633,7 +18558,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -19008,7 +18932,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -19053,7 +18976,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -19250,7 +19172,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -19750,7 +19671,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -19795,7 +19715,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -19992,7 +19911,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -20539,7 +20457,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
-        required: true
       responses:
         '204':
           description: Success
@@ -20608,7 +20525,6 @@ paths:
                   anyOf:
                     - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
                     - nullable: true
-        required: true
       responses:
         '204':
           description: Success
