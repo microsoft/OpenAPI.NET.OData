@@ -124,7 +124,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
       responses:
@@ -292,7 +291,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
       responses:
@@ -379,7 +377,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
       responses:
@@ -558,7 +555,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -594,7 +590,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -726,7 +721,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -1018,7 +1012,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -1054,7 +1047,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -1335,7 +1327,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -1371,7 +1362,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -1502,7 +1492,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -1840,7 +1829,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -1882,7 +1870,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -2044,7 +2031,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -2620,7 +2606,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -2747,7 +2732,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -2783,7 +2767,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -3064,7 +3047,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -3100,7 +3082,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -3231,7 +3212,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -3534,7 +3514,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -3576,7 +3555,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -3738,7 +3716,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -4181,7 +4158,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -4362,7 +4338,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -4404,7 +4379,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -4566,7 +4540,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -5566,7 +5539,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -5602,7 +5574,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -5883,7 +5854,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -5919,7 +5889,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -6050,7 +6019,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -6341,7 +6309,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -6383,7 +6350,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -6545,7 +6511,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -6948,7 +6913,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -6990,7 +6954,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -7152,7 +7115,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -7595,7 +7557,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -7646,7 +7607,6 @@ paths:
         - in: body
           name: body
           description: Action parameters
-          required: true
           schema:
             type: object
             properties:
@@ -9139,7 +9099,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -9175,7 +9134,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -9491,7 +9449,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -9533,7 +9490,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -9695,7 +9651,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -10074,7 +10029,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -10116,7 +10070,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -10278,7 +10231,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -10854,7 +10806,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -11009,7 +10960,6 @@ paths:
         - in: body
           name: body
           description: Action parameters
-          required: true
           schema:
             type: object
             properties:
@@ -11988,7 +11938,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -12030,7 +11979,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -12373,7 +12321,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -12415,7 +12362,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -12577,7 +12523,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -12988,7 +12933,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -13036,7 +12980,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -13228,7 +13171,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -13912,7 +13854,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -14072,7 +14013,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -14114,7 +14054,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -14457,7 +14396,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -14499,7 +14437,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -14661,7 +14598,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -15020,7 +14956,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -15068,7 +15003,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -15260,7 +15194,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -15781,7 +15714,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -15993,7 +15925,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -16041,7 +15972,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -16233,7 +16163,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -17404,7 +17333,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -17446,7 +17374,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -17789,7 +17716,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -17831,7 +17757,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -17993,7 +17918,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -18340,7 +18264,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -18388,7 +18311,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -18580,7 +18502,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -19055,7 +18976,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: object
             properties:
@@ -19103,7 +19023,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             type: array
             items:
@@ -19295,7 +19214,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -19816,7 +19734,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
       responses:
@@ -19880,7 +19797,6 @@ paths:
         - in: body
           name: body
           description: Action parameters
-          required: true
           schema:
             type: object
             properties:

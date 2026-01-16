@@ -120,8 +120,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
       }
     }
-  },
-  ""required"": true
+  }
 }";
 
             var actualJsonNode = JsonNode.Parse(json);
