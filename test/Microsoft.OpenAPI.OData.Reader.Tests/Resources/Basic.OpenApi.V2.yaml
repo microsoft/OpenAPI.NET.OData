@@ -134,7 +134,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/DefaultNs.City'
       responses:
@@ -313,7 +312,6 @@ paths:
         - in: body
           name: body
           description: New property values
-          required: true
           schema:
             $ref: '#/definitions/DefaultNs.CountryOrRegion'
       responses:

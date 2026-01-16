@@ -144,7 +144,7 @@
         "schema": {
           "minimum": 0,
           "type": "number",
-          "format": "int64"	
+          "format": "int64"
         },
         "example": 50
       },

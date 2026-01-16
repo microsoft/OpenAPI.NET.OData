@@ -224,8 +224,7 @@
                 "$ref": "#/components/schemas/DefaultNs.City"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -513,8 +512,7 @@
                 "$ref": "#/components/schemas/DefaultNs.CountryOrRegion"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {

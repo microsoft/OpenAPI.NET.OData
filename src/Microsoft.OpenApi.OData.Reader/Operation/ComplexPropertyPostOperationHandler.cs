@@ -84,10 +84,12 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     }
     /// <inheritdoc/>
     protected override void SetRequestBody(OpenApiOperation operation)
-    {        
+    {
         operation.RequestBody = new OpenApiRequestBody
         {
-            Required = true,
+            Required = ComplexPropertySegment?.ComplexType?.ShouldRequestBodyBeRequired(
+                isUpdateOperation: false,
+                Context?.Model) ?? true,
             Description = "New property values",
             Content = new Dictionary<string, OpenApiMediaType>
             {
