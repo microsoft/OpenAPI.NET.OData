@@ -100,6 +100,11 @@ namespace OoasUtil
         public bool? RequireDerivedTypesConstraint { get; private set; }
 
         /// <summary>
+        /// Use HTTP PUT method for update operations by default instead of PATCH.
+        /// </summary>
+        public bool? UseHttpPutForUpdate { get; private set; }
+
+        /// <summary>
         /// Process the arguments.
         /// </summary>
         public bool Process()
@@ -227,6 +232,14 @@ namespace OoasUtil
                             }
                             break;
 
+                        case "--useputforupdate":
+                        case "-put":
+                            if (!ProcessUseHttpPutForUpdate(true))
+                            {
+                                return false;
+                            }
+                            break;
+
                         default:
                             PrintUsage();
                             return false;
@@ -283,6 +296,11 @@ namespace OoasUtil
             if (DisableSchemaExamples == null)
             {
                 DisableSchemaExamples = false;
+            }
+
+            if (UseHttpPutForUpdate == null)
+            {
+                UseHttpPutForUpdate = false;
             }
 
             _continue = ValidateArguments();
@@ -419,6 +437,19 @@ namespace OoasUtil
             return true;
         }
 
+        private bool ProcessUseHttpPutForUpdate(bool useHttpPutForUpdate)
+        {
+            if (UseHttpPutForUpdate != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--useputforupdate|-put] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+
+            UseHttpPutForUpdate = useHttpPutForUpdate;
+            return true;
+        }
+
         private bool ProcessTarget(int version)
         {
             if (Version != null)
@@ -484,6 +515,7 @@ namespace OoasUtil
             sb.Append("  --enablepagination|-p\t\t\tSet the output to expose pagination for collections.\n");
             sb.Append("  --enableunqualifiedcall|-u\t\t\tSet the output to use unqualified calls for bound operations.\n");
             sb.Append("  --disableschemaexamples|-x\t\t\tDisable examples in the schema.\n");
+            sb.Append("  --useputforupdate|-put\t\t\tUse HTTP PUT method for update operations instead of PATCH by default.\n");
             sb.Append("  --json|-j\t\t\tSet the output format as JSON.\n");
             sb.Append("  --yaml|-y\t\t\tSet the output format as YAML.\n");
             sb.Append("  --specversion|-s IntVersion\tSet the OpenApi Specification version of the output. Only 2 or 3 are supported.\n");
