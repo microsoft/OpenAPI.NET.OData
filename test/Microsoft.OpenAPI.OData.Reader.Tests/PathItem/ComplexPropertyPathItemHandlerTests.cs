@@ -263,4 +263,101 @@ public class ComplexPropertyPathItemHandlerTests
             Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Get));
         }
     }
+
+	[Theory]
+	[InlineData(false, 2)]
+	[InlineData(true, 2)]
+	public void CreatesComplexPropertyPathItemUsesHttpPutForUpdateWhenSettingIsEnabled(bool useHttpPutForUpdate, int operationCount)
+	{
+		// Arrange
+		var annotation = @"
+<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+  <Record>
+	<PropertyValue Property=""Updatable"" Bool=""true"" />
+  </Record>
+</Annotation>
+<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+  <Record>
+	<PropertyValue Property=""Readable"" Bool=""true"" />
+  </Record>
+</Annotation>";
+		var target = @"""NS.Customer/BillingAddress""";
+		var model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: annotation, target: target);
+		var convertSettings = new OpenApiConvertSettings
+		{
+			UseHttpPutForUpdate = useHttpPutForUpdate
+		};
+		var context = new ODataContext(model, convertSettings);
+		var entitySet = model.EntityContainer.FindEntitySet("Customers");
+		Assert.NotNull(entitySet); // guard
+		var entityType = entitySet.EntityType;
+		var property = entityType.FindProperty("BillingAddress");
+		Assert.NotNull(property); // guard
+		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
+		Assert.Equal(ODataPathKind.ComplexProperty, path.Kind); // guard
+
+		// Act
+		var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+		// Assert
+		Assert.NotNull(pathItem);
+		Assert.Equal(operationCount, pathItem.Operations?.Count ?? 0);
+
+		Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Get));
+		if (useHttpPutForUpdate)
+		{
+			Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Put));
+			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Patch));
+		}
+		else
+		{
+			Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Patch));
+			Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Put));
+		}
+	}
+
+	[Fact]
+	public void CreateComplexPropertyPathItemPrefersUpdateMethodAnnotationOverUseHttpPutForUpdateSetting()
+	{
+		// Arrange - annotation specifies PUT explicitly, setting is disabled (default PATCH)
+		var annotation = @"
+<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+  <Record>
+    <PropertyValue Property=""UpdateMethod"">
+      <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+    </PropertyValue>
+	<PropertyValue Property=""Updatable"" Bool=""true"" />
+  </Record>
+</Annotation>
+<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+  <Record>
+	<PropertyValue Property=""Readable"" Bool=""true"" />
+  </Record>
+</Annotation>";
+		var target = @"""NS.Customer/BillingAddress""";
+		var model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: annotation, target: target);
+		var convertSettings = new OpenApiConvertSettings
+		{
+			UseHttpPutForUpdate = false // Setting says use PATCH (default)
+		};
+		var context = new ODataContext(model, convertSettings);
+		var entitySet = model.EntityContainer.FindEntitySet("Customers");
+		Assert.NotNull(entitySet); // guard
+		var entityType = entitySet.EntityType;
+		var property = entityType.FindProperty("BillingAddress");
+		Assert.NotNull(property); // guard
+		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
+		Assert.Equal(ODataPathKind.ComplexProperty, path.Kind); // guard
+
+		// Act
+		var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+		// Assert
+		Assert.NotNull(pathItem);
+		Assert.Equal(2, pathItem.Operations?.Count ?? 0);
+		Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Get));
+		// Should use PUT from annotation, not PATCH from setting
+		Assert.True(pathItem.Operations.ContainsKey(HttpMethod.Put));
+		Assert.False(pathItem.Operations.ContainsKey(HttpMethod.Patch));
+	}
 }

@@ -602,6 +602,128 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal("true", isHiddenValue);
         }
 
+        [Theory]
+        [InlineData(false, new string[] { "get", "patch", "delete" })]
+        [InlineData(true, new string[] { "get", "put", "delete" })]
+        public void CreateSingleNavigationPropertyPathItemUsesHttpPutForUpdateWhenSettingIsEnabled(bool useHttpPutForUpdate, string[] expected)
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel("");
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                UseHttpPutForUpdate = useHttpPutForUpdate
+            };
+            ODataContext context = new ODataContext(model, settings);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            IEdmEntityType entityType = entitySet.EntityType;
+
+            IEdmNavigationProperty property = entityType.DeclaredNavigationProperties()
+                .FirstOrDefault(c => c.ContainsTarget == true && c.TargetMultiplicity() != EdmMultiplicity.Many);
+            Assert.NotNull(property);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
+                new ODataKeySegment(entityType),
+                new ODataNavigationPropertySegment(property));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key.ToString().ToLowerInvariant()));
+        }
+
+        [Theory]
+        [InlineData(false, new string[] { "get", "patch", "delete" })]
+        [InlineData(true, new string[] { "get", "put", "delete" })]
+        public void CreateCollectionNavigationPropertyPathItemUsesHttpPutForUpdateWhenSettingIsEnabled(bool useHttpPutForUpdate, string[] expected)
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel("");
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                UseHttpPutForUpdate = useHttpPutForUpdate
+            };
+            ODataContext context = new ODataContext(model, settings);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            IEdmEntityType entityType = entitySet.EntityType;
+
+            IEdmNavigationProperty property = entityType.DeclaredNavigationProperties()
+                .FirstOrDefault(c => c.ContainsTarget == true && c.TargetMultiplicity() == EdmMultiplicity.Many);
+            Assert.NotNull(property);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
+                new ODataKeySegment(entityType),
+                new ODataNavigationPropertySegment(property),
+                new ODataKeySegment(property.ToEntityType()));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key.ToString().ToLowerInvariant()));
+        }
+
+        [Fact]
+        public void CreateNavigationPropertyPathItemPrefersUpdateMethodAnnotationOverUseHttpPutForUpdateSetting()
+        {
+            // Arrange - annotation specifies PUT explicitly, setting is disabled (default PATCH)
+            string annotation = @"
+<Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
+  <Record>
+    <PropertyValue Property=""RestrictedProperties"" >
+      <Collection>
+        <Record>
+          <PropertyValue Property=""NavigationProperty"" NavigationPropertyPath=""ContainedMyOrder"" />
+          <PropertyValue Property=""UpdateRestrictions"" >
+            <Record>
+              <PropertyValue Property=""UpdateMethod"">
+                <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+              </PropertyValue>
+            </Record>
+          </PropertyValue>
+        </Record>
+      </Collection>
+    </PropertyValue>
+  </Record>
+</Annotation>";
+
+            IEdmModel model = GetEdmModel(annotation);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                UseHttpPutForUpdate = false // Setting says use PATCH (default)
+            };
+            ODataContext context = new ODataContext(model, settings);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            IEdmEntityType entityType = entitySet.EntityType;
+
+            IEdmNavigationProperty property = entityType.DeclaredNavigationProperties()
+                .FirstOrDefault(c => c.ContainsTarget == true && c.Name == "ContainedMyOrder");
+            Assert.NotNull(property);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
+                new ODataKeySegment(entityType),
+                new ODataNavigationPropertySegment(property));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+            // Should use PUT from annotation, not PATCH from setting
+            Assert.Equal(new string[] { "get", "put", "delete" }, pathItem.Operations.Select(o => o.Key.ToString().ToLowerInvariant()));
+        }
+
         public static IEdmModel GetEdmModel(string annotation, string annotation2 = "")
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
