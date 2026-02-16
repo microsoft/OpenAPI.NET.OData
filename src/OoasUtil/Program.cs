@@ -42,6 +42,7 @@ namespace OoasUtil
                 EnableUnqualifiedCall = processor.EnableUnqualifiedCall.Value,
                 ShowSchemaExamples = !processor.DisableSchemaExamples.Value,
                 OpenApiSpecVersion = processor.Version.Value,
+                UseHttpPutForUpdate = processor.UseHttpPutForUpdate.Value,
             };
 
             if (processor.IsLocalFile)
