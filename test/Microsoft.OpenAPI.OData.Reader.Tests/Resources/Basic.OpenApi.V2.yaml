@@ -674,6 +674,8 @@ definitions:
     properties:
       '@odata.id':
         type: string
+    additionalProperties:
+      type: object
   ReferenceNumeric:
     type: string
     enum:
