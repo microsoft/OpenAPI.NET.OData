@@ -337,6 +337,15 @@ public class OpenApiConvertSettings
     /// </summary>
     public int ComposableFunctionsExpansionDepth { get; set; } = 1;
 
+    /// <summary>
+    /// Gets/sets a value indicating whether to use HTTP PUT method for update operations by default
+    /// instead of PATCH when no UpdateRestrictions annotation is present in the CSDL.
+    /// If false (default), PATCH will be used for updates.
+    /// If true, PUT will be used for updates.
+    /// This setting is ignored when UpdateRestrictions annotations are present in the CSDL.
+    /// </summary>
+    public bool UseHttpPutForUpdate { get; set; } = false;
+
     internal OpenApiConvertSettings Clone()
     {
         var newSettings = new OpenApiConvertSettings
@@ -392,7 +401,8 @@ public class OpenApiConvertSettings
             SemVerVersion = this.SemVerVersion,
             EnableAliasForOperationSegments = this.EnableAliasForOperationSegments,
             UseStringArrayForQueryOptionsSchema = this.UseStringArrayForQueryOptionsSchema,
-            ComposableFunctionsExpansionDepth = this.ComposableFunctionsExpansionDepth
+            ComposableFunctionsExpansionDepth = this.ComposableFunctionsExpansionDepth,
+            UseHttpPutForUpdate = this.UseHttpPutForUpdate
         };
 
         return newSettings;
