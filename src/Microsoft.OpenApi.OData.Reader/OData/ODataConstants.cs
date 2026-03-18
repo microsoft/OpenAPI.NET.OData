@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.OpenApi.OData
@@ -27,6 +28,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// @odata.count KeyValue pair
         /// </summary>
+        [Obsolete("Use CreateOdataCount instead to specify the format of the count value.")]
         public readonly static KeyValuePair<string, IOpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = "int64"});
 
         /// <summary>
