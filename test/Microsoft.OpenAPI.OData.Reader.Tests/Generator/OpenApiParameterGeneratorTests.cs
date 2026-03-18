@@ -655,5 +655,35 @@ schema:
             Assert.True(result);
             return model;
         }
+
+        [Theory]
+        [InlineData(true, "int32")]
+        [InlineData(false, "int64")]
+        public async Task CreateParametersRespectsUseInt32ForPaginationParameters(bool useInt32, string expectedFormat)
+        {
+            // Arrange
+            IEdmModel model = EdmCoreModel.Instance;
+            OpenApiConvertSettings settings = new()
+            {
+                UseInt32ForPaginationParameters = useInt32
+            };
+            ODataContext context = new ODataContext(model, settings);
+            OpenApiDocument openApiDocument = new();
+
+            // Act
+            context.AddParametersToDocument(openApiDocument);
+            var parameters = openApiDocument.Components.Parameters;
+
+            // Assert
+            Assert.NotNull(parameters);
+            var topParam = parameters.First(p => p.Key == "top").Value;
+            var skipParam = parameters.First(p => p.Key == "skip").Value;
+
+            var topJson = JsonNode.Parse(await topParam.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+            var skipJson = JsonNode.Parse(await skipParam.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0));
+
+            Assert.Equal(expectedFormat, topJson["schema"]["format"]?.GetValue<string>());
+            Assert.Equal(expectedFormat, skipJson["schema"]["format"]?.GetValue<string>());
+        }
     }
 }
