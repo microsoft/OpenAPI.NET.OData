@@ -1161,5 +1161,30 @@ namespace Microsoft.OpenApi.OData.Tests
 
             Assert.Equal("{ }", json);
         }
+
+        [Theory]
+        [InlineData(true, "int32")]
+        [InlineData(false, "int64")]
+        public void DollarCountSchemaRespectsUseInt32ForCountResponses(bool useInt32, string expectedFormat)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            OpenApiDocument openApiDocument = new();
+            OpenApiConvertSettings settings = new()
+            {
+                EnableDollarCountPath = true,
+                UseInt32ForCountResponses = useInt32
+            };
+            ODataContext context = new(model, settings);
+
+            // Act
+            context.AddSchemasToDocument(openApiDocument);
+
+            // Assert
+            Assert.True(openApiDocument.Components.Schemas.TryGetValue(Constants.DollarCountSchemaName, out var countSchema));
+            Assert.NotNull(countSchema);
+            Assert.Equal(JsonSchemaType.Number, countSchema.Type);
+            Assert.Equal(expectedFormat, countSchema.Format);
+        }
     }
 }
