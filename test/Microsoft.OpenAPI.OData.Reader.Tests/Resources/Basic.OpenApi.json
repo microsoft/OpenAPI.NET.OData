@@ -224,8 +224,7 @@
                 "$ref": "#/components/schemas/DefaultNs.City"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -513,8 +512,7 @@
                 "$ref": "#/components/schemas/DefaultNs.CountryOrRegion"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -984,6 +982,105 @@
   },
   "components": {
     "schemas": {
+      "DefaultNs.ODataErrors.ODataError": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/DefaultNs.ODataErrors.MainError"
+          }
+        }
+      },
+      "DefaultNs.ODataErrors.MainError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string",
+            "x-ms-primary-error-message": true
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefaultNs.ODataErrors.ErrorDetails"
+            }
+          },
+          "innerError": {
+            "$ref": "#/components/schemas/DefaultNs.ODataErrors.InnerError"
+          }
+        }
+      },
+      "DefaultNs.ODataErrors.ErrorDetails": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "DefaultNs.ODataErrors.InnerError": {
+        "type": "object",
+        "description": "The structure of this object is service-specific"
+      },
+      "ODataCountResponse": {
+        "type": "number",
+        "format": "int64"
+      },
+      "ReferenceUpdate": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          },
+          "@odata.type": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ReferenceCreate": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {
+          "type": "object"
+        }
+      },
+      "ReferenceNumeric": {
+        "enum": [
+          "-INF",
+          "INF",
+          "NaN"
+        ],
+        "type": "string",
+        "nullable": true
+      },
       "DefaultNs.Color": {
         "title": "Color",
         "enum": [
@@ -1098,73 +1195,6 @@
           }
         }
       },
-      "DefaultNs.ODataErrors.ODataError": {
-        "required": [
-          "error"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "$ref": "#/components/schemas/DefaultNs.ODataErrors.MainError"
-          }
-        }
-      },
-      "DefaultNs.ODataErrors.MainError": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string",
-            "x-ms-primary-error-message": true
-          },
-          "target": {
-            "type": "string",
-            "nullable": true
-          },
-          "details": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DefaultNs.ODataErrors.ErrorDetails"
-            }
-          },
-          "innerError": {
-            "$ref": "#/components/schemas/DefaultNs.ODataErrors.InnerError"
-          }
-        }
-      },
-      "DefaultNs.ODataErrors.ErrorDetails": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          },
-          "target": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "DefaultNs.ODataErrors.InnerError": {
-        "type": "object",
-        "description": "The structure of this object is service-specific"
-      },
-      "ODataCountResponse": {
-        "type": "number",
-        "format": "int64"
-      },
       "DefaultNs.PersonCollectionResponse": {
         "title": "Collection of Person",
         "type": "object",
@@ -1212,38 +1242,6 @@
             }
           }
         }
-      },
-      "ReferenceUpdate": {
-        "type": "object",
-        "properties": {
-          "@odata.id": {
-            "type": "string"
-          },
-          "@odata.type": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ReferenceCreate": {
-        "type": "object",
-        "properties": {
-          "@odata.id": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": {
-          "type": "object"
-        }
-      },
-      "ReferenceNumeric": {
-        "enum": [
-          "-INF",
-          "INF",
-          "NaN"
-        ],
-        "type": "string",
-        "nullable": true
       }
     },
     "responses": {
@@ -1363,18 +1361,18 @@
     "examples": {
       "DefaultNs.Person": {
         "value": {
+          "UserName": "string (identifier)",
+          "HomeAddress": {
+            "@odata.type": "DefaultNs.Address"
+          },
+          "WorkAddress": {
+            "@odata.type": "DefaultNs.Address"
+          },
           "Addresses": [
             {
               "@odata.type": "DefaultNs.Address"
             }
-          ],
-          "HomeAddress": {
-            "@odata.type": "DefaultNs.Address"
-          },
-          "UserName": "string (identifier)",
-          "WorkAddress": {
-            "@odata.type": "DefaultNs.Address"
-          }
+          ]
         }
       },
       "DefaultNs.City": {
@@ -1389,21 +1387,21 @@
       },
       "DefaultNs.Address": {
         "value": {
+          "Id": 0,
           "City": {
             "@odata.type": "DefaultNs.City"
-          },
-          "Id": 0
+          }
         }
       },
       "DefaultNs.WorkAddress": {
         "value": {
+          "Id": 0,
           "City": {
             "@odata.type": "DefaultNs.City"
           },
           "CountryOrRegion": {
             "@odata.type": "DefaultNs.CountryOrRegion"
-          },
-          "Id": 0
+          }
         }
       }
     },

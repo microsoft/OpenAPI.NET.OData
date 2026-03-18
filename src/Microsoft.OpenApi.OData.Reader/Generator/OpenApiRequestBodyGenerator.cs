@@ -77,7 +77,7 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiRequestBody requestBody = new OpenApiRequestBody
             {
                 Description = "Action parameters",
-                Required = true,
+                Required = action.ShouldRequestBodyBeRequired(),
                 Content = new Dictionary<string, IOpenApiMediaType>()
             };
 

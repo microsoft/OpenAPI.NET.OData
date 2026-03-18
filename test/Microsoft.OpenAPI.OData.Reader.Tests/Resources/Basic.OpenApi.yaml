@@ -146,7 +146,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DefaultNs.City'
-        required: true
       responses:
         '204':
           description: Success
@@ -332,7 +331,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
-        required: true
       responses:
         '204':
           description: Success

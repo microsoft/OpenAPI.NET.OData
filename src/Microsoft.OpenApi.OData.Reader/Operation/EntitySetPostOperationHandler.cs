@@ -69,10 +69,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetRequestBody(OpenApiOperation operation)
         {
             // The requestBody field contains a Request Body Object for the request body
-            // that references the schema of the entity set’s entity type in the global schemas.
+            // that references the schema of the entity set's entity type in the global schemas.
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = true,
+                Required = EntitySet?.EntityType?.ShouldRequestBodyBeRequired(
+                    isUpdateOperation: false,
+                    Context?.Model) ?? true,
                 Description = "New entity",
                 Content = GetContentDescription()
             };

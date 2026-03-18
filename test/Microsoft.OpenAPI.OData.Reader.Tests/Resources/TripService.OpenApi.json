@@ -208,8 +208,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -481,8 +480,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -618,8 +616,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -918,8 +915,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -967,8 +963,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -1173,8 +1168,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -1667,8 +1661,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -1713,8 +1706,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -2124,8 +2116,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -2170,8 +2161,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -2357,8 +2347,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -2898,8 +2887,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -2954,8 +2942,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -3195,8 +3182,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -4102,8 +4088,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -4315,8 +4300,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -4361,8 +4345,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -4772,8 +4755,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -4818,8 +4800,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -5005,8 +4986,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -5486,8 +5466,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -5542,8 +5521,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -5783,8 +5761,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -6464,8 +6441,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -6767,8 +6743,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -6823,8 +6798,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -7064,8 +7038,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -8599,8 +8572,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -8645,8 +8617,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -9056,8 +9027,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -9102,8 +9072,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -9289,8 +9258,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -9751,8 +9719,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -9807,8 +9774,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -10048,8 +10014,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -10672,8 +10637,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -10728,8 +10692,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -10969,8 +10932,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -11650,8 +11612,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -11730,8 +11691,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -14028,8 +13988,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -14077,8 +14036,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -14566,8 +14524,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -14622,8 +14579,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -14863,8 +14819,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -15485,8 +15440,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -15544,8 +15498,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -15800,8 +15753,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -16759,8 +16711,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -17015,8 +16966,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -18574,8 +18524,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -18630,8 +18579,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -19151,8 +19099,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -19207,8 +19154,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -19448,8 +19394,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -20109,8 +20054,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -20175,8 +20119,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -20466,8 +20409,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -21552,8 +21494,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -21823,8 +21764,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -21879,8 +21819,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -22400,8 +22339,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -22456,8 +22394,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -22697,8 +22634,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -23274,8 +23210,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -23340,8 +23275,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -23631,8 +23565,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -24446,8 +24379,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -24801,8 +24733,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -24867,8 +24798,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -25158,8 +25088,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -26987,8 +26916,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -27043,8 +26971,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -27564,8 +27491,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -27620,8 +27546,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -27861,8 +27786,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -28419,8 +28343,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -28485,8 +28408,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -28776,8 +28698,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -29522,8 +29443,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -29588,8 +29508,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -29879,8 +29798,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -30694,8 +30612,7 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -30798,8 +30715,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {

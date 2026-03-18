@@ -865,7 +865,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
-        required: true
       responses:
         '204':
           description: Success
@@ -900,7 +899,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
-        required: true
       responses:
         '204':
           description: Success
@@ -1428,7 +1426,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
-        required: true
       responses:
         '204':
           description: Success
@@ -1473,7 +1470,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
-        required: true
       responses:
         '204':
           description: Success
@@ -3139,7 +3135,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
-        required: true
       responses:
         '204':
           description: Success
@@ -3174,7 +3169,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
-        required: true
       responses:
         '204':
           description: Success
