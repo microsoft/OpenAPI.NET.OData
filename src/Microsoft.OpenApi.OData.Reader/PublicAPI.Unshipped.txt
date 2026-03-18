@@ -201,6 +201,10 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.RoutePathPrefixProvider.get -> Mi
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RoutePathPrefixProvider.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.SemVerVersion.get -> string!
 Microsoft.OpenApi.OData.OpenApiConvertSettings.SemVerVersion.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseInt32ForPaginationParameters.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseInt32ForPaginationParameters.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseInt32ForCountResponses.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseInt32ForCountResponses.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ServiceRoot.get -> System.Uri!
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ServiceRoot.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.get -> bool

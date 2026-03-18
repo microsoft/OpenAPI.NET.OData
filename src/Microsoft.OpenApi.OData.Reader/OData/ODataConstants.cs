@@ -30,6 +30,18 @@ namespace Microsoft.OpenApi.OData
         public readonly static KeyValuePair<string, IOpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = JsonSchemaType.Number | JsonSchemaType.Null, Format = "int64"});
 
         /// <summary>
+        /// Creates an @odata.count KeyValue pair with the specified format.
+        /// </summary>
+        public static KeyValuePair<string, IOpenApiSchema> CreateOdataCount(bool useInt32Format)
+        {
+            return new("@odata.count", new OpenApiSchema
+            {
+                Type = JsonSchemaType.Number | JsonSchemaType.Null,
+                Format = useInt32Format ? "int32" : "int64"
+            });
+        }
+
+        /// <summary>
         /// @odata.deltaLink KeyValue pair
         /// </summary>
         public readonly static KeyValuePair<string, IOpenApiSchema> OdataDeltaLink = new("@odata.deltaLink", new OpenApiSchema { Type = JsonSchemaType.String | JsonSchemaType.Null });
