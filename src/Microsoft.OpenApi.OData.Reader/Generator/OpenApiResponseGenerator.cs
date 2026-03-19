@@ -195,7 +195,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                     if (context.Settings.EnableCount)
                     {
-                        baseSchema.Properties.Add(ODataConstants.OdataCount.Key, ODataConstants.OdataCount.Value);
+                        var odataCount = ODataConstants.CreateOdataCount(context.Settings.UseInt32ForCountResponses);
+                        baseSchema.Properties.Add(odataCount.Key, odataCount.Value);
                     }
                     schema = baseSchema;
                 }

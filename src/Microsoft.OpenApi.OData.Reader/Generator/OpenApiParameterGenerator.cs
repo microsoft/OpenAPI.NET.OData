@@ -34,8 +34,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             // It allows defining query options and headers that can be reused across operations of the service.
             // The value of parameters is a map of Parameter Objects.
-            document.AddComponent("top", CreateTop(context.Settings.TopExample));
-            document.AddComponent("skip", CreateSkip());
+            document.AddComponent("top", CreateTop(context.Settings.TopExample, context.Settings.UseInt32ForPaginationParameters));
+            document.AddComponent("skip", CreateSkip(context.Settings.UseInt32ForPaginationParameters));
             document.AddComponent("count", CreateCount());
             document.AddComponent("filter", CreateFilter());
             document.AddComponent("search", CreateSearch());
@@ -886,7 +886,7 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         // #top
-        private static OpenApiParameter CreateTop(int topExample)
+        private static OpenApiParameter CreateTop(int topExample, bool useInt32Format = false)
         {
             return new OpenApiParameter
             {
@@ -896,7 +896,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Schema = new OpenApiSchema
                 {
                     Type = JsonSchemaType.Number,
-                    Format = "int64",
+                    Format = useInt32Format ? "int32" : "int64",
                     Minimum = "0",
                 },
                 Example = topExample,
@@ -906,7 +906,7 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         // $skip
-        private static OpenApiParameter CreateSkip()
+        private static OpenApiParameter CreateSkip(bool useInt32Format = false)
         {
             return new OpenApiParameter
             {
@@ -916,7 +916,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Schema = new OpenApiSchema
                 {
                     Type = JsonSchemaType.Number,
-                    Format = "int64",
+                    Format = useInt32Format ? "int32" : "int64",
                     Minimum = "0",
                 },
                 Style = ParameterStyle.Form,

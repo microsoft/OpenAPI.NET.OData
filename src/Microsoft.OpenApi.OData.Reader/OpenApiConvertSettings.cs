@@ -337,6 +337,16 @@ public class OpenApiConvertSettings
     /// </summary>
     public int ComposableFunctionsExpansionDepth { get; set; } = 1;
 
+    /// <summary>
+    /// Gets/Sets a value indicating whether common OData number parameters ($top, $skip) should use int32 format instead of int64.
+    /// </summary>
+    public bool UseInt32ForPaginationParameters { get; set; } = false;
+
+    /// <summary>
+    /// Gets/Sets a value indicating whether the $count response schema should use int32 format instead of int64.
+    /// </summary>
+    public bool UseInt32ForCountResponses { get; set; } = false;
+
     internal OpenApiConvertSettings Clone()
     {
         var newSettings = new OpenApiConvertSettings
@@ -392,7 +402,9 @@ public class OpenApiConvertSettings
             SemVerVersion = this.SemVerVersion,
             EnableAliasForOperationSegments = this.EnableAliasForOperationSegments,
             UseStringArrayForQueryOptionsSchema = this.UseStringArrayForQueryOptionsSchema,
-            ComposableFunctionsExpansionDepth = this.ComposableFunctionsExpansionDepth
+            ComposableFunctionsExpansionDepth = this.ComposableFunctionsExpansionDepth,
+            UseInt32ForPaginationParameters = this.UseInt32ForPaginationParameters,
+            UseInt32ForCountResponses = this.UseInt32ForCountResponses
         };
 
         return newSettings;

@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Generator
             if(context.Settings.EnableDollarCountPath)
                 document.AddComponent(Constants.DollarCountSchemaName, new OpenApiSchema {
                     Type = JsonSchemaType.Number,
-                    Format = "int64"
+                    Format = context.Settings.UseInt32ForCountResponses ? "int32" : "int64"
                 });
 
             if(context.HasAnyNonContainedCollections())                                        
@@ -101,7 +101,10 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     responseSchema.Properties ??= new Dictionary<string, IOpenApiSchema>();
                     if (context.Settings.EnableCount)
-                        responseSchema.Properties.Add(ODataConstants.OdataCount.Key, ODataConstants.OdataCount.Value);
+                    {
+                        var odataCount = ODataConstants.CreateOdataCount(context.Settings.UseInt32ForCountResponses);
+                        responseSchema.Properties.Add(odataCount.Key, odataCount.Value);
+                    }
                     if (context.Settings.EnablePagination)
                         responseSchema.Properties.Add(ODataConstants.OdataNextLink.Key, ODataConstants.OdataNextLink.Value);
                 }
@@ -261,10 +264,13 @@ namespace Microsoft.OpenApi.OData.Generator
                         baseSchema.Properties.Add(ODataConstants.OdataNextLink.Key, ODataConstants.OdataNextLink.Value);
 
                     if (context.Settings.EnableCount)
-                        baseSchema.Properties.Add(ODataConstants.OdataCount.Key, ODataConstants.OdataCount.Value);
+                    {
+                        var odataCount = ODataConstants.CreateOdataCount(context.Settings.UseInt32ForCountResponses);
+                        baseSchema.Properties.Add(odataCount.Key, odataCount.Value);
+                    }
 
                     collectionSchema = baseSchema;
-                }               
+                }
             }
             else
             {
