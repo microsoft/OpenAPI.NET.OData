@@ -338,6 +338,15 @@ public class OpenApiConvertSettings
     public int ComposableFunctionsExpansionDepth { get; set; } = 1;
 
     /// <summary>
+    /// Gets/sets a value indicating whether to use HTTP PUT method for update operations by default
+    /// instead of PATCH when no UpdateRestrictions annotation is present in the CSDL.
+    /// If false (default), PATCH will be used for updates.
+    /// If true, PUT will be used for updates.
+    /// This setting is ignored when UpdateRestrictions annotations are present in the CSDL.
+    /// </summary>
+    public bool UseHttpPutForUpdate { get; set; } = false;
+
+    /// <summary>
     /// Gets/Sets a value indicating whether common OData number parameters ($top, $skip) should use int32 format instead of int64.
     /// </summary>
     public bool UseInt32ForPaginationParameters { get; set; } = false;
@@ -403,6 +412,7 @@ public class OpenApiConvertSettings
             EnableAliasForOperationSegments = this.EnableAliasForOperationSegments,
             UseStringArrayForQueryOptionsSchema = this.UseStringArrayForQueryOptionsSchema,
             ComposableFunctionsExpansionDepth = this.ComposableFunctionsExpansionDepth,
+            UseHttpPutForUpdate = this.UseHttpPutForUpdate,
             UseInt32ForPaginationParameters = this.UseInt32ForPaginationParameters,
             UseInt32ForCountResponses = this.UseInt32ForCountResponses
         };
