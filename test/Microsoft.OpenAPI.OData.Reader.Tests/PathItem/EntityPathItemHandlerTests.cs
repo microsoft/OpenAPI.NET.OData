@@ -232,6 +232,67 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             VerifyPathItemOperations(annotation, expected);
         }
 
+        [Theory]
+        [InlineData(false, new string[] { "get", "patch", "delete" })]
+        [InlineData(true, new string[] { "get", "put", "delete" })]
+        public void CreateEntityPathItemUsesHttpPutForUpdateWhenSettingIsEnabled(bool useHttpPutForUpdate, string[] expected)
+        {
+            // Arrange
+            IEdmModel model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: "");
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                UseHttpPutForUpdate = useHttpPutForUpdate
+            };
+            ODataContext context = new ODataContext(model, settings);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key.ToString().ToLowerInvariant()));
+        }
+
+        [Fact]
+        public void CreateEntityPathItemPrefersUpdateMethodAnnotationOverUseHttpPutForUpdateSetting()
+        {
+            // Arrange - annotation specifies PUT explicitly, setting is disabled (default PATCH)
+            string annotation = @"
+<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+  <Record>
+    <PropertyValue Property=""UpdateMethod"">
+      <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+    </PropertyValue>
+  </Record>
+</Annotation>";
+
+            IEdmModel model = EntitySetPathItemHandlerTests.GetEdmModel(annotation);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                UseHttpPutForUpdate = false // Setting says use PATCH (default)
+            };
+            ODataContext context = new ODataContext(model, settings);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+            // Should use PUT from annotation, not PATCH from setting
+            Assert.Equal(new string[] { "get", "put", "delete" }, pathItem.Operations.Select(e => e.Key.ToString().ToLowerInvariant()));
+        }
+
         private void VerifyPathItemOperations(string annotation, string[] expected)
         {
             // Arrange
