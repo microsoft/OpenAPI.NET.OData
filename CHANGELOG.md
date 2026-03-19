@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v3.1.0...v3.2.0) (2026-03-19)
+
+
+### Features
+
+* add int32 format configuration for pagination parameters and count responses ([#793](https://github.com/microsoft/OpenAPI.NET.OData/issues/793)) ([0dd9445](https://github.com/microsoft/OpenAPI.NET.OData/commit/0dd9445e792cadcc9125ab2b675d58b222b009dd)), closes [#792](https://github.com/microsoft/OpenAPI.NET.OData/issues/792)
+* add switch to use put as default update verb ([ed79e42](https://github.com/microsoft/OpenAPI.NET.OData/commit/ed79e42a664450cf9a165e022ec1eefa9e840515))
+
 ## [3.1.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v3.0.0...v3.1.0) (2026-01-16)
 
 
