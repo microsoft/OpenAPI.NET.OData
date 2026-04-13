@@ -372,6 +372,13 @@ namespace Microsoft.OpenApi.OData.Common
 
                 if (derivedTypes?.Any() ?? false)
                 {
+                    if (boundEntityType != null && boundEntityType == operationEntityType)
+                    {
+                        // The operation's binding type exactly matches the entity set's type,
+                        // so this is a more specific overload than whatever was added first.
+                        pathItems[pathName] = pathItem;
+                        return true;
+                    }
                     if (boundEntityType != null && !derivedTypes.Contains(boundEntityType))
                     {
                         Debug.WriteLine($"Duplicate paths present but entity type of binding parameter '{operationEntityType}' " +
