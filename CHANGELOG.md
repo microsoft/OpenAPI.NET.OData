@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.1](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.2.0...v2.2.1) (2026-04-14)
+
+
+### Bug Fixes
+
+* TryAddPath exact-match check for duplicate bound operation paths ([ff9ab41](https://github.com/microsoft/OpenAPI.NET.OData/commit/ff9ab41d7e7c9a42797ee77213c8442e20c52e3a)), closes [#806](https://github.com/microsoft/OpenAPI.NET.OData/issues/806)
+* TryAddPath exact-match check for duplicate bound operation paths (OpenAPI 3.1) ([c47009a](https://github.com/microsoft/OpenAPI.NET.OData/commit/c47009a5facb18aab18e4e60d180db7001d122e9))
+
 ## [2.2.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.1.0...v2.2.0) (2026-03-19)
 
 
