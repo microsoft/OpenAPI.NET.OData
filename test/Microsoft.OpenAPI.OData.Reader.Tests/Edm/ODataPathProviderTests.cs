@@ -7,11 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
+using Microsoft.OpenApi;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -919,6 +922,83 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
   </EntityContainer>
 </Schema>";
             return GetEdmModel(template);
+        }
+
+        [Fact]
+        public async Task GetPathsForDerivedTypeDeltaFunctionUsesCorrectReturnType()
+        {
+            // Arrange – mirrors the Graph scenario:
+            //   directoryObject (base) has delta with RequiresExplicitBinding
+            //   servicePrincipal (derived) has its own delta
+            //   agentIdentity (derived from servicePrincipal) causes servicePrincipal to have derived types
+            // Bug: TryAddPath kept the base-type delta for /servicePrincipals/delta() because
+            //      servicePrincipal has derived types.
+            string csdl = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+  <edmx:DataServices>
+    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""directoryObject"">
+        <Key>
+          <PropertyRef Name=""id"" />
+        </Key>
+        <Property Name=""id"" Type=""Edm.String"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""servicePrincipal"" BaseType=""NS.directoryObject"">
+        <Property Name=""appId"" Type=""Edm.String"" />
+      </EntityType>
+      <EntityType Name=""agentIdentity"" BaseType=""NS.servicePrincipal"">
+        <Property Name=""blueprintId"" Type=""Edm.String"" />
+      </EntityType>
+      <Function Name=""delta"" IsBound=""true"">
+        <Parameter Name=""bindingParameter"" Type=""Collection(NS.directoryObject)"" />
+        <ReturnType Type=""Collection(NS.directoryObject)"" />
+        <Annotation Term=""Org.OData.Core.V1.RequiresExplicitBinding"" />
+      </Function>
+      <Function Name=""delta"" IsBound=""true"">
+        <Parameter Name=""bindingParameter"" Type=""Collection(NS.servicePrincipal)"" />
+        <ReturnType Type=""Collection(NS.servicePrincipal)"" />
+      </Function>
+      <EntityContainer Name=""Default"">
+        <EntitySet Name=""directoryObjects"" EntityType=""NS.directoryObject"" />
+        <EntitySet Name=""servicePrincipals"" EntityType=""NS.servicePrincipal"" />
+      </EntityContainer>
+      <Annotations Target=""NS.directoryObject"">
+        <Annotation Term=""Org.OData.Core.V1.ExplicitOperationBindings"">
+          <Collection>
+            <String>NS.delta</String>
+          </Collection>
+        </Annotation>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>";
+
+            bool result = CsdlReader.TryParse(XElement.Parse(csdl).CreateReader(), out IEdmModel model, out _);
+            Assert.True(result);
+
+            var settings = new OpenApiConvertSettings();
+            var doc = model.ConvertToOpenApi(settings);
+
+            // Serialize to YAML and verify the response type
+            using var stream = new MemoryStream();
+            await doc.SerializeAsync(stream, OpenApiSpecVersion.OpenApi3_1, "yaml", CancellationToken.None);
+            stream.Position = 0;
+            string yaml = await new StreamReader(stream).ReadToEndAsync();
+
+            // The /servicePrincipals/NS.delta() path should reference servicePrincipal, not directoryObject
+            Assert.Contains("/servicePrincipals/NS.delta()", yaml);
+
+            // Extract just the path section (up to 'components:' or next top-level key)
+            int pathIndex = yaml.IndexOf("/servicePrincipals/NS.delta():");
+            Assert.True(pathIndex >= 0, "Path /servicePrincipals/NS.delta() not found in YAML output");
+
+            int componentsIndex = yaml.IndexOf("\ncomponents:", pathIndex);
+            string pathSection = componentsIndex > 0
+                ? yaml.Substring(pathIndex, componentsIndex - pathIndex)
+                : yaml.Substring(pathIndex);
+
+            // The response schema items $ref should reference servicePrincipal
+            Assert.Contains("'#/components/schemas/NS.servicePrincipal'", pathSection);
+            Assert.DoesNotContain("#/components/schemas/NS.directoryObject", pathSection);
         }
 
         private static IEdmModel GetEdmModel(string schema)
