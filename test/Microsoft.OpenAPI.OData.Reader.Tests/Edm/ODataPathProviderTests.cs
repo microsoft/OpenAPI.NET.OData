@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -919,6 +920,77 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
   </EntityContainer>
 </Schema>";
             return GetEdmModel(template);
+        }
+
+        [Fact]
+        public void GetPathsForDerivedTypeDeltaFunctionUsesCorrectReturnType()
+        {
+            // Arrange – mirrors the Graph scenario:
+            //   directoryObject (base) has delta with RequiresExplicitBinding
+            //   servicePrincipal (derived) has its own delta
+            //   agentIdentity (derived from servicePrincipal) causes servicePrincipal to have derived types
+            // Bug: TryAddPath kept the base-type delta for /servicePrincipals/delta() because
+            //      servicePrincipal has derived types.
+            string csdl = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+  <edmx:DataServices>
+    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""directoryObject"">
+        <Key>
+          <PropertyRef Name=""id"" />
+        </Key>
+        <Property Name=""id"" Type=""Edm.String"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""servicePrincipal"" BaseType=""NS.directoryObject"">
+        <Property Name=""appId"" Type=""Edm.String"" />
+      </EntityType>
+      <EntityType Name=""agentIdentity"" BaseType=""NS.servicePrincipal"">
+        <Property Name=""blueprintId"" Type=""Edm.String"" />
+      </EntityType>
+      <Function Name=""delta"" IsBound=""true"">
+        <Parameter Name=""bindingParameter"" Type=""Collection(NS.directoryObject)"" />
+        <ReturnType Type=""Collection(NS.directoryObject)"" />
+        <Annotation Term=""Org.OData.Core.V1.RequiresExplicitBinding"" />
+      </Function>
+      <Function Name=""delta"" IsBound=""true"">
+        <Parameter Name=""bindingParameter"" Type=""Collection(NS.servicePrincipal)"" />
+        <ReturnType Type=""Collection(NS.servicePrincipal)"" />
+      </Function>
+      <EntityContainer Name=""Default"">
+        <EntitySet Name=""directoryObjects"" EntityType=""NS.directoryObject"" />
+        <EntitySet Name=""servicePrincipals"" EntityType=""NS.servicePrincipal"" />
+      </EntityContainer>
+      <Annotations Target=""NS.directoryObject"">
+        <Annotation Term=""Org.OData.Core.V1.ExplicitOperationBindings"">
+          <Collection>
+            <String>NS.delta</String>
+          </Collection>
+        </Annotation>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>";
+
+            bool result = CsdlReader.TryParse(XElement.Parse(csdl).CreateReader(), out IEdmModel model, out _);
+            Assert.True(result);
+
+            var settings = new OpenApiConvertSettings();
+            OpenApiDocument doc = model.ConvertToOpenApi(settings);
+
+            // Assert – the /servicePrincipals/NS.delta() path should exist and its response
+            // should reference NS.servicePrincipal, not NS.directoryObject
+            Assert.True(doc.Paths.ContainsKey("/servicePrincipals/NS.delta()"),
+                $"Expected path not found. Available: {string.Join(", ", doc.Paths.Keys)}");
+
+            var pathItem = doc.Paths["/servicePrincipals/NS.delta()"];
+            var getOp = pathItem.Operations[OperationType.Get];
+            Assert.NotNull(getOp);
+
+            // The response schema title should reference servicePrincipal, not directoryObject
+            var responseKey = getOp.Responses.Keys.First();
+            var response = getOp.Responses[responseKey];
+            var schema = response.Content["application/json"].Schema;
+            Assert.Contains("servicePrincipal", schema.Title);
+            Assert.DoesNotContain("directoryObject", schema.Title);        
         }
 
         private static IEdmModel GetEdmModel(string schema)
