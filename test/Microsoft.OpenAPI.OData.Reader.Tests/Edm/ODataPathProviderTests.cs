@@ -990,6 +990,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var response = getOp.Responses[responseKey];
             var schema = response.Content["application/json"].Schema;
             Assert.Contains("servicePrincipal", schema.Title);
+            Assert.DoesNotContain("directoryObject", schema.Title);        
         }
 
         private static IEdmModel GetEdmModel(string schema)
