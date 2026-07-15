@@ -391,40 +391,48 @@ namespace Microsoft.OpenApi.OData.Tests
           "anyOf": [
             {
               "$ref": "#/components/schemas/microsoft.graph.userInsightsSettings"
+            },
+            {
+              "enum": [null]
             }
           ],
           "description": "The user's settings for the visibility of meeting hour insights, and insights derived between a user and other items in Microsoft 365, such as documents or sites. Get userInsightsSettings through this navigation property.",
-          "nullable": true,
           "x-ms-navigationProperty": true
         },
         "contactMergeSuggestions": {
           "anyOf": [
             {
               "$ref": "#/components/schemas/microsoft.graph.contactMergeSuggestions"
+            },
+            {
+              "enum": [null]
             }
           ],
           "description": "The user's settings for the visibility of merge suggestion for the duplicate contacts in the user's contact list.",
-          "nullable": true,
           "x-ms-navigationProperty": true
         },
         "regionalAndLanguageSettings": {
           "anyOf": [
             {
               "$ref": "#/components/schemas/microsoft.graph.regionalAndLanguageSettings"
+            },
+            {
+              "enum": [null]
             }
           ],
           "description": "The user's preferences for languages, regional locale and date/time formatting.",
-          "nullable": true,
           "x-ms-navigationProperty": true
         },
         "shiftPreferences": {
           "anyOf": [
             {
               "$ref": "#/components/schemas/microsoft.graph.shiftPreferences"
+            },
+            {
+              "enum": [null]
             }
           ],
           "description": "The shift preferences for the user.",
-          "nullable": true,
           "x-ms-navigationProperty": true
         }
       }
@@ -916,10 +924,14 @@ namespace Microsoft.OpenApi.OData.Tests
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/DefaultNs.Color"
+                    },
+                    {
+                      "enum": [
+                        null
+                      ]
                     }
                   ],
-                  "default": "yellow",
-                  "nullable": true
+                  "default": "yellow"
                 }
                 """,
                 OpenApiSpecVersion.OpenApi3_1 =>
