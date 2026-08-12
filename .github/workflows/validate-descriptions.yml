@@ -13,7 +13,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-descriptions.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - id: set-descriptions
         run: echo "::set-output name=matrix::$(ls test/**/Resources/*.{json,yaml} | sed 's/.*\///' | jq -R -s -c 'split("\n")[:-1]')"
 
@@ -26,11 +26,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         submodules: recursive
 
     - name: Validate description with redocly
-      uses: fluximus-prime/redocly-cli-github-action@v1
+      uses: fluximus-prime/redocly-cli-github-action@db9f109674644db10fa51723b7eb83938ed24f7d # v1
       with:
         args: 'lint test/Microsoft.OpenAPI.OData.Reader.Tests/Resources/${{ matrix.descriptions }} --max-problems 1000 --config redocly.yaml'
