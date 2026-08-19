@@ -5018,7 +5018,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -5368,7 +5369,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -5381,7 +5383,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -5394,7 +5397,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -5545,7 +5549,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -5617,7 +5622,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -5630,7 +5636,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -5880,7 +5887,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -5893,7 +5901,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -5906,7 +5915,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -6086,7 +6096,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -6099,7 +6110,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true
@@ -6616,7 +6628,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "x-ms-navigationProperty": true

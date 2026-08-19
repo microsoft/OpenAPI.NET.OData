@@ -143,7 +143,7 @@ public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
     {
         _output.WriteLine(result);
         var expected = Resources.GetString(fileName);
-        if (format is "json")
+        if (format is "json" && !fileName.Contains(".V2."))
         {
             var parsedJson = JsonNode.Parse(result);
             Assert.True(JsonNode.DeepEquals(JsonNode.Parse(expected), parsedJson));

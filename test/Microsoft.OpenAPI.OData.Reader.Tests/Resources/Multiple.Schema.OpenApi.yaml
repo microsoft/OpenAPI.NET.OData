@@ -3530,6 +3530,7 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
       example:
         Id: 0
@@ -3808,18 +3809,21 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
         LastRevisionFile:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
         SourceDocument:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
         SourceDocumentChildren:
           type: array
@@ -3934,6 +3938,7 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
       example:
         ClassInstance: 0
@@ -3988,12 +3993,14 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
         Tag:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
       example:
         DocumentId: 0
@@ -4195,18 +4202,21 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
         Type:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
         SourceFolder:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
         Documents:
           type: array
@@ -4345,12 +4355,14 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
         ParentLibraryTypes:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
         MasterLibraryTypeChildren:
           type: array
@@ -4739,6 +4751,7 @@ components:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
             - enum:
                 - null
+              nullable: true
           x-ms-navigationProperty: true
       example:
         Id: 0
