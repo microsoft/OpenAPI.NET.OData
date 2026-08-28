@@ -1420,7 +1420,8 @@
                     {
                       "enum": [
                         null
-                      ]
+                      ],
+                      "nullable": true
                     }
                   ]
                 }
@@ -1456,7 +1457,8 @@
                     {
                       "enum": [
                         null
-                      ]
+                      ],
+                      "nullable": true
                     }
                   ]
                 }
@@ -11693,7 +11695,8 @@
                       {
                         "enum": [
                           null
-                        ]
+                        ],
+                        "nullable": true
                       }
                     ]
                   }
@@ -16971,7 +16974,8 @@
                       {
                         "enum": [
                           null
-                        ]
+                        ],
+                        "nullable": true
                       }
                     ]
                   }
@@ -30723,7 +30727,8 @@
                       {
                         "enum": [
                           null
-                        ]
+                        ],
+                        "nullable": true
                       }
                     ]
                   }
@@ -33743,7 +33748,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ]
           },
@@ -33777,7 +33783,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ],
             "description": "The best friend.",
@@ -33829,7 +33836,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ]
           }
@@ -33851,7 +33859,8 @@
               {
                 "enum": [
                   null
-                ]
+                ],
+                "nullable": true
               }
             ]
           }
@@ -33895,7 +33904,8 @@
                   {
                     "enum": [
                       null
-                    ]
+                    ],
+                    "nullable": true
                   }
                 ],
                 "description": "The person to contact in case of a crisis at this location.",
@@ -34040,7 +34050,8 @@
                   {
                     "enum": [
                       null
-                    ]
+                    ],
+                    "nullable": true
                   }
                 ]
               },
@@ -34090,7 +34101,8 @@
                   {
                     "enum": [
                       null
-                    ]
+                    ],
+                    "nullable": true
                   }
                 ],
                 "x-ms-navigationProperty": true
@@ -34103,7 +34115,8 @@
                   {
                     "enum": [
                       null
-                    ]
+                    ],
+                    "nullable": true
                   }
                 ],
                 "x-ms-navigationProperty": true
@@ -34116,7 +34129,8 @@
                   {
                     "enum": [
                       null
-                    ]
+                    ],
+                    "nullable": true
                   }
                 ],
                 "x-ms-navigationProperty": true
@@ -34188,7 +34202,8 @@
                   {
                     "enum": [
                       null
-                    ]
+                    ],
+                    "nullable": true
                   }
                 ]
               },
@@ -34533,7 +34548,8 @@
                 {
                   "enum": [
                     null
-                  ]
+                  ],
+                  "nullable": true
                 }
               ]
             }
