@@ -393,7 +393,8 @@ namespace Microsoft.OpenApi.OData.Tests
               "$ref": "#/components/schemas/microsoft.graph.userInsightsSettings"
             },
             {
-              "enum": [null]
+              "enum": [null],
+              "nullable": true
             }
           ],
           "description": "The user's settings for the visibility of meeting hour insights, and insights derived between a user and other items in Microsoft 365, such as documents or sites. Get userInsightsSettings through this navigation property.",
@@ -405,7 +406,8 @@ namespace Microsoft.OpenApi.OData.Tests
               "$ref": "#/components/schemas/microsoft.graph.contactMergeSuggestions"
             },
             {
-              "enum": [null]
+              "enum": [null],
+              "nullable": true
             }
           ],
           "description": "The user's settings for the visibility of merge suggestion for the duplicate contacts in the user's contact list.",
@@ -417,7 +419,8 @@ namespace Microsoft.OpenApi.OData.Tests
               "$ref": "#/components/schemas/microsoft.graph.regionalAndLanguageSettings"
             },
             {
-              "enum": [null]
+              "enum": [null],
+              "nullable": true
             }
           ],
           "description": "The user's preferences for languages, regional locale and date/time formatting.",
@@ -429,7 +432,8 @@ namespace Microsoft.OpenApi.OData.Tests
               "$ref": "#/components/schemas/microsoft.graph.shiftPreferences"
             },
             {
-              "enum": [null]
+              "enum": [null],
+              "nullable": true
             }
           ],
           "description": "The shift preferences for the user.",
@@ -928,7 +932,8 @@ namespace Microsoft.OpenApi.OData.Tests
                     {
                       "enum": [
                         null
-                      ]
+                      ],
+                      "nullable": true
                     }
                   ],
                   "default": "yellow"
