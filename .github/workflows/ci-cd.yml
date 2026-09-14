@@ -3,15 +3,12 @@ name: CI/CD Pipeline
 on: [push, pull_request, workflow_dispatch]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   ci:
     name: Continuous Integration
     runs-on: ubuntu-latest
-    outputs:
-      latest_version: ${{ steps.tag_generator.outputs.new_version }}
-      is_default_branch: ${{ steps.conditionals_handler.outputs.is_default_branch }}
     env:
       ARTIFACTS_FOLDER: ${{ github.workspace }}/Artifacts
       GITHUB_RUN_NUMBER: ${{ github.run_number }}
@@ -21,26 +18,10 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
-      - name: Data gatherer
-        id: data_gatherer
-        shell: pwsh
-        run: |
-          # Get default branch
-          $repo = 'microsoft/OpenAPI.NET.OData'
-          $defaultBranch = Invoke-RestMethod -Method GET -Uri https://api.github.com/repos/$repo | Select-Object -ExpandProperty default_branch
-          Write-Output "default_branch=$(echo $defaultBranch) >> $GITHUB_OUTPUT"
-
-      - name: Conditionals handler
-        id: conditionals_handler
-        shell: pwsh
-        run: |
-          $defaultBranch = "${{ steps.data_gatherer.outputs.default_branch }}"
-          $githubRef = "${{ github.ref }}"
-          $isDefaultBranch = 'false'
-          if ( $githubRef -like "*$defaultBranch*" ) {
-            $isDefaultBranch = 'true'
-          }
-          Write-Output "is_default_branch=$(echo $isDefaultBranch) >> $GITHUB_OUTPUT"
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 10.0.x
 
       - name: Checkout repository
         id: checkout_repo
@@ -49,94 +30,36 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - if: steps.conditionals_handler.outputs.is_default_branch == 'true'
-        name: Bump GH tag
-        id: tag_generator
-        uses: mathieudutour/github-tag-action@a22cf08638b34d5badda920f9daf6e72c477b07b # v6.2
-        with: 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: false
-          release_branches: ${{ steps.data_gatherer.outputs.default_branch }}
-
       - name: Build projects
         id: build_projects
         shell: pwsh
         run: |
-          $projectsArray = @(
-            '.\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj'
-          )
-          $gitNewVersion = if ("${{ steps.tag_generator.outputs.new_version }}") {"${{ steps.tag_generator.outputs.new_version }}"} else {$null}
-          $projectCurrentVersion = ([xml](Get-Content .\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj)).Project.PropertyGroup.Version
-          $projectNewVersion = $gitNewVersion ?? $projectCurrentVersion
+          dotnet build .\Microsoft.OpenApi.OData.sln -c Release
 
-          $projectsArray | ForEach-Object {
-            dotnet build $PSItem `
-            -c Release # `
-            # -o $env:ARTIFACTS_FOLDER `
-            # /p:Version=$projectNewVersion 
-          }
-
-          # Move NuGet packages to separate folder for pipeline convenience
-          # New-Item Artifacts/NuGet -ItemType Directory
-          # Get-ChildItem Artifacts/*.nupkg | Move-Item -Destination "Artifacts/NuGet"
-
-      - name: Run unit tests
-        id: run_unit_tests
+      - name: Run OData unit tests
+        id: run_odata_unit_tests
         shell: pwsh
         run: |
-          $testProjectsArray = @(
-            '.\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj'
-          )
+          dotnet test .\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj -c Release --no-build
 
-          $testProjectsArray | ForEach-Object {
-            dotnet test $PSItem `
-            -c Release
-          }
+      - name: Run Hidi unit tests
+        id: run_hidi_unit_tests
+        working-directory: test/Microsoft.OpenApi.Hidi.Tests
+        shell: pwsh
+        run: |
+          dotnet test -c Release --no-build
 
-      # - if: steps.tag_generator.outputs.new_version != ''
-      #   name: Upload NuGet packages as artifacts
-      #   id: ul_packages_artifact
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: NuGet packages
-      #     path: Artifacts/NuGet/
-
-  cd:
-    if: needs.ci.outputs.is_default_branch == 'true' && needs.ci.outputs.latest_version != ''
-    name: Continuous Deployment
-    needs: ci
-    runs-on: ubuntu-latest
-    steps:
-      # - name: Download and extract NuGet packages
-      #   id: dl_packages_artifact
-      #   uses: actions/download-artifact@v2
-      #   with:
-      #     name: NuGet packages
-      #     path: NuGet/
-
-      # - name: Push NuGet packages to NuGet.org
-      #   id: push_nuget_packages
-      #   continue-on-error: true
-      #   shell: pwsh
-      #   run: |
-      #     Get-ChildItem NuGet/*.nupkg | ForEach-Object {
-      #       nuget push $PSItem `
-      #       -ApiKey $env:NUGET_API_KEY `
-      #       -Source https://api.nuget.org/v3/index.json
-      #     }
-      #   env:
-      #     NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-
-      - name: Create and publish release
-        id: create_release
-        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
-        with:
-          name: OpenAPI.Net.OData v${{ needs.ci.outputs.latest_version }}
-          tag_name: v${{ needs.ci.outputs.latest_version }}
-          # files: |
-          #   NuGet/Microsoft.OpenApi.${{ needs.ci.outputs.latest_version }}.nupkg
-          #   NuGet/Microsoft.OpenApi.Readers.${{ needs.ci.outputs.latest_version }}.nupkg
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Smoke test Hidi package
+        shell: pwsh
+        run: |
+          $hidiVersion = ([xml](Get-Content .\src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj)).Project.PropertyGroup.Version
+          $inputDocument = '.\test\Microsoft.OpenApi.Hidi.Tests\UtilityFiles\SampleOpenApi.yml'
+          dotnet pack .\src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c Release --no-build -o .\Artifacts
+          dotnet tool install --tool-path .\.hidi-smoke --source .\Artifacts --version $hidiVersion Microsoft.OpenApi.Hidi
+          .\.hidi-smoke\hidi --help
+          .\.hidi-smoke\hidi validate --openapi $inputDocument
+          .\.hidi-smoke\hidi transform --openapi $inputDocument --output .\Artifacts\transformed.json --format json --version 3.0 --clean-output
+          .\.hidi-smoke\hidi show --openapi $inputDocument --output .\Artifacts\paths.txt --clean-output
+          .\.hidi-smoke\hidi plugin --help
 
 # Built with ❤ by [Pipeline Foundation](https://pipeline.foundation)

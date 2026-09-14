@@ -46,6 +46,11 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
+    - name: Setup .NET 10
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      with:
+        dotnet-version: 10.0.x
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@cdf488f595d80d6e07e03d4674febd5ab45fa938 # v4.37.9
@@ -62,7 +67,7 @@ jobs:
     #  uses: github/codeql-action/autobuild@v2
     
     - name: build
-      run: dotnet build src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj -c Release
+      run: dotnet build Microsoft.OpenApi.OData.sln -c Release
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl

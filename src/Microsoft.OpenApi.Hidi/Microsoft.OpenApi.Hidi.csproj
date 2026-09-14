@@ -16,7 +16,11 @@
     <NoWarn>$(NoWarn);NU5048;NU5104;CA1848;</NoWarn>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <AnalysisMode>All</AnalysisMode>
-    <AssemblyOriginatorKeyFile>..\Microsoft.OpenApi.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.Hidi.snk</AssemblyOriginatorKeyFile>
+    <Version>3.10.2</Version>
+    <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Microsoft/OpenAPI.NET.OData</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/microsoft/OpenAPI.NET.OData/releases</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,14 +43,14 @@
     </PackageReference>
     <PackageReference Include="System.CommandLine" Version="2.0.11" />
     <PackageReference Include="Microsoft.OData.Edm" Version="8.4.4" />
-    <PackageReference Include="Microsoft.OpenApi.OData" Version="3.2.1" />
+    <PackageReference Include="Microsoft.OpenApi" Version="3.10.2" />
+    <PackageReference Include="Microsoft.OpenApi.YamlReader" Version="3.10.2" />
     <PackageReference Include="Microsoft.OpenApi.ApiManifest" Version="3.0.0-preview.1" />
     <PackageReference Include="System.CommandLine.Hosting" Version="0.4.0-alpha.25306.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.OpenApi.YamlReader\Microsoft.OpenApi.YamlReader.csproj" />
-    <ProjectReference Include="..\Microsoft.OpenApi\Microsoft.OpenApi.csproj" />
+    <ProjectReference Include="..\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj" />
   </ItemGroup>
 
   <!-- Make internals available for Unit Testing -->

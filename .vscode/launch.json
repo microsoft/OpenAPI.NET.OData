@@ -2,6 +2,19 @@
    "version": "0.2.0",
    "configurations": [
         {
+            "name": "Launch Hidi",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/Microsoft.OpenApi.Hidi/bin/Debug/net8.0/Microsoft.OpenApi.Hidi.dll",
+            "args": [
+                "--help"
+            ],
+            "cwd": "${workspaceFolder}/src/Microsoft.OpenApi.Hidi",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
             "name": "Launch Update Docs",
             "type": "coreclr",
             "request": "launch",

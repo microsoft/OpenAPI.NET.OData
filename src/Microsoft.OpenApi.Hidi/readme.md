@@ -2,6 +2,10 @@
 
 Hidi is a command line tool that makes it easy to work with and transform OpenAPI documents. The tool enables you validate and apply transformations to and from different file formats using various commands to do different actions on the files.
 
+Hidi moved from `microsoft/OpenAPI.NET` to this repository at source commit
+`afd4967a9e6db390175e2df9e6f34ff77168d19d`. See the
+[history migration provenance](../../docs/hidi-migration/README.md) for details.
+
 ## Capabilities
 
 Hidi has these key capabilities that enable you to build different scenarios off the tool

@@ -17,10 +17,33 @@
     ".": {
       "package-name": "Microsoft.OpenApi.OData",
       "changelog-path": "CHANGELOG.md",
+      "exclude-paths": [
+        ".azure-pipelines",
+        ".github",
+        ".idea",
+        ".vs",
+        ".vscode",
+        "src/Microsoft.OpenApi.Hidi",
+        "test/Microsoft.OpenApi.Hidi.Tests"
+      ],
       "extra-files": [
         {
           "type": "xml",
           "path": "Directory.Build.props",
+          "xpath": "//Project/PropertyGroup/Version"
+        }
+      ]
+    },
+    "src/Microsoft.OpenApi.Hidi": {
+      "package-name": "Microsoft.OpenApi.Hidi",
+      "component": "hidi",
+      "changelog-path": "CHANGELOG.md",
+      "include-component-in-tag": true,
+      "include-v-in-tag": true,
+      "extra-files": [
+        {
+          "type": "xml",
+          "path": "Microsoft.OpenApi.Hidi.csproj",
           "xpath": "//Project/PropertyGroup/Version"
         }
       ]
