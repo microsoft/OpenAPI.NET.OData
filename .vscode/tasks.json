@@ -15,18 +15,39 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "test",
+            "label": "test:odata",
             "command": "dotnet",
             "type": "process",
-            "group": "test",
             "args": [
                 "test",
-                "${workspaceFolder}/Microsoft.OpenApi.OData.sln",
+                "${workspaceFolder}/test/Microsoft.OpenAPI.OData.Reader.Tests/Microsoft.OpenAPI.OData.Reader.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary",
                 "--collect:\"XPlat Code Coverage\""
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test:hidi",
+            "command": "dotnet",
+            "type": "process",
+            "options": {
+                "cwd": "${workspaceFolder}/test/Microsoft.OpenApi.Hidi.Tests"
+            },
+            "args": [
+                "test",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test",
+            "group": "test",
+            "dependsOn": [
+                "test:odata",
+                "test:hidi"
+            ]
         },
         {
             "label": "coverage:clean",

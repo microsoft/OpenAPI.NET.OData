@@ -12,6 +12,7 @@ trigger:
   tags:
     include:
       - 'v*'
+      - 'hidi-v*'
 pr:
   branches:
     include:
@@ -54,6 +55,10 @@ extends:
               displayName: 'Publish Artifact: Nugets'
               artifactName: Nugets
               targetPath: '$(Build.ArtifactStagingDirectory)'
+            - output: pipelineArtifact
+              displayName: 'Publish Artifact: Hidi Docker Context'
+              artifactName: HidiDockerContext
+              targetPath: '$(Build.ArtifactStagingDirectory)\HidiDockerContext'
           steps:
 
           - task: UseDotNet@2
@@ -65,6 +70,11 @@ extends:
             displayName: 'Use .NET 8'
             inputs:
               version: 8.x
+
+          - task: UseDotNet@2
+            displayName: 'Use .NET 10'
+            inputs:
+              version: 10.x
 
           # Install the nuget tool.
           - task: NuGetToolInstaller@1
@@ -96,11 +106,15 @@ extends:
 
           # Run the Unit test
           - task: DotNetCoreCLI@2
-            displayName: 'test'
+            displayName: 'test OData'
             inputs:
               command: test
-              projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
+              projects: '$(Build.SourcesDirectory)\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj'
               arguments: '--configuration $(BuildConfiguration) --no-build'
+
+          - pwsh: dotnet test --configuration $(BuildConfiguration) --no-build
+            workingDirectory: '$(Build.SourcesDirectory)\test\Microsoft.OpenApi.Hidi.Tests'
+            displayName: 'test Hidi'
 
           - task: EsrpCodeSigning@6
             displayName: 'ESRP CodeSigning'
@@ -156,12 +170,19 @@ extends:
               MaxRetryAttempts: '5'
               PendingAnalysisWaitTimeoutMinutes: '5'
 
-          # Pack
+          # Pack OData
           - task: DotNetCoreCLI@2
-            displayName: 'pack'
+            displayName: 'pack OData'
             inputs:
               command: pack
               projects: src/Microsoft.OpenApi.OData.Reader/Microsoft.OpenAPI.OData.Reader.csproj
+              arguments: '-o $(Build.ArtifactStagingDirectory) --configuration $(BuildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'pack Hidi'
+            inputs:
+              command: pack
+              projects: src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj
               arguments: '-o $(Build.ArtifactStagingDirectory) --configuration $(BuildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg'
 
           - task: EsrpCodeSigning@6
@@ -198,11 +219,93 @@ extends:
               MaxRetryAttempts: '5'
               PendingAnalysisWaitTimeoutMinutes: '5'
 
+          - task: DotNetCoreCLI@2
+            displayName: 'publish Hidi as executable'
+            inputs:
+              command: publish
+              projects: src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj
+              arguments: '-c $(BuildConfiguration) --runtime win-x64 -p:RestoreConfigFile=$(Build.SourcesDirectory)\nuget.config /p:PublishSingleFile=true /p:PackAsTool=false --self-contained --output $(Build.ArtifactStagingDirectory)\Microsoft.OpenApi.Hidi'
+              publishWebProjects: false
+              zipAfterPublish: false
+
+          - task: EsrpCodeSigning@6
+            displayName: 'ESRP CodeSigning Hidi executable'
+            inputs:
+              ConnectedServiceName: 'Federated DevX ESRP Managed Identity Connection'
+              FolderPath: '$(Build.ArtifactStagingDirectory)\Microsoft.OpenApi.Hidi'
+              AppRegistrationClientId: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
+              AppRegistrationTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
+              AuthAKVName: 'akv-prod-eastus'
+              AuthCertName: 'ReferenceLibraryPrivateCert'
+              AuthSignCertName: 'ReferencePackagePublisherCertificate'
+              signConfigType: inlineSignParams
+              inlineOperation: |
+                [
+                    {
+                        "keyCode": "CP-230012",
+                        "operationSetCode": "SigntoolSign",
+                        "parameters": [
+                        {
+                            "parameterName": "OpusName",
+                            "parameterValue": "Microsoft"
+                        },
+                        {
+                            "parameterName": "OpusInfo",
+                            "parameterValue": "http://www.microsoft.com"
+                        },
+                        {
+                            "parameterName": "FileDigest",
+                            "parameterValue": "/fd \"SHA256\""
+                        },
+                        {
+                            "parameterName": "PageHash",
+                            "parameterValue": "/NPH"
+                        },
+                        {
+                            "parameterName": "TimeStamp",
+                            "parameterValue": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                        }
+                        ],
+                        "toolName": "sign",
+                        "toolVersion": "1.0"
+                    },
+                    {
+                        "keyCode": "CP-230012",
+                        "operationSetCode": "SigntoolVerify",
+                        "parameters": [ ],
+                        "toolName": "sign",
+                        "toolVersion": "1.0"
+                    }
+                ]
+              SessionTimeout: '20'
+              MaxConcurrency: '50'
+              MaxRetryAttempts: '5'
+              PendingAnalysisWaitTimeoutMinutes: '5'
+
+          - task: CopyFiles@2
+            displayName: 'Prepare Hidi Docker context'
+            inputs:
+              SourceFolder: '$(Build.SourcesDirectory)'
+              Contents: |
+                Dockerfile
+                Directory.Build.props
+                Build.props
+                README.md
+                src/Build.props
+                src/Microsoft.OpenApi.Hidi/**
+                src/Microsoft.OpenApi.OData.Reader/**
+                tool/Microsoft.OpenApi.Hidi.snk
+                tool/Microsoft.OpenApi.OData.snk
+                !**/bin/**
+                !**/obj/**
+              TargetFolder: '$(Build.ArtifactStagingDirectory)\HidiDockerContext'
+
     - stage: deploy
-      condition: and(contains(variables['build.sourceBranch'], 'refs/tags/v'), succeeded())
+      condition: and(or(startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), startsWith(variables['Build.SourceBranch'], 'refs/tags/hidi-v'), eq(variables['Build.SourceBranch'], 'refs/heads/main')), succeeded())
       dependsOn: build
       jobs:
         - deployment: deploy
+          condition: and(startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), succeeded())
           templateContext:
             type: releaseJob
             isProduction: true
@@ -225,7 +328,32 @@ extends:
                     publishFeedCredentials: 'OpenAPI Nuget Connection'
                     packageParentPath: '$(Pipeline.Workspace)'
 
+        - deployment: deploy_hidi
+          condition: and(startsWith(variables['Build.SourceBranch'], 'refs/tags/hidi-v'), succeeded())
+          templateContext:
+            type: releaseJob
+            isProduction: true
+            inputs:
+            - input: pipelineArtifact
+              artifactName: Nugets
+              targetPath: '$(Pipeline.Workspace)'
+          environment: nuget-org
+          strategy:
+            runOnce:
+              deploy:
+                pool:
+                  vmImage: ubuntu-latest
+                steps:
+                - task: 1ES.PublishNuget@1
+                  displayName: 'NuGet push Hidi'
+                  inputs:
+                    packagesToPush: '$(Pipeline.Workspace)/Microsoft.OpenApi.Hidi.*.nupkg'
+                    nuGetFeedType: external
+                    publishFeedCredentials: 'OpenAPI Nuget Connection'
+                    packageParentPath: '$(Pipeline.Workspace)'
+
         - deployment: create_github_release
+          condition: and(startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), succeeded())
           templateContext:
             type: releaseJob
             isProduction: true
@@ -242,7 +370,7 @@ extends:
                   vmImage: ubuntu-latest
                 steps:
                 - pwsh: |
-                    $artifactName = Get-ChildItem -Path $(Pipeline.Workspace) -Filter Microsoft.OpenApi.*.nupkg -recurse | select -First 1
+                    $artifactName = Get-ChildItem -Path $(Pipeline.Workspace) -Filter Microsoft.OpenApi.OData.*.nupkg -recurse | select -First 1
                     $artifactVersion= $artifactName.Name -replace "Microsoft.OpenApi.OData.", "" -replace ".nupkg", ""
                     #Set Variable $artifactName and $artifactVersion
                     Write-Host "##vso[task.setvariable variable=artifactVersion; isSecret=false;]$artifactVersion"
@@ -258,5 +386,93 @@ extends:
                     tag: 'v$(artifactVersion)'
                     title: 'v$(artifactVersion)'
                     releaseNotesSource: inline
-                    assets: '$(Pipeline.Workspace)\**\*.nupkg'   
+                    assets: '$(Pipeline.Workspace)/**/Microsoft.OpenApi.OData.*.nupkg'
                     addChangeLog: false   
+
+        - deployment: create_hidi_github_release
+          condition: and(startsWith(variables['Build.SourceBranch'], 'refs/tags/hidi-v'), succeeded())
+          templateContext:
+            type: releaseJob
+            isProduction: true
+            inputs:
+            - input: pipelineArtifact
+              artifactName: Nugets
+              targetPath: '$(Pipeline.Workspace)'
+          dependsOn: []
+          environment: kiota-github-releases
+          strategy:
+            runOnce:
+              deploy:
+                pool:
+                  vmImage: ubuntu-latest
+                steps:
+                - pwsh: |
+                    $version = "$(Build.SourceBranch)" -replace "^refs/tags/hidi-v", ""
+                    Write-Host "##vso[task.setvariable variable=hidiVersion;isSecret=false]$version"
+                  displayName: 'Read Hidi version from tag'
+                - task: GitHubRelease@1
+                  displayName: 'GitHub release Hidi'
+                  inputs:
+                    gitHubConnection: 'Github-MaggieKimani1'
+                    action: edit
+                    tagSource: userSpecifiedTag
+                    tag: 'hidi-v$(hidiVersion)'
+                    title: 'Hidi v$(hidiVersion)'
+                    releaseNotesSource: inline
+                    assets: |
+                      $(Pipeline.Workspace)/**/Microsoft.OpenApi.Hidi.*.nupkg
+                      $(Pipeline.Workspace)/**/Microsoft.OpenApi.Hidi/**
+                    addChangeLog: false
+
+        - deployment: deploy_hidi_docker
+          condition: and(or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), startsWith(variables['Build.SourceBranch'], 'refs/tags/hidi-v')), succeeded())
+          templateContext:
+            type: releaseJob
+            isProduction: true
+            inputs:
+            - input: pipelineArtifact
+              artifactName: HidiDockerContext
+              targetPath: '$(Pipeline.Workspace)/HidiDockerContext'
+          environment: docker-images-deploy
+          strategy:
+            runOnce:
+              deploy:
+                pool:
+                  vmImage: ubuntu-latest
+                steps:
+                - task: AzureCLI@2
+                  displayName: 'Login to Azure Container Registry'
+                  inputs:
+                    azureSubscription: 'ACR Images Push Service Connection'
+                    scriptType: bash
+                    scriptLocation: inlineScript
+                    inlineScript: az acr login --name msgraphprodregistry.azurecr.io
+                - bash: |
+                    docker run --privileged --rm msgraphprodregistry.azurecr.io/tonistiigi/binfmt --install all
+                    docker buildx create --use --name hidi-builder
+                    docker buildx inspect --bootstrap
+                  displayName: 'Configure multi-platform build'
+                - bash: |
+                    version=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj | head -1)
+                    runnumber=$(echo "$(Build.BuildNumber)" | grep -o '[0-9]\+$')
+                    docker buildx build \
+                      --platform linux/amd64,linux/arm64/v8 \
+                      --push \
+                      -t "msgraphprodregistry.azurecr.io/public/openapi/hidi:nightly" \
+                      -t "msgraphprodregistry.azurecr.io/public/openapi/hidi:${version}.$(date +'%Y%m%d')${runnumber}" \
+                      .
+                  workingDirectory: '$(Pipeline.Workspace)/HidiDockerContext'
+                  displayName: 'Build and push Hidi nightly image'
+                  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+                - bash: |
+                    version="$(Build.SourceBranch)"
+                    version="${version#refs/tags/hidi-v}"
+                    docker buildx build \
+                      --platform linux/amd64,linux/arm64/v8 \
+                      --push \
+                      -t "msgraphprodregistry.azurecr.io/public/openapi/hidi:latest" \
+                      -t "msgraphprodregistry.azurecr.io/public/openapi/hidi:${version}" \
+                      .
+                  workingDirectory: '$(Pipeline.Workspace)/HidiDockerContext'
+                  displayName: 'Build and push Hidi release image'
+                  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/hidi-v')
