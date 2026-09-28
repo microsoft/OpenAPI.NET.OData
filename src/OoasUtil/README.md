@@ -74,5 +74,6 @@ The content of `trip.json` is similar at https://github.com/xuzhg/OData.OpenAPI/
 
 # Alternative Tool - Hidi
 
-This OoasUtil Command tool is currently not actively maintained, and an alternative command line tool, Hidi, is available for use in converting CSDL to OpenAPI. You can find the link to its README [here](https://github.com/microsoft/OpenAPI.NET/blob/vnext/src/Microsoft.OpenApi.Hidi/readme.md) which includes setup instructions.
-
+This OoasUtil Command tool is currently not actively maintained, and an alternative
+command-line tool, Hidi, is available for converting CSDL to OpenAPI. See the
+[Hidi README](../Microsoft.OpenApi.Hidi/readme.md) for setup and usage instructions.

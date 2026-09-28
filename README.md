@@ -1,10 +1,17 @@
-[![nuget](https://img.shields.io/nuget/v/Microsoft.OpenApi.OData.svg)](https://www.nuget.org/packages/Microsoft.OpenApi.OData/)
+| Package | NuGet |
+| --- | --- |
+| Microsoft.OpenApi.OData | [![nuget](https://img.shields.io/nuget/v/Microsoft.OpenApi.OData.svg)](https://www.nuget.org/packages/Microsoft.OpenApi.OData/) |
+| Microsoft.OpenApi.Hidi | [![nuget](https://img.shields.io/nuget/v/Microsoft.OpenApi.Hidi.svg)](https://www.nuget.org/packages/Microsoft.OpenApi.Hidi/) |
 
 # Convert OData to OpenAPI.NET
 
 ## Introduction
 
 The **Microsoft.OpenAPI.OData.Reader** library helps represent an OData service metadata as an OpenApi description. It converts [OData](http://www.odata.org) [CSDL](http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html), the XML representation of the Entity Data Model (EDM) describing an OData service into [Open API](https://github.com/OAI/OpenAPI-Specification) based on [OpenAPI.NET](http://aka.ms/openapi) object model.
+
+This repository also contains [Hidi](./src/Microsoft.OpenApi.Hidi/readme.md), a
+command-line tool for validating, transforming, filtering, and visualizing OpenAPI
+documents, including conversion from OData CSDL.
 
 The conversion is based on the mapping doc from [OASIS OData OpenAPI v1.0](https://www.oasis-open.org/committees/document.php?document_id=61852&wg_abbrev=odata) and uses the following :
 
