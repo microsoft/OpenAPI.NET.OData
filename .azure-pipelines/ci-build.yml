@@ -100,7 +100,8 @@ extends:
               projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
               arguments: '--configuration $(BuildConfiguration) --no-incremental'
 
-          # Run the Unit test
+          # Both test projects are in the solution, but SDK10 cannot run MTP via VSTest.
+          # Keep OData on VSTest and invoke the hidi MTP executable separately.
           - task: DotNetCoreCLI@2
             displayName: 'test'
             inputs:
