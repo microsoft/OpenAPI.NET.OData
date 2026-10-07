@@ -108,25 +108,34 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           .\install-tool.ps1
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          & .\artifacts\hidi\installed\hidi --help
+          $workspace = (Get-Location).Path
+          $fixtures = Join-Path $workspace 'test' 'Microsoft.OpenApi.Hidi.Tests' 'UtilityFiles'
+          $outputs = Join-Path $workspace 'artifacts' 'hidi'
+          $hidi = Join-Path $outputs 'installed' 'hidi'
+          $sampleInput = Join-Path $fixtures 'SampleOpenApi.yml'
+          $csdlInput = Join-Path $fixtures 'Todo.xml'
+          $jsonOutput = Join-Path $outputs 'openapi.json'
+          $csdlOutput = Join-Path $outputs 'csdl.yaml'
+          $diagramOutput = Join-Path $outputs 'diagram.md'
+          & $hidi --help
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          & .\artifacts\hidi\installed\hidi validate --openapi .\test\Microsoft.OpenApi.Hidi.Tests\UtilityFiles\SampleOpenApi.yml
+          & $hidi validate --openapi $sampleInput
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          & .\artifacts\hidi\installed\hidi transform --openapi .\test\Microsoft.OpenApi.Hidi.Tests\UtilityFiles\SampleOpenApi.yml --format json --version 3.0 --output .\artifacts\hidi\openapi.json --clean-output
+          & $hidi transform --openapi $sampleInput --format json --version 3.0 --output $jsonOutput --clean-output
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          & .\artifacts\hidi\installed\hidi transform --csdl .\test\Microsoft.OpenApi.Hidi.Tests\UtilityFiles\Todo.xml --format yaml --version 3.0 --output .\artifacts\hidi\csdl.yaml --clean-output
+          & $hidi transform --csdl $csdlInput --format yaml --version 3.0 --output $csdlOutput --clean-output
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          $document = Get-Content .\artifacts\hidi\openapi.json -Raw | ConvertFrom-Json
+          $document = Get-Content $jsonOutput -Raw | ConvertFrom-Json
           if ($document.openapi -notlike '3.0.*' -or @($document.paths.PSObject.Properties).Count -eq 0) {
             throw "Expected an OpenAPI 3.0 document with paths from SampleOpenApi."
           }
-          $csdlDocument = Get-Content .\artifacts\hidi\csdl.yaml -Raw
+          $csdlDocument = Get-Content $csdlOutput -Raw
           if ($csdlDocument -notmatch '(?m)^openapi:\s*3\.0\.' -or $csdlDocument -notmatch '(?m)^  /Todos:\s*$' -or $csdlDocument -notmatch '(?m)^  schemas:\s*$') {
             throw "Expected OpenAPI 3.0, /Todos paths and schemas in the CSDL YAML output."
           }
-          & .\artifacts\hidi\installed\hidi show --openapi .\test\Microsoft.OpenApi.Hidi.Tests\UtilityFiles\SampleOpenApi.yml --output .\artifacts\hidi\diagram.md
+          & $hidi show --openapi $sampleInput --output $diagramOutput
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          if (-not (Select-String .\artifacts\hidi\diagram.md -Pattern 'mermaid' -Quiet)) { throw "Expected a Mermaid diagram from hidi show." }
+          if (-not (Select-String $diagramOutput -Pattern 'mermaid' -Quiet)) { throw "Expected a Mermaid diagram from hidi show." }
 
       - name: Upload hidi NuGet artifact (not a release)
         uses: actions/upload-artifact@v4
