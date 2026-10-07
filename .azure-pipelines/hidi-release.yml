@@ -1,0 +1,239 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+
+name: Hidi_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - support/v2
+  tags:
+    include:
+      - hidi-v2.*
+pr:
+  branches:
+    include:
+      - support/v2
+
+variables:
+  buildConfiguration: Release
+  # Keep OFF until the destination PR lands and source publishing is cut over.
+  hidiPublishingEnabled: 'false'
+
+resources:
+  repositories:
+    - repository: 1ESPipelineTemplates
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
+
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows
+    stages:
+      - stage: build
+        jobs:
+          - job: hidi
+            templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  artifactName: Hidi
+                  targetPath: '$(Build.ArtifactStagingDirectory)\hidi'
+            steps:
+              - task: UseDotNet@2
+                displayName: Use .NET 6 for ESRP
+                inputs:
+                  version: 6.x
+              - task: UseDotNet@2
+                displayName: Use .NET 8
+                inputs:
+                  version: 8.x
+              - task: UseDotNet@2
+                displayName: Use .NET 10
+                inputs:
+                  version: 10.x
+              - task: NuGetToolInstaller@1
+                inputs:
+                  versionSpec: '>=6.11.0'
+                  checkLatest: true
+              - pwsh: |
+                  $version = ([xml](Get-Content src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj)).Project.PropertyGroup.Version
+                  if ($version -notmatch '^2\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Expected a hidi 2.x version, got $version." }
+                  if ('$(Build.SourceBranch)' -like 'refs/tags/*' -and '$(Build.SourceBranch)' -ne "refs/tags/hidi-v$version") {
+                    throw "Hidi tag must exactly match the hidi project version."
+                  }
+                  Write-Host "##vso[task.setvariable variable=HidiVersion]$version"
+                  dotnet build src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) -p:GeneratePackageOnBuild=false
+                  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+                  dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c $(buildConfiguration) -- --minimum-expected-tests 1
+                  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+                  dotnet publish src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PackAsTool=false -p:GeneratePackageOnBuild=false -o artifacts\hidi\win-x64
+                  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+                  & .\artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe --help
+                  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+                  New-Item -ItemType Directory -Force artifacts\hidi\signing | Out-Null
+                  Copy-Item src\Microsoft.OpenApi.Hidi\bin\$(buildConfiguration)\net8.0\Microsoft.OpenApi.Hidi.dll artifacts\hidi\signing
+                  Copy-Item artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe artifacts\hidi\signing
+                displayName: Build, test and stage hidi binaries
+              - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
+                displayName: Sign hidi DLL and Windows executable
+                inputs:
+                  ConnectedServiceName: Federated DevX ESRP Managed Identity Connection
+                  FolderPath: 'artifacts\hidi\signing'
+                  Pattern: 'Microsoft.OpenApi.Hidi.*'
+                  AppRegistrationClientId: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
+                  AppRegistrationTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
+                  AuthAKVName: akv-prod-eastus
+                  AuthCertName: ReferenceLibraryPrivateCert
+                  AuthSignCertName: ReferencePackagePublisherCertificate
+                  signConfigType: inlineSignParams
+                  inlineOperation: |
+                    [
+                      {
+                        "keyCode": "CP-230012",
+                        "operationSetCode": "SigntoolSign",
+                        "parameters": [
+                          { "parameterName": "OpusName", "parameterValue": "Microsoft" },
+                          { "parameterName": "OpusInfo", "parameterValue": "http://www.microsoft.com" },
+                          { "parameterName": "FileDigest", "parameterValue": "/fd \"SHA256\"" },
+                          { "parameterName": "PageHash", "parameterValue": "/NPH" },
+                          { "parameterName": "TimeStamp", "parameterValue": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256" }
+                        ],
+                        "toolName": "sign",
+                        "toolVersion": "1.0"
+                      },
+                      {
+                        "keyCode": "CP-230012",
+                        "operationSetCode": "SigntoolVerify",
+                        "parameters": [],
+                        "toolName": "sign",
+                        "toolVersion": "1.0"
+                      }
+                    ]
+                  SessionTimeout: '20'
+                  MaxConcurrency: '50'
+                  MaxRetryAttempts: '5'
+                  PendingAnalysisWaitTimeoutMinutes: '5'
+              - pwsh: |
+                  Copy-Item artifacts\hidi\signing\Microsoft.OpenApi.Hidi.dll src\Microsoft.OpenApi.Hidi\bin\$(buildConfiguration)\net8.0\Microsoft.OpenApi.Hidi.dll
+                  Copy-Item artifacts\hidi\signing\Microsoft.OpenApi.Hidi.exe artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe
+                  New-Item -ItemType Directory -Force '$(Build.ArtifactStagingDirectory)\hidi' | Out-Null
+                  dotnet pack src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) --no-build -o '$(Build.ArtifactStagingDirectory)\hidi'
+                  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+                  Compress-Archive -Path artifacts\hidi\win-x64\* -DestinationPath '$(Build.ArtifactStagingDirectory)\hidi\hidi-win-x64-$(HidiVersion).zip'
+                  Copy-Item artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe '$(Build.ArtifactStagingDirectory)\hidi\Microsoft.OpenApi.Hidi.exe'
+                displayName: Pack signed hidi binaries
+              - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
+                displayName: Sign hidi NuGet package
+                inputs:
+                  ConnectedServiceName: Federated DevX ESRP Managed Identity Connection
+                  FolderPath: '$(Build.ArtifactStagingDirectory)\hidi'
+                  Pattern: 'Microsoft.OpenApi.Hidi.$(HidiVersion).nupkg'
+                  AppRegistrationClientId: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
+                  AppRegistrationTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
+                  AuthAKVName: akv-prod-eastus
+                  AuthCertName: ReferenceLibraryPrivateCert
+                  AuthSignCertName: ReferencePackagePublisherCertificate
+                  signConfigType: inlineSignParams
+                  inlineOperation: |
+                    [
+                      {
+                        "keyCode": "CP-401405",
+                        "operationSetCode": "NuGetSign",
+                        "parameters": [],
+                        "toolName": "sign",
+                        "toolVersion": "1.0"
+                      },
+                      {
+                        "keyCode": "CP-401405",
+                        "operationSetCode": "NuGetVerify",
+                        "parameters": [],
+                        "toolName": "sign",
+                        "toolVersion": "1.0"
+                      }
+                    ]
+                  SessionTimeout: '60'
+                  MaxConcurrency: '50'
+                  MaxRetryAttempts: '5'
+                  PendingAnalysisWaitTimeoutMinutes: '5'
+      - stage: publish
+        dependsOn: build
+        condition: and(succeeded(), eq(variables.hidiPublishingEnabled, 'true'), startsWith(variables['Build.SourceBranch'], 'refs/tags/hidi-v2.'))
+        jobs:
+          - deployment: publish_hidi
+            templateContext:
+              type: releaseJob
+              isProduction: true
+              inputs:
+                - input: pipelineArtifact
+                  artifactName: Hidi
+                  targetPath: '$(Pipeline.Workspace)\hidi'
+            environment: nuget-org
+            strategy:
+              runOnce:
+                deploy:
+                  steps:
+                    - pwsh: |
+                        $tag = '$(Build.SourceBranch)' -replace '^refs/tags/hidi-v', ''
+                        if ([version]($tag -split '-')[0] -le [version]'2.12.2') { throw "Never republish the source migration baseline or an older hidi version." }
+                        $package = "$(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.$tag.nupkg"
+                        if (-not (Test-Path $package)) { throw "Missing exact hidi package: $package" }
+                        Write-Host "##vso[task.setvariable variable=HidiReleaseVersion]$tag"
+                      displayName: Verify new hidi release version and exact package
+                    - task: 1ES.PublishNuget@1
+                      displayName: Publish hidi NuGet tool
+                      inputs:
+                        packagesToPush: '$(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.$(HidiReleaseVersion).nupkg'
+                        nuGetFeedType: external
+                        publishFeedCredentials: OpenAPI Nuget Connection
+                        packageParentPath: '$(Pipeline.Workspace)\hidi'
+                    - task: GitHubRelease@1
+                      displayName: Attach signed hidi release artifacts
+                      inputs:
+                        gitHubConnection: Github-MaggieKimani1
+                        action: edit
+                        tagSource: userSpecifiedTag
+                        tag: 'hidi-v$(HidiReleaseVersion)'
+                        title: 'Hidi v$(HidiReleaseVersion)'
+                        assets: |
+                          $(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.$(HidiReleaseVersion).nupkg
+                          $(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.exe
+                          $(Pipeline.Workspace)\hidi\hidi-win-x64-$(HidiReleaseVersion).zip
+                        addChangeLog: false
+          - deployment: publish_container
+            templateContext:
+              type: releaseJob
+              isProduction: true
+            environment: hidi-container
+            strategy:
+              runOnce:
+                deploy:
+                  pool:
+                    vmImage: ubuntu-latest
+                  steps:
+                    - checkout: self
+                    - pwsh: |
+                        $version = ([xml](Get-Content src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj)).Project.PropertyGroup.Version
+                        if ('$(Build.SourceBranch)' -ne "refs/tags/hidi-v$version") { throw "Hidi tag does not match project version." }
+                        if ([version]($version -split '-')[0] -le [version]'2.12.2') { throw "Do not republish the migration baseline or an older hidi version." }
+                        Write-Host "##vso[task.setvariable variable=HidiReleaseVersion]$version"
+                      displayName: Read independent hidi version
+                    - task: AzureCLI@2
+                      displayName: Publish multi-platform hidi image
+                      inputs:
+                        azureSubscription: ACR Images Push Service Connection
+                        scriptType: bash
+                        scriptLocation: inlineScript
+                        inlineScript: |
+                          set -euo pipefail
+                          az acr login --name msgraphprodregistry
+                          docker run --privileged --rm tonistiigi/binfmt --install all
+                          docker buildx create --use
+                          docker buildx build --platform linux/amd64,linux/arm64/v8 \
+                            --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:$(HidiReleaseVersion)" \
+                            --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:latest" \
+                            --push .

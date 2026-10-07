@@ -13,23 +13,79 @@ Hidi has these key capabilities that enable you to build different scenarios off
 
 ## Installation
 
-Install [Microsoft.OpenApi.Hidi](https://www.nuget.org/packages/Microsoft.OpenApi.Hidi/1.0.0-preview4) package from NuGet by running the following command:  
+Install [Microsoft.OpenApi.Hidi](https://www.nuget.org/packages/Microsoft.OpenApi.Hidi) from NuGet. Hidi 2.x is maintained on this repository's `support/v2` branch and requires .NET 8.
  
 ### .NET CLI(Global)
 
 ```bash
-dotnet tool install --global Microsoft.OpenApi.Hidi --prerelease
+dotnet tool install --global Microsoft.OpenApi.Hidi --version 2.12.2
 ```
  
 ### .NET CLI(local)
 
 ```bash 
-dotnet new tool-manifest #if you are setting up the OpenAPI.NET repo 
-dotnet tool install --local Microsoft.OpenApi.Hidi --prerelease 
+dotnet new tool-manifest # if the repository does not have a tool manifest
+dotnet tool install --local Microsoft.OpenApi.Hidi --version 2.12.2
 ```
  
  
  
+### Build and install from this repository
+
+Run these commands from the repository root with the .NET 10 SDK and .NET 8 runtime installed:
+
+```powershell
+dotnet pack src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c Release -o artifacts\hidi\nuget
+.\install-tool.ps1
+artifacts\hidi\installed\hidi --help
+```
+
+Hidi uses published `Microsoft.OpenApi` and `Microsoft.OpenApi.YamlReader` packages,
+and builds the OData converter from this repository. No sibling source checkout
+is required. Its version is independent of the OData library version.
+The local NuGet configuration excludes remote feeds so this smoke test installs
+the newly built artifact, not the already-published package with the same version.
+
+### Windows executable
+
+```powershell
+dotnet publish src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PackAsTool=false -p:GeneratePackageOnBuild=false -o artifacts\hidi\win-x64
+artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe --help
+```
+
+CI produces a Windows executable artifact without publishing a production release.
+
+### Docker
+
+```powershell
+docker build --tag hidi:local .
+docker run --rm hidi:local --help
+```
+
+Mount input files and a writable output directory when transforming documents:
+
+```powershell
+docker run --rm --mount "type=bind,source=$PWD\test\Microsoft.OpenApi.Hidi.Tests\UtilityFiles\SampleOpenApi.yml,target=/app/openapi.yml,readonly" --mount "type=bind,source=$PWD\artifacts\hidi,target=/app/output" hidi:local transform --openapi /app/openapi.yml --output /app/output/result.json --format json
+```
+
+Local/CI builds use the public-only strong-name identity. Official release
+artifacts are signed in Azure Pipelines; private signing keys do not belong in
+this repository. The migration baseline 2.12.2 is already published. Destination
+NuGet, GitHub release, and Docker publishing are disabled until source cutover,
+and the first destination release must advance the hidi version. OData releases
+use separate artifacts and tags.
+
+Docker builds opt into `HidiPublicSignBuild=true` for the local OData project,
+using its own public-only key without changing normal OData signing behavior.
+Private `.snk` resources are excluded from the Docker context.
+
+The gated official pipeline retains the consumer image
+`mcr.microsoft.com/openapi/hidi`, backed by
+`msgraphprodregistry.azurecr.io/public/openapi/hidi`. Stable images use `latest`
+and the independent hidi version, for `linux/amd64` and `linux/arm64/v8`.
+No image is pushed during this migration. Privileged cross-platform emulation
+setup belongs only in the authorized CI pipeline, not a shared local environment.
+
 ## How to use Hidi
 
 Once you've installed the package locally, you can invoke the Hidi by running: `hidi [command]`. You can access the list of command options we have by running `hidi -h` 

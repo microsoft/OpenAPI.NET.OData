@@ -8,7 +8,9 @@
     <PackAsTool>true</PackAsTool>
     <Nullable>enable</Nullable>
     <ToolCommandName>hidi</ToolCommandName>
-    <PackageOutputPath>./../../artifacts</PackageOutputPath>
+    <PackageId>Microsoft.OpenApi.Hidi</PackageId>
+    <Version>2.12.2</Version>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts\hidi\nuget</PackageOutputPath>
     <Description>OpenAPI.NET CLI tool for slicing OpenAPI documents</Description>
     <SignAssembly>true</SignAssembly>
     <!-- https://github.com/dotnet/sourcelink/blob/main/docs/README.md#embeduntrackedsources -->
@@ -16,7 +18,9 @@
     <NoWarn>$(NoWarn);NU5048;NU5104;CA1848;</NoWarn>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <AnalysisMode>All</AnalysisMode>
-    <AssemblyOriginatorKeyFile>..\Microsoft.OpenApi.snk</AssemblyOriginatorKeyFile>
+    <PublicSign>true</PublicSign>
+    <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.Hidi.public.snk</AssemblyOriginatorKeyFile>
+    <PackageTags>Microsoft OpenApi Hidi CLI</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,14 +43,14 @@
     </PackageReference>
     <PackageReference Include="System.CommandLine" Version="2.0.10" />
     <PackageReference Include="Microsoft.OData.Edm" Version="8.4.4" />
-    <PackageReference Include="Microsoft.OpenApi.OData" Version="2.2.1" />
+    <PackageReference Include="Microsoft.OpenApi" Version="2.12.2" />
+    <PackageReference Include="Microsoft.OpenApi.YamlReader" Version="2.12.2" />
     <PackageReference Include="Microsoft.OpenApi.ApiManifest" Version="2.0.0-preview5" />
     <PackageReference Include="System.CommandLine.Hosting" Version="0.4.0-alpha.25306.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.OpenApi.YamlReader\Microsoft.OpenApi.YamlReader.csproj" />
-    <ProjectReference Include="..\Microsoft.OpenApi\Microsoft.OpenApi.csproj" />
+    <ProjectReference Include="..\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj" />
   </ItemGroup>
 
   <!-- Make internals available for Unit Testing -->

@@ -5,7 +5,7 @@
     <Company>Microsoft</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET</RepositoryUrl>
+    <RepositoryUrl>https://github.com/microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Microsoft/OpenAPI.NET.OData</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/microsoft/OpenAPI.NET.OData/releases</PackageReleaseNotes>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>

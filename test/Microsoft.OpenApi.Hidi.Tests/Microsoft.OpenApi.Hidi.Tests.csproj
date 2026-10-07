@@ -9,7 +9,8 @@
     <AnalysisMode>All</AnalysisMode>
     <NoWarn>CA2007</NoWarn>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\src\Microsoft.OpenApi.snk</AssemblyOriginatorKeyFile>
+    <PublicSign>true</PublicSign>
+    <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.Hidi.public.snk</AssemblyOriginatorKeyFile>
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
   </PropertyGroup>
 
@@ -24,8 +25,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj" />
-    <ProjectReference Include="..\..\src\Microsoft.OpenApi.YamlReader\Microsoft.OpenApi.YamlReader.csproj" />
-    <ProjectReference Include="..\..\src\Microsoft.OpenApi\Microsoft.OpenApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

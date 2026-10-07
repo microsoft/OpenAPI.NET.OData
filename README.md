@@ -86,6 +86,23 @@ The `GetEdmModel()` method can load a model in 3 ways:
 
 The OpenAPI.OData.reader nuget package is at: [https://www.nuget.org/packages/Microsoft.OpenApi.OData/](https://www.nuget.org/packages/Microsoft.OpenApi.OData)
 
+## Hidi command-line tool
+
+[Hidi](src/Microsoft.OpenApi.Hidi/readme.md) validates, transforms, filters, and
+visualizes OpenAPI documents and converts OData CSDL to OpenAPI. It is distributed
+as the `Microsoft.OpenApi.Hidi` NuGet tool, a Windows executable, and a Docker image.
+The command remains `hidi`.
+
+The `support/v2` branch maintains hidi 2.x separately from the OData library
+version. Hidi requires .NET 8 to run; building the repository and running hidi
+tests requires the .NET 10 SDK. Existing OData tests still use .NET 8 and VSTest.
+
+Hidi's filtered history was imported with a merge, not squashed. **Merge this
+migration PR using a merge commit, not squash or rebase**, so the canonical
+imported commits can also be retained by the later main-branch migration.
+Destination hidi release and production publishing are disabled until source
+cutover; OpenAPI.NET remains the publisher in the meantime.
+
 ---
 
 # Contributing
