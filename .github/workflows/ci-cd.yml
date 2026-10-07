@@ -138,7 +138,7 @@ jobs:
           if (-not (Select-String $diagramOutput -Pattern 'mermaid' -Quiet)) { throw "Expected a Mermaid diagram from hidi show." }
 
       - name: Upload hidi NuGet artifact (not a release)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: hidi-nuget
           path: artifacts/hidi/nuget
@@ -158,8 +158,8 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-dotnet@v5
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
         with:
           dotnet-version: |
             8.0.x
@@ -172,7 +172,7 @@ jobs:
           & .\artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe --help
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Compress-Archive -Path .\artifacts\hidi\win-x64\* -DestinationPath .\artifacts\hidi\hidi-win-x64.zip
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: hidi-windows-executable
           path: |
@@ -186,7 +186,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
       - name: Build and smoke-test Docker image (no push)
         run: |
           docker build --tag hidi:ci .
