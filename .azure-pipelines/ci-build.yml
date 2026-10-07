@@ -66,6 +66,11 @@ extends:
             inputs:
               version: 8.x
 
+          - task: UseDotNet@2
+            displayName: 'Use .NET 10'
+            inputs:
+              version: 10.x
+
           # Install the nuget tool.
           - task: NuGetToolInstaller@1
             displayName: 'Use NuGet >=6.11.0'
@@ -99,8 +104,13 @@ extends:
             displayName: 'test'
             inputs:
               command: test
-              projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
+              projects: '$(Build.SourcesDirectory)\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj'
               arguments: '--configuration $(BuildConfiguration) --no-build'
+
+          - pwsh: |
+              dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c $(BuildConfiguration) --no-build -- --minimum-expected-tests 1
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            displayName: 'Test hidi (Microsoft.Testing.Platform)'
 
           - task: EsrpCodeSigning@6
             displayName: 'ESRP CodeSigning'
@@ -242,7 +252,7 @@ extends:
                   vmImage: ubuntu-latest
                 steps:
                 - pwsh: |
-                    $artifactName = Get-ChildItem -Path $(Pipeline.Workspace) -Filter Microsoft.OpenApi.*.nupkg -recurse | select -First 1
+                    $artifactName = Get-ChildItem -Path $(Pipeline.Workspace) -Filter Microsoft.OpenApi.OData.*.nupkg -recurse | select -First 1
                     $artifactVersion= $artifactName.Name -replace "Microsoft.OpenApi.OData.", "" -replace ".nupkg", ""
                     #Set Variable $artifactName and $artifactVersion
                     Write-Host "##vso[task.setvariable variable=artifactVersion; isSecret=false;]$artifactVersion"
@@ -258,5 +268,5 @@ extends:
                     tag: 'v$(artifactVersion)'
                     title: 'v$(artifactVersion)'
                     releaseNotesSource: inline
-                    assets: '$(Pipeline.Workspace)\**\*.nupkg'   
+                    assets: '$(Pipeline.Workspace)\**\Microsoft.OpenApi.OData.*.nupkg'
                     addChangeLog: false   

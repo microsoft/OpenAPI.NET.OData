@@ -13,20 +13,62 @@ Hidi has these key capabilities that enable you to build different scenarios off
 
 ## Installation
 
-Install [Microsoft.OpenApi.Hidi](https://www.nuget.org/packages/Microsoft.OpenApi.Hidi/1.0.0-preview4) package from NuGet by running the following command:  
+Install [Microsoft.OpenApi.Hidi](https://www.nuget.org/packages/Microsoft.OpenApi.Hidi)
+from NuGet. Hidi 3.x is maintained on this repository's `main` branch and requires
+.NET 8. Hidi 2.x is maintained separately on `support/v2`.
 
 ### .NET CLI(Global)
 
 ```bash
-dotnet tool install --global Microsoft.OpenApi.Hidi --prerelease
+dotnet tool install --global Microsoft.OpenApi.Hidi --version 3.10.2
 ```
  
 ### .NET CLI(local)
 
 ```bash
-dotnet new tool-manifest #if you are setting up the OpenAPI.NET repo 
-dotnet tool install --local Microsoft.OpenApi.Hidi --prerelease 
+dotnet new tool-manifest # if the repository does not have a tool manifest
+dotnet tool install --local Microsoft.OpenApi.Hidi --version 3.10.2
 ```
+
+### Build and install from this repository
+
+Run these commands from the repository root with the .NET 10 SDK and .NET 8 runtime installed:
+
+```powershell
+dotnet pack src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c Release -o artifacts\hidi\nuget
+.\install-tool.ps1
+artifacts\hidi\installed\hidi --help
+```
+
+Hidi uses published `Microsoft.OpenApi` and `Microsoft.OpenApi.YamlReader` 3.10.2
+packages, and builds the OData converter from this repository. No sibling source
+checkout is required. Its version is independent of the OData library version.
+The local NuGet configuration excludes remote feeds so this smoke test installs
+the newly built artifact, not the already-published package with the same version.
+
+### Tests and coverage
+
+Hidi tests use Microsoft.Testing.Platform; the existing OData tests continue to
+use VSTest. Run Hidi tests and collect coverage independently:
+
+```powershell
+dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c Release -- --minimum-expected-tests 1
+dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c Release --no-build -- --minimum-expected-tests 1 --coverlet --results-directory artifacts\hidi\coverage
+```
+
+The Hidi-only `testconfig.json` explicitly includes the Hidi assembly and excludes
+test/generated code. This authoritative configuration prevents Coverlet's
+dynamic namespace exclusions from excluding `Microsoft.OpenApi.Hidi` itself.
+The Sonar workflow requires an OpenCover report with covered Hidi sequence points.
+
+### Windows executable
+
+```powershell
+dotnet publish src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PackAsTool=false -p:GeneratePackageOnBuild=false -o artifacts\hidi\win-x64
+artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe --help
+```
+
+CI produces a Windows executable artifact without publishing a production release.
 
 ### Docker
 
@@ -35,6 +77,38 @@ Hidi is also available as a Docker image:
 ```bash
 docker pull mcr.microsoft.com/openapi/hidi
 ```
+
+Build the destination image locally without pushing it:
+
+```powershell
+docker build --tag hidi:local .
+docker run --rm hidi:local --help
+```
+
+Mount input files and a writable output directory when transforming documents:
+
+```powershell
+docker run --rm --mount "type=bind,source=$PWD\test\Microsoft.OpenApi.Hidi.Tests\UtilityFiles\SampleOpenApi.yml,target=/app/openapi.yml,readonly" --mount "type=bind,source=$PWD\artifacts\hidi,target=/app/output" hidi:local transform --openapi /app/openapi.yml --output /app/output/result.json --format json
+```
+
+Local/CI builds use the public-only Hidi strong-name identity. Official release
+artifacts are signed in Azure Pipelines. Docker builds opt into
+`HidiPublicSignBuild=true` for the local OData project, using its own public-only
+key without changing normal OData signing. Private `.snk` resources are excluded
+from the Docker context and must not be copied into new Hidi resources.
+
+The migration baseline 3.10.2 is already published. Destination Hidi NuGet,
+GitHub release, stable Docker and preview Docker publishing are disabled until
+source cutover. The first destination stable release must advance the Hidi
+version; OData releases use separate artifacts and tags.
+
+The gated official pipeline retains the consumer image
+`mcr.microsoft.com/openapi/hidi`, backed by
+`msgraphprodregistry.azurecr.io/public/openapi/hidi`. Stable images use `latest`
+and the independent Hidi version. Main previews use `nightly` and
+`VERSION.YYYYMMDDRUNNUM`, for `linux/amd64` and `linux/arm64/v8`.
+No image is pushed during this migration. Privileged cross-platform emulation
+setup belongs only in the authorized CI pipeline, not a shared local environment.
  
 ## How to use Hidi
 
@@ -84,7 +158,7 @@ This command accepts the following parameters:
 	• --csdl-filter (--csf) - a filter parameter that a user can use to select a subset of a large CSDL file. They do so by providing a comma delimited list of EntitySet and Singleton names that appear in the EntityContainer. 
 	• --output (-o) - Output directory path for the transformed document.
 	• --clean-output (--co) - an optional param that allows a user to overwrite an existing file.  
-	• --version (-v) - OpenAPI specification version.
+	• --version (-v) - OpenAPI specification version (2.0, 3.0, 3.1 or 3.2; defaults to 3.2).
     • --metadata-version (--mv) - the metadata version to use.
 	• --format (-f) - File format 
     • --terse-output (--to) - Produce terse json output
