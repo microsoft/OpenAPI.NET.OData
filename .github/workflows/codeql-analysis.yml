@@ -64,7 +64,7 @@ jobs:
     #  uses: github/codeql-action/autobuild@v2
     
     - name: build
-      run: dotnet build src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c Release
+      run: dotnet build Microsoft.OpenApi.OData.sln -c Release
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
