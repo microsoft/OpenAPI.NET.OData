@@ -78,6 +78,21 @@ extends:
               versionSpec: '>=6.11.0'
               checkLatest: true
 
+          - task: NuGetAuthenticate@1
+            displayName: 'Authenticate approved NuGet feed'
+
+          - pwsh: |
+              @'
+              <?xml version="1.0" encoding="utf-8"?>
+              <configuration>
+                <packageSources>
+                  <clear />
+                  <add key="GraphDeveloperExperiences_Public" value="https://microsoftgraph.pkgs.visualstudio.com/0985d294-5762-4bc2-a565-161ef349ca3e/_packaging/GraphDeveloperExperiences_Public/nuget/v3/index.json" />
+                </packageSources>
+              </configuration>
+              '@ | Set-Content -Path '$(Build.SourcesDirectory)\nuget.config'
+            displayName: 'Configure approved NuGet feed'
+
           # Build the Product project
           - task: DotNetCoreCLI@2
             displayName: 'build'

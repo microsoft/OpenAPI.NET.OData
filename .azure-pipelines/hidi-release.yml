@@ -60,6 +60,19 @@ extends:
                 inputs:
                   versionSpec: '>=6.11.0'
                   checkLatest: true
+              - task: NuGetAuthenticate@1
+                displayName: Authenticate approved NuGet feed
+              - pwsh: |
+                  @'
+                  <?xml version="1.0" encoding="utf-8"?>
+                  <configuration>
+                    <packageSources>
+                      <clear />
+                      <add key="GraphDeveloperExperiences_Public" value="https://microsoftgraph.pkgs.visualstudio.com/0985d294-5762-4bc2-a565-161ef349ca3e/_packaging/GraphDeveloperExperiences_Public/nuget/v3/index.json" />
+                    </packageSources>
+                  </configuration>
+                  '@ | Set-Content -Path '$(Build.SourcesDirectory)\nuget.config'
+                displayName: Configure approved NuGet feed
               - pwsh: |
                   $version = ([xml](Get-Content src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj)).Project.PropertyGroup.Version
                   if ($version -notmatch '^2\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Expected a hidi 2.x version, got $version." }
