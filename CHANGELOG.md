@@ -1,5 +1,25 @@
 # Changelog
 
+## [3.3.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v3.2.1...v3.3.0) (2026-10-09)
+
+
+### Features
+
+* **hidi:** import filtered main history ([5574ccc](https://github.com/microsoft/OpenAPI.NET.OData/commit/5574ccc6d8d129d7a49729619fac3e3e36d334fd))
+
+
+### Bug Fixes
+
+* **hidi:** authenticate official Docker restores ([59c8956](https://github.com/microsoft/OpenAPI.NET.OData/commit/59c8956c8ef819d9722f042b4a7e7144f3f75cbf))
+* **hidi:** authenticate official Docker restores via BuildKit secrets ([a86a146](https://github.com/microsoft/OpenAPI.NET.OData/commit/a86a14613e4e1cfff966aed55248a4f0e06b658b))
+* **hidi:** automate independent main version PRs ([ec73824](https://github.com/microsoft/OpenAPI.NET.OData/commit/ec73824ba13d70538a30a31a11b8430519592079))
+* **hidi:** bootstrap version labels and isolate legacy tag history ([6d21bbe](https://github.com/microsoft/OpenAPI.NET.OData/commit/6d21bbecdc813480b2366a67222ce92ca033eb53))
+* **hidi:** preserve main ESRP NuGet release handoff ([db4c6dc](https://github.com/microsoft/OpenAPI.NET.OData/commit/db4c6dc68c72aa8ab949c1ddfa13004ceaa05446))
+* **hidi:** preserve main ESRP NuGet release handoff ([125e4ff](https://github.com/microsoft/OpenAPI.NET.OData/commit/125e4ff6f92ac26bb2771ef0469b08be1d0a2313))
+* **hidi:** track independent versions with standard release-please components ([0b8e521](https://github.com/microsoft/OpenAPI.NET.OData/commit/0b8e521a1c7fc8be74d9070ab7229d66da5d9549))
+* **hidi:** use standard multi-component release-please config ([6c34176](https://github.com/microsoft/OpenAPI.NET.OData/commit/6c34176c33645548608544c6e5e3c5133f9567b4))
+* **release:** publish only the component selected by its tag ([e686e8c](https://github.com/microsoft/OpenAPI.NET.OData/commit/e686e8c6730ad9ddc8ee2e8931e71c695b39fe38))
+
 ## [3.2.1](https://github.com/microsoft/OpenAPI.NET.OData/compare/v3.2.0...v3.2.1) (2026-04-14)
 
 
