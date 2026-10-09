@@ -89,8 +89,10 @@ access, the ESRP connection and protected `nuget-org` environment authorization
 before cutover; local packaging does not prove production signing or publishing.
 
 The private-feed helper has isolated Pester 5.7.1 tests (no live feed access).
-Run `Invoke-Pester .\test\scripts\check-nuget-package-published.Tests.ps1` to
-execute the cases. The Sonar workflow also measures helper line coverage and
+Run `Invoke-Pester .\test\Microsoft.OpenApi.Hidi.Tests\check-nuget-package-published.Tests.ps1` to
+execute the cases. The test resides physically inside the Hidi test project so
+SonarScanner for .NET classifies it as test code, rather than root source code.
+The Sonar workflow also measures helper line coverage and
 imports a generic coverage report alongside the existing C# OpenCover reports.
 
 ### Windows executable

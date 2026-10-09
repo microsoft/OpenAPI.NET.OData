@@ -29,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\scripts\check-nuget-package-published.Tests.ps1" Link="Scripts\check-nuget-package-published.Tests.ps1" />
     <None Update="testconfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
