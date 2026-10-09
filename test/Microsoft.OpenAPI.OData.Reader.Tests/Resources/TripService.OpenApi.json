@@ -1418,6 +1418,9 @@
                       "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
                     },
                     {
+                      "enum": [
+                        null
+                      ],
                       "nullable": true
                     }
                   ]
@@ -1452,6 +1455,9 @@
                       "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                     },
                     {
+                      "enum": [
+                        null
+                      ],
                       "nullable": true
                     }
                   ]
@@ -11687,6 +11693,9 @@
                         "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       },
                       {
+                        "enum": [
+                          null
+                        ],
                         "nullable": true
                       }
                     ]
@@ -16963,6 +16972,9 @@
                         "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       },
                       {
+                        "enum": [
+                          null
+                        ],
                         "nullable": true
                       }
                     ]
@@ -30713,6 +30725,9 @@
                         "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                       },
                       {
+                        "enum": [
+                          null
+                        ],
                         "nullable": true
                       }
                     ]
@@ -33731,6 +33746,9 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ]
@@ -33763,6 +33781,9 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -33813,6 +33834,9 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ]
@@ -33833,6 +33857,9 @@
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ]
@@ -33875,6 +33902,9 @@
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                   },
                   {
+                    "enum": [
+                      null
+                    ],
                     "nullable": true
                   }
                 ],
@@ -34018,6 +34048,9 @@
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
                   },
                   {
+                    "enum": [
+                      null
+                    ],
                     "nullable": true
                   }
                 ]
@@ -34066,6 +34099,9 @@
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
                   },
                   {
+                    "enum": [
+                      null
+                    ],
                     "nullable": true
                   }
                 ],
@@ -34077,6 +34113,9 @@
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
                   },
                   {
+                    "enum": [
+                      null
+                    ],
                     "nullable": true
                   }
                 ],
@@ -34088,6 +34127,9 @@
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
                   },
                   {
+                    "enum": [
+                      null
+                    ],
                     "nullable": true
                   }
                 ],
@@ -34158,6 +34200,9 @@
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
                   },
                   {
+                    "enum": [
+                      null
+                    ],
                     "nullable": true
                   }
                 ]
@@ -34501,6 +34546,9 @@
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
                 },
                 {
+                  "enum": [
+                    null
+                  ],
                   "nullable": true
                 }
               ]

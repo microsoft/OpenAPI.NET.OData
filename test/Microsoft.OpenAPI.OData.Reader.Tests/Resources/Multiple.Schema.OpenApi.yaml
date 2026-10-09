@@ -3528,7 +3528,9 @@ components:
         Document:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
       example:
         Id: 0
@@ -3805,17 +3807,23 @@ components:
         Library:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
         LastRevisionFile:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
         SourceDocument:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
         SourceDocumentChildren:
           type: array
@@ -3928,7 +3936,9 @@ components:
         Document:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
       example:
         ClassInstance: 0
@@ -3981,12 +3991,16 @@ components:
         Document:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
         Tag:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
       example:
         DocumentId: 0
@@ -4186,17 +4200,23 @@ components:
         LibraryParent:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
         Type:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
         SourceFolder:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
         Documents:
           type: array
@@ -4333,12 +4353,16 @@ components:
         MasterLibraryType:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
         ParentLibraryTypes:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
         MasterLibraryTypeChildren:
           type: array
@@ -4725,7 +4749,9 @@ components:
         Document:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-            - nullable: true
+            - enum:
+                - null
+              nullable: true
           x-ms-navigationProperty: true
       example:
         Id: 0
