@@ -48,3 +48,55 @@ The recommended commit types used are:
 - __chore__ for miscallaneous non-sdk changesin the repo e.g. removing an unused file
 
 Adding an exclamation mark after the commit type (`feat!`) or footer with the prefix __BREAKING CHANGE:__ will cause an increment of the _major_ version.
+
+## Independent Hidi version automation
+
+OData and Hidi retain separate root release-please configs and version manifests.
+Hidi's package directory is deliberately `.`: a package rooted at
+`src/Microsoft.OpenApi.Hidi` would miss its tests, Dockerfile, installer and
+NuGet helper outside that directory. Routing is based on changed files, not the
+optional Conventional Commit scope. A mixed commit can affect both components.
+
+The pinned runner in `.github/release-please` uses release-please's registered
+plugin API to apply `exclude-paths` to exact files as well as directories.
+The upstream engine's directory-only matching does not exclude a root filename.
+Hidi source, tests, readme, Docker distribution, installer, public identity,
+local NuGet config, private-feed helper and Hidi release config/pipeline affect
+only Hidi. OData source/tests/docs, its release config/manifest/changelog and
+`Directory.Build.props` affect only OData. Shared root README, contribution
+guidance, solution, SDK and build files can affect both; shared GitHub CI and
+the OData CI pipeline do not trigger releases. Existing OData exclusions,
+including its public signing key, remain in place.
+
+The OData job still creates GitHub releases before opening version PRs.
+The Hidi job opens **version PRs only**, with separate component branches and
+`autorelease: hidi-pending` labels. After a version PR merges, the runner verifies
+its parsed version against the Hidi manifest, uses that merge as the next commit
+boundary, and changes its label to `autorelease: hidi-versioned`. No Hidi tag or
+GitHub release is created, and Hidi labels cannot block OData automation.
+Missing, inconsistent or unreachable checkpoints fail rather than replaying
+old commits. Production publishing and cutover remain separately gated.
+
+Hidi starts at the already-published 3.10.2 on `main` and 2.12.2 on `support/v2`.
+Fixes increment its patch; features increment its minor. Generated versions must
+remain above the migration floor and within that branch's major, matching the
+official pipeline's `hidi-v3.*` / `hidi-v2.*` contracts. A breaking-change major
+bump fails before opening a version PR; moving to a new major requires a separate
+branch/pipeline decision. Hidi PRs update the project `<Version>`, its manifest
+and changelog, and annotated install examples, not OData's version or Hidi's
+upstream package dependency versions.
+
+Run the offline regression tests with Node 24:
+
+```powershell
+Push-Location .github\release-please
+npm ci --ignore-scripts --no-audit --no-fund
+npm test
+Pop-Location
+```
+
+These tests exercise the pinned engine's actual plans and XML/changelog updates,
+including two merged Hidi version-PR cycles without tags. The release workflow
+runs them before any API writes, including on relevant pull requests. Sonar also
+runs measured native Node coverage and imports its LCOV report alongside the
+existing C# and PowerShell coverage; the runner is not excluded from analysis.

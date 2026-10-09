@@ -20,14 +20,14 @@ from NuGet. Hidi 3.x is maintained on this repository's `main` branch and requir
 ### .NET CLI(Global)
 
 ```bash
-dotnet tool install --global Microsoft.OpenApi.Hidi --version 3.10.2
+dotnet tool install --global Microsoft.OpenApi.Hidi --version 3.10.2 # x-release-please-version
 ```
  
 ### .NET CLI(local)
 
 ```bash
 dotnet new tool-manifest # if the repository does not have a tool manifest
-dotnet tool install --local Microsoft.OpenApi.Hidi --version 3.10.2
+dotnet tool install --local Microsoft.OpenApi.Hidi --version 3.10.2 # x-release-please-version
 ```
 
 ### Build and install from this repository

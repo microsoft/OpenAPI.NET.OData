@@ -1,5 +1,6 @@
 {
   "bootstrap-sha": "4f9bad6ea7d25e8596c0ca214975e690d925e6e7",
+  "plugins": ["exact-path-exclusions"],
   "exclude-paths": [
     ".azure-pipelines",
     ".github",
@@ -18,6 +19,8 @@
     "Dockerfile",
     ".dockerignore",
     "install-tool.ps1",
+    "scripts/check-nuget-package-published.ps1",
+    "test/scripts/check-nuget-package-published.Tests.ps1",
     "hidi-release-please-config.json",
     ".hidi-release-please-manifest.json"
   ],

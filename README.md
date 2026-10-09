@@ -94,6 +94,9 @@ The NuGet package remains `Microsoft.OpenApi.Hidi` and the command remains `hidi
 Hidi 3.x is maintained on `main`; Hidi 2.x is maintained on `support/v2`.
 Both tracks use independent versions and require the .NET 8 runtime.
 Building this repository, including the Hidi tests, requires the .NET 10 SDK.
+Hidi's release-please version PRs update its own project, manifest and changelog;
+OData retains separate versioning. See [independent Hidi version automation](CONTRIBUTING.md#independent-hidi-version-automation)
+for changed-file routing and the tag-free version-PR lifecycle.
 Destination Hidi release publishing is disabled during the migration; the
 source repository remains intact until the destination PRs are completed.
 

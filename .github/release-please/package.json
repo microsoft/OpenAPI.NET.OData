@@ -1,0 +1,12 @@
+{
+  "name": "openapi-odata-release-automation",
+  "private": true,
+  "scripts": {
+    "test": "node --test run.test.cjs",
+    "coverage": "cd ../.. && node --test --experimental-test-coverage --test-coverage-include=.github/release-please/run.cjs --test-coverage-lines=80 --test-coverage-functions=80 --test-reporter=spec --test-reporter=lcov --test-reporter-destination=stdout --test-reporter-destination=artifacts/release-please/lcov.info .github/release-please/run.test.cjs"
+  },
+  "dependencies": {
+    "@actions/core": "1.11.1",
+    "release-please": "17.6.0"
+  }
+}

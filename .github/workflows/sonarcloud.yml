@@ -49,6 +49,23 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+      - name: Test release automation with measured JavaScript coverage
+        shell: pwsh
+        working-directory: .github/release-please
+        run: |
+          New-Item -ItemType Directory -Force ..\..\artifacts\release-please | Out-Null
+          npm ci --ignore-scripts --no-audit --no-fund
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run coverage
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $lcov = Get-Content ..\..\artifacts\release-please\lcov.info
+          $sources = @($lcov | Where-Object { $_ -like 'SF:*' })
+          if ($sources.Count -ne 1 -or $sources[0] -notmatch '^SF:\.github[\\/]release-please[\\/]run\.cjs$') {
+            throw 'Expected measured LCOV for the repository-relative release runner.'
+          }
       - name: Cache SonarCloud packages
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
@@ -120,7 +137,7 @@ jobs:
           CoverletOutputFormat: 'opencover' # https://github.com/microsoft/vstest/issues/4014#issuecomment-1307913682
         shell: pwsh
         run: |
-          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="test/**/coverage.net8.0.opencover.xml,artifacts/hidi/coverage/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml"
+          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="test/**/coverage.net8.0.opencover.xml,artifacts/hidi/coverage/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml" /d:sonar.javascript.lcov.reportPaths="artifacts/release-please/lcov.info" /d:sonar.test.inclusions="test/**,**/run.test.cjs"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet workload restore
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
