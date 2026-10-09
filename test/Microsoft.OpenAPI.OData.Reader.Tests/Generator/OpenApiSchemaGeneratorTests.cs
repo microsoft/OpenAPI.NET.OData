@@ -391,6 +391,9 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.userInsightsSettings""
             },
             {
+              ""enum"": [
+                null
+              ],
               ""nullable"": true
             }
           ],
@@ -403,6 +406,9 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.contactMergeSuggestions""
             },
             {
+              ""enum"": [
+                null
+              ],
               ""nullable"": true
             }
           ],
@@ -415,6 +421,9 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.regionalAndLanguageSettings""
             },
             {
+              ""enum"": [
+                null
+              ],
               ""nullable"": true
             }
           ],
@@ -427,6 +436,9 @@ namespace Microsoft.OpenApi.OData.Tests
               ""$ref"": ""#/components/schemas/microsoft.graph.shiftPreferences""
             },
             {
+              ""enum"": [
+                null
+              ],
               ""nullable"": true
             }
           ],
@@ -907,7 +919,8 @@ namespace Microsoft.OpenApi.OData.Tests
             string json = await schema.SerializeAsJsonAsync(specVersion);
             _output.WriteLine(json);
 
-            var expected = JsonNode.Parse(specVersion switch {
+            var expected = JsonNode.Parse(specVersion switch
+            {
                 OpenApiSpecVersion.OpenApi2_0 =>
                 """
                 {
@@ -922,6 +935,9 @@ namespace Microsoft.OpenApi.OData.Tests
                       "$ref": "#/components/schemas/DefaultNs.Color"
                     },
                     {
+                      "enum": [
+                        null
+                      ],
                       "nullable": true
                     }
                   ],

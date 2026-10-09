@@ -5016,6 +5016,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -5364,6 +5367,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -5375,6 +5381,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -5386,6 +5395,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -5535,6 +5547,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -5605,6 +5620,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -5616,6 +5634,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -5864,6 +5885,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -5875,6 +5899,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -5886,6 +5913,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -6064,6 +6094,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -6075,6 +6108,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
@@ -6590,6 +6626,9 @@
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
               },
               {
+                "enum": [
+                  null
+                ],
                 "nullable": true
               }
             ],
