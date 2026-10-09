@@ -49,6 +49,16 @@ extends:
                   artifactName: HidiDockerContext
                   targetPath: '$(Build.ArtifactStagingDirectory)\HidiDockerContext'
             steps:
+              - pwsh: |
+                  $ErrorActionPreference = 'Stop'
+                  $version = ([xml](Get-Content -LiteralPath src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj)).SelectSingleNode('/Project/PropertyGroup/Version').InnerText
+                  if ($version -cnotmatch '^2\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Expected a hidi 2.x version, got $version." }
+                  $sourceBranch = $env:BUILD_SOURCEBRANCH
+                  if ($sourceBranch.StartsWith('refs/tags/') -and $sourceBranch -cne "refs/tags/hidi-v$version") {
+                    throw "This pipeline only releases hidi-v2.* tags exactly matching the hidi project version."
+                  }
+                  Write-Host "##vso[task.setvariable variable=HidiVersion]$version"
+                displayName: Verify Hidi component tag and project version
               - task: CopyFiles@2
                 displayName: Stage public-only hidi Docker context
                 inputs:
@@ -103,12 +113,6 @@ extends:
                   '@ | Set-Content -Path '$(Build.SourcesDirectory)\nuget.config'
                 displayName: Configure approved NuGet feed
               - pwsh: |
-                  $version = ([xml](Get-Content src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj)).Project.PropertyGroup.Version
-                  if ($version -notmatch '^2\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Expected a hidi 2.x version, got $version." }
-                  if ('$(Build.SourceBranch)' -like 'refs/tags/*' -and '$(Build.SourceBranch)' -ne "refs/tags/hidi-v$version") {
-                    throw "Hidi tag must exactly match the hidi project version."
-                  }
-                  Write-Host "##vso[task.setvariable variable=HidiVersion]$version"
                   dotnet build src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) -p:GeneratePackageOnBuild=false
                   if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
                   dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c $(buildConfiguration) -- --minimum-expected-tests 1
@@ -226,12 +230,22 @@ extends:
                 deploy:
                   steps:
                     - pwsh: |
-                        $tag = '$(Build.SourceBranch)' -replace '^refs/tags/hidi-v', ''
+                        $ErrorActionPreference = 'Stop'
+                        $sourceBranch = $env:BUILD_SOURCEBRANCH
+                        if ($sourceBranch -cnotmatch '^refs/tags/hidi-v2\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Expected a Hidi hidi-v2.* release tag." }
+                        $tag = $sourceBranch.Substring('refs/tags/hidi-v'.Length)
                         if ([version]($tag -split '-')[0] -le [version]'2.12.2') { throw "Never republish the source migration baseline or an older hidi version." }
                         $package = "$(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.$tag.nupkg"
-                        if (-not (Test-Path $package)) { throw "Missing exact hidi package: $package" }
+                        if (-not (Test-Path -LiteralPath $package -PathType Leaf)) { throw "Missing exact hidi package: $package" }
                         $symbols = "$(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.$tag.snupkg"
-                        if (-not (Test-Path $symbols)) { throw "Missing exact hidi symbols: $symbols" }
+                        if (-not (Test-Path -LiteralPath $symbols -PathType Leaf)) { throw "Missing exact hidi symbols: $symbols" }
+                        $packages = @(Get-ChildItem -LiteralPath '$(Pipeline.Workspace)\hidi' -Filter '*.nupkg' -File)
+                        if ($packages.Count -ne 1 -or $packages[0].Name -cne "Microsoft.OpenApi.Hidi.$tag.nupkg") {
+                          throw "Expected only the exact Hidi package matching the triggering tag."
+                        }
+                        foreach ($artifact in @("$(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.exe", "$(Pipeline.Workspace)\hidi\hidi-win-x64-$tag.zip")) {
+                          if (-not (Test-Path -LiteralPath $artifact -PathType Leaf)) { throw "Missing exact Hidi executable artifact: $artifact" }
+                        }
                         Write-Host "##vso[task.setvariable variable=HidiReleaseVersion]$tag"
                       displayName: Verify new hidi release version and exact package
                     - task: PowerShell@2
@@ -303,8 +317,10 @@ extends:
                     vmImage: ubuntu-latest
                   steps:
                     - pwsh: |
-                        $version = ([xml](Get-Content -LiteralPath '$(Pipeline.Workspace)/HidiDockerContext/src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj')).Project.PropertyGroup.Version
-                        if ('$(Build.SourceBranch)' -ne "refs/tags/hidi-v$version") { throw "Hidi tag does not match project version." }
+                        $ErrorActionPreference = 'Stop'
+                        $version = ([xml](Get-Content -LiteralPath '$(Pipeline.Workspace)/HidiDockerContext/src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj')).SelectSingleNode('/Project/PropertyGroup/Version').InnerText
+                        if ($version -cnotmatch '^2\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Expected a hidi 2.x container version, got $version." }
+                        if ($env:BUILD_SOURCEBRANCH -cne "refs/tags/hidi-v$version") { throw "Hidi tag does not match project version." }
                         if ([version]($version -split '-')[0] -le [version]'2.12.2') { throw "Do not republish the migration baseline or an older hidi version." }
                         Write-Host "##vso[task.setvariable variable=HidiReleaseVersion]$version"
                       displayName: Read independent hidi version

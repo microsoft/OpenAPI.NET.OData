@@ -11,7 +11,7 @@ trigger:
       - support/v2
   tags:
     include:
-      - 'v*'
+      - 'v2.*'
 pr:
   branches:
     include:
@@ -55,6 +55,20 @@ extends:
               artifactName: Nugets
               targetPath: '$(Build.ArtifactStagingDirectory)'
           steps:
+
+          - pwsh: |
+              $ErrorActionPreference = 'Stop'
+              $version = ([xml](Get-Content -LiteralPath Directory.Build.props)).SelectSingleNode('/Project/PropertyGroup/Version').InnerText
+              if ($version -cnotmatch '^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Invalid OData project version: $version." }
+              $sourceBranch = $env:BUILD_SOURCEBRANCH
+              if ($sourceBranch.StartsWith('refs/tags/')) {
+                if ($sourceBranch -cnotmatch '^refs/tags/v2\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') {
+                  throw "This pipeline only releases OData v2.* tags."
+                }
+                if ($sourceBranch -cne "refs/tags/v$version") { throw "OData tag must exactly match Directory.Build.props version." }
+              }
+              Write-Host "##vso[task.setvariable variable=ODataVersion]$version"
+            displayName: 'Verify OData component tag and project version'
 
           - task: UseDotNet@2
             displayName: 'Use .NET 6' # needed for ESRP signing
@@ -174,8 +188,13 @@ extends:
             displayName: 'pack'
             inputs:
               command: pack
-              projects: src/Microsoft.OpenApi.OData.Reader/Microsoft.OpenAPI.OData.Reader.csproj
-              arguments: '-o $(Build.ArtifactStagingDirectory) --configuration $(BuildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg'
+              packagesToPack: src/Microsoft.OpenApi.OData.Reader/Microsoft.OpenAPI.OData.Reader.csproj
+              configuration: '$(BuildConfiguration)'
+              packDirectory: '$(Build.ArtifactStagingDirectory)'
+              nobuild: true
+              includesymbols: true
+              includesource: true
+              buildProperties: 'SymbolPackageFormat=snupkg'
 
           - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
             displayName: 'ESRP CodeSigning Nuget Packages'
@@ -187,7 +206,7 @@ extends:
               AuthAKVName: 'akv-prod-eastus'
               AuthCertName: 'ReferenceLibraryPrivateCert'
               AuthSignCertName: 'ReferencePackagePublisherCertificate'              
-              Pattern: '*.nupkg'
+              Pattern: 'Microsoft.OpenApi.OData.$(ODataVersion).nupkg'
               signConfigType: inlineSignParams
               inlineOperation: |
                 [
@@ -212,7 +231,7 @@ extends:
               PendingAnalysisWaitTimeoutMinutes: '5'
 
     - stage: deploy
-      condition: and(contains(variables['build.sourceBranch'], 'refs/tags/v'), succeeded())
+      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v2.'))
       dependsOn: build
       jobs:
         - deployment: deploy
@@ -230,10 +249,26 @@ extends:
                 pool:
                   vmImage: ubuntu-latest
                 steps:
+                - pwsh: |
+                    $ErrorActionPreference = 'Stop'
+                    $sourceBranch = $env:BUILD_SOURCEBRANCH
+                    if ($sourceBranch -cnotmatch '^refs/tags/v2\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Expected an OData v2.* release tag." }
+                    $version = $sourceBranch.Substring('refs/tags/v'.Length)
+                    $packages = @(Get-ChildItem -LiteralPath '$(Pipeline.Workspace)' -Filter '*.nupkg' -File -Recurse)
+                    if ($packages.Count -ne 1 -or $packages[0].Name -cne "Microsoft.OpenApi.OData.$version.nupkg") {
+                      throw "Expected only the exact OData package matching the triggering tag."
+                    }
+                    $symbols = Join-Path $packages[0].DirectoryName "Microsoft.OpenApi.OData.$version.snupkg"
+                    if (-not (Test-Path -LiteralPath $symbols -PathType Leaf)) {
+                      throw "Missing exact OData symbols package for $version."
+                    }
+                    Write-Host "##vso[task.setvariable variable=ODataReleaseVersion]$version"
+                    Write-Host "##vso[task.setvariable variable=ODataPackagePath]$($packages[0].FullName)"
+                  displayName: 'Verify tagged OData package and symbols'
                 - task: 1ES.PublishNuget@1
                   displayName: 'NuGet push'
                   inputs:
-                    packagesToPush: '$(Pipeline.Workspace)/Microsoft.OpenApi.OData.*.nupkg'
+                    packagesToPush: '$(ODataPackagePath)'
                     nuGetFeedType: external
                     publishFeedCredentials: 'OpenAPI Nuget Connection'
                     packageParentPath: '$(Pipeline.Workspace)'
@@ -255,23 +290,30 @@ extends:
                   vmImage: ubuntu-latest
                 steps:
                 - pwsh: |
-                    $artifacts = @(Get-ChildItem -Path $(Pipeline.Workspace) -Filter Microsoft.OpenApi.OData.*.nupkg -Recurse)
-                    if ($artifacts.Count -ne 1) { throw "Expected exactly one OData package; found $($artifacts.Count)." }
-                    $artifactName = $artifacts[0]
-                    $artifactVersion= $artifactName.Name -replace "Microsoft.OpenApi.OData.", "" -replace ".nupkg", ""
-                    #Set Variable $artifactName and $artifactVersion
-                    Write-Host "##vso[task.setvariable variable=artifactVersion; isSecret=false;]$artifactVersion"
-                    echo "$artifactVersion"
-                  displayName: 'Fetch Artifact Name'
+                    $ErrorActionPreference = 'Stop'
+                    $sourceBranch = $env:BUILD_SOURCEBRANCH
+                    if ($sourceBranch -cnotmatch '^refs/tags/v2\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Expected an OData v2.* release tag." }
+                    $version = $sourceBranch.Substring('refs/tags/v'.Length)
+                    $packages = @(Get-ChildItem -LiteralPath '$(Pipeline.Workspace)' -Filter '*.nupkg' -File -Recurse)
+                    if ($packages.Count -ne 1 -or $packages[0].Name -cne "Microsoft.OpenApi.OData.$version.nupkg") {
+                      throw "Expected only the exact OData package matching the triggering tag."
+                    }
+                    $symbols = Join-Path $packages[0].DirectoryName "Microsoft.OpenApi.OData.$version.snupkg"
+                    if (-not (Test-Path -LiteralPath $symbols -PathType Leaf)) {
+                      throw "Missing exact OData symbols package for $version."
+                    }
+                    Write-Host "##vso[task.setvariable variable=ODataReleaseVersion]$version"
+                    Write-Host "##vso[task.setvariable variable=ODataPackagePath]$($packages[0].FullName)"
+                  displayName: 'Verify tagged OData release artifact'
                 - task: GitHubRelease@1
                   displayName: 'GitHub release'
-                  condition: succeededOrFailed()
+                  condition: succeeded()
                   inputs:
                     gitHubConnection: 'Github-MaggieKimani1'
                     action: edit
                     tagSource: userSpecifiedTag
-                    tag: 'v$(artifactVersion)'
-                    title: 'v$(artifactVersion)'
+                    tag: 'v$(ODataReleaseVersion)'
+                    title: 'v$(ODataReleaseVersion)'
                     releaseNotesSource: inline
-                    assets: '$(Pipeline.Workspace)\Microsoft.OpenApi.OData.*.nupkg'
+                    assets: '$(ODataPackagePath)'
                     addChangeLog: false   

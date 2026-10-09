@@ -71,9 +71,12 @@ docker run --rm --mount "type=bind,source=$PWD\test\Microsoft.OpenApi.Hidi.Tests
 Local/CI builds use the public-only strong-name identity. Official release
 artifacts are signed in Azure Pipelines; private signing keys do not belong in
 this repository. The migration baseline 2.12.2 is already published. Destination
-NuGet, GitHub release, and Docker publishing are disabled until source cutover,
-and the first destination release must advance the hidi version. OData releases
-use separate artifacts and tags.
+NuGet, executable, and Docker publishing are disabled until source cutover.
+The standard Release Please config tracks Hidi as its own component, with a
+separate manifest version, project version, changelog, and `hidi-v2.*` tags.
+The first destination package release must advance beyond the baseline and use
+an exact `hidi-v2.<version>` tag matching the project. OData releases use separate
+artifacts and tags.
 
 Docker builds opt into `HidiPublicSignBuild=true` for the local OData project,
 using its own public-only key without changing normal OData signing behavior.

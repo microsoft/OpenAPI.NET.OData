@@ -26,11 +26,47 @@ public-only signing key preserves assembly identity and friend-assembly access;
 never add the source repository's private strong-name key. Production signing
 is handled only by the official Azure pipeline.
 
-Hidi's version is in its own project and `.hidi-release-please-manifest.json`.
+Hidi's version is in its own project and the
+`src/Microsoft.OpenApi.Hidi` entry in `.release-please-manifest.json`.
 Its `hidi-v2.*` tags must not trigger OData publishing. Version 2.12.2 is the
-already-published migration baseline, not a new release. Hidi release automation
-and publishing remain disabled until source cutover. History-import migration
-PRs must be merged with a merge commit, never squash or rebase.
+already-published migration baseline, not a new release. Production publishing
+remains disabled until source cutover. History-import migration PRs must be
+merged with a merge commit, never squash or rebase.
+
+### Independent automated versions
+
+The standard Release Please action uses one `release-please-config.json` and
+one `.release-please-manifest.json` with two components: root OData (`.`) and
+Hidi (`src/Microsoft.OpenApi.Hidi`). Their versions advance independently in
+the generated release PRs. The stock `separate-pull-requests` option preserves
+OData's existing release branch and avoids the stock engine's componentless-root
+parsing issue with combined release PRs.
+
+Hidi source changes update its project `<Version>` and local `CHANGELOG.md`;
+the root component excludes Hidi source and tests. OData changes update
+`Directory.Build.props` and the root `CHANGELOG.md`, without changing Hidi.
+Hidi keeps `hidi-v2.*` tags; OData keeps componentless `v2.*` tags. Hidi's
+published OpenAPI dependency versions are not changed by its version updater.
+
+Routing follows component paths, not commit scopes. Hidi-only tests do not
+create a release by themselves, and root-level distribution/helper files remain
+root-owned under this standard configuration. Production package, executable,
+and container publishing remains gated in the official Azure pipeline.
+
+### Component-tagged Azure releases
+
+On `support/v2`, `.azure-pipelines/ci-build.yml` releases only the OData package
+and attaches only its artifact for `v2.*` tags.
+`.azure-pipelines/hidi-release.yml` handles only `hidi-v2.*` tags for Hidi's
+NuGet package, Windows executable/ZIP, and container. Hidi publishing stays
+disabled until the protected cutover; this routing does not enable it.
+
+Tag runs must exactly match the component's project version before staging
+artifacts. Release jobs require the exact tag-derived package and symbols;
+Hidi also requires its executable/ZIP or matching Docker-context version.
+Wrong-component, malformed, other-major, or version-mismatched manually selected
+tags fail validation instead of publishing. Ordinary branch/PR builds still
+validate both projects as before, without running tag-only release stages.
 
 OpenAPI.net.OData is open to contributions. There are a couple of different recommended paths to get contributions into the released version of this library.
 
