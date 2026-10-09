@@ -265,20 +265,61 @@ extends:
                         if ([version]($version -split '-')[0] -le [version]'2.12.2') { throw "Do not republish the migration baseline or an older hidi version." }
                         Write-Host "##vso[task.setvariable variable=HidiReleaseVersion]$version"
                       displayName: Read independent hidi version
+                    - task: NuGetAuthenticate@1
+                      displayName: Authenticate Docker restore to Azure Artifacts
                     - task: AzureCLI@2
                       displayName: Publish multi-platform hidi image
+                      env:
+                        FEED_ACCESS_TOKEN: $(System.AccessToken)
                       inputs:
                         azureSubscription: ACR Images Push Service Connection
-                        scriptType: bash
+                        scriptType: pscore
                         scriptLocation: inlineScript
                         workingDirectory: '$(Pipeline.Workspace)/HidiDockerContext'
                         inlineScript: |
-                          set -euo pipefail
-                          az acr login --name msgraphprodregistry
-                          docker run --privileged --rm tonistiigi/binfmt --install all
-                          docker buildx create --use
-                          docker buildx build --platform linux/amd64,linux/arm64/v8 \
-                            --file "$(Pipeline.Workspace)/HidiDockerContext/Dockerfile" \
-                            --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:$(HidiReleaseVersion)" \
-                            --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:latest" \
-                            --push "$(Pipeline.Workspace)/HidiDockerContext"
+                          $ErrorActionPreference = 'Stop'
+                          $nugetConfigPath = Join-Path '$(Agent.TempDirectory)' ("hidi-docker-{0}.nuget.config" -f [Guid]::NewGuid().ToString('N'))
+                          try {
+                            if ([string]::IsNullOrWhiteSpace($env:FEED_ACCESS_TOKEN)) {
+                              throw "No Azure Artifacts access token available for the Docker build."
+                            }
+                            New-Item -ItemType File -Path $nugetConfigPath | Out-Null
+                            [IO.File]::SetUnixFileMode($nugetConfigPath, ([IO.UnixFileMode]::UserRead -bor [IO.UnixFileMode]::UserWrite))
+                            $feedAccessToken = [System.Security.SecurityElement]::Escape($env:FEED_ACCESS_TOKEN)
+                            @"
+                          <?xml version="1.0" encoding="utf-8"?>
+                          <configuration>
+                            <packageSources>
+                              <clear />
+                              <add key="GraphDeveloperExperiences_Public" value="https://microsoftgraph.pkgs.visualstudio.com/0985d294-5762-4bc2-a565-161ef349ca3e/_packaging/GraphDeveloperExperiences_Public/nuget/v3/index.json" />
+                            </packageSources>
+                            <packageSourceCredentials>
+                              <GraphDeveloperExperiences_Public>
+                                <add key="Username" value="AzureDevOps" />
+                                <add key="ClearTextPassword" value="$feedAccessToken" />
+                                <add key="ValidAuthenticationTypes" value="Basic" />
+                              </GraphDeveloperExperiences_Public>
+                            </packageSourceCredentials>
+                          </configuration>
+                          "@ | Set-Content -LiteralPath $nugetConfigPath -Encoding UTF8
+                            $env:FEED_ACCESS_TOKEN = $null
+                            az acr login --name msgraphprodregistry
+                            if ($LASTEXITCODE -ne 0) { throw "ACR login failed with exit code $LASTEXITCODE." }
+                            docker run --privileged --rm tonistiigi/binfmt --install all
+                            if ($LASTEXITCODE -ne 0) { throw "Docker platform setup failed with exit code $LASTEXITCODE." }
+                            docker buildx create --use
+                            if ($LASTEXITCODE -ne 0) { throw "Docker BuildX setup failed with exit code $LASTEXITCODE." }
+                            docker buildx build --platform linux/amd64,linux/arm64/v8 `
+                              --secret "id=nuget_config,src=$nugetConfigPath" `
+                              --file "$(Pipeline.Workspace)/HidiDockerContext/Dockerfile" `
+                              --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:$(HidiReleaseVersion)" `
+                              --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:latest" `
+                              --push "$(Pipeline.Workspace)/HidiDockerContext"
+                            if ($LASTEXITCODE -ne 0) { throw "Docker build/push failed with exit code $LASTEXITCODE." }
+                          }
+                          finally {
+                            $env:FEED_ACCESS_TOKEN = $null
+                            if (Test-Path -LiteralPath $nugetConfigPath) {
+                              Remove-Item -LiteralPath $nugetConfigPath -Force
+                            }
+                          }
