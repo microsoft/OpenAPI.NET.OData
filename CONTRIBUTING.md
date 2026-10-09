@@ -68,3 +68,11 @@ a Hidi release. Root distribution/helper files remain outside the Hidi component
 they follow the root package's standard routing, not custom Hidi routing.
 Existing root OData exclusions remain configured. The official Hidi
 package/container publishing gates remain disabled during migration.
+
+The ADO OData pipeline accepts `v3.*` tags and deploys only the exact OData
+package matching that tag and `Directory.Build.props`. The dedicated Hidi
+pipeline accepts `hidi-v3.*` tags; its package, symbols, executable, ZIP and
+container version must match the Hidi tag/project version. Malformed,
+other-component or mismatched tags fail validation rather than publishing a
+different component. With publishing disabled, branch/PR builds remain validation-only; the existing
+Hidi publishing flags, migration floor and protected environments are unchanged.
