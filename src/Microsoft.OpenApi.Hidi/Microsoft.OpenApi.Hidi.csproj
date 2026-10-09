@@ -9,7 +9,7 @@
     <Nullable>enable</Nullable>
     <ToolCommandName>hidi</ToolCommandName>
     <PackageId>Microsoft.OpenApi.Hidi</PackageId>
-    <Version>2.12.2</Version>
+    <Version>2.13.0</Version>
     <PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts\hidi\nuget</PackageOutputPath>
     <Description>OpenAPI.NET CLI tool for slicing OpenAPI documents</Description>
     <SignAssembly>true</SignAssembly>
@@ -24,33 +24,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="CsdlFilter.xslt" />
+    <None Remove="CsdlFilter.xslt"/>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="CsdlFilter.xslt" />
+    <EmbeddedResource Include="CsdlFilter.xslt"/>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Humanizer.Core" Version="2.14.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.10" />
+    <PackageReference Include="Humanizer.Core" Version="2.14.1"/>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.10"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.10"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.10"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.10"/>
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.7.23">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="System.CommandLine" Version="2.0.10" />
-    <PackageReference Include="Microsoft.OData.Edm" Version="8.4.4" />
-    <PackageReference Include="Microsoft.OpenApi" Version="2.12.2" />
-    <PackageReference Include="Microsoft.OpenApi.YamlReader" Version="2.12.2" />
-    <PackageReference Include="Microsoft.OpenApi.ApiManifest" Version="2.0.0-preview5" />
-    <PackageReference Include="System.CommandLine.Hosting" Version="0.4.0-alpha.25306.1" />
+    <PackageReference Include="System.CommandLine" Version="2.0.10"/>
+    <PackageReference Include="Microsoft.OData.Edm" Version="8.4.4"/>
+    <PackageReference Include="Microsoft.OpenApi" Version="2.12.2"/>
+    <PackageReference Include="Microsoft.OpenApi.YamlReader" Version="2.12.2"/>
+    <PackageReference Include="Microsoft.OpenApi.ApiManifest" Version="2.0.0-preview5"/>
+    <PackageReference Include="System.CommandLine.Hosting" Version="0.4.0-alpha.25306.1"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj" />
+    <ProjectReference Include="..\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj"/>
   </ItemGroup>
 
   <!-- Make internals available for Unit Testing -->
@@ -65,7 +65,7 @@
     <!-- End Unit test Internals -->
 
   <ItemGroup>
-    <None Include="./readme.md" Pack="true" PackagePath="" />
+    <None Include="./readme.md" Pack="true" PackagePath=""/>
   </ItemGroup>
 
 </Project>
