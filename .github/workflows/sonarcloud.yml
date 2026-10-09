@@ -43,7 +43,9 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: |
+            8.0.x
+            10.0.x
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -62,8 +64,26 @@ jobs:
           CoverletOutputFormat: 'opencover' # https://github.com/microsoft/vstest/issues/4014#issuecomment-1307913682
         shell: pwsh
         run: |
-          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="test/**/coverage.net8.0.opencover.xml"
+          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="test/**/coverage.net8.0.opencover.xml,artifacts/hidi/coverage/*opencover*.xml"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet workload restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet build
-          dotnet test Microsoft.OpenApi.OData.sln --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet test test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj --no-build -- --minimum-expected-tests 1 --coverlet --coverlet-output-format opencover --coverlet-include "[Microsoft.OpenApi.Hidi]*" --results-directory artifacts\hidi\coverage
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $reports = @(Get-ChildItem artifacts\hidi\coverage -Filter '*opencover*.xml')
+          if ($reports.Count -eq 0) { throw "Hidi OpenCover report was not generated." }
+          $hidiModules = @($reports | ForEach-Object {
+            ([xml](Get-Content $_.FullName -Raw)).CoverageSession.Modules.Module
+          } | Where-Object { $_.ModuleName -eq 'Microsoft.OpenApi.Hidi' })
+          if (-not ($hidiModules | Where-Object {
+            $_.SelectNodes('./Classes/Class/Methods/Method/SequencePoints/SequencePoint').Count -gt 0 -and
+            $_.SelectNodes('./Classes/Class/Methods/Method/SequencePoints/SequencePoint[@vc > 0]').Count -gt 0
+          })) {
+            throw "Hidi OpenCover report contains no covered Hidi sequence points."
+          }
           dotnet tool run dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
