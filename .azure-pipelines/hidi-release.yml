@@ -43,7 +43,34 @@ extends:
                 - output: pipelineArtifact
                   artifactName: Hidi
                   targetPath: '$(Build.ArtifactStagingDirectory)\hidi'
+                - output: pipelineArtifact
+                  artifactName: HidiDockerContext
+                  targetPath: '$(Build.ArtifactStagingDirectory)\HidiDockerContext'
             steps:
+              - task: CopyFiles@2
+                displayName: Stage public-only hidi Docker context
+                inputs:
+                  SourceFolder: '$(Build.SourcesDirectory)'
+                  Contents: |
+                    src\Microsoft.OpenApi.Hidi\**
+                    src\Microsoft.OpenApi.OData.Reader\**
+                    src\Build.props
+                    Build.props
+                    Directory.Build.props
+                    global.json
+                    build.root
+                    README.md
+                    Dockerfile
+                    .dockerignore
+                    !**\bin\**
+                    !**\obj\**
+                    !**\.git\**
+                    !**\artifacts\**
+                    !**\*.snk
+                    tool\Microsoft.OpenApi.Hidi.public.snk
+                    tool\Microsoft.OpenApi.OData.public.snk
+                  TargetFolder: '$(Build.ArtifactStagingDirectory)\HidiDockerContext'
+                  CleanTargetFolder: true
               - task: UseDotNet@2
                 displayName: Use .NET 6 for ESRP
                 inputs:
@@ -221,16 +248,19 @@ extends:
             templateContext:
               type: releaseJob
               isProduction: true
-            environment: hidi-container
+              inputs:
+                - input: pipelineArtifact
+                  artifactName: HidiDockerContext
+                  targetPath: '$(Pipeline.Workspace)/HidiDockerContext'
+            environment: docker-images-deploy
             strategy:
               runOnce:
                 deploy:
                   pool:
                     vmImage: ubuntu-latest
                   steps:
-                    - checkout: self
                     - pwsh: |
-                        $version = ([xml](Get-Content src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj)).Project.PropertyGroup.Version
+                        $version = ([xml](Get-Content -LiteralPath '$(Pipeline.Workspace)/HidiDockerContext/src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj')).Project.PropertyGroup.Version
                         if ('$(Build.SourceBranch)' -ne "refs/tags/hidi-v$version") { throw "Hidi tag does not match project version." }
                         if ([version]($version -split '-')[0] -le [version]'2.12.2') { throw "Do not republish the migration baseline or an older hidi version." }
                         Write-Host "##vso[task.setvariable variable=HidiReleaseVersion]$version"
@@ -241,12 +271,14 @@ extends:
                         azureSubscription: ACR Images Push Service Connection
                         scriptType: bash
                         scriptLocation: inlineScript
+                        workingDirectory: '$(Pipeline.Workspace)/HidiDockerContext'
                         inlineScript: |
                           set -euo pipefail
                           az acr login --name msgraphprodregistry
                           docker run --privileged --rm tonistiigi/binfmt --install all
                           docker buildx create --use
                           docker buildx build --platform linux/amd64,linux/arm64/v8 \
+                            --file "$(Pipeline.Workspace)/HidiDockerContext/Dockerfile" \
                             --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:$(HidiReleaseVersion)" \
                             --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:latest" \
-                            --push .
+                            --push "$(Pipeline.Workspace)/HidiDockerContext"
