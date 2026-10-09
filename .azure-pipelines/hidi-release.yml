@@ -44,6 +44,9 @@ extends:
                 - output: pipelineArtifact
                   artifactName: Hidi
                   targetPath: '$(Build.ArtifactStagingDirectory)\hidi'
+                - output: pipelineArtifact
+                  artifactName: HidiDockerContext
+                  targetPath: '$(Build.ArtifactStagingDirectory)\hidi-docker-context'
             steps:
               - task: UseDotNet@2
                 displayName: Use .NET 6 for ESRP
@@ -74,6 +77,49 @@ extends:
                   </configuration>
                   "@ | Set-Content -Path "$(Build.SourcesDirectory)/nuget.config" -Encoding UTF8
                 displayName: Create nuget.config (central feed)
+              - pwsh: |
+                  $ErrorActionPreference = 'Stop'
+                  $sourceRoot = '$(Build.SourcesDirectory)'
+                  $context = Join-Path '$(Build.ArtifactStagingDirectory)' 'hidi-docker-context'
+                  New-Item -ItemType Directory -Path $context | Out-Null
+                  $rootFiles = @('Dockerfile', '.dockerignore', 'Directory.Build.props', 'Build.props', 'build.root', 'global.json', 'README.md', 'src/Build.props')
+                  foreach ($relativePath in $rootFiles) {
+                    $destination = Join-Path $context $relativePath
+                    New-Item -ItemType Directory -Force (Split-Path $destination -Parent) | Out-Null
+                    Copy-Item -LiteralPath (Join-Path $sourceRoot $relativePath) -Destination $destination
+                  }
+                  foreach ($sourceDirectory in @('src/Microsoft.OpenApi.Hidi', 'src/Microsoft.OpenApi.OData.Reader')) {
+                    $directory = Join-Path $sourceRoot $sourceDirectory
+                    foreach ($file in Get-ChildItem -LiteralPath $directory -File -Recurse -Force) {
+                      $relativePath = [IO.Path]::GetRelativePath($sourceRoot, $file.FullName)
+                      if ($relativePath -match '(^|[\\/])(bin|obj|\.git)([\\/]|$)' -or $file.Extension -in @('.snk', '.pfx', '.p12', '.pem', '.key')) { continue }
+                      if ($file.Attributes -band [IO.FileAttributes]::ReparsePoint) { throw "Unexpected linked Docker context file: $relativePath" }
+                      $destination = Join-Path $context $relativePath
+                      New-Item -ItemType Directory -Force (Split-Path $destination -Parent) | Out-Null
+                      Copy-Item -LiteralPath $file.FullName -Destination $destination
+                    }
+                  }
+                  foreach ($keyName in @('Microsoft.OpenApi.Hidi.public.snk', 'Microsoft.OpenApi.OData.public.snk')) {
+                    $keyPath = Join-Path $sourceRoot 'tool' $keyName
+                    $key = [IO.File]::ReadAllBytes($keyPath)
+                    if ($key.Length -ne 160 -or $key[12] -ne 6 -or [Text.Encoding]::ASCII.GetString($key, 20, 4) -ne 'RSA1') {
+                      throw "Expected the public-only strong-name identity: $keyName"
+                    }
+                    New-Item -ItemType Directory -Force (Join-Path $context 'tool') | Out-Null
+                    Copy-Item -LiteralPath $keyPath -Destination (Join-Path $context 'tool' $keyName)
+                  }
+                  $keys = @(Get-ChildItem -LiteralPath $context -File -Recurse -Force -Filter '*.snk')
+                  if ($keys.Count -ne 2) { throw "Expected exactly two public-only signing keys in the Docker context." }
+                  foreach ($file in Get-ChildItem -LiteralPath $context -File -Recurse -Force) {
+                    $relativePath = [IO.Path]::GetRelativePath($context, $file.FullName)
+                    if ($relativePath -match '(^|[\\/])(bin|obj|\.git)([\\/]|$)' -or $file.Extension -in @('.pfx', '.p12', '.pem', '.key')) {
+                      throw "Forbidden Docker context file: $relativePath"
+                    }
+                    if ($file.Extension -eq '.snk' -and $relativePath -notmatch '^tool[\\/]Microsoft\.OpenApi\.(Hidi|OData)\.public\.snk$') {
+                      throw "Unexpected Docker signing key: $relativePath"
+                    }
+                  }
+                displayName: Stage public-only hidi Docker context
               - pwsh: |
                   $version = ([xml](Get-Content src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj)).Project.PropertyGroup.Version
                   if ($version -notmatch '^3\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Expected a hidi 3.x version, got $version." }
@@ -222,6 +268,10 @@ extends:
             templateContext:
               type: releaseJob
               isProduction: true
+              inputs:
+                - input: pipelineArtifact
+                  artifactName: HidiDockerContext
+                  targetPath: '$(Pipeline.Workspace)/hidi-docker-context'
             environment: hidi-container
             strategy:
               runOnce:
@@ -229,19 +279,20 @@ extends:
                   pool:
                     vmImage: ubuntu-latest
                   steps:
-                    - checkout: self
                     - pwsh: |
                         $version = ([xml](Get-Content src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj)).Project.PropertyGroup.Version
                         if ('$(Build.SourceBranch)' -ne "refs/tags/hidi-v$version") { throw "Hidi tag does not match project version." }
                         if ([version]($version -split '-')[0] -le [version]'3.10.2') { throw "Do not republish the migration baseline or an older hidi version." }
                         Write-Host "##vso[task.setvariable variable=HidiReleaseVersion]$version"
                       displayName: Read independent hidi version
+                      workingDirectory: '$(Pipeline.Workspace)/hidi-docker-context'
                     - task: AzureCLI@2
                       displayName: Publish multi-platform hidi image
                       inputs:
                         azureSubscription: ACR Images Push Service Connection
                         scriptType: bash
                         scriptLocation: inlineScript
+                        workingDirectory: '$(Pipeline.Workspace)/hidi-docker-context'
                         inlineScript: |
                           set -euo pipefail
                           az acr login --name msgraphprodregistry
@@ -259,6 +310,10 @@ extends:
             templateContext:
               type: releaseJob
               isProduction: true
+              inputs:
+                - input: pipelineArtifact
+                  artifactName: HidiDockerContext
+                  targetPath: '$(Pipeline.Workspace)/hidi-docker-context'
             environment: hidi-container
             strategy:
               runOnce:
@@ -266,19 +321,20 @@ extends:
                   pool:
                     vmImage: ubuntu-latest
                   steps:
-                    - checkout: self
                     - pwsh: |
                         $version = ([xml](Get-Content src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj)).Project.PropertyGroup.Version
                         if ($version -notmatch '^3\.\d+\.\d+$') { throw "Expected a stable hidi 3.x base version." }
                         $previewVersion = "$version.$([DateTime]::UtcNow.ToString('yyyyMMdd'))$(Build.BuildId)"
                         Write-Host "##vso[task.setvariable variable=HidiPreviewVersion]$previewVersion"
                       displayName: Compute independent hidi preview tag
+                      workingDirectory: '$(Pipeline.Workspace)/hidi-docker-context'
                     - task: AzureCLI@2
                       displayName: Publish multi-platform hidi preview image
                       inputs:
                         azureSubscription: ACR Images Push Service Connection
                         scriptType: bash
                         scriptLocation: inlineScript
+                        workingDirectory: '$(Pipeline.Workspace)/hidi-docker-context'
                         inlineScript: |
                           set -euo pipefail
                           az acr login --name msgraphprodregistry

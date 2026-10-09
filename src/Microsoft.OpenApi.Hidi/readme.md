@@ -97,6 +97,12 @@ artifacts are signed in Azure Pipelines. Docker builds opt into
 key without changing normal OData signing. Private `.snk` resources are excluded
 from the Docker context and must not be copied into new Hidi resources.
 
+The official build stages a separate `HidiDockerContext` artifact containing only
+the Docker build inputs, Hidi/OData source projects and their two public keys,
+without `bin`, `obj`, Git metadata or private signing resources. Stable and preview
+container release jobs consume that same build artifact without checking out the
+repository, as required by the 1ES release-job policy.
+
 The migration baseline 3.10.2 is already published. Destination Hidi NuGet,
 GitHub release, stable Docker and preview Docker publishing are disabled until
 source cutover. The first destination stable release must advance the Hidi
