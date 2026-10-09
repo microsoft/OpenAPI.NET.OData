@@ -73,6 +73,16 @@ the signed Hidi `.nupkg`, a matching `.snupkg` and the private-feed version-chec
 script in the `Hidi` artifact. The `nuget-org` release job consumes that artifact
 without a repository checkout or the Docker context.
 
+Tool packing republishes the SDK's intermediate assembly, so replacing the `bin`
+DLL does not preserve signing. The official no-build pack supplies
+`HidiSignedAssemblyPath` to replace only the Hidi `ResolvedFileToPublish` item
+with the ESRP-signed staging DLL. Missing or ambiguous inputs stop packing.
+Before NuGet signing, `scripts/verify-hidi-package-assembly.ps1` requires exactly
+one Hidi DLL at the expected tool path, byte-for-byte SHA256 equality with staging,
+and valid Microsoft Corporation Authenticode signatures on both DLLs.
+A signed NuGet container alone is not proof of a signed assembly payload.
+Local packing without this property retains the normal SDK behavior.
+
 Before ESRP publication, the job requires the exact `hidi-v3.*` release package
 and symbols with a version newer than 3.10.2. It checks
 `GraphDeveloperExperiences_Public` using `System.AccessToken` through
@@ -94,6 +104,11 @@ execute the cases. The test resides physically inside the Hidi test project so
 SonarScanner for .NET classifies it as test code, rather than root source code.
 The Sonar workflow also measures helper line coverage and
 imports a generic coverage report alongside the existing C# OpenCover reports.
+The payload verifier has 21 isolated Pester cases in
+`test\Microsoft.OpenApi.Hidi.Tests\verify-hidi-package-assembly.Tests.ps1`,
+included in that measured coverage. These tests mock signature verification;
+they do not establish real ESRP signing. Final readiness requires a
+publish-disabled official build and verification of the downloaded DLL payload.
 
 ### Windows executable
 

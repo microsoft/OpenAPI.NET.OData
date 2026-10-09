@@ -70,4 +70,24 @@
     <None Include="./readme.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
+  <Target Name="UseHidiSignedAssemblyForPublish"
+          AfterTargets="ComputeFilesToPublish"
+          Condition="'$(PackAsTool)' == 'true' and '$(HidiSignedAssemblyPath)' != ''">
+    <Error Condition="!Exists('$(HidiSignedAssemblyPath)')"
+           Text="The signed Hidi assembly does not exist: $(HidiSignedAssemblyPath)" />
+    <ItemGroup>
+      <_HidiAssemblyToReplace Include="@(ResolvedFileToPublish)"
+                              Condition="'%(ResolvedFileToPublish.RelativePath)' == '$(TargetFileName)'" />
+    </ItemGroup>
+    <Error Condition="'@(_HidiAssemblyToReplace->Count())' != '1'"
+           Text="Expected exactly one Hidi assembly in ResolvedFileToPublish." />
+    <ItemGroup>
+      <!-- Tool packing publishes the intermediate assembly, not the bin copy. -->
+      <ResolvedFileToPublish Remove="@(_HidiAssemblyToReplace)" />
+      <ResolvedFileToPublish Include="$(HidiSignedAssemblyPath)"
+                             RelativePath="$(TargetFileName)"
+                             CopyToPublishDirectory="Always" />
+    </ItemGroup>
+  </Target>
+
 </Project>
