@@ -133,6 +133,17 @@ Container jobs retain the source publisher's existing `docker-images-deploy`
 environment and its approvals/checks. The destination pipeline must be authorized
 for that protected environment before official publishing can be enabled.
 
+Official container jobs authenticate to the approved
+`GraphDeveloperExperiences_Public` central feed using the existing Azure DevOps
+job identity. A credential-bearing NuGet config is created with owner-only
+permissions in the agent temp directory, passed as the BuildKit `nuget_config`
+secret, and removed in `finally`, including on build failure. It is never staged
+in `HidiDockerContext`, published as an artifact, or copied into an image layer.
+The destination pipeline identity must already be authorized to read the feed;
+this handoff does not grant permissions or bypass service-connection approvals.
+The Dockerfile secret mount is optional, so local and GitHub Actions builds
+without a secret continue to use their default NuGet sources.
+
 The migration baseline 3.10.2 is already published. Destination Hidi NuGet,
 GitHub release, stable Docker and preview Docker publishing are disabled until
 source cutover. The first destination stable release must advance the Hidi
