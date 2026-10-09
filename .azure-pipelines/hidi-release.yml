@@ -17,6 +17,8 @@ pr:
 
 variables:
   buildConfiguration: Release
+  NuGetOrganizationName: 'openapinet'
+  privateFeedBaseUrl: 'https://microsoftgraph.pkgs.visualstudio.com/0985d294-5762-4bc2-a565-161ef349ca3e/_packaging/GraphDeveloperExperiences_Public'
   # Keep OFF until the destination PR lands and source publishing is cut over.
   hidiPublishingEnabled: 'false'
 
@@ -162,7 +164,7 @@ extends:
                   Copy-Item artifacts\hidi\signing\Microsoft.OpenApi.Hidi.dll src\Microsoft.OpenApi.Hidi\bin\$(buildConfiguration)\net8.0\Microsoft.OpenApi.Hidi.dll
                   Copy-Item artifacts\hidi\signing\Microsoft.OpenApi.Hidi.exe artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe
                   New-Item -ItemType Directory -Force '$(Build.ArtifactStagingDirectory)\hidi' | Out-Null
-                  dotnet pack src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) --no-build -o '$(Build.ArtifactStagingDirectory)\hidi'
+                  dotnet pack src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg -o '$(Build.ArtifactStagingDirectory)\hidi'
                   if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
                   Compress-Archive -Path artifacts\hidi\win-x64\* -DestinationPath '$(Build.ArtifactStagingDirectory)\hidi\hidi-win-x64-$(HidiVersion).zip'
                   Copy-Item artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe '$(Build.ArtifactStagingDirectory)\hidi\Microsoft.OpenApi.Hidi.exe'
@@ -200,6 +202,12 @@ extends:
                   MaxConcurrency: '50'
                   MaxRetryAttempts: '5'
                   PendingAnalysisWaitTimeoutMinutes: '5'
+              - task: CopyFiles@2
+                displayName: Include private-feed version check in Hidi artifact
+                inputs:
+                  SourceFolder: '$(Build.SourcesDirectory)\scripts'
+                  Contents: 'check-nuget-package-published.ps1'
+                  TargetFolder: '$(Build.ArtifactStagingDirectory)\hidi\scripts'
       - stage: publish
         dependsOn: build
         condition: and(succeeded(), eq(variables.hidiPublishingEnabled, 'true'), startsWith(variables['Build.SourceBranch'], 'refs/tags/hidi-v2.'))
@@ -222,15 +230,50 @@ extends:
                         if ([version]($tag -split '-')[0] -le [version]'2.12.2') { throw "Never republish the source migration baseline or an older hidi version." }
                         $package = "$(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.$tag.nupkg"
                         if (-not (Test-Path $package)) { throw "Missing exact hidi package: $package" }
+                        $symbols = "$(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.$tag.snupkg"
+                        if (-not (Test-Path $symbols)) { throw "Missing exact hidi symbols: $symbols" }
                         Write-Host "##vso[task.setvariable variable=HidiReleaseVersion]$tag"
                       displayName: Verify new hidi release version and exact package
-                    - task: 1ES.PublishNuget@1
-                      displayName: Publish hidi NuGet tool
+                    - task: PowerShell@2
+                      displayName: Check whether Hidi NuGet version is already published
                       inputs:
-                        packagesToPush: '$(Pipeline.Workspace)\hidi\Microsoft.OpenApi.Hidi.$(HidiReleaseVersion).nupkg'
-                        nuGetFeedType: external
-                        publishFeedCredentials: OpenAPI Nuget Connection
-                        packageParentPath: '$(Pipeline.Workspace)\hidi'
+                        targetType: filePath
+                        filePath: '$(Pipeline.Workspace)\hidi\scripts\check-nuget-package-published.ps1'
+                        arguments: '-PackageId "Microsoft.OpenApi.Hidi" -PackageDirectory "$(Pipeline.Workspace)\hidi" -NuGetServiceIndexUrl "$(privateFeedBaseUrl)/nuget/v3/index.json"'
+                        pwsh: true
+                      env:
+                        FEED_ACCESS_TOKEN: $(System.AccessToken)
+                    - task: CopyFiles@2
+                      displayName: Stage exact Hidi NuGet packages for ESRP release
+                      condition: and(succeeded(), ne(variables['nugetAlreadyPublished'], 'true'))
+                      inputs:
+                        SourceFolder: '$(Pipeline.Workspace)\hidi'
+                        Contents: |
+                          Microsoft.OpenApi.Hidi.$(HidiReleaseVersion).nupkg
+                          Microsoft.OpenApi.Hidi.$(HidiReleaseVersion).snupkg
+                        TargetFolder: '$(Pipeline.Workspace)\nuget-packages\$(NuGetOrganizationName)\hidi'
+                        CleanTargetFolder: true
+                    - task: EsrpRelease@14
+                      displayName: ESRP Release - Hidi NuGet
+                      condition: and(succeeded(), ne(variables['nugetAlreadyPublished'], 'true'))
+                      inputs:
+                        connectedservicename: 'Federated DevX ESRP Managed Identity Connection'
+                        usemanagedidentity: false
+                        keyvaultname: 'akv-prod-eastus'
+                        authcertname: 'ReferenceLibraryPrivateCert'
+                        signcertname: 'ReferencePackagePublisherCertificate'
+                        clientid: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
+                        intent: 'packagedistribution'
+                        contenttype: 'NuGet'
+                        organizationname: '$(NuGetOrganizationName)'
+                        contentsource: 'Folder'
+                        folderlocation: '$(Pipeline.Workspace)\nuget-packages\$(NuGetOrganizationName)\hidi'
+                        waitforreleasecompletion: true
+                        owners: 'christiano@microsoft.com,ramsess@microsoft.com,gavinbarron@microsoft.com,jingjingjia@microsoft.com,peombwa@microsoft.com,treicys@microsoft.com'
+                        approvers: 'christiano@microsoft.com,ramsess@microsoft.com,gavinbarron@microsoft.com,jingjingjia@microsoft.com,peombwa@microsoft.com,treicys@microsoft.com'
+                        serviceendpointurl: 'https://api.esrp.microsoft.com/'
+                        mainpublisher: 'ESRPRELPACMAN'
+                        domaintenantid: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
                     - task: GitHubRelease@1
                       displayName: Attach signed hidi release artifacts
                       inputs:

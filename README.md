@@ -103,6 +103,20 @@ imported commits can also be retained by the later main-branch migration.
 Destination hidi release and production publishing are disabled until source
 cutover; OpenAPI.NET remains the publisher in the meantime.
 
+The gated hidi NuGet release uses `EsrpRelease@14`, staging only the exact
+`Microsoft.OpenApi.Hidi` package and its `.snupkg` symbols from the Hidi build
+artifact. The authenticated private-feed version check is ported from
+[microsoft/OpenAPI.NET#3107](https://github.com/microsoft/OpenAPI.NET/pull/3107).
+An existing version skips ESRP on a re-run; authentication, network, and malformed
+feed responses fail closed. Releases must use an exact `hidi-v2.<version>` tag
+matching the project version and be newer than the `2.12.2` migration baseline.
+This pipeline implementation does not enable publishing or authorize resources.
+
+The SonarCloud workflow runs the private-feed helper tests with Pester 5.7.1 and
+converts measured JaCoCo line hits to Sonar generic coverage, alongside the
+existing C# OpenCover reports. Run the helper tests locally with
+`Import-Module Pester -RequiredVersion 5.7.1; Invoke-Pester .\test\scripts\check-nuget-package-published.Tests.ps1`.
+
 ---
 
 # Contributing
