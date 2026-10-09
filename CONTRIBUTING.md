@@ -53,6 +53,21 @@ create a release by themselves, and root-level distribution/helper files remain
 root-owned under this standard configuration. Production package, executable,
 and container publishing remains gated in the official Azure pipeline.
 
+### Component-tagged Azure releases
+
+On `support/v2`, `.azure-pipelines/ci-build.yml` releases only the OData package
+and attaches only its artifact for `v2.*` tags.
+`.azure-pipelines/hidi-release.yml` handles only `hidi-v2.*` tags for Hidi's
+NuGet package, Windows executable/ZIP, and container. Hidi publishing stays
+disabled until the protected cutover; this routing does not enable it.
+
+Tag runs must exactly match the component's project version before staging
+artifacts. Release jobs require the exact tag-derived package and symbols;
+Hidi also requires its executable/ZIP or matching Docker-context version.
+Wrong-component, malformed, other-major, or version-mismatched manually selected
+tags fail validation instead of publishing. Ordinary branch/PR builds still
+validate both projects as before, without running tag-only release stages.
+
 OpenAPI.net.OData is open to contributions. There are a couple of different recommended paths to get contributions into the released version of this library.
 
 __NOTE__ A signed a contribution license agreement is required for all contributions, and is checked automatically on new pull requests. Please read and sign [the agreement](https://cla.microsoft.com/) before starting any work for this repository.
