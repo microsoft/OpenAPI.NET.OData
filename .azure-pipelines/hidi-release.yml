@@ -272,7 +272,7 @@ extends:
                 - input: pipelineArtifact
                   artifactName: HidiDockerContext
                   targetPath: '$(Pipeline.Workspace)/hidi-docker-context'
-            environment: hidi-container
+            environment: docker-images-deploy
             strategy:
               runOnce:
                 deploy:
@@ -314,7 +314,7 @@ extends:
                 - input: pipelineArtifact
                   artifactName: HidiDockerContext
                   targetPath: '$(Pipeline.Workspace)/hidi-docker-context'
-            environment: hidi-container
+            environment: docker-images-deploy
             strategy:
               runOnce:
                 deploy:

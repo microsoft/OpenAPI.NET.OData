@@ -102,6 +102,9 @@ the Docker build inputs, Hidi/OData source projects and their two public keys,
 without `bin`, `obj`, Git metadata or private signing resources. Stable and preview
 container release jobs consume that same build artifact without checking out the
 repository, as required by the 1ES release-job policy.
+Container jobs retain the source publisher's existing `docker-images-deploy`
+environment and its approvals/checks. The destination pipeline must be authorized
+for that protected environment before official publishing can be enabled.
 
 The migration baseline 3.10.2 is already published. Destination Hidi NuGet,
 GitHub release, stable Docker and preview Docker publishing are disabled until
