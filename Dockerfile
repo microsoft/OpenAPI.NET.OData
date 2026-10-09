@@ -10,7 +10,9 @@ COPY ./tool/Microsoft.OpenApi.OData.public.snk ./hidi/tool/Microsoft.OpenApi.ODa
 COPY ./tool/Microsoft.OpenApi.Hidi.public.snk ./hidi/tool/Microsoft.OpenApi.Hidi.public.snk
 COPY ./README.md ./hidi/README.md
 WORKDIR /app/hidi
-RUN dotnet publish ./src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj -c Release -o /app/publish -p:GeneratePackageOnBuild=false -p:HidiPublicSignBuild=true
+# Official CI supplies the central feed config as a secret; local builds use default NuGet sources.
+RUN --mount=type=secret,id=nuget_config,target=/app/hidi/NuGet.Config \
+    dotnet publish ./src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj -c Release -o /app/publish -p:GeneratePackageOnBuild=false -p:HidiPublicSignBuild=true
 
 FROM mcr.microsoft.com/dotnet/runtime:8.0-jammy-chiseled AS runtime
 WORKDIR /app
