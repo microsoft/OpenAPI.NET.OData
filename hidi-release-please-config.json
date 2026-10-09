@@ -2,10 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "bootstrap-sha": "8ebc6abbb1da683db4b5bc0928183dec947f2f02",
   "release-type": "simple",
+  "plugins": [
+    "exact-path-exclusions"
+  ],
+  "separate-pull-requests": true,
+  "label": "autorelease: hidi-pending",
+  "release-label": "autorelease: hidi-versioned",
   "include-component-in-tag": true,
   "include-v-in-tag": true,
   "exclude-paths": [
-    ".azure-pipelines",
+    ".azure-pipelines/ci-build.yml",
     ".github",
     ".idea",
     ".vs",
@@ -13,10 +19,17 @@
     "src/Microsoft.OpenApi.OData.Reader",
     "src/OoasGui",
     "src/OoasUtil",
+    "src/AssemblyInfo",
     "test/Microsoft.OpenAPI.OData.Reader.Tests",
     "docs",
     "CHANGELOG.md",
     "Directory.Build.props",
+    "build.cmd",
+    "build.ps1",
+    "redocly.yaml",
+    ".redocly.lint-ignore.yaml",
+    "tool/35MSSharedLib1024.snk",
+    "tool/Microsoft.OpenApi.OData.snk",
     "release-please-config.json",
     ".release-please-manifest.json"
   ],
@@ -30,6 +43,10 @@
           "type": "xml",
           "path": "src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj",
           "xpath": "//Project/PropertyGroup/Version"
+        },
+        {
+          "type": "generic",
+          "path": "src/Microsoft.OpenApi.Hidi/readme.md"
         }
       ]
     }

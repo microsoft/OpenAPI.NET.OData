@@ -1,5 +1,8 @@
 {
   "bootstrap-sha": "4f9bad6ea7d25e8596c0ca214975e690d925e6e7",
+  "plugins": [
+    "exact-path-exclusions"
+  ],
   "exclude-paths": [
     ".azure-pipelines",
     ".github",
@@ -12,6 +15,8 @@
     "Microsoft.OpenApi.Hidi.Tests",
     "test/Microsoft.OpenApi.Hidi.Tests",
     "test/Microsoft.OpenApi.Tests",
+    "test/scripts",
+    "scripts/check-nuget-package-published.ps1",
     "tool/Microsoft.OpenApi.Hidi.public.snk",
     "tool/Microsoft.OpenApi.OData.public.snk",
     "tool/hidi-local-nuget.config",

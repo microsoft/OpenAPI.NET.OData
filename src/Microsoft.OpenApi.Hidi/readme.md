@@ -17,16 +17,20 @@ Install [Microsoft.OpenApi.Hidi](https://www.nuget.org/packages/Microsoft.OpenAp
  
 ### .NET CLI(Global)
 
+<!-- x-release-please-start-version -->
 ```bash
 dotnet tool install --global Microsoft.OpenApi.Hidi --version 2.12.2
 ```
+<!-- x-release-please-end -->
  
 ### .NET CLI(local)
 
+<!-- x-release-please-start-version -->
 ```bash 
 dotnet new tool-manifest # if the repository does not have a tool manifest
 dotnet tool install --local Microsoft.OpenApi.Hidi --version 2.12.2
 ```
+<!-- x-release-please-end -->
  
  
  
@@ -71,9 +75,12 @@ docker run --rm --mount "type=bind,source=$PWD\test\Microsoft.OpenApi.Hidi.Tests
 Local/CI builds use the public-only strong-name identity. Official release
 artifacts are signed in Azure Pipelines; private signing keys do not belong in
 this repository. The migration baseline 2.12.2 is already published. Destination
-NuGet, GitHub release, and Docker publishing are disabled until source cutover,
-and the first destination release must advance the hidi version. OData releases
-use separate artifacts and tags.
+NuGet, GitHub release, and Docker publishing are disabled until source cutover.
+Release Please opens independent Hidi version PRs on `support/v2`, updating its
+manifest, project version, changelog, and installation examples without creating
+tags or GitHub releases. The first destination release must advance the Hidi
+version beyond the baseline and use an exact `hidi-v2.<version>` tag matching the
+project. OData releases use separate artifacts and tags.
 
 Docker builds opt into `HidiPublicSignBuild=true` for the local OData project,
 using its own public-only key without changing normal OData signing behavior.
