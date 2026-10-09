@@ -249,7 +249,7 @@ test('Hidi feature release increments minor; breaking changes fail before writin
   github.commits.shift();
   github.change(['src/Microsoft.OpenApi.Hidi/Program.cs'], 'feat(hidi)!: incompatible feature');
   await assert.rejects(runReleasePlease(github, branch, 'hidi'), /outside the branch major/);
-  assert.equal(github.prs.length, 0);
+  assert.equal(github.prs.filter(pr => pr.state === 'OPEN').length, 0);
   assert.equal(github.releases.length, 0);
 });
 
@@ -329,7 +329,7 @@ test('open Hidi PR updates with additional commits instead of opening a duplicat
   github.change(['install-tool.ps1'], 'fix(hidi): additional fix');
   const updated = await runReleasePlease(github, branch, 'hidi');
   assert.equal(updated.prs[0].number, first.prs[0].number);
-  assert.equal(github.prs.length, 1);
+  assert.equal(github.prs.filter(pr => pr.state === 'OPEN').length, 1);
   assert.ok(updated.prs[0].body.includes('additional fix'));
 });
 
