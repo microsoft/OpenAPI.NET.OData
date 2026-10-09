@@ -12,6 +12,8 @@
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
+    <PublicSign Condition="'$(HidiPublicSignBuild)' == 'true'">true</PublicSign>
+    <AssemblyOriginatorKeyFile Condition="'$(HidiPublicSignBuild)' == 'true'">..\..\tool\Microsoft.OpenApi.OData.public.snk</AssemblyOriginatorKeyFile>
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">..\..\bin\Debug\</OutputPath>
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">..\..\bin\Release\</OutputPath>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>

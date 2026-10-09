@@ -19,7 +19,9 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: |
+            8.0.x
+            10.0.x
 
       - name: Data gatherer
         id: data_gatherer
@@ -93,6 +95,55 @@ jobs:
             -c Release
           }
 
+      - name: Run hidi tests (Microsoft.Testing.Platform)
+        shell: pwsh
+        run: |
+          dotnet run --project .\test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c Release -- --minimum-expected-tests 1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Pack and install hidi locally
+        shell: pwsh
+        run: |
+          dotnet pack .\src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c Release --no-build -o .\artifacts\hidi\nuget
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .\install-tool.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $workspace = (Get-Location).Path
+          $fixtures = Join-Path $workspace 'test' 'Microsoft.OpenApi.Hidi.Tests' 'UtilityFiles'
+          $outputs = Join-Path $workspace 'artifacts' 'hidi'
+          $hidi = Join-Path $outputs 'installed' 'hidi'
+          $sampleInput = Join-Path $fixtures 'SampleOpenApi.yml'
+          $csdlInput = Join-Path $fixtures 'Todo.xml'
+          $jsonOutput = Join-Path $outputs 'openapi.json'
+          $csdlOutput = Join-Path $outputs 'csdl.yaml'
+          $diagramOutput = Join-Path $outputs 'diagram.md'
+          & $hidi --help
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $hidi validate --openapi $sampleInput
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $hidi transform --openapi $sampleInput --format json --version 3.0 --output $jsonOutput --clean-output
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $hidi transform --csdl $csdlInput --format yaml --version 3.0 --output $csdlOutput --clean-output
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $document = Get-Content $jsonOutput -Raw | ConvertFrom-Json
+          if ($document.openapi -notlike '3.0.*' -or @($document.paths.PSObject.Properties).Count -eq 0) {
+            throw "Expected an OpenAPI 3.0 document with paths from SampleOpenApi."
+          }
+          $csdlDocument = Get-Content $csdlOutput -Raw
+          if ($csdlDocument -notmatch '(?m)^openapi:\s*3\.0\.' -or $csdlDocument -notmatch '(?m)^  /Todos:\s*$' -or $csdlDocument -notmatch '(?m)^  schemas:\s*$') {
+            throw "Expected OpenAPI 3.0, /Todos paths and schemas in the CSDL YAML output."
+          }
+          & $hidi show --openapi $sampleInput --output $diagramOutput
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if (-not (Select-String $diagramOutput -Pattern 'mermaid' -Quiet)) { throw "Expected a Mermaid diagram from hidi show." }
+
+      - name: Upload hidi NuGet artifact (not a release)
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: hidi-nuget
+          path: artifacts/hidi/nuget
+          if-no-files-found: error
+
       # - if: steps.tag_generator.outputs.new_version != ''
       #   name: Upload NuGet packages as artifacts
       #   id: ul_packages_artifact
@@ -100,6 +151,46 @@ jobs:
       #   with:
       #     name: NuGet packages
       #     path: Artifacts/NuGet/
+
+  hidi-windows:
+    name: Hidi Windows executable
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+      - name: Publish and smoke-test Windows executable
+        shell: pwsh
+        run: |
+          dotnet publish .\src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PackAsTool=false -p:GeneratePackageOnBuild=false -o .\artifacts\hidi\win-x64
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & .\artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe --help
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Compress-Archive -Path .\artifacts\hidi\win-x64\* -DestinationPath .\artifacts\hidi\hidi-win-x64.zip
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: hidi-windows-executable
+          path: |
+            artifacts/hidi/hidi-win-x64.zip
+            artifacts/hidi/win-x64/Microsoft.OpenApi.Hidi.exe
+          if-no-files-found: error
+
+  hidi-docker:
+    name: Hidi Docker build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Build and smoke-test Docker image (no push)
+        run: |
+          docker build --tag hidi:ci .
+          docker run --rm hidi:ci --help
 
   cd:
     if: needs.ci.outputs.is_default_branch == 'true' && needs.ci.outputs.latest_version != ''

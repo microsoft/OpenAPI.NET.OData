@@ -8,6 +8,30 @@ OpenAPI.net.OData is a mono-repo containing source code for the following packag
 |----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Microsoft.OpenAPI.OData](./README.md)                         | [![NuGet Version](https://img.shields.io/nuget/vpre/Microsoft.OpenAPI.OData?label=Latest&logo=nuget)](https://www.nuget.org/packages/Microsoft.OpenAPI.OData/)                       |
 
+## Hidi
+
+[Microsoft.OpenApi.Hidi](src/Microsoft.OpenApi.Hidi/readme.md) is a .NET tool,
+not an OData library package. Install the .NET 10 SDK and .NET 8 runtime to build
+and test both projects. Do not change the solution-wide test runner: OData uses
+VSTest and hidi uses Microsoft.Testing.Platform.
+
+```powershell
+dotnet build Microsoft.OpenApi.OData.sln -c Release
+dotnet test test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj -c Release
+dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c Release -- --minimum-expected-tests 1
+```
+
+Hidi uses published OpenAPI core/YAML packages and the local OData project. Its
+public-only signing key preserves assembly identity and friend-assembly access;
+never add the source repository's private strong-name key. Production signing
+is handled only by the official Azure pipeline.
+
+Hidi's version is in its own project and `.hidi-release-please-manifest.json`.
+Its `hidi-v2.*` tags must not trigger OData publishing. Version 2.12.2 is the
+already-published migration baseline, not a new release. Hidi release automation
+and publishing remain disabled until source cutover. History-import migration
+PRs must be merged with a merge commit, never squash or rebase.
+
 OpenAPI.net.OData is open to contributions. There are a couple of different recommended paths to get contributions into the released version of this library.
 
 __NOTE__ A signed a contribution license agreement is required for all contributions, and is checked automatically on new pull requests. Please read and sign [the agreement](https://cla.microsoft.com/) before starting any work for this repository.

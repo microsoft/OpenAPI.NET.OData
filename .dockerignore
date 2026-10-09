@@ -1,0 +1,10 @@
+**/bin
+**/obj
+**/artifacts
+.git
+.vs
+.idea
+test
+**/*.snk
+!tool/Microsoft.OpenApi.Hidi.public.snk
+!tool/Microsoft.OpenApi.OData.public.snk

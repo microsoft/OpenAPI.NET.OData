@@ -66,12 +66,32 @@ extends:
             inputs:
               version: 8.x
 
+          - task: UseDotNet@2
+            displayName: 'Use .NET 10 for hidi tests'
+            inputs:
+              version: 10.x
+
           # Install the nuget tool.
           - task: NuGetToolInstaller@1
             displayName: 'Use NuGet >=6.11.0'
             inputs:
               versionSpec: '>=6.11.0'
               checkLatest: true
+
+          - task: NuGetAuthenticate@1
+            displayName: 'Authenticate approved NuGet feed'
+
+          - pwsh: |
+              @'
+              <?xml version="1.0" encoding="utf-8"?>
+              <configuration>
+                <packageSources>
+                  <clear />
+                  <add key="GraphDeveloperExperiences_Public" value="https://microsoftgraph.pkgs.visualstudio.com/0985d294-5762-4bc2-a565-161ef349ca3e/_packaging/GraphDeveloperExperiences_Public/nuget/v3/index.json" />
+                </packageSources>
+              </configuration>
+              '@ | Set-Content -Path '$(Build.SourcesDirectory)\nuget.config'
+            displayName: 'Configure approved NuGet feed'
 
           # Build the Product project
           - task: DotNetCoreCLI@2
@@ -80,19 +100,26 @@ extends:
               projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
               arguments: '--configuration $(BuildConfiguration) --no-incremental'
 
-          # Run the Unit test
+          # Both test projects are in the solution, but SDK10 cannot run MTP via VSTest.
+          # Keep OData on VSTest and invoke the hidi MTP executable separately.
           - task: DotNetCoreCLI@2
             displayName: 'test'
             inputs:
               command: test
-              projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
+              projects: '$(Build.SourcesDirectory)\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj'
               arguments: '--configuration $(BuildConfiguration) --no-build'
+
+          - pwsh: |
+              dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c $(buildConfiguration) --no-build -- --minimum-expected-tests 1
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            displayName: 'Test hidi (Microsoft.Testing.Platform)'
 
           - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
             displayName: 'ESRP CodeSigning'
             inputs:
               ConnectedServiceName: 'Federated DevX ESRP Managed Identity Connection'
-              FolderPath: 'src'
+              FolderPath: 'bin\$(BuildConfiguration)'
+              Pattern: 'Microsoft.OpenApi.OData.Reader.dll'
               AppRegistrationClientId: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
               AppRegistrationTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
               AuthAKVName: 'akv-prod-eastus'
@@ -228,7 +255,9 @@ extends:
                   vmImage: ubuntu-latest
                 steps:
                 - pwsh: |
-                    $artifactName = Get-ChildItem -Path $(Pipeline.Workspace) -Filter Microsoft.OpenApi.*.nupkg -recurse | select -First 1
+                    $artifacts = @(Get-ChildItem -Path $(Pipeline.Workspace) -Filter Microsoft.OpenApi.OData.*.nupkg -Recurse)
+                    if ($artifacts.Count -ne 1) { throw "Expected exactly one OData package; found $($artifacts.Count)." }
+                    $artifactName = $artifacts[0]
                     $artifactVersion= $artifactName.Name -replace "Microsoft.OpenApi.OData.", "" -replace ".nupkg", ""
                     #Set Variable $artifactName and $artifactVersion
                     Write-Host "##vso[task.setvariable variable=artifactVersion; isSecret=false;]$artifactVersion"
@@ -244,5 +273,5 @@ extends:
                     tag: 'v$(artifactVersion)'
                     title: 'v$(artifactVersion)'
                     releaseNotesSource: inline
-                    assets: '$(Pipeline.Workspace)\**\*.nupkg'   
+                    assets: '$(Pipeline.Workspace)\Microsoft.OpenApi.OData.*.nupkg'
                     addChangeLog: false   
