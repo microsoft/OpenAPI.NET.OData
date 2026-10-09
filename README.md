@@ -100,12 +100,12 @@ tests requires the .NET 10 SDK. Existing OData tests still use .NET 8 and VSTest
 Hidi's filtered history was imported with a merge, not squashed. **Merge this
 migration PR using a merge commit, not squash or rebase**, so the canonical
 imported commits can also be retained by the later main-branch migration.
-Independent Hidi version PRs are automated by Release Please on `support/v2`;
-its project, manifest, changelog, and installation examples advance separately
-from OData. Hidi tags, GitHub releases, and production publishing remain disabled
-until source cutover; OpenAPI.NET remains the publisher in the meantime.
+The standard Release Please config and manifest track Hidi and OData as separate
+components on `support/v2`, updating their project versions and changelogs
+independently. Production publishing remains disabled until source cutover;
+OpenAPI.NET remains the package publisher in the meantime.
 See [independent automated versions](CONTRIBUTING.md#independent-automated-versions)
-for changed-path ownership and the tag-free version PR lifecycle.
+for component paths and version-file ownership.
 
 The gated hidi NuGet release uses `EsrpRelease@14`, staging only the exact
 `Microsoft.OpenApi.Hidi` package and its `.snupkg` symbols from the Hidi build

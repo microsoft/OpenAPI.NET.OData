@@ -49,26 +49,6 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Set up Node.js for Release Please runner tests
-        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
-        with:
-          node-version: '24'
-      - name: Test Release Please runner with measured JavaScript coverage
-        shell: pwsh
-        working-directory: .github/release-please
-        run: |
-          npm ci --ignore-scripts
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          npm run coverage
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          $report = '..\..\artifacts\release-please\lcov.info'
-          if (-not (Test-Path $report)) {
-            throw 'Release Please runner LCOV report was not generated.'
-          }
-          $sources = @(Get-Content $report | Where-Object { $_ -like 'SF:*' })
-          if ($sources.Count -ne 1 -or $sources[0] -notmatch '^SF:\.github[/\\]release-please[/\\]run\.cjs$') {
-            throw 'Expected measured JavaScript coverage of only the Release Please runner.'
-          }
       - name: Cache SonarCloud packages
         uses: actions/cache@v5
         with:
@@ -140,7 +120,7 @@ jobs:
           CoverletOutputFormat: 'opencover' # https://github.com/microsoft/vstest/issues/4014#issuecomment-1307913682
         shell: pwsh
         run: |
-          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="test/**/coverage.net8.0.opencover.xml,artifacts/hidi/coverage/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml" /d:sonar.javascript.lcov.reportPaths="artifacts/release-please/lcov.info" /d:sonar.test.inclusions="test/**,**/run.test.cjs"
+          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="test/**/coverage.net8.0.opencover.xml,artifacts/hidi/coverage/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml"
           dotnet workload restore
           dotnet build
           dotnet test test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover

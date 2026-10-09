@@ -5,8 +5,8 @@
 #
 # Summary:
 # This GitHub Actions workflow automates the release process using Release Please.
-# It tests component routing and uses a GitHub App token to manage independent
-# OData releases and tag-free Hidi version pull requests on their target branches.
+# It triggers on pushes to the main branch, generates a GitHub App token using organization
+# variables and secrets, and then runs the release-please-action to manage versioning and changelogs.
 
 name: Release Please
 
@@ -16,40 +16,12 @@ on:
       - main
       - support/v1
       - support/v2
-  pull_request:
-    branches:
-      - main
-      - support/v1
-      - support/v2
-    paths:
-      - '.github/release-please/**'
-      - '.github/workflows/release-please-gha.yml'
-      - '*release-please*.json'
-      - 'Directory.Build.props'
-      - 'src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj'
-      - 'src/Microsoft.OpenApi.Hidi/readme.md'
 
 permissions:
   contents: read
 
 jobs:
-  release-please-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
-        with:
-          node-version: '24'
-      - name: Install pinned Release Please
-        working-directory: .github/release-please
-        run: npm ci --ignore-scripts
-      - name: Verify component routing and version-only lifecycle
-        working-directory: .github/release-please
-        run: npm test
-
   release-please-master:
-    if: ${{ github.event_name == 'push' }}
-    needs: release-please-tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -62,41 +34,10 @@ jobs:
           app-id: ${{ vars.RELEASE_PLEASE_TOKEN_PROVIDER_APP_ID }}
           private-key: ${{ secrets.RELEASE_PLEASE_TOKEN_PROVIDER_PEM }}
 
-      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+      - name: Release Please
+        uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4
         with:
-          node-version: '24'
-      - name: Install pinned Release Please
-        working-directory: .github/release-please
-        run: npm ci --ignore-scripts
-      - name: Release Please (OData)
-        run: node .github/release-please/run.cjs odata
-        env:
-          RELEASE_PLEASE_TOKEN: ${{ steps.app-token.outputs.token }}
-          GITHUB_REF_NAME: ${{ github.ref_name }}
-
-  release-please-hidi:
-    # Version PRs only; tags, releases and protected publishing remain disabled.
-    if: ${{ github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'support/v2') }}
-    needs: release-please-tests
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-      - name: Generate GitHub App token
-        id: app-token
-        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
-        with:
-          app-id: ${{ vars.RELEASE_PLEASE_TOKEN_PROVIDER_APP_ID }}
-          private-key: ${{ secrets.RELEASE_PLEASE_TOKEN_PROVIDER_PEM }}
-      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
-        with:
-          node-version: '24'
-      - name: Install pinned Release Please
-        working-directory: .github/release-please
-        run: npm ci --ignore-scripts
-      - name: Release Please (independent Hidi version PR)
-        run: node .github/release-please/run.cjs hidi
-        env:
-          RELEASE_PLEASE_TOKEN: ${{ steps.app-token.outputs.token }}
-          GITHUB_REF_NAME: ${{ github.ref_name }}
+          token: ${{ steps.app-token.outputs.token }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          target-branch: ${{ github.ref_name }}

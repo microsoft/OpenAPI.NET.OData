@@ -26,65 +26,32 @@ public-only signing key preserves assembly identity and friend-assembly access;
 never add the source repository's private strong-name key. Production signing
 is handled only by the official Azure pipeline.
 
-Hidi's version is in its own project and `.hidi-release-please-manifest.json`.
+Hidi's version is in its own project and the
+`src/Microsoft.OpenApi.Hidi` entry in `.release-please-manifest.json`.
 Its `hidi-v2.*` tags must not trigger OData publishing. Version 2.12.2 is the
-already-published migration baseline, not a new release. Release Please now
-opens independent version PRs on `support/v2`; Hidi tags, GitHub releases, and
-production publishing remain disabled until source cutover. History-import
-migration PRs must be merged with a merge commit, never squash or rebase.
+already-published migration baseline, not a new release. Production publishing
+remains disabled until source cutover. History-import migration PRs must be
+merged with a merge commit, never squash or rebase.
 
 ### Independent automated versions
 
-The Release Please workflow uses the pinned API runner in
-`.github/release-please`. It registers `exact-path-exclusions` because the
-upstream `exclude-paths` implementation matches directories, not individual
-files. Keep the root OData config/manifest and the Hidi config/manifest separate;
-the existing `simple` strategy updates `Directory.Build.props` for OData and
-only the Hidi project's `<Version>` for Hidi. Hidi's changelog and annotated
-installation examples are updated in the same version PR, without changing its
-published OpenAPI dependencies.
+The standard Release Please action uses one `release-please-config.json` and
+one `.release-please-manifest.json` with two components: root OData (`.`) and
+Hidi (`src/Microsoft.OpenApi.Hidi`). Their versions advance independently in
+the generated release PRs. The stock `separate-pull-requests` option preserves
+OData's existing release branch and avoids the stock engine's componentless-root
+parsing issue with combined release PRs.
 
-| Changed paths | Version track |
-| --- | --- |
-| Hidi CLI source, tests, and packaged readme | Hidi only |
-| `Dockerfile`, `.dockerignore`, `install-tool.ps1`, Hidi public keys/local NuGet config | Hidi only |
-| `.azure-pipelines/hidi-release.yml`, private-feed helper and its Pester tests, Hidi config/manifest | Hidi only |
-| OData reader, GUI/utilities, OData tests/assembly metadata, `docs`, Redocly config, legacy `build.cmd`/`build.ps1`, OData config/manifest, `Directory.Build.props` | OData only |
-| Root README/contributing docs, solution, SDK, `Build.props`, `src/Build.props`, `build.root` | Both, for releasable commits |
-| `.github`, editor configuration directories, OData Azure CI pipeline | Neither |
+Hidi source changes update its project `<Version>` and local `CHANGELOG.md`;
+the root component excludes Hidi source and tests. OData changes update
+`Directory.Build.props` and the root `CHANGELOG.md`, without changing Hidi.
+Hidi keeps `hidi-v2.*` tags; OData keeps componentless `v2.*` tags. Hidi's
+published OpenAPI dependency versions are not changed by its version updater.
 
-Routing is by changed paths, not commit scopes. Use `fix(hidi):` or
-`feat(hidi):` for clarity, but a Hidi scope does not override file ownership.
-A mixed change touching both components contributes to both tracks. An OData
-version-only edit does not independently bump Hidi.
-
-Hidi version PRs use the `hidi` component and their own branch and lifecycle
-labels (`autorelease: hidi-pending` and `autorelease: hidi-versioned`). After a
-version PR merges, the runner uses that merge commit as the next version's
-checkpoint and retires the pending label. This allows subsequent version PRs
-without tags and does not block OData's normal release lifecycle. No Hidi
-GitHub release or publishing job is invoked by this runner; production cutover
-remains a separate protected operation.
-
-On its first Hidi run, the app token creates those two repository labels if
-missing, using the GitHub labels API. Existing labels and OData's default labels
-are not changed. API permission, network, or validation failures stop automation
-explicitly; no publishing permissions or protected resources are granted.
-
-Run the offline routing and version-file tests with Node.js 24:
-
-```powershell
-Push-Location .github\release-please
-npm ci --ignore-scripts
-npm test
-npm run coverage
-Pop-Location
-```
-
-The coverage command measures only the runner with Node's native coverage
-instrumentation and writes `artifacts/release-please/lcov.info` relative to the
-repository root. The existing SonarCloud workflow imports this report alongside
-the unchanged C# and PowerShell coverage reports.
+Routing follows component paths, not commit scopes. Hidi-only tests do not
+create a release by themselves, and root-level distribution/helper files remain
+root-owned under this standard configuration. Production package, executable,
+and container publishing remains gated in the official Azure pipeline.
 
 OpenAPI.net.OData is open to contributions. There are a couple of different recommended paths to get contributions into the released version of this library.
 
