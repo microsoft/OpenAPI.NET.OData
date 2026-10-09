@@ -60,59 +60,65 @@ jobs:
       - name: Install PowerShell test dependency
         shell: pwsh
         run: Install-Module Pester -RequiredVersion 5.7.1 -Scope CurrentUser -Force
-      - name: Test Hidi NuGet helper with measured coverage
+      - name: Test Hidi NuGet helpers with measured coverage
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
           Import-Module Pester -RequiredVersion 5.7.1 -ErrorAction Stop
-          $helperPath = 'scripts/check-nuget-package-published.ps1'
-          $helper = (Resolve-Path $helperPath).Path
+          $helperPaths = @('scripts/check-nuget-package-published.ps1', 'scripts/verify-hidi-package-assembly.ps1')
+          $helpers = @($helperPaths | ForEach-Object { (Resolve-Path $_).Path })
           $outputRoot = Join-Path $PWD 'artifacts\hidi\powershell-coverage'
           New-Item -ItemType Directory -Force -Path $outputRoot | Out-Null
           $configuration = New-PesterConfiguration
-          $configuration.Run.Path = 'test\Microsoft.OpenApi.Hidi.Tests\check-nuget-package-published.Tests.ps1'
+          $configuration.Run.Path = @('test\Microsoft.OpenApi.Hidi.Tests\check-nuget-package-published.Tests.ps1', 'test\Microsoft.OpenApi.Hidi.Tests\verify-hidi-package-assembly.Tests.ps1')
           $configuration.Run.PassThru = $true
           $configuration.CodeCoverage.Enabled = $true
-          $configuration.CodeCoverage.Path = $helper
+          $configuration.CodeCoverage.Path = $helpers
           $configuration.CodeCoverage.OutputFormat = 'JaCoCo'
           $configuration.CodeCoverage.OutputPath = Join-Path $outputRoot 'pester-coverage.xml'
           $configuration.CodeCoverage.CoveragePercentTarget = 80
           $result = Invoke-Pester -Configuration $configuration
-          if ($result.FailedCount -gt 0 -or $result.PassedCount -lt 24) {
-            throw "Hidi NuGet helper tests failed or did not execute all 24 cases."
+          if ($result.FailedCount -gt 0 -or $result.PassedCount -lt 45) {
+            throw "Hidi NuGet helper tests failed or did not execute all 45 cases."
           }
           $report = [xml](Get-Content $configuration.CodeCoverage.OutputPath.Value -Raw)
           $sourceFiles = @($report.SelectNodes('//sourcefile'))
-          if ($sourceFiles.Count -ne 1 -or $sourceFiles[0].name -ne [IO.Path]::GetFileName($helper)) {
-            throw 'Expected measured coverage of only the Hidi NuGet helper.'
-          }
-          $lines = @($sourceFiles[0].SelectNodes('line'))
-          $sourceLineCount = @(Get-Content $helper).Count
-          $lineNumbers = @($lines | ForEach-Object { [int]$_.nr })
-          if ($lines.Count -eq 0 -or @($lineNumbers | Select-Object -Unique).Count -ne $lines.Count -or
-              @($lines | Where-Object {
-                [int]$_.nr -le 0 -or [int]$_.nr -gt $sourceLineCount -or
-                -not $_.HasAttribute('ci') -or -not $_.HasAttribute('mi') -or
-                [int]$_.ci -lt 0 -or [int]$_.mi -lt 0 -or ([int]$_.ci + [int]$_.mi) -le 0
-              }).Count -gt 0) {
-            throw 'Missing or invalid measured helper coverage lines.'
-          }
-          $covered = @($lines | Where-Object { [int]$_.ci -gt 0 }).Count
-          if ($covered / $lines.Count -lt 0.8) {
-            throw "Insufficient measured Hidi helper coverage: $covered/$($lines.Count) lines."
+          if ($sourceFiles.Count -ne $helpers.Count) {
+            throw 'Expected measured coverage of both Hidi NuGet helpers.'
           }
           $coverage = [xml]'<coverage version="1"/>'
-          $file = $coverage.CreateElement('file')
-          $file.SetAttribute('path', $helperPath)
-          [void]$coverage.DocumentElement.AppendChild($file)
-          foreach ($line in $lines) {
-            $entry = $coverage.CreateElement('lineToCover')
-            $entry.SetAttribute('lineNumber', $line.nr)
-            $entry.SetAttribute('covered', ([int]$line.ci -gt 0).ToString().ToLowerInvariant())
-            [void]$file.AppendChild($entry)
+          foreach ($helperPath in $helperPaths) {
+            $helper = (Resolve-Path $helperPath).Path
+            $sourceFile = @($sourceFiles | Where-Object { $_.name -eq [IO.Path]::GetFileName($helper) })
+            if ($sourceFile.Count -ne 1) { throw "Missing or ambiguous helper coverage: $helperPath" }
+            $lines = @($sourceFile[0].SelectNodes('line'))
+            $sourceLineCount = @(Get-Content $helper).Count
+            $lineNumbers = @($lines | ForEach-Object { [int]$_.nr })
+            if ($lines.Count -eq 0 -or @($lineNumbers | Select-Object -Unique).Count -ne $lines.Count -or
+                @($lines | Where-Object {
+                  [int]$_.nr -le 0 -or [int]$_.nr -gt $sourceLineCount -or
+                  -not $_.HasAttribute('ci') -or -not $_.HasAttribute('mi') -or
+                  [int]$_.ci -lt 0 -or [int]$_.mi -lt 0 -or ([int]$_.ci + [int]$_.mi) -le 0
+                }).Count -gt 0) {
+              throw "Missing or invalid measured helper coverage lines: $helperPath"
+            }
+            $covered = @($lines | Where-Object { [int]$_.ci -gt 0 }).Count
+            if ($covered / $lines.Count -lt 0.8) {
+              throw "Insufficient measured Hidi helper coverage: $helperPath $covered/$($lines.Count) lines."
+            }
+            $file = $coverage.CreateElement('file')
+            $file.SetAttribute('path', $helperPath)
+            [void]$coverage.DocumentElement.AppendChild($file)
+            foreach ($line in $lines) {
+              $entry = $coverage.CreateElement('lineToCover')
+              $entry.SetAttribute('lineNumber', $line.nr)
+              $entry.SetAttribute('covered', ([int]$line.ci -gt 0).ToString().ToLowerInvariant())
+              [void]$file.AppendChild($entry)
+            }
+            Write-Host "Measured Hidi helper coverage: $helperPath $covered/$($lines.Count) lines."
           }
           $coverage.Save((Join-Path $outputRoot 'sonar-coverage.xml'))
-          Write-Host "Measured Hidi NuGet helper coverage: $covered/$($lines.Count) lines; Sonar generic report generated."
+          Write-Host 'Sonar generic report generated for both Hidi NuGet helpers.'
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
