@@ -79,6 +79,13 @@ Docker builds opt into `HidiPublicSignBuild=true` for the local OData project,
 using its own public-only key without changing normal OData signing behavior.
 Private `.snk` resources are excluded from the Docker context.
 
+The official pipeline stages a separate `HidiDockerContext` pipeline artifact
+in the build job. It contains only the hidi and OData reader sources, required
+build and Docker files, and the two public-only signing keys; build outputs and
+private keys are excluded. The container release job consumes this artifact as
+a 1ES input without checking out the repository. NuGet and Windows release
+artifacts continue to use the separate `Hidi` artifact.
+
 The gated official pipeline retains the consumer image
 `mcr.microsoft.com/openapi/hidi`, backed by
 `msgraphprodregistry.azurecr.io/public/openapi/hidi`. Stable images use `latest`
