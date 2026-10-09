@@ -43,7 +43,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="System.CommandLine" Version="2.0.11" />
+    <PackageReference Include="System.CommandLine" Version="2.0.12" />
     <PackageReference Include="Microsoft.OData.Edm" Version="8.4.4" />
     <PackageReference Include="Microsoft.OpenApi" Version="3.10.2" />
     <PackageReference Include="Microsoft.OpenApi.YamlReader" Version="3.10.2" />
