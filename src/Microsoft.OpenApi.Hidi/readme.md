@@ -60,6 +60,9 @@ The Hidi-only `testconfig.json` explicitly includes the Hidi assembly and exclud
 test/generated code. This authoritative configuration prevents Coverlet's
 dynamic namespace exclusions from excluding `Microsoft.OpenApi.Hidi` itself.
 The Sonar workflow requires an OpenCover report with covered Hidi sequence points.
+Repository-wide MTP migration is tracked separately in
+[#885](https://github.com/microsoft/OpenAPI.NET.OData/issues/885); this migration
+does not change the existing OData test platform.
 
 ### Windows executable
 
@@ -99,7 +102,7 @@ from the Docker context and must not be copied into new Hidi resources.
 
 The official build stages a separate `HidiDockerContext` artifact containing only
 the Docker build inputs, Hidi/OData source projects and their two public keys,
-without `bin`, `obj`, Git metadata or private signing resources. Stable and preview
+without `bin`, `obj`, `artifacts`, Git metadata or private signing resources. Stable and preview
 container release jobs consume that same build artifact without checking out the
 repository, as required by the 1ES release-job policy.
 Container jobs retain the source publisher's existing `docker-images-deploy`

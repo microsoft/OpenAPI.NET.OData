@@ -99,7 +99,8 @@ extends:
               projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
               arguments: '--configuration $(BuildConfiguration) --no-incremental'
 
-          # Run the Unit test
+          # Both suites are in the solution, but SDK10 cannot run MTP via VSTest.
+          # Keep OData on VSTest and invoke the hidi MTP executable separately (#885).
           - task: DotNetCoreCLI@2
             displayName: 'test'
             inputs:
@@ -116,7 +117,8 @@ extends:
             displayName: 'ESRP CodeSigning'
             inputs:
               ConnectedServiceName: 'Federated DevX ESRP Managed Identity Connection'
-              FolderPath: 'src'
+              FolderPath: 'bin\$(BuildConfiguration)'
+              Pattern: 'Microsoft.OpenApi.OData.Reader.dll'
               AppRegistrationClientId: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
               AppRegistrationTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
               AuthAKVName: 'akv-prod-eastus'

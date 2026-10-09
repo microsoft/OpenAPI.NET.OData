@@ -14,6 +14,7 @@ namespace Microsoft.OpenApi.Hidi.Tests
         [InlineData(null, null, true)]
         [InlineData("", " ", true)]
         [InlineData("\t", "value", false)]
+        [InlineData(null, "value", false)]
         [InlineData("Hidi", "HIDI", true)]
         [InlineData("Hidi", "different", false)]
         [InlineData("Hidi", null, false)]

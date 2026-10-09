@@ -92,7 +92,7 @@ extends:
                     $directory = Join-Path $sourceRoot $sourceDirectory
                     foreach ($file in Get-ChildItem -LiteralPath $directory -File -Recurse -Force) {
                       $relativePath = [IO.Path]::GetRelativePath($sourceRoot, $file.FullName)
-                      if ($relativePath -match '(^|[\\/])(bin|obj|\.git)([\\/]|$)' -or $file.Extension -in @('.snk', '.pfx', '.p12', '.pem', '.key')) { continue }
+                      if ($relativePath -match '(^|[\\/])(bin|obj|\.git|artifacts)([\\/]|$)' -or $file.Extension -in @('.snk', '.pfx', '.p12', '.pem', '.key')) { continue }
                       if ($file.Attributes -band [IO.FileAttributes]::ReparsePoint) { throw "Unexpected linked Docker context file: $relativePath" }
                       $destination = Join-Path $context $relativePath
                       New-Item -ItemType Directory -Force (Split-Path $destination -Parent) | Out-Null
@@ -112,7 +112,7 @@ extends:
                   if ($keys.Count -ne 2) { throw "Expected exactly two public-only signing keys in the Docker context." }
                   foreach ($file in Get-ChildItem -LiteralPath $context -File -Recurse -Force) {
                     $relativePath = [IO.Path]::GetRelativePath($context, $file.FullName)
-                    if ($relativePath -match '(^|[\\/])(bin|obj|\.git)([\\/]|$)' -or $file.Extension -in @('.pfx', '.p12', '.pem', '.key')) {
+                    if ($relativePath -match '(^|[\\/])(bin|obj|\.git|artifacts)([\\/]|$)' -or $file.Extension -in @('.pfx', '.p12', '.pem', '.key')) {
                       throw "Forbidden Docker context file: $relativePath"
                     }
                     if ($file.Extension -eq '.snk' -and $relativePath -notmatch '^tool[\\/]Microsoft\.OpenApi\.(Hidi|OData)\.public\.snk$') {

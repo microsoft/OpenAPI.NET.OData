@@ -15,30 +15,36 @@ public class SettingsUtilitiesTests
         Assert.Throws<ArgumentNullException>(() => SettingsUtilities.GetOpenApiConvertSettings(null!, null));
     }
 
-    [Fact]
-    public void GetOpenApiConvertSettingsUsesMetadataVersionWhenSectionIsMissing()
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("2.1")]
+    public void GetOpenApiConvertSettingsUsesMetadataVersionWhenSectionIsMissing(string? metadataVersion)
     {
         var configuration = new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string?>()).Build();
 
-        var settings = SettingsUtilities.GetOpenApiConvertSettings(configuration, "2.1");
+        var settings = SettingsUtilities.GetOpenApiConvertSettings(configuration, metadataVersion);
 
-        Assert.Equal("2.1", settings.SemVerVersion);
+        var expected = string.IsNullOrEmpty(metadataVersion) ? new OpenApiConvertSettings().SemVerVersion : metadataVersion;
+        Assert.Equal(expected, settings.SemVerVersion);
     }
 
-    [Fact]
-    public void GetOpenApiConvertSettingsBindsConfiguredValuesOverMetadataVersion()
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void GetOpenApiConvertSettingsBindsConfiguredValuesOverMetadataVersion(bool enablePagination)
     {
         var configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(new Dictionary<string, string?>
             {
                 [$"{nameof(OpenApiConvertSettings)}:{nameof(OpenApiConvertSettings.SemVerVersion)}"] = "3.0",
-                [$"{nameof(OpenApiConvertSettings)}:{nameof(OpenApiConvertSettings.EnablePagination)}"] = bool.TrueString
+                [$"{nameof(OpenApiConvertSettings)}:{nameof(OpenApiConvertSettings.EnablePagination)}"] = enablePagination.ToString()
             })
             .Build();
 
         var settings = SettingsUtilities.GetOpenApiConvertSettings(configuration, "2.1");
 
         Assert.Equal("3.0", settings.SemVerVersion);
-        Assert.True(settings.EnablePagination);
+        Assert.Equal(enablePagination, settings.EnablePagination);
     }
 }

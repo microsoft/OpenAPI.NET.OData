@@ -103,8 +103,18 @@ public class StatsVisitorTests
         Assert.Equal(1, visitor.LinkCount);
         Assert.Equal(1, visitor.CallbackCount);
         Assert.Equal(4, visitor.SchemaCount);
-        Assert.Contains("Path Items: 2", report, StringComparison.Ordinal);
-        Assert.Contains("Callbacks: 1", report, StringComparison.Ordinal);
-        Assert.Contains("Schemas: 4", report, StringComparison.Ordinal);
+        visitor.Visit(new Dictionary<string, IOpenApiHeader> { ["x-rate-limit"] = new OpenApiHeader() });
+        Assert.Equal(1, visitor.HeaderCount);
+        var expected = string.Join(Environment.NewLine,
+        [
+            "Path Items: 2", "Operations: 2", "Parameters: 1", "Request Bodies: 1",
+            "Responses: 2", "Links: 1", "Callbacks: 1", "Schemas: 4", ""
+        ]);
+        Assert.Equal(expected, report);
+
+        visitor.Visit((IOpenApiParameter)new OpenApiParameter());
+
+        Assert.Equal(2, visitor.ParameterCount);
+        Assert.Contains("Parameters: 2", visitor.GetStatisticsReport(), StringComparison.Ordinal);
     }
 }
