@@ -86,6 +86,21 @@ private keys are excluded. The container release job consumes this artifact as
 a 1ES input without checking out the repository. NuGet and Windows release
 artifacts continue to use the separate `Hidi` artifact.
 
+The container release job retains the existing `docker-images-deploy`
+environment and its approvals/checks. The destination pipeline must be authorized
+for that protected environment before official publishing can be enabled.
+
+The official container job authenticates to the approved
+`GraphDeveloperExperiences_Public` central feed using the existing Azure DevOps
+job identity. A credential-bearing NuGet config is created with owner-only
+permissions in the agent temp directory, passed as the BuildKit `nuget_config`
+secret, and removed in `finally`, including on build failure. It is never staged
+in `HidiDockerContext`, published as an artifact, or copied into an image layer.
+The destination pipeline identity must already be authorized to read the feed;
+this handoff does not grant permissions or bypass service-connection approvals.
+The Dockerfile secret mount is optional, so local and GitHub Actions builds
+without a secret continue to use their default NuGet sources.
+
 The gated official pipeline retains the consumer image
 `mcr.microsoft.com/openapi/hidi`, backed by
 `msgraphprodregistry.azurecr.io/public/openapi/hidi`. Stable images use `latest`
