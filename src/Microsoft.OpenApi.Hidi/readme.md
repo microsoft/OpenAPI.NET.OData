@@ -64,6 +64,30 @@ Repository-wide MTP migration is tracked separately in
 [#885](https://github.com/microsoft/OpenAPI.NET.OData/issues/885); this migration
 does not change the existing OData test platform.
 
+### Official NuGet releases
+
+The gated main Hidi publisher preserves the ESRP NuGet contract from
+[microsoft/OpenAPI.NET#3107](https://github.com/microsoft/OpenAPI.NET/pull/3107)
+(source commit `e1a75437b76ebfc7c9eb446e9fd0b59a21afb14b`). Official builds include
+the signed Hidi `.nupkg`, a matching `.snupkg` and the private-feed version-check
+script in the `Hidi` artifact. The `nuget-org` release job consumes that artifact
+without a repository checkout or the Docker context.
+
+Before ESRP publication, the job requires the exact `hidi-v3.*` release package
+and symbols with a version newer than 3.10.2. It checks
+`GraphDeveloperExperiences_Public` using `System.AccessToken` through
+`FEED_ACCESS_TOKEN`; only a missing package (HTTP 404) or version permits
+publication. Authentication, network and other feed failures stop the job.
+An existing version skips ESRP publication but still allows the existing GitHub
+release's signed package, executable and ZIP attachments to be updated.
+
+ESRP receives only the exact Hidi package and matching symbols under the
+`openapinet` organization, retaining the source's federated DevX connection,
+publisher identity, owners and approvers. This handoff does not enable publishing
+or grant pipeline permissions. Owners must separately verify private-feed token
+access, the ESRP connection and protected `nuget-org` environment authorization
+before cutover; local packaging does not prove production signing or publishing.
+
 ### Windows executable
 
 ```powershell
