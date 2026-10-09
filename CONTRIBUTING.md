@@ -48,3 +48,31 @@ The recommended commit types used are:
 - __chore__ for miscallaneous non-sdk changesin the repo e.g. removing an unused file
 
 Adding an exclamation mark after the commit type (`feat!`) or footer with the prefix __BREAKING CHANGE:__ will cause an increment of the _major_ version.
+
+## Independent component versions
+
+`release-please-config.json` defines OData at `.` and Hidi at
+`src/Microsoft.OpenApi.Hidi`; `.release-please-manifest.json` tracks their versions
+independently. The standard release-please action manages both components.
+The standard `separate-pull-requests` setting retains component-specific PR
+branches so the pinned engine can parse OData-only releases with componentless
+tags; the default combined PR format cannot produce those release candidates.
+Hidi uses `hidi-v3.*` tags on `main`, its own changelog and the project
+`<Version>` property. OData retains its root changelog, `Directory.Build.props`
+version and componentless `v*` tags. A Hidi source change does not bump OData;
+an OData-only change does not bump Hidi.
+
+Routing follows package directories, not commit scopes. Hidi tests outside the
+source package are excluded from OData releases and do not independently trigger
+a Hidi release. Root distribution/helper files remain outside the Hidi component;
+they follow the root package's standard routing, not custom Hidi routing.
+Existing root OData exclusions remain configured. The official Hidi
+package/container publishing gates remain disabled during migration.
+
+The ADO OData pipeline accepts `v3.*` tags and deploys only the exact OData
+package matching that tag and `Directory.Build.props`. The dedicated Hidi
+pipeline accepts `hidi-v3.*` tags; its package, symbols, executable, ZIP and
+container version must match the Hidi tag/project version. Malformed,
+other-component or mismatched tags fail validation rather than publishing a
+different component. With publishing disabled, branch/PR builds remain validation-only; the existing
+Hidi publishing flags, migration floor and protected environments are unchanged.
