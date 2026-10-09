@@ -1,28 +1,11 @@
 {
   "bootstrap-sha": "4f9bad6ea7d25e8596c0ca214975e690d925e6e7",
-  "plugins": ["exact-path-exclusions"],
   "exclude-paths": [
     ".azure-pipelines",
     ".github",
     ".idea",
     ".vs",
-    ".vscode",
-    "src/Microsoft.OpenApi.Hidi",
-    "src/Microsoft.OpenApi.Tool",
-    "src/Microsoft.Hidi",
-    "Microsoft.OpenApi.Hidi.Tests",
-    "test/Microsoft.OpenApi.Hidi.Tests",
-    "test/Microsoft.OpenApi.Tests",
-    "tool/Microsoft.OpenApi.Hidi.public.snk",
-    "tool/Microsoft.OpenApi.OData.public.snk",
-    "tool/hidi-local-nuget.config",
-    "Dockerfile",
-    ".dockerignore",
-    "install-tool.ps1",
-    "scripts/check-nuget-package-published.ps1",
-    "test/scripts/check-nuget-package-published.Tests.ps1",
-    "hidi-release-please-config.json",
-    ".hidi-release-please-manifest.json"
+    ".vscode"
   ],
   "release-type": "simple",
   "bump-minor-pre-major": true,
@@ -30,14 +13,48 @@
   "include-component-in-tag": false,
   "include-v-in-tag": true,
   "draft": false,
+  "separate-pull-requests": true,
   "packages": {
     ".": {
       "package-name": "Microsoft.OpenApi.OData",
       "changelog-path": "CHANGELOG.md",
+      "exclude-paths": [
+        ".azure-pipelines",
+        ".github",
+        ".idea",
+        ".vs",
+        ".vscode",
+        "src/Microsoft.OpenApi.Hidi",
+        "src/Microsoft.OpenApi.Tool",
+        "src/Microsoft.Hidi",
+        "Microsoft.OpenApi.Hidi.Tests",
+        "test/Microsoft.OpenApi.Hidi.Tests",
+        "test/Microsoft.OpenApi.Tests",
+        "tool/Microsoft.OpenApi.Hidi.public.snk",
+        "tool/Microsoft.OpenApi.OData.public.snk",
+        "tool/hidi-local-nuget.config",
+        "Dockerfile",
+        ".dockerignore",
+        "install-tool.ps1"
+      ],
       "extra-files": [
         {
           "type": "xml",
           "path": "Directory.Build.props",
+          "xpath": "//Project/PropertyGroup/Version"
+        }
+      ]
+    },
+    "src/Microsoft.OpenApi.Hidi": {
+      "package-name": "Microsoft.OpenApi.Hidi",
+      "component": "hidi",
+      "changelog-path": "CHANGELOG.md",
+      "include-component-in-tag": true,
+      "include-v-in-tag": true,
+      "extra-files": [
+        {
+          "type": "xml",
+          "path": "Microsoft.OpenApi.Hidi.csproj",
           "xpath": "//Project/PropertyGroup/Version"
         }
       ]
