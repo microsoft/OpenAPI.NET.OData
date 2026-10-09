@@ -69,6 +69,9 @@ the OData CI pipeline do not trigger releases. Existing OData exclusions,
 including its public signing key, remain in place.
 
 The OData job still creates GitHub releases before opening version PRs.
+It is the sole authority for OData tags/releases: the duplicate legacy tag writer
+and its downstream GitHub-release-only job were retired from CI/CD. Otherwise,
+that writer could count Hidi features when a later OData fix arrived.
 The Hidi job opens **version PRs only**, with separate component branches and
 `autorelease: hidi-pending` labels. After a version PR merges, the runner verifies
 its parsed version against the Hidi manifest, uses that merge as the next commit
@@ -76,6 +79,10 @@ boundary, and changes its label to `autorelease: hidi-versioned`. No Hidi tag or
 GitHub release is created, and Hidi labels cannot block OData automation.
 Missing, inconsistent or unreachable checkpoints fail rather than replaying
 old commits. Production publishing and cutover remain separately gated.
+The Hidi job verifies or creates only `autorelease: hidi-pending` and
+`autorelease: hidi-versioned` through the GitHub labels REST API. Permission,
+network or unexpected-response failures stop the job; no broader permissions
+are requested and the existing OData labels are untouched.
 
 Hidi starts at the already-published 3.10.2 on `main` and 2.12.2 on `support/v2`.
 Fixes increment its patch; features increment its minor. Generated versions must

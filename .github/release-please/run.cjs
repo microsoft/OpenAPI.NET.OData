@@ -8,6 +8,41 @@ const HIDI_PENDING = 'autorelease: hidi-pending';
 const HIDI_VERSIONED = 'autorelease: hidi-versioned';
 const HIDI_FLOORS = {'main': '3.10.2', 'support/v2': '2.12.2'};
 
+async function ensureHidiLabels(token, owner, repo, request = fetch) {
+  const api = (process.env.GITHUB_API_URL || 'https://api.github.com').replace(/\/$/, '');
+  const url = `${api}/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/labels`;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+  for (const label of [
+    {name: HIDI_PENDING, color: 'fbca04', description: 'Pending independent Hidi version pull request'},
+    {name: HIDI_VERSIONED, color: '0e8a16', description: 'Merged Hidi version pull request; no production release'}
+  ]) {
+    const labelUrl = `${url}/${encodeURIComponent(label.name)}`;
+    let response = await request(labelUrl, {headers});
+    let expectedStatus = 200;
+    if (response.status === 404) {
+      response = await request(url, {
+        method: 'POST', headers: {...headers, 'Content-Type': 'application/json'},
+        body: JSON.stringify(label)
+      });
+      if (response.status === 422) {
+        // Another branch job may have created the same label concurrently.
+        response = await request(labelUrl, {headers});
+      } else if (response.status !== 201) {
+        throw new Error(`Cannot create Hidi lifecycle label '${label.name}': HTTP ${response.status}`);
+      } else {
+        expectedStatus = 201;
+      }
+    }
+    if (response.status !== expectedStatus || (await response.json()).name !== label.name) {
+      throw new Error(`Cannot verify Hidi lifecycle label '${label.name}': HTTP ${response.status}`);
+    }
+  }
+}
+
 class ExactPathExclusions extends ManifestPlugin {
   async preconfigure(strategies, commitsByPath) {
     for (const [path, config] of Object.entries(this.repositoryConfig)) {
@@ -144,6 +179,7 @@ async function main() {
   const branch = process.env.GITHUB_REF_NAME;
   const [owner, repo] = (process.env.GITHUB_REPOSITORY || '').split('/');
   if (!token || !branch || !owner || !repo) throw new Error('Missing release automation environment');
+  if (process.argv[2] === 'hidi') await ensureHidiLabels(token, owner, repo);
   const github = await GitHub.create({owner, repo, token, defaultBranch: branch});
   const {releases, prs} = await runReleasePlease(github, branch, process.argv[2]);
   core.setOutput('releases_created', releases.length > 0);
@@ -161,7 +197,7 @@ async function main() {
   }
 }
 
-module.exports = {ExactPathExclusions, prepareHidiVersionPrs, runReleasePlease, main};
+module.exports = {ExactPathExclusions, prepareHidiVersionPrs, runReleasePlease, ensureHidiLabels, main};
 if (require.main === module) {
   main().catch(error => require('@actions/core').setFailed(error.message));
 }

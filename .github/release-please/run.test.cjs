@@ -3,7 +3,9 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {test} = require('node:test');
 const {GitHub, Manifest, setLogger} = require('release-please');
-const {runReleasePlease, main, ExactPathExclusions} = require('./run.cjs');
+const {Version} = require('release-please/build/src/version');
+const {PullRequestBody} = require('release-please/build/src/util/pull-request-body');
+const {runReleasePlease, main, ExactPathExclusions, ensureHidiLabels} = require('./run.cjs');
 
 setLogger({debug() {}, info() {}, warn() {}, error() {}});
 const root = path.resolve(__dirname, '..', '..');
@@ -20,7 +22,7 @@ const inputPaths = [
 ];
 
 class MemoryGitHub {
-  constructor() {
+  constructor(hidiVersion) {
     this.repository = {owner: 'microsoft', repo: 'OpenAPI.NET.OData', defaultBranch: branch};
     this.files = Object.fromEntries(inputPaths.map(file => [file, fs.readFileSync(path.join(root, file), 'utf8')]));
     this.commits = ['hidi-release-please-config.json', 'release-please-config.json'].map(file => ({
@@ -31,6 +33,24 @@ class MemoryGitHub {
     this.tags = [];
     this.labelWrites = [];
     this.nextPr = 1;
+    if (hidiVersion) {
+      this.files[hidiManifest] = JSON.stringify({'.': hidiVersion});
+      this.files[hidiProject] = this.files[hidiProject].replace(/<Version>.*?<\/Version>/, `<Version>${hidiVersion}</Version>`);
+    }
+    const current = JSON.parse(this.files[hidiManifest])['.'];
+    const floor = branch === 'main' ? '3.10.2' : '2.12.2';
+    if (current !== floor) {
+      const checkpoint = {
+        number: 0, state: 'MERGED', sha: 'initial-hidi-checkpoint',
+        headBranchName: `release-please--branches--${branch}--components--hidi`,
+        baseBranchName: branch,
+        title: `chore(${branch}): release hidi ${current}`,
+        body: new PullRequestBody([{component: 'hidi', version: Version.parse(current), notes: 'Previously merged version'}], {useComponents: true}).toString(),
+        labels: ['autorelease: hidi-versioned'], files: [hidiManifest, hidiProject]
+      };
+      this.prs.push(checkpoint);
+      this.commits.unshift({sha: checkpoint.sha, message: checkpoint.title, files: checkpoint.files, pullRequest: checkpoint});
+    }
   }
   async getFileJson(file) { return JSON.parse(this.files[file]); }
   async getFileContentsOnBranch(file) {
@@ -165,6 +185,20 @@ test('mixed changes affect both components; excluded-only and empty changes affe
   assert.equal((await plans(github, 'hidi')).length, 0);
 });
 
+test('an OData fix after Hidi features keeps the OData patch and changelog independent', async () => {
+  const github = new MemoryGitHub();
+  const current = JSON.parse(github.files[odataManifest])['.'];
+  github.change(['Dockerfile'], 'feat(hidi): independent feature before root fix');
+  github.change(['Directory.Build.props'], 'fix(odata): library fix after Hidi');
+  const [pr] = await plans(github, 'odata');
+  assert.equal(pr.version.toString(), current.replace(/\d+$/, patch => Number(patch) + 1));
+  assert.ok(pr.body.toString().includes('library fix after Hidi'));
+  assert.ok(!pr.body.toString().includes('independent feature'));
+  const workflow = fs.readFileSync(path.join(root, '.github', 'workflows', 'ci-cd.yml'), 'utf8');
+  assert.ok(!workflow.includes('mathieudutour/github-tag-action'));
+  assert.ok(!workflow.includes('softprops/action-gh-release'));
+});
+
 test('actual Hidi patch output changes only its version, manifest, changelog and install examples', async () => {
   const github = new MemoryGitHub();
   const baseline = github.files[hidiProject];
@@ -182,7 +216,8 @@ test('actual Hidi patch output changes only its version, manifest, changelog and
   assert.match(output[hidiChangelog], new RegExp(`hidi-v${oldVersion}\\.\\.\\.hidi-v${next}`));
   assert.equal(JSON.parse(output[hidiManifest])['.'], next);
   assert.ok(output[hidiReadme].includes(`--version ${next}`));
-  assert.ok(output[hidiReadme].includes(`YamlReader\` ${branch === 'main' ? '3.10.2' : '2.12.2'}`));
+  const unannotatedLines = text => text.split(/\r?\n/).filter(line => !line.includes('x-release-please-version'));
+  assert.deepEqual(unannotatedLines(output[hidiReadme]), unannotatedLines(github.files[hidiReadme]));
 });
 
 test('actual OData output and componentless tags retain existing behavior', async () => {
@@ -212,8 +247,30 @@ test('Hidi feature release increments minor; breaking changes fail before writin
   github.commits.shift();
   github.change(['src/Microsoft.OpenApi.Hidi/Program.cs'], 'feat(hidi)!: incompatible feature');
   await assert.rejects(runReleasePlease(github, branch, 'hidi'), /outside the branch major/);
-  assert.equal(github.prs.length, 0);
+  assert.equal(github.prs.filter(pr => pr.state === 'OPEN').length, 0);
   assert.equal(github.releases.length, 0);
+});
+
+test('pure Hidi fix and feature release plans retain the official pipeline tag convention', async () => {
+  const pipeline = fs.readFileSync(path.join(root, '.azure-pipelines', 'hidi-release.yml'), 'utf8');
+  const floor = branch === 'main' ? '3.10.2' : '2.12.2';
+  assert.ok(pipeline.includes(`[version]'${floor}'`));
+  assert.ok(pipeline.includes(`hidiPublishingEnabled: 'false'`));
+  for (const type of ['fix', 'feat']) {
+    const github = new MemoryGitHub();
+    const [major, minor, patch] = JSON.parse(github.files[hidiManifest])['.'].split('.').map(Number);
+    const next = type === 'fix' ? `${major}.${minor}.${patch + 1}` : `${major}.${minor + 1}.0`;
+    assert.ok(pipeline.includes(`- hidi-v${major}.*`));
+    github.change(['Dockerfile'], `${type}(hidi): tag plan`);
+    const {prs} = await runReleasePlease(github, branch, 'hidi');
+    github.merge(prs[0]);
+    const manifest = await Manifest.fromManifest(github, branch, 'hidi-release-please-config.json', hidiManifest);
+    const [release] = await manifest.buildReleases();
+    assert.equal(release.tag.toString(), `hidi-v${next}`);
+    assert.match(release.notes, new RegExp(`hidi-v${major}\\.${minor}\\.${patch}\\.\\.\\.hidi-v${next}`));
+    assert.deepEqual(github.tags, []);
+    assert.deepEqual(github.releases, []);
+  }
 });
 
 test('two tag-free Hidi version cycles do not replay commits or block OData', async () => {
@@ -243,6 +300,20 @@ test('two tag-free Hidi version cycles do not replay commits or block OData', as
   assert.deepEqual(github.releases, []);
 });
 
+test('version automation and its fixtures keep working after the repository manifest advances', async () => {
+  const current = JSON.parse(fs.readFileSync(path.join(root, hidiManifest), 'utf8'))['.'];
+  const advanced = current.replace(/\d+$/, patch => Number(patch) + 1);
+  const next = current.replace(/\d+$/, patch => Number(patch) + 2);
+  const github = new MemoryGitHub(advanced);
+  github.change(['Dockerfile'], 'fix(hidi): after an existing version checkpoint');
+  const {prs, releases} = await runReleasePlease(github, branch, 'hidi');
+  assert.equal(JSON.parse(prs[0].output[hidiManifest])['.'], next);
+  assert.deepEqual(releases, []);
+  github.merge(prs[0]);
+  assert.equal((await runReleasePlease(github, branch, 'hidi')).prs.length, 0);
+  assert.deepEqual(github.tags, []);
+});
+
 test('open Hidi PR updates with additional commits instead of opening a duplicate', async () => {
   const github = new MemoryGitHub();
   github.change(['Dockerfile'], 'fix(hidi): first fix');
@@ -250,7 +321,7 @@ test('open Hidi PR updates with additional commits instead of opening a duplicat
   github.change(['install-tool.ps1'], 'fix(hidi): additional fix');
   const updated = await runReleasePlease(github, branch, 'hidi');
   assert.equal(updated.prs[0].number, first.prs[0].number);
-  assert.equal(github.prs.length, 1);
+  assert.equal(github.prs.filter(pr => pr.state === 'OPEN').length, 1);
   assert.ok(updated.prs[0].body.includes('additional fix'));
 });
 
@@ -313,6 +384,71 @@ test('Hidi ignores pending OData PRs and interrupted label transitions are retry
   assert.deepEqual(rootPr.labels, ['autorelease: pending']);
 });
 
+test('Hidi lifecycle labels are created using the authenticated GitHub REST API only when missing', async () => {
+  const calls = [];
+  const labels = new Set();
+  const request = async (url, options) => {
+    assert.equal(options.headers.Authorization, 'Bearer offline-test-token');
+    assert.equal(options.headers['X-GitHub-Api-Version'], '2022-11-28');
+    calls.push([url, options.method || 'GET']);
+    if (options.method === 'POST') {
+      const label = JSON.parse(options.body);
+      assert.ok(['autorelease: hidi-pending', 'autorelease: hidi-versioned'].includes(label.name));
+      labels.add(label.name);
+      return Response.json(label, {status: 201});
+    }
+    const name = decodeURIComponent(url.split('/').at(-1));
+    return labels.has(name) ? Response.json({name}) : Response.json({}, {status: 404});
+  };
+  await ensureHidiLabels('offline-test-token', 'microsoft', 'OpenAPI.NET.OData', request);
+  assert.deepEqual(calls.map(call => call[1]), ['GET', 'POST', 'GET', 'POST']);
+  assert.ok(calls[0][0].endsWith('/labels/autorelease%3A%20hidi-pending'));
+  calls.length = 0;
+  await ensureHidiLabels('offline-test-token', 'microsoft', 'OpenAPI.NET.OData', request);
+  assert.deepEqual(calls.map(call => call[1]), ['GET', 'GET']);
+});
+
+test('Hidi label bootstrap fails explicitly on permissions, network errors or invalid responses', async t => {
+  for (const status of [401, 403, 500]) {
+    await t.test(`read HTTP ${status}`, async () => {
+      await assert.rejects(ensureHidiLabels('token', 'owner', 'repo',
+        async () => Response.json({}, {status})), new RegExp(`HTTP ${status}`));
+    });
+  }
+  await t.test('creation permissions', async () => {
+    await assert.rejects(ensureHidiLabels('token', 'owner', 'repo',
+      async (url, options) => Response.json({}, {status: options.method === 'POST' ? 403 : 404})),
+    /Cannot create.*HTTP 403/);
+  });
+  await t.test('network error', async () => {
+    await assert.rejects(ensureHidiLabels('token', 'owner', 'repo',
+      async () => { throw new Error('offline connection failed'); }), /offline connection failed/);
+  });
+  await t.test('unexpected label', async () => {
+    await assert.rejects(ensureHidiLabels('token', 'owner', 'repo',
+      async () => Response.json({name: 'autorelease: pending'})), /Cannot verify/);
+  });
+  await t.test('invalid JSON', async () => {
+    await assert.rejects(ensureHidiLabels('token', 'owner', 'repo',
+      async () => new Response('invalid JSON')), SyntaxError);
+  });
+});
+
+test('concurrent Hidi label creation is accepted only after verifying the exact existing label', async () => {
+  const existing = new Set();
+  await ensureHidiLabels('token', 'owner', 'repo', async (url, options) => {
+    if (options.method === 'POST') {
+      existing.add(JSON.parse(options.body).name);
+      return Response.json({}, {status: 422});
+    }
+    const name = decodeURIComponent(url.split('/').at(-1));
+    return existing.has(name) ? Response.json({name}) : Response.json({}, {status: 404});
+  });
+  await assert.rejects(ensureHidiLabels('token', 'owner', 'repo',
+    async (url, options) => Response.json({}, {status: options.method === 'POST' ? 422 : 404})),
+  /Cannot verify.*HTTP 404/);
+});
+
 test('CLI wiring emits real library PR/release outputs and uses the app token', async t => {
   const github = new MemoryGitHub();
   const core = require('@actions/core');
@@ -320,6 +456,13 @@ test('CLI wiring emits real library PR/release outputs and uses the app token', 
   const argv = process.argv;
   t.after(() => { process.env = saved; process.argv = argv; });
   Object.assign(process.env, {RELEASE_PLEASE_TOKEN: 'offline-test-token', GITHUB_REF_NAME: branch, GITHUB_REPOSITORY: 'microsoft/OpenAPI.NET.OData'});
+  let labelReads = 0;
+  t.mock.method(globalThis, 'fetch', async (url, options) => {
+    labelReads++;
+    assert.equal(options.headers.Authorization, 'Bearer offline-test-token');
+    assert.equal(options.method, undefined);
+    return Response.json({name: decodeURIComponent(url.split('/').at(-1))});
+  });
   t.mock.method(GitHub, 'create', async options => {
     assert.equal(options.token, 'offline-test-token');
     assert.equal(options.defaultBranch, branch);
@@ -343,6 +486,7 @@ test('CLI wiring emits real library PR/release outputs and uses the app token', 
   assert.equal(outputs.release_created, true);
   assert.ok(outputs.tag_name.startsWith('v'));
   assert.ok(outputs.html_url);
+  assert.equal(labelReads, 2);
   delete process.env.RELEASE_PLEASE_TOKEN;
   await assert.rejects(main(), /Missing release automation environment/);
 });
