@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.3.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.2.1...v2.3.0) (2026-10-09)
+
+
+### Features
+
+* **hidi:** import filtered support/v2 history ([8ebc6ab](https://github.com/microsoft/OpenAPI.NET.OData/commit/8ebc6abbb1da683db4b5bc0928183dec947f2f02))
+
+
+### Bug Fixes
+
+* **ci:** safely restore v2 Hidi Docker dependencies from approved feed ([e7372e4](https://github.com/microsoft/OpenAPI.NET.OData/commit/e7372e4609ac9a10485fe8e56808e441f108c2f0))
+* **ci:** safely restore v2 Hidi Docker dependencies from approved feed ([34aae73](https://github.com/microsoft/OpenAPI.NET.OData/commit/34aae7388fcf02b0e0e83d845cf7c9101d5734f8))
+* **hidi:** automate independent v2 version PRs ([a838bc4](https://github.com/microsoft/OpenAPI.NET.OData/commit/a838bc4ce5ace50000c56d4bf627cf3b63931d9f))
+* **hidi:** separate v2 versions and route releases by component tag ([7ab04f2](https://github.com/microsoft/OpenAPI.NET.OData/commit/7ab04f294e34d397e47dc4a99e54d7ed6724e82f))
+* **hidi:** use ESRP for v2 NuGet releases ([22afdb2](https://github.com/microsoft/OpenAPI.NET.OData/commit/22afdb228c2c69ec0ec7d2afe043246e1ead0907))
+* **hidi:** use ESRP for v2 NuGet releases ([272fc8a](https://github.com/microsoft/OpenAPI.NET.OData/commit/272fc8adc604ad39ba4de363f6db40c30c4b674a))
+* **hidi:** use standard multi-component release configuration ([9b21c9a](https://github.com/microsoft/OpenAPI.NET.OData/commit/9b21c9a2af8acc612d8f98a9961d835a07932b59))
+* **release:** route v2 publishing by component tag ([f9ac07c](https://github.com/microsoft/OpenAPI.NET.OData/commit/f9ac07c8133a7f23f030f9d643eb53c7d09f2414))
+* **tests:** place v2 Pester tests inside the Hidi test project ([#895](https://github.com/microsoft/OpenAPI.NET.OData/issues/895)) ([3aae8d6](https://github.com/microsoft/OpenAPI.NET.OData/commit/3aae8d6f1e0511501e93385ebeabe5359084532e))
+* updates openapi.net to a non-vulnerable version ([96e7f71](https://github.com/microsoft/OpenAPI.NET.OData/commit/96e7f71f5c453cb229c206bd104990481edbb883))
+* updates openapi.net to a non-vulnerable version ([f85f890](https://github.com/microsoft/OpenAPI.NET.OData/commit/f85f8909cdbe9ff998edc17766772cc6c123deca))
+
 ## [2.2.1](https://github.com/microsoft/OpenAPI.NET.OData/compare/v2.2.0...v2.2.1) (2026-04-14)
 
 
