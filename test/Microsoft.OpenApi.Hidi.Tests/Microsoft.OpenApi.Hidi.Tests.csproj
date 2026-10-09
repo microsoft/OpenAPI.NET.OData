@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\scripts\check-nuget-package-published.Tests.ps1" Link="Scripts\check-nuget-package-published.Tests.ps1" />
     <None Update="UtilityFiles\*.json;UtilityFiles\*.yml;UtilityFiles\*.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
