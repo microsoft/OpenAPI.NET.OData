@@ -94,8 +94,12 @@ The NuGet package remains `Microsoft.OpenApi.Hidi` and the command remains `hidi
 Hidi 3.x is maintained on `main`; Hidi 2.x is maintained on `support/v2`.
 Both tracks use independent versions and require the .NET 8 runtime.
 Building this repository, including the Hidi tests, requires the .NET 10 SDK.
-Destination Hidi release publishing is disabled during the migration; the
-source repository remains intact until the destination PRs are completed.
+The main Hidi pipeline sets `hidiPublishingEnabled: 'true'` for stable
+`hidi-v3.*` tag releases; `hidiPreviewPublishingEnabled: 'false'` keeps main
+previews off. This enablement must not merge until the signed-pack corrections
+are accepted, a fresh official publish-disabled build verifies the packaged
+Hidi DLL's signature and hash, and the source main publisher is retired for
+cutover. See [the release prerequisites](src/Microsoft.OpenApi.Hidi/readme.md#release-cutover-prerequisites).
 
 ---
 

@@ -68,10 +68,12 @@ does not change the existing OData test platform.
 
 The gated main Hidi publisher preserves the ESRP NuGet contract from
 [microsoft/OpenAPI.NET#3107](https://github.com/microsoft/OpenAPI.NET/pull/3107)
-(source commit `e1a75437b76ebfc7c9eb446e9fd0b59a21afb14b`). Official builds include
+(source commit `e1a75437b76ebfc7c9eb446e9fd0b59a21afb14b`). Official builds are intended to include
 the signed Hidi `.nupkg`, a matching `.snupkg` and the private-feed version-check
 script in the `Hidi` artifact. The `nuget-org` release job consumes that artifact
-without a repository checkout or the Docker context.
+without a repository checkout or the Docker context. Outer NuGet signing and
+a signed executable do not prove that the DLL inside the package is signed;
+the cutover prerequisites below require separate verification.
 
 Before ESRP publication, the job requires the exact `hidi-v3.*` release package
 and symbols with a version newer than 3.10.2. It checks
@@ -83,8 +85,9 @@ release's signed package, executable and ZIP attachments to be updated.
 
 ESRP receives only the exact Hidi package and matching symbols under the
 `openapinet` organization, retaining the source's federated DevX connection,
-publisher identity, owners and approvers. This handoff does not enable publishing
-or grant pipeline permissions. Owners must separately verify private-feed token
+publisher identity, owners and approvers. The main pipeline sets the stable
+publishing flag to `'true'`, but this does not grant pipeline permissions.
+Owners must separately verify private-feed token
 access, the ESRP connection and protected `nuget-org` environment authorization
 before cutover; local packaging does not prove production signing or publishing.
 
@@ -151,18 +154,46 @@ this handoff does not grant permissions or bypass service-connection approvals.
 The Dockerfile secret mount is optional, so local and GitHub Actions builds
 without a secret continue to use their default NuGet sources.
 
-The migration baseline 3.10.2 is already published. Destination Hidi NuGet,
-GitHub release, stable Docker and preview Docker publishing are disabled until
-source cutover. The first destination stable release must advance the Hidi
-version; OData releases use separate artifacts and tags.
+The migration baseline 3.10.2 is already published and must not be republished.
+On `main`, `hidiPublishingEnabled: 'true'` enables the stable NuGet, GitHub release
+attachments and Docker stage only for successful `hidi-v3.*` tag builds.
+`hidiPreviewPublishingEnabled: 'false'` keeps preview Docker publishing off,
+so main branch and PR builds do not publish. The existing exact tag/project
+validation, version floor newer than 3.10.2 and environment approvals remain
+required. OData releases use separate artifacts and tags.
 
 The gated official pipeline retains the consumer image
 `mcr.microsoft.com/openapi/hidi`, backed by
 `msgraphprodregistry.azurecr.io/public/openapi/hidi`. Stable images use `latest`
 and the independent Hidi version. Main previews use `nightly` and
 `VERSION.YYYYMMDDRUNNUM`, for `linux/amd64` and `linux/arm64/v8`.
-No image is pushed during this migration. Privileged cross-platform emulation
+This preparation does not authorize an image push. Privileged cross-platform emulation
 setup belongs only in the authorized CI pipeline, not a shared local environment.
+
+### Release cutover prerequisites
+
+Hold the stable enablement merge until the signed-pack corrections
+[#904](https://github.com/microsoft/OpenAPI.NET.OData/pull/904) (`support/v2`) and
+[#903](https://github.com/microsoft/OpenAPI.NET.OData/pull/903) (`main`) complete
+normal acceptance in v2-first order. Then verify a fresh official build with
+both publishing flags disabled: extract the Hidi DLL from the exact `.nupkg`,
+verify its genuine Microsoft Authenticode signature and SHA-256 equality with
+the signed DLL staged by that build, and verify the outer package and Windows
+executable signatures. A successful signing task or local packaging alone is
+not this proof. The old official artifacts contain an unsigned inner DLL and
+must not be republished.
+
+The source main publisher must also be retired and cutover approved; source
+cleanup is tracked in
+[microsoft/OpenAPI.NET#3111](https://github.com/microsoft/OpenAPI.NET/pull/3111).
+This draft preparation does not perform that retirement or grant resource access.
+
+Merging a YAML flag change on `main` does not change the YAML or binaries at an
+existing tag, or an already compiled pipeline run. The existing `hidi-v3.11.0`
+tag points to the old publish-disabled revision without the signed-pack fix.
+Do not move or reuse that tag, rerun it to publish, or republish its old artifact.
+Future publication requires a corrected release ref/version approved for cutover
+after the prerequisites above are met.
  
 ## How to use Hidi
 
