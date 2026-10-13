@@ -3,20 +3,148 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Moq;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Edm.Tests
 {
+    [Collection("Vocabulary annotation cache")]
     public class EdmVocabularyAnnotationExtensionsTests
     {
+        private static readonly EdmTerm CachedStringTerm = new EdmTerm("NS", "CachedString", EdmPrimitiveTypeKind.String);
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void AnnotationCacheHandlesMixedTargetHashCollisions(bool pathFirst)
+        {
+            var path = CreateTargetPath();
+            var other = new ValueEqualAnnotatable(1, path.GetHashCode());
+            Assert.Equal(path.GetHashCode(), other.GetHashCode());
+            var model = GetCacheModel(
+                new EdmVocabularyAnnotation(path, CachedStringTerm, new EdmStringConstant("path")),
+                new EdmVocabularyAnnotation(other, CachedStringTerm, new EdmStringConstant("other")));
+
+            IEdmVocabularyAnnotatable first = pathFirst ? path : other;
+            IEdmVocabularyAnnotatable second = pathFirst ? other : path;
+            Assert.Equal(pathFirst ? "path" : "other", model.Object.GetString(first, CachedStringTerm.FullName()));
+            Assert.Equal(pathFirst ? "other" : "path", model.Object.GetString(second, CachedStringTerm.FullName()));
+            // Revisit both keys so a stored path is compared with a nonpath in either insertion order.
+            Assert.Equal("other", model.Object.GetString(other, CachedStringTerm.FullName()));
+            Assert.Equal("path", model.Object.GetString(path, CachedStringTerm.FullName()));
+            model.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
+        }
+
+        [Fact]
+        public void AnnotationCacheSharesEquivalentPathsUsingOrdinalEquality()
+        {
+            var path = CreateTargetPath();
+            var equivalentPath = CreateTargetPath();
+            var differentPath = CreateTargetPath("items");
+            Assert.NotSame(path, equivalentPath);
+            Assert.Equal(path.Path, equivalentPath.Path);
+            var model = GetCacheModel(
+                new EdmVocabularyAnnotation(path, CachedStringTerm, new EdmStringConstant("original")),
+                new EdmVocabularyAnnotation(differentPath, CachedStringTerm, new EdmStringConstant("different")));
+
+            Assert.Equal("original", model.Object.GetString(path, CachedStringTerm.FullName()));
+            Assert.Equal("original", model.Object.GetString(equivalentPath, CachedStringTerm.FullName()));
+            Assert.Equal("different", model.Object.GetString(differentPath, CachedStringTerm.FullName()));
+            model.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
+        }
+
+        [Fact]
+        public void AnnotationCachePreservesNonpathValueEqualityAndHashing()
+        {
+            var target = new ValueEqualAnnotatable(1, 42);
+            var equivalentTarget = new ValueEqualAnnotatable(1, 42);
+            var differentTarget = new ValueEqualAnnotatable(2, 42);
+            var model = GetCacheModel(
+                new EdmVocabularyAnnotation(target, CachedStringTerm, new EdmStringConstant("original")),
+                new EdmVocabularyAnnotation(differentTarget, CachedStringTerm, new EdmStringConstant("different")));
+
+            Assert.Equal("original", model.Object.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal("original", model.Object.GetString(equivalentTarget, CachedStringTerm.FullName()));
+            Assert.Equal("different", model.Object.GetString(differentTarget, CachedStringTerm.FullName()));
+            model.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
+        }
+
+        [Fact]
+        public void AnnotationCachePreservesNonpathReferenceEquality()
+        {
+            var target = new EdmEntityContainer("NS", "Default");
+            var differentTarget = new EdmEntityContainer("NS", "Default");
+            var model = GetCacheModel(
+                new EdmVocabularyAnnotation(target, CachedStringTerm, new EdmStringConstant("original")),
+                new EdmVocabularyAnnotation(differentTarget, CachedStringTerm, new EdmStringConstant("different")));
+
+            Assert.Equal("original", model.Object.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal("different", model.Object.GetString(differentTarget, CachedStringTerm.FullName()));
+            Assert.Equal("original", model.Object.GetString(target, CachedStringTerm.FullName()));
+            model.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void AnnotationCacheInvalidatesBothTargetKindsWhenModelChanges(bool pathTarget)
+        {
+            IEdmVocabularyAnnotatable target = pathTarget
+                ? CreateTargetPath()
+                : new ValueEqualAnnotatable(1, 42);
+            var firstModel = GetCacheModel(new EdmVocabularyAnnotation(target, CachedStringTerm, new EdmStringConstant("first")));
+            var secondModel = GetCacheModel(new EdmVocabularyAnnotation(target, CachedStringTerm, new EdmStringConstant("second")));
+
+            Assert.Equal("first", firstModel.Object.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal("second", secondModel.Object.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal("first", firstModel.Object.GetString(target, CachedStringTerm.FullName()));
+            firstModel.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
+            secondModel.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Once());
+        }
+
+        private static Mock<IEdmModel> GetCacheModel(params IEdmVocabularyAnnotation[] annotations)
+        {
+            var model = new Mock<IEdmModel>();
+            model.Setup(m => m.DirectValueAnnotationsManager).Returns(new EdmModel().DirectValueAnnotationsManager);
+            model.Setup(m => m.FindDeclaredTerm(CachedStringTerm.FullName())).Returns(CachedStringTerm);
+            // Keep the model lookup reference-based to isolate the annotation cache's key comparison.
+            model.Setup(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()))
+                .Returns((IEdmVocabularyAnnotatable target) => annotations.Where(a => ReferenceEquals(a.Target, target)));
+            return model;
+        }
+
+        private static EdmTargetPath CreateTargetPath(string entitySetName = "Items")
+        {
+            var container = new EdmEntityContainer("NS", "Default");
+            var entitySet = container.AddEntitySet(entitySetName, new EdmEntityType("NS", "Item"));
+            return new EdmTargetPath(container, entitySet);
+        }
+
+        private sealed class ValueEqualAnnotatable : IEdmVocabularyAnnotatable
+        {
+            private readonly int value;
+            private readonly int hashCode;
+
+            public ValueEqualAnnotatable(int value, int hashCode)
+            {
+                this.value = value;
+                this.hashCode = hashCode;
+            }
+
+            public override bool Equals(object obj) => obj is ValueEqualAnnotatable other && value == other.value;
+
+            public override int GetHashCode() => hashCode;
+        }
+
         [Fact]
         public void GetStringWorksForString()
         {
@@ -254,5 +382,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.True(result);
             return model;
         }
+    }
+
+    [CollectionDefinition("Vocabulary annotation cache", DisableParallelization = true)]
+    public class VocabularyAnnotationCacheCollection
+    {
     }
 }
