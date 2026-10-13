@@ -29,9 +29,13 @@ is handled only by the official Azure pipeline.
 Hidi's version is in its own project and the
 `src/Microsoft.OpenApi.Hidi` entry in `.release-please-manifest.json`.
 Its `hidi-v2.*` tags must not trigger OData publishing. Version 2.12.2 is the
-already-published migration baseline, not a new release. Production publishing
-remains disabled until source cutover. History-import migration PRs must be
-merged with a merge commit, never squash or rebase.
+already-published migration baseline, not a new release. The release configuration
+enables tag-gated Hidi publishing once merged; hold its merge until official
+signed-package verification and coordinated cutover approval. Source `support/v2`
+publisher cleanup is already accepted in
+[microsoft/OpenAPI.NET#3109](https://github.com/microsoft/OpenAPI.NET/pull/3109);
+source-main cleanup is not a prerequisite for this branch. History-import
+migration PRs must be merged with a merge commit, never squash or rebase.
 
 ### Independent automated versions
 
@@ -58,8 +62,12 @@ and container publishing remains gated in the official Azure pipeline.
 On `support/v2`, `.azure-pipelines/ci-build.yml` releases only the OData package
 and attaches only its artifact for `v2.*` tags.
 `.azure-pipelines/hidi-release.yml` handles only `hidi-v2.*` tags for Hidi's
-NuGet package, Windows executable/ZIP, and container. Hidi publishing stays
-disabled until the protected cutover; this routing does not enable it.
+NuGet package, Windows executable/ZIP, and container. `hidiPublishingEnabled`
+is the string `'true'`; the publish stage still requires a successful build and
+a `refs/tags/hidi-v2.*` ref, with all protected-environment approvals intact.
+Branch/PR builds do not publish. Future publication requires a new corrected
+release ref/version after cutover approval. Never move or reuse existing release
+tags, rerun `hidi-v2.13.0` to publish, or republish its old unsigned artifacts.
 
 Tag runs must exactly match the component's project version before staging
 artifacts. Release jobs require the exact tag-derived package and symbols;

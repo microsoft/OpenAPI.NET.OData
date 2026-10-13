@@ -102,8 +102,12 @@ migration PR using a merge commit, not squash or rebase**, so the canonical
 imported commits can also be retained by the later main-branch migration.
 The standard Release Please config and manifest track Hidi and OData as separate
 components on `support/v2`, updating their project versions and changelogs
-independently. Production publishing remains disabled until source cutover;
-OpenAPI.NET remains the package publisher in the meantime.
+independently. Hidi's release configuration enables tag-gated production
+publishing once this change is merged. Hold the enablement merge until official
+signed-package verification and coordinated cutover approval. Source `support/v2`
+publisher cleanup is already accepted in
+[microsoft/OpenAPI.NET#3109](https://github.com/microsoft/OpenAPI.NET/pull/3109);
+source-main cleanup is not a prerequisite for this branch.
 See [independent automated versions](CONTRIBUTING.md#independent-automated-versions)
 for component paths and version-file ownership.
 
@@ -114,7 +118,10 @@ artifact. The authenticated private-feed version check is ported from
 An existing version skips ESRP on a re-run; authentication, network, and malformed
 feed responses fail closed. Releases must use an exact `hidi-v2.<version>` tag
 matching the project version and be newer than the `2.12.2` migration baseline.
-This pipeline implementation does not enable publishing or authorize resources.
+Existing release tags must not be moved or reused. Future publication requires
+a new corrected release ref/version after cutover approval, not a rerun of the
+existing `hidi-v2.13.0` tag or reuse of its old unsigned artifacts.
+This configuration change does not publish a release or authorize resources.
 
 The SonarCloud workflow runs the private-feed and signed-payload helper tests
 with Pester 5.7.1 and converts measured JaCoCo line hits to Sonar generic coverage,

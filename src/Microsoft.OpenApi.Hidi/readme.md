@@ -70,8 +70,15 @@ docker run --rm --mount "type=bind,source=$PWD\test\Microsoft.OpenApi.Hidi.Tests
 
 Local/CI builds use the public-only strong-name identity. Official release
 artifacts are signed in Azure Pipelines; private signing keys do not belong in
-this repository. The migration baseline 2.12.2 is already published. Destination
-NuGet, executable, and Docker publishing are disabled until source cutover.
+this repository. The migration baseline 2.12.2 is already published.
+`hidiPublishingEnabled` is the string `'true'` in the release configuration:
+after merging, successful `hidi-v2.*` tag builds can enter the protected NuGet,
+executable, and Docker publishing stage. Hold the enablement merge until official
+signed-package verification and coordinated cutover approval. Source `support/v2`
+publisher cleanup is already accepted in
+[microsoft/OpenAPI.NET#3109](https://github.com/microsoft/OpenAPI.NET/pull/3109);
+source-main cleanup is not a prerequisite for this branch. Branch/PR builds
+remain build-only. This change does not publish artifacts or grant permissions.
 Official tool packing passes `HidiSignedAssemblyPath` to replace the Hidi DLL
 in the SDK's `ResolvedFileToPublish` items after `ComputeFilesToPublish`.
 `PackAsTool` publishes the intermediate assembly from `obj`, so replacing only
@@ -91,7 +98,10 @@ The standard Release Please config tracks Hidi as its own component, with a
 separate manifest version, project version, changelog, and `hidi-v2.*` tags.
 The first destination package release must advance beyond the baseline and use
 an exact `hidi-v2.<version>` tag matching the project. OData releases use separate
-artifacts and tags.
+artifacts and tags. Existing `hidi-v2.13.0` points at an earlier publish-disabled
+revision without the signed-package fix. Never move or reuse that tag, rerun it
+to publish, or republish its old unsigned artifacts. Future publication requires
+a new corrected release ref/version after the cutover hold clears.
 
 Docker builds opt into `HidiPublicSignBuild=true` for the local OData project,
 using its own public-only key without changing normal OData signing behavior.
@@ -106,7 +116,9 @@ artifacts continue to use the separate `Hidi` artifact.
 
 The container release job retains the existing `docker-images-deploy`
 environment and its approvals/checks. The destination pipeline must be authorized
-for that protected environment before official publishing can be enabled.
+for that protected environment before official publishing can execute. Signed
+artifact verification does not prove live NuGet or Docker publishing permissions,
+and neither the flag nor this change bypasses release approvals/checks.
 
 The official container job authenticates to the approved
 `GraphDeveloperExperiences_Public` central feed using the existing Azure DevOps
