@@ -72,6 +72,21 @@ Local/CI builds use the public-only strong-name identity. Official release
 artifacts are signed in Azure Pipelines; private signing keys do not belong in
 this repository. The migration baseline 2.12.2 is already published. Destination
 NuGet, executable, and Docker publishing are disabled until source cutover.
+Official tool packing passes `HidiSignedAssemblyPath` to replace the Hidi DLL
+in the SDK's `ResolvedFileToPublish` items after `ComputeFilesToPublish`.
+`PackAsTool` publishes the intermediate assembly from `obj`, so replacing only
+the DLL in `bin` does not preserve its Authenticode signature. The opt-in target
+uses the exact ESRP staging DLL without recompiling it; ordinary local packing
+and Windows single-file publishing retain their default inputs.
+Before NuGet signing, `scripts/verify-hidi-package-assembly.ps1` requires exactly
+one DLL at `tools/net8.0/any/Microsoft.OpenApi.Hidi.dll`, verifies its SHA256
+matches the staging DLL, and requires valid Microsoft Corporation Authenticode
+signatures on both. Missing, mismatched, unsigned, or unverifiable payloads fail
+the build. A signed NuGet container alone is not assembly-signature evidence.
+Local byte-provenance checks and mocked signature unit tests cannot establish
+Microsoft ESRP signing readiness; that requires a publish-disabled official run
+after the normally approved merge.
+
 The standard Release Please config tracks Hidi as its own component, with a
 separate manifest version, project version, changelog, and `hidi-v2.*` tags.
 The first destination package release must advance beyond the baseline and use

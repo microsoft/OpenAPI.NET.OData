@@ -68,4 +68,25 @@
     <None Include="./readme.md" Pack="true" PackagePath=""/>
   </ItemGroup>
 
+  <!-- Tool pack publishes IntermediateAssembly from obj, not the DLL in bin. -->
+  <Target Name="UseHidiSignedAssemblyForToolPack"
+          AfterTargets="ComputeFilesToPublish"
+          Condition="'$(PackAsTool)' == 'true' and '$(HidiSignedAssemblyPath)' != ''">
+    <Error Condition="!Exists('$(HidiSignedAssemblyPath)')"
+           Text="Missing signed Hidi assembly: $(HidiSignedAssemblyPath)"/>
+    <ItemGroup>
+      <_HidiAssemblyToReplace Include="@(ResolvedFileToPublish)"
+                              Condition="'%(ResolvedFileToPublish.RelativePath)' == '$(TargetFileName)'"/>
+    </ItemGroup>
+    <Error Condition="'@(_HidiAssemblyToReplace->Count())' != '1'"
+           Text="Expected exactly one Hidi assembly in the tool publish inputs."/>
+    <ItemGroup>
+      <ResolvedFileToPublish Remove="@(_HidiAssemblyToReplace)"/>
+      <ResolvedFileToPublish Include="$(HidiSignedAssemblyPath)">
+        <RelativePath>$(TargetFileName)</RelativePath>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
 </Project>

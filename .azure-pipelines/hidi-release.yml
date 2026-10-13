@@ -165,11 +165,12 @@ extends:
                   MaxRetryAttempts: '5'
                   PendingAnalysisWaitTimeoutMinutes: '5'
               - pwsh: |
-                  Copy-Item artifacts\hidi\signing\Microsoft.OpenApi.Hidi.dll src\Microsoft.OpenApi.Hidi\bin\$(buildConfiguration)\net8.0\Microsoft.OpenApi.Hidi.dll
+                  $ErrorActionPreference = 'Stop'
                   Copy-Item artifacts\hidi\signing\Microsoft.OpenApi.Hidi.exe artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe
                   New-Item -ItemType Directory -Force '$(Build.ArtifactStagingDirectory)\hidi' | Out-Null
-                  dotnet pack src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg -o '$(Build.ArtifactStagingDirectory)\hidi'
+                  dotnet pack src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg "/p:HidiSignedAssemblyPath=$(Build.SourcesDirectory)\artifacts\hidi\signing\Microsoft.OpenApi.Hidi.dll" -o '$(Build.ArtifactStagingDirectory)\hidi'
                   if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+                  & .\scripts\verify-hidi-package-assembly.ps1 -PackagePath '$(Build.ArtifactStagingDirectory)\hidi\Microsoft.OpenApi.Hidi.$(HidiVersion).nupkg' -SignedAssemblyPath '$(Build.SourcesDirectory)\artifacts\hidi\signing\Microsoft.OpenApi.Hidi.dll'
                   Compress-Archive -Path artifacts\hidi\win-x64\* -DestinationPath '$(Build.ArtifactStagingDirectory)\hidi\hidi-win-x64-$(HidiVersion).zip'
                   Copy-Item artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe '$(Build.ArtifactStagingDirectory)\hidi\Microsoft.OpenApi.Hidi.exe'
                 displayName: Pack signed hidi binaries

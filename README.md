@@ -116,12 +116,12 @@ feed responses fail closed. Releases must use an exact `hidi-v2.<version>` tag
 matching the project version and be newer than the `2.12.2` migration baseline.
 This pipeline implementation does not enable publishing or authorize resources.
 
-The SonarCloud workflow runs the private-feed helper tests with Pester 5.7.1 and
-converts measured JaCoCo line hits to Sonar generic coverage, alongside the
-existing C# OpenCover reports. The Pester script resides inside the Hidi test
+The SonarCloud workflow runs the private-feed and signed-payload helper tests
+with Pester 5.7.1 and converts measured JaCoCo line hits to Sonar generic coverage,
+alongside existing C# OpenCover reports. The Pester scripts reside inside the Hidi test
 project directory so Sonar assigns it to test sources; a linked sibling file
 does not establish that ownership. Run the helper tests locally with
-`Import-Module Pester -RequiredVersion 5.7.1; Invoke-Pester .\test\Microsoft.OpenApi.Hidi.Tests\check-nuget-package-published.Tests.ps1`.
+`Import-Module Pester -RequiredVersion 5.7.1; Invoke-Pester .\test\Microsoft.OpenApi.Hidi.Tests\*.Tests.ps1`.
 
 ---
 
