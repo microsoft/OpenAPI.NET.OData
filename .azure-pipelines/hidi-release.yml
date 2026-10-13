@@ -19,8 +19,8 @@ variables:
   buildConfiguration: Release
   NuGetOrganizationName: 'openapinet'
   privateFeedBaseUrl: 'https://microsoftgraph.pkgs.visualstudio.com/0985d294-5762-4bc2-a565-161ef349ca3e/_packaging/GraphDeveloperExperiences_Public'
-  # Keep OFF until the destination PR lands and source publishing is cut over.
-  hidiPublishingEnabled: 'false'
+  # Merge only after official signed-pack verification and coordinated cutover approval.
+  hidiPublishingEnabled: 'true'
 
 resources:
   repositories:
