@@ -9,7 +9,7 @@
     <Nullable>enable</Nullable>
     <ToolCommandName>hidi</ToolCommandName>
     <PackageId>Microsoft.OpenApi.Hidi</PackageId>
-    <Version>2.13.0</Version>
+    <Version>2.13.1</Version>
     <PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts\hidi\nuget</PackageOutputPath>
     <Description>OpenAPI.NET CLI tool for slicing OpenAPI documents</Description>
     <SignAssembly>true</SignAssembly>
@@ -69,17 +69,12 @@
   </ItemGroup>
 
   <!-- Tool pack publishes IntermediateAssembly from obj, not the DLL in bin. -->
-  <Target Name="UseHidiSignedAssemblyForToolPack"
-          AfterTargets="ComputeFilesToPublish"
-          Condition="'$(PackAsTool)' == 'true' and '$(HidiSignedAssemblyPath)' != ''">
-    <Error Condition="!Exists('$(HidiSignedAssemblyPath)')"
-           Text="Missing signed Hidi assembly: $(HidiSignedAssemblyPath)"/>
+  <Target Name="UseHidiSignedAssemblyForToolPack" AfterTargets="ComputeFilesToPublish" Condition="'$(PackAsTool)' == 'true' and '$(HidiSignedAssemblyPath)' != ''">
+    <Error Condition="!Exists('$(HidiSignedAssemblyPath)')" Text="Missing signed Hidi assembly: $(HidiSignedAssemblyPath)"/>
     <ItemGroup>
-      <_HidiAssemblyToReplace Include="@(ResolvedFileToPublish)"
-                              Condition="'%(ResolvedFileToPublish.RelativePath)' == '$(TargetFileName)'"/>
+      <_HidiAssemblyToReplace Include="@(ResolvedFileToPublish)" Condition="'%(ResolvedFileToPublish.RelativePath)' == '$(TargetFileName)'"/>
     </ItemGroup>
-    <Error Condition="'@(_HidiAssemblyToReplace->Count())' != '1'"
-           Text="Expected exactly one Hidi assembly in the tool publish inputs."/>
+    <Error Condition="'@(_HidiAssemblyToReplace-&gt;Count())' != '1'" Text="Expected exactly one Hidi assembly in the tool publish inputs."/>
     <ItemGroup>
       <ResolvedFileToPublish Remove="@(_HidiAssemblyToReplace)"/>
       <ResolvedFileToPublish Include="$(HidiSignedAssemblyPath)">
