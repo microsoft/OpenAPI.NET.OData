@@ -390,7 +390,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 if (_cachedAnnotations == null)
                 {
-                    _cachedAnnotations = new Dictionary<IEdmVocabularyAnnotatable, IDictionary<string, object>>();
+                    _cachedAnnotations = new Dictionary<IEdmVocabularyAnnotatable, IDictionary<string, object>>(new AnnotationTargetComparer());
                 }
 
                 object? restriction;
@@ -418,6 +418,32 @@ namespace Microsoft.OpenApi.OData.Edm
                     return newAnnotation;
                 }
                 return default;
+            }
+        }
+
+        private sealed class AnnotationTargetComparer : IEqualityComparer<IEdmVocabularyAnnotatable>
+        {
+            public bool Equals(IEdmVocabularyAnnotatable? x, IEdmVocabularyAnnotatable? y)
+            {
+                // EdmTargetPath.Equals dereferences a failed cast when a hash collision involves another target kind.
+                if (x is EdmTargetPath xPath)
+                {
+                    return y is EdmTargetPath yPath && StringComparer.Ordinal.Equals(xPath.Path, yPath.Path);
+                }
+
+                if (y is EdmTargetPath)
+                {
+                    return false;
+                }
+
+                return EqualityComparer<IEdmVocabularyAnnotatable>.Default.Equals(x, y);
+            }
+
+            public int GetHashCode(IEdmVocabularyAnnotatable target)
+            {
+                return target is EdmTargetPath path
+                    ? StringComparer.Ordinal.GetHashCode(path.Path)
+                    : EqualityComparer<IEdmVocabularyAnnotatable>.Default.GetHashCode(target);
             }
         }
 
