@@ -66,13 +66,23 @@ Routing follows package directories, not commit scopes. Hidi tests outside the
 source package are excluded from OData releases and do not independently trigger
 a Hidi release. Root distribution/helper files remain outside the Hidi component;
 they follow the root package's standard routing, not custom Hidi routing.
-Existing root OData exclusions remain configured. The official Hidi
-package/container publishing gates remain disabled during migration.
+Existing root OData exclusions remain configured. On `main`, the official Hidi
+pipeline sets `hidiPublishingEnabled: 'true'` for stable tag publishing and
+retains `hidiPreviewPublishingEnabled: 'false'`; preview publishing remains off.
+This enablement must remain unmerged until the
+[release cutover prerequisites](src/Microsoft.OpenApi.Hidi/readme.md#release-cutover-prerequisites)
+are satisfied.
 
 The ADO OData pipeline accepts `v3.*` tags and deploys only the exact OData
 package matching that tag and `Directory.Build.props`. The dedicated Hidi
 pipeline accepts `hidi-v3.*` tags; its package, symbols, executable, ZIP and
 container version must match the Hidi tag/project version. Malformed,
 other-component or mismatched tags fail validation rather than publishing a
-different component. With publishing disabled, branch/PR builds remain validation-only; the existing
-Hidi publishing flags, migration floor and protected environments are unchanged.
+different component. Branch/PR builds remain validation-only: the unchanged
+stable stage condition requires a successful build, the stable flag and a
+`refs/tags/hidi-v3.` prefix. The preview stage also requires the preview flag,
+which remains false. Tag validation, the migration floor and protected
+environments are unchanged. Changing main's YAML does not change an existing
+tagged revision or an already compiled pipeline run; publication requires an
+approved corrected release ref/version after cutover, not a rerun or retag of
+the old `hidi-v3.11.0` revision.
