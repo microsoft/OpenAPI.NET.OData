@@ -1,5 +1,12 @@
 # Hidi changelog
 
+## [3.11.1](https://github.com/microsoft/OpenAPI.NET.OData/compare/hidi-v3.11.0...hidi-v3.11.1) (2026-10-14)
+
+
+### Bug Fixes
+
+* **hidi:** retain signed assembly in official tool package ([ae0d7a6](https://github.com/microsoft/OpenAPI.NET.OData/commit/ae0d7a64a7ae76a810cb6c5e90f9e3c85cb08cbf))
+
 ## [3.11.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/hidi-v3.10.2...hidi-v3.11.0) (2026-10-09)
 
 
