@@ -114,6 +114,10 @@ private keys are excluded. The container release job consumes this artifact as
 a 1ES input without checking out the repository. NuGet and Windows release
 artifacts continue to use the separate `Hidi` artifact.
 
+The container deployment selects the approved `Azure-Pipelines-1ESPT-ExDShared`
+pool with `image: ubuntu-latest` and `os: linux` at deployment-job scope.
+The build and NuGet/Windows artifact release jobs retain the Windows default pool.
+
 The container release job retains the existing `docker-images-deploy`
 environment and its approvals/checks. The destination pipeline must be authorized
 for that protected environment before official publishing can execute. Signed

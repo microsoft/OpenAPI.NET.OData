@@ -303,6 +303,10 @@ extends:
                           $(Pipeline.Workspace)\hidi\hidi-win-x64-$(HidiReleaseVersion).zip
                         addChangeLog: false
           - deployment: publish_container
+            pool:
+              name: Azure-Pipelines-1ESPT-ExDShared
+              image: ubuntu-latest
+              os: linux
             templateContext:
               type: releaseJob
               isProduction: true
@@ -314,8 +318,6 @@ extends:
             strategy:
               runOnce:
                 deploy:
-                  pool:
-                    vmImage: ubuntu-latest
                   steps:
                     - pwsh: |
                         $ErrorActionPreference = 'Stop'
