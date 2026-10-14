@@ -1,5 +1,13 @@
 # Hidi changelog
 
+## [2.13.1](https://github.com/microsoft/OpenAPI.NET.OData/compare/hidi-v2.13.0...hidi-v2.13.1) (2026-10-13)
+
+
+### Bug Fixes
+
+* **hidi:** preserve ESRP-signed DLL in v2 tool packages ([92e4df6](https://github.com/microsoft/OpenAPI.NET.OData/commit/92e4df6cf3c4deb53c3b4a1d1c45fe2320adaaa1))
+* **hidi:** preserve signed assembly in v2 tool packages ([6b85866](https://github.com/microsoft/OpenAPI.NET.OData/commit/6b858667ff3a622485d08269985979652ed7bb11))
+
 ## [2.13.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/hidi-v2.12.2...hidi-v2.13.0) (2026-10-09)
 
 
