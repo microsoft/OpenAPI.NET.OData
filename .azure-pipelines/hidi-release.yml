@@ -311,7 +311,7 @@ extends:
                     - task: GitHubRelease@1
                       displayName: Attach signed hidi release artifacts
                       inputs:
-                        gitHubConnection: Github-MaggieKimani1
+                        gitHubConnection: 'microsoftgraph (22)'
                         action: edit
                         tagSource: userSpecifiedTag
                         tag: 'hidi-v$(HidiReleaseVersion)'
