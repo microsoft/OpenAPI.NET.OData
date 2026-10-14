@@ -88,20 +88,17 @@ jobs:
         id: run_unit_tests
         shell: pwsh
         run: |
-          $testProjectsArray = @(
-            '.\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj'
-          )
-
-          $testProjectsArray | ForEach-Object {
-            dotnet test $PSItem `
-            -c Release
-          }
-
-      - name: Run hidi tests (Microsoft.Testing.Platform)
-        shell: pwsh
-        run: |
-          dotnet run --project .\test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c Release -- --minimum-expected-tests 1
+          $resultsDirectory = Join-Path $PWD 'artifacts' 'test-results'
+          dotnet test --solution Microsoft.OpenApi.OData.sln -c Release -p:EnableWindowsTargeting=true --results-directory $resultsDirectory -- --minimum-expected-tests 1 --report-trx --report-gh
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: test-results
+          path: artifacts/test-results
+          if-no-files-found: error
 
       - name: Pack and install hidi locally
         shell: pwsh

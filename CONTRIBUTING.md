@@ -12,14 +12,28 @@ OpenAPI.net.OData is a mono-repo containing source code for the following packag
 
 [Microsoft.OpenApi.Hidi](src/Microsoft.OpenApi.Hidi/readme.md) is a .NET tool,
 not an OData library package. Install the .NET 10 SDK and .NET 8 runtime to build
-and test both projects. Do not change the solution-wide test runner: OData uses
-VSTest and hidi uses Microsoft.Testing.Platform.
+and test both projects. Both test projects use xUnit v3 and
+Microsoft.Testing.Platform, selected by `global.json`. Reader tests still target
+.NET 8; Hidi tests target .NET 10.
 
 ```powershell
 dotnet build Microsoft.OpenApi.OData.sln -c Release
-dotnet test test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj -c Release
-dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c Release -- --minimum-expected-tests 1
+dotnet test --solution Microsoft.OpenApi.OData.sln -c Release --no-build -- --minimum-expected-tests 1
 ```
+
+On non-Windows hosts, pass `-p:EnableWindowsTargeting=true` to both commands
+because the solution also contains the Windows-only GUI project.
+Use `--project <path>` instead of `--solution <path>` for a single test project.
+MTP options replace VSTest's `--logger`, `--collect`, and MSBuild coverage options:
+
+```powershell
+dotnet test --solution Microsoft.OpenApi.OData.sln -c Release --no-build --results-directory artifacts\test-results -- --minimum-expected-tests 1 --report-trx --coverlet --coverlet-output-format cobertura --coverlet-include "[Microsoft.OpenApi.OData.Reader]*" --coverlet-include "[Microsoft.OpenApi.Hidi]*"
+```
+
+This produces separate TRX and coverage reports for each test assembly.
+CI uses `--report-gh` for GitHub Actions and `--report-azdo` with TRX publication
+for Azure DevOps. SonarCloud collects OpenCover reports for both projects in
+`artifacts/test-results`, alongside the separately measured Pester helper coverage.
 
 Hidi uses published OpenAPI core/YAML packages and the local OData project. Its
 public-only signing key preserves assembly identity and friend-assembly access;

@@ -95,7 +95,11 @@ The command remains `hidi`.
 
 The `support/v2` branch maintains hidi 2.x separately from the OData library
 version. Hidi requires .NET 8 to run; building the repository and running hidi
-tests requires the .NET 10 SDK. Existing OData tests still use .NET 8 and VSTest.
+tests requires the .NET 10 SDK. Both test projects use xUnit v3 and
+Microsoft.Testing.Platform; OData tests still target .NET 8. Run them together
+with `dotnet test --solution Microsoft.OpenApi.OData.sln -c Release -- --minimum-expected-tests 1`
+(add `-p:EnableWindowsTargeting=true` on non-Windows hosts). See
+[contributing](CONTRIBUTING.md#hidi) for coverage and reporting commands.
 
 Hidi's filtered history was imported with a merge, not squashed. **Merge this
 migration PR using a merge commit, not squash or rebase**, so the canonical

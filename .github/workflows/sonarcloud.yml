@@ -122,16 +122,25 @@ jobs:
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          CollectCoverage: true
-          CoverletOutputFormat: 'opencover' # https://github.com/microsoft/vstest/issues/4014#issuecomment-1307913682
         shell: pwsh
         run: |
-          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="test/**/coverage.net8.0.opencover.xml,artifacts/hidi/coverage/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml"
+          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="artifacts/test-results/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet workload restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet build
-          dotnet test test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj --no-build -- --minimum-expected-tests 1 --coverlet --coverlet-output-format opencover --coverlet-include "[Microsoft.OpenApi.Hidi]*" --results-directory artifacts\hidi\coverage
+          dotnet test --solution Microsoft.OpenApi.OData.sln --no-build --results-directory artifacts\test-results -- --minimum-expected-tests 1 --report-trx --report-gh --coverlet --coverlet-output-format opencover --coverlet-include "[Microsoft.OpenApi.OData.Reader]*" --coverlet-include "[Microsoft.OpenApi.Hidi]*"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          if (-not (Get-ChildItem artifacts\hidi\coverage -Filter '*opencover*.xml')) { throw "Hidi OpenCover report was not generated." }
+          $reports = @(Get-ChildItem artifacts\test-results -Filter '*opencover*.xml')
+          if ($reports.Count -ne 2) { throw "Expected an OpenCover report from each test project." }
           dotnet tool run dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Upload test and coverage results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: sonar-test-results
+          path: artifacts/test-results
+          if-no-files-found: error
