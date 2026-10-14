@@ -21,10 +21,21 @@
             "group": "test",
             "args": [
                 "test",
+                "--solution",
                 "${workspaceFolder}/Microsoft.OpenApi.OData.sln",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary",
-                "--collect:\"XPlat Code Coverage\""
+                "-p:EnableWindowsTargeting=true",
+                "--results-directory",
+                "${workspaceFolder}/artifacts/test-results",
+                "--",
+                "--minimum-expected-tests",
+                "1",
+                "--coverlet",
+                "--coverlet-output-format",
+                "cobertura",
+                "--coverlet-include",
+                "[Microsoft.OpenApi.OData.Reader]*",
+                "--coverlet-include",
+                "[Microsoft.OpenApi.Hidi]*"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -35,15 +46,15 @@
             "linux": {
                 "command": "rm",
                 "args": [
-                    "-r",
-                    "${workspaceFolder}/test/Microsoft.OpenAPI.OData.Reader.Tests/TestResults"
+                    "-rf",
+                    "${workspaceFolder}/artifacts/test-results"
                 ]
             },
             "windows": {
                 "command": "powershell",
                 "args": [
                     "-command",
-                    "Remove-Item -Recurse -Include TestResults -Path ${workspaceFolder}/tests"
+                    "if (Test-Path -LiteralPath '${workspaceFolder}/artifacts/test-results') { Remove-Item -Recurse -LiteralPath '${workspaceFolder}/artifacts/test-results' }"
                 ]
             }
         },
@@ -54,14 +65,14 @@
             "linux":{
                 "command": "reportgenerator",
                 "args": [
-                    "-reports:${workspaceFolder}/tests/**/coverage.cobertura.xml",
+                    "-reports:${workspaceFolder}/artifacts/test-results/*cobertura*.xml",
                     "-targetdir:${workspaceFolder}/reports/coverage"
                 ],
             },
             "windows": {
                 "command": "reportgenerator",
                 "args": [
-                    "-reports:${workspaceFolder}\\test\\**\\coverage.cobertura.xml",
+                    "-reports:${workspaceFolder}\\artifacts\\test-results\\*cobertura*.xml",
                     "-targetdir:${workspaceFolder}\\reports\\coverage"
                 ]
             },
@@ -72,7 +83,7 @@
             "dependsOrder": "sequence"
         },
         {
-            "label": "coverage:launch",
+            "label": "coverage:open",
             "type": "shell",
             "linux": {
                 "command": "xdg-open",
@@ -100,7 +111,7 @@
             "dependsOrder": "sequence",
             "dependsOn": [
                 "coverage:unit",
-                "coverage:launch"
+                "coverage:open"
             ]
         },
         {

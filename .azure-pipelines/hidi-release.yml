@@ -115,8 +115,21 @@ extends:
               - pwsh: |
                   dotnet build src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) -p:GeneratePackageOnBuild=false
                   if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-                  dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c $(buildConfiguration) -- --minimum-expected-tests 1
+                displayName: Build hidi
+              - pwsh: |
+                  dotnet test --solution Microsoft.OpenApi.OData.sln -c $(buildConfiguration) --results-directory '$(Agent.TempDirectory)\TestResults' -- --minimum-expected-tests 1 --report-trx --report-azdo
                   if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+                displayName: Test solution (Microsoft.Testing.Platform)
+              - task: PublishTestResults@2
+                displayName: Publish solution test results
+                condition: succeededOrFailed()
+                inputs:
+                  testResultsFormat: VSTest
+                  testResultsFiles: '$(Agent.TempDirectory)\TestResults\*.trx'
+                  mergeTestResults: true
+                  failTaskOnFailedTests: true
+                  failTaskOnMissingResultsFile: true
+              - pwsh: |
                   dotnet publish src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c $(buildConfiguration) -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PackAsTool=false -p:GeneratePackageOnBuild=false -o artifacts\hidi\win-x64
                   if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
                   & .\artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe --help
@@ -124,7 +137,7 @@ extends:
                   New-Item -ItemType Directory -Force artifacts\hidi\signing | Out-Null
                   Copy-Item src\Microsoft.OpenApi.Hidi\bin\$(buildConfiguration)\net8.0\Microsoft.OpenApi.Hidi.dll artifacts\hidi\signing
                   Copy-Item artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe artifacts\hidi\signing
-                displayName: Build, test and stage hidi binaries
+                displayName: Stage hidi binaries
               - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
                 displayName: Sign hidi DLL and Windows executable
                 inputs:
