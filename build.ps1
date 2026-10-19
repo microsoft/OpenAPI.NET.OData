@@ -103,8 +103,7 @@ ForEach ($ver in $SNVersions)
 }
 
 # Other variables
-$ProductProj = $ENLISTMENT_ROOT + "\src\Microsoft.OpenAPI.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj"
-$TESTProj = $ENLISTMENT_ROOT + "\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenApi.OData.Reader.Tests.csproj"
+$Solution = $ENLISTMENT_ROOT + "\Microsoft.OpenApi.OData.sln"
 
 $TESTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\Test\net472"
 $PRODUCTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\net472"
@@ -186,13 +185,10 @@ Function BuildProcess
     
     $script:BUILD_START_TIME = Get-Date
 	
-	Write-Host "Build Product ..."
+	Write-Host "Build Solution ..."
 	
-	& dotnet.exe build $ProductProj -c $Configuration
-	
-	Write-Host "Build Test ..."
-	
-	& dotnet.exe build $TESTProj -c $Configuration
+	& dotnet.exe build $Solution -c $Configuration
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 	
     Write-Host "Build Done" -ForegroundColor $Success
     $script:BUILD_END_TIME = Get-Date
@@ -204,7 +200,8 @@ Function TestProcess
 
     $script:TEST_START_TIME = Get-Date
 	
-    & dotnet test $TESTProj -c $Configuration  
+    & dotnet test --solution $Solution -c $Configuration --no-build -- --minimum-expected-tests 1
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
     Write-Host "Test Done" -ForegroundColor $Success
     $script:TEST_END_TIME = Get-Date

@@ -11,7 +11,6 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.OpenApi.OData.Tests
 {
