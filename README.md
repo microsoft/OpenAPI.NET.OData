@@ -101,6 +101,12 @@ are accepted, a fresh official publish-disabled build verifies the packaged
 Hidi DLL's signature and hash, and the source main publisher is retired for
 cutover. See [the release prerequisites](src/Microsoft.OpenApi.Hidi/readme.md#release-cutover-prerequisites).
 
+Both test projects use xUnit v3 and
+Microsoft.Testing.Platform; OData tests still target .NET 8. Run them together
+with `dotnet test --solution Microsoft.OpenApi.OData.sln -c Release -- --minimum-expected-tests 1`
+(add `-p:EnableWindowsTargeting=true` on non-Windows hosts). See
+[contributing](CONTRIBUTING.md#building-and-testing) for coverage and reporting commands.
+
 ---
 
 # Contributing
