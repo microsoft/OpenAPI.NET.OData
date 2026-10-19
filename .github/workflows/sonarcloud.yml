@@ -122,30 +122,46 @@ jobs:
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          CollectCoverage: true
-          CoverletOutputFormat: 'opencover' # https://github.com/microsoft/vstest/issues/4014#issuecomment-1307913682
         shell: pwsh
         run: |
-          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="test/**/coverage.net8.0.opencover.xml,artifacts/hidi/coverage/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml"
+          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="artifacts/test-results/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet workload restore
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet build
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          dotnet test test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+          dotnet test --solution Microsoft.OpenApi.OData.sln --no-build --results-directory artifacts\test-results -- --minimum-expected-tests 1 --report-trx --report-gh --coverlet --coverlet-output-format opencover --coverlet-include "[Microsoft.OpenApi.OData.Reader]*" --coverlet-include "[Microsoft.OpenApi.Hidi]*"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj --no-build -- --minimum-expected-tests 1 --coverlet --coverlet-output-format opencover --coverlet-include "[Microsoft.OpenApi.Hidi]*" --results-directory artifacts\hidi\coverage
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          $reports = @(Get-ChildItem artifacts\hidi\coverage -Filter '*opencover*.xml')
-          if ($reports.Count -eq 0) { throw "Hidi OpenCover report was not generated." }
-          $hidiModules = @($reports | ForEach-Object {
-            ([xml](Get-Content $_.FullName -Raw)).CoverageSession.Modules.Module
-          } | Where-Object { $_.ModuleName -eq 'Microsoft.OpenApi.Hidi' })
-          if (-not ($hidiModules | Where-Object {
-            $_.SelectNodes('./Classes/Class/Methods/Method/SequencePoints/SequencePoint').Count -gt 0 -and
-            $_.SelectNodes('./Classes/Class/Methods/Method/SequencePoints/SequencePoint[@vc > 0]').Count -gt 0
-          })) {
-            throw "Hidi OpenCover report contains no covered Hidi sequence points."
+          $reports = @(Get-ChildItem artifacts\test-results -Filter '*opencover*.xml')
+          if ($reports.Count -ne 2) { throw "Expected an OpenCover report from each test project." }
+          $modules = @($reports | ForEach-Object {
+            $report = [xml](Get-Content $_.FullName -Raw)
+            if ($report.SelectNodes('//SequencePoint').Count -eq 0 -or
+                $report.SelectNodes('//SequencePoint[@vc > 0]').Count -eq 0) {
+              throw "OpenCover report contains no covered sequence points: $($_.Name)"
+            }
+            $report.CoverageSession.Modules.Module
+          })
+          $expectedModules = @('Microsoft.OpenApi.OData.Reader', 'Microsoft.OpenApi.Hidi')
+          if ($modules | Where-Object { $_.ModuleName -notin $expectedModules }) {
+            throw "OpenCover reports contain unexpected modules."
+          }
+          foreach ($moduleName in $expectedModules) {
+            if (-not ($modules | Where-Object {
+              $_.ModuleName -eq $moduleName -and
+              $_.SelectNodes('./Classes/Class/Methods/Method/SequencePoints/SequencePoint').Count -gt 0 -and
+              $_.SelectNodes('./Classes/Class/Methods/Method/SequencePoints/SequencePoint[@vc > 0]').Count -gt 0
+            })) {
+              throw "OpenCover reports contain no covered sequence points for $moduleName."
+            }
           }
           dotnet tool run dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Upload test and coverage results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: sonar-test-results
+          path: artifacts/test-results
+          if-no-files-found: error

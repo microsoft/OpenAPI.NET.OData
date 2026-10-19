@@ -40,7 +40,6 @@ extends:
       os: windows
       demands:
       - msbuild
-      - vstest
     customBuildTags:
     - ES365AIMigrationTooling 
     stages:
@@ -111,19 +110,20 @@ extends:
               projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
               arguments: '--configuration $(BuildConfiguration) --no-incremental'
 
-          # Both suites are in the solution, but SDK10 cannot run MTP via VSTest.
-          # Keep OData on VSTest and invoke the hidi MTP executable separately (#885).
-          - task: DotNetCoreCLI@2
-            displayName: 'test'
-            inputs:
-              command: test
-              projects: '$(Build.SourcesDirectory)\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenAPI.OData.Reader.Tests.csproj'
-              arguments: '--configuration $(BuildConfiguration) --no-build'
-
           - pwsh: |
-              dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c $(BuildConfiguration) --no-build -- --minimum-expected-tests 1
+              dotnet test --solution Microsoft.OpenApi.OData.sln -c $(buildConfiguration) --no-build --results-directory '$(Agent.TempDirectory)\TestResults' -- --minimum-expected-tests 1 --report-trx --report-azdo
               if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-            displayName: 'Test hidi (Microsoft.Testing.Platform)'
+            displayName: 'Test solution (Microsoft.Testing.Platform)'
+
+          - task: PublishTestResults@2
+            displayName: 'Publish solution test results'
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: VSTest
+              testResultsFiles: '$(Agent.TempDirectory)\TestResults\*.trx'
+              mergeTestResults: true
+              failTaskOnFailedTests: true
+              failTaskOnMissingResultsFile: true
 
           - task: EsrpCodeSigning@6
             displayName: 'ESRP CodeSigning'
