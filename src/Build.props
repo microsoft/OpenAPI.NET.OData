@@ -17,9 +17,6 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder Condition="'$(IncludeSymbolsInPackage)' == 'true'">$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
     <ShouldGenerateAssemblyAttributeFile Condition="'$(ShouldGenerateAssemblyAttributeFile)' == ''">true</ShouldGenerateAssemblyAttributeFile>
-	
-	<!-- Disable GenerateAssemblyInfo to use the auto-generated AssemblyInfo.cs -->
-	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <Import Project="..\Build.props" />
