@@ -208,10 +208,10 @@ namespace Microsoft.OpenApi.OData.Generator
                     openApiSchema.Type = JsonSchemaType.Object;
                 }
             }
-            else if (returnType.IsPrimitive())
+            else if (returnType.IsPrimitive() || returnType.IsEnum())
             {
-                // A property or operation response that is of a primitive type is represented as an object with a single name/value pair,
-                // whose name is value and whose value is a primitive value.
+                // A property or operation response that is of a primitive or enum type is represented as an object with a single name/value pair,
+                // whose name is value and whose value is a primitive or enum value.
                 schema = new OpenApiSchema
                 {
                     Type = JsonSchemaType.Object,
