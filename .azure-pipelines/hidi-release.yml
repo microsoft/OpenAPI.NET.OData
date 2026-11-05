@@ -391,11 +391,7 @@ extends:
                             if ($LASTEXITCODE -ne 0) { throw "Docker platform setup failed with exit code $LASTEXITCODE." }
                             docker buildx create --use
                             if ($LASTEXITCODE -ne 0) { throw "Docker BuildX setup failed with exit code $LASTEXITCODE." }
-                            docker buildx build --pull --platform linux/amd64,linux/arm64/v8 `
-                              --secret "id=nuget_config,src=$nugetConfigPath" `
-                              --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:$(HidiReleaseVersion)" `
-                              --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:latest" `
-                              --push .
+                            docker buildx build --pull --platform linux/amd64,linux/arm64/v8 --secret "id=nuget_config,src=$nugetConfigPath" --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:$(HidiReleaseVersion)" --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:latest" --push .
                             if ($LASTEXITCODE -ne 0) { throw "Docker build/push failed with exit code $LASTEXITCODE." }
                           }
                           finally {
@@ -476,11 +472,7 @@ extends:
                             if ($LASTEXITCODE -ne 0) { throw "Docker platform setup failed with exit code $LASTEXITCODE." }
                             docker buildx create --use
                             if ($LASTEXITCODE -ne 0) { throw "Docker BuildX setup failed with exit code $LASTEXITCODE." }
-                            docker buildx build --pull --platform linux/amd64,linux/arm64/v8 `
-                              --secret "id=nuget_config,src=$nugetConfigPath" `
-                              --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:$(HidiPreviewVersion)" `
-                              --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:nightly" `
-                              --push .
+                            docker buildx build --pull --platform linux/amd64,linux/arm64/v8 --secret "id=nuget_config,src=$nugetConfigPath" --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:$(HidiPreviewVersion)" --tag "msgraphprodregistry.azurecr.io/public/openapi/hidi:nightly" --push .
                             if ($LASTEXITCODE -ne 0) { throw "Docker build/push failed with exit code $LASTEXITCODE." }
                           }
                           finally {
