@@ -3,7 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using Xunit.Abstractions;
+using Xunit;
 
 namespace Microsoft.OpenApi.OData.Tests
 {

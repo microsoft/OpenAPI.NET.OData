@@ -48,21 +48,23 @@ the newly built artifact, not the already-published package with the same versio
 
 ### Tests and coverage
 
-Hidi tests use Microsoft.Testing.Platform; the existing OData tests continue to
-use VSTest. Run Hidi tests and collect coverage independently:
+Both Reader and Hidi tests use xUnit v3 and Microsoft.Testing.Platform, selected
+by the repository's `global.json`. Run both suites from the solution, or select
+just Hidi with `--project`:
 
 ```powershell
-dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c Release -- --minimum-expected-tests 1
-dotnet run --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c Release --no-build -- --minimum-expected-tests 1 --coverlet --results-directory artifacts\hidi\coverage
+dotnet test --solution Microsoft.OpenApi.OData.sln -c Release -- --minimum-expected-tests 1
+dotnet test --project test\Microsoft.OpenApi.Hidi.Tests\Microsoft.OpenApi.Hidi.Tests.csproj -c Release --no-build --results-directory artifacts\hidi\coverage -- --minimum-expected-tests 1 --coverlet --coverlet-output-format opencover --coverlet-include "[Microsoft.OpenApi.Hidi]*"
 ```
 
-The Hidi-only `testconfig.json` explicitly includes the Hidi assembly and excludes
-test/generated code. This authoritative configuration prevents Coverlet's
-dynamic namespace exclusions from excluding `Microsoft.OpenApi.Hidi` itself.
-The Sonar workflow requires an OpenCover report with covered Hidi sequence points.
-Repository-wide MTP migration is tracked separately in
-[#885](https://github.com/microsoft/OpenAPI.NET.OData/issues/885); this migration
-does not change the existing OData test platform.
+Each test project's `testconfig.json` explicitly includes its product assembly
+and excludes test/generated code. This authoritative configuration prevents
+Coverlet's dynamic namespace exclusions from excluding the product itself.
+The Sonar workflow runs one solution-wide test command and requires separate
+OpenCover reports with covered Reader and Hidi sequence points.
+On non-Windows hosts, add `-p:EnableWindowsTargeting=true` to solution commands.
+See [contributing](../../CONTRIBUTING.md#building-and-testing) for solution-wide
+coverage and CI reporting options.
 
 ### Official NuGet releases
 
