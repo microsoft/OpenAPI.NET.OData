@@ -448,5 +448,40 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 Assert.True(JsonNode.DeepEquals(expectedJsonNode, actualJsonNode));
             }
         }
+
+        [Fact]
+        public void CreateResponseForEdmFunctionReturningEnumWrapsInValueProperty()
+        {
+            // Arrange
+            var model = new EdmModel();
+            var enumType = new EdmEnumType("NS", "Color");
+            enumType.AddMember("Red", new EdmEnumMemberValue(0));
+            enumType.AddMember("Blue", new EdmEnumMemberValue(1));
+            model.AddElement(enumType);
+
+            var function = new EdmFunction("NS", "GetFavoriteColor", new EdmEnumTypeReference(enumType, isNullable: false), isBound: false, entitySetPathExpression: null, isComposable: true);
+            model.AddElement(function);
+
+            var context = new ODataContext(model);
+            var document = new OpenApiDocument();
+
+            // Act
+            var responses = context.CreateResponses(function, document);
+
+            // Assert
+            Assert.NotNull(responses);
+            Assert.True(responses.ContainsKey("200"));
+            var response = responses["200"];
+            Assert.NotNull(response.Content);
+            Assert.True(response.Content.ContainsKey("application/json"));
+            var mediaType = response.Content["application/json"];
+            Assert.NotNull(mediaType.Schema);
+            Assert.Equal(JsonSchemaType.Object, mediaType.Schema.Type);
+            Assert.NotNull(mediaType.Schema.Properties);
+            Assert.True(mediaType.Schema.Properties.ContainsKey("value"));
+
+            var valueSchema = mediaType.Schema.Properties["value"];
+            Assert.NotNull(valueSchema);
+        }
     }
 }
