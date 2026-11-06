@@ -9,7 +9,7 @@
     <Nullable>enable</Nullable>
     <ToolCommandName>hidi</ToolCommandName>
     <PackageId>Microsoft.OpenApi.Hidi</PackageId>
-    <Version>3.11.0</Version>
+    <Version>3.11.1</Version>
     <PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts\hidi\nuget</PackageOutputPath>
     <Description>OpenAPI.NET CLI tool for slicing OpenAPI documents</Description>
     <SignAssembly>true</SignAssembly>
@@ -70,23 +70,16 @@
     <None Include="./readme.md" Pack="true" PackagePath=""/>
   </ItemGroup>
 
-  <Target Name="UseHidiSignedAssemblyForPublish"
-          AfterTargets="ComputeFilesToPublish"
-          Condition="'$(PackAsTool)' == 'true' and '$(HidiSignedAssemblyPath)' != ''">
-    <Error Condition="!Exists('$(HidiSignedAssemblyPath)')"
-           Text="The signed Hidi assembly does not exist: $(HidiSignedAssemblyPath)" />
+  <Target Name="UseHidiSignedAssemblyForPublish" AfterTargets="ComputeFilesToPublish" Condition="'$(PackAsTool)' == 'true' and '$(HidiSignedAssemblyPath)' != ''">
+    <Error Condition="!Exists('$(HidiSignedAssemblyPath)')" Text="The signed Hidi assembly does not exist: $(HidiSignedAssemblyPath)"/>
     <ItemGroup>
-      <_HidiAssemblyToReplace Include="@(ResolvedFileToPublish)"
-                              Condition="'%(ResolvedFileToPublish.RelativePath)' == '$(TargetFileName)'" />
+      <_HidiAssemblyToReplace Include="@(ResolvedFileToPublish)" Condition="'%(ResolvedFileToPublish.RelativePath)' == '$(TargetFileName)'"/>
     </ItemGroup>
-    <Error Condition="'@(_HidiAssemblyToReplace->Count())' != '1'"
-           Text="Expected exactly one Hidi assembly in ResolvedFileToPublish." />
+    <Error Condition="'@(_HidiAssemblyToReplace-&gt;Count())' != '1'" Text="Expected exactly one Hidi assembly in ResolvedFileToPublish."/>
     <ItemGroup>
       <!-- Tool packing publishes the intermediate assembly, not the bin copy. -->
-      <ResolvedFileToPublish Remove="@(_HidiAssemblyToReplace)" />
-      <ResolvedFileToPublish Include="$(HidiSignedAssemblyPath)"
-                             RelativePath="$(TargetFileName)"
-                             CopyToPublishDirectory="Always" />
+      <ResolvedFileToPublish Remove="@(_HidiAssemblyToReplace)"/>
+      <ResolvedFileToPublish Include="$(HidiSignedAssemblyPath)" RelativePath="$(TargetFileName)" CopyToPublishDirectory="Always"/>
     </ItemGroup>
   </Target>
 
