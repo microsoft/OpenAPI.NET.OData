@@ -51,7 +51,7 @@ namespace Microsoft.OpenApi.Hidi
                 {
 #pragma warning disable CA1308 // Normalize strings to uppercase
                     var extension = options.OpenApiFormat?.ToLowerInvariant();
-                    var inputExtension = !string.IsNullOrEmpty(extension) ? string.Concat(".", extension) 
+                    var inputExtension = !string.IsNullOrEmpty(extension) ? string.Concat(".", extension)
                         : GetInputPathExtension(options.OpenApi, options.Csdl);
 
 #pragma warning restore CA1308 // Normalize strings to uppercase
@@ -178,7 +178,10 @@ namespace Microsoft.OpenApi.Hidi
                 stopwatch.Start();
                 document = OpenApiFilterService.CreateFilteredDocument(document, predicate);
                 stopwatch.Stop();
-                logger.LogTrace("{Timestamp}ms: Creating filtered OpenApi document with {Paths} paths.", stopwatch.ElapsedMilliseconds, document.Paths.Count);
+                if (logger.IsEnabled(LogLevel.Trace))
+                {
+                    logger.LogTrace("{Timestamp}ms: Creating filtered OpenApi document with {Paths} paths.", stopwatch.ElapsedMilliseconds, document.Paths.Count);
+                }
             }
 
             return document;
@@ -215,7 +218,10 @@ namespace Microsoft.OpenApi.Hidi
                 await document.SerializeAsync(writer, openApiVersion, cancellationToken).ConfigureAwait(false);
                 stopwatch.Stop();
 
-                logger.LogTrace("Finished serializing in {ElapsedMilliseconds}ms", stopwatch.ElapsedMilliseconds);
+                if (logger.IsEnabled(LogLevel.Trace))
+                {
+                    logger.LogTrace("Finished serializing in {ElapsedMilliseconds}ms", stopwatch.ElapsedMilliseconds);
+                }
                 await textWriter.FlushAsync(cancellationToken).ConfigureAwait(false);
             }
         }
@@ -244,7 +250,10 @@ namespace Microsoft.OpenApi.Hidi
 
                     document = await ConvertCsdlToOpenApiAsync(filteredStream ?? stream, format, metadataVersion, options.SettingsConfig, cancellationToken).ConfigureAwait(false);
                     stopwatch.Stop();
-                    logger.LogTrace("{Timestamp}ms: Generated OpenAPI with {Paths} paths.", stopwatch.ElapsedMilliseconds, document?.Paths.Count);
+                    if (logger.IsEnabled(LogLevel.Trace))
+                    {
+                        logger.LogTrace("{Timestamp}ms: Generated OpenAPI with {Paths} paths.", stopwatch.ElapsedMilliseconds, document?.Paths.Count);
+                    }
                 }
             }
             else if (!string.IsNullOrEmpty(options.OpenApi))
@@ -356,9 +365,12 @@ namespace Microsoft.OpenApi.Hidi
                     walker.Walk(result.Document);
 
                     logger.LogTrace("Finished walking through the OpenApi document. Generating a statistics report..");
-                    #pragma warning disable CA2254
-                    logger.LogInformation(statsVisitor.GetStatisticsReport());
-                    #pragma warning restore CA2254
+                    if (logger.IsEnabled(LogLevel.Information))
+                    {
+#pragma warning disable CA2254
+                        logger.LogInformation(statsVisitor.GetStatisticsReport());
+#pragma warning restore CA2254
+                    }
                 }
             }
             catch (TaskCanceledException)
@@ -395,7 +407,10 @@ namespace Microsoft.OpenApi.Hidi
 
                 result = await OpenApiDocument.LoadAsync(stream, settings: settings, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-                logger.LogTrace("{Timestamp}ms: Completed parsing.", stopwatch.ElapsedMilliseconds);
+                if (logger.IsEnabled(LogLevel.Trace))
+                {
+                    logger.LogTrace("{Timestamp}ms: Completed parsing.", stopwatch.ElapsedMilliseconds);
+                }
 
                 LogErrors(logger, result);
                 LogWarnings(logger, result);
@@ -482,7 +497,7 @@ namespace Microsoft.OpenApi.Hidi
                         }
                         else
                         {
-                            paths.Add(path, new() {method});
+                            paths.Add(path, new() { method });
                         }
                     }
                     else
@@ -547,7 +562,10 @@ namespace Microsoft.OpenApi.Hidi
                     }
                 }
                 stopwatch.Stop();
-                logger.LogTrace("{Timestamp}ms: Read file {Input}", stopwatch.ElapsedMilliseconds, input);
+                if (logger.IsEnabled(LogLevel.Trace))
+                {
+                    logger.LogTrace("{Timestamp}ms: Read file {Input}", stopwatch.ElapsedMilliseconds, input);
+                }
             }
             return stream;
         }
@@ -637,7 +655,7 @@ namespace Microsoft.OpenApi.Hidi
                             return options.Output.FullName;
                         }
                     }
-                }                
+                }
             }
             catch (TaskCanceledException)
             {
@@ -766,7 +784,7 @@ namespace Microsoft.OpenApi.Hidi
                 options.OpenApi = apiDependency.ApiDescriptionUrl;
             }
 
-            var openApiFormat = options.OpenApiFormat ?? (!string.IsNullOrEmpty(options.OpenApi) 
+            var openApiFormat = options.OpenApiFormat ?? (!string.IsNullOrEmpty(options.OpenApi)
                 ? GetOpenApiFormat(options.OpenApi, logger) : OpenApiConstants.Yaml);
 
             // Load OpenAPI document

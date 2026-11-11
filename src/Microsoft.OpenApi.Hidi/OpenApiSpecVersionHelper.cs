@@ -5,7 +5,7 @@ using System;
 
 namespace Microsoft.OpenApi.Hidi
 {
-    public static class OpenApiSpecVersionHelper
+    internal static class OpenApiSpecVersionHelper
     {
         public static OpenApiSpecVersion TryParseOpenApiSpecVersion(string value)
         {

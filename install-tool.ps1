@@ -19,7 +19,7 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $installedDlls = @(Get-ChildItem $toolDirectory -Force -Recurse -Filter Microsoft.OpenApi.Hidi.dll)
 if ($installedDlls.Count -ne 1) { throw 'Expected exactly one installed hidi DLL.' }
-$builtDll = Join-Path $PSScriptRoot 'src\Microsoft.OpenApi.Hidi\bin\Release\net8.0\Microsoft.OpenApi.Hidi.dll'
+$builtDll = Join-Path $PSScriptRoot 'src\Microsoft.OpenApi.Hidi\bin\Release\net10.0\Microsoft.OpenApi.Hidi.dll'
 if ((Get-FileHash $installedDlls[0].FullName).Hash -ne (Get-FileHash $builtDll).Hash) {
   throw 'Installed hidi does not match the locally built package.'
 }

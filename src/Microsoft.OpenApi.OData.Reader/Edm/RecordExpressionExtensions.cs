@@ -82,11 +82,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             return (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmDateConstantExpression value) ?
-#if NET10_0_OR_GREATER
                 value.Value.ToDateTime(TimeOnly.MinValue) :
-#else
-                value.Value :
-#endif
                 null;
         }
 
