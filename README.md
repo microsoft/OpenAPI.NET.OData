@@ -86,6 +86,8 @@ The `GetEdmModel()` method can load a model in 3 ways:
 
 The OpenAPI.OData.reader nuget package is at: [https://www.nuget.org/packages/Microsoft.OpenApi.OData/](https://www.nuget.org/packages/Microsoft.OpenApi.OData)
 
+The package targets .NET 8, which depends on Microsoft.OData.Edm 8.x, and .NET 10, which depends on Microsoft.OData.Edm 9.x. The two Edm major versions are binary incompatible, so applications on .NET 10 or later use Edm 9.x.
+
 ## Hidi command line tool
 
 [Hidi](src/Microsoft.OpenApi.Hidi/readme.md) validates, transforms and slices

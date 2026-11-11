@@ -108,15 +108,15 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Core.Tests
             Assert.NotNull(value.Value);
             switch (except)
             {
-              case DateOnly dateOnly:
-                Assert.Equal(dateOnly.ToString("yyyy-MM-dd"), value.Value.Value.ToString());
-                break;
-              case TimeOnly timeOnly:
-                Assert.Equal(timeOnly.ToString("HH:mm:ss.fffffff"), value.Value.Value.ToString());
-                break;
-              default:
-                Assert.Equal(except, value.Value.Value);
-              break;
+                case DateOnly dateOnly:
+                    Assert.Equal(dateOnly.ToString("yyyy-MM-dd"), value.Value.ToString());
+                    break;
+                case TimeOnly timeOnly:
+                    Assert.Equal(timeOnly.ToString("HH:mm:ss.fffffff"), value.Value.ToString());
+                    break;
+                default:
+                    Assert.Equal(except, value.Value.Value);
+                    break;
             }
         }
 

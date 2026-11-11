@@ -25,11 +25,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="IOpenApiResponse"/>.</returns>
         public static IOpenApiResponse? GetResponse(this string statusCode, OpenApiDocument document)
         {
-            return statusCode switch {
+            return statusCode switch
+            {
                 Constants.StatusCodeDefault => new OpenApiResponseReference(Constants.Error, document),
-                Constants.StatusCode204 => new OpenApiResponse { Description = Constants.Success},
-                Constants.StatusCode201 => new OpenApiResponse { Description = Constants.Created},
-                Constants.StatusCodeClass2XX => new OpenApiResponse { Description = Constants.Success},
+                Constants.StatusCode204 => new OpenApiResponse { Description = Constants.Success },
+                Constants.StatusCode201 => new OpenApiResponse { Description = Constants.Created },
+                Constants.StatusCodeClass2XX => new OpenApiResponse { Description = Constants.Success },
                 Constants.StatusCodeClass4XX => new OpenApiResponseReference(Constants.Error, document),
                 Constants.StatusCodeClass5XX => new OpenApiResponseReference(Constants.Error, document),
                 _ => null,
@@ -49,12 +50,12 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(document, nameof(document));
 
-            var responses =  new Dictionary<string, OpenApiResponse>
+            var responses = new Dictionary<string, OpenApiResponse>
             {
                 { "error", context.CreateErrorResponse(document) }
             };
 
-            if(context.Settings.EnableDollarCountPath)
+            if (context.Settings.EnableDollarCountPath)
             {
                 responses[Constants.DollarCountSchemaName] = CreateCountResponse(document);
             }
@@ -71,13 +72,13 @@ namespace Microsoft.OpenApi.OData.Generator
                                         .Where(x => !responses.ContainsKey(x.Key)))
                             .ToDictionary(x => x.Key, x => x.Value);
 
-            if(context.HasAnyNonContainedCollections())                                        
+            if (context.HasAnyNonContainedCollections())
                 responses[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionResponse("String", document);
 
             foreach (IEdmOperation operation in context.Model.SchemaElements.OfType<IEdmOperation>()
                 .Where(op => context.Model.OperationTargetsMultiplePaths(op)))
             {
-                if (context.CreateOperationResponse(operation, document) is {} response)
+                if (context.CreateOperationResponse(operation, document) is { } response)
                     responses[$"{operation.Name}Response"] = response;
             }
 
@@ -116,8 +117,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(operation, nameof(operation));
 
             OpenApiResponses responses = new();
-            
-            if (operation.IsAction() && operation.GetReturn()?.Type == null && Constants.StatusCode204.GetResponse(document) is {} x204Response)
+
+            if (operation.IsAction() && operation.ReturnType == null && Constants.StatusCode204.GetResponse(document) is { } x204Response)
             {
                 responses.Add(Constants.StatusCode204, x204Response);
             }
@@ -128,20 +129,20 @@ namespace Microsoft.OpenApi.OData.Generator
                     new OpenApiResponseReference($"{operation.Name}Response", document)
                  );
             }
-            else if (context.CreateOperationResponse(operation, document) is {} successResponse)
+            else if (context.CreateOperationResponse(operation, document) is { } successResponse)
             {
                 responses.Add(context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200, successResponse);
             }
 
-            if (context.Settings.ErrorResponsesAsDefault && Constants.StatusCodeDefault.GetResponse(document) is {} defaultResponse)
+            if (context.Settings.ErrorResponsesAsDefault && Constants.StatusCodeDefault.GetResponse(document) is { } defaultResponse)
             {
                 responses.Add(Constants.StatusCodeDefault, defaultResponse);
             }
             else
             {
-                if (Constants.StatusCodeClass4XX.GetResponse(document) is {} x4Response)
+                if (Constants.StatusCodeClass4XX.GetResponse(document) is { } x4Response)
                     responses.Add(Constants.StatusCodeClass4XX, x4Response);
-                if (Constants.StatusCodeClass5XX.GetResponse(document) is {} x5Response)
+                if (Constants.StatusCodeClass5XX.GetResponse(document) is { } x5Response)
                     responses.Add(Constants.StatusCodeClass5XX, x5Response);
             }
 
@@ -150,7 +151,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
         public static OpenApiResponse? CreateOperationResponse(this ODataContext context, IEdmOperation operation, OpenApiDocument document)
         {
-            if (operation.GetReturn()?.Type is not {} returnType)
+            if (operation.ReturnType is not { } returnType)
                 return null;
 
             IOpenApiSchema schema;
@@ -167,7 +168,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 };
 
-                if (context.Settings.EnableODataAnnotationReferencesForResponses && 
+                if (context.Settings.EnableODataAnnotationReferencesForResponses &&
                     (operation.IsDeltaFunction() || context.Settings.EnablePagination || context.Settings.EnableCount))
                 {
                     schema = new OpenApiSchema
@@ -274,7 +275,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Constants.ApplicationJsonMediaType,
                         new OpenApiMediaType
                         {
-                            Schema = new OpenApiSchemaReference($"{typeName}{Constants.CollectionSchemaSuffix}", document) 
+                            Schema = new OpenApiSchemaReference($"{typeName}{Constants.CollectionSchemaSuffix}", document)
                         }
                     }
                 }

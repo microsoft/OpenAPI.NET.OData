@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>Microsoft Open API OData Reader</Title>
     <RootNamespace>Microsoft.OpenApi.OData</RootNamespace>
-    <TargetFrameworks>net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
@@ -31,13 +31,21 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.OData.Edm" Version="8.4.4" />
     <PackageReference Include="Microsoft.OpenApi" Version="3.10.2" />
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.7.23">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="Microsoft.OData.Edm" Version="8.4.4" />
+  </ItemGroup>
+
+  <!-- Microsoft.OData.Edm 9 only supports .NET 10 and is binary incompatible with 8.x. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="Microsoft.OData.Edm" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>

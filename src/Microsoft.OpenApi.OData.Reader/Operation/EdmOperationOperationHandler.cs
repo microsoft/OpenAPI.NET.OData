@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="document">The document to use to lookup references.</param>
         protected EdmOperationOperationHandler(OpenApiDocument document) : base(document)
         {
-            
+
         }
         private OperationRestrictionsType? _operationRestriction;
 
@@ -85,10 +85,10 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = "Invoke " + (EdmOperation?.IsAction() ?? false ? "action " : "function ") + EdmOperation?.Name;
 
             // Description
-            operation.Description = (string.IsNullOrEmpty(TargetPath) ? null :Context?.Model.GetDescriptionAnnotation(TargetPath)) ?? Context?.Model.GetDescriptionAnnotation(EdmOperation);
+            operation.Description = (string.IsNullOrEmpty(TargetPath) ? null : Context?.Model.GetDescriptionAnnotation(TargetPath)) ?? Context?.Model.GetDescriptionAnnotation(EdmOperation);
 
             // OperationId
-            if (Context is {Settings.EnableOperationId: true} && Path is not null)
+            if (Context is { Settings.EnableOperationId: true } && Path is not null)
             {
                 // When the key segment is available,
                 // its EntityType name will be used
@@ -101,7 +101,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     if (segment is ODataKeySegment keySegment)
                     {
-                        if (!keySegment.IsAlternateKey && segment is {EntityType: not null}) 
+                        if (!keySegment.IsAlternateKey && segment is { EntityType: not null })
                         {
                             identifiers.Add(segment.EntityType.Name);
                             continue;
@@ -117,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Operation
                             identifiers.Add(keySegment.Identifier);
                         }
                     }
-                    else if (segment is ODataOperationSegment {Identifier: not null} opSegment)
+                    else if (segment is ODataOperationSegment { Identifier: not null } opSegment)
                     {
                         if (opSegment.Operation is IEdmFunction function && Context.Model.IsOperationOverload(function))
                         {
@@ -215,7 +215,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        protected override void SetResponses(OpenApiOperation operation) 
+        protected override void SetResponses(OpenApiOperation operation)
         {
             if (EdmOperation is not null && Context is not null)
                 operation.Responses = Context.CreateResponses(EdmOperation, _document);
@@ -254,35 +254,35 @@ namespace Microsoft.OpenApi.OData.Operation
 
         private void AppendSystemQueryOptions(IEdmFunction function, OpenApiOperation operation)
         {
-            if (function.GetReturn()?.Type is {} functionReturnType && functionReturnType.IsCollection() && Context is not null)
+            if (function.ReturnType is { } functionReturnType && functionReturnType.IsCollection() && Context is not null)
             {
                 operation.Parameters ??= [];
                 // $top
-                if (Context.CreateTop(function, _document) is {} topParameter)
+                if (Context.CreateTop(function, _document) is { } topParameter)
                 {
                     operation.Parameters.AppendParameter(topParameter);
                 }
 
                 // $skip
-                if (Context.CreateSkip(function, _document) is {} skipParameter)
+                if (Context.CreateSkip(function, _document) is { } skipParameter)
                 {
                     operation.Parameters.AppendParameter(skipParameter);
                 }
 
                 // $search
-                if (Context.CreateSearch(function, _document) is {} searchParameter)
+                if (Context.CreateSearch(function, _document) is { } searchParameter)
                 {
                     operation.Parameters.AppendParameter(searchParameter);
                 }
 
                 // $filter
-                if (Context.CreateFilter(function, _document) is {} filterParameter)
+                if (Context.CreateFilter(function, _document) is { } filterParameter)
                 {
                     operation.Parameters.AppendParameter(filterParameter);
                 }
 
                 // $count
-                if (Context.CreateCount(function, _document) is {} countParameter)
+                if (Context.CreateCount(function, _document) is { } countParameter)
                 {
                     operation.Parameters.AppendParameter(countParameter);
                 }
@@ -290,19 +290,19 @@ namespace Microsoft.OpenApi.OData.Operation
                 if (functionReturnType?.Definition?.AsElementType() is IEdmEntityType entityType)
                 {
                     // $select
-                    if (Context.CreateSelect(function, entityType) is {} selectParameter)
+                    if (Context.CreateSelect(function, entityType) is { } selectParameter)
                     {
                         operation.Parameters.AppendParameter(selectParameter);
                     }
 
                     // $orderby
-                    if (Context.CreateOrderBy(function, entityType) is {} orderbyParameter)
+                    if (Context.CreateOrderBy(function, entityType) is { } orderbyParameter)
                     {
                         operation.Parameters.AppendParameter(orderbyParameter);
                     }
 
                     // $expand
-                    if (Context.CreateExpand(function, entityType) is {} expandParameter)
+                    if (Context.CreateExpand(function, entityType) is { } expandParameter)
                     {
                         operation.Parameters.AppendParameter(expandParameter);
                     }
@@ -313,20 +313,20 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetCustomLinkRelType()
         {
-            if (Context is {Settings.CustomHttpMethodLinkRelMapping: not null} && EdmOperation != null)
+            if (Context is { Settings.CustomHttpMethodLinkRelMapping: not null } && EdmOperation != null)
             {
                 LinkRelKey key = EdmOperation.IsAction() ? LinkRelKey.Action : LinkRelKey.Function;
                 Context.Settings.CustomHttpMethodLinkRelMapping.TryGetValue(key, out var linkRelValue);
-                CustomLinkRel =  linkRelValue;
+                CustomLinkRel = linkRelValue;
             }
         }
-    
+
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
             if (Context is { Settings.ShowExternalDocs: true })
             {
-                var externalDocs = (string.IsNullOrEmpty(TargetPath), string.IsNullOrEmpty(CustomLinkRel))  switch
+                var externalDocs = (string.IsNullOrEmpty(TargetPath), string.IsNullOrEmpty(CustomLinkRel)) switch
                 {
                     (false, false) => Context.Model.GetLinkRecord(TargetPath!, CustomLinkRel!),
                     (true, false) when EdmOperation is not null => Context.Model.GetLinkRecord(EdmOperation, CustomLinkRel!),
@@ -347,14 +347,14 @@ namespace Microsoft.OpenApi.OData.Operation
         // <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            if (Context is { Settings.EnablePagination: true } && EdmOperation?.GetReturn()?.Type?.TypeKind() == EdmTypeKind.Collection)
+            if (Context is { Settings.EnablePagination: true } && EdmOperation?.ReturnType?.TypeKind() == EdmTypeKind.Collection)
             {
                 var extension = new JsonObject
                 {
                     { "nextLinkName", "@odata.nextLink"},
                     { "operationName", Context.Settings.PageableOperationName}
                 };
-                
+
                 operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 operation.Extensions.Add(Constants.xMsPageable, new JsonNodeExtension(extension));
             }

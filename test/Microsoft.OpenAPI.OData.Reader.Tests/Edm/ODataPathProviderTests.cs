@@ -122,7 +122,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths);
             Assert.Equal(15861, paths.Count());
         }
-                
+
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
@@ -182,11 +182,11 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                 if (countable)
                 {
                     Assert.NotNull(testPath);
-                }                    
+                }
                 else
                 {
                     Assert.Null(testPath);
-                }                    
+                }
             }
             else
             {
@@ -222,7 +222,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Arrange
             IEdmModel model = GetInheritanceModel(string.Empty);
             ODataPathProvider provider = new ODataPathProvider();
-            var settings = new OpenApiConvertSettings {
+            var settings = new OpenApiConvertSettings
+            {
                 EnableDollarCountPath = false,
                 AppendBoundOperationsOnDerivedTypeCastSegments = true
             };
@@ -281,8 +282,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths);
             Assert.Equal(expectedCount, paths.Count());
             var dollarCountPathsWithCastSegment = paths.Where(x => x.Kind == ODataPathKind.DollarCount && x.Any(y => y.Kind == ODataSegmentKind.TypeCast));
-            if(addAnnotation && !getNavPropModel)
-              Assert.Single(dollarCountPathsWithCastSegment);
+            if (addAnnotation && !getNavPropModel)
+                Assert.Single(dollarCountPathsWithCastSegment);
         }
         [Theory]
         [InlineData(false, false, true, true, 4)]
@@ -324,10 +325,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths);
             Assert.Equal(expectedCount, paths.Count());
             var dollarCountPathsWithCastSegment = paths.Where(x => x.Kind == ODataPathKind.DollarCount && x.Any(y => y.Kind == ODataSegmentKind.TypeCast));
-            if(addAnnotation || !requireConstraint)
-              Assert.Single(dollarCountPathsWithCastSegment);
+            if (addAnnotation || !requireConstraint)
+                Assert.Single(dollarCountPathsWithCastSegment);
             else
-              Assert.Empty(dollarCountPathsWithCastSegment);
+                Assert.Empty(dollarCountPathsWithCastSegment);
         }
 #if DEBUG
         // Super useful for debugging tests.
@@ -529,6 +530,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     <Key>
       <PropertyRef Name=""id"" />
     </Key>
+    <Property Name=""id"" Type=""Edm.Int32"" Nullable=""false"" />
     <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" />
     <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"" >
         <Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
@@ -568,6 +570,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     <Key>
       <PropertyRef Name=""id"" />
     </Key>
+    <Property Name=""id"" Type=""Edm.Int32"" Nullable=""false"" />
     <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" ContainsTarget=""true"" >
         <Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
             <Record>
@@ -610,6 +613,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     <Key>
       <PropertyRef Name=""id"" />
     </Key>
+    <Property Name=""id"" Type=""Edm.Int32"" Nullable=""false"" />
     <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"">
         <Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
           <Record>
@@ -656,6 +660,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     <Key>
       <PropertyRef Name=""id"" />
     </Key>
+    <Property Name=""id"" Type=""Edm.Int32"" Nullable=""false"" />
     <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" />
     <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"" />
   </EntityType>";
@@ -690,6 +695,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     <Key>
       <PropertyRef Name=""id"" />
     </Key>
+    <Property Name=""id"" Type=""Edm.Int32"" Nullable=""false"" />
     <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" ContainsTarget=""true"" />
     <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"" ContainsTarget=""true"" />
   </EntityType>";
@@ -787,7 +793,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             OpenApiConvertSettings settings = new()
             {
                 EnableKeyAsSegment = true,
-                AddAlternateKeyPaths= true
+                AddAlternateKeyPaths = true
             };
 
             // Act
