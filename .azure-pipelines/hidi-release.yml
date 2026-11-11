@@ -387,7 +387,7 @@ extends:
                             $env:FEED_ACCESS_TOKEN = $null
                             az acr login --name msgraphprodregistry
                             if ($LASTEXITCODE -ne 0) { throw "ACR login failed with exit code $LASTEXITCODE." }
-                            docker run --privileged --rm tonistiigi/binfmt --install all
+                            docker run --privileged --rm msgraphprodregistry.azurecr.io/tonistiigi/binfmt --install all
                             if ($LASTEXITCODE -ne 0) { throw "Docker platform setup failed with exit code $LASTEXITCODE." }
                             docker buildx create --use
                             if ($LASTEXITCODE -ne 0) { throw "Docker BuildX setup failed with exit code $LASTEXITCODE." }
@@ -473,7 +473,7 @@ extends:
                             $env:FEED_ACCESS_TOKEN = $null
                             az acr login --name msgraphprodregistry
                             if ($LASTEXITCODE -ne 0) { throw "ACR login failed with exit code $LASTEXITCODE." }
-                            docker run --privileged --rm tonistiigi/binfmt --install all
+                            docker run --privileged --rm msgraphprodregistry.azurecr.io/tonistiigi/binfmt --install all
                             if ($LASTEXITCODE -ne 0) { throw "Docker platform setup failed with exit code $LASTEXITCODE." }
                             docker buildx create --use
                             if ($LASTEXITCODE -ne 0) { throw "Docker BuildX setup failed with exit code $LASTEXITCODE." }
