@@ -149,7 +149,7 @@ jobs:
           if (-not (Select-String $diagramOutput -Pattern 'mermaid' -Quiet)) { throw "Expected a Mermaid diagram from hidi show." }
 
       - name: Upload hidi NuGet artifact (not a release)
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: hidi-nuget
           path: artifacts/hidi/nuget
@@ -183,7 +183,7 @@ jobs:
           & .\artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe --help
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Compress-Archive -Path .\artifacts\hidi\win-x64\* -DestinationPath .\artifacts\hidi\hidi-win-x64.zip
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: hidi-windows-executable
           path: |
