@@ -17,7 +17,7 @@ jobs:
       GITHUB_RUN_NUMBER: ${{ github.run_number }}
     steps:
       - name: Setup .NET
-        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: |
             8.0.x
@@ -145,7 +145,7 @@ jobs:
           if (-not (Select-String $diagramOutput -Pattern 'mermaid' -Quiet)) { throw "Expected a Mermaid diagram from hidi show." }
 
       - name: Upload hidi NuGet artifact (not a release)
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: hidi-nuget
           path: artifacts/hidi/nuget
@@ -166,7 +166,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: |
             8.0.x
@@ -179,7 +179,7 @@ jobs:
           & .\artifacts\hidi\win-x64\Microsoft.OpenApi.Hidi.exe --help
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Compress-Archive -Path .\artifacts\hidi\win-x64\* -DestinationPath .\artifacts\hidi\hidi-win-x64.zip
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: hidi-windows-executable
           path: |

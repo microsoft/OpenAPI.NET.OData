@@ -9,7 +9,7 @@
     <Nullable>enable</Nullable>
     <ToolCommandName>hidi</ToolCommandName>
     <PackageId>Microsoft.OpenApi.Hidi</PackageId>
-    <Version>3.11.0</Version>
+    <Version>3.11.1</Version>
     <PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts\hidi\nuget</PackageOutputPath>
     <Description>OpenAPI.NET CLI tool for slicing OpenAPI documents</Description>
     <SignAssembly>true</SignAssembly>
@@ -35,15 +35,15 @@
 
   <ItemGroup>
     <PackageReference Include="Humanizer.Core" Version="3.0.10"/>
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.12"/>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12"/>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.14"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.14"/>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.12"/>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.12"/>
-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.7.23">
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.12.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="System.CommandLine" Version="2.0.12"/>
+    <PackageReference Include="System.CommandLine" Version="2.0.13"/>
     <PackageReference Include="Microsoft.OData.Edm" Version="8.4.4"/>
     <PackageReference Include="Microsoft.OpenApi" Version="3.10.2"/>
     <PackageReference Include="Microsoft.OpenApi.YamlReader" Version="3.10.2"/>
@@ -70,23 +70,16 @@
     <None Include="./readme.md" Pack="true" PackagePath=""/>
   </ItemGroup>
 
-  <Target Name="UseHidiSignedAssemblyForPublish"
-          AfterTargets="ComputeFilesToPublish"
-          Condition="'$(PackAsTool)' == 'true' and '$(HidiSignedAssemblyPath)' != ''">
-    <Error Condition="!Exists('$(HidiSignedAssemblyPath)')"
-           Text="The signed Hidi assembly does not exist: $(HidiSignedAssemblyPath)" />
+  <Target Name="UseHidiSignedAssemblyForPublish" AfterTargets="ComputeFilesToPublish" Condition="'$(PackAsTool)' == 'true' and '$(HidiSignedAssemblyPath)' != ''">
+    <Error Condition="!Exists('$(HidiSignedAssemblyPath)')" Text="The signed Hidi assembly does not exist: $(HidiSignedAssemblyPath)"/>
     <ItemGroup>
-      <_HidiAssemblyToReplace Include="@(ResolvedFileToPublish)"
-                              Condition="'%(ResolvedFileToPublish.RelativePath)' == '$(TargetFileName)'" />
+      <_HidiAssemblyToReplace Include="@(ResolvedFileToPublish)" Condition="'%(ResolvedFileToPublish.RelativePath)' == '$(TargetFileName)'"/>
     </ItemGroup>
-    <Error Condition="'@(_HidiAssemblyToReplace->Count())' != '1'"
-           Text="Expected exactly one Hidi assembly in ResolvedFileToPublish." />
+    <Error Condition="'@(_HidiAssemblyToReplace-&gt;Count())' != '1'" Text="Expected exactly one Hidi assembly in ResolvedFileToPublish."/>
     <ItemGroup>
       <!-- Tool packing publishes the intermediate assembly, not the bin copy. -->
-      <ResolvedFileToPublish Remove="@(_HidiAssemblyToReplace)" />
-      <ResolvedFileToPublish Include="$(HidiSignedAssemblyPath)"
-                             RelativePath="$(TargetFileName)"
-                             CopyToPublishDirectory="Always" />
+      <ResolvedFileToPublish Remove="@(_HidiAssemblyToReplace)"/>
+      <ResolvedFileToPublish Include="$(HidiSignedAssemblyPath)" RelativePath="$(TargetFileName)" CopyToPublishDirectory="Always"/>
     </ItemGroup>
   </Target>
 
