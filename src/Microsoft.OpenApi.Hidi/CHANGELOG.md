@@ -1,5 +1,16 @@
 # Hidi changelog
 
+## [4.0.0](https://github.com/microsoft/OpenAPI.NET.OData/compare/hidi-v3.11.1...hidi-v4.0.0) (2026-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* Microsoft.OpenApi.OData and Hidi now target .NET 10 only and require Microsoft.OData.Edm 9.x. Consumers on earlier runtimes or Edm 8.x must stay on the previous major version.
+
+### Bug Fixes
+
+* support Microsoft.OData.Edm 9 and drop .NET versions below 10 ([#940](https://github.com/microsoft/OpenAPI.NET.OData/issues/940)) ([2124246](https://github.com/microsoft/OpenAPI.NET.OData/commit/2124246ab2c1d16be5cfbf3b2ed46415141ffd19))
+
 ## [3.11.1](https://github.com/microsoft/OpenAPI.NET.OData/compare/hidi-v3.11.0...hidi-v3.11.1) (2026-11-06)
 
 
