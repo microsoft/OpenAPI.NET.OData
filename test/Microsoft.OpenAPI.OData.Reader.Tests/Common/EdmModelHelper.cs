@@ -15,7 +15,6 @@ using System.Xml;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.OData.Edm.Validation;
-using Xunit.Abstractions;
 
 namespace Microsoft.OpenApi.OData.Tests
 {

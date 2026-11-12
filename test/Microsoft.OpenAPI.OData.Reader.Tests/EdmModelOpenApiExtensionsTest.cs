@@ -9,7 +9,6 @@ using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Microsoft.OData.Edm;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.OpenApi.OData.Tests;
 public class EdmModelOpenApiExtensionsTest(ITestOutputHelper output)

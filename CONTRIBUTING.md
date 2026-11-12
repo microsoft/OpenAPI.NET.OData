@@ -8,6 +8,39 @@ OpenAPI.net.OData is a mono-repo containing source code for the following packag
 |----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Microsoft.OpenAPI.OData](./README.md)                         | [![NuGet Version](https://img.shields.io/nuget/vpre/Microsoft.OpenAPI.OData?label=Latest&logo=nuget)](https://www.nuget.org/packages/Microsoft.OpenAPI.OData/)                       |
 
+## Building and testing
+
+[Microsoft.OpenApi.Hidi](src/Microsoft.OpenApi.Hidi/readme.md) is a .NET tool,
+not an OData library package. Install the .NET 10 SDK and .NET 8 runtime to build
+and test both projects. Both test projects use xUnit v3 and
+Microsoft.Testing.Platform, selected by `global.json`. Reader tests still target
+.NET 8; Hidi tests target .NET 10.
+
+```powershell
+dotnet build Microsoft.OpenApi.OData.sln -c Release
+dotnet test --solution Microsoft.OpenApi.OData.sln -c Release --no-build -- --minimum-expected-tests 1
+```
+
+On non-Windows hosts, pass `-p:EnableWindowsTargeting=true` to both commands
+because the solution also contains the Windows-only GUI project.
+Use `--project <path>` instead of `--solution <path>` for a single test project.
+MTP options replace VSTest's `--logger`, `--collect`, and MSBuild coverage options:
+
+```powershell
+dotnet test --solution Microsoft.OpenApi.OData.sln -c Release --no-build --results-directory artifacts\test-results -- --minimum-expected-tests 1 --report-trx --coverlet --coverlet-output-format cobertura --coverlet-include "[Microsoft.OpenApi.OData.Reader]*" --coverlet-include "[Microsoft.OpenApi.Hidi]*"
+```
+
+This produces separate TRX and coverage reports for each test assembly.
+CI uses `--report-gh` for GitHub Actions and `--report-azdo` with TRX publication
+for Azure DevOps. SonarCloud collects OpenCover reports for both projects in
+`artifacts/test-results`, alongside the separately measured Pester helper coverage.
+
+Each test project's `testconfig.json` explicitly includes its product assembly.
+Keep these files copied to the output directory: CLI include filters alone can
+produce an empty Reader report with Coverlet's dynamic namespace exclusions.
+SonarCloud rejects empty reports and unexpected modules, and requires covered
+sequence points for both Reader and Hidi.
+
 OpenAPI.net.OData is open to contributions. There are a couple of different recommended paths to get contributions into the released version of this library.
 
 __NOTE__ A signed a contribution license agreement is required for all contributions, and is checked automatically on new pull requests. Please read and sign [the agreement](https://cla.microsoft.com/) before starting any work for this repository.
