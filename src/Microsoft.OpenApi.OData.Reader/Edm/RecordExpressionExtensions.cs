@@ -82,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             return (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmDateConstantExpression value) ?
-                value.Value :
+                value.Value.ToDateTime(TimeOnly.MinValue) :
                 null;
         }
 
@@ -175,7 +175,7 @@ namespace Microsoft.OpenApi.OData.Edm
             if (record.Properties?.FirstOrDefault(e => propertyName.Equals(e.Name, StringComparison.Ordinal)) is IEdmPropertyConstructor property &&
                 property.Value is IEdmCollectionExpression value && value.Elements != null)
             {
-                IList<string> properties = 
+                IList<string> properties =
                     value.Elements
                         .OfType<IEdmPathExpression>()
                         .Select(x => x.Path)

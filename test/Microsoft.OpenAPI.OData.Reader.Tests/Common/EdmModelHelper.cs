@@ -400,7 +400,7 @@ namespace Microsoft.OpenApi.OData.Tests
             };
 
             using XmlWriter xw = XmlWriter.Create(sw, settings);
-            CsdlWriter.TryWriteCsdl(model, xw, CsdlTarget.OData, out var _);
+            CsdlWriter.TryWriteCsdl(model, xw, out var _);
             xw.Flush();
 
             string edmx = sw.ToString();

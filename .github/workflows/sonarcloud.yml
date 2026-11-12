@@ -43,9 +43,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
-          dotnet-version: |
-            8.0.x
-            10.0.x
+          dotnet-version: 10.0.x
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -124,7 +122,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         shell: pwsh
         run: |
-          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="artifacts/test-results/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml"
+          dotnet tool run dotnet-sonarscanner begin /k:"microsoft_OpenAPI.NET.OData" /o:"microsoft" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="artifacts/test-results/*opencover*.xml,test/**/coverage.opencover.xml,artifacts/hidi/coverage/*opencover*.xml" /d:sonar.coverageReportPaths="artifacts/hidi/powershell-coverage/sonar-coverage.xml"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet workload restore
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

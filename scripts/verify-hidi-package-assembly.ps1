@@ -31,8 +31,8 @@ $archive = $null
 try {
     $archive = [IO.Compression.ZipFile]::OpenRead((Resolve-Path -LiteralPath $PackagePath).Path)
     $assemblies = @($archive.Entries | Where-Object { $_.Name -ieq 'Microsoft.OpenApi.Hidi.dll' })
-    if ($assemblies.Count -ne 1 -or $assemblies[0].FullName -cne 'tools/net8.0/any/Microsoft.OpenApi.Hidi.dll') {
-        throw 'Expected exactly one Hidi DLL at tools/net8.0/any/Microsoft.OpenApi.Hidi.dll.'
+    if ($assemblies.Count -ne 1 -or $assemblies[0].FullName -cne 'tools/net10.0/any/Microsoft.OpenApi.Hidi.dll') {
+        throw 'Expected exactly one Hidi DLL at tools/net10.0/any/Microsoft.OpenApi.Hidi.dll.'
     }
     [IO.Compression.ZipFileExtensions]::ExtractToFile($assemblies[0], $packagedAssembly)
 

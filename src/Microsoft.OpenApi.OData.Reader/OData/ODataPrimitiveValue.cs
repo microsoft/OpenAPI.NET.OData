@@ -3,6 +3,9 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
+using System.Globalization;
+
 namespace Microsoft.OpenApi.OData
 {
     /// <summary>
@@ -22,7 +25,13 @@ namespace Microsoft.OpenApi.OData
 
         public override string? ToString()
         {
-            return Value.ToString();
+            return Value switch
+            {
+                // Match the OData literal formats of Microsoft.OData.Edm 8 Date and TimeOfDay, which Edm 9 replaced.
+                DateOnly date => date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+                TimeOnly time => time.ToString("HH:mm:ss.fffffff", CultureInfo.InvariantCulture),
+                _ => Value.ToString(),
+            };
         }
     }
 }

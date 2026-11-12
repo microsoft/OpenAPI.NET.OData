@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.Hidi.Formatters
 
             var operationId = operation.OperationId;
             var operationTypeExtension = operation.Extensions?.GetExtension("x-ms-docs-operation-type");
-            if (operationTypeExtension.IsEquals("function") && operation.Parameters is { Count :> 0})
+            if (operationTypeExtension.IsEquals("function") && operation.Parameters is { Count: > 0 })
                 ResolveFunctionParameters(operation.Parameters);
 
             // Order matters. Resolve operationId.
@@ -106,7 +106,7 @@ namespace Microsoft.OpenApi.Hidi.Formatters
             // Update $ref path operationId name
             // Ref key word is enclosed between lower-cased and upper-cased letters
             // Ex.: applications_GetRefCreatedOnBehalfOf to applications_GetCreatedOnBehalfOfByRef
-            return s_oDataRefRegex.Match(operationId).Success ? $"{s_oDataRefRegex.Replace(operationId, string.Empty)}ByRef" : operationId;
+            return s_oDataRefRegex.IsMatch(operationId) ? $"{s_oDataRefRegex.Replace(operationId, string.Empty)}ByRef" : operationId;
         }
 
         private static string ResolveODataCastOperationId(string operationId)
@@ -175,8 +175,8 @@ namespace Microsoft.OpenApi.Hidi.Formatters
 
         private void AddAdditionalPropertiesToSchema(IOpenApiSchema schema)
         {
-            if (schema is OpenApiSchema openApiSchema 
-                && !_schemaLoop.Contains(schema) 
+            if (schema is OpenApiSchema openApiSchema
+                && !_schemaLoop.Contains(schema)
                 && schema.Type.Equals(JsonSchemaType.Object))
             {
                 openApiSchema.AdditionalProperties = new OpenApiSchema() { Type = JsonSchemaType.Object };

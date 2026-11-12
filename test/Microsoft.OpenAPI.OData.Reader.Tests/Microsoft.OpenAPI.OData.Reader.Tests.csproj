@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Microsoft.OpenApi.OData.Reader.Tests</AssemblyName>
     <RootNamespace>Microsoft.OpenApi.OData.Reader.Tests</RootNamespace>
-    <TargetFrameworks>net8.0</TargetFrameworks>
+    <TargetFramework>net10.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <IsTestProject>true</IsTestProject>
     <IsPackable>false</IsPackable>

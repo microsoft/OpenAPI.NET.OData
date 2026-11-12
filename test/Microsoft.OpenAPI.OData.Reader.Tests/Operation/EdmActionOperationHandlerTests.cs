@@ -20,14 +20,16 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         public EdmActionOperationHandlerTests()
         {
-          _openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme {
-            Type = SecuritySchemeType.OAuth2,
-          });
-          _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme {
-            Type = SecuritySchemeType.OAuth2,
-          });
-          _openApiDocument.Tags ??= new HashSet<OpenApiTag>();
-          _openApiDocument.Tags.Add(new OpenApiTag { Name = "me.user.Actions" });
+            _openApiDocument.AddComponent("Delegated (work or school account)", new OpenApiSecurityScheme
+            {
+                Type = SecuritySchemeType.OAuth2,
+            });
+            _openApiDocument.AddComponent("Application", new OpenApiSecurityScheme
+            {
+                Type = SecuritySchemeType.OAuth2,
+            });
+            _openApiDocument.Tags ??= new HashSet<OpenApiTag>();
+            _openApiDocument.Tags.Add(new OpenApiTag { Name = "me.user.Actions" });
         }
         private readonly OpenApiDocument _openApiDocument = new();
         private EdmActionOperationHandler _operationHandler => new(_openApiDocument);
@@ -286,7 +288,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableAnnotation)
             {
-              Assert.NotNull(operation.Security);
+                Assert.NotNull(operation.Security);
                 Assert.Equal(2, operation.Security.Count);
 
                 string json = await operation.SerializeAsJsonAsync(OpenApiSpecVersion.OpenApi3_0);
@@ -342,13 +344,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             var operation = _operationHandler.CreateOperation(context, path);
 
             // Assert
-            if (enablePagination && action.GetReturn()?.Type?.IsCollection() == true)
+            if (enablePagination && action.ReturnType?.IsCollection() == true)
             {
-              Assert.True(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
+                Assert.True(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
             }
             else
             {
-              Assert.DoesNotContain(Common.Constants.xMsPageable, operation.Extensions?.Keys.Select(static x => x) ?? []);
+                Assert.DoesNotContain(Common.Constants.xMsPageable, operation.Extensions?.Keys.Select(static x => x) ?? []);
             }
         }
 
@@ -390,8 +392,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             }
             else if (enablePagination)
-            { 
-                Assert.True(responseProperties.ContainsKey("@odata.nextLink"));               
+            {
+                Assert.True(responseProperties.ContainsKey("@odata.nextLink"));
             }
             else
             {

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Microsoft.OpenApi.Hidi
 {
-    public static class Logger
+    internal static class Logger
     {
         public static ILoggerFactory ConfigureLogger(LogLevel logLevel)
         {
