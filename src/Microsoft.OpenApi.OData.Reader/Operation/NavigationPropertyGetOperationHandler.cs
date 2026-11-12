@@ -178,11 +178,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 AddParameterIfExists(parametersToAdd, Context.CreateFilter, Context.CreateFilter);
                 AddParameterIfExists(parametersToAdd, Context.CreateCount, Context.CreateCount);
 
-                var orderByParameter = (string.IsNullOrEmpty(TargetPath), NavigationProperty) switch
+                // Fall back only for unresolved targets, not for explicit sorting restrictions.
+                var orderByParameter = (string.IsNullOrEmpty(TargetPath) ? null : Context.Model.GetTargetPath(TargetPath), NavigationProperty) switch
                 { 
-                    (false, not null) when NavigationProperty.ToEntityType() is {} entityType =>
-                        Context.CreateOrderBy(TargetPath!, entityType),
-                    (true, not null) => Context.CreateOrderBy(NavigationProperty),
+                    ({} target, not null) when NavigationProperty.ToEntityType() is {} entityType =>
+                        Context.CreateOrderBy(target, entityType),
+                    (null, not null) => Context.CreateOrderBy(NavigationProperty),
                     _ => null,
                 };
                 if (orderByParameter != null)
