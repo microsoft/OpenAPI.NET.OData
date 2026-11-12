@@ -6,7 +6,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.PathItem.Tests;
@@ -143,6 +145,102 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(operation.Parameters);
             Assert.Equal(4, operation.Parameters.Count);
             Assert.Contains(operation.Parameters, x => x.Name == "path");
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateNavigationGetOperationWithUnresolvedFunctionTargetUsesPropertySortRestrictions(bool sortable)
+        {
+            VerifyNavigationSortRestrictions(viaFunction: true, propertySortable: sortable, pathSortable: null);
+        }
+
+        [Theory]
+        [InlineData(true, null)]
+        [InlineData(true, false)]
+        [InlineData(false, true)]
+        public void CreateNavigationGetOperationWithResolvedTargetUsesPathSortRestrictions(bool propertySortable, bool? pathSortable)
+        {
+            VerifyNavigationSortRestrictions(viaFunction: false, propertySortable, pathSortable);
+        }
+
+        private void VerifyNavigationSortRestrictions(bool viaFunction, bool propertySortable, bool? pathSortable)
+        {
+            string pathAnnotation = pathSortable.HasValue ? $@"
+              <Annotations Target=""microsoft.graph.GraphService/tables/columns"">
+                <Annotation Term=""Org.OData.Capabilities.V1.SortRestrictions"">
+                  <Record>
+                    <PropertyValue Property=""Sortable"" Bool=""{pathSortable.Value.ToString().ToLowerInvariant()}"" />
+                  </Record>
+                </Annotation>
+              </Annotations>" : "";
+            string csdl = $@"
+              <edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+              <edmx:DataServices>
+              <Schema Namespace=""microsoft.graph"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+                <EntityType Name=""workbookTable"">
+                  <Key><PropertyRef Name=""id"" /></Key>
+                  <Property Name=""id"" Type=""Edm.String"" Nullable=""false"" />
+                  <NavigationProperty Name=""columns"" Type=""Collection(microsoft.graph.workbookTableColumn)"" ContainsTarget=""true"">
+                    <Annotation Term=""Org.OData.Capabilities.V1.SortRestrictions"">
+                      <Record>
+                        <PropertyValue Property=""Sortable"" Bool=""{propertySortable.ToString().ToLowerInvariant()}"" />
+                        <PropertyValue Property=""NonSortableProperties"">
+                          <Collection><PropertyPath>id</PropertyPath></Collection>
+                        </PropertyValue>
+                      </Record>
+                    </Annotation>
+                  </NavigationProperty>
+                </EntityType>
+                <EntityType Name=""workbookTableColumn"">
+                  <Key><PropertyRef Name=""id"" /></Key>
+                  <Property Name=""id"" Type=""Edm.String"" Nullable=""false"" />
+                  <Property Name=""name"" Type=""Edm.String"" />
+                </EntityType>
+                <Function Name=""itemAt"" IsBound=""true"" IsComposable=""true"">
+                  <Parameter Name=""bindingParameter"" Type=""Collection(microsoft.graph.workbookTable)"" />
+                  <Parameter Name=""index"" Type=""Edm.Int32"" Nullable=""false"" />
+                  <ReturnType Type=""microsoft.graph.workbookTable"" />
+                </Function>
+                <EntityContainer Name=""GraphService"">
+                  <EntitySet Name=""tables"" EntityType=""microsoft.graph.workbookTable"" />
+                </EntityContainer>
+                {pathAnnotation}
+              </Schema>
+              </edmx:DataServices>
+              </edmx:Edmx>";
+            IEdmModel model = CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
+            IEdmEntitySet tables = model.EntityContainer.FindEntitySet("tables");
+            IEdmNavigationProperty columns = tables.EntityType.DeclaredNavigationProperties().Single();
+            var path = new ODataPath(new ODataNavigationSourceSegment(tables));
+            if (viaFunction)
+            {
+                path.Push(new ODataOperationSegment(model.SchemaElements.OfType<IEdmFunction>().Single()));
+            }
+            else
+            {
+                path.Push(new ODataKeySegment(tables.EntityType));
+            }
+            path.Push(new ODataNavigationPropertySegment(columns));
+
+            var target = model.GetTargetPath(path.GetTargetPath(model));
+            Assert.Equal(viaFunction, target is null);
+
+            var settings = new OpenApiConvertSettings { UseStringArrayForQueryOptionsSchema = false };
+            var operation = _operationHandler.CreateOperation(new ODataContext(model, settings), path);
+
+            if (viaFunction ? propertySortable : pathSortable ?? true)
+            {
+                var orderBy = Assert.Single(operation.Parameters, parameter => parameter.Name == "$orderby");
+                var expectedProperties = viaFunction
+                    ? new[] { "name", "name desc" }
+                    : new[] { "id", "id desc", "name", "name desc" };
+                Assert.Equal(expectedProperties, orderBy.Schema.Items.Enum.Select(value => value.GetValue<string>()));
+            }
+            else
+            {
+                Assert.DoesNotContain(operation.Parameters, parameter => parameter.Name == "$orderby");
+            }
         }
 
         [Fact]
