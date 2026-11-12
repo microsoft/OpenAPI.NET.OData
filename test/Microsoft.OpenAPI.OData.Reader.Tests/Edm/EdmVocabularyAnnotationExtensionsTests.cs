@@ -24,6 +24,63 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
+        public void AnnotationCachePreservesMergedRecordsAfterAbsentTermLookups(bool queryAbsentTermFirst)
+        {
+            var model = GetEdmModel(@"<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+  <Record>
+    <PropertyValue Property=""Description"" String=""List items"" />
+  </Record>
+</Annotation>
+<Annotation Term=""Org.OData.Core.V1.Description"" String=""Items"" />");
+            var target = model.EntityContainer;
+            if (queryAbsentTermFirst)
+            {
+                Assert.Null(model.GetRecord<CountRestrictionsType>(target));
+            }
+
+            var readRestrictions = model.GetRecord<ReadRestrictionsType>(target);
+            Assert.NotNull(readRestrictions);
+            var inheritedRestrictions = new ReadRestrictionsType();
+            inheritedRestrictions.Initialize(new EdmRecordExpression(
+                new EdmPropertyConstructor("CustomQueryOptions", new EdmCollectionExpression(
+                    new EdmRecordExpression(new EdmPropertyConstructor("Name", new EdmStringConstant("includeHiddenFolders")))))));
+            readRestrictions.MergePropertiesIfNull(inheritedRestrictions);
+            Assert.Equal("Items", model.GetString(target, "Org.OData.Core.V1.Description"));
+
+            Assert.Null(model.GetRecord<CountRestrictionsType>(target));
+            Assert.Null(model.GetRecord<CountRestrictionsType>(target));
+            Assert.Null(model.GetString(target, "NS.UndefinedTerm"));
+
+            var cachedRestrictions = model.GetRecord<ReadRestrictionsType>(target);
+            Assert.Same(readRestrictions, cachedRestrictions);
+            Assert.Equal("List items", cachedRestrictions.Description);
+            Assert.Equal("includeHiddenFolders", Assert.Single(cachedRestrictions.CustomQueryOptions).Name);
+            Assert.Equal("Items", model.GetString(target, "Org.OData.Core.V1.Description"));
+
+            var secondModel = GetEdmModel("");
+            Assert.Null(secondModel.GetRecord<ReadRestrictionsType>(secondModel.EntityContainer));
+
+            var reloadedRestrictions = model.GetRecord<ReadRestrictionsType>(target);
+            Assert.NotSame(readRestrictions, reloadedRestrictions);
+            Assert.Equal("List items", reloadedRestrictions.Description);
+            Assert.Null(reloadedRestrictions.CustomQueryOptions);
+        }
+
+        [Fact]
+        public void AnnotationCacheLooksUpAbsentTermOncePerCallForNewAndExistingTargets()
+        {
+            var target = new ValueEqualAnnotatable(1, 42);
+            var model = GetCacheModel();
+
+            Assert.Null(model.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal(1, model.FindDeclaredVocabularyAnnotationsCallCount);
+            Assert.Null(model.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal(2, model.FindDeclaredVocabularyAnnotationsCallCount);
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
         public void AnnotationCacheHandlesMixedTargetHashCollisions(bool pathFirst)
         {
             var path = CreateTargetPath();

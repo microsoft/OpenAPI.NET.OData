@@ -402,16 +402,14 @@ namespace Microsoft.OpenApi.OData.Edm
                         T ret = (T)restriction;
                         return ret;
                     }
-                    else if (createFunc() is T ret)
-                    {
-                        value[qualifiedName] = ret;
-                        return ret;
-                    }
+                }
+                else
+                {
+                    // Only new targets need a dictionary; absent annotations must not evict cached records.
+                    value = new Dictionary<string, object>();
+                    _cachedAnnotations[target] = value;
                 }
 
-                // It's first time to query this target, create new dictionary and restriction.
-                value = new Dictionary<string, object>();
-                _cachedAnnotations[target] = value;
                 if (createFunc() is T newAnnotation)
                 {
                     value[qualifiedName] = newAnnotation;

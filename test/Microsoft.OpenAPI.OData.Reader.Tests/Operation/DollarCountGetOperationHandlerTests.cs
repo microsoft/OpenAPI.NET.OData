@@ -4,13 +4,17 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
 {
+    [Collection("Vocabulary annotation cache")]
     public class DollarCountGetOperationHandlerTests
     {
         private readonly OpenApiDocument openApiDocument = new();
@@ -20,6 +24,75 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             openApiDocument.AddComponent("search", new OpenApiParameter {Name = "search", In = ParameterLocation.Query, Schema = new OpenApiSchema {Type = JsonSchemaType.String}});
             openApiDocument.AddComponent("filter", new OpenApiParameter {Name = "filter", In = ParameterLocation.Query, Schema = new OpenApiSchema {Type = JsonSchemaType.String}});
             openApiDocument.AddComponent("ConsistencyLevel", new OpenApiParameter {Name = "ConsistencyLevel", In = ParameterLocation.Query, Schema = new OpenApiSchema {Type = JsonSchemaType.String}});
+        }
+
+        [Fact]
+        public void CreateDollarCountGetOperationPreservesCustomOptionsMergedByNavigationGet()
+        {
+            const string csdl = """
+                <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+                  <edmx:DataServices>
+                    <Schema Namespace="NS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                      <EntityType Name="User">
+                        <Key><PropertyRef Name="id" /></Key>
+                        <Property Name="id" Type="Edm.String" Nullable="false" />
+                        <NavigationProperty Name="mailFolders" Type="Collection(NS.MailFolder)" ContainsTarget="true" />
+                      </EntityType>
+                      <EntityType Name="MailFolder">
+                        <Key><PropertyRef Name="id" /></Key>
+                        <Property Name="id" Type="Edm.String" Nullable="false" />
+                      </EntityType>
+                      <EntityContainer Name="Default">
+                        <Singleton Name="me" Type="NS.User">
+                          <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+                            <Record>
+                              <PropertyValue Property="RestrictedProperties">
+                                <Collection>
+                                  <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="mailFolders" />
+                                    <PropertyValue Property="ReadRestrictions">
+                                      <Record>
+                                        <PropertyValue Property="CustomQueryOptions">
+                                          <Collection>
+                                            <Record>
+                                              <PropertyValue Property="Name" String="includeHiddenFolders" />
+                                            </Record>
+                                          </Collection>
+                                        </PropertyValue>
+                                      </Record>
+                                    </PropertyValue>
+                                  </Record>
+                                </Collection>
+                              </PropertyValue>
+                            </Record>
+                          </Annotation>
+                        </Singleton>
+                      </EntityContainer>
+                      <Annotations Target="NS.Default/me/mailFolders">
+                        <Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+                          <Record>
+                            <PropertyValue Property="Description" String="List mail folders" />
+                          </Record>
+                        </Annotation>
+                      </Annotations>
+                    </Schema>
+                  </edmx:DataServices>
+                </edmx:Edmx>
+                """;
+            var model = CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
+            var context = new ODataContext(model, new OpenApiConvertSettings());
+            var me = model.EntityContainer.FindSingleton("me");
+            var mailFolders = me.EntityType.DeclaredNavigationProperties().Single();
+            var path = new ODataPath(new ODataNavigationSourceSegment(me), new ODataNavigationPropertySegment(mailFolders));
+            var collectionOperation = new NavigationPropertyGetOperationHandler(openApiDocument).CreateOperation(context, path);
+            Assert.Contains(collectionOperation.Parameters, p => p.Name == "includeHiddenFolders" && p.In == ParameterLocation.Query);
+
+            Assert.Null(model.GetRecord<CountRestrictionsType>("NS.Default/me/mailFolders", CapabilitiesConstants.CountRestrictions));
+            var countPath = new ODataPath(new ODataNavigationSourceSegment(me),
+                new ODataNavigationPropertySegment(mailFolders), new ODataDollarCountSegment());
+            var countOperation = _operationHandler.CreateOperation(context, countPath);
+
+            Assert.Contains(countOperation.Parameters, p => p.Name == "includeHiddenFolders" && p.In == ParameterLocation.Query);
         }
 
         [Theory]
