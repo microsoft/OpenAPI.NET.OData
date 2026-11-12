@@ -6,10 +6,10 @@ BeforeDiscovery {
         @{ Name = 'matching signed DLL before NuGet signing' }
         @{ Name = 'different payload bytes'; Payload = 'unsigned-build'; ExpectedError = '*differs from the signed staging DLL*' }
         @{ Name = 'missing tool DLL'; Entries = @(); ExpectedError = '*exactly one Hidi DLL*' }
-        @{ Name = 'wrong tool location'; Entries = @('lib/net8.0/Microsoft.OpenApi.Hidi.dll'); ExpectedError = '*exactly one Hidi DLL*' }
-        @{ Name = 'duplicate tool DLL'; Entries = @('tools/net8.0/any/Microsoft.OpenApi.Hidi.dll', 'tools/net8.0/any/Microsoft.OpenApi.Hidi.dll'); ExpectedError = '*exactly one Hidi DLL*' }
-        @{ Name = 'extra tool DLL elsewhere'; Entries = @('tools/net8.0/any/Microsoft.OpenApi.Hidi.dll', 'lib/net8.0/Microsoft.OpenApi.Hidi.dll'); ExpectedError = '*exactly one Hidi DLL*' }
-        @{ Name = 'wrong entry casing'; Entries = @('tools/net8.0/any/microsoft.openapi.hidi.dll'); ExpectedError = '*exactly one Hidi DLL*' }
+        @{ Name = 'wrong tool location'; Entries = @('lib/net10.0/Microsoft.OpenApi.Hidi.dll'); ExpectedError = '*exactly one Hidi DLL*' }
+        @{ Name = 'duplicate tool DLL'; Entries = @('tools/net10.0/any/Microsoft.OpenApi.Hidi.dll', 'tools/net10.0/any/Microsoft.OpenApi.Hidi.dll'); ExpectedError = '*exactly one Hidi DLL*' }
+        @{ Name = 'extra tool DLL elsewhere'; Entries = @('tools/net10.0/any/Microsoft.OpenApi.Hidi.dll', 'lib/net10.0/Microsoft.OpenApi.Hidi.dll'); ExpectedError = '*exactly one Hidi DLL*' }
+        @{ Name = 'wrong entry casing'; Entries = @('tools/net10.0/any/microsoft.openapi.hidi.dll'); ExpectedError = '*exactly one Hidi DLL*' }
         @{ Name = 'unsigned package payload'; PackageStatus = 'NotSigned'; ExpectedError = '*valid Microsoft Corporation Authenticode signature*' }
         @{ Name = 'damaged package signature'; PackageStatus = 'HashMismatch'; ExpectedError = '*valid Microsoft Corporation Authenticode signature*' }
         @{ Name = 'unverifiable package signature'; PackageStatus = 'UnknownError'; ExpectedError = '*valid Microsoft Corporation Authenticode signature*' }
@@ -46,7 +46,7 @@ Describe 'Hidi package signed-assembly provenance' {
             else {
                 $archive = [IO.Compression.ZipFile]::Open($package, 'Create')
                 try {
-                    $entryNames = if ($testCase.ContainsKey('Entries')) { $Entries } else { @('tools/net8.0/any/Microsoft.OpenApi.Hidi.dll') }
+                    $entryNames = if ($testCase.ContainsKey('Entries')) { $Entries } else { @('tools/net10.0/any/Microsoft.OpenApi.Hidi.dll') }
                     foreach ($name in $entryNames) {
                         $writer = [IO.StreamWriter]::new($archive.CreateEntry($name).Open())
                         try { $writer.Write($(if ($Payload) { $Payload } else { 'signed-staging' })) }

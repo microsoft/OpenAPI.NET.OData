@@ -15,7 +15,7 @@ Hidi has these key capabilities that enable you to build different scenarios off
 
 Install [Microsoft.OpenApi.Hidi](https://www.nuget.org/packages/Microsoft.OpenApi.Hidi)
 from NuGet. Hidi 3.x is maintained on this repository's `main` branch and requires
-.NET 8. Hidi 2.x is maintained separately on `support/v2`.
+.NET 10. Hidi 2.x is maintained separately on `support/v2`.
 
 ### .NET CLI(Global)
 
@@ -32,7 +32,7 @@ dotnet tool install --local Microsoft.OpenApi.Hidi --version 3.10.2
 
 ### Build and install from this repository
 
-Run these commands from the repository root with the .NET 10 SDK and .NET 8 runtime installed:
+Run these commands from the repository root with the .NET 10 SDK installed:
 
 ```powershell
 dotnet pack src\Microsoft.OpenApi.Hidi\Microsoft.OpenApi.Hidi.csproj -c Release -o artifacts\hidi\nuget

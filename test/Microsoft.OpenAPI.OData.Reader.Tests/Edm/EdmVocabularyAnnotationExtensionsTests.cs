@@ -12,7 +12,6 @@ using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
-using Moq;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Edm.Tests
@@ -36,12 +35,12 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             IEdmVocabularyAnnotatable first = pathFirst ? path : other;
             IEdmVocabularyAnnotatable second = pathFirst ? other : path;
-            Assert.Equal(pathFirst ? "path" : "other", model.Object.GetString(first, CachedStringTerm.FullName()));
-            Assert.Equal(pathFirst ? "other" : "path", model.Object.GetString(second, CachedStringTerm.FullName()));
+            Assert.Equal(pathFirst ? "path" : "other", model.GetString(first, CachedStringTerm.FullName()));
+            Assert.Equal(pathFirst ? "other" : "path", model.GetString(second, CachedStringTerm.FullName()));
             // Revisit both keys so a stored path is compared with a nonpath in either insertion order.
-            Assert.Equal("other", model.Object.GetString(other, CachedStringTerm.FullName()));
-            Assert.Equal("path", model.Object.GetString(path, CachedStringTerm.FullName()));
-            model.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
+            Assert.Equal("other", model.GetString(other, CachedStringTerm.FullName()));
+            Assert.Equal("path", model.GetString(path, CachedStringTerm.FullName()));
+            Assert.Equal(2, model.FindDeclaredVocabularyAnnotationsCallCount);
         }
 
         [Fact]
@@ -56,10 +55,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                 new EdmVocabularyAnnotation(path, CachedStringTerm, new EdmStringConstant("original")),
                 new EdmVocabularyAnnotation(differentPath, CachedStringTerm, new EdmStringConstant("different")));
 
-            Assert.Equal("original", model.Object.GetString(path, CachedStringTerm.FullName()));
-            Assert.Equal("original", model.Object.GetString(equivalentPath, CachedStringTerm.FullName()));
-            Assert.Equal("different", model.Object.GetString(differentPath, CachedStringTerm.FullName()));
-            model.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
+            Assert.Equal("original", model.GetString(path, CachedStringTerm.FullName()));
+            Assert.Equal("original", model.GetString(equivalentPath, CachedStringTerm.FullName()));
+            Assert.Equal("different", model.GetString(differentPath, CachedStringTerm.FullName()));
+            Assert.Equal(2, model.FindDeclaredVocabularyAnnotationsCallCount);
         }
 
         [Fact]
@@ -72,10 +71,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                 new EdmVocabularyAnnotation(target, CachedStringTerm, new EdmStringConstant("original")),
                 new EdmVocabularyAnnotation(differentTarget, CachedStringTerm, new EdmStringConstant("different")));
 
-            Assert.Equal("original", model.Object.GetString(target, CachedStringTerm.FullName()));
-            Assert.Equal("original", model.Object.GetString(equivalentTarget, CachedStringTerm.FullName()));
-            Assert.Equal("different", model.Object.GetString(differentTarget, CachedStringTerm.FullName()));
-            model.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
+            Assert.Equal("original", model.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal("original", model.GetString(equivalentTarget, CachedStringTerm.FullName()));
+            Assert.Equal("different", model.GetString(differentTarget, CachedStringTerm.FullName()));
+            Assert.Equal(2, model.FindDeclaredVocabularyAnnotationsCallCount);
         }
 
         [Fact]
@@ -87,10 +86,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                 new EdmVocabularyAnnotation(target, CachedStringTerm, new EdmStringConstant("original")),
                 new EdmVocabularyAnnotation(differentTarget, CachedStringTerm, new EdmStringConstant("different")));
 
-            Assert.Equal("original", model.Object.GetString(target, CachedStringTerm.FullName()));
-            Assert.Equal("different", model.Object.GetString(differentTarget, CachedStringTerm.FullName()));
-            Assert.Equal("original", model.Object.GetString(target, CachedStringTerm.FullName()));
-            model.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
+            Assert.Equal("original", model.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal("different", model.GetString(differentTarget, CachedStringTerm.FullName()));
+            Assert.Equal("original", model.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal(2, model.FindDeclaredVocabularyAnnotationsCallCount);
         }
 
         [Theory]
@@ -104,22 +103,31 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var firstModel = GetCacheModel(new EdmVocabularyAnnotation(target, CachedStringTerm, new EdmStringConstant("first")));
             var secondModel = GetCacheModel(new EdmVocabularyAnnotation(target, CachedStringTerm, new EdmStringConstant("second")));
 
-            Assert.Equal("first", firstModel.Object.GetString(target, CachedStringTerm.FullName()));
-            Assert.Equal("second", secondModel.Object.GetString(target, CachedStringTerm.FullName()));
-            Assert.Equal("first", firstModel.Object.GetString(target, CachedStringTerm.FullName()));
-            firstModel.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Exactly(2));
-            secondModel.Verify(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()), Times.Once());
+            Assert.Equal("first", firstModel.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal("second", secondModel.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal("first", firstModel.GetString(target, CachedStringTerm.FullName()));
+            Assert.Equal(2, firstModel.FindDeclaredVocabularyAnnotationsCallCount);
+            Assert.Equal(1, secondModel.FindDeclaredVocabularyAnnotationsCallCount);
         }
 
-        private static Mock<IEdmModel> GetCacheModel(params IEdmVocabularyAnnotation[] annotations)
+        private static CountingAnnotationModel GetCacheModel(params IEdmVocabularyAnnotation[] annotations)
         {
-            var model = new Mock<IEdmModel>();
-            model.Setup(m => m.DirectValueAnnotationsManager).Returns(new EdmModel().DirectValueAnnotationsManager);
-            model.Setup(m => m.FindDeclaredTerm(CachedStringTerm.FullName())).Returns(CachedStringTerm);
-            // Keep the model lookup reference-based to isolate the annotation cache's key comparison.
-            model.Setup(m => m.FindDeclaredVocabularyAnnotations(It.IsAny<IEdmVocabularyAnnotatable>()))
-                .Returns((IEdmVocabularyAnnotatable target) => annotations.Where(a => ReferenceEquals(a.Target, target)));
+            var model = new CountingAnnotationModel(annotations);
+            model.AddElement(CachedStringTerm);
             return model;
+        }
+
+        // Moq cannot proxy IEdmModel in Microsoft.OData.Edm 9 because it has ReadOnlySpan<char> members.
+        private sealed class CountingAnnotationModel(IEdmVocabularyAnnotation[] annotations) : EdmModel
+        {
+            public int FindDeclaredVocabularyAnnotationsCallCount { get; private set; }
+
+            // Keep the model lookup reference-based to isolate the annotation cache's key comparison.
+            public override IEnumerable<IEdmVocabularyAnnotation> FindDeclaredVocabularyAnnotations(IEdmVocabularyAnnotatable element)
+            {
+                FindDeclaredVocabularyAnnotationsCallCount++;
+                return annotations.Where(a => ReferenceEquals(a.Target, element));
+            }
         }
 
         private static EdmTargetPath CreateTargetPath(string entitySetName = "Items")

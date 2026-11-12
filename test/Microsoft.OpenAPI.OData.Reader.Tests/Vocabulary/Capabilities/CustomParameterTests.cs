@@ -103,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             value = parameter.ExampleValues[1];
             Assert.Null(value.Description);
             Assert.NotNull(value.Value);
-            Assert.Equal(new TimeOnly(3, 4, 5, 6).ToString("HH:mm:ss.fffffff"), value.Value.Value.ToString());
+            Assert.Equal(new TimeOnly(3, 4, 5, 6).ToString("HH:mm:ss.fffffff"), value.Value.ToString());
         }
 
         private IEdmModel GetEdmModel(string annotation)

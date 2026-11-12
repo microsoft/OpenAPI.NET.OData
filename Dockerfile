@@ -14,7 +14,7 @@ WORKDIR /app/hidi
 RUN --mount=type=secret,id=nuget_config,target=/app/hidi/NuGet.Config \
     dotnet publish ./src/Microsoft.OpenApi.Hidi/Microsoft.OpenApi.Hidi.csproj -c Release -o /app/publish -p:GeneratePackageOnBuild=false -p:HidiPublicSignBuild=true
 
-FROM mcr.microsoft.com/dotnet/runtime:8.0-jammy-chiseled AS runtime
+FROM mcr.microsoft.com/dotnet/runtime:10.0-noble-chiseled AS runtime
 WORKDIR /app
 
 COPY --from=build-env /app/publish ./
