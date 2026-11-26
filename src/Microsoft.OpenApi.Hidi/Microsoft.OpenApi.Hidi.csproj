@@ -23,6 +23,7 @@
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.Hidi.public.snk</AssemblyOriginatorKeyFile>
     <PackageTags>Microsoft OpenApi Hidi CLI</PackageTags>
     <RepositoryUrl>https://github.com/microsoft/OpenAPI.NET.OData</RepositoryUrl>
+    <RollForward>LatestMajor</RollForward>
   </PropertyGroup>
 
   <ItemGroup>
